@@ -7,7 +7,7 @@
     <!-- BEGIN HEAD -->
     <head>
         <meta charset="utf-8" />
-        <title>LAdmin</title>
+        <title>半课，一半学费上好课</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="" name="description" />
@@ -45,7 +45,7 @@
         <div class="content">
             @yield('content')
         </div>
-        <div class="copyright"> 2016 © LAdmin Dashboard. </div>
+        <div class="copyright"> Copyright©2015-2016 www.heishehui.cn All Rights Reserved. 武汉迅牛科技有限公司  鄂ICP备15003238号 </div>
         <!--[if lt IE 9]>
             <script src="../assets/global/plugins/respond.min.js"></script>
             <script src="../assets/global/plugins/excanvas.min.js"></script> 
