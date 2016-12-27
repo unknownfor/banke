@@ -43,7 +43,7 @@ class OrgController extends Controller
     {
         $permissions = PermissionRepository::findPermissionWithArray();
         $roles = RoleRepository::findRoleWithObject();
-        return view('admin.user.create')->with(compact(['permissions','roles']));
+        return view('admin.org.create')->with(compact(['permissions','roles']));
     }
 
     /**

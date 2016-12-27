@@ -7,11 +7,11 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <a href="{{url('admin/user')}}">{!! trans('labels.breadcrumb.userList') !!}</a>
+                <a href="{{url('admin/org')}}">{!! trans('labels.breadcrumb.orgList') !!}</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <span>{!! trans('labels.breadcrumb.userCreate') !!}</span>
+                <span>{!! trans('labels.breadcrumb.orgCreate') !!}</span>
             </li>
         </ul>
     </div>
@@ -22,7 +22,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="icon-settings font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.userCreate') !!}</span>
+                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.orgCreate') !!}</span>
                     </div>
                     <div class="actions">
                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -37,13 +37,18 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/user')}}">
+                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/org')}}">
                         {!! csrf_field() !!}
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="name">{{trans('labels.user.name')}}</label>
+                                <img src=""/>
+                                <button type="button" class="btn yellow-stripe">{{trans('crud.imageUpload')}}</button>
+                                <label>你可以选择png/jpg图片作为头像</label>
+                            </div>
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-2 control-label" for="name">{{trans('labels.org.name')}}</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.user.name')}}" value="{{old('name')}}">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.org.name')}}" value="{{old('name')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -61,27 +66,6 @@
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="password" name="password" placeholder="{{trans('labels.user.password')}}">
                                     <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input has-warning">
-                                <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.role.slug')}}</label>
-                                <div class="col-md-10">
-                                    <div class="md-checkbox-inline">
-                                        @if(!$roles->isEmpty())
-                                            @foreach($roles as $key => $role)
-                                                <div class="md-checkbox">
-                                                    <input type="checkbox" id="{{'role_'.$key}}" name="role[]" value="{{$role->id}}" class="md-check">
-                                                    <label for="{{'role_'.$key}}" class="tooltips" data-placement="top" data-original-title="{{$role->description}}">
-                                                        <span></span>
-                                                        <span class="check"></span>
-                                                        <span class="box"></span> {{$role->slug}} @permission(config('admin.permissions.role.show'))(<small><a href="{{url('admin/role/'.$role->id)}}" data-toggle="modal" data-target="#draggable" class="red-mint">{{trans('labels.role.show')}}</a></small>)@endpermission </label>
-                                                </div>
-                                            @endforeach
-                                        @else
-                                            <p>暂无角色</p>
-                                        @endif
-                                    </div>
                                 </div>
                             </div>
 
@@ -125,58 +109,6 @@
                                                 <span class="check"></span>
                                                 <span class="box"></span> {{trans('strings.user.trash.1')}} </label>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.user.permission')}}</label>
-                                <div class="col-md-8">
-                                    <div class="alert alert-success">{!!trans('labels.user.notice')!!}</div>
-                                    <div class="table-scrollable">
-                                        <table class="table table-bordered table-hover">
-                                            <thead>
-                                            <tr>
-                                                <th class="col-md-1 text-center">{{trans('labels.role.module')}}</th>
-                                                <th class="col-md-10 text-center">{{trans('labels.role.permission')}}</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @if($permissions)
-                                                @foreach($permissions as $permission)
-                                                    @foreach($permission as $k => $v)
-                                                        <tr>
-                                                            <td class="text-center" style="vertical-align: middle;"> {{$k}} </td>
-                                                            <td>
-                                                                @if(isDoubleArray($v))
-                                                                    @foreach($v as $val)
-                                                                        <div class="col-md-4">
-                                                                            <div class="md-checkbox">
-                                                                                <input type="checkbox" name="permission[]" id="{{$val['key']}}" value="{{$val['id']}}" class="md-check">
-                                                                                <label for="{{$val['key']}}" class="tooltips" data-placement="top" data-original-title="{{$val['desc']}}">
-                                                                                    <span></span>
-                                                                                    <span class="check"></span>
-                                                                                    <span class="box"></span> {{$val['name']}} </label>
-                                                                            </div>
-                                                                        </div>
-                                                                    @endforeach
-                                                                @else
-                                                                    <div class="col-md-4">
-                                                                        <div class="md-checkbox">
-                                                                            <input type="checkbox" name="permission[]" id="{{$v['key']}}" value="{{$v['id']}}" class="md-check">
-                                                                            <label for="{{$v['key']}}" class="tooltips" data-placement="top" data-original-title="{{$v['desc']}}">
-                                                                                <span></span>
-                                                                                <span class="check"></span>
-                                                                                <span class="box"></span> {{$v['name']}} </label>
-                                                                        </div>
-                                                                    </div>
-                                                                @endif
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                @endforeach
-                                            @endif
-                                            </tbody>
-                                        </table>
                                     </div>
                                 </div>
                             </div>

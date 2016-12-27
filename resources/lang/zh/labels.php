@@ -125,11 +125,15 @@ return [
 		'articleEdit' => '<i class="fa fa-cog"></i> 文章编辑',
 		'articleCategoryList' => '<i class="fa fa-cog"></i> 文章分类列表',
 		'articleCategoryCreate' => '<i class="fa fa-cog"></i> 文章分类添加',
+		'orgList' => '<i class="fa fa-bars"></i> 机构列表',
+		'orgCreate' => '<i class="fa fa-user-plus"></i> 创建机构',
+		'orgEdit' => '<i class="fa fa-pencil"></i> 修改机构',
 
 	],
 	'org' => [
 		'id' => '序号',
 		'name' => '名称',
+		'logo'=>'',
 		'address' => '地址',
 		'status' => '状态',
 		'created_at' => '创建时间',
