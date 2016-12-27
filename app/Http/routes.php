@@ -40,6 +40,8 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/MenuRoute.php');
         // 角色
         require(__DIR__ . '/Routes/RoleRoute.php');
+        // 机构
+        require(__DIR__ . '/Routes/OrgRoute.php');
         //图片
         $router->get('/image/show', 'ImageController@showImageUpload');
         $router->post('/image/upload_image', 'ImageController@postImageUpload');

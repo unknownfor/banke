@@ -32,6 +32,7 @@
                 <h3 class="uppercase"></h3>
             </li>
             @if($menus)
+
             @foreach($menus as $v)
             @permission($v['slug'])
             @if($v['child'])
