@@ -142,4 +142,18 @@ return [
 		'module' => '模块',
 		'show' => '查看角色权限',
 	],
+	'org' => [
+		'id' => '序号',
+		'name' => '名称',
+		'address' => '地址',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '课程列表',
+		'confirm' => '已验证',
+		'active' => '<span class="label label-success"> 已验证 </span>',
+		'audit' => '<span class="label label-warning"> 未验证 </span>',
+		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
+		'info' => '暂无额外权限',
+	],
 ];
