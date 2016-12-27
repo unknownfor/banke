@@ -125,6 +125,21 @@ return [
 		'articleEdit' => '<i class="fa fa-cog"></i> 文章编辑',
 		'articleCategoryList' => '<i class="fa fa-cog"></i> 文章分类列表',
 		'articleCategoryCreate' => '<i class="fa fa-cog"></i> 文章分类添加',
+		'dictList' => '<i class="fa fa-bars"></i> 配置列表',
+		'dictCreate' => '<i class="fa fa-user-plus"></i> 创建配置',
 
-	]
+	],
+	'dict' => [
+		'id' => '序号',
+		'key' => '配置名称',
+		'value' => '配置值',
+		'description' => '配置项说明',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '配置列表',
+		'permission' => '权限',
+		'module' => '模块',
+		'show' => '查看角色权限',
+	],
 ];

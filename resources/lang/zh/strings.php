@@ -22,4 +22,8 @@ return [
 		'active' => ['fa fa-navicon','正常'],
 		'trash' => ['fa fa-trash','回收站'],
 	],
+	'dict' => [
+		'active' => ['fa fa-navicon','正常'],
+		'trash' => ['fa fa-trash','回收站'],
+	],
 ];

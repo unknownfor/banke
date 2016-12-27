@@ -65,6 +65,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
 
         //文章分类
         $router->resource('ae_category','ArticleCategoryController');
+
+        //app配置
+        require(__DIR__ . '/Routes/DictRoute.php');
     });
 });
 

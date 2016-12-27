@@ -57,4 +57,11 @@ return[
 		'audit'		=> 'admin.article.audit',
 		'show'		=> 'admin.article.list',
 	],
+	'dict' => [
+		'create' 	=> 'admin.dict.create',
+		'edit' 		=> 'admin.dict.edit',
+		'destroy' 	=> 'admin.dict.delete',
+		/*'trash' 	=> 'admin.dict.trash',
+		'undo' 		=> 'admin.dict.undo',*/
+	],
 ];
