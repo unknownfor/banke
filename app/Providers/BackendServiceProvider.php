@@ -44,5 +44,9 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('ImageRepository', function($app){
             return new \App\Repositories\admin\ImageRepository();
         });
+        //配置
+        $this->app->singleton('DictRepository', function($app){
+            return new \App\Repositories\admin\DictRepository();
+        });
     }
 }

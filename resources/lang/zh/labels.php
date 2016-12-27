@@ -128,7 +128,21 @@ return [
 		'orgList' => '<i class="fa fa-bars"></i> 机构列表',
 		'orgCreate' => '<i class="fa fa-user-plus"></i> 创建机构',
 		'orgEdit' => '<i class="fa fa-pencil"></i> 修改机构',
-
+		'dictList' => '<i class="fa fa-bars"></i> 配置列表',
+		'dictCreate' => '<i class="fa fa-user-plus"></i> 创建配置',
+	],
+	'dict' => [
+		'id' => '序号',
+		'key' => '配置名称',
+		'value' => '配置值',
+		'description' => '配置项说明',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '配置列表',
+		'permission' => '权限',
+		'module' => '模块',
+		'show' => '查看角色权限',
 	],
 	'org' => [
 		'id' => '序号',

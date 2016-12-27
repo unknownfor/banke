@@ -57,13 +57,20 @@ return[
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'article',
-	],
+],
 	//文章
 	'articleCategory' => [
 		// 控制是否显示查看按钮
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'articleCategory',
-	]
+	],
+	//用户
+	'dict' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'dict',
+	],
 
 ];
