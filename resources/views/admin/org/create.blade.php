@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/org.css')}}">
+@endsection
 @section('content')
     <div class="page-bar">
         <ul class="page-breadcrumb">
@@ -37,56 +40,56 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/org')}}">
+                    <form role="form" class="form-horizontal org-info-box" method="POST" action="{{url('admin/org')}}">
                         {!! csrf_field() !!}
                         <div class="form-body">
-                            <div class="form-group form-md-line-input">
-                                <img src=""/>
-                                <button type="button" class="btn yellow-stripe">{{trans('crud.imageUpload')}}</button>
-                                <label>你可以选择png/jpg图片作为头像</label>
+                            <div class="form-group form-md-line-input form-md-line-logo">
+                                <div class="col-md-1">
+                                    <img src="http://admin.laadmin.dev/backend/img/avatar3_small.jpg" class="img-circle"/>
+                                </div>
+                                <div class="col-md-9">
+                                    <span class="btn default green">{!! trans('labels.breadcrumb.imageUpload') !!}</span>
+                                    <div>{!! trans('labels.breadcrumb.imageUploadTips')!!}</div>
+                                </div>
                             </div>
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="name">{{trans('labels.org.name')}}</label>
-                                <div class="col-md-8">
+                                <label class="col-md-1 control-label" for="name">{{trans('labels.org.name')}}</label>
+                                <div class="col-md-9">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.org.name')}}" value="{{old('name')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="email">{{trans('labels.user.email')}}</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="email" name="email" placeholder="{{trans('labels.user.email')}}" value="{{old('email')}}">
+                                <label class="col-md-1 control-label" for="email">{{trans('labels.org.slogan')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="{{trans('labels.org.slogan')}}" value="{{old('email')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="password">{{trans('labels.user.password')}}</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="password" name="password" placeholder="{{trans('labels.user.password')}}">
+                                <label class="col-md-1 control-label" for="password">{{trans('labels.org.address')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="password" name="password" placeholder="{{trans('labels.org.address')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input has-success">
-                                <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.user.confirm_email')}}</label>
-                                <div class="col-md-10">
-                                    <div class="md-checkbox-inline">
-                                        <div class="md-checkbox">
-                                            <input type="checkbox" id="confirm_email" value="{{config('admin.global.status.active')}}" name="confirm_email" class="md-check">
-                                            <label for="confirm_email">
-                                                <span></span>
-                                                <span class="check"></span>
-                                                <span class="box"></span> {{trans('labels.user.confirm')}} </label>
-                                        </div>
+                            <div class="form-group form-md-line-input form-md-line-cover">
+                                <label class="col-md-1 control-label" for="password">{{trans('labels.org.cover')}}</label>
+                                <div class="col-md-9">
+                                    <div class="cover-box">
+                                        <div class="add-cover-img-btn">+</div>
+                                        <div class="cover-li-box"></div>
                                     </div>
                                 </div>
                             </div>
 
+
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.user.status')}}</label>
-                                <div class="col-md-10">
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.user.status')}}</label>
+                                <div class="col-md-9">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
                                             <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.active')) checked @endif>
@@ -115,7 +118,7 @@
                         </div>
                         <div class="form-actions">
                             <div class="row">
-                                <div class="col-md-offset-2 col-md-10">
+                                <div class="col-md-offset-1 col-md-10">
                                     <a href="{{url('admin/user')}}" class="btn default">{{trans('crud.cancel')}}</a>
                                     <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>

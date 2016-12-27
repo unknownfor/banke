@@ -1,0 +1,43 @@
+
+.org-info-box .col-md-1{
+    text-align: center;
+}
+.org-info-box .control-label{
+    text-align: center;
+}
+.form-md-line-logo{
+     margin-bottom: 20px;
+}
+.form-md-line-logo img{
+    height: 100px;
+    width: 100px;
+}
+.form-md-line-logo .col-md-9{
+    padding-top: 25px;
+}
+.form-md-line-logo .col-md-9 .btn{
+    margin-bottom: 10px;
+}
+
+.form-md-line-cover{
+    height: 160px;
+}
+.form-md-line-cover .cover-box{
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.form-md-line-cover .add-cover-img-btn{
+    height:80px;
+    width: 80px;
+    border-radius: 5px;
+    border:1px solid #808080;
+    cursor: pointer;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-md-line-cover .add-cover-img-btn:hover{
+    box-shadow: 0 0 2px 2px rgba(21,21,21,0.5);
+}
