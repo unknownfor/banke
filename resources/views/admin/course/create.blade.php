@@ -136,16 +136,16 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label">{{trans('labels.org.detail')}}</label>
-                                <div class="col-md-9">
+                                <div class="col-md-11">
                                     <textarea style="display: none" name="detail" id="target-area"></textarea>
                                     <textarea id="my-editor"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="telphone">{{trans('labels.org.telphone')}}</label>
+                                <label class="col-md-1 control-label" for="telohone">{{trans('labels.org.telphone')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="telohone" name="telphone" placeholder="{{trans('labels.org.telphone')}}" value="{{old('name')}}">
+                                    <input type="text" class="form-control" id="telohone" name="telohone" placeholder="{{trans('labels.org.telphone')}}" value="{{old('name')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>

@@ -36,6 +36,10 @@
             @foreach($menus as $v)
             @permission($v['slug'])
             @if($v['child'])
+                {{--<script>--}}
+                    {{--var ss="{{explode(',',$v['url'])}}";--}}
+                    {{--console.log(ss);--}}
+                {{--</script>--}}
             <li class="nav-item  {{active_class(if_uri_pattern(explode(',',$v['url'])),'active open')}}">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="{{$v['icon']}}"></i>

@@ -42,6 +42,8 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/RoleRoute.php');
         // 机构
         require(__DIR__ . '/Routes/OrgRoute.php');
+        // 课程
+        require(__DIR__ . '/Routes/CourseRoute.php');
         //图片
         $router->get('/image/show', 'ImageController@showImageUpload');
         $router->post('/image/upload_image', 'ImageController@postImageUpload');

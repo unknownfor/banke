@@ -107,4 +107,15 @@ class OrgRepository
 		];
 	}
 
+	/**添加机构
+	 * @author 晚黎
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function store($request)
+	{
+		return true;
+	}
+
 }

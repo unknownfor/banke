@@ -5,12 +5,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
-use App\Repositories\admin\OrgRepository;
-use App\Http\Requests\CreateOrgRequest;
+use OrgRepository;
 use PermissionRepository;
 use RoleRepository;
 
-class OrgController extends Controller
+class CourseController extends Controller
 {
 	/**
      * 机构列表
@@ -20,7 +19,7 @@ class OrgController extends Controller
      */
     public function index()
     {
-        return view('admin.org.list');
+        return view('admin.course.list');
     }
 
     /**
@@ -48,16 +47,16 @@ class OrgController extends Controller
     }
 
     /**
-     * 添加机构
+     * 添加用户
      * @author 晚黎
      * @date   2016-04-14T11:31:29+0800
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(CreateOrgRequest $request)
+    public function store(CreateUserRequest $request)
     {
-        OrgRepository::store($request);
-        return redirect('admin/org');
+        UserRepository::store($request);
+        return redirect('admin/user');
     }
 
     /**

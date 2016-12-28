@@ -13,7 +13,7 @@
           <i class="fa fa-angle-right"></i>
       </li>
       <li>
-          <span>{!! trans('labels.breadcrumb.orgList') !!}</span>
+          <span>{!! trans('labels.breadcrumb.courseList') !!}</span>
       </li>
   </ul>
 </div>
@@ -26,12 +26,12 @@
             <div class="portlet-title">
             <div class="caption">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.org.list')}}</span>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.course.list')}}</span>
             </div>
             <div class="actions">
               <div class="btn-group">
                 @permission(config('admin.permissions.user.create'))
-                <a href="{{url('admin/org/create')}}" class="btn btn-success btn-outline btn-circle">
+                <a href="{{url('admin/course/create')}}" class="btn btn-success btn-outline btn-circle">
                   <i class="fa fa-user-plus"></i>
                   <span class="hidden-xs">{{trans('crud.create')}}</span>
                 </a>
@@ -43,10 +43,10 @@
                 <div class="col-md-4">
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
-                            <span class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </span>
-                            <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.org.name') }}">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                            <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.course.name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-envelope"></i>
                                     </span>
-                                <input type="text" class="form-control form-filter" name="email" placeholder="{{ trans('labels.org.address') }}">
+                                <input type="text" class="form-control form-filter" name="email" placeholder="{{ trans('labels.course.address') }}">
                                 <div class="form-control-focus"> </div>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                 <div class="col-md-4">
                     <div class="margin-bottom-5" style="padding-top: 20px;">
                         <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
-                            <i class="fa fa-search"></i>{{ trans('labels.search') }}</button>
+                            <i class="fa fa-search"></i> Search</button>
                     </div>
                 </div>
             </div>
