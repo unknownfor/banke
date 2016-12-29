@@ -37,127 +37,61 @@
 					        @endforeach
 					    </div>
 					    @endif
-              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/role/'.$role['id'])}}">
+              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/dict/'.$dict['id'])}}">
               		{!! csrf_field() !!}
                   <input type="hidden" name="_method" value="PATCH">
-                  <input type="hidden" name="id" value="{{$role['id']}}">
+                  <input type="hidden" name="id" value="{{$dict['id']}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="name">{{trans('labels.role.name')}}</label>
+                          <label class="col-md-2 control-label" for="name">{{trans('labels.dict.key')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.role.name')}}" value="{{$role['name']}}">
+                              <input type="text" class="form-control" id="name" name="key" placeholder="{{trans('labels.dict.key')}}" value="{{$dict['key']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="slug">{{trans('labels.role.slug')}}</label>
+                          <label class="col-md-2 control-label" for="slug">{{trans('labels.dict.value')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="slug" name="slug" placeholder="{{trans('labels.role.slug')}}" value="{{$role['slug']}}">
+                              <input type="text" class="form-control" id="slug" name="value" placeholder="{{trans('labels.dict.value')}}" value="{{$dict['value']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="description">{{trans('labels.role.description')}}</label>
+                          <label class="col-md-2 control-label" for="description">{{trans('labels.dict.description')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="description" name="description" placeholder="{{trans('labels.role.description')}}" value="{{$role['description']}}">
+                              <input type="text" class="form-control" id="description" name="description" placeholder="{{trans('labels.dict.description')}}" value="{{$dict['description']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="level">{{trans('labels.role.level')}}</label>
-                          <div class="col-md-8">
-                              <input type="text" class="form-control" id="level" name="level" placeholder="{{trans('labels.role.level')}}" value="{{$role['level']}}">
-                              <div class="form-control-focus"> </div>
-                          </div>
-                      </div>
-
-                      <div class="form-group form-md-line-input">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.role.status')}}</label>
+                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.dict.status')}}</label>
                         <div class="col-md-10">
                             <div class="md-radio-inline">
                                 <div class="md-radio">
-                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($role['status'] == config('admin.global.status.active')) checked @endif>
+                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($dict['status'] == config('admin.global.status.active')) checked @endif>
                                     <label for="status1">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.role.active.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.dict.active.1')}} </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($role['status'] == config('admin.global.status.audit')) checked @endif>
-                                    <label for="status2">
-                                        <span></span>
-                                        <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.role.audit.1')}} </label>
-                                </div>
-                                <div class="md-radio">
-                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($role['status'] == config('admin.global.status.trash')) checked @endif>
+                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($dict['status'] == config('admin.global.status.trash')) checked @endif>
                                     <label for="status3">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.role.trash.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.dict.trash.1')}} </label>
                                 </div>
                             </div>
-                        </div>
-                      </div>
-                      <div class="form-group form-md-line-input">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.role.permission')}}</label>
-                        <div class="col-md-8">
-                          <div class="table-scrollable">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="col-md-1 text-center">{{trans('labels.role.module')}}</th>
-                                        <th class="col-md-10 text-center">{{trans('labels.role.permission')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  @if($permissions)
-                                  @foreach($permissions as $permission)
-                                    @foreach($permission as $k => $v)
-                                      <tr>
-                                        <td class="text-center" style="vertical-align: middle;"> {{$k}} </td>
-                                        <td>
-                                          @if(isDoubleArray($v))
-                                          @foreach($v as $val)
-                                          <div class="col-md-4">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" name="permission[]" id="{{$val['key']}}" value="{{$val['id']}}" class="md-check" @if(in_array($val['id'],$role['permission'])) checked @endif>
-                                                <label for="{{$val['key']}}" class="tooltips" data-placement="top" data-original-title="{{$val['desc']}}">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span> {{$val['name']}} </label>
-                                            </div>
-                                          </div>
-                                          @endforeach
-                                          @else
-                                          <div class="col-md-4">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" name="permission[]" id="{{$v['key']}}" value="{{$v['id']}}" class="md-check" @if(in_array($v['id'],$role['permission'])) checked @endif>
-                                                <label for="{{$v['key']}}" class="tooltips" data-placement="top" data-original-title="{{$v['desc']}}">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span> {{$v['name']}} </label>
-                                            </div>
-                                          </div>
-                                          @endif
-                                        </td>
-                                      </tr>
-                                    @endforeach
-                                  @endforeach
-                                  @endif
-                                </tbody>
-                            </table>
-                          </div>
                         </div>
                       </div>
                   </div>
                   <div class="form-actions">
                       <div class="row">
                           <div class="col-md-offset-2 col-md-10">
-                              <a href="{{url('admin/role')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                              <a href="{{url('admin/dict')}}" class="btn default">{{trans('crud.cancel')}}</a>
                               <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
