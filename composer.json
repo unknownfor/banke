@@ -18,7 +18,8 @@
         "overtrue/laravel-wechat":"~3.0",
         "predis/predis":"^1.1",
         "jlapp/swaggervel":"dev-master",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "aliyuncs/oss-sdk-php": "^2.2"
         
     },
     "require-dev": {
