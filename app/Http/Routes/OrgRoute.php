@@ -3,6 +3,7 @@
  * 机构路由
  */
 $router->group(['prefix' => 'org'], function($router){
+	$router->get('ajaxIndex', 'OrgController@ajaxIndex');
 	$router->get('sort', 'OrgController@sort');
 	$router->get('/{id}/mark/{status}', 'OrgController@mark')
 		   ->where([

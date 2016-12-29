@@ -9,6 +9,7 @@ use OrgRepository;
 use App\Http\Requests\CreateOrgRequest;
 use PermissionRepository;
 use RoleRepository;
+use Illuminate\Support\Facades\Log;
 
 class OrgController extends Controller
 {
@@ -31,7 +32,7 @@ class OrgController extends Controller
      */
     public function ajaxIndex()
     {
-        $data = UserRepository::ajaxIndex();
+        $data = OrgRepository::ajaxIndex();
         return response()->json($data);
     }
     /**
@@ -123,7 +124,7 @@ class OrgController extends Controller
      */
     public function show($id)
     {
-        $org = OrgRepository::show($id);
-        return view('admin.org.show')->with(compact('org'));
+        /*$org = OrgRepository::show($id);
+        return view('admin.org.show')->with(compact('org'));*/
     }
 }

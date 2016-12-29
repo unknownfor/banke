@@ -64,4 +64,11 @@ return[
 		/*'trash' 	=> 'admin.dict.trash',
 		'undo' 		=> 'admin.dict.undo',*/
 	],
+	'org' => [
+		'create' 	=> 'admin.org.create',
+		'edit' 		=> 'admin.org.edit',
+		'destroy' 	=> 'admin.org.delete',
+		/*'trash' 	=> 'admin.dict.trash',
+		'undo' 		=> 'admin.dict.undo',*/
+	],
 ];
