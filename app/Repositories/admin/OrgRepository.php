@@ -115,7 +115,49 @@ class OrgRepository
 	 */
 	public function store($request)
 	{
-		return true;
+		$user = new User;
+
+		$userData = $request->all();
+		//密码进行加密
+		$userData['password'] = bcrypt($userData['password']);
+
+		if ($user->fill($userData)->save()) {
+			//自动更新用户权限关系
+			if ($userData['permission']) {
+				$user->permission()->sync($userData['permission']);
+			}
+			// 自动更新用户角色关系
+			if ($userData['role']) {
+				$user->role()->sync($userData['role']);
+			}
+			Flash::success(trans('alerts.users.created_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.users.created_error'));
+		return false;
+	}
+
+	/**
+	 * 修改机构视图
+	 * @author 晚黎
+	 * @date   2016-04-14T15:02:10+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function edit($id)
+	{
+		$org = OrgRepository::with(['permission','role'])->find($id);
+		if ($org) {
+			$orgArray = $org->toArray();
+			if ($orgArray['permission']) {
+				$orgArray['permission'] = array_column($orgArray['permission'],'id');
+			}
+			if ($orgArray['role']) {
+				$orgArray['role'] = array_column($orgArray['role'],'id');
+			}
+			return $orgArray;
+		}
+		abort(404);
 	}
 
 }

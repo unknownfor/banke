@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
-use App\Repositories\admin\OrgRepository;
+use OrgRepository;
 use App\Http\Requests\CreateOrgRequest;
 use PermissionRepository;
 use RoleRepository;
@@ -61,7 +61,7 @@ class OrgController extends Controller
     }
 
     /**
-     * 修改用户视图
+     * 修改机构视图
      * @author 晚黎
      * @date   2016-04-14T15:01:16+0800
      * @param  [type]                   $id [description]
@@ -69,13 +69,13 @@ class OrgController extends Controller
      */
     public function edit($id)
     {
-        $user = UserRepository::edit($id);
+        $org = OrgRepository::edit($id);
         $roles = RoleRepository::findRoleWithObject();
         $permissions = PermissionRepository::findPermissionWithArray();
-        return view('admin.user.edit')->with(compact(['user','permissions','roles']));
+        return view('admin.org.edit')->with(compact(['org','permissions','roles']));
     }
     /**
-     * 修改用户资料
+     * 修改机构资料
      * @author 晚黎
      * @date   2016-04-14T15:16:54+0800
      * @param  UpdateUserRequest        $request [description]
@@ -85,7 +85,7 @@ class OrgController extends Controller
     public function update(UpdateUserRequest $request,$id)
     {
         UserRepository::update($request,$id);
-        return redirect('admin/user');
+        return redirect('admin/org');
     }
 
     /**
@@ -99,7 +99,7 @@ class OrgController extends Controller
     public function mark($id,$status)
     {
         UserRepository::mark($id,$status);
-        return redirect('admin/user');
+        return redirect('admin/org');
     }
 
     /**
@@ -111,11 +111,11 @@ class OrgController extends Controller
      */
     public function destroy($id)
     {
-        UserRepository::destroy($id);
-        return redirect('admin/user');
+        OrgRepository::destroy($id);
+        return redirect('admin/org');
     }
     /**
-     * 查看用户信息
+     * 查看机构信息
      * @author 晚黎
      * @date   2016-04-14T13:49:32+0800
      * @param  [type]                   $id [description]
@@ -123,69 +123,7 @@ class OrgController extends Controller
      */
     public function show($id)
     {
-        $user = UserRepository::show($id);
-        return view('admin.user.show')->with(compact('user'));
+        $org = OrgRepository::show($id);
+        return view('admin.org.show')->with(compact('org'));
     }
-    /**
-     * 修改用户密码视图
-     * @author 晚黎
-     * @date   2016-04-14T11:57:42+0800
-     * @param  [type]                   $id [description]
-     * @return [type]                       [description]
-     */
-    public function changePassword($id)
-    {
-        return view('admin.user.reset')->with(compact('id'));
-    }
-
-    /**
-     * 修改用户密码
-     * @author 晚黎
-     * @date   2016-04-14T11:58:13+0800
-     * @return [type]                   [description]
-     */
-    public function resetPassword(ResetPasswordRequest $request)
-    {
-        UserRepository::resetPassword($request);
-        return redirect('admin/user');
-    }
-
-    /**
-     * 登录用户修改密码页面
-     */
-    public function profile($id) {
-
-        return view('admin.user.profile')->with(compact('id'));
-    }
-
-    /**
-     * 管理员资料修改
-     */
-    public function changeAdminInfo($id)
-    {
-        return view('admin.user.admin_info')->with(compact('id'));
-    }
-
-    /**
-     * 修改管理员密码
-     */
-    public function postAdminPassword(postAdminPasswordRequest $request)
-    {
-        $id = $request->get('id');
-        UserRepository::resetPassword($request);
-
-        return redirect('admin/user/profile/'.$id);
-    }
-
-    /**
-     * 修改管理员信息
-     */
-    public function postAdminInfo(postAdminInfoRequest $request)
-    {
-        $id = $request->get('id');
-        UserRepository::changeAdminInfoById($request);
-        return redirect('admin/user/change/'.$id);
-    }
-
-
 }
