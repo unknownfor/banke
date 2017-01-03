@@ -7,11 +7,9 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/org/ajaxIndex',
+        'url' : '/admin/course/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
-          d.city =$('.filter input[name="city"]').val();
-          //d.status = $('.filter select[name="status"] option:selected').val();
+          //d.name = $('.filter input[name="name"]').val();
           d.status = 1;
         }
       },
@@ -30,15 +28,29 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "city",
-          "name": "city",
+          "data": "org_id",
+          "name": "org_id",
           "orderable" : false,
         },
         {
-          "data": "address",
-          "name": "address",
+          "data": "price",
+          "name": "price",
           "orderable" : false,
         },
+        //{
+        //  "data": "percent",
+        //  "name": "percent",
+        //  "orderable" : false,
+        //},
+        //{
+        //  //"data": "price | percent",
+        //  "data": "price",
+        //  "name": "price",
+        //  "orderable" : false,
+        //  //render:function(res){
+        //  //  return res*100;
+        //  //}
+        //},
         { 
           "data": "status",
           "name": "status",
@@ -51,13 +63,6 @@ var TableDatatablesAjax = function() {
             }else{
               return '<span class="label label-danger"> 禁用 </span>';
             }
-          }
-        },
-        {
-          "data": "id",
-          "name": "id",
-          render:function(res){
-              return '<a href="/admin/course/'+res+'">课程列表</a>';
           }
         },
         { 
@@ -78,7 +83,7 @@ var TableDatatablesAjax = function() {
       }
     });
 
-    $(document).on('click', '.filter-submit', function(){
+    dt.on('click', '.filter-submit', function(){
       ajax_datatable.ajax.reload(); 
     });
 
@@ -95,13 +100,13 @@ var TableDatatablesAjax = function() {
       ajax_datatable.ajax.reload();
     });
 
-    $('.input-group.date').datepicker({
-      autoclose: true
-    });
-    $(".bs-select").selectpicker({
-      iconBase: "fa",
-      tickIcon: "fa-check"
-    });
+    //$('.input-group.date').datepicker({
+    //  autoclose: true
+    //});
+    //$(".bs-select").selectpicker({
+    //  iconBase: "fa",
+    //  tickIcon: "fa-check"
+    //});
   };
 
   return {

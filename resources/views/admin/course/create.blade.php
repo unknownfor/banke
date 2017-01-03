@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/org.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/course.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
 @endsection
 @section('content')
@@ -12,11 +12,11 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <a href="{{url('admin/org')}}">{!! trans('labels.breadcrumb.orgList') !!}</a>
+                <a href="{{url('admin/course')}}">{!! trans('labels.breadcrumb.courseList') !!}</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <span>{!! trans('labels.breadcrumb.orgCreate') !!}</span>
+                <span>{!! trans('labels.breadcrumb.courseCreate') !!}</span>
             </li>
         </ul>
     </div>
@@ -27,7 +27,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="icon-settings font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.orgCreate') !!}</span>
+                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.courseCreate') !!}</span>
                     </div>
                     <div class="actions">
                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -42,65 +42,68 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal org-info-box" method="POST" action="{{url('admin/org')}}">
+                    <form role="form" class="form-horizontal course-info-box" method="POST" action="{{url('admin/course')}}">
                         {!! csrf_field() !!}
                         <div class="form-body">
-                            <div class="form-group form-md-line-input form-md-line-logo">
-                                <div class="col-md-1">
-                                    <img src="http://admin.laadmin.dev/backend/img/avatar3_small.jpg" class="img-circle"/>
-                                </div>
-                                <div class="col-md-9">
-                                    <span class="btn default green">{!! trans('labels.breadcrumb.imageUpload') !!}</span>
-                                    <div>{!! trans('labels.breadcrumb.imageUploadTips')!!}</div>
-                                </div>
-                            </div>
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="name">{{trans('labels.org.name')}}</label>
+                                <label class="col-md-1 control-label" for="name">{{trans('labels.course.name')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.org.name')}}" value="{{old('name')}}">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.course.name')}}" value="{{old('name')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="slogan">{{trans('labels.org.slogan')}}</label>
+                                <label class="col-md-1 control-label" for="org_id">{{trans('labels.course.org_id')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="slogan" name="slogan" placeholder="{{trans('labels.org.slogan')}}" value="{{old('email')}}">
+                                    <select name="org_id">
+                                        <option value="1">半课直营培训机构</option>
+                                        <option value="2">纯真培训机构</option>
+                                    </select>
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="address">{{trans('labels.org.address')}}</label>
+                                <label class="col-md-1 control-label" for="address">{{trans('labels.course.price')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="{{trans('labels.org.address')}}">
+                                    <input type="text" class="form-control" id="price" name="price" placeholder="{{trans('labels.course.price')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="percent">{{trans('labels.course.percent')}}(%)</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="percent" name="percent" placeholder="{{trans('labels.course.percent')}}" value="50">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="percent">{{trans('labels.course.sort')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.course.sort')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-1 control-label">{{trans('labels.org.cover')}}</label>
+                                <label class="col-md-1 control-label">{{trans('labels.course.cover')}}</label>
                                 <div class="col-md-9">
                                     <div class="cover-box">
-                                        <div class="add-cover-img-btn">+</div>
+                                        <div class="add-cover-img-btn">上传封面</div>
                                         <ul class="cover-list-box">
                                             <li>
                                                 <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                                <span class="remove-cover-img">×</span>
-                                            </li>
-                                            <li>
-                                                <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                                <span class="remove-cover-img">×</span>
-                                            </li>
-                                            <li>
-                                                <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
+                                                    <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
                                                 <span class="remove-cover-img">×</span>
                                             </li>
                                         </ul>
                                     </div>
+                                    <input type="hidden" value="http://pic.hisihi.com/2016-10-28/1477633557638562.png" name="cover" id="cover">
                                 </div>
                             </div>
 
@@ -135,20 +138,14 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label">{{trans('labels.org.detail')}}</label>
+                                <label class="col-md-1 control-label">{{trans('labels.course.detail')}}</label>
                                 <div class="col-md-11">
                                     <textarea style="display: none" name="detail" id="target-area"></textarea>
                                     <textarea id="my-editor"></textarea>
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="telohone">{{trans('labels.org.telphone')}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" id="telohone" name="telohone" placeholder="{{trans('labels.org.telphone')}}" value="{{old('name')}}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
+
 
                         </div>
                         <div class="form-actions">
@@ -183,5 +180,5 @@
             });
         });
     </script>
-    <script type="text/javascript" data-main="{{asset('backend/js/org/index.js')}}" src="{{asset('backend/js/libs/require.js')}}"></script>
+    <script type="text/javascript" data-main="{{asset('backend/js/course/index.js')}}" src="{{asset('backend/js/libs/require.js')}}"></script>
 @endsection

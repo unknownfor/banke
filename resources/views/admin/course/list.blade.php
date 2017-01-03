@@ -30,7 +30,7 @@
             </div>
             <div class="actions">
               <div class="btn-group">
-                @permission(config('admin.permissions.user.create'))
+                @permission(config('admin.permissions.course.create'))
                 <a href="{{url('admin/course/create')}}" class="btn btn-success btn-outline btn-circle">
                   <i class="fa fa-user-plus"></i>
                   <span class="hidden-xs">{{trans('crud.create')}}</span>
@@ -57,7 +57,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-envelope"></i>
                                     </span>
-                                <input type="text" class="form-control form-filter" name="email" placeholder="{{ trans('labels.course.address') }}">
+                                <input type="text" class="form-control form-filter" name="email" placeholder="{{ trans('labels.course.org') }}">
                                 <div class="form-control-focus"> </div>
                             </div>
                         </div>
@@ -75,13 +75,13 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
-                          <th width="10%"> {{ trans('labels.org.name') }} </th>
-                          <th width="30%"> {{ trans('labels.org.address') }} </th>
-                          <th width="10%"> {{ trans('labels.org.status') }} </th>
-                          <th width="15%"> {{ trans('labels.org.created_at') }} </th>
-                          <th width="15%"> {{ trans('labels.org.updated_at') }} </th>
-                          <th width="15%"> {{ trans('labels.org.list') }} </th>
-                          <th width="18%"> {{ trans('labels.action') }} </th>
+                          <th width="10%"> {{ trans('labels.course.name') }} </th>
+                          <th width="30%"> {{ trans('labels.course.org_id') }} </th>
+                          <th width="10%"> {{ trans('labels.course.price') }} </th>
+                          <th width="10%"> {{ trans('labels.course.status') }} </th>
+                          {{--<th width="10%"> {{ trans('labels.course.percent') }} </th>--}}
+                          {{--<th width="15%"> {{ trans('labels.course.real_price') }} </th>--}}
+                          <th width="33%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>
@@ -97,11 +97,11 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/user/user-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/course/course-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {
-//    TableDatatablesAjax.init();
+    TableDatatablesAjax.init();
     $(document).on('click','#destory',function() {
       layer.msg('{{trans('alerts.deleteTitle')}}', {
         time: 0, //不自动关闭

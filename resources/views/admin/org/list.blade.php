@@ -74,99 +74,14 @@
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
                     <thead>
                         <tr role="row" class="heading">
-                          <th>#</th>
+                          <th>id</th>
                           <th width="10%"> {{ trans('labels.org.name') }} </th>
                           <th width="10%"> {{ trans('labels.org.city') }} </th>
                           <th width="20%"> {{ trans('labels.org.address') }} </th>
                           <th width="10%"> {{ trans('labels.org.status') }} </th>
-                          {{--<th width="15%"> {{ trans('labels.org.created_at') }} </th>--}}
-                          {{--<th width="15%"> {{ trans('labels.org.updated_at') }} </th>--}}
-                          {{--<th width="15%"> {{ trans('labels.org.list') }} </th>--}}
+                          <th width="15%"> {{ trans('labels.org.courseList') }} </th>
                           <th width="33%"> {{ trans('labels.action') }} </th>
                         </tr>
-                        {{--<tr role="row" class="filter">--}}
-                            {{--<td></td>--}}
-                            {{--<td>--}}
-                                {{--<div class="form-group form-md-line-input">--}}
-                                    {{--<div class="input-group has-success">--}}
-                                    {{--<span class="input-group-addon">--}}
-                                        {{--<i class="fa fa-user"></i>--}}
-                                    {{--</span>--}}
-                                        {{--<input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.org.name') }}">--}}
-                                        {{--<div class="form-control-focus"> </div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--<td>--}}
-                                {{--<div class="form-group form-md-line-input">--}}
-                                  {{--<div class="input-group has-success">--}}
-                                      {{--<span class="input-group-addon">--}}
-                                          {{--<i class="fa fa-envelope"></i>--}}
-                                      {{--</span>--}}
-                                      {{--<input type="text" class="form-control form-filter" name="value" placeholder="{{ trans('labels.dict.value') }}">--}}
-                                      {{--<div class="form-control-focus"> </div>--}}
-                                  {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</td>--}}
-                            {{--<td>--}}
-                                {{--<div class="form-group form-md-line-input">--}}
-                                    {{--<div class="input-group has-success">--}}
-                                    {{--<span class="input-group-addon">--}}
-                                        {{--<i class="fa fa-envelope"></i>--}}
-                                    {{--</span>--}}
-                                        {{--<input type="text" class="form-control form-filter" name="description" placeholder="{{ trans('labels.dict.description') }}">--}}
-                                        {{--<div class="form-control-focus"> </div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</td>--}}
-                            {{--<td>--}}
-                                {{--<div class="form-group form-md-line-input">--}}
-                                    {{--<select class="bs-select form-control form-filter" data-show-subtext="true" name="status">--}}
-                                        {{--<option value="" data-icon="fa-glass icon-success">状态....</option>--}}
-                                        {{--@if(trans('strings.org'))--}}
-                                            {{--@foreach(trans('strings.org') as $status_key => $status_value)--}}
-                                                {{--<option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>--}}
-                                            {{--@endforeach--}}
-                                        {{--@endif--}}
-                                    {{--</select>--}}
-                                {{--</div>--}}
-                            {{--<td>--}}
-                                {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
-                                    {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">--}}
-                                {{--<span class="input-group-addon">--}}
-                                  {{--<i class="fa fa-calendar"></i>--}}
-                                {{--</span>--}}
-                                {{--</div>--}}
-
-                                {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
-                                    {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">--}}
-                                {{--<span class="input-group-addon">--}}
-                                  {{--<i class="fa fa-calendar"></i>--}}
-                                {{--</span>--}}
-                                {{--</div>--}}
-                            {{--<td>--}}
-                                {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
-                                    {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">--}}
-                                  {{--<span class="input-group-addon">--}}
-                                    {{--<i class="fa fa-calendar"></i>--}}
-                                  {{--</span>--}}
-                                {{--</div>--}}
-
-                                {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
-                                    {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">--}}
-                                  {{--<span class="input-group-addon">--}}
-                                    {{--<i class="fa fa-calendar"></i>--}}
-                                  {{--</span>--}}
-                                {{--</div>--}}
-                            {{--</td>--}}
-                            {{--<td>--}}
-                                {{--<div class="margin-bottom-5">--}}
-                                    {{--<button class="btn btn-sm green btn-outline filter-submit margin-bottom">--}}
-                                        {{--<i class="fa fa-search"></i> Search</button>--}}
-                                {{--</div>--}}
-                                {{--<button class="btn btn-sm red btn-outline filter-cancel">--}}
-                                    {{--<i class="fa fa-times"></i> Reset</button>--}}
-                            {{--</td>--}}
-                        {{--</tr>--}}
                     </thead>
                     <tbody> </tbody>
                 </table>

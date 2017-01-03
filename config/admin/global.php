@@ -72,12 +72,19 @@ return[
 		// trait 中的 action 参数
 		'action' => 'dict',
 	],
-	//用户
+	//机构
 	'org' => [
 		// 控制是否显示查看按钮
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'org',
+	],
+	//课程
+	'course' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'course',
 	],
 
 ];

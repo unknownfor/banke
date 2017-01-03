@@ -5,14 +5,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
-use OrgRepository;
+use CourseRepository;
+use App\Http\Requests\CreateCourseRequest;
 use PermissionRepository;
 use RoleRepository;
+use Illuminate\Support\Facades\Log;
 
 class CourseController extends Controller
 {
 	/**
-     * 机构列表
+     * 课程列表
      * @author jimmy
      * @date   2016-12-27
      * @return [type]                   [description]
@@ -30,11 +32,11 @@ class CourseController extends Controller
      */
     public function ajaxIndex()
     {
-        $data = UserRepository::ajaxIndex();
+        $data = CourseRepository::ajaxIndex();
         return response()->json($data);
     }
     /**
-     * 添加用户视图
+     * 添加课程视图
      * @author 晚黎
      * @date   2016-04-13T11:26:16+0800
      * @return [type]                   [description]
@@ -43,24 +45,24 @@ class CourseController extends Controller
     {
         $permissions = PermissionRepository::findPermissionWithArray();
         $roles = RoleRepository::findRoleWithObject();
-        return view('admin.org.create')->with(compact(['permissions','roles']));
+        return view('admin.course.create')->with(compact(['permissions','roles']));
     }
 
     /**
-     * 添加用户
+     * 添加课程
      * @author 晚黎
      * @date   2016-04-14T11:31:29+0800
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(CreateUserRequest $request)
+    public function store(CreateCourseRequest $request)
     {
-        UserRepository::store($request);
-        return redirect('admin/user');
+        CourseRepository::store($request);
+        return redirect('admin/course');
     }
 
     /**
-     * 修改用户视图
+     * 修改课程视图
      * @author 晚黎
      * @date   2016-04-14T15:01:16+0800
      * @param  [type]                   $id [description]
@@ -68,13 +70,13 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        $user = UserRepository::edit($id);
+        $user = CourseRepository::edit($id);
         $roles = RoleRepository::findRoleWithObject();
         $permissions = PermissionRepository::findPermissionWithArray();
-        return view('admin.user.edit')->with(compact(['user','permissions','roles']));
+        return view('admin.course.edit')->with(compact(['user','permissions','roles']));
     }
     /**
-     * 修改用户资料
+     * 修改课程资料
      * @author 晚黎
      * @date   2016-04-14T15:16:54+0800
      * @param  UpdateUserRequest        $request [description]
@@ -83,12 +85,12 @@ class CourseController extends Controller
      */
     public function update(UpdateUserRequest $request,$id)
     {
-        UserRepository::update($request,$id);
-        return redirect('admin/user');
+        CourseRepository::update($request,$id);
+        return redirect('admin/course');
     }
 
     /**
-     * 修改用户状态
+     * 修改课程状态
      * @author 晚黎
      * @date   2016-04-14T11:50:04+0800
      * @param  [type]                   $id     [description]
@@ -97,12 +99,12 @@ class CourseController extends Controller
      */
     public function mark($id,$status)
     {
-        UserRepository::mark($id,$status);
-        return redirect('admin/user');
+        CourseRepository::mark($id,$status);
+        return redirect('admin/course');
     }
 
     /**
-     * 删除用户
+     * 删除课程
      * @author 晚黎
      * @date   2016-04-14T11:52:40+0800
      * @param  [type]                   $id [description]
@@ -110,11 +112,11 @@ class CourseController extends Controller
      */
     public function destroy($id)
     {
-        UserRepository::destroy($id);
-        return redirect('admin/user');
+        CourseRepository::destroy($id);
+        return redirect('admin/course');
     }
     /**
-     * 查看用户信息
+     * 查看课程信息
      * @author 晚黎
      * @date   2016-04-14T13:49:32+0800
      * @param  [type]                   $id [description]
@@ -122,69 +124,8 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $user = UserRepository::show($id);
-        return view('admin.user.show')->with(compact('user'));
+        $user = CourseRepository::show($id);
+        return view('admin.course.show')->with(compact('course'));
     }
-    /**
-     * 修改用户密码视图
-     * @author 晚黎
-     * @date   2016-04-14T11:57:42+0800
-     * @param  [type]                   $id [description]
-     * @return [type]                       [description]
-     */
-    public function changePassword($id)
-    {
-        return view('admin.user.reset')->with(compact('id'));
-    }
-
-    /**
-     * 修改用户密码
-     * @author 晚黎
-     * @date   2016-04-14T11:58:13+0800
-     * @return [type]                   [description]
-     */
-    public function resetPassword(ResetPasswordRequest $request)
-    {
-        UserRepository::resetPassword($request);
-        return redirect('admin/user');
-    }
-
-    /**
-     * 登录用户修改密码页面
-     */
-    public function profile($id) {
-
-        return view('admin.user.profile')->with(compact('id'));
-    }
-
-    /**
-     * 管理员资料修改
-     */
-    public function changeAdminInfo($id)
-    {
-        return view('admin.user.admin_info')->with(compact('id'));
-    }
-
-    /**
-     * 修改管理员密码
-     */
-    public function postAdminPassword(postAdminPasswordRequest $request)
-    {
-        $id = $request->get('id');
-        UserRepository::resetPassword($request);
-
-        return redirect('admin/user/profile/'.$id);
-    }
-
-    /**
-     * 修改管理员信息
-     */
-    public function postAdminInfo(postAdminInfoRequest $request)
-    {
-        $id = $request->get('id');
-        UserRepository::changeAdminInfoById($request);
-        return redirect('admin/user/change/'.$id);
-    }
-
 
 }
