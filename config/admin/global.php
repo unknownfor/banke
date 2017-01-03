@@ -19,7 +19,7 @@ return[
 		'destroy' => -1
 	],
 	//分页
-	'lsit' => [
+	'list' => [
 		'start' => 0,
 		'length' => 10
 	],
