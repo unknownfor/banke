@@ -30,7 +30,7 @@
             </div>
             <div class="actions">
               <div class="btn-group">
-                @permission(config('admin.permissions.user.create'))
+                @permission(config('admin.permissions.org.create'))
                 <a href="{{url('admin/org/create')}}" class="btn btn-success btn-outline btn-circle">
                   <i class="fa fa-user-plus"></i>
                   <span class="hidden-xs">{{trans('crud.create')}}</span>
@@ -39,7 +39,7 @@
               </div>
             </div>
           </div>
-            <div class="search-box">
+            <div class="search-box filter">
                 <div class="col-md-4">
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
@@ -57,7 +57,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-envelope"></i>
                                     </span>
-                                <input type="text" class="form-control form-filter" name="email" placeholder="{{ trans('labels.org.address') }}">
+                                <input type="text" class="form-control form-filter" name="city" placeholder="{{ trans('labels.org.city') }}">
                                 <div class="form-control-focus"> </div>
                             </div>
                         </div>
@@ -76,13 +76,97 @@
                         <tr role="row" class="heading">
                           <th>#</th>
                           <th width="10%"> {{ trans('labels.org.name') }} </th>
-                          <th width="30%"> {{ trans('labels.org.address') }} </th>
+                          <th width="10%"> {{ trans('labels.org.city') }} </th>
+                          <th width="20%"> {{ trans('labels.org.address') }} </th>
                           <th width="10%"> {{ trans('labels.org.status') }} </th>
-                          <th width="15%"> {{ trans('labels.org.created_at') }} </th>
-                          <th width="15%"> {{ trans('labels.org.updated_at') }} </th>
-                          <th width="15%"> {{ trans('labels.org.list') }} </th>
-                          <th width="18%"> {{ trans('labels.action') }} </th>
+                          {{--<th width="15%"> {{ trans('labels.org.created_at') }} </th>--}}
+                          {{--<th width="15%"> {{ trans('labels.org.updated_at') }} </th>--}}
+                          {{--<th width="15%"> {{ trans('labels.org.list') }} </th>--}}
+                          <th width="33%"> {{ trans('labels.action') }} </th>
                         </tr>
+                        {{--<tr role="row" class="filter">--}}
+                            {{--<td></td>--}}
+                            {{--<td>--}}
+                                {{--<div class="form-group form-md-line-input">--}}
+                                    {{--<div class="input-group has-success">--}}
+                                    {{--<span class="input-group-addon">--}}
+                                        {{--<i class="fa fa-user"></i>--}}
+                                    {{--</span>--}}
+                                        {{--<input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.org.name') }}">--}}
+                                        {{--<div class="form-control-focus"> </div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--<td>--}}
+                                {{--<div class="form-group form-md-line-input">--}}
+                                  {{--<div class="input-group has-success">--}}
+                                      {{--<span class="input-group-addon">--}}
+                                          {{--<i class="fa fa-envelope"></i>--}}
+                                      {{--</span>--}}
+                                      {{--<input type="text" class="form-control form-filter" name="value" placeholder="{{ trans('labels.dict.value') }}">--}}
+                                      {{--<div class="form-control-focus"> </div>--}}
+                                  {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</td>--}}
+                            {{--<td>--}}
+                                {{--<div class="form-group form-md-line-input">--}}
+                                    {{--<div class="input-group has-success">--}}
+                                    {{--<span class="input-group-addon">--}}
+                                        {{--<i class="fa fa-envelope"></i>--}}
+                                    {{--</span>--}}
+                                        {{--<input type="text" class="form-control form-filter" name="description" placeholder="{{ trans('labels.dict.description') }}">--}}
+                                        {{--<div class="form-control-focus"> </div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</td>--}}
+                            {{--<td>--}}
+                                {{--<div class="form-group form-md-line-input">--}}
+                                    {{--<select class="bs-select form-control form-filter" data-show-subtext="true" name="status">--}}
+                                        {{--<option value="" data-icon="fa-glass icon-success">状态....</option>--}}
+                                        {{--@if(trans('strings.org'))--}}
+                                            {{--@foreach(trans('strings.org') as $status_key => $status_value)--}}
+                                                {{--<option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>--}}
+                                            {{--@endforeach--}}
+                                        {{--@endif--}}
+                                    {{--</select>--}}
+                                {{--</div>--}}
+                            {{--<td>--}}
+                                {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
+                                    {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">--}}
+                                {{--<span class="input-group-addon">--}}
+                                  {{--<i class="fa fa-calendar"></i>--}}
+                                {{--</span>--}}
+                                {{--</div>--}}
+
+                                {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
+                                    {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">--}}
+                                {{--<span class="input-group-addon">--}}
+                                  {{--<i class="fa fa-calendar"></i>--}}
+                                {{--</span>--}}
+                                {{--</div>--}}
+                            {{--<td>--}}
+                                {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
+                                    {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">--}}
+                                  {{--<span class="input-group-addon">--}}
+                                    {{--<i class="fa fa-calendar"></i>--}}
+                                  {{--</span>--}}
+                                {{--</div>--}}
+
+                                {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
+                                    {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">--}}
+                                  {{--<span class="input-group-addon">--}}
+                                    {{--<i class="fa fa-calendar"></i>--}}
+                                  {{--</span>--}}
+                                {{--</div>--}}
+                            {{--</td>--}}
+                            {{--<td>--}}
+                                {{--<div class="margin-bottom-5">--}}
+                                    {{--<button class="btn btn-sm green btn-outline filter-submit margin-bottom">--}}
+                                        {{--<i class="fa fa-search"></i> Search</button>--}}
+                                {{--</div>--}}
+                                {{--<button class="btn btn-sm red btn-outline filter-cancel">--}}
+                                    {{--<i class="fa fa-times"></i> Reset</button>--}}
+                            {{--</td>--}}
+                        {{--</tr>--}}
                     </thead>
                     <tbody> </tbody>
                 </table>
@@ -97,11 +181,11 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/user/user-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/org/org-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {
-//    TableDatatablesAjax.init();
+    TableDatatablesAjax.init();
     $(document).on('click','#destory',function() {
       layer.msg('{{trans('alerts.deleteTitle')}}', {
         time: 0, //不自动关闭

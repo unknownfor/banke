@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeOrg;
+use Illuminate\Support\Facades\Log;
 /**
 * 机构仓库
 */
@@ -17,94 +18,55 @@ class OrgRepository
 	public function ajaxIndex()
 	{
 		$draw = request('draw', 1);/*获取请求次数*/
-		$start = request('start', config('admin.golbal.list.start')); /*获取开始*/
-		$length = request('length', config('admin.golbal.list.length')); ///*获取条数*/
+		$start = request('start', config('admin.global.list.start')); /*获取开始*/
+		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 
 		$name = request('name' ,'');
 		$city = request('city' ,'');
-		$intro = request('intro' ,'');
 		$status = request('status' ,'');
-		$created_at_from = request('created_at_from' ,'');
-		$created_at_to = request('created_at_to' ,'');
-		$updated_at_from = request('updated_at_from' ,'');
-		$updated_at_to = request('updated_at_to' ,'');
-		$orders = request('order', []);
 
-		$user = new BankeOrg;
+		$org = new BankeOrg;
 
 		/*机构名称搜索*/
 		if($name){
 			if($search_pattern){
-				$user = $user->where('name', 'like', $name);
+				$org = $org->where('name', 'like', $name);
 			}else{
-				$user = $user->where('name', $name);
+				$org = $org->where('name', $name);
 			}
 		}
 
 		/*城市搜索*/
 		if($city){
 			if($search_pattern){
-				$user = $user->where('city', 'like', $city);
+				$org = $org->where('city', 'like', $city);
 			}else{
-				$user = $user->where('city', $city);
+				$org = $org->where('city', $city);
 			}
 		}
-		/*机构简介搜索*/
-		if($intro){
-			if($search_pattern){
-				$user = $user->where('intro', 'like', $intro);
-			}else{
-				$user = $user->where('intro', $intro);
-			}
-		}
-		
+
 		/*状态搜索*/
 		if ($status) {
-			$user = $user->where('status', $status);
+			$org = $org->where('status', $status);
 		}
 
-		/*创建时间搜索*/
-		if($created_at_from){
-			$user = $user->where('created_at', '>=', getTime($created_at_from));	
-		}
-		if($created_at_to){
-			$user = $user->where('created_at', '<=', getTime($created_at_to, false));	
-		}
+		$count = $org->count();
 
-		/*修改时间搜索*/
-		if($updated_at_from){
-			$uafc = new Carbon($updated_at_from);
-			$user = $user->where('created_at', '>=', getTime($updated_at_from));	
-		}
-		if($updated_at_to){
-			$user = $user->where('created_at', '<=', getTime($updated_at_to, false));	
-		}
+		$org = $org->offset($start)->limit($length);
+		$orgs = $org->get();
 
-		$count = $user->count();
-
-
-		if($orders){
-			$orderName = request('columns.' . request('order.0.column') . '.name');
-			$orderDir = request('order.0.dir');
-			$user = $user->orderBy($orderName, $orderDir);
-		}
-
-		$user = $user->offset($start)->limit($length);
-		$users = $user->get();
-
-		if ($users) {
-			foreach ($users as &$v) {
+		if ($orgs) {
+			foreach ($orgs as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
 			}
 		}
-		
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $users,
+			'data' => $orgs,
 		];
 	}
 
