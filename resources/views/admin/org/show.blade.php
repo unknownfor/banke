@@ -7,7 +7,7 @@
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <a href="{{url('admin/user')}}">{!! trans('labels.breadcrumb.orgList') !!}</a>
+	        <a href="{{url('admin/org')}}">{!! trans('labels.breadcrumb.orgList') !!}</a>
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
@@ -31,85 +31,78 @@
           <div class="portlet-body form">
               <form role="form" class="form-horizontal">
                   <div class="form-body">
+                      <div class="form-group form-md-line-input form-md-line-logo">
+                          <label class="col-md-1 control-label" for="name">{{trans('labels.org.logo')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$org['logo']}} </div>
+                          </div>
+                      </div>
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label">{{trans('labels.org.name')}}</label>
-                          <div class="col-md-8">
+                          <label class="col-md-1 control-label" for="name">{{trans('labels.org.name')}}</label>
+                          <div class="col-md-9">
                               <div class="form-control form-control-static"> {{$org['name']}} </div>
-                              <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label">{{trans('labels.org.email')}}</label>
-                          <div class="col-md-8">
-                              <div class="form-control form-control-static"> {{$org['email']}} </div>
-                              <div class="form-control-focus"> </div>
+                          <label class="col-md-1 control-label" for="intro">{{trans('labels.org.intro')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$org['intro']}} </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label">{{trans('labels.org.confirm_email')}}</label>
-                          <div class="col-md-8">
-                              <div class="form-control form-control-static"> {!!confirmEmail($org['confirm_email'])!!} </div>
-                              <div class="form-control-focus"> </div>
+                          <label class="col-md-1 control-label" for="city">{{trans('labels.org.city')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$org['city']}} </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label">{{trans('labels.role.slug')}}</label>
-                          <div class="col-md-8">
-                              <div class="form-control form-control-static">  
-                              @if($org['role'])
-                              @foreach($org['role'] as $v)
-                                <label class="tooltips margin-right-10" data-placement="top" data-original-title="{{$v['description']}}">{{$v['slug']}} @permission(config('admin.permissions.role.show'))(<small><a href="{{url('admin/role/'.$v['id'])}}" data-toggle="modal" data-target="#draggable" class="red-mint">{{trans('labels.role.show')}}</a></small>)@endpermission</label>
-                              @endforeach 
-                              @endif
+                          <label class="col-md-1 control-label" for="address">{{trans('labels.org.address')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$org['address']}} </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input form-md-line-cover">
+                          <label class="col-md-1 control-label">{{trans('labels.org.cover')}}</label>
+                          <div class="col-md-9">
+                              <div class="cover-box">
+                                  <div class="add-cover-img-btn">+</div>
+                                  <ul class="cover-list-box">
+                                      <li>
+                                          <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
+                                          <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
+                                          <span class="remove-cover-img">×</span>
+                                      </li>
+                                      <li>
+                                          <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
+                                          <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
+                                          <span class="remove-cover-img">×</span>
+                                      </li>
+                                      <li>
+                                          <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
+                                          <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
+                                          <span class="remove-cover-img">×</span>
+                                      </li>
+                                  </ul>
                               </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.org.permission')}}</label>
-                        <div class="col-md-8">
-                          <div class="table-scrollable">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="col-md-1 text-center">{{trans('labels.role.module')}}</th>
-                                        <th class="col-md-10 text-center">{{trans('labels.role.permission')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  @if($org['permission'])
-                                  @foreach($org['permission'] as $permission)
-                                    @foreach($permission as $k => $v)
-                                      <tr>
-                                        <td class="text-center" style="vertical-align: middle;"> {{$k}} </td>
-                                        <td>
-                                          @if(isDoubleArray($v))
-                                          @foreach($v as $val)
-                                          <div class="col-md-4">
-                                            <label>{{$val['desc']}}</label>
-                                          </div>
-                                          @endforeach
-                                          @else
-                                          <div class="col-md-4">
-                                            <label>{{$v['desc']}}</label>
-                                          </div>
-                                          @endif
-                                        </td>
-                                      </tr>
-                                    @endforeach
-                                  @endforeach
-                                  @else
-                                    <tr>
-                                      <td colspan="2" class="text-center">{{trans('labels.org.info')}}</td>
-                                    </tr>
-                                  @endif
-                                </tbody>
-                            </table>
+                          <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
+                          <div class="col-md-9">
+                              <textarea style="display: none" name="details" id="target-area">{{$org['details']}}</textarea>
+                              <textarea id="my-editor"></textarea>
                           </div>
-                        </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$org['tel_phone']}} </div>
+                          </div>
                       </div>
                   </div>
                   <div class="form-actions">
@@ -120,6 +113,7 @@
                       </div>
                   </div>
               </form>
+
           </div>
       </div>
   </div>

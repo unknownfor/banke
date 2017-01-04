@@ -9,7 +9,6 @@ use OrgRepository;
 use App\Http\Requests\CreateOrgRequest;
 use PermissionRepository;
 use RoleRepository;
-use Illuminate\Support\Facades\Log;
 
 class OrgController extends Controller
 {
@@ -36,7 +35,7 @@ class OrgController extends Controller
         return response()->json($data);
     }
     /**
-     * 添加用户视图
+     * 添加机构视图
      * @author 晚黎
      * @date   2016-04-13T11:26:16+0800
      * @return [type]                   [description]
@@ -115,6 +114,7 @@ class OrgController extends Controller
         OrgRepository::destroy($id);
         return redirect('admin/org');
     }
+
     /**
      * 查看机构信息
      * @author 晚黎
@@ -124,7 +124,7 @@ class OrgController extends Controller
      */
     public function show($id)
     {
-        /*$org = OrgRepository::show($id);
-        return view('admin.org.show')->with(compact('org'));*/
+        $org = OrgRepository::show($id);
+        return view('admin.org.show')->with(compact('org'));
     }
 }

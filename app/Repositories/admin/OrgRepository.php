@@ -23,8 +23,8 @@ class OrgRepository
 
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 
-		$name = request('name' ,'');
-		$city = request('city' ,'');
+		$name =request('name' ,'');
+		$city =request('city' ,'');
 		$status = request('status' ,'');
 
 		$org = new BankeOrg;
@@ -103,6 +103,20 @@ class OrgRepository
 		}
 		abort(404);
 	}
+
+	/**
+	 * 查看机构信息
+	 * @author 晚黎
+	 * @date   2016-04-13T17:09:22+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function show($id)
+	{
+		$org = BankeOrg::find($id)->toArray();
+		return $org;
+	}
+
 	/**
 	 * 修改机构
 	 * @author shaolei

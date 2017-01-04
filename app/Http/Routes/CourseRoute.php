@@ -1,8 +1,9 @@
 <?php
 /**
- * 机构路由
+ * 课程路由
  */
-$router->group(['prefix' => 'org'], function($router){
+$router->group(['prefix' => 'course'], function($router){
+	$router->get('ajaxIndex', 'CourseController@ajaxIndex');
 	$router->get('sort', 'CourseController@sort');
 	$router->get('/{id}/mark/{status}', 'CourseController@mark')
 		   ->where([
