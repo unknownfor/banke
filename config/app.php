@@ -239,6 +239,8 @@ return [
         'MenuRepository' => App\Facades\MenuFacade::class,
         'ImageRepository' => App\Facades\ImageFacade::class,
         'ActionLogRepository' => App\Facades\ActionLogFacade::class,
+        'OrgRepository' => App\Facades\OrgFacade::class,
+        'CourseRepository' => App\Facades\CourseFacade::class,
 
     ],
 

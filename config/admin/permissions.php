@@ -57,4 +57,25 @@ return[
 		'audit'		=> 'admin.article.audit',
 		'show'		=> 'admin.article.list',
 	],
+	'dict' => [
+		'create' 	=> 'admin.dict.create',
+		'edit' 		=> 'admin.dict.edit',
+		'destroy' 	=> 'admin.dict.delete',
+		/*'trash' 	=> 'admin.dict.trash',
+		'undo' 		=> 'admin.dict.undo',*/
+	],
+	'org' => [
+		'create' 	=> 'admin.org.create',
+		'edit' 		=> 'admin.org.edit',
+		'destroy' 	=> 'admin.org.delete',
+		'show' 	=> 'admin.org.show',
+		/*'trash' 	=> 'admin.dict.trash',
+		'undo' 		=> 'admin.dict.undo',*/
+	],
+	'course' => [
+		'create' 	=> 'admin.course.create',
+		'edit' 		=> 'admin.course.edit',
+		'destroy' 	=> 'admin.course.delete',
+		'show' 	=> 'admin.course.show',
+	],
 ];

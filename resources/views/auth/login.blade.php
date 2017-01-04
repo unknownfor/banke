@@ -14,15 +14,15 @@
     @endif
     <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">{{trans('auth.email')}}</label>
-        <input class="form-control form-control-solid placeholder-no-fix" type="text" placeholder="email" name="email" value="{{old('email')}}" /> </div>
+        <input class="form-control form-control-solid placeholder-no-fix" type="text" placeholder="请输入邮箱" name="email" value="{{old('email')}}" /> </div>
     <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">{{trans('auth.password')}}</label>
-        <input class="form-control form-control-solid placeholder-no-fix" type="password" placeholder="Password" name="password" /> 
+        <input class="form-control form-control-solid placeholder-no-fix" type="password" placeholder="请输入密码" name="password" />
     </div>
     <div class="form-group">
         <label class="control-label visible-ie8 visible-ie9">{{trans('auth.captcha')}}</label>
         <div class="input-group">
-            <input id="newpassword" class="form-control" type="text" name="captcha" placeholder="captcha">
+            <input id="newpassword" class="form-control" type="text" name="captcha" placeholder="请输入验证码">
             <span class="input-group-btn">
                 <img style="cursor: pointer;" src="{{captcha_src("flat")}}" onclick="this.src='{{captcha_src("flat")}}' + Math.random()">
             </span>
