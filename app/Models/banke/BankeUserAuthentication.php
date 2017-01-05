@@ -4,22 +4,24 @@ namespace App\Models\Banke;
 use App\Models\ActionAttributeTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class BankeUserProfiles extends Model
+class BankeUserAuthentication extends Model
 {
     //
+
     use ActionAttributeTrait;
 
     protected $primaryKey = 'uid';
 
-    protected $table = 'banke_user_profiles';
+    protected $table = 'banke_user_authentication';
 
-    protected $fillable = ['uid', 'name', 'avatar', 'sex'];
+    protected $fillable = ['uid', 'real_name', 'school', 'major', 'grade', 'mobile', 'birthday',
+        'zhifubao_account', 'certification_picture'];
 
     private $action;
 
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.user_profiles.action');
+        $this->action = config('admin.global.user_authentication.action');
     }
 }
