@@ -15,7 +15,7 @@ class BankeUserAuthentication extends Model
     protected $table = 'banke_user_authentication';
 
     protected $fillable = ['uid', 'real_name', 'school', 'major', 'grade', 'mobile', 'birthday',
-        'zhifubao_account', 'certification_picture'];
+        'zhifubao_account', 'certification_picture', 'certification_status'];
 
     private $action;
 
