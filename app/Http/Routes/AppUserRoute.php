@@ -20,4 +20,4 @@ $router->group(['prefix' => 'app_user'], function($router){
 	$router->post('/post_info','AppUserController@postAdminInfo');
 });
 
-$router->resource('user', 'AppUserController');
+$router->resource('app_user', 'AppUserController');
