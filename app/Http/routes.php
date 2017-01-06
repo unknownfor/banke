@@ -72,6 +72,8 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
 
         //app配置
         require(__DIR__ . '/Routes/DictRoute.php');
+        //app用户
+        require(__DIR__ . '/Routes/AppUserRoute.php');
     });
 });
 
