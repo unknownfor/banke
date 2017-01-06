@@ -78,4 +78,12 @@ return[
 		'destroy' 	=> 'admin.course.delete',
 		'show' 	=> 'admin.course.show',
 	],
+	'app_user' =>[
+		'edit' 		=> 'admin.app_user.edit',
+		'destroy' 	=> 'admin.app_user.delete',
+		'trash' 	=> 'admin.app_user.trash',
+		'undo' 		=> 'admin.app_user.undo',
+		'audit'	=> 'admin.app_user.audit',
+		'show'		=> 'admin.app_user.list',
+	],
 ];

@@ -18,6 +18,12 @@ return[
 		'trash' => 99,
 		'destroy' => -1
 	],
+	//认证状态
+	'certification_status' => [
+		'audit' => 1,
+		'active' => 2,
+		'trash' => 3,
+	],
 	//分页
 	'list' => [
 		'start' => 0,
@@ -85,6 +91,14 @@ return[
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'course',
+	],
+
+	//app用户
+	'app_user' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'app_user',
 	],
 
 ];

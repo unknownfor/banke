@@ -136,6 +136,7 @@ return [
 		'courseEdit' => '<i class="fa fa-pencil"></i> 修改课程',
 		'dictList' => '<i class="fa fa-bars"></i> 配置列表',
 		'dictCreate' => '<i class="fa fa-user-plus"></i> 创建配置',
+		'app_userList' => '<i class="fa fa-bars"></i> app用户列表',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -193,5 +194,21 @@ return [
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
+	],
+
+	'app_user' => [
+		'uid' => '序号',
+		'name' => '名称',
+		'mobile'=>'手机号',
+		'certification_status' => '认证状态',
+		'account_balance' => '账户余额',
+		'total_cashback_amount' => '返现总金额',
+		'remaining_cashback_amount' => '待返现金额',
+		'withdrawal_amount' => '提现金额',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'active' => '<span class="label label-success"> 已认证 </span>',
+		'audit' => '<span class="label label-warning"> 审核中 </span>',
+		'trash' => '<span class="label label-warning"> 未通过 </span>',
 	],
 ];

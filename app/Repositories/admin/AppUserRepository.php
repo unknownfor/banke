@@ -1,16 +1,16 @@
 <?php
 namespace App\Repositories\admin;
-use App\User;
+use App\Models\Banke\BankeUserProfiles;
 use Carbon\Carbon;
 use Flash;
 /**
-* 用户仓库
+* app用户仓库
 */
-class UserRepository
+class AppUserRepository
 {
 	/**
 	 * datatable获取数据
-	 * @author 晚黎
+	 * @author shaolei
 	 * @date   2016-04-13T21:14:37+0800
 	 * @return [type]                   [description]
 	 */
@@ -23,17 +23,15 @@ class UserRepository
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 
 		$name = request('name' ,'');
-		$email = request('email' ,'');
-		$confirm_email = request('confirm_email' ,'');
-		$status = request('status' ,'');
+		$mobile = request('mobile' ,'');
+		$status = request('certification_status' ,'');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
 		$updated_at_from = request('updated_at_from' ,'');
 		$updated_at_to = request('updated_at_to' ,'');
 		$orders = request('order', []);
 
-		$user = new User;
-		$user = $user->where('email', '!=', '');
+		$user = new BankeUserProfiles;
 
 		/*名称搜索*/
 		if($name){
@@ -44,29 +42,21 @@ class UserRepository
 			}
 		}
 
-		/*邮箱搜索*/
-		if($email){
+		/*手机搜索*/
+		if($mobile){
 			if($search_pattern){
-				$user = $user->where('email', 'like', $email);
+				$user = $user->where('email', 'like', $mobile);
 			}else{
-				$user = $user->where('email', $email);
-			}
-		}
-		/*验证邮箱搜索*/
-		if($confirm_email){
-			if($search_pattern){
-				$user = $user->where('confirm_email', 'like', $confirm_email);
-			}else{
-				$user = $user->where('confirm_email', $confirm_email);
+				$user = $user->where('email', $mobile);
 			}
 		}
 		
 		/*状态搜索*/
 		if ($status) {
-			$user = $user->where('status', $status);
+			$user = $user->where('certification_status', $status);
 		}
 
-		/*权限创建时间搜索*/
+		/*创建时间搜索*/
 		if($created_at_from){
 			$user = $user->where('created_at', '>=', getTime($created_at_from));	
 		}
@@ -74,7 +64,7 @@ class UserRepository
 			$user = $user->where('created_at', '<=', getTime($created_at_to, false));	
 		}
 
-		/*权限修改时间搜索*/
+		/*修改时间搜索*/
 		if($updated_at_from){
 			$uafc = new Carbon($updated_at_from);
 			$user = $user->where('created_at', '>=', getTime($updated_at_from));	

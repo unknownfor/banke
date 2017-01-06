@@ -241,7 +241,7 @@ return [
         'ActionLogRepository' => App\Facades\ActionLogFacade::class,
         'OrgRepository' => App\Facades\OrgFacade::class,
         'CourseRepository' => App\Facades\CourseFacade::class,
-
+        'AppUserRepository' => App\Facades\AppUserFacade::class,
     ],
 
 ];

@@ -26,4 +26,10 @@ return [
 		'active' => ['fa fa-navicon','正常'],
 		'trash' => ['fa fa-trash','回收站'],
 	],
+
+	'app_user' => [
+		'audit' => ['fa fa-paw','待审核'],
+		'active' => ['fa fa-navicon','已认证'],
+		'trash' => ['fa fa-trash','未通过'],
+	],
 ];
