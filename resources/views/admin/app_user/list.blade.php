@@ -30,8 +30,8 @@
             </div>
             <div class="actions">
               <div class="btn-group">
-                @permission(config('admin.permissions.user.create'))
-                <a href="{{url('admin/user/create')}}" class="btn btn-success btn-outline btn-circle">
+                @permission(config('admin.permissions.app_user.create'))
+                <a href="{{url('admin/app_user/create')}}" class="btn btn-success btn-outline btn-circle">
                   <i class="fa fa-user-plus"></i>
                   <span class="hidden-xs">{{trans('crud.create')}}</span>
                 </a>
@@ -54,7 +54,7 @@
                             <th> {{ trans('labels.app_user.withdrawal_amount') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>
-                          <th width="18%"> {{ trans('labels.app_action') }} </th>
+                          <th width="18%"> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
                             <td></td>
@@ -82,7 +82,7 @@
                             <td>
                                 <div class="form-group form-md-line-input">
                                     <select class="bs-select form-control form-filter" data-show-subtext="true" name="certification_status">
-                                        <option value="" data-icon="fa-glass icon-success">认证状态....</option>
+                                        <option value="" data-icon="fa-glass icon-success">认证状态</option>
                                         @if(trans('strings.app_user'))
                                             @foreach(trans('strings.app_user') as $status_key => $status_value)
                                                 <option value="{{config('admin.global.certification_status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>

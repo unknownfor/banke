@@ -197,6 +197,7 @@ return [
 	],
 
 	'app_user' => [
+		'list' => 'App用户列表',
 		'uid' => '序号',
 		'name' => '名称',
 		'mobile'=>'手机号',
