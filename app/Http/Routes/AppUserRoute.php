@@ -11,7 +11,10 @@ $router->group(['prefix' => 'app_user'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
-	$router->get('/{id}/reset','AppUserController@changePassword')->where(['id' => '[0-9]+']);
+	//认证申请
+	$router->get('certification','AppUserController@certification');
+	$router->get('ajaxCertification', 'AppUserController@ajaxCertification');
+
 	$router->post('reset','AppUserController@resetPassword');
 
 	//管理员修改信息

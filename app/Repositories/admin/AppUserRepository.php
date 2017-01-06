@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeUserProfiles;
+use App\Models\Banke\BankeUserAuthentication;
 use Carbon\Carbon;
 use Flash;
 /**
@@ -45,9 +46,9 @@ class AppUserRepository
 		/*手机搜索*/
 		if($mobile){
 			if($search_pattern){
-				$user = $user->where('email', 'like', $mobile);
+				$user = $user->where('mobile', 'like', $mobile);
 			}else{
-				$user = $user->where('email', $mobile);
+				$user = $user->where('mobile', $mobile);
 			}
 		}
 		
@@ -91,6 +92,119 @@ class AppUserRepository
 			}
 		}
 		
+		return [
+			'draw' => $draw,
+			'recordsTotal' => $count,
+			'recordsFiltered' => $count,
+			'data' => $users,
+		];
+	}
+
+	/**
+	 * datatable获取数据
+	 * @author shaolei
+	 * @date   2016-04-13T21:14:37+0800
+	 * @return [type]                   [description]
+	 */
+	public function ajaxCertification()
+	{
+		$draw = request('draw', 1);/*获取请求次数*/
+		$start = request('start', config('admin.global.list.start')); /*获取开始*/
+		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
+
+		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
+
+		$name = request('real_name' ,'');
+		$mobile = request('mobile' ,'');
+		$school = request('school' ,'');
+		$major = request('major' ,'');
+		$status = request('certification_status' ,'');
+		$created_at_from = request('created_at_from' ,'');
+		$created_at_to = request('created_at_to' ,'');
+		$updated_at_from = request('updated_at_from' ,'');
+		$updated_at_to = request('updated_at_to' ,'');
+		$orders = request('order', []);
+
+		$user = new BankeUserAuthentication;
+
+		$user = $user->where('certification_status', '>', 0);
+
+		/*名称搜索*/
+		if($name){
+			if($search_pattern){
+				$user = $user->where('real_name', 'like', $name);
+			}else{
+				$user = $user->where('real_name', $name);
+			}
+		}
+
+		/*手机搜索*/
+		if($mobile){
+			if($search_pattern){
+				$user = $user->where('mobile', 'like', $mobile);
+			}else{
+				$user = $user->where('mobile', $mobile);
+			}
+		}
+
+		/*学校搜索*/
+		if($school){
+			if($search_pattern){
+				$user = $user->where('school', 'like', $school);
+			}else{
+				$user = $user->where('school', $school);
+			}
+		}
+
+		/*专业搜索*/
+		if($major){
+			if($search_pattern){
+				$user = $user->where('major', 'like', $major);
+			}else{
+				$user = $user->where('major', $major);
+			}
+		}
+
+		/*状态搜索*/
+		if ($status) {
+			$user = $user->where('certification_status', $status);
+		}
+
+		/*创建时间搜索*/
+		if($created_at_from){
+			$user = $user->where('created_at', '>=', getTime($created_at_from));
+		}
+		if($created_at_to){
+			$user = $user->where('created_at', '<=', getTime($created_at_to, false));
+		}
+
+		/*修改时间搜索*/
+		if($updated_at_from){
+			$uafc = new Carbon($updated_at_from);
+			$user = $user->where('created_at', '>=', getTime($updated_at_from));
+		}
+		if($updated_at_to){
+			$user = $user->where('created_at', '<=', getTime($updated_at_to, false));
+		}
+
+		$count = $user->count();
+
+
+		if($orders){
+			$orderName = request('columns.' . request('order.0.column') . '.name');
+			$orderDir = request('order.0.dir');
+			$user = $user->orderBy($orderName, $orderDir);
+		}
+
+		$user = $user->offset($start)->limit($length);
+		$users = $user->get();
+
+		if ($users) {
+			foreach ($users as &$v) {
+				$v['actionButton'] = $v->getActionButtonAttribute();
+			}
+		}
+
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,

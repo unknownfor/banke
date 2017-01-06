@@ -38,30 +38,28 @@ class AppUserController extends Controller
         $data = AppUserRepository::ajaxIndex();
         return response()->json($data);
     }
+
     /**
-     * 添加用户视图
-     * @author 晚黎
-     * @date   2016-04-13T11:26:16+0800
+     * 认证申请用户列表
+     * @author shaolei
+     * @date   2016-04-13T21:12:18+0800
      * @return [type]                   [description]
      */
-    public function create()
+    public function certification()
     {
-        $permissions = PermissionRepository::findPermissionWithArray();
-        $roles = RoleRepository::findRoleWithObject();
-        return view('admin.user.create')->with(compact(['permissions','roles']));
+        return view('admin.app_user.certification');
     }
 
     /**
-     * 添加用户
-     * @author 晚黎
-     * @date   2016-04-14T11:31:29+0800
-     * @param  CreateUserRequest        $request [description]
-     * @return [type]                            [description]
+     * datatable 获取认证申请数据
+     * @author shaolei
+     * @date   2016-04-13T11:25:58+0800
+     * @return [type]                   [description]
      */
-    public function store(CreateUserRequest $request)
+    public function ajaxCertification()
     {
-        UserRepository::store($request);
-        return redirect('admin/user');
+        $data = AppUserRepository::ajaxCertification();
+        return response()->json($data);
     }
 
     /**

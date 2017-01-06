@@ -137,6 +137,7 @@ return [
 		'dictList' => '<i class="fa fa-bars"></i> 配置列表',
 		'dictCreate' => '<i class="fa fa-user-plus"></i> 创建配置',
 		'app_userList' => '<i class="fa fa-bars"></i> app用户列表',
+		'certificationList' => '<i class="fa fa-bars"></i> 用户认证申请列表',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -198,10 +199,16 @@ return [
 
 	'app_user' => [
 		'list' => 'App用户列表',
+		'certification' => '用户认证申请',
 		'uid' => '序号',
 		'name' => '名称',
+		'real_name' => '名称',
 		'mobile'=>'手机号',
+		'school' => '名称',
+		'major' => '名称',
+		'certification_picture' => '证件',
 		'certification_status' => '认证状态',
+		'certification_time' => '认证时间',
 		'account_balance' => '账户余额',
 		'total_cashback_amount' => '返现总金额',
 		'remaining_cashback_amount' => '待返现金额',
@@ -211,5 +218,6 @@ return [
 		'active' => '<span class="label label-success"> 已认证 </span>',
 		'audit' => '<span class="label label-warning"> 审核中 </span>',
 		'trash' => '<span class="label label-warning"> 未通过 </span>',
+		'no_apply' => '<span class="label label-warning"> 未申请 </span>'
 	],
 ];
