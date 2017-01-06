@@ -14,6 +14,7 @@ var TableDatatablesAjax = function() {
           d.certification_status = $('.filter select[name="certification_status"] option:selected').val();
           d.school = $('.filter input[name="school"]').val();
           d.major = $('.filter input[name="major"]').val();
+          d.birthday = $('.filter input[name="birthday"]').val();
           d.created_at_from = $('.filter input[name="created_at_from"]').val();
           d.created_at_to = $('.filter input[name="created_at_to"]').val();
           d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
@@ -37,6 +38,11 @@ var TableDatatablesAjax = function() {
         {
           "data": "mobile",
           "name": "mobile",
+          "orderable" : false,
+        },
+        {
+          "data": "birthday",
+          "name": "birthday",
           "orderable" : false,
         },
         {
