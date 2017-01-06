@@ -20,6 +20,7 @@ return[
 	],
 	//认证状态
 	'certification_status' => [
+		'no_apply' => 0,
 		'audit' => 1,
 		'active' => 2,
 		'trash' => 3,

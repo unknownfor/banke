@@ -52,6 +52,8 @@ var TableDatatablesAjax = function() {
               return '<span class="label label-warning"> 待审核 </span>';
             }else if(data == 3){
               return '<span class="label label-danger"> 未通过 </span>';
+            }else {
+              return '<span class="label label-warning"> 未申请 </span>';
             }
           }
         },
