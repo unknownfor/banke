@@ -69,5 +69,12 @@ return [
         'created_error'     => '创建机构失败.',
         'soft_deleted_success' => '删除机构成功',
     ],
+    'app_user' => [
+        'updated_success'   => '修改用户成功.',
+        'updated_error'     => '修用户失败.',
+        'soft_deleted_success' => '删除用户成功',
+        'certificate_success'   => '处理用户认证成功',
+        'certificate_error'   => '处理用户认证失败'
+    ],
 
 ];

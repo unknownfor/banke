@@ -214,84 +214,29 @@ class AppUserRepository
 	}
 
 	/**
-	 * 添加用户
-	 * @author 晚黎
-	 * @date   2016-04-14T11:32:04+0800
-	 * @param  [type]                   $request [description]
-	 * @return [type]                            [description]
+	 * 修改用户身份认证状态
+	 * @author shaolei
+	 * @date   2016-04-14T11:50:45+0800
+	 * @param  [type]                   $id     [description]
+	 * @param  [type]                   $status [description]
+	 * @return [type]                           [description]
 	 */
-	public function store($request)
+	public function certificate($id,$status)
 	{
-		$user = new User;
-
-		$userData = $request->all();
-		//密码进行加密
-		$userData['password'] = bcrypt($userData['password']);
-
-		if ($user->fill($userData)->save()) {
-			//自动更新用户权限关系
-			if ($userData['permission']) {
-				$user->permission()->sync($userData['permission']);
-			}
-			// 自动更新用户角色关系
-			if ($userData['role']) {
-				$user->role()->sync($userData['role']);
-			}
-			Flash::success(trans('alerts.users.created_success'));
-			return true;
-		}
-		Flash::error(trans('alerts.users.created_error'));
-		return false;
-	}
-	/**
-	 * 修改用户视图
-	 * @author 晚黎
-	 * @date   2016-04-14T15:02:10+0800
-	 * @param  [type]                   $id [description]
-	 * @return [type]                       [description]
-	 */
-	public function edit($id)
-	{
-		$user = User::with(['permission','role'])->find($id);
+		$user = BankeUserAuthentication::find($id);
 		if ($user) {
-			$userArray = $user->toArray();
-			if ($userArray['permission']) {
-				$userArray['permission'] = array_column($userArray['permission'],'id');
-			}
-			if ($userArray['role']) {
-				$userArray['role'] = array_column($userArray['role'],'id');
-			}
-			return $userArray;
-		}
-		abort(404);
-	}
-	/**
-	 * 修改用户资料
-	 * @author 晚黎
-	 * @date   2016-04-14T15:17:25+0800
-	 * @param  [type]                   $request [description]
-	 * @param  [type]                   $id      [description]
-	 * @return [type]                            [description]
-	 */
-	public function update($request,$id)
-	{
-		$user = User::find($id);
-		if ($user) {
-			if ($user->fill($request->all())->save()) {
-				//自动更新用户权限关系
-				if ($request->permission) {
-					$user->permission()->sync($request->permission);
-				}
-				//自动更新用户角色关系
-				if ($request->role) {
-					$user->role()->sync($request->role);
-				}
-				Flash::success(trans('alerts.users.updated_success'));
-
+			$user->certification_status = $status;
+			$user->certification_time = getTime();
+			if ($user->save()) {
+				//同步认证状态
+				$user_profile = $user->profiles();
+				$user_profile->certification_status = $status;
+				$user_profile->certification_time = getTime();
+				$user_profile->save();
+				Flash::success(trans('alerts.users.certificate_success'));
 				return true;
 			}
-
-			Flash::error(trans('alerts.users.updated_error'));
+			Flash::error(trans('alerts.users.certificate_error'));
 			return false;
 		}
 		abort(404);

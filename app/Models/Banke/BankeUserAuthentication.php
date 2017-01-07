@@ -22,6 +22,11 @@ class BankeUserAuthentication extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.user_authentication.action');
+        $this->action = config('admin.global.app_user.action');
+    }
+
+    //个人资料信息
+    public function profiles(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles', 'uid');
     }
 }

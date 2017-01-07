@@ -20,6 +20,6 @@ class BankeUserProfiles extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.user_profiles.action');
+        $this->action = config('admin.global.app_user.action');
     }
 }

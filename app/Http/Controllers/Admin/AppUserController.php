@@ -63,31 +63,17 @@ class AppUserController extends Controller
     }
 
     /**
-     * 修改用户视图
-     * @author 晚黎
-     * @date   2016-04-14T15:01:16+0800
-     * @param  [type]                   $id [description]
-     * @return [type]                       [description]
+     * 修改用户身份认证状态
+     * @author shaolei
+     * @date   2016-04-14T11:50:04+0800
+     * @param  [type]                   $id     [description]
+     * @param  [type]                   $status [description]
+     * @return [type]                           [description]
      */
-    public function edit($id)
+    public function certificate($id,$status)
     {
-        $user = UserRepository::edit($id);
-        $roles = RoleRepository::findRoleWithObject();
-        $permissions = PermissionRepository::findPermissionWithArray();
-        return view('admin.user.edit')->with(compact(['user','permissions','roles']));
-    }
-    /**
-     * 修改用户资料
-     * @author 晚黎
-     * @date   2016-04-14T15:16:54+0800
-     * @param  UpdateUserRequest        $request [description]
-     * @param  [type]                   $id      [description]
-     * @return [type]                            [description]
-     */
-    public function update(UpdateUserRequest $request,$id)
-    {
-        UserRepository::update($request,$id);
-        return redirect('admin/user');
+        UserRepository::certificate($id,$status);
+        return redirect('admin/app_user/certification');
     }
 
     /**

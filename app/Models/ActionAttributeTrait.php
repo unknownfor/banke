@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 use Auth;
+use Illuminate\Support\Facades\Log;
 trait ActionAttributeTrait{
 
 	protected $html_build;
@@ -106,6 +107,33 @@ trait ActionAttributeTrait{
 		return $this;
 	}
 
+	/**
+	 * 通过身份认证按钮
+	 * @return $this
+	 */
+	public function getCertificateActionButton()
+	{
+		if (($this->certification_status == config('admin.global.certification_status.audit'))) {
+			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
+				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+			}
+		}
+		return $this;
+	}
+
+	/**
+	 * 拒绝身份认证按钮
+	 * @return $this
+	 */
+	public function getRefuseCertificateActionButton()
+	{
+		if (($this->certification_status == config('admin.global.certification_status.audit'))) {
+			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
+				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.trash')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
+			}
+		}
+		return $this;
+	}
 
 	/**
 	 * 组合按钮
@@ -122,7 +150,9 @@ trait ActionAttributeTrait{
 					->getUndoActionButton()
 					->getAuditActionButton()
 					->getTrashActionButton()
-					->getDestroyActionButton();
+					->getDestroyActionButton()
+					->getCertificateActionButton()
+					->getRefuseCertificateActionButton();
 		return $this->html_build;
 	}
 }

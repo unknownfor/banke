@@ -14,9 +14,6 @@ var TableDatatablesAjax = function() {
           d.certification_status = $('.filter select[name="certification_status"] option:selected').val();
           d.school = $('.filter input[name="school"]').val();
           d.major = $('.filter input[name="major"]').val();
-          d.birthday = $('.filter input[name="birthday"]').val();
-          d.created_at_from = $('.filter input[name="created_at_from"]').val();
-          d.created_at_to = $('.filter input[name="created_at_to"]').val();
           d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
           d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
         }
@@ -59,6 +56,11 @@ var TableDatatablesAjax = function() {
           "data": "certification_picture",
           "name": "certification_picture",
           "orderable" : false,
+          render: function(data){
+            return '<a class="fancybox" rel="group" href="' + data
+                + '"><img style="width: 32px; height: 32px;" src="' + data
+                + '" alt="点击查看大图"></a>';
+          }
         },
         { 
           "data": "certification_status",
@@ -82,11 +84,6 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         { 
-          "data": "created_at",
-          "name": "created_at",
-          "orderable" : true,
-        },
-        { 
           "data": "updated_at",
           "name": "updated_at",
           "orderable" : true,
@@ -99,6 +96,7 @@ var TableDatatablesAjax = function() {
         },
       ],
       "drawCallback": function( settings ) {
+        $( ".fancybox").fancybox();
         ajax_datatable.$('.tooltips').tooltip( {
           placement : 'top',
           html : true
