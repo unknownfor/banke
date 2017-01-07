@@ -2,7 +2,7 @@
  * Created by jimmy on 2016/8/13.
  */
 
-define(['photoswipe','photoswipeui','jquery'],function(PhotoSwipe, PhotoSwipeUI_Default){
+
     var MyPhotoSwipe=function(gallerySelector,config){
         this.extend(config);
         $(document).on('click',gallerySelector, $.proxy(this,'onThumbnailsClick'));
@@ -298,6 +298,3 @@ define(['photoswipe','photoswipeui','jquery'],function(PhotoSwipe, PhotoSwipeUI_
     var defaultConfig={
         bgFilter:false, //模糊背景
     };
-
-    return MyPhotoSwipe;
-});

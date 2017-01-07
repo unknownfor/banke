@@ -1,7 +1,26 @@
 /**
  * Created by jimmy-jiang on 2016/11/14.
  */
-    $(function(){
+requirejs.config({
+    baseUrl:window.urlObj.js,
+    paths: {
+        jquery:'libs/jquery-1.8.2.min',
+        jqueryform:'libs/jquery.form',
+        'simple-module': 'libs/editor/module',
+        'simple-uploader': 'libs/editor/uploader',
+        'simple-hotkeys': 'libs/editor/hotkeys',
+        'simditor': 'libs/editor/simditor',
+        //图片查看
+        photoswipe:'libs/photoswipe/photoswipe.min',
+        photoswipeui:'libs/photoswipe/photoswipe-ui-default.min',
+        myPhotoSwipe:'libs/photoswipe/myphotoswipe',
+    },
+    shim: {
+        'simditor': {deps:['simple-module','simple-uploader','simple-hotkeys']},
+    }
+});
+console.log(window.urlObj.js);
+require(['myPhotoSwipe','simditor','jqueryform'],function(MyPhotoSwipe){
 
         /**定义一个MyEditor对象**/
         var MyEditor=function(){
@@ -343,16 +362,15 @@
 
         };
 
-
-
         var editor;
         initEditor();
-        setEditorVal();
+
         function initEditor() {
             editor=new MyEditor();
         }
 
         //初始化编辑器内容
+        setEditorVal();
         function setEditorVal(){
             var val=$('#target-area').text();
             editor.setValue(val);
@@ -360,11 +378,14 @@
 
         setIntroduce();
         function setIntroduce(){
+            var val=$('#target-area').text();
+            return repalceBr(val);
+        }
 
-            var val=$('.introduce-input').val();
+        function repalceBr(val){
             if(val) {
                 val = val.replace(/<br\/>/g, "\r\n");
-                $('.indroduce').val(val);
+                return val;
             }
         }
 
@@ -372,12 +393,7 @@
         //提交编辑
         window.setTextAreaData=function(){
             var htmlStr=editor.getValue();
+            htmlStr = htmlStr.replace(/<br\/>/g, "\r\n");
             $('#target-area').text(htmlStr);
-            $('.registration_way').val(editor.getSingInInfo());
-            $('.course-time').val($('.time').val());
-
-            var val=$('.indroduce').val();
-            val=val.replace(/\n/g,"<br/>");
-            $('.introduce-input').val(val);
         };
 });

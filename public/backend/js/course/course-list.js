@@ -61,7 +61,7 @@ var TableDatatablesAjax = function() {
             }else if(data == 0){
               return '<span class="label label-warning"> 待审核 </span>';
             }else{
-              return '<span class="label label-danger"> 禁用 </span>';
+              return '<span class="label label-danger"> 未通过 </span>';
             }
           }
         },

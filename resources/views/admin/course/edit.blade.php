@@ -171,10 +171,17 @@
 </div>
 @endsection
 @section('js')
+{{--编辑器--}}
+<script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
+{{--图片查看--}}
+<script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/course/index.js')}}"></script>
 <script type="text/javascript">
-    window.urlObj={
-        js:'{{asset('backend/js')}}'
-    };
   $(function() {
     /*modal事件监听*/
     $(".modal").on("hidden.bs.modal", function() {
@@ -182,5 +189,4 @@
     });
   });
 </script>
-<script type="text/javascript" data-main="{{asset('backend/js/course/index.js')}}" src="{{asset('backend/js/libs/require.js')}}"></script>
 @endsection

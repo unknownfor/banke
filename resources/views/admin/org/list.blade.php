@@ -40,7 +40,7 @@
             </div>
           </div>
             <div class="search-box filter">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
                             <span class="input-group-addon">
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="form-group form-md-line-input">
                             <div class="input-group has-success">
                                     <span class="input-group-addon">
@@ -62,7 +62,19 @@
                             </div>
                         </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
+                    <div class="form-group form-md-line-input">
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
+                            <option value="" data-icon="fa-glass icon-success">状态....</option>
+                            @if(trans('strings.org'))
+                                @foreach(trans('strings.org') as $status_key => $status_value)
+                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
                     <div class="margin-bottom-5" style="padding-top: 20px;">
                         <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
                             <i class="fa fa-search"></i>{{ trans('labels.search') }}</button>
