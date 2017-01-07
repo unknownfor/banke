@@ -1,25 +1,8 @@
 /**
  * Created by jimmy-jiang on 2016/11/14.
  */
-requirejs.config({
-    baseUrl:window.urlObj.js,
-    paths: {
-        jquery:'libs/jquery-1.8.2.min',
-        jqueryform:'libs/jquery.form',
-        'simple-module': 'libs/editor/module',
-        'simple-uploader': 'libs/editor/uploader',
-        'simple-hotkeys': 'libs/editor/hotkeys',
-        'simditor': 'libs/editor/simditor',
-        //图片查看
-        photoswipe:'libs/photoswipe/photoswipe.min',
-        photoswipeui:'libs/photoswipe/photoswipe-ui-default.min',
-        myPhotoSwipe:'libs/photoswipe/myphotoswipe',
-    },
-    shim: {
-        'simditor': {deps:['jquery']}
-    }
-});
-require(['simditor','myPhotoSwipe','jqueryform'],function(simditor,MyPhotoSwipe){
+
+$(function(){
 
         /**定义一个MyEditor对象**/
         var MyEditor=function(){
@@ -360,8 +343,6 @@ require(['simditor','myPhotoSwipe','jqueryform'],function(simditor,MyPhotoSwipe)
             CLASS_NAME:'MyEditor'
 
         };
-
-
 
         var editor;
         initEditor();

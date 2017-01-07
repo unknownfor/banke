@@ -1,4 +1,9 @@
 @extends('layouts.admin')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/org.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
+@endsection
 @section('content')
 <div class="page-bar">
 	<ul class="page-breadcrumb">
@@ -126,12 +131,22 @@
 </div>
 @endsection
 @section('js')
-<script type="text/javascript">
-  $(function() {
-    /*modal事件监听*/
-    $(".modal").on("hidden.bs.modal", function() {
-         $(".modal-content").empty();
-    });
-  });
+    {{--编辑器--}}
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
+    {{--图片查看--}}
+    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
+    <script type="text/javascript">
+      $(function() {
+        /*modal事件监听*/
+        $(".modal").on("hidden.bs.modal", function() {
+             $(".modal-content").empty();
+        });
+      });
 </script>
 @endsection
