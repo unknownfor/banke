@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/fancybox/jquery.fancybox.css')}}">
 @endsection
 @section('content')
 <div class="page-bar">
@@ -53,7 +54,6 @@
                             <th> {{ trans('labels.app_user.certification_picture') }} </th>
                           <th> {{ trans('labels.app_user.certification_status') }} </th>
                             <th> {{ trans('labels.app_user.certification_time') }} </th>
-                          <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>
                           <th width="18%"> {{ trans('labels.action') }} </th>
                         </tr>
@@ -80,8 +80,7 @@
                                 </div>
                               </div>
                             </td>
-                            <td>
-                            </td>
+                            <td></td>
                             <td>
                                 <div class="form-group form-md-line-input">
                                     <div class="input-group has-success">
@@ -118,20 +117,6 @@
                                 </div>
                             </td>
                             <td></td>
-                            <td>
-                              <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </span>
-                              </div>
-
-                              <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </span>
-                              </div>
                             <td>
                                 <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
                                   <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">
@@ -172,6 +157,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/js/user/user_certification-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/plugins/fancybox/jquery.fancybox.js')}}"></script>
 <script type="text/javascript">
   $(function() {
     TableDatatablesAjax.init();
@@ -186,6 +172,7 @@
         }
       });
     });
+
   });
 </script>
 @endsection
