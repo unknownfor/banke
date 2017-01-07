@@ -14,6 +14,9 @@ requirejs.config({
         photoswipe:'libs/photoswipe/photoswipe.min',
         photoswipeui:'libs/photoswipe/photoswipe-ui-default.min',
         myPhotoSwipe:'libs/photoswipe/myphotoswipe',
+    },
+    shim: {
+        'simditor': {deps:['jquery']}
     }
 });
 require(['myPhotoSwipe','jqueryform','simditor'],function(MyPhotoSwipe){
