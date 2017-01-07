@@ -57,7 +57,7 @@ var TableDatatablesAjax = function() {
           "name": "certification_picture",
           "orderable" : false,
           render: function(data){
-            return '<a class="fancybox" rel="group" href="' + data + '"><imgsrc="' + data + '" alt=""></a>';
+            return '<a class="fancybox" rel="group" href="' + data + '"><img style="width: 32px; height: 32px;" src="' + data + '" alt=""></a>';
           }
         },
         { 
