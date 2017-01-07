@@ -235,7 +235,7 @@ class AppUserRepository
 				try {
 					Log::info('开始事务===================');
 					$user_profile = $user->profiles();
-					$certification_time = getTime(time());
+					$certification_time = date("Y-m-d H:i:s");
 					$user->certification_status = $status;
 					$user->certification_time = $certification_time;
 					//同步认证状态，处理认证奖励金额
