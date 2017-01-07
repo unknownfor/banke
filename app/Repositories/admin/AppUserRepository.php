@@ -2,8 +2,12 @@
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeUserAuthentication;
+use App\Models\Banke\BankeDict;
 use Carbon\Carbon;
 use Flash;
+use DB;
+use Illuminate\Support\Facades\Log;
+
 /**
 * app用户仓库
 */
@@ -224,22 +228,48 @@ class AppUserRepository
 	public function certificate($id,$status)
 	{
 		$user = BankeUserAuthentication::find($id);
-		if ($user) {
-			$user->certification_status = $status;
-			$user->certification_time = getTime();
-			if ($user->save()) {
-				//同步认证状态
-				$user_profile = $user->profiles();
-				$user_profile->certification_status = $status;
-				$user_profile->certification_time = getTime();
-				$user_profile->save();
-				Flash::success(trans('alerts.users.certificate_success'));
-				return true;
-			}
-			Flash::error(trans('alerts.users.certificate_error'));
-			return false;
+		Log::info('user======>'.json_encode($user));
+		if($user){
+			Log::info('有-----------------user');
+			DB::transaction(function () use ($id, $status, $user) {
+				try {
+					Log::info('开始事务===================');
+					$user_profile = BankeUserProfiles::find($id);
+					$certification_time = date("Y-m-d H:i:s");
+					$user->certification_status = $status;
+					$user->certification_time = $certification_time;
+					//同步认证状态，处理认证奖励金额
+					$user_profile->certification_status = $status;
+					$user_profile->certification_time = $certification_time;
+					Log::info('事务===================设置属性');
+					$user->save();
+					//同步认证状态
+					$user_profile->save();
+					//处理邀请人奖励金额
+					if($status == config('admin.global.certification_status.active')
+						&& $user_profile->invitation_uid > 0){
+						$invitation_user = BankeUserProfiles::where('uid', $user_profile->invitation_uid)->lockForUpdate()->first();
+						Log::info('事务===================邀请人');
+						//查询系统配置里邀请人注册认证的奖金
+						$invitation_award = BankeDict::where('id', 2)->first();
+						$invitation_user->invitation_amount += $invitation_award->value;
+						$invitation_user->account_balance += $invitation_award->value;
+						$invitation_user->save();
+					}
+					Log::info('事务===================返回true前');
+					Flash::success(trans('alerts.app_user.certificate_success'));
+					return true;
+				} catch (Exception $e) {
+					Log::info('事务异常==================='.json_encode($e));
+					Flash::error(trans('alerts.app_user.certificate_error'));
+					var_dump($e);
+					return false;
+				}
+			});
+		}else{
+			abort(404);
 		}
-		abort(404);
+		Log::info('有-----------------end');
 	}
 
 	/**

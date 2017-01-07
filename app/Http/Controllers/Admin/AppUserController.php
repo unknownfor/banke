@@ -72,7 +72,7 @@ class AppUserController extends Controller
      */
     public function certificate($id,$status)
     {
-        UserRepository::certificate($id,$status);
+        AppUserRepository::certificate($id,$status);
         return redirect('admin/app_user/certification');
     }
 
