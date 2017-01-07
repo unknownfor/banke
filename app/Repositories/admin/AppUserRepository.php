@@ -234,18 +234,17 @@ class AppUserRepository
 			DB::transaction(function () use ($id, $status, $user) {
 				try {
 					Log::info('开始事务===================');
+					$user_profile = BankeUserProfiles::find($id);
 					$certification_time = date("Y-m-d H:i:s");
 					$user->certification_status = $status;
 					$user->certification_time = $certification_time;
 					//同步认证状态，处理认证奖励金额
-					$user_profile = new BankeUserProfiles([
-						'certification_status'=>$status,
-						'certification_time'=>$certification_time
-					]);
+					$user_profile->certification_status = $status;
+					$user_profile->certification_time = $certification_time;
 					Log::info('事务===================设置属性');
 					$user->save();
 					//同步认证状态
-					$user->profiles()->save($user_profile);
+					$user_profile->save();
 					//处理邀请人奖励金额
 					if($status == config('admin.global.certification_status.active')
 						&& $user_profile->invitation_uid > 0){
