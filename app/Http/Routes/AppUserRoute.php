@@ -14,6 +14,13 @@ $router->group(['prefix' => 'app_user'], function($router){
 	//认证申请
 	$router->get('certification','AppUserController@certification');
 	$router->get('ajaxCertification', 'AppUserController@ajaxCertification');
+	$router->get('/{id}/certificate/{status}', 'AppUserController@certificate')
+		->where([
+			'id' => '[0-9]+',
+			'status' => config('admin.global.certification_status.trash').'|'.
+				config('admin.global.certification_status.audit').'|'.
+				config('admin.global.certification_status.active')
+		]);
 
 	$router->post('reset','AppUserController@resetPassword');
 
