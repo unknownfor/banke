@@ -27,6 +27,6 @@ class BankeUserAuthentication extends Model
 
     //个人资料信息
     public function profiles(){
-        return $this->hasOne('App\Models\Banke\BankeUserProfiles', 'uid');
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles', 'uid', 'uid');
     }
 }
