@@ -230,8 +230,10 @@ class AppUserRepository
 		$user = BankeUserAuthentication::find($id);
 		Log::info('user======>'.json_encode($user));
 		if($user){
+			Log::info('有-----------------user');
 			DB::transaction(function () use ($id, $status, $user) {
 				try {
+					Log::info('开始事务===================');
 					$user_profile = $user->profiles();
 					$certification_time = getTime();
 					$user->certification_status = $status;
@@ -252,15 +254,19 @@ class AppUserRepository
 						$invitation_user->account_balance += $invitation_award->value;
 						$invitation_user->save();
 					}
+					Log::info('事务===================返回true前');
 					Flash::success(trans('alerts.users.certificate_success'));
 					return true;
 				} catch (\Exception $e) {
+					Log::info('事务异常==================='.json_encode($e));
 					Flash::error(trans('alerts.users.certificate_error'));
 					return false;
 				}
 			});
+		}else{
+			abort(404);
 		}
-		abort(404);
+		Log::info('有-----------------end');
 	}
 
 	/**
