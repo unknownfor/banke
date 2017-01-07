@@ -6,6 +6,8 @@ use App\Models\Banke\BankeDict;
 use Carbon\Carbon;
 use Flash;
 use DB;
+use Illuminate\Support\Facades\Log;
+
 /**
 * app用户仓库
 */
@@ -226,6 +228,7 @@ class AppUserRepository
 	public function certificate($id,$status)
 	{
 		$user = BankeUserAuthentication::find($id);
+		Log::info('user======>'.json_encode($user));
 		if($user){
 			DB::transaction(function () use ($id, $status, $user) {
 				try {
