@@ -9,8 +9,8 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/course/ajaxIndex',
         "data": function ( d ) {
-          //d.name = $('.filter input[name="name"]').val();
-          d.status = 1;
+          d.name = $('.filter input[name="name"]').val();
+          d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -83,7 +83,7 @@ var TableDatatablesAjax = function() {
       }
     });
 
-    dt.on('click', '.filter-submit', function(){
+    $(document).on('click', '.filter-submit', function(){
       ajax_datatable.ajax.reload(); 
     });
 
@@ -108,6 +108,7 @@ var TableDatatablesAjax = function() {
     //  tickIcon: "fa-check"
     //});
   };
+
 
   return {
     init : datatableAjax

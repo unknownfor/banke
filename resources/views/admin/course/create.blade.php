@@ -108,8 +108,18 @@
                             </div>
 
 
+
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.user.status')}}</label>
+                                <label class="col-md-1 control-label">{{trans('labels.course.details')}}</label>
+                                <div class="col-md-11">
+                                    <textarea style="display: none" name="details" id="target-area"></textarea>
+                                    <textarea id="my-editor"></textarea>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.course.status')}}</label>
                                 <div class="col-md-9">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
@@ -117,42 +127,33 @@
                                             <label for="status1">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.user.active.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.course.active.1')}} </label>
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if(old('status') === config('admin.global.status.audit')) checked @endif>
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.user.audit.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.course.audit.1')}} </label>
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>
                                             <label for="status3">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.user.trash.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.course.trash.1')}} </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label">{{trans('labels.course.detail')}}</label>
-                                <div class="col-md-11">
-                                    <textarea style="display: none" name="detail" id="target-area"></textarea>
-                                    <textarea id="my-editor"></textarea>
-                                </div>
-                            </div>
-
 
 
                         </div>
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
-                                    <a href="{{url('admin/user')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                    <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
+                                    <a href="{{url('admin/course')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                                    <button type="submit" onclick="setTextAreaData()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
                         </div>

@@ -14,10 +14,12 @@ requirejs.config({
         photoswipe:'libs/photoswipe/photoswipe.min',
         photoswipeui:'libs/photoswipe/photoswipe-ui-default.min',
         myPhotoSwipe:'libs/photoswipe/myphotoswipe',
+    },
+    shim: {
+        'simditor': {deps:['jquery']}
     }
 });
-require(['myPhotoSwipe','jqueryform','simditor'],function(MyPhotoSwipe){
-    $(function(){
+require(['simditor','myPhotoSwipe','jqueryform'],function(simditor,MyPhotoSwipe){
 
         /**定义一个MyEditor对象**/
         var MyEditor=function(){
@@ -363,12 +365,13 @@ require(['myPhotoSwipe','jqueryform','simditor'],function(MyPhotoSwipe){
 
         var editor;
         initEditor();
-        setEditorVal();
+
         function initEditor() {
             editor=new MyEditor();
         }
 
         //初始化编辑器内容
+        setEditorVal();
         function setEditorVal(){
             var val=$('#target-area').text();
             editor.setValue(val);
@@ -376,11 +379,14 @@ require(['myPhotoSwipe','jqueryform','simditor'],function(MyPhotoSwipe){
 
         setIntroduce();
         function setIntroduce(){
+            var val=$('#target-area').text();
+            return repalceBr(val);
+        }
 
-            var val=$('.introduce-input').val();
+        function repalceBr(val){
             if(val) {
                 val = val.replace(/<br\/>/g, "\r\n");
-                $('.indroduce').val(val);
+                return val;
             }
         }
 
@@ -388,13 +394,7 @@ require(['myPhotoSwipe','jqueryform','simditor'],function(MyPhotoSwipe){
         //提交编辑
         window.setTextAreaData=function(){
             var htmlStr=editor.getValue();
+            htmlStr = htmlStr.replace(/<br\/>/g, "\r\n");
             $('#target-area').text(htmlStr);
-            $('.registration_way').val(editor.getSingInInfo());
-            $('.course-time').val($('.time').val());
-
-            var val=$('.indroduce').val();
-            val=val.replace(/\n/g,"<br/>");
-            $('.introduce-input').val(val);
         };
-    });
 });

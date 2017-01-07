@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
 use CourseRepository;
 use App\Http\Requests\CreateCourseRequest;
+use App\Http\Requests\UpdateCourseRequest;
 use PermissionRepository;
 use RoleRepository;
 use Illuminate\Support\Facades\Log;
@@ -70,10 +71,8 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        $user = CourseRepository::edit($id);
-        $roles = RoleRepository::findRoleWithObject();
-        $permissions = PermissionRepository::findPermissionWithArray();
-        return view('admin.course.edit')->with(compact(['user','permissions','roles']));
+        $course = CourseRepository::edit($id);
+        return view('admin.course.edit')->with(compact('course'));
     }
     /**
      * 修改课程资料
@@ -83,9 +82,11 @@ class CourseController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(UpdateUserRequest $request,$id)
+    public function update(UpdateCourseRequest $request,$id)
     {
+        Log::info('------------------------updating------------------------'.$id);
         CourseRepository::update($request,$id);
+        Log::info('------------------------update ok------------------------');
         return redirect('admin/course');
     }
 
@@ -124,7 +125,7 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        $user = CourseRepository::show($id);
+        $course = CourseRepository::show($id);
         return view('admin.course.show')->with(compact('course'));
     }
 

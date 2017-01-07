@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeCourse;
+use Illuminate\Support\Facades\Log;
 /**
 * 课程仓库
 */
@@ -208,6 +209,21 @@ class CourseRepository
 		}
 		Flash::error(trans('alerts.course.deleted_error'));
 		return false;
+	}
+
+	/**
+	 * 查看课程信息
+	 * @author 晚黎
+	 * @date   2016-04-13T17:09:22+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function show($id)
+	{
+		Log::info('---------------------ok?------------------------');
+		$course = BankeCourse::find($id)->toArray();
+		Log::info('---------------------ok------------------------');
+		return $course;
 	}
 
 }
