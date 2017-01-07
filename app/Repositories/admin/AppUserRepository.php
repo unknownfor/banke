@@ -241,6 +241,7 @@ class AppUserRepository
 					//同步认证状态，处理认证奖励金额
 					$user_profile->certification_status = $status;
 					$user_profile->certification_time = $certification_time;
+					Log::info('事务===================设置属性');
 					$user->save();
 					//同步认证状态
 					$user_profile->save();
@@ -248,6 +249,7 @@ class AppUserRepository
 					if($status == config('admin.global.certification_status.active')
 						&& $user_profile->invitation_uid > 0){
 						$invitation_user = BankeUserProfiles::where('uid', $user_profile->invitation_uid)->lockForUpdate()->first();
+						Log::info('事务===================邀请人');
 						//查询系统配置里邀请人注册认证的奖金
 						$invitation_award = BankeDict::where('id', 2)->first();
 						$invitation_user->invitation_amount += $invitation_award->value;
@@ -255,11 +257,12 @@ class AppUserRepository
 						$invitation_user->save();
 					}
 					Log::info('事务===================返回true前');
-					Flash::success(trans('alerts.users.certificate_success'));
+					Flash::success(trans('alerts.app_user.certificate_success'));
 					return true;
-				} catch (\Exception $e) {
+				} catch (Exception $e) {
 					Log::info('事务异常==================='.json_encode($e));
-					Flash::error(trans('alerts.users.certificate_error'));
+					Flash::error(trans('alerts.app_user.certificate_error'));
+					var_dump($e);
 					return false;
 				}
 			});
