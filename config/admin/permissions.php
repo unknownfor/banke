@@ -85,5 +85,6 @@ return[
 		'undo' 		=> 'admin.app_user.undo',
 		'audit'	=> 'admin.app_user.audit',
 		'show'		=> 'admin.app_user.list',
+		'certificate'	=> 'admin.app_user.certificate'
 	],
 ];

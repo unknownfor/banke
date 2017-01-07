@@ -10,4 +10,5 @@ return [
 	'destory' 	=> '删除',
 	'reset' 	=> '修改密码',
 	'back' 		=> '返回',
+	'refuse'	=> '拒绝'
 ];
