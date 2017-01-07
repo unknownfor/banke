@@ -238,10 +238,10 @@ class AppUserRepository
 					$user->certification_status = $status;
 					$user->certification_time = $certification_time;
 					//同步认证状态，处理认证奖励金额
-					$user_profile = [
+					$user_profile = new BankeUserProfiles([
 						'certification_status'=>$status,
 						'certification_time'=>$certification_time
-					];
+					]);
 					Log::info('事务===================设置属性');
 					$user->save();
 					//同步认证状态
