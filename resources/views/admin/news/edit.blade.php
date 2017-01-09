@@ -37,15 +37,15 @@
 					        @endforeach
 					    </div>
 					    @endif
-              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/news/'.$dict['id'])}}">
+              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/news/'.$news['id'])}}">
               		{!! csrf_field() !!}
                   <input type="hidden" name="_method" value="PATCH">
-                  <input type="hidden" name="id" value="{{$dict['id']}}">
+                  <input type="hidden" name="id" value="{{$news['id']}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="name">{{trans('labels.news.title')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="name" name="title" placeholder="{{trans('labels.news.title')}}" value="{{$dict['title']}}">
+                              <input type="text" class="form-control" id="name" name="title" placeholder="{{trans('labels.news.title')}}" value="{{$news['title']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -53,7 +53,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="slug">{{trans('labels.news.content')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="slug" name="content" placeholder="{{trans('labels.news.content')}}" value="{{$dict['content']}}">
+                              <input type="text" class="form-control" id="slug" name="content" placeholder="{{trans('labels.news.content')}}" value="{{$news['content']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -61,7 +61,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="description">{{trans('labels.news.sort')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.news.sort')}}" value="{{$dict['sort']}}">
+                              <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.news.sort')}}" value="{{$news['sort']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -71,7 +71,7 @@
                         <div class="col-md-10">
                             <div class="md-radio-inline">
                                 <div class="md-radio">
-                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($dict['status'] == config('admin.global.status.active')) checked @endif>
+                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($news['status'] == config('admin.global.status.active')) checked @endif>
                                     <label for="status1">
                                         <span></span>
                                         <span class="check"></span>
@@ -85,7 +85,7 @@
                                         <span class="box"></span> {{trans('strings.newes.audit.1')}} </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($dict['status'] == config('admin.global.status.trash')) checked @endif>
+                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($news['status'] == config('admin.global.status.trash')) checked @endif>
                                     <label for="status3">
                                         <span></span>
                                         <span class="check"></span>
@@ -98,7 +98,7 @@
                   <div class="form-actions">
                       <div class="row">
                           <div class="col-md-offset-2 col-md-10">
-                              <a href="{{url('admin/dict')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                              <a href="{{url('admin/news')}}" class="btn default">{{trans('crud.cancel')}}</a>
                               <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
                           </div>
                       </div>

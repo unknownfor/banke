@@ -137,10 +137,12 @@ return [
 		'courseShow' => '<i class="fa fa-book"></i> 课程信息',
 		'dictList' => '<i class="fa fa-bars"></i> 配置列表',
 		'dictCreate' => '<i class="fa fa-user-plus"></i> 创建配置',
+		'dictEdit' => '<i class="fa fa-user-plus"></i> 编辑配置',
 		'app_userList' => '<i class="fa fa-bars"></i> app用户列表',
 		'certificationList' => '<i class="fa fa-bars"></i> 用户认证申请列表',
 		'newsList' => '<i class="fa fa-bars"></i> 动态列表',
 		'newsCreate' => '<i class="fa fa-user-plus"></i> 创建动态',
+		'newsEdit' => '<i class="fa fa-user-plus"></i> 编辑动态',
 	],
 	'dict' => [
 		'id' => '序号',
