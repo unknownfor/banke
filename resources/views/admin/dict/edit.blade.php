@@ -7,11 +7,11 @@
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <a href="{{url('admin/role')}}">{!! trans('labels.breadcrumb.roleList') !!}</a>
+	        <a href="{{url('admin/dict')}}">{!! trans('labels.breadcrumb.dictList') !!}</a>
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <span>{!! trans('labels.breadcrumb.roleEdit') !!}</span>
+	        <span>{!! trans('labels.breadcrumb.dictEdit') !!}</span>
 	    </li>
 	</ul>
 </div>
@@ -22,7 +22,7 @@
           <div class="portlet-title">
               <div class="caption font-green-haze">
                   <i class="icon-settings font-green-haze"></i>
-                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.roleEdit') !!}</span>
+                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.dictEdit') !!}</span>
               </div>
               <div class="actions">
                   <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>

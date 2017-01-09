@@ -140,6 +140,7 @@ return [
 		'app_userList' => '<i class="fa fa-bars"></i> app用户列表',
 		'certificationList' => '<i class="fa fa-bars"></i> 用户认证申请列表',
 		'newsList' => '<i class="fa fa-bars"></i> 动态列表',
+		'newsCreate' => '<i class="fa fa-user-plus"></i> 创建动态',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -226,6 +227,7 @@ return [
 	'news' => [
 		'id' => '序号',
 		'title' => '标题',
+		'sort' => '排序',
 		'content' => '内容',
 		'status' => '状态',
 		'created_at' => '创建时间',

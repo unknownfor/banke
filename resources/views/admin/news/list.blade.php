@@ -65,7 +65,6 @@
                                 </div>
                               </div>
                             <td></td>
-                            <td></td>
                             <td>
                               <div class="form-group form-md-line-input">
                                 <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
