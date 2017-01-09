@@ -84,9 +84,7 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request,$id)
     {
-        Log::info('------------------------updating------------------------'.$id);
         CourseRepository::update($request,$id);
-        Log::info('------------------------update ok------------------------');
         return redirect('admin/course');
     }
 
