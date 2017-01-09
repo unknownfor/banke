@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
 use OrgRepository;
 use App\Http\Requests\CreateOrgRequest;
+use App\Http\Requests\UpdateOrgRequest;
 use PermissionRepository;
 use RoleRepository;
+use Illuminate\Support\Facades\Log;
 
 class OrgController extends Controller
 {
@@ -70,9 +72,7 @@ class OrgController extends Controller
     public function edit($id)
     {
         $org = OrgRepository::edit($id);
-        $roles = RoleRepository::findRoleWithObject();
-        $permissions = PermissionRepository::findPermissionWithArray();
-        return view('admin.org.edit')->with(compact(['org','permissions','roles']));
+        return view('admin.org.edit')->with(compact('org'));
     }
     /**
      * 修改机构资料
@@ -82,9 +82,9 @@ class OrgController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(UpdateUserRequest $request,$id)
+    public function update(UpdateOrgRequest $request,$id)
     {
-        UserRepository::update($request,$id);
+        OrgRepository::update($request,$id);
         return redirect('admin/org');
     }
 
