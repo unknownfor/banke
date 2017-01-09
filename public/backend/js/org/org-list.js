@@ -52,13 +52,13 @@ var TableDatatablesAjax = function() {
             }
           }
         },
-        {
-          "data": "id",
-          "name": "id",
-          render:function(res){
-              return '<a href="/admin/course/'+res+'">课程列表</a>';
-          }
-        },
+        //{
+        //  "data": "id",
+        //  "name": "id",
+        //  render:function(res){
+        //      return '<a href="/admin/course/orgid/'+res+'">课程列表</a>';
+        //  }
+        //},
         { 
           "data": "actionButton",
           "name": "actionButton",

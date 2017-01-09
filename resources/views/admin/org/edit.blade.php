@@ -49,12 +49,13 @@
                         <div class="form-body">
                             <div class="form-group form-md-line-input form-md-line-logo">
                                 <div class="col-md-1">
-                                    <img src="{{$org['logo']}}" class="img-circle"/>
+                                    <img src="{{$org['logo']}}" class="img-circle" id="logo"/>
                                 </div>
                                 <div class="col-md-9">
-                                    <span class="btn default green">{!! trans('labels.breadcrumb.imageUpload') !!}</span>
+                                    <span class="btn default green" id="uploadLogo">{!! trans('labels.breadcrumb.imageUpload') !!}</span>
                                     <div>{!! trans('labels.breadcrumb.imageUploadTips')!!}</div>
                                 </div>
+                                <input type="hidden" value="" name="logo" id="logo-input">
                             </div>
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="name">{{trans('labels.org.name')}}</label>
@@ -68,7 +69,7 @@
                                 <label class="col-md-1 control-label" for="intro">{{trans('labels.org.intro')}}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="intro" name="intro" placeholder="{{trans('labels.org.intro')}}" value="{{$org['intro']}}">
-                                    <div class="form-control-focus"> </div>
+                                    <div class="form-control-focus"></div>
                                 </div>
                             </div>
 
@@ -94,26 +95,40 @@
                                     <div class="cover-box">
                                         <div class="add-cover-img-btn">+</div>
                                         <ul class="cover-list-box">
-                                            <li>
-                                                <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                                <span class="remove-cover-img">×</span>
-                                            </li>
-                                            <li>
-                                                <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                                <span class="remove-cover-img">×</span>
-                                            </li>
-                                            <li>
-                                                <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                                <span class="remove-cover-img">×</span>
-                                            </li>
+                                            <ul class="cover-list-box">
+                                                @if($org['cover'])
+                                                    <?php
+                                                    $imgs=explode(',',$org['cover']);
+                                                    ?>
+                                                    @foreach($imgs as $img)
+                                                        <li>
+                                                            <a href="{{$img}}" data-size="435x263"></a>
+                                                            <img src="{{$img}}@142w_80h_1e">
+                                                            <span class="remove-cover-img">×</span>
+                                                        </li>
+                                                    @endforeach
+                                                @endif
+                                            </ul>
                                         </ul>
+                                       <input id="cover" name="cover" type="hidden" value="">
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
+                                <div class="col-md-9">
+                                    <textarea style="display: none" name="details" id="target-area">{{$org['details']}}</textarea>
+                                    <textarea id="my-editor"></textarea>
+                                </div>
+                            </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.org.tel_phone')}}" value="{{$org['tel_phone']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>
@@ -144,28 +159,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
-                                <div class="col-md-9">
-                                    <textarea style="display: none" name="details" id="target-area">{{$org['details']}}</textarea>
-                                    <textarea id="my-editor"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.org.tel_phone')}}" value="{{$org['tel_phone']}}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-
                         </div>
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <a href="{{url('admin/org')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                    <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
+                                    <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -180,8 +179,25 @@
             </div>
         </div>
     </div>
+
+    <form id="upImgForm" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif,image/jpeg">
+    </form>
+
+    <form id="upImgForm1" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
+    </form>
+    <form id="upImgForm2" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg">
+    </form>
+    <div class="loding-modal">
+        <i id="imgLoadingCircle" class="loadingCircle active"></i>
+        <div>上传中…</div>
+    </div>
+
 @endsection
 @section('js')
+    <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
     {{--编辑器--}}
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
@@ -191,8 +207,10 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
     <script type="text/javascript">
+        window.urlObj={
+            apiUrl:'http://api.hisihi.com/'
+        };
         $(function() {
             /*modal事件监听*/
             $(".modal").on("hidden.bs.modal", function() {
@@ -200,4 +218,6 @@
             });
         });
     </script>
+    <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
 @endsection

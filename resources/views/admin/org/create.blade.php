@@ -47,12 +47,13 @@
                         <div class="form-body">
                             <div class="form-group form-md-line-input form-md-line-logo">
                                 <div class="col-md-1">
-                                    <img src="http://admin.laadmin.dev/backend/img/avatar3_small.jpg" class="img-circle"/>
+                                    <img src="http://pic.hisihi.com/2016-10-22/1477107042521143.png" class="img-circle" id="logo"/>
                                 </div>
                                 <div class="col-md-9">
-                                    <span class="btn default green">{!! trans('labels.breadcrumb.imageUpload') !!}</span>
+                                    <span class="btn default green" id="uploadLogo">{!! trans('labels.breadcrumb.imageUpload') !!}</span>
                                     <div>{!! trans('labels.breadcrumb.imageUploadTips')!!}</div>
                                 </div>
+                                <input type="hidden" value="" name="logo" id="logo-input">
                             </div>
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="name">{{trans('labels.org.name')}}</label>
@@ -113,34 +114,7 @@
                             </div>
 
 
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>--}}
-                                {{--<div class="col-md-9">--}}
-                                    {{--<div class="md-radio-inline">--}}
-                                        {{--<div class="md-radio">--}}
-                                            {{--<input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.active')) checked @endif>--}}
-                                            {{--<label for="status1">--}}
-                                                {{--<span></span>--}}
-                                                {{--<span class="check"></span>--}}
-                                                {{--<span class="box"></span> {{trans('strings.org.active.1')}} </label>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="md-radio">--}}
-                                            {{--<input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if(old('status') === config('admin.global.status.audit')) checked @endif>--}}
-                                            {{--<label for="status2">--}}
-                                                {{--<span></span>--}}
-                                                {{--<span class="check"></span>--}}
-                                                {{--<span class="box"></span> {{trans('strings.org.audit.1')}} </label>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="md-radio">--}}
-                                            {{--<input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>--}}
-                                            {{--<label for="status3">--}}
-                                                {{--<span></span>--}}
-                                                {{--<span class="check"></span>--}}
-                                                {{--<span class="box"></span> {{trans('strings.org.trash.1')}} </label>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
@@ -153,8 +127,37 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.org.tel_phone')}}" value="{{old('tel_phone')}}">
+                                    <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.org.tel_phone')}}">
                                     <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>
+                                <div class="col-md-9">
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn">
+                                            <label for="status1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.org.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                            <label for="status2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.org.audit.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn">
+                                            <label for="status3">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.org.trash.1')}} </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -163,7 +166,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <a href="{{url('admin/org')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                    <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
+                                    <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -178,8 +181,25 @@
             </div>
         </div>
     </div>
+
+    <form id="upImgForm" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif,image/jpeg">
+    </form>
+
+    <form id="upImgForm1" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
+    </form>
+    <form id="upImgForm2" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg">
+    </form>
+    <div class="loding-modal">
+        <i id="imgLoadingCircle" class="loadingCircle active"></i>
+        <div>上传中…</div>
+    </div>
+
 @endsection
 @section('js')
+    <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
     {{--编辑器--}}
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
@@ -189,8 +209,11 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
+
     <script type="text/javascript">
+        window.urlObj={
+            apiUrl:'http://api.hisihi.com/'
+        };
         $(function() {
             /*modal事件监听*/
             $(".modal").on("hidden.bs.modal", function() {
@@ -198,4 +221,6 @@
             });
         });
     </script>
+    <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
 @endsection

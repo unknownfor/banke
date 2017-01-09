@@ -91,7 +91,6 @@
                           <th width="10%"> {{ trans('labels.org.city') }} </th>
                           <th width="20%"> {{ trans('labels.org.address') }} </th>
                           <th width="10%"> {{ trans('labels.org.status') }} </th>
-                          <th width="15%"> {{ trans('labels.org.courseList') }} </th>
                           <th width="33%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>

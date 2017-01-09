@@ -115,6 +115,7 @@ class CourseRepository
 		];
 	}
 
+
 	/**添加课程
 	 * @author shaolei
 	 * @date   2016-04-14T11:32:04+0800

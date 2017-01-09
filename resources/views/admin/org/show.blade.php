@@ -37,9 +37,9 @@
               <form role="form" class="form-horizontal">
                   <div class="form-body">
                       <div class="form-group form-md-line-input form-md-line-logo">
-                          <label class="col-md-1 control-label" for="name">{{trans('labels.org.logo')}}</label>
+                          <label class="col-md-1 control-label" for="name" style="margin-top: 60px;">{{trans('labels.org.logo')}}</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$org['logo']}} </div>
+                              <img src="{{$org['logo']}}" class="img-circle"/>
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
@@ -76,21 +76,17 @@
                               <div class="cover-box">
                                   <div class="add-cover-img-btn">+</div>
                                   <ul class="cover-list-box">
-                                      <li>
-                                          <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                          <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                          <span class="remove-cover-img">×</span>
-                                      </li>
-                                      <li>
-                                          <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                          <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                          <span class="remove-cover-img">×</span>
-                                      </li>
-                                      <li>
-                                          <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                          <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                          <span class="remove-cover-img">×</span>
-                                      </li>
+                                      @if($org['cover'])
+                                          <?php
+                                            $imgs=explode(',',$org['cover']);
+                                          ?>
+                                          @foreach($imgs as $img)
+                                              <li>
+                                                  <a href="{{$img}}" data-size="435x263"></a>
+                                                  <img src="{{$img}}@142w_80h_1e">
+                                              </li>
+                                          @endforeach
+                                      @endif
                                   </ul>
                               </div>
                           </div>
@@ -109,10 +105,26 @@
                               <div class="form-control form-control-static"> {{$org['tel_phone']}} </div>
                           </div>
                       </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>
+                          <div class="col-md-9">
+                              <div class="md-radio-inline">
+                                  @if($org['status'] == config('admin.global.status.active'))
+                                      <span class="label label-success"> 正常 </span>
+                                  @endif
+                                  @if($org['status'] == config('admin.global.status.audit'))
+                                      <span class="label label-warning"> 待审核 </span>
+                                  @endif
+                                  @if($org['status'] == config('admin.global.status.trash'))
+                                      <span class="label label-danger"> 未通过 </span>
+                                  @endif
+                              </div>
+                          </div>
+                      </div>
                   </div>
                   <div class="form-actions">
                       <div class="row">
-                          <div class="col-md-offset-2 col-md-10">
+                          <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/org')}}" class="btn default">{{trans('crud.back')}}</a>
                           </div>
                       </div>

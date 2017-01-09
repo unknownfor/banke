@@ -7,19 +7,22 @@
         var MyEditor=function(){
             this.init();
             var that=this;
-            /*上传文件*/
-            $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadImgEditor'));
 
-            $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadImgCodeImg'));
+            /*上传logo文件*/
+            $(document).on('change','#uploadImgFile', $.proxy(this,'uploadLogo'));
+            $(document).on('click','#uploadLogo', function(){
+                $('#uploadImgFile').trigger('click');
+            });
+            /*上传编辑器的文件*/
+            $(document).on('change','#uploadImgFile1', $.proxy(this,'initUploadImgEditor'));
 
-            //$(document).on('click','.tabs>div', $.proxy(this,'switchSingUpContent'));
-            //
-            //$(document).on('click','.tabs-content-item .addNewSteps', $.proxy(this,'addNewSteps'));
-            //
-            //$(document).on('click','.tabs-content-item .addCodeImg', function(){
-            //    $('#uploadImgFile1').trigger('click');
-            //});
-            //$(document).on('click','.tabs-content-item .delete-step-item', $.proxy(this,'deleteSteps'));
+            /*上传封面文件*/
+            $(document).on('change','#uploadImgFile2', $.proxy(this,'uploadCover'));
+            $(document).on('click','.add-cover-img-btn', function(){
+                $('#uploadImgFile2').trigger('click');
+            });
+
+            $(document).on('click','.remove-cover-img', $.proxy(this,'deletCoverImg'));
 
             //photoswipe   //图片信息查看  相册、视频信息查看
             new MyPhotoSwipe('.cover-list-box');
@@ -29,7 +32,7 @@
             init:function(){
                 this.initEditor();
                 this.initImgsArr();  //定义100个图片id 数组。
-                //this.getBasicToken();
+
             },
 
             initEditor:function(){
@@ -104,9 +107,7 @@
                     //上传图片，然后回调
                     var info = that.getMaxImgsId();
                     if (info) {
-                        //that.btn.createImage('', info.id);
-
-                        $("#uploadImgFile").trigger('click');
+                        $('#uploadImgFile1').trigger('click');
 
                     } else {
                         alert('最多只能添加100张图片');
@@ -148,7 +149,6 @@
 
             //上传表单
             initUploadImg:function(target,$formObj,callback){
-
                 var that=this;
                 if (target.val() == "") return;
                 var tokenStr = window.localStorage.getItem('cms-token'); //myToken,
@@ -173,8 +173,8 @@
 
             //上传图片，编辑器
             initUploadImgEditor:function(){
-                var $target = $('#uploadImgFile'),
-                    $form=$('#upImgForm'),
+                var $target = $('#uploadImgFile1'),
+                    $form=$('#upImgForm1'),
                     that=this;
                 this.controlLoadingCircleStatus(true);
                 this.initUploadImg($target,$form,function(data){
@@ -185,7 +185,7 @@
                         info=that.editorImgsArr[info.index];
                         info.status=1;
                         var $img = $('#'+info.id).attr('src', data.filedata);
-                        $('#upImgForm')[0].reset();
+                        $form[0].reset();
                         $img[0].onload = function () {
                             that.controlLoadingCircleStatus(false);
                         };
@@ -193,23 +193,59 @@
                 });
             },
 
-            //上传图片，二维码
-            initUploadImgCodeImg:function(e){
-                var $target = $('#uploadImgFile1'),
-                    $form=$('#upImgForm1'),
+            //上传图片
+            uploadLogo:function(e){
+                var $target = $('#uploadImgFile'),
+                    $form=$('#upImgForm'),
                     that=this;
                 that.controlLoadingCircleStatus(true);
                 this.initUploadImg($target,$form,function(data){
                     data=JSON.parse(data);
                     if(data) {
-                        var $img = $('#code-img').attr('src', data.filedata);
+                        var $img = $('#logo').attr('src', data.filedata);
                         $img[0].onload = function () {
                             $img.show();
                             that.controlLoadingCircleStatus(false);
-                            $('#upImgForm1')[0].reset();
+                            $form[0].reset();
                         };
                     }
                 });
+            },
+
+            //上传封面图
+            uploadCover:function(){
+                var $target = $('#uploadImgFile2'),
+                    $form=$('#upImgForm2'),
+                    that=this;
+                that.controlLoadingCircleStatus(true);
+                this.initUploadImg($target,$form,function(data){
+                    data=JSON.parse(data);
+                    if(data) {
+                        var str=that.getConverImgStr(data.filedata);
+                        $('.cover-list-box').prepend(str);
+                        that.controlLoadingCircleStatus(false);
+                        $form[0].reset();
+                    }
+                });
+            },
+
+            getConverImgStr:function(url){
+                return '<li>'+
+                            '<a href="'+url+'" data-size="435x263"></a>'+
+                            '<img src="'+url+'@142w_80h_1e">'+
+                            '<span class="remove-cover-img">×</span>'+
+                        '</li>';
+            },
+
+            /*删除封面*/
+            deletCoverImg:function(e){
+                e.stopPropagation();
+                if(window.confirm('确定删除该封面么？')) {
+                    var $target=$(e.currentTarget).closest('li').addClass('deleting');
+                    window.setTimeout(function(){
+                        $target.remove();
+                    },300);
+                }
             },
 
             /*
@@ -228,115 +264,13 @@
                 }
             },
 
+            getCoverImg:function(){
+                var $imgs=$('.cover-list-box li'),arr=[];
 
-            /*请求数据 python*/
-            getDataAsyncPy: function (paras) {
-                if (!paras.type) {
-                    paras.type = 'post';
-                }
-                if (paras.async==undefined) {
-                    paras.async = true;
-                }
-                var that = this;
-                var xhr = $.ajax({
-                    async:paras.async,
-                    url: paras.url,
-                    type: paras.type,
-                    data: paras.paraData,
-                    //timeout: 20000,
-                    timeout: 10000,
-                    contentType: 'application/json',
-                    beforeSend: function (myXhr) {
-                        //自定义 头信息
-                        if(paras.beforeSend){
-                            paras.beforeSend(myXhr);
-                        }else {
-                            //将token加入到请求的头信息中
-                            if (paras.needToken) {
-                                myXhr.setRequestHeader('Authorization', paras.token);  //设置头消息
-                            }
-                        }
-                    },
-                    complete: function (xmlRequest, status) {
-                        var rTxt = xmlRequest.responseText,
-                            result = {};
-                        if (rTxt) {
-                            result = JSON.parse(xmlRequest.responseText);
-
-                        } else {
-                            result.code = 0;
-
-                        }
-                        if (status == 'success') {
-
-                            paras.sCallback(result);
-
-                        }
-                        //超时
-                        else if (status == 'timeout') {
-                            xhr.abort();
-                            paras.eCallback && paras.eCallback({code:'408',txt:'超时'});
-                        }
-                        else {
-                            if(!result){
-                                result={code: '404', txt: 'no found'};
-                            }
-                            paras.eCallback && paras.eCallback(result);
-                        }
-                    }
+                $.each($imgs,function(){
+                    arr.push($(this).find('a').attr('href'));
                 });
-
-            },
-
-            /*获得令牌*/
-            getBasicToken:function(){
-                console.log(window.urlObj.apiUrl);
-                var that=this,
-                    para = {
-                        async:true,
-                        url: window.urlObj.apiUrl+'/v1/token',
-                        type: 'post',
-                        paraData: JSON.stringify({account:'jg2rw2xVjyrgbrZp', secret:'VbkzpPlZ6H4OvqJW', type: 100}),
-                        sCallback: function (data) {
-                            that.token =that.getBase64encode(data.token);
-                        },eCallback:function(result){
-                           console.log(result.txt);
-                        }
-                    };
-                this.getDataAsyncPy(para);
-            },
-
-            /***************64编码的方法****************/
-            getBase64encode:function(str) {
-                str+= ':'
-                var out, i, len, base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-                var c1, c2, c3;
-                len = str.length;
-                i = 0;
-                out = "";
-                while (i < len) {
-                    c1 = str.charCodeAt(i++) & 0xff;
-                    if (i == len) {
-                        out += base64EncodeChars.charAt(c1 >> 2);
-                        out += base64EncodeChars.charAt((c1 & 0x3) << 4);
-                        out += "==";
-                        break;
-                    }
-                    c2 = str.charCodeAt(i++);
-                    if (i == len) {
-                        out += base64EncodeChars.charAt(c1 >> 2);
-                        out += base64EncodeChars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
-                        out += base64EncodeChars.charAt((c2 & 0xF) << 2);
-                        out += "=";
-                        break;
-                    }
-                    c3 = str.charCodeAt(i++);
-                    out += base64EncodeChars.charAt(c1 >> 2);
-                    out += base64EncodeChars.charAt(((c1 & 0x3) << 4) | ((c2 & 0xF0) >> 4));
-                    out += base64EncodeChars.charAt(((c2 & 0xF) << 2) | ((c3 & 0xC0) >> 6));
-                    out += base64EncodeChars.charAt(c3 & 0x3F);
-                }
-                return 'basic '+ out;
+                return arr;
             },
 
             CLASS_NAME:'MyEditor'
@@ -370,14 +304,15 @@
 
 
         //提交编辑
-        window.setTextAreaData=function(){
-            var htmlStr=editor.getValue();
-            $('#target-area').text(htmlStr);
-            $('.registration_way').val(editor.getSingInInfo());
-            $('.course-time').val($('.time').val());
-
-            var val=$('.indroduce').val();
+        window.setDataBeforeCommit=function(){
+            var val=editor.getValue();
             val=val.replace(/\n/g,"<br/>");
-            $('.introduce-input').val(val);
+            $('#target-area').text(val);
+
+            //相册
+            $('#cover').val(editor.getCoverImg().join(','));
+
+            //logo
+            $('#logo-input').val($('#logo').attr('src'));
         };
 });
