@@ -231,11 +231,15 @@ class AppUserRepository
 		if($user){
 			DB::transaction(function () use ($id, $status, $user) {
 				try {
-					$user_profile = BankeUserProfiles::find($id);
+					$user_profile = BankeUserProfiles::find($id)->lockForUpdate();
 					$certification_time = date("Y-m-d H:i:s");
 					$user->certification_status = $status;
 					$user->certification_time = $certification_time;
 					//同步认证状态，处理认证奖励金额
+					//查询系统配置里注册认证的奖金
+					$register_award = BankeDict::where('id', 1)->first();
+					$user_profile->account_balance += $register_award->value;
+					$user_profile->register_amount += $register_award->value;
 					$user_profile->certification_status = $status;
 					$user_profile->certification_time = $certification_time;
 					$user->save();
