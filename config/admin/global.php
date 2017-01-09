@@ -102,4 +102,18 @@ return[
 		'action' => 'app_user',
 	],
 
+	//动态
+	'news' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		// trait 中的 action 参数
+		'action' => 'news',
+	],
+	//预约报名
+	'enrol' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		// trait 中的 action 参数
+		'action' => 'enrol',
+	],
 ];

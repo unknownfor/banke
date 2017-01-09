@@ -7,11 +7,11 @@
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <a href="{{url('admin/dict')}}">{!! trans('labels.breadcrumb.dictList') !!}</a>
+	        <a href="{{url('admin/news')}}">{!! trans('labels.breadcrumb.newsList') !!}</a>
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <span>{!! trans('labels.breadcrumb.dictCreate') !!}</span>
+	        <span>{!! trans('labels.breadcrumb.newsCreate') !!}</span>
 	    </li>
 	</ul>
 </div>
@@ -22,7 +22,7 @@
           <div class="portlet-title">
               <div class="caption font-green-haze">
                   <i class="icon-settings font-green-haze"></i>
-                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.dictCreate') !!}</span>
+                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.newsCreate') !!}</span>
               </div>
               <div class="actions">
                   <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -37,35 +37,35 @@
 					        @endforeach
 					    </div>
 					    @endif
-              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/dict')}}">
+              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/news')}}">
               		{!! csrf_field() !!}
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="name">{{trans('labels.dict.key')}}</label>
+                          <label class="col-md-2 control-label" for="name">{{trans('labels.news.title')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="name" name="key" placeholder="{{trans('labels.dict.key')}}" value="{{old('key')}}">
+                              <input type="text" class="form-control" id="name" name="title" placeholder="{{trans('labels.news.title')}}" value="{{old('title')}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="slug">{{trans('labels.dict.value')}}</label>
+                          <label class="col-md-2 control-label" for="slug">{{trans('labels.news.content')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="slug" name="value" placeholder="{{trans('labels.dict.value')}}" value="{{old('value')}}">
+                              <input type="text" class="form-control" id="slug" name="content" placeholder="{{trans('labels.news.content')}}" value="{{old('content')}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="description">{{trans('labels.dict.description')}}</label>
+                          <label class="col-md-2 control-label" for="description">{{trans('labels.news.sort')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="description" name="description" placeholder="{{trans('labels.dict.description')}}" value="{{old('description')}}">
+                              <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.news.sort')}}" value="{{old('sort')}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.dict.status')}}</label>
+                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.news.status')}}</label>
                         <div class="col-md-10">
                             <div class="md-radio-inline">
                                 <div class="md-radio">
@@ -73,14 +73,21 @@
                                     <label for="status1">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.dict.active.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.news.active.1')}} </label>
+                                </div>
+                                <div class="md-radio">
+                                    <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if(old('status') === config('admin.global.status.audit')) checked @endif>
+                                    <label for="status2">
+                                        <span></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> {{trans('strings.news.audit.1')}} </label>
                                 </div>
                                 <div class="md-radio">
                                     <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>
                                     <label for="status3">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.dict.trash.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.news.trash.1')}} </label>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +96,7 @@
                   <div class="form-actions">
                       <div class="row">
                           <div class="col-md-offset-2 col-md-10">
-                              <a href="{{url('admin/dict')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                              <a href="{{url('admin/news')}}" class="btn default">{{trans('crud.cancel')}}</a>
                               <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
                           </div>
                       </div>

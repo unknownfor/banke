@@ -74,6 +74,10 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/DictRoute.php');
         //app用户
         require(__DIR__ . '/Routes/AppUserRoute.php');
+        //app动态
+        require(__DIR__ . '/Routes/NewsRoute.php');
+        //预约报名
+        require(__DIR__ . '/Routes/EnrolRoute.php');
     });
 });
 

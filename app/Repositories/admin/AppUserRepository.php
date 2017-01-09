@@ -231,7 +231,7 @@ class AppUserRepository
 		if($user){
 			DB::transaction(function () use ($id, $status, $user) {
 				try {
-					$user_profile = BankeUserProfiles::find($id);
+					$user_profile = BankeUserProfiles::where('uid', $id)->lockForUpdate()->first();
 					$certification_time = date("Y-m-d H:i:s");
 					$user->certification_status = $status;
 					$user->certification_time = $certification_time;
@@ -239,18 +239,24 @@ class AppUserRepository
 					$user_profile->certification_status = $status;
 					$user_profile->certification_time = $certification_time;
 					$user->save();
+					//处理邀请人奖励金额
+					if($status == config('admin.global.certification_status.active')){
+						//查询系统配置里注册认证的奖金
+						$register_award = BankeDict::where('id', 1)->first();
+						$user_profile->account_balance += $register_award->value;
+						$user_profile->register_amount += $register_award->value;
+
+						if($user_profile->invitation_uid > 0){
+							$invitation_user = BankeUserProfiles::where('uid', $user_profile->invitation_uid)->lockForUpdate()->first();
+							//查询系统配置里邀请人注册认证的奖金
+							$invitation_award = BankeDict::where('id', 2)->first();
+							$invitation_user->invitation_amount += $invitation_award->value;
+							$invitation_user->account_balance += $invitation_award->value;
+							$invitation_user->save();
+						}
+					}
 					//同步认证状态
 					$user_profile->save();
-					//处理邀请人奖励金额
-					if($status == config('admin.global.certification_status.active')
-						&& $user_profile->invitation_uid > 0){
-						$invitation_user = BankeUserProfiles::where('uid', $user_profile->invitation_uid)->lockForUpdate()->first();
-						//查询系统配置里邀请人注册认证的奖金
-						$invitation_award = BankeDict::where('id', 2)->first();
-						$invitation_user->invitation_amount += $invitation_award->value;
-						$invitation_user->account_balance += $invitation_award->value;
-						$invitation_user->save();
-					}
 					Flash::success(trans('alerts.app_user.certificate_success'));
 					return true;
 				} catch (Exception $e) {

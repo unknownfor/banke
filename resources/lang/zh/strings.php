@@ -43,4 +43,13 @@ return [
 		'active' => ['fa fa-navicon','正常'],
 		'trash' => ['fa fa-trash','未通过']
 	],
+	'news' => [
+		'audit' => ['fa fa-paw','待审核'],
+		'active' => ['fa fa-navicon','正常'],
+		'trash' => ['fa fa-trash','未通过']
+	],
+	'enrol' => [
+		'audit' => ['fa fa-paw','未处理'],
+		'active' => ['fa fa-navicon','已处理'],
+	],
 ];

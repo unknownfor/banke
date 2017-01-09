@@ -242,6 +242,8 @@ return [
         'OrgRepository' => App\Facades\OrgFacade::class,
         'CourseRepository' => App\Facades\CourseFacade::class,
         'AppUserRepository' => App\Facades\AppUserFacade::class,
+        'NewsRepository' => App\Facades\NewsFacade::class,
+        'EnrolRepository' => App\Facades\EnrolFacade::class,
     ],
 
 ];
