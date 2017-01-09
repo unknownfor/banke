@@ -78,7 +78,7 @@
                                         <span class="box"></span> {{trans('strings.news.active.1')}} </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($role['status'] == config('admin.global.status.audit')) checked @endif>
+                                    <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($news['status'] == config('admin.global.status.audit')) checked @endif>
                                     <label for="status2">
                                         <span></span>
                                         <span class="check"></span>
