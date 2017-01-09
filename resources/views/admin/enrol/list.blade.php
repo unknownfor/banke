@@ -28,7 +28,7 @@
               <i class="icon-settings font-dark"></i>
               <span class="caption-subject font-dark sbold uppercase">{{trans('labels.enrol.list')}}</span>
             </div>
-            <div class="actions">
+            {{--<div class="actions">
               <div class="btn-group">
                 @permission(config('admin.permissions.enrol.create'))
                 <a href="{{url('admin/enrol/create')}}" class="btn btn-success btn-outline btn-circle">
@@ -37,7 +37,7 @@
                 </a>
                 @endpermission
               </div>
-            </div>
+            </div>--}}
           </div>
             <div class="portlet-body">
               <div class="table-container">
