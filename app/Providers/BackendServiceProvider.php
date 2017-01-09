@@ -60,5 +60,9 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('AppUserRepository', function($app){
             return new \App\Repositories\admin\AppUserRepository();
         });
+        //动态
+        $this->app->singleton('NewsRepository', function($app){
+            return new \App\Repositories\admin\NewsRepository();
+        });
     }
 }

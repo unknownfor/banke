@@ -87,4 +87,11 @@ return[
 		'show'		=> 'admin.app_user.list',
 		'certificate'	=> 'admin.app_user.certificate'
 	],
+	'news' => [
+		'create' 	=> 'admin.news.create',
+		'edit' 		=> 'admin.news.edit',
+		'destroy' 	=> 'admin.news.delete',
+		'trash' 	=> 'admin.news.trash',
+		'undo' 		=> 'admin.news.undo',
+	],
 ];

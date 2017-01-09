@@ -139,6 +139,7 @@ return [
 		'dictCreate' => '<i class="fa fa-user-plus"></i> 创建配置',
 		'app_userList' => '<i class="fa fa-bars"></i> app用户列表',
 		'certificationList' => '<i class="fa fa-bars"></i> 用户认证申请列表',
+		'newsList' => '<i class="fa fa-bars"></i> 动态列表',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -221,5 +222,16 @@ return [
 		'audit' => '<span class="label label-warning"> 审核中 </span>',
 		'trash' => '<span class="label label-warning"> 未通过 </span>',
 		'no_apply' => '<span class="label label-warning"> 未申请 </span>'
+	],
+	'news' => [
+		'id' => '序号',
+		'title' => '标题',
+		'content' => '内容',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '配置列表',
+		'permission' => '权限',
+		'module' => '模块',
 	],
 ];

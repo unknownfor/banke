@@ -64,7 +64,7 @@ return [
 
     'org' => [
         'updated_success'   => '修改机构成功.',
-        'updated_error'     => '修机构失败.',
+        'updated_error'     => '修改机构失败.',
         'created_success'   => '创建机构成功.',
         'created_error'     => '创建机构失败.',
         'soft_deleted_success' => '删除机构成功',
@@ -76,5 +76,18 @@ return [
         'certificate_success'   => '处理用户认证成功',
         'certificate_error'   => '处理用户认证失败'
     ],
-
+    'news' => [
+        'updated_success'   => '修改动态成功.',
+        'updated_error'     => '修改动态失败.',
+        'created_success'   => '创建动态成功.',
+        'created_error'     => '创建动态失败.',
+        'soft_deleted_success' => '删除动态成功',
+    ],
+    'dict' => [
+        'updated_success'   => '修改配置成功.',
+        'updated_error'     => '修改配置失败.',
+        'created_success'   => '创建配置成功.',
+        'created_error'     => '创建配置失败.',
+        'soft_deleted_success' => '删除配置成功',
+    ],
 ];
