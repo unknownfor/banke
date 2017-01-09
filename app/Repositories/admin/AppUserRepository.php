@@ -231,7 +231,7 @@ class AppUserRepository
 		if($user){
 			DB::transaction(function () use ($id, $status, $user) {
 				try {
-					$user_profile = BankeUserProfiles::find($id)->lockForUpdate();
+					$user_profile = BankeUserProfiles::where('uid', $id)->lockForUpdate()->first();
 					$certification_time = date("Y-m-d H:i:s");
 					$user->certification_status = $status;
 					$user->certification_time = $certification_time;
