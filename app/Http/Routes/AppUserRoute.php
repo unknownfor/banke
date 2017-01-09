@@ -22,12 +22,16 @@ $router->group(['prefix' => 'app_user'], function($router){
 				config('admin.global.certification_status.active')
 		]);
 
-	$router->post('reset','AppUserController@resetPassword');
-
-	//管理员修改信息
-	$router->get('/change/{id}','AppUserController@changeAdminInfo')->where(['id' => '[0-9]+']);
-	//管理员信息修改
-	$router->post('/post_info','AppUserController@postAdminInfo');
+	//返现管理
+	$router->get('cash_back','AppUserController@cash_back');
+	$router->get('ajaxCashBack', 'AppUserController@ajaxCashBack');
+	$router->get('/{id}/mark_cash_back/{status}', 'AppUserController@mark_cash_back')
+		->where([
+			'id' => '[0-9]+',
+			'status' => config('admin.global.status.trash').'|'.
+				config('admin.global.status.audit').'|'.
+				config('admin.global.status.active')
+		]);
 });
 
 $router->resource('app_user', 'AppUserController');

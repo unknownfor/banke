@@ -5,7 +5,7 @@
 return[
 	/**
 	 * 全局状态
-	 * addit 	待审核
+	 * audit 	待审核
 	 * active 	正常
 	 * ban 		禁用
 	 * trash	回收站
