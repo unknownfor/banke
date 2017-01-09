@@ -94,4 +94,10 @@ return[
 		'trash' 	=> 'admin.news.trash',
 		'undo' 		=> 'admin.news.undo',
 	],
+	'enrol' => [
+		'edit' 		=> 'admin.enrol.edit',
+		'destroy' 	=> 'admin.enrol.delete',
+		'trash' 	=> 'admin.enrol.trash',
+		'undo' 		=> 'admin.enrol.undo',
+	],
 ];

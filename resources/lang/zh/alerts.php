@@ -90,4 +90,11 @@ return [
         'created_error'     => '创建配置失败.',
         'soft_deleted_success' => '删除配置成功',
     ],
+    'enrol' => [
+        'updated_success'   => '修改预约报名成功.',
+        'updated_error'     => '修改预约报名失败.',
+        'created_success'   => '创建预约报名成功.',
+        'created_error'     => '创建预约报名失败.',
+        'soft_deleted_success' => '删除预约报名成功',
+    ],
 ];
