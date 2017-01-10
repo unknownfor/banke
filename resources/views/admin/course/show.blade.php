@@ -60,12 +60,6 @@
                           </div>
                       </div>
 
-                      {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-1 control-label" for="address">{{trans('labels.course.percent')}}</label>--}}
-                          {{--<div class="col-md-9">--}}
-                              {{--<div class="form-control form-control-static"> {{$course['percent']}} </div>--}}
-                          {{--</div>--}}
-                      {{--</div>--}}
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="address">{{trans('labels.course.sort')}}</label>
                           <div class="col-md-9">
@@ -118,7 +112,7 @@
                   </div>
                   <div class="form-actions">
                       <div class="row">
-                          <div class="col-md-offset-2 col-md-10">
+                          <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/course')}}" class="btn default">{{trans('crud.back')}}</a>
                           </div>
                       </div>

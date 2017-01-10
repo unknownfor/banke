@@ -4,15 +4,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
-<style type="text/css">
-    .table-cell-logo{
-        height: 30px;
-        width: 30px;
-        border-radius: 50%;
-        border:1px solid #ccc;
-        margin-right: 15px;
-    }
-</style>
 @endsection
 @section('content')
 <div class="page-bar">
@@ -22,7 +13,7 @@
           <i class="fa fa-angle-right"></i>
       </li>
       <li>
-          <span>{!! trans('labels.breadcrumb.orgList') !!}</span>
+          <span>{!! trans('labels.breadcrumb.checkinsList') !!}</span>
       </li>
   </ul>
 </div>
@@ -35,17 +26,7 @@
             <div class="portlet-title">
             <div class="caption">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.org.list')}}</span>
-            </div>
-            <div class="actions">
-              <div class="btn-group">
-                @permission(config('admin.permissions.org.create'))
-                <a href="{{url('admin/org/create')}}" class="btn btn-success btn-outline btn-circle">
-                  <i class="fa fa-user-plus"></i>
-                  <span class="hidden-xs">{{trans('crud.create')}}</span>
-                </a>
-                @endpermission
-              </div>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.checkins.list')}}</span>
             </div>
           </div>
             <div class="search-box filter">
@@ -55,7 +36,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.org.name') }}">
+                            <input type="text" class="form-control form-filter" name="cash_amount" placeholder="{{ trans('labels.checkins.price_amount') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -66,7 +47,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-envelope"></i>
                                     </span>
-                                <input type="text" class="form-control form-filter" name="city" placeholder="{{ trans('labels.org.city') }}">
+                                <input type="text" class="form-control form-filter" name="manage_time" placeholder="{{ trans('labels.checkins.manage_time') }}">
                                 <div class="form-control-focus"> </div>
                             </div>
                         </div>
@@ -75,8 +56,8 @@
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
                             <option value="" data-icon="fa-glass icon-success">状态....</option>
-                            @if(trans('strings.org'))
-                                @foreach(trans('strings.org') as $status_key => $status_value)
+                            @if(trans('strings.checkins'))
+                                @foreach(trans('strings.checkins') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif
@@ -96,10 +77,13 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>id</th>
-                          <th width="30%"> {{ trans('labels.org.name') }} </th>
-                          <th width="10%"> {{ trans('labels.org.city') }} </th>
-                          <th width="30%"> {{ trans('labels.org.address') }} </th>
-                          <th width="8%"> {{ trans('labels.org.status') }} </th>
+                          <th width="10%"> {{ trans('labels.checkins.uid') }} </th>
+                          <th width="15%"> {{ trans('labels.checkins.course_name') }} </th>
+                          <th width="15%"> {{ trans('labels.checkins.price_amount') }} </th>
+                          <th width="15%"> {{ trans('labels.checkins.checkins_time') }} </th>
+                          <th width="10%"> {{ trans('labels.checkins.manage_time') }} </th>
+                          <th width="32%"> {{ trans('labels.checkins.manage_result') }} </th>
+                          <th width="8%"> {{ trans('labels.checkins.status') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
@@ -116,11 +100,11 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/org/org-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/checkins/checkins-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {
-    TableDatatablesAjax.init();
+//    TableDatatablesAjax.init();
     $(document).on('click','#destory',function() {
       layer.msg('{{trans('alerts.deleteTitle')}}', {
         time: 0, //不自动关闭

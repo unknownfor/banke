@@ -96,8 +96,8 @@
                                     <div class="cover-box">
                                         <div class="add-cover-img-btn">+</div>
                                         <ul class="cover-list-box"></ul>
+                                        <input type="hidden" value="" name="cover" id="cover">
                                     </div>
-                                    <input type="hidden" value="" name="cover" id="cover">
                                 </div>
                             </div>
 

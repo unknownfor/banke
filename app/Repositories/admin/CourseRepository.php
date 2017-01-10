@@ -221,9 +221,7 @@ class CourseRepository
 	 */
 	public function show($id)
 	{
-		Log::info('---------------------ok?------------------------');
 		$course = BankeCourse::find($id)->toArray();
-		Log::info('---------------------ok------------------------');
 		return $course;
 	}
 

@@ -27,6 +27,9 @@ var TableDatatablesAjax = function() {
           "data": "name",
           "name" : "name",
           "orderable" : false,
+          render:function(res,type,full){
+            return '<img class="table-cell-logo" src="'+full.logo+'"><label>'+res+'</label>';
+          }
         },
         {
           "data": "city",

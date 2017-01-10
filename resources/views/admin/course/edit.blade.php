@@ -106,8 +106,8 @@
                                       </li>
                                       @endif
                                   </ul>
+                                  <input type="hidden" value="" name="cover" id="cover">
                               </div>
-                              <input type="hidden" value="" name="cover" id="cover">
                           </div>
                       </div>
 
@@ -171,29 +171,40 @@
         </div>
     </div>
 </div>
+<form id="upImgForm" method="post" class="hiddenForm">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif,image/jpeg">
+</form>
+
+<form id="upImgForm1" method="post" class="hiddenForm">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
+</form>
+<div class="loding-modal">
+    <i id="imgLoadingCircle" class="loadingCircle active"></i>
+    <div>上传中…</div>
+</div>
 @endsection
 @section('js')
-<script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
-{{--编辑器--}}
-<script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
-{{--图片查看--}}
-<script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
-<script type="text/javascript">
-  $(function() {
-      window.urlObj={
-          apiUrl:'http://api.hisihi.com/'
-      };
-    /*modal事件监听*/
-    $(".modal").on("hidden.bs.modal", function() {
-         $(".modal-content").empty();
-    });
-  });
-</script>
-<script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/course/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
+    {{--编辑器--}}
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
+    {{--图片查看--}}
+    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
+    <script type="text/javascript">
+        window.urlObj={
+            apiUrl:'http://api.hisihi.com/'
+        };
+      $(function() {
+        /*modal事件监听*/
+        $(".modal").on("hidden.bs.modal", function() {
+             $(".modal-content").empty();
+        });
+      });
+    </script>
+    <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/course/index.js')}}"></script>
 @endsection
