@@ -193,6 +193,7 @@ return [
 		'real_price' => '成交价',
 		'cover'=>'封面',
 		'details'=>'课程介绍',
+		'period'=>'课时',
 		'percent'=>'优惠比例',
 		'sort'=>'排序',
 		'status' => '状态',

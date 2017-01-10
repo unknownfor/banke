@@ -28,6 +28,7 @@ class UpdateCourseRequest extends Request
             'name' => 'required',
             'org_id' => 'required|numeric',
             'price' => 'required|numeric',
+//            'period' => 'required|numeric',
             'status' => 'required',
         ];
     }
@@ -49,6 +50,7 @@ class UpdateCourseRequest extends Request
             'name' => trans('labels.course.name'),
             'org_id' => trans('labels.course.org_id'),
             'price' => trans('labels.course.price'),
+//            'period' => trans('labels.course.period'),
             'status' => trans('labels.course.status'),
         ];
     }

@@ -52,6 +52,20 @@
                             </div>
                         </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="checkins_at_from">
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                    <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="checkins_at_to">
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">

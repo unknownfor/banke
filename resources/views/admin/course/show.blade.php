@@ -61,6 +61,13 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$course['period']}} </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="address">{{trans('labels.course.sort')}}</label>
                           <div class="col-md-9">
                               <div class="form-control form-control-static"> {{$course['sort']}} </div>

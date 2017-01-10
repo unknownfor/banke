@@ -76,13 +76,13 @@
                           </div>
                       </div>
 
-                      {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-2 control-label" for="percent">{{trans('labels.course.percent')}}</label>--}}
-                          {{--<div class="col-md-8">--}}
-                              {{--<input type="text" class="form-control" id="percent" name="percent" placeholder="{{trans('labels.course.percent')}}" value="{{$course['percent']}}">--}}
-                              {{--<div class="form-control-focus"> </div>--}}
-                          {{--</div>--}}
-                      {{--</div>--}}
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="{{$course['period']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="sort">{{trans('labels.course.sort')}}</label>
