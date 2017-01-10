@@ -87,11 +87,11 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>id</th>
-                          <th width="10%"> {{ trans('labels.org.name') }} </th>
+                          <th width="25%"> {{ trans('labels.org.name') }} </th>
                           <th width="10%"> {{ trans('labels.org.city') }} </th>
-                          <th width="20%"> {{ trans('labels.org.address') }} </th>
-                          <th width="10%"> {{ trans('labels.org.status') }} </th>
-                          <th width="33%"> {{ trans('labels.action') }} </th>
+                          <th width="25%"> {{ trans('labels.org.address') }} </th>
+                          <th width="8%"> {{ trans('labels.org.status') }} </th>
+                          <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>

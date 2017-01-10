@@ -96,16 +96,18 @@
                           <label class="col-md-1 control-label">{{trans('labels.course.cover')}}</label>
                           <div class="col-md-9">
                               <div class="cover-box">
-                                  <div class="add-cover-img-btn">上传封面</div>
+                                  <div class="add-cover-img-btn">+</div>
                                   <ul class="cover-list-box">
+                                      @if($course['cover'])
                                       <li>
-                                          <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                          <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
+                                          <a href="{{$course['cover']}}" data-size="435x263"></a>
+                                          <img src="{{$course['cover']}}@142w_80h_1e">
                                           <span class="remove-cover-img">×</span>
                                       </li>
+                                      @endif
                                   </ul>
                               </div>
-                              <input type="hidden" value="http://pic.hisihi.com/2016-10-28/1477633557638562.png" name="cover" id="cover">
+                              <input type="hidden" value="" name="cover" id="cover">
                           </div>
                       </div>
 
@@ -154,7 +156,7 @@
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/course')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                              <button type="submit" onclick="setTextAreaData()" class="btn blue">{{trans('crud.submit')}}</button>
+                              <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
                   </div>
@@ -171,6 +173,7 @@
 </div>
 @endsection
 @section('js')
+<script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
 {{--编辑器--}}
 <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
@@ -180,13 +183,17 @@
 <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/course/index.js')}}"></script>
 <script type="text/javascript">
   $(function() {
+      window.urlObj={
+          apiUrl:'http://api.hisihi.com/'
+      };
     /*modal事件监听*/
     $(".modal").on("hidden.bs.modal", function() {
          $(".modal-content").empty();
     });
   });
 </script>
+<script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/course/index.js')}}"></script>
 @endsection

@@ -67,7 +67,18 @@ return [
         'updated_error'     => '修改机构失败.',
         'created_success'   => '创建机构成功.',
         'created_error'     => '创建机构失败.',
+        'deleted_success'   => '删除机构成功.',
+        'deleted_error'     => '删除机构失败.',
         'soft_deleted_success' => '删除机构成功',
+    ],
+    'course' => [
+        'updated_success'   => '修改课程成功.',
+        'updated_error'     => '修改课程失败.',
+        'created_success'   => '创建课程成功.',
+        'created_error'     => '创建课程失败.',
+        'deleted_success'   => '删除课程成功.',
+        'deleted_error'     => '删除课程失败.',
+        'soft_deleted_success' => '删除课程成功',
     ],
     'app_user' => [
         'updated_success'   => '修改用户成功.',

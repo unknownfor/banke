@@ -77,20 +77,13 @@
                           <label class="col-md-1 control-label">{{trans('labels.course.cover')}}</label>
                           <div class="col-md-9">
                               <div class="cover-box">
-                                  <div class="add-cover-img-btn">+</div>
                                   <ul class="cover-list-box">
-                                      <li>
-                                          <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                          <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                      </li>
-                                      <li>
-                                          <a href="http://pic.hisihi.com/2016-09-06/1473148172864465.png" data-size="435x263"></a>
-                                          <img src="http://pic.hisihi.com/2016-09-06/1473148172864465.png@142w_80h_1e">
-                                      </li>
-                                      <li>
-                                          <a href="http://pic.hisihi.com/2016-05-17/1463487651644735.png" data-size="435x263"></a>
-                                          <img src="http://pic.hisihi.com/2016-05-17/1463487651644735.png@142w_80h_1e">
-                                      </li>
+                                      @if($course['cover'])
+                                          <li>
+                                              <a href="{{$course['cover']}}" data-size="435x263"></a>
+                                              <img src="{{$course['cover']}}@142w_80h_1e">
+                                          </li>
+                                      @endif
                                   </ul>
                               </div>
                           </div>

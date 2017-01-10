@@ -94,7 +94,6 @@
                                 <div class="col-md-9">
                                     <div class="cover-box">
                                         <div class="add-cover-img-btn">+</div>
-                                        <ul class="cover-list-box">
                                             <ul class="cover-list-box">
                                                 @if($org['cover'])
                                                     <?php
@@ -109,7 +108,6 @@
                                                     @endforeach
                                                 @endif
                                             </ul>
-                                        </ul>
                                        <input id="cover" name="cover" type="hidden" value="">
                                     </div>
                                 </div>

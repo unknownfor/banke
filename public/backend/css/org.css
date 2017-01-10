@@ -37,6 +37,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 20px;
 }
 .form-md-line-cover .add-cover-img-btn:hover{
     box-shadow: 0 0 2px 2px rgba(21,21,21,0.5);
@@ -52,7 +53,7 @@
     vertical-align: top;
     height:80px;
     width: 142px;
-    margin-left: 20px;
+    margin-right: 20px;
     margin-bottom: 20px;
     position: relative;
     cursor: pointer;

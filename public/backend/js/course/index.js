@@ -11,16 +11,14 @@ $(function(){
             /*上传文件*/
             $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadImgEditor'));
 
-            $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadImgCodeImg'));
+            $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadCoverImg'));
 
-            //$(document).on('click','.tabs>div', $.proxy(this,'switchSingUpContent'));
-            //
-            //$(document).on('click','.tabs-content-item .addNewSteps', $.proxy(this,'addNewSteps'));
-            //
-            //$(document).on('click','.tabs-content-item .addCodeImg', function(){
-            //    $('#uploadImgFile1').trigger('click');
-            //});
-            //$(document).on('click','.tabs-content-item .delete-step-item', $.proxy(this,'deleteSteps'));
+            /*上传封面文件*/
+            $(document).on('click','.add-cover-img-btn', function(){
+                $('#uploadImgFile1').trigger('click');
+            });
+
+            $(document).on('click','.remove-cover-img', $.proxy(this,'deletCoverImg'));
 
             //photoswipe   //图片信息查看  相册、视频信息查看
             new MyPhotoSwipe('.cover-list-box');
@@ -194,8 +192,8 @@ $(function(){
                 });
             },
 
-            //上传图片，二维码
-            initUploadImgCodeImg:function(e){
+            //上传封面图片
+            initUploadCoverImg:function(e){
                 var $target = $('#uploadImgFile1'),
                     $form=$('#upImgForm1'),
                     that=this;
@@ -203,14 +201,31 @@ $(function(){
                 this.initUploadImg($target,$form,function(data){
                     data=JSON.parse(data);
                     if(data) {
-                        var $img = $('#code-img').attr('src', data.filedata);
-                        $img[0].onload = function () {
-                            $img.show();
-                            that.controlLoadingCircleStatus(false);
-                            $('#upImgForm1')[0].reset();
-                        };
+                        var str=that.getConverImgStr(data.filedata);
+                        $('.cover-list-box').html(str);
+                        that.controlLoadingCircleStatus(false);
+                        $form[0].reset();
                     }
                 });
+            },
+
+            getConverImgStr:function(url){
+                return '<li>'+
+                    '<a href="'+url+'" data-size="435x263"></a>'+
+                    '<img src="'+url+'@142w_80h_1e">'+
+                    '<span class="remove-cover-img">×</span>'+
+                    '</li>';
+            },
+
+            /*删除封面*/
+            deletCoverImg:function(e){
+                e.stopPropagation();
+                if(window.confirm('确定删除该封面么？')) {
+                    var $target=$(e.currentTarget).closest('li').addClass('deleting');
+                    window.setTimeout(function(){
+                        $target.remove();
+                    },300);
+                }
             },
 
             /*
@@ -373,9 +388,11 @@ $(function(){
 
 
         //提交编辑
-        window.setTextAreaData=function(){
-            var htmlStr=editor.getValue();
-            htmlStr = htmlStr.replace(/<br\/>/g, "\r\n");
-            $('#target-area').text(htmlStr);
+        window.setDataBeforeCommit=function(){
+            var val=editor.getValue();
+            val=val.replace(/\n/g,"<br/>");
+            $('#target-area').text(val);
+            //相册
+            $('#cover').val(editor.getCoverImg().join(','));
         };
 });

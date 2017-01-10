@@ -56,7 +56,7 @@
                                 <input type="hidden" value="" name="logo" id="logo-input">
                             </div>
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="name">{{trans('labels.org.name')}}</label>
+                                <label class="col-md-1 control-label" for="name">{{trans('labels.org.name')}}(必填)</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.org.name')}}" value="{{old('name')}}">
                                     <div class="form-control-focus"> </div>
@@ -72,7 +72,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="city">{{trans('labels.org.city')}}</label>
+                                <label class="col-md-1 control-label" for="city">{{trans('labels.org.city')}}(必填)</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="city" name="city" placeholder="{{trans('labels.org.city')}}">
                                     <div class="form-control-focus"> </div>
@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="address">{{trans('labels.org.address')}}</label>
+                                <label class="col-md-1 control-label" for="address">{{trans('labels.org.address')}}(必填)</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="address" name="address" placeholder="{{trans('labels.org.address')}}">
                                     <div class="form-control-focus"> </div>
@@ -92,23 +92,8 @@
                                 <div class="col-md-9">
                                     <div class="cover-box">
                                         <div class="add-cover-img-btn">+</div>
-                                        <ul class="cover-list-box">
-                                            <li>
-                                                <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                                <span class="remove-cover-img">×</span>
-                                            </li>
-                                            <li>
-                                                <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                                <span class="remove-cover-img">×</span>
-                                            </li>
-                                            <li>
-                                                <a href="http://pic.hisihi.com/2016-10-28/1477633557638562.png" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2016-10-28/1477633557638562.png@142w_80h_1e">
-                                                <span class="remove-cover-img">×</span>
-                                            </li>
-                                        </ul>
+                                        <ul class="cover-list-box"></ul>
+                                        <input id="cover" name="cover" type="hidden" value="">
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +110,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}</label>
+                                <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}(必填)</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.org.tel_phone')}}">
                                     <div class="form-control-focus"> </div>
