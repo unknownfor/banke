@@ -91,9 +91,3 @@ Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web'] ],function($
     require(__DIR__ . '/Routes/web.php');
 });
 
-
-//Api 路由
-Route::group(['domain'=>env('API_DOMAIN'),'middleware' => ['web'] ],function($router){
- 
-    require(__DIR__ . '/Routes/api.php');
-});
