@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/datatables.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
 @endsection
 @section('content')
 <div class="page-bar">
@@ -44,7 +44,7 @@
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
                                     <span class="input-group-addon">
-                                        <i class="fa fa-user"></i>
+                                        <i class="fa fa-book"></i>
                                     </span>
                             <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.course.name') }}">
                             <div class="form-control-focus"> </div>
@@ -53,21 +53,10 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
-                            <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-envelope"></i>
-                                    </span>
-                                <input type="text" class="form-control form-filter" name="email" placeholder="{{ trans('labels.course.org') }}">
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
                             <option value="" data-icon="fa-glass icon-success">状态....</option>
-                            @if(trans('strings.course'))
-                                @foreach(trans('strings.course') as $status_key => $status_value)
+                            @if(trans('strings.cash'))
+                                @foreach(trans('strings.cash') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif
@@ -91,8 +80,6 @@
                           <th width="30%"> {{ trans('labels.course.org_id') }} </th>
                           <th width="10%"> {{ trans('labels.course.price') }} </th>
                           <th width="10%"> {{ trans('labels.course.status') }} </th>
-                          {{--<th width="10%"> {{ trans('labels.course.percent') }} </th>--}}
-                          {{--<th width="15%"> {{ trans('labels.course.real_price') }} </th>--}}
                           <th width="23%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
@@ -106,25 +93,25 @@
 </div>
 @endsection
 @section('js')
-<script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/course/course-list.js')}}"></script>
-<script type="text/javascript">
-  $(function() {
-    TableDatatablesAjax.init();
-    $(document).on('click','#destory',function() {
-      layer.msg('{{trans('alerts.deleteTitle')}}', {
-        time: 0, //不自动关闭
-        btn: ['{{trans('crud.destory')}}', '{{trans('crud.cancel')}}'],
-        icon: 5,
-        yes: function(index){
-          $('form[name="delete_item"]').submit();
-          layer.close(index);
-        }
-      });
-    });
-  });
-</script>
+    <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/course/course-list.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
+    <script type="text/javascript">
+        $(function() {
+            TableDatatablesAjax.init();
+            $(document).on('click','#destory',function() {
+                layer.msg('{{trans('alerts.deleteTitle')}}', {
+                    time: 0, //不自动关闭
+                    btn: ['{{trans('crud.destory')}}', '{{trans('crud.cancel')}}'],
+                    icon: 5,
+                    yes: function(index){
+                        $('form[name="delete_item"]').submit();
+                        layer.close(index);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

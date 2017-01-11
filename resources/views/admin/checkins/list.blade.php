@@ -30,41 +30,54 @@
             </div>
           </div>
             <div class="search-box filter">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
                             <span class="input-group-addon">
-                                <i class="fa fa-user"></i>
+                                <i class="fa fa-book"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="cash_amount" placeholder="{{ trans('labels.checkins.price_amount') }}">
+                            <input type="text" class="form-control form-filter" name="course_name" placeholder="{{ trans('labels.checkins.course_name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group form-md-line-input">
-                            <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-envelope"></i>
-                                    </span>
-                                <input type="text" class="form-control form-filter" name="manage_time" placeholder="{{ trans('labels.checkins.manage_time') }}">
-                                <div class="form-control-focus"> </div>
-                            </div>
+                        <div class="input-group has-success">
+                            <span class="input-group-addon">
+                                <i class="fa fa-building"></i>
+                            </span>
+                            <input type="text" class="form-control form-filter" name="org_name" placeholder="{{ trans('labels.checkins.org_name') }}">
+                            <div class="form-control-focus"> </div>
                         </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group form-md-line-input">
-                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
-                            <option value="" data-icon="fa-glass icon-success">状态....</option>
-                            @if(trans('strings.checkins'))
-                                @foreach(trans('strings.checkins') as $status_key => $status_value)
-                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
-                                @endforeach
-                            @endif
-                        </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                    <div class="form-group form-md-line-input">
+                        <div class="input-group has-success">
+                            <span class="input-group-addon">
+                                <i class="fa fa-mobile-phone"></i>
+                            </span>
+                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.checkins.phone_number') }}">
+                            <div class="form-control-focus"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="checkins_at_from">
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="checkins_at_to">
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2">
                     <div class="margin-bottom-5" style="padding-top: 20px;">
                         <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
                             <i class="fa fa-search"></i>{{ trans('labels.search') }}</button>
@@ -76,13 +89,13 @@
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
                     <thead>
                         <tr role="row" class="heading">
-                          <th>id</th>
-                          <th width="10%"> {{ trans('labels.checkins.uid') }} </th>
-                          <th width="15%"> {{ trans('labels.checkins.course_name') }} </th>
-                          <th width="15%"> {{ trans('labels.checkins.price_amount') }} </th>
-                          <th width="15%"> {{ trans('labels.checkins.checkins_time') }} </th>
-                          <th width="10%"> {{ trans('labels.checkins.manage_time') }} </th>
-                          <th width="32%"> {{ trans('labels.checkins.manage_result') }} </th>
+                              <th>id</th>
+                              <th width="15%"> {{ trans('labels.checkins.uname') }} </th>
+                              <th width="10%"> {{ trans('labels.checkins.phone_number') }} </th>
+                              <th width="20%"> {{ trans('labels.checkins.course_name') }} </th>
+                              <th width="20%"> {{ trans('labels.checkins.org_name') }} </th>
+                              <th width="15%"> {{ trans('labels.checkins.price_amount') }} </th>
+                            <th width="15%"> {{ trans('labels.checkins.checkins_time') }} </th>
                           <th width="8%"> {{ trans('labels.checkins.status') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
@@ -104,7 +117,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {
-//    TableDatatablesAjax.init();
+    TableDatatablesAjax.init();
     $(document).on('click','#destory',function() {
       layer.msg('{{trans('alerts.deleteTitle')}}', {
         time: 0, //不自动关闭

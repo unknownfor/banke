@@ -100,4 +100,9 @@ return[
 		'trash' 	=> 'admin.enrol.trash',
 		'undo' 		=> 'admin.enrol.undo',
 	],
+	'cash' => [
+		'destroy' 	=> 'admin.enrol.delete',
+		'trash' 	=> 'admin.enrol.trash',
+		'undo' 		=> 'admin.enrol.undo',
+	],
 ];

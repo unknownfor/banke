@@ -7,9 +7,10 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/course/ajaxIndex',
+        //'url' : '/admin/org/ajaxIndex',
         "data": function ( d ) {
-          d.name = $('.filter input[name="name"]').val();
+          d.name =$('.filter input[name="name"]').val();
+          d.city =$('.filter input[name="city"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
@@ -26,35 +27,24 @@ var TableDatatablesAjax = function() {
           "data": "name",
           "name" : "name",
           "orderable" : false,
+          render:function(res,type,full){
+            return '<img class="table-cell-logo" src="'+full.logo+'"><label>'+res+'</label>';
+          }
         },
         {
-          "data": "org_id",
-          "name": "org_id",
+          "data": "city",
+          "name": "city",
           "orderable" : false,
         },
         {
-          "data": "price",
-          "name": "price",
-          "orderable" : false,
+          "data": "address",
+          "name": "address",
+          "orderable" : true,
         },
-        //{
-        //  "data": "percent",
-        //  "name": "percent",
-        //  "orderable" : false,
-        //},
-        //{
-        //  //"data": "price | percent",
-        //  "data": "price",
-        //  "name": "price",
-        //  "orderable" : false,
-        //  //render:function(res){
-        //  //  return res*100;
-        //  //}
-        //},
         { 
           "data": "status",
           "name": "status",
-          "orderable" : true,
+          "orderable" : false,
           render:function(data){
             if (data == 1) {
               return '<span class="label label-success"> 正常 </span>';
@@ -100,15 +90,24 @@ var TableDatatablesAjax = function() {
       ajax_datatable.ajax.reload();
     });
 
-    //$('.input-group.date').datepicker({
-    //  autoclose: true
-    //});
+    //设置查询时间
+    var $date=$('.input-group.date'),
+        $input=$date.find('.input-sm'),
+        date=new Date(),
+        date1=date.getTime()-30*24*60*60*1000;
+    $input.eq(0).val(new Date(date1).format('yyyy-MM-dd'));
+    $input.eq(1).val(date.format('yyyy-MM-dd'));
+    $date.datepicker({
+      autoclose: true,
+      todayHighlight:true
+    });
+
+
     $(".bs-select").selectpicker({
       iconBase: "fa",
       tickIcon: "fa-check"
     });
   };
-
 
   return {
     init : datatableAjax
