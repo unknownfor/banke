@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        redirect('admin/login');
+        return redirect('admin/login');
     }
 
     
