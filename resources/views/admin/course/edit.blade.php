@@ -62,7 +62,7 @@
                                   <select name="org_id">
                                       @if($orgs)
                                           @foreach($orgs as $org)
-                                              @if($orgs->id == $course->org_id)
+                                              @if($org->id == $course->org_id)
                                                   <option value="{{$org->id}}" selected> {{$org->name}}</option>
                                               @else
                                                   <option value="{{$org->id}}" > {{$org->name}}</option>
