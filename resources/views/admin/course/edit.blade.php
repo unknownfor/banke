@@ -62,6 +62,11 @@
                                   <select name="org_id">
                                       <option value="1">半课直营培训机构</option>
                                       <option value="2">纯真培训机构</option>
+                                      @if($orgs)
+                                          @foreach($orgs as $org)
+                                              <option value="{{$org->id}}" > {{$org->name}}</option>
+                                          @endforeach
+                                      @endif
                                   </select>
                                   <div class="form-control-focus"> </div>
                               </div>

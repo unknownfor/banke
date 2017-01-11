@@ -59,6 +59,11 @@
                                     <select name="org_id">
                                         <option value="1">半课直营培训机构</option>
                                         <option value="2">纯真培训机构</option>
+                                        @if($orgs)
+                                            @foreach($orgs as $org)
+                                                <option value="{{$org->id}}" > {{$org->name}}</option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                     <div class="form-control-focus"> </div>
                                 </div>
@@ -72,21 +77,21 @@
                                 </div>
                             </div>
 
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>--}}
-                                {{--<div class="col-md-9">--}}
-                                    {{--<input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="50">--}}
-                                    {{--<div class="form-control-focus"> </div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="50">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            {{--<div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="percent">{{trans('labels.course.percent')}}(%)</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="percent" name="percent" placeholder="{{trans('labels.course.percent')}}" value="50">
                                     <div class="form-control-focus"> </div>
                                 </div>
-                            </div>
+                            </div>--}}
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="percent">{{trans('labels.course.sort')}}</label>
