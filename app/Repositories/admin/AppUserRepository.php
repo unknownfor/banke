@@ -235,8 +235,7 @@ class AppUserRepository
 					$user_profile = BankeUserProfiles::where('uid', $id)->lockForUpdate()->first();
 					$certification_time = date("Y-m-d H:i:s");
 					$cur_user = Auth::user();
-					Log::info('cur_user=================>'.json_encode($cur_user));
-					$user->operator = $cur_user->id;
+					$user->operator_uid = $cur_user->id;
 					$user->certification_status = $status;
 					$user->certification_time = $certification_time;
 					//同步认证状态，处理认证奖励金额
