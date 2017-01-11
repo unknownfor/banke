@@ -150,7 +150,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="language">{{trans('labels.menu.language')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="language" name="language" placeholder="{{trans('labels.menu.language')}}" value="">
+                              <input type="text" class="form-control" id="language" name="language" placeholder="{{trans('labels.menu.language')}}" value="zh">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -158,7 +158,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="icon">{{trans('labels.menu.icon')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="icon" name="icon" placeholder="{{trans('labels.menu.icon')}}" value="">
+                              <input type="text" class="form-control" id="icon" name="icon" placeholder="{{trans('labels.menu.icon')}}" value="fa fa-heart">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>

@@ -41,6 +41,11 @@ var TableDatatablesAjax = function() {
           "name": "address",
           "orderable" : false,
         },
+        {
+          "data": "sort",
+          "name": "sort",
+          "orderable" : true,
+        },
         { 
           "data": "status",
           "name": "status",

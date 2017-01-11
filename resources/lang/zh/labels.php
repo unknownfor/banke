@@ -174,7 +174,7 @@ return [
 		'status' => '状态',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
-		'order'=>'排序',
+		'sort'=>'排序',
 		'list' => '机构列表',
 		'courseList' => '课程列表',
 

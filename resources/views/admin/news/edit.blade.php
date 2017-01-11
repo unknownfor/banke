@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
+@endsection
 @section('content')
 <div class="page-bar">
 	<ul class="page-breadcrumb">
@@ -49,20 +52,18 @@
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
-
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="slug">{{trans('labels.news.content')}}</label>
-                          <div class="col-md-8">
-                              <input type="text" class="form-control" id="slug" name="content" placeholder="{{trans('labels.news.content')}}" value="{{$news['content']}}">
-                              <div class="form-control-focus"> </div>
-                          </div>
-                      </div>
-
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="description">{{trans('labels.news.sort')}}</label>
                           <div class="col-md-8">
                               <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.news.sort')}}" value="{{$news['sort']}}">
                               <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-2 control-label" for="slug">{{trans('labels.news.content')}}</label>
+                          <div class="col-md-8">
+                              <textarea style="display: none" name="content" id="target-area">{{$news['content']}}</textarea>
+                              <textarea id="my-editor"></textarea>
                           </div>
                       </div>
 
@@ -99,7 +100,7 @@
                       <div class="row">
                           <div class="col-md-offset-2 col-md-10">
                               <a href="{{url('admin/news')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                              <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
+                              <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
                   </div>
@@ -108,4 +109,26 @@
       </div>
   </div>
 </div>
+<form id="upImgForm" method="post" class="hiddenForm">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif, image/jpeg">
+</form>
+<div class="loding-modal">
+    <i id="imgLoadingCircle" class="loadingCircle active"></i>
+    <div>ÉÏ´«ÖÐ¡­</div>
+</div>
+@endsection
+@section('js')
+    <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
+    {{--±à¼­Æ÷--}}
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
+    <script type="text/javascript">
+        window.urlObj={
+            apiUrl:'http://api.hisihi.com/'
+        };
+    </script>
+    <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/news/index.js')}}"></script>
 @endsection

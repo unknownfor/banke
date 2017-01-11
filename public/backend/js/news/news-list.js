@@ -8,7 +8,7 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/news/ajaxIndex',
         "data": function ( d ) {
-          d.key = $('.filter input[name="title"]').val();
+          d.title = $('.filter input[name="title"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
           d.created_at_from = $('.filter input[name="created_at_from"]').val();
           d.created_at_to = $('.filter input[name="created_at_to"]').val();

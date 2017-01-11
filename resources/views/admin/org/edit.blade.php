@@ -89,6 +89,14 @@
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="sort">{{trans('labels.org.sort')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.org.sort')}}" value="{{$org['sort']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
                             <div class="form-group form-md-line-input form-md-line-cover">
                                 <label class="col-md-1 control-label">{{trans('labels.org.cover')}}</label>
                                 <div class="col-md-9">
