@@ -60,8 +60,15 @@
                           <div class="col-md-9">
                               <div class="col-md-9">
                                   <select name="org_id">
-                                      <option value="1">半课直营培训机构</option>
-                                      <option value="2">纯真培训机构</option>
+                                      @if($orgs)
+                                          @foreach($orgs as $org)
+                                              @if($org->id == $course['org_id'])
+                                                  <option value="{{$org->id}}" selected> {{$org->name}}</option>
+                                              @else
+                                                  <option value="{{$org->id}}" > {{$org->name}}</option>
+                                              @endif
+                                          @endforeach
+                                      @endif
                                   </select>
                                   <div class="form-control-focus"> </div>
                               </div>

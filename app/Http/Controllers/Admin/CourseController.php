@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\Banke\BankeOrg;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -44,9 +45,9 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $permissions = PermissionRepository::findPermissionWithArray();
-        $roles = RoleRepository::findRoleWithObject();
-        return view('admin.course.create')->with(compact(['permissions','roles']));
+        $org = new BankeOrg;
+        $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
+        return view('admin.course.create')->with(compact(['orgs']));
     }
 
     /**
@@ -71,8 +72,10 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
+        $org = new BankeOrg;
+        $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
         $course = CourseRepository::edit($id);
-        return view('admin.course.edit')->with(compact('course'));
+        return view('admin.course.edit')->with(compact(['course', 'orgs']));
     }
     /**
      * 修改课程资料

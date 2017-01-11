@@ -6,6 +6,7 @@ use App\Models\Banke\BankeDict;
 use Carbon\Carbon;
 use Flash;
 use DB;
+use Auth;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -233,6 +234,8 @@ class AppUserRepository
 				try {
 					$user_profile = BankeUserProfiles::where('uid', $id)->lockForUpdate()->first();
 					$certification_time = date("Y-m-d H:i:s");
+					$cur_user = Auth::user();
+					$user->operator_uid = $cur_user->id;
 					$user->certification_status = $status;
 					$user->certification_time = $certification_time;
 					//同步认证状态，处理认证奖励金额
