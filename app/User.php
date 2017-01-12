@@ -47,4 +47,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->belongsToMany('App\Models\Role','role_user','user_id','role_id')->withTimestamps();
     }
+
+    //个人资料信息
+    public function profiles(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles', 'uid');
+    }
 }

@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeDict;
+use App\User;
 use Carbon\Carbon;
 use Flash;
 use DB;
@@ -403,5 +404,25 @@ class AppUserRepository
 		];
 	}
 
-	
+	public function store_org_account($request){
+		$user = new User;
+		$userData = $request->all();
+		//密码进行加密
+		$userData['password'] = bcrypt($userData['password']);
+
+		if ($user->fill($userData)->save()) {
+			// 自动更新用户资料关系
+			$profiles = [
+				'uid' => $user->id,
+				'name' => $userData['name'],
+				'mobile'=> $userData['mobile'],
+				'org_id' => $userData['org_id']
+			];
+			$user->profiles()->create($profiles);
+			Flash::success(trans('alerts.users.created_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.users.created_error'));
+		return false;
+	}
 }
