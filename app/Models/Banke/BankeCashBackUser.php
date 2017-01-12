@@ -10,7 +10,8 @@ class BankeCashBackUser extends Model
     //
     use ActionAttributeTrait;
 
-    protected $fillable = ['uid', 'org_id', 'course_id', 'tuition_amount', 'cash_back_amount',
+    protected $fillable = ['order_id', 'uid', 'org_id', 'course_id', 'org_account', 'mobile', 'tuition_amount',
+        'check_in_amount', 'do_task_amount', 'period', 'comment',
         'operator_uid', 'status'];
 
     private $action;
@@ -18,6 +19,6 @@ class BankeCashBackUser extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.app_user.action');
+        $this->action = config('admin.global.order.action');
     }
 }
