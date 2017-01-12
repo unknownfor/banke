@@ -84,6 +84,8 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/CheckinsRoute.php');
          //邀请记录
         require(__DIR__ . '/Routes/InvitationRoute.php');
+        //报名记录
+        require(__DIR__ . '/Routes/SignupRoute.php');
 
     });
 });

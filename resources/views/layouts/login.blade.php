@@ -23,6 +23,7 @@
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
         <link href="{{asset('backend/css/login.min.css')}}" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon"  href="{{asset('backend/img/favicon.ico')}}"/>
         <!-- END PAGE LEVEL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
         <!-- END THEME LAYOUT STYLES -->
@@ -37,7 +38,7 @@
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="/">
-                <img src="{{asset('backend/img/logo.png')}}" alt="" />
+                <img src="{{asset('backend/img/logo1.png')}}" alt="" />
             </a>
         </div>
         <!-- END LOGO -->

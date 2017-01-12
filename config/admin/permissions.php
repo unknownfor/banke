@@ -105,4 +105,11 @@ return[
 		'trash' 	=> 'admin.enrol.trash',
 		'undo' 		=> 'admin.enrol.undo',
 	],
+
+	'signup' => [
+		'create' 	=> 'admin.signup.create',
+		'destroy' 	=> 'admin.signup.delete',
+		'trash' 	=> 'admin.signup.trash',
+		'undo' 		=> 'admin.signup.undo',
+	],
 ];

@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/course.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
 @endsection
 @section('content')
 <div class="page-bar">
@@ -57,21 +58,19 @@
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="email">{{trans('labels.course.org_id')}}</label>
-                          <div class="col-md-9">
-                              <div class="col-md-9">
-                                  <select name="org_id">
-                                      @if($orgs)
-                                          @foreach($orgs as $org)
-                                              @if($org->id == $course['org_id'])
-                                                  <option value="{{$org->id}}" selected> {{$org->name}}</option>
-                                              @else
-                                                  <option value="{{$org->id}}" > {{$org->name}}</option>
-                                              @endif
-                                          @endforeach
-                                      @endif
-                                  </select>
-                                  <div class="form-control-focus"> </div>
-                              </div>
+                          <div class="col-md-4">
+                              <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
+                                  @if($orgs)
+                                      @foreach($orgs as $org)
+                                          @if($org->id == $course['org_id'])
+                                              <option value="{{$org->id}}" selected> {{$org->name}}</option>
+                                          @else
+                                              <option value="{{$org->id}}" > {{$org->name}}</option>
+                                          @endif
+                                      @endforeach
+                                  @endif
+                              </select>
+                              <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
@@ -192,6 +191,7 @@
 @endsection
 @section('js')
     <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
     {{--编辑器--}}
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>

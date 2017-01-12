@@ -3,13 +3,6 @@
  */
     $(function(){
 
-        $('.citySelectpicker').selectpicker({
-            liveSearchNormalize:true,
-            liveSearchPlaceholder:'输入城市名称进行搜索',
-            //'selectedText': 'cat',
-            actionsBox:true
-        });
-
         /**定义一个MyEditor对象**/
         var MyEditor=function(){
             this.init();

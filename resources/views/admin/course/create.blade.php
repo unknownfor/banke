@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/course.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
 @endsection
 @section('content')
     <div class="page-bar">
@@ -55,8 +56,8 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="org_id">{{trans('labels.course.org_id')}}</label>
-                                <div class="col-md-9">
-                                    <select name="org_id">
+                                <div class="col-md-4">
+                                    <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
                                         @if($orgs)
                                             @foreach($orgs as $org)
                                                 <option value="{{$org->id}}" > {{$org->name}}</option>
@@ -185,6 +186,7 @@
 @endsection
 @section('js')
     <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
     {{--编辑器--}}
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>

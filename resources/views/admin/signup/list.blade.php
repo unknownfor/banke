@@ -13,7 +13,7 @@
           <i class="fa fa-angle-right"></i>
       </li>
       <li>
-          <span>{!! trans('labels.breadcrumb.invitationList') !!}</span>
+          <span>{!! trans('labels.breadcrumb.signupList') !!}</span>
       </li>
   </ul>
 </div>
@@ -26,17 +26,27 @@
             <div class="portlet-title">
             <div class="caption">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.invitation.list')}}</span>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.signup.list')}}</span>
             </div>
+            <div class="actions">
+                    <div class="btn-group">
+                        @permission(config('admin.permissions.signup.create'))
+                        <a href="{{url('admin/signup/create')}}" class="btn btn-success btn-outline btn-circle">
+                            <i class="fa fa-user-plus"></i>
+                            <span class="hidden-xs">{{trans('crud.create')}}</span>
+                        </a>
+                        @endpermission
+                    </div>
+                </div>
           </div>
             <div class="search-box filter">
                 <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
                             <span class="input-group-addon">
-                                <i class="fa fa-mobile-phone"></i>
+                                <i class="fa fa-user"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.invitation.phone_number') }}">
+                            <input type="text" class="form-control form-filter" name="uname" placeholder="{{ trans('labels.signup.uname') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -45,25 +55,30 @@
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
                             <span class="input-group-addon">
-                                <i class="fa fa-phone"></i>
+                                <i class="fa fa-mobile-phone"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="target_phone_number" placeholder="{{ trans('labels.invitation.target_phone_number') }}">
+                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.signup.phone_number') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-2">
-                    <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="invitation_at_from">
+                <div class="col-md-4">
+                    <div class="col-md-2" style="display: flex;height: 65px;align-items: center">
+                        <label>{{ trans('labels.signup.created_at') }}</label>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="signup_at_from">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
                     </div>
-                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="invitation_at_to">
+                        <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="signup_at_to">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
+                    </div>
                     </div>
                 </div>
                 <div class="col-md-2">
@@ -79,14 +94,16 @@
                     <thead>
                         <tr role="row" class="heading">
                               <th>id</th>
-                              <th width="15%"> {{ trans('labels.invitation.uname') }} </th>
-                              <th width="15%"> {{ trans('labels.invitation.phone_number') }} </th>
-                              <th width="15%"> {{ trans('labels.invitation.target_uname') }} </th>
-                              <th width="15%"> {{ trans('labels.invitation.target_phone_number') }} </th>
-                              <th width="20%"> {{ trans('labels.invitation.register_time') }} </th>
-                              <th width="10%"> {{ trans('labels.invitation.isCheck') }} </th>
-                              <th width="10%"> {{ trans('labels.invitation.isEnrol') }} </th>
-                            <th width="15%"> {{ trans('labels.action') }} </th>
+                              <th width="15%"> {{ trans('labels.signup.uname') }} </th>
+                              <th width="10%"> {{ trans('labels.signup.phone_number') }} </th>
+                              <th width="20%"> {{ trans('labels.signup.org_name') }} </th>
+                              <th width="20%"> {{ trans('labels.signup.course_name') }} </th>
+                              <th width="10%"> {{ trans('labels.signup.created_at') }} </th>
+                              <th width="5%"> {{ trans('labels.signup.status') }} </th>
+                              <th width="10%"> {{ trans('labels.signup.org_account_name') }} </th>
+                              <th width="10%"> {{ trans('labels.signup.manage_name') }} </th>
+                              <th width="10%"> {{ trans('labels.signup.manage_time') }} </th>
+                            <th width="8%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>
@@ -102,7 +119,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/invitation/invitation-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/signup/signup-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {

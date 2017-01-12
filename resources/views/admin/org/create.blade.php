@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/org.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
 @endsection
 @section('content')
     <div class="page-bar">
@@ -73,8 +74,14 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="city">{{trans('labels.org.city')}}(必填)</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" id="city" name="city" placeholder="{{trans('labels.org.city')}}">
+                                <div class="col-md-4">
+                                    <select id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
+                                        <option value="武汉" selected>武汉</option>
+                                        <option value="北京">北京</option>
+                                        <option value="上海">上海</option>
+                                        <option value="广州">广州</option>
+                                        <option value="深圳">深圳</option>
+                                    </select>
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -193,6 +200,7 @@
 @endsection
 @section('js')
     <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
     {{--编辑器--}}
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>

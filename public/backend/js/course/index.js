@@ -4,6 +4,10 @@
 
 $(function(){
 
+        $('.orgSelectpicker').selectpicker({
+            liveSearchPlaceholder:'输入机构名称进行搜索'
+        });
+
         /**定义一个MyEditor对象**/
         var MyEditor=function(){
             this.init();

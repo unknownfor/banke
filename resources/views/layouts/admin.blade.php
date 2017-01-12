@@ -19,6 +19,7 @@
         <link href="{{asset('backend/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('backend/plugins/uniform/css/uniform.default.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('backend/plugins/bootstrap-switch/css/bootstrap-switch.min.css')}}" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon"  href="{{asset('backend/img/favicon.ico')}}"/>
         <!-- END GLOBAL MANDATORY STYLES -->
         @yield('css')
         <!-- BEGIN THEME GLOBAL STYLES -->
