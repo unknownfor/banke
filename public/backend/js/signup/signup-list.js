@@ -7,10 +7,10 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        //'url' : '/admin/org/ajaxIndex',
+        'url' : '/admin/signup/ajaxIndex',
         "data": function ( d ) {
           d.name =$('.filter input[name="name"]').val();
-          d.city =$('.filter input[name="city"]').val();
+          d.mobile =$('.filter input[name="mobile"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
@@ -27,18 +27,30 @@ var TableDatatablesAjax = function() {
           "data": "name",
           "name" : "name",
           "orderable" : false,
-          render:function(res,type,full){
-            return '<img class="table-cell-logo" src="'+full.logo+'"><label>'+res+'</label>';
-          }
         },
         {
-          "data": "city",
-          "name": "city",
+          "data": "mobile",
+          "name": "mobile",
           "orderable" : false,
         },
         {
-          "data": "address",
-          "name": "address",
+          "data": "org_name",
+          "name": "org_name",
+          "orderable" : true,
+        },
+        {
+          "data": "course_name",
+          "name": "course_name",
+          "orderable" : true,
+        },
+        {
+          "data": "org_account_name",
+          "name": "org_account_name",
+          "orderable" : true,
+        },
+        {
+          "data": "operator_name",
+          "name": "operator_name",
           "orderable" : true,
         },
         { 

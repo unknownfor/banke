@@ -192,4 +192,9 @@ class UserController extends Controller
     }
 
 
+    public function search_by_mobile()
+    {
+        $data = UserRepository::search_by_mobile();
+        return response()->json($data);
+    }
 }

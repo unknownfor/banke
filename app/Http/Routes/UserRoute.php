@@ -22,6 +22,9 @@ $router->group(['prefix' => 'user'], function($router){
 	$router->post('/post_password','UserController@postAdminPassword');
 	//管理员信息修改
 	$router->post('/post_info','UserController@postAdminInfo');
+
+	//手机号查询用户
+	$router->post('/search_by_mobile','UserController@search_by_mobile');
 });
 
 $router->resource('user', 'UserController');

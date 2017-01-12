@@ -31,7 +31,7 @@ class SignupController extends Controller
      */
     public function ajaxIndex()
     {
-        $data = OrgRepository::ajaxIndex();
+        $data = OrderRepository::ajaxIndex();
         return response()->json($data);
     }
     /**
@@ -42,9 +42,7 @@ class SignupController extends Controller
      */
     public function create()
     {
-        $permissions = PermissionRepository::findPermissionWithArray();
-        $roles = RoleRepository::findRoleWithObject();
-        return view('admin.signup.create')->with(compact(['permissions','roles']));
+        return view('admin.signup.create');
     }
 
     /**
@@ -54,10 +52,10 @@ class SignupController extends Controller
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(CreateOrgRequest $request)
+    public function store(OrderRequest $request)
     {
-        OrgRepository::store($request);
-        return redirect('admin/org');
+        OrderRepository::store($request);
+        return redirect('admin/signup');
     }
 
     /**
@@ -69,8 +67,8 @@ class SignupController extends Controller
      */
     public function edit($id)
     {
-        $org = OrgRepository::edit($id);
-        return view('admin.org.edit')->with(compact('org'));
+        $order = OrderRepository::edit($id);
+        return view('admin.signup.edit')->with(compact('order'));
     }
     /**
      * 修改机构资料

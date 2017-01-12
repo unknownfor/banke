@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeUserProfiles;
 use App\User;
 use Carbon\Carbon;
 use Flash;
@@ -303,6 +304,13 @@ class UserRepository
 	public function getUserInfoById($id)
 	{
 		$user_info = User::find($id);
+		return $user_info;
+	}
+
+	public function search_by_mobile()
+	{
+		$mobile = request('mobile', '');
+		$user_info = BankeUserProfiles::where('mobile', $mobile)->get(['uid', 'name']);
 		return $user_info;
 	}
 }

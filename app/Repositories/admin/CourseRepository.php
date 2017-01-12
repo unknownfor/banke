@@ -229,4 +229,10 @@ class CourseRepository
 		return $course;
 	}
 
+	public function search_by_org()
+	{
+		$org_id = request('org_id', '');
+		$course = BankeCourse::where('org_id', $org_id)->where('status', 1)->get(['id', 'name']);
+		return $course;
+	}
 }
