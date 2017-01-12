@@ -30,6 +30,9 @@ var TableDatatablesAjax = function() {
         	"data": "name",
         	"name" : "name",
         	"orderable" : false,
+            "search":{
+              "regex": true
+            }
         },
         {
               "data": "mobile",
@@ -37,13 +40,13 @@ var TableDatatablesAjax = function() {
               "orderable" : false,
           },
           {
-              "data": "org_id",
-              "name": "org_id",
+              "data": "org_name",
+              "name": "org_name",
               "orderable" : false,
           },
           {
-              "data": "course_id",
-              "name": "course_id",
+              "data": "course_name",
+              "name": "course_name",
               "orderable" : false,
           },
         { 
