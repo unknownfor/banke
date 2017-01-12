@@ -315,74 +315,93 @@ class AppUserRepository
 	}
 
 	/**
-	 * 查看角色权限
-	 * @author 晚黎
-	 * @date   2016-04-13T17:09:22+0800
-	 * @param  [type]                   $id [description]
-	 * @return [type]                       [description]
+	 * datatable获取数据
+	 * @author shaolei
+	 * @date   2016-04-13T21:14:37+0800
+	 * @return [type]                   [description]
 	 */
-	public function show($id)
+	public function ajaxOrgAccount()
 	{
+		$draw = request('draw', 1);/*获取请求次数*/
+		$start = request('start', config('admin.global.list.start')); /*获取开始*/
+		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
-		$user = User::with(['permission','role'])->findOrFail($id)->toArray();
+//		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
+		$search_pattern = true;
 
-		if ($user['permission']) {
-			$permissionArray = [];
-			foreach ($user['permission'] as $v) {
-				array_set($permissionArray, $v['slug'], ['name' => $v['name'],'desc' => $v['description']]);
+		$name = request('name' ,'');
+		$mobile = request('mobile' ,'');
+		$status = request('status' ,'');
+		$created_at_from = request('created_at_from' ,'');
+		$created_at_to = request('created_at_to' ,'');
+		$updated_at_from = request('updated_at_from' ,'');
+		$updated_at_to = request('updated_at_to' ,'');
+		$orders = request('order', []);
+
+		$user = new BankeUserProfiles;
+
+		$user = $user->where('org_id', '>', 0);
+
+		/*名称搜索*/
+		if($name){
+			if($search_pattern){
+				$user = $user->where('name', 'like', $name);
+			}else{
+				$user = $user->where('name', $name);
 			}
-			$user['permission'] = $permissionArray;
 		}
-		return $user;
-	}
 
-	public function resetPassword($request)
-	{
-		$request = $request->all();
-		$request['password'] = bcrypt($request['password']);
-		$user = User::find($request['id']);
-		if ($user) {
-			if ($user->fill($request)->save()) {
-				Flash::success(trans('alerts.users.reset_success'));
-				return true;
+		/*手机搜索*/
+		if($mobile){
+			if($search_pattern){
+				$user = $user->where('mobile', 'like', $mobile);
+			}else{
+				$user = $user->where('mobile', $mobile);
 			}
-			Flash::error(trans('alerts.users.reset_error'));
-			return false;
 		}
-		abort(404);
-	}
 
-	/**
-	 * 修改管理员资料
-	 */
-	public function changeAdminInfoById($request)
-	{
-		$request = $request->all();
-		$user = User::find($request['id']);
-		if ($user) {
-			if ($user->fill($request)->save()) {
-				Flash::success(trans('alerts.users.admin_info_success'));
-				return true;
+		/*创建时间搜索*/
+		if($created_at_from){
+			$user = $user->where('created_at', '>=', getTime($created_at_from));
+		}
+		if($created_at_to){
+			$user = $user->where('created_at', '<=', getTime($created_at_to, false));
+		}
+
+		/*修改时间搜索*/
+		if($updated_at_from){
+			$uafc = new Carbon($updated_at_from);
+			$user = $user->where('created_at', '>=', getTime($updated_at_from));
+		}
+		if($updated_at_to){
+			$user = $user->where('created_at', '<=', getTime($updated_at_to, false));
+		}
+
+		$count = $user->count();
+
+
+		if($orders){
+			$orderName = request('columns.' . request('order.0.column') . '.name');
+			$orderDir = request('order.0.dir');
+			$user = $user->orderBy($orderName, $orderDir);
+		}
+
+		$user = $user->offset($start)->limit($length);
+		$users = $user->get();
+
+		if ($users) {
+			foreach ($users as &$v) {
+				$v['actionButton'] = $v->getActionButtonAttribute();
 			}
-			Flash::error(trans('alerts.users.admin_info_fail'));
-			return false;
 		}
-		abort(404);
+
+		return [
+			'draw' => $draw,
+			'recordsTotal' => $count,
+			'recordsFiltered' => $count,
+			'data' => $users,
+		];
 	}
 
-	/**
-	 * 获取用户信息by email
-	 * @param $email
-	 */
-	public function getUserInfoByEmail($email)
-	{
-		$user_info = User::where("email",$email)->get();
-		return $user_info;
-	}
-
-	public function getUserInfoById($id)
-	{
-		$user_info = User::find($id);
-		return $user_info;
-	}
+	
 }

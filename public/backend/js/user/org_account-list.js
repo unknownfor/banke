@@ -11,7 +11,6 @@ var TableDatatablesAjax = function() {
         "data": function ( d ) {
           d.name = $('.filter input[name="name"]').val();
           d.mobile = $('.filter input[name="mobile"]').val();
-          d.certification_status = $('.filter select[name="certification_status"] option:selected').val();
           d.created_at_from = $('.filter input[name="created_at_from"]').val();
           d.created_at_to = $('.filter input[name="created_at_to"]').val();
           d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
@@ -37,35 +36,9 @@ var TableDatatablesAjax = function() {
           "name": "mobile",
           "orderable" : false,
         },
-        { 
-          "data": "certification_status",
-          "name": "certification_status",
-          "orderable" : true,
-          render:function(data){
-            if (data == 2) {
-              return '<span class="label label-success"> 已认证 </span>';
-            }else if(data == 1){
-              return '<span class="label label-warning"> 待审核 </span>';
-            }else if(data == 3){
-              return '<span class="label label-danger"> 未通过 </span>';
-            }else {
-              return '<span class="label label-warning"> 未申请 </span>';
-            }
-          }
-        },
         {
-          "data": "account_balance",
-          "name": "account_balance",
-          "orderable" : false,
-        },
-        {
-          "data": "total_cashback_amount",
-          "name": "total_cashback_amount",
-          "orderable" : false,
-        },
-        {
-          "data": "withdrawal_amount",
-          "name": "withdrawal_amount",
+          "data": "org_name",
+          "name": "org_name",
           "orderable" : false,
         },
         { 

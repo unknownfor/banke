@@ -148,6 +148,8 @@ return [
 		'cashList' => '<i class="fa fa-th-list"></i> 提现列表',
 		'checkinsList' => '<i class="fa fa-th-list"></i> 签到列表',
 		'invitationList' => '<i class="fa fa-th-list"></i> 邀请列表',
+		'orgAccountList' => '<i class="fa fa-bars"></i> 机构账户列表',
+		'orgAccountCreate' => '<i class="fa fa-bars"></i> 创建机构账户'
 	],
 	'dict' => [
 		'id' => '序号',
@@ -209,6 +211,7 @@ return [
 	],
 
 	'app_user' => [
+		'org_account_list' => '机构账户列表',
 		'list' => 'App用户列表',
 		'certification' => '用户认证申请',
 		'uid' => '序号',

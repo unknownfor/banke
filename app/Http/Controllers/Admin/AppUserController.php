@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\Banke\BankeOrg;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -9,10 +10,9 @@ use AppUserRepository;
 use PermissionRepository;
 use RoleRepository;
 use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\ResetPasswordRequest;
+use App\Http\Requests\CreateOrgUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Http\Requests\postAdminPasswordRequest;
-use App\Http\Requests\postAdminInfoRequest;
+
 
 class AppUserController extends Controller
 {
@@ -114,66 +114,69 @@ class AppUserController extends Controller
         $user = UserRepository::show($id);
         return view('admin.user.show')->with(compact('user'));
     }
-    /**
-     * 修改用户密码视图
-     * @author 晚黎
-     * @date   2016-04-14T11:57:42+0800
-     * @param  [type]                   $id [description]
-     * @return [type]                       [description]
-     */
-    public function changePassword($id)
-    {
-        return view('admin.user.reset')->with(compact('id'));
-    }
 
     /**
-     * 修改用户密码
-     * @author 晚黎
-     * @date   2016-04-14T11:58:13+0800
+     * 机构用户列表
+     * @author shaolei
+     * @date   2016-04-13T21:12:18+0800
      * @return [type]                   [description]
      */
-    public function resetPassword(ResetPasswordRequest $request)
+    public function org_account()
     {
-        UserRepository::resetPassword($request);
-        return redirect('admin/user');
+        return view('admin.app_user.org_account');
     }
 
     /**
-     * 登录用户修改密码页面
+     * datatable 获取机构账户数据
+     * @author shaolei
+     * @date   2016-04-13T11:25:58+0800
+     * @return [type]                   [description]
      */
-    public function profile($id) {
-
-        return view('admin.user.profile')->with(compact('id'));
+    public function ajaxOrgAccount()
+    {
+        $data = AppUserRepository::ajaxOrgAccount();
+        return response()->json($data);
     }
 
     /**
-     * 管理员资料修改
+     * 修改机构用户状态
+     * @author shaolei
+     * @date   2016-04-14T11:50:04+0800
+     * @param  [type]                   $id     [description]
+     * @param  [type]                   $status [description]
+     * @return [type]                           [description]
      */
-    public function changeAdminInfo($id)
+    public function mark_org_account($id,$status)
     {
-        return view('admin.user.admin_info')->with(compact('id'));
+        AppUserRepository::certificate($id,$status);
+        return redirect('admin/app_user/mark_org_account');
     }
 
     /**
-     * 修改管理员密码
+     * 添加机构用户视图
+     * @author shaolei
+     * @date   2016-04-13T11:26:16+0800
+     * @return [type]                   [description]
      */
-    public function postAdminPassword(postAdminPasswordRequest $request)
+    public function create_org_account()
     {
-        $id = $request->get('id');
-        UserRepository::resetPassword($request);
-
-        return redirect('admin/user/profile/'.$id);
+        $orgs = BankeOrg::where('status', 1)->get();
+        return view('admin.app_user.create_org_account')->with(compact(['orgs']));
     }
 
     /**
-     * 修改管理员信息
+     * 添加机构用户
+     * @author shaolei
+     * @date   2016-04-14T11:31:29+0800
+     * @param  CreateUserRequest        $request [description]
+     * @return [type]                            [description]
      */
-    public function postAdminInfo(postAdminInfoRequest $request)
+    public function store_org_account(CreateOrgUserRequest $request)
     {
-        $id = $request->get('id');
-        UserRepository::changeAdminInfoById($request);
-        return redirect('admin/user/change/'.$id);
+        AppUserRepository::store($request);
+        return redirect('admin/app_user/org_account');
     }
+
 
 
 }

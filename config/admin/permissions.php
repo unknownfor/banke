@@ -85,7 +85,8 @@ return[
 		'undo' 		=> 'admin.app_user.undo',
 		'audit'	=> 'admin.app_user.audit',
 		'show'		=> 'admin.app_user.list',
-		'certificate'	=> 'admin.app_user.certificate'
+		'certificate'	=> 'admin.app_user.certificate',
+		'create_org_account' => 'admin.app_user.create_org_account'
 	],
 	'news' => [
 		'create' 	=> 'admin.news.create',
