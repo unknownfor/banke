@@ -47,15 +47,18 @@
                                 <label class="col-md-1 control-label" for="uname">{{trans('labels.signup.uname')}}(必填)</label>
                                 <div class="col-md-2">
                                     <input type="text" class="form-control" id="uname" name="uname" disabled value="{{old('uname')}}">
+                                    <input type="hidden" class="form-control" id="uid" name="uid">
                                     <div class="form-control-focus"> </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="col-md-7">
-                                        <input type="text" class="text" id="phone">
-                                        <a href="javascript:void(0)" class="search-btn btn blue">搜索</a>
-                                    </div>
-                                    <div class="col-md-5" class="entry-link-main">
-                                        <ul class="entry-link-ul data-ul"></ul>
+                                <div class="col-md-9">
+                                    <div class="my-search-box">
+                                        <div class="my-search-header">
+                                            <input type="text" class="my-search-input" id="phone" placeholder="输入手机号进行搜索">
+                                            <a href="javascript:void(0)" class="search-btn btn blue">搜索</a>
+                                        </div>
+                                        <div class="my-search-result">
+                                            <ul class="my-search-result-ul"></ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
