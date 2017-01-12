@@ -63,8 +63,13 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="org_name">{{trans('labels.signup.org_name')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="org_name" name="org_name" placeholder="{{trans('labels.signup.org_name')}}" value="{{old('org_name')}}">
-                                    <div class="form-control-focus"> </div>
+                                    <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
+                                        @if($orgs)
+                                            @foreach($orgs as $org)
+                                                <option value="{{$org->id}}" > {{$org->name}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
                                 </div>
                             </div>
 
