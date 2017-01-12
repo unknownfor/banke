@@ -111,8 +111,8 @@ class AppUserController extends Controller
      */
     public function show($id)
     {
-        $user = UserRepository::show($id);
-        return view('admin.user.show')->with(compact('user'));
+        /*$user = UserRepository::show($id);
+        return view('admin.user.show')->with(compact('user'));*/
     }
 
     /**
