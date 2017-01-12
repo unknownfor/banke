@@ -28,14 +28,17 @@
 
         //搜索
         $(document).on('click','.search-btn',function(){
-            controlSearchModal(true);
-            var res=[{id:'1',name:'Mike'},{id:'2',name:'Jeck'},{id:'3',name:'Jimmy'}];
-            var str='',len=res.length;
-            for(var i=0;i<len;i++){
-                str+='<li class="" data-uid="'+res[i].id+'"><p>'+res[i].name+'</p><i class="check"></i></li>';
-            }
-            $('.my-search-result-ul').html(str);
-            controlSearchModal();
+            $.post('/admin/user/search_by_mobile',{mobile:'18600466074'},function(res){
+            ///admin/course/search_by_org
+                console.log(res);
+                var res=[{id:'1',name:'Mike'},{id:'2',name:'Jeck'},{id:'3',name:'Jimmy'}];
+                var str='',len=res.length;
+                for(var i=0;i<len;i++){
+                    str+='<li class="" data-uid="'+res[i].id+'"><p>'+res[i].name+'</p><i class="check"></i></li>';
+                }
+                $('.my-search-result-ul').html(str);
+                controlSearchModal();
+            });
         });
 
         //选择目标用户

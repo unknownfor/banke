@@ -44,9 +44,9 @@
                         {!! csrf_field() !!}
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="uname">{{trans('labels.signup.uname')}}(必填)</label>
+                                <label class="col-md-1 control-label" for="uname">{{trans('labels.signup.uname')}}</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" id="uname" name="uname" disabled value="{{old('uname')}}">
+                                    <input type="text" class="form-control" id="uname" name="uname" disabled value="">
                                     <input type="hidden" class="form-control" id="uid" name="uid">
                                     <div class="form-control-focus"> </div>
                                 </div>
@@ -72,17 +72,17 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="course_name">{{trans('labels.signup.course_name')}}(必填)</label>
+                                <label class="col-md-1 control-label" for="course_name">{{trans('labels.signup.course_name')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="course_name" name="course_name" placeholder="{{trans('labels.signup.course_name')}}">
+                                    <input type="text" class="form-control" id="course_name" name="course_name" placeholder="必填">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="payment">{{trans('labels.signup.payment')}}(必填)</label>
+                                <label class="col-md-1 control-label" for="payment">{{trans('labels.signup.payment')}}必填</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="payment" name="payment" placeholder="{{trans('labels.signup.payment')}}">
+                                    <input type="text" class="form-control" id="payment" name="payment" placeholder="必填">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
