@@ -46,6 +46,7 @@ class MenuRepository
 	public function setMenuListCache()
 	{
 		$menus = Menu::where('language',config('app.locale'))
+						->where('status', 1)
 						->orderBy('sort','desc')
 						->orderBy('id','asc')
 						->get()
