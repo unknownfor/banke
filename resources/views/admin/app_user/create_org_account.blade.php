@@ -49,9 +49,9 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="email">{{trans('labels.user.email')}}</label>
+                          <label class="col-md-2 control-label" for="email">{{trans('labels.app_user.mobile')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="email" name="email" placeholder="{{trans('labels.user.email')}}" value="{{old('email')}}">
+                              <input type="text" class="form-control" id="email" name="mobile" placeholder="{{trans('labels.app_user.mobile')}}" value="{{old('mobile')}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -65,118 +65,16 @@
                       </div>
 
                       <div class="form-group form-md-line-input has-warning">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.role.slug')}}</label>
+                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.app_user.org_name')}}</label>
                         <div class="col-md-10">
                           <div class="md-checkbox-inline">
-                              @if(!$roles->isEmpty())
-                              @foreach($roles as $key => $role)
-                              <div class="md-checkbox">
-                                  <input type="checkbox" id="{{'role_'.$key}}" name="role[]" value="{{$role->id}}" class="md-check">
-                                  <label for="{{'role_'.$key}}" class="tooltips" data-placement="top" data-original-title="{{$role->description}}">
-                                      <span></span>
-                                      <span class="check"></span>
-                                      <span class="box"></span> {{$role->slug}} @permission(config('admin.permissions.role.show'))(<small><a href="{{url('admin/role/'.$role->id)}}" data-toggle="modal" data-target="#draggable" class="red-mint">{{trans('labels.role.show')}}</a></small>)@endpermission </label>
-                              </div>
+                              @if(!$orgs->isEmpty())
+                              <select name="org_id">
+                              @foreach($orgs as $org)
+                                  <option value="{{$org->id}}" > {{$org->name}}</option>
                               @endforeach
-                              @else
-                                <p>暂无角色</p>
+                              </select>
                               @endif
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group form-md-line-input has-success">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.user.confirm_email')}}</label>
-                        <div class="col-md-10">
-                          <div class="md-checkbox-inline">
-                              <div class="md-checkbox">
-                                  <input type="checkbox" id="confirm_email" value="{{config('admin.global.status.active')}}" name="confirm_email" class="md-check">
-                                  <label for="confirm_email">
-                                      <span></span>
-                                      <span class="check"></span>
-                                      <span class="box"></span> {{trans('labels.user.confirm')}} </label>
-                              </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div class="form-group form-md-line-input">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.user.status')}}</label>
-                        <div class="col-md-10">
-                            <div class="md-radio-inline">
-                                <div class="md-radio">
-                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.active')) checked @endif>
-                                    <label for="status1">
-                                        <span></span>
-                                        <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.user.active.1')}} </label>
-                                </div>
-                                <div class="md-radio">
-                                    <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if(old('status') === config('admin.global.status.audit')) checked @endif>
-                                    <label for="status2">
-                                        <span></span>
-                                        <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.user.audit.1')}} </label>
-                                </div>
-                                <div class="md-radio">
-                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>
-                                    <label for="status3">
-                                        <span></span>
-                                        <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.user.trash.1')}} </label>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                      <div class="form-group form-md-line-input">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.user.permission')}}</label>
-                        <div class="col-md-8">
-                          <div class="alert alert-success">{!!trans('labels.user.notice')!!}</div>
-                          <div class="table-scrollable">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="col-md-1 text-center">{{trans('labels.role.module')}}</th>
-                                        <th class="col-md-10 text-center">{{trans('labels.role.permission')}}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  @if($permissions)
-                                  @foreach($permissions as $permission)
-                                    @foreach($permission as $k => $v)
-                                      <tr>
-                                        <td class="text-center" style="vertical-align: middle;"> {{$k}} </td>
-                                        <td>
-                                          @if(isDoubleArray($v))
-                                          @foreach($v as $val)
-                                          <div class="col-md-4">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" name="permission[]" id="{{$val['key']}}" value="{{$val['id']}}" class="md-check">
-                                                <label for="{{$val['key']}}" class="tooltips" data-placement="top" data-original-title="{{$val['desc']}}">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span> {{$val['name']}} </label>
-                                            </div>
-                                          </div>
-                                          @endforeach
-                                          @else
-                                          <div class="col-md-4">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" name="permission[]" id="{{$v['key']}}" value="{{$v['id']}}" class="md-check">
-                                                <label for="{{$v['key']}}" class="tooltips" data-placement="top" data-original-title="{{$v['desc']}}">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span> {{$v['name']}} </label>
-                                            </div>
-                                          </div>
-                                          @endif
-                                        </td>
-                                      </tr>
-                                    @endforeach
-                                  @endforeach
-                                  @endif
-                                </tbody>
-                            </table>
                           </div>
                         </div>
                       </div>
@@ -184,7 +82,7 @@
                   <div class="form-actions">
                       <div class="row">
                           <div class="col-md-offset-2 col-md-10">
-                              <a href="{{url('admin/user')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                              <a href="{{url('admin/app_user/org_account')}}" class="btn default">{{trans('crud.cancel')}}</a>
                               <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
                           </div>
                       </div>

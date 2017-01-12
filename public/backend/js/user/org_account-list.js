@@ -7,7 +7,7 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/app_user/ajaxIndex',
+        'url' : '/admin/app_user/ajaxOrgAccount',
         "data": function ( d ) {
           d.name = $('.filter input[name="name"]').val();
           d.mobile = $('.filter input[name="mobile"]').val();
