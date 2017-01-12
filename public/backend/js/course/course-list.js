@@ -11,6 +11,7 @@ var TableDatatablesAjax = function() {
         "data": function ( d ) {
           d.name = $('.filter input[name="name"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
+          d.search.regex = true;
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -28,8 +29,8 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "org_id",
-          "name": "org_id",
+          "data": "org_name",
+          "name": "org_name",
           "orderable" : false,
         },
         {
