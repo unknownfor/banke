@@ -51,9 +51,9 @@ class CreateOrgUserRequest extends Request
         return [
             'id' => trans('labels.id'),
             'name' => trans('labels.user.name'),
-            'mobile' => trans('labels.user.mobile'),
+            'mobile' => trans('labels.app_user.mobile'),
             'password' => trans('labels.user.password'),
-            'status' => trans('labels.user.status'),
+//            'status' => trans('labels.user.status'),
             'org_id' => trans('labels.user.org_id'),
         ];
     }

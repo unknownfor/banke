@@ -49,9 +49,9 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="email">{{trans('labels.app_user.mobile')}}</label>
+                          <label class="col-md-2 control-label" for="mobile">{{trans('labels.app_user.mobile')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="email" name="mobile" placeholder="{{trans('labels.app_user.mobile')}}" value="{{old('mobile')}}">
+                              <input type="text" class="form-control" id="mobile" name="mobile" placeholder="{{trans('labels.app_user.mobile')}}" value="{{old('mobile')}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>

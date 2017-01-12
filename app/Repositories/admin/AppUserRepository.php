@@ -410,7 +410,7 @@ class AppUserRepository
 		$userData['status'] = 1;
 		//密码进行加密
 		$userData['password'] = bcrypt($userData['password']);
-
+		Log::info('info================>'.json_encode($userData));
 		if ($user->fill($userData)->save()) {
 			// 自动更新用户资料关系
 			$profiles = [
