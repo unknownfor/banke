@@ -130,4 +130,10 @@ class CourseController extends Controller
         return view('admin.course.show')->with(compact('course'));
     }
 
+    public function search_by_org()
+    {
+        $data = CourseRepository::search_by_org();
+        return response()->json($data);
+    }
+
 }

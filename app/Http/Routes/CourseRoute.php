@@ -12,6 +12,8 @@ $router->group(['prefix' => 'course'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
+	//根据机构搜索课程
+	$router->get('search_by_org', 'CourseController@search_by_org');
 });
 
 $router->resource('course', 'CourseController');
