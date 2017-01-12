@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeOrg;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeCourse;
@@ -102,8 +103,11 @@ class CourseRepository
 		$users = $user->get();
 
 		if ($users) {
+			$org = new BankeOrg;
 			foreach ($users as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
+				$that_org = $org->find($v['org_id']);
+				$v['org_name'] = $that_org['name'];
 			}
 		}
 		
