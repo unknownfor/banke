@@ -43,6 +43,7 @@ $router->group(['prefix' => 'app_user'], function($router){
 				config('admin.global.status.audit').'|'.
 				config('admin.global.status.active')
 		]);
+	$router->get('create_org_account', 'AppUserController@create_org_account');
 	$router->get('store_org_account', 'AppUserController@store_org_account');
 });
 
