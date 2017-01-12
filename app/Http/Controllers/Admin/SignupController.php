@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\Banke\BankeOrg;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -42,7 +43,8 @@ class SignupController extends Controller
      */
     public function create()
     {
-        return view('admin.signup.create');
+        $orgs = BankeOrg::where('status', 1)->get(['id', 'name']);
+        return view('admin.signup.create')->with(compact(['orgs']));
     }
 
     /**
