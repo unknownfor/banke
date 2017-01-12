@@ -35,6 +35,7 @@ $router->group(['prefix' => 'app_user'], function($router){
 
 	//机构用户
 	$router->get('org_account', 'AppUserController@org_account');
+	$router->get('ajaxOrgAccount', 'AppUserController@ajaxOrgAccount');
 	$router->get('/{id}/mark/{status}', 'AppUserController@mark_org_account')
 		->where([
 			'id' => '[0-9]+',
