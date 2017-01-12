@@ -26,7 +26,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','status','confirm_email'
+        'name', 'mobile', 'email', 'password','status','confirm_email'
     ];
 
     /**
@@ -46,5 +46,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function role()
     {
         return $this->belongsToMany('App\Models\Role','role_user','user_id','role_id')->withTimestamps();
+    }
+
+    //个人资料信息
+    public function profiles(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles', 'uid');
     }
 }

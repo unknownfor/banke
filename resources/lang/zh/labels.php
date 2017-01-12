@@ -150,6 +150,9 @@ return [
 		'invitationList' => '<i class="fa fa-share-alt"></i> 邀请列表',
 		'signupList' => '<i class="fa fa-share-alt"></i> 报名列表',
 		'signupCreate' => '<i class="fa fa-user-plus"></i> 添加报名',
+		'invitationList' => '<i class="fa fa-th-list"></i> 邀请列表',
+		'orgAccountList' => '<i class="fa fa-bars"></i> 机构账户列表',
+		'orgAccountCreate' => '<i class="fa fa-bars"></i> 创建机构账户'
 	],
 	'dict' => [
 		'id' => '序号',
@@ -211,6 +214,7 @@ return [
 	],
 
 	'app_user' => [
+		'org_account_list' => '机构账户列表',
 		'list' => 'App用户列表',
 		'certification' => '用户认证申请',
 		'uid' => '序号',
@@ -232,7 +236,8 @@ return [
 		'active' => '<span class="label label-success"> 已认证 </span>',
 		'audit' => '<span class="label label-warning"> 审核中 </span>',
 		'trash' => '<span class="label label-warning"> 未通过 </span>',
-		'no_apply' => '<span class="label label-warning"> 未申请 </span>'
+		'no_apply' => '<span class="label label-warning"> 未申请 </span>',
+		'org_name' => '机构'
 	],
 	'news' => [
 		'id' => '序号',

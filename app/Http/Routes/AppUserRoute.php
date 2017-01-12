@@ -32,6 +32,19 @@ $router->group(['prefix' => 'app_user'], function($router){
 				config('admin.global.status.audit').'|'.
 				config('admin.global.status.active')
 		]);
+
+	//机构用户
+	$router->get('org_account', 'AppUserController@org_account');
+	$router->get('ajaxOrgAccount', 'AppUserController@ajaxOrgAccount');
+	$router->get('/{id}/mark/{status}', 'AppUserController@mark_org_account')
+		->where([
+			'id' => '[0-9]+',
+			'status' => config('admin.global.status.trash').'|'.
+				config('admin.global.status.audit').'|'.
+				config('admin.global.status.active')
+		]);
+	$router->get('create_org_account', 'AppUserController@create_org_account');
+	$router->post('store_org_account', 'AppUserController@store_org_account');
 });
 
 $router->resource('app_user', 'AppUserController');

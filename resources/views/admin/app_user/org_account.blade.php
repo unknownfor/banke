@@ -13,7 +13,7 @@
           <i class="fa fa-angle-right"></i>
       </li>
       <li>
-          <span>{!! trans('labels.breadcrumb.app_userList') !!}</span>
+          <span>{!! trans('labels.breadcrumb.orgAccountList') !!}</span>
       </li>
   </ul>
 </div>
@@ -26,12 +26,12 @@
           <div class="portlet-title">
             <div class="caption">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.app_user.list')}}</span>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.app_user.org_account_list')}}</span>
             </div>
             <div class="actions">
               <div class="btn-group">
-                @permission(config('admin.permissions.app_user.create'))
-                <a href="{{url('admin/app_user/create')}}" class="btn btn-success btn-outline btn-circle">
+                @permission(config('admin.permissions.app_user.create_org_account'))
+                <a href="{{url('admin/app_user/create_org_account')}}" class="btn btn-success btn-outline btn-circle">
                   <i class="fa fa-user-plus"></i>
                   <span class="hidden-xs">{{trans('crud.create')}}</span>
                 </a>
@@ -47,10 +47,7 @@
                           <th>#</th>
                           <th width="10%"> {{ trans('labels.app_user.name') }} </th>
                           <th> {{ trans('labels.app_user.mobile') }} </th>
-                          <th> {{ trans('labels.app_user.certification_status') }} </th>
-                            <th> {{ trans('labels.app_user.account_balance') }} </th>
-                            <th> {{ trans('labels.app_user.total_cashback_amount') }} </th>
-                            <th> {{ trans('labels.app_user.withdrawal_amount') }} </th>
+                          <th> {{ trans('labels.app_user.org_name') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>
                           <th width="18%"> {{ trans('labels.action') }} </th>
@@ -79,20 +76,7 @@
                               </div>
                             </td>
                             <td>
-                                <div class="form-group form-md-line-input">
-                                    <select class="bs-select form-control form-filter" data-show-subtext="true" name="certification_status">
-                                        <option value="" data-icon="fa-glass icon-success">认证状态</option>
-                                        @if(trans('strings.app_user'))
-                                            @foreach(trans('strings.app_user') as $status_key => $status_value)
-                                                <option value="{{config('admin.global.certification_status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
                             </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
                             <td>
                               <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
                                 <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">
@@ -145,7 +129,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/user/app_user-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/user/org_account-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {
