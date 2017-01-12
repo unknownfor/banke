@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeDict;
@@ -393,6 +394,8 @@ class AppUserRepository
 		if ($users) {
 			foreach ($users as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
+				$org = BankeOrg::find($v['org_id']);
+				$v['org_name'] = $org->name;
 			}
 		}
 
