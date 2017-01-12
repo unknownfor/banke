@@ -20,6 +20,52 @@
             $('#payback').val(payback);
         });
 
+        $(document).on('focus','.my-search-input',function(){
+            if($('.my-search-result-ul').children().length>0){
+                controlSearchModal();
+            }
+        });
+
+        //搜索
+        $(document).on('click','.search-btn',function(){
+            controlSearchModal(true);
+            var res=[{id:'1',name:'Mike'},{id:'2',name:'Jeck'},{id:'3',name:'Jimmy'}];
+            var str='',len=res.length;
+            for(var i=0;i<len;i++){
+                str+='<li class="" data-uid="'+res[i].id+'"><p>'+res[i].name+'</p><i class="check"></i></li>';
+            }
+            $('.my-search-result-ul').html(str);
+            controlSearchModal();
+        });
+
+        //选择目标用户
+        $(document).on('click','.my-search-result-ul li',function(){
+            controlSearchModal(false);
+            $('#uname').val($(this).find('p').text());
+            $('#uid').val($(this).attr('data-uid'));
+        });
+
+        $(document).on('click',function(e){
+            var e= window.event || e,
+                target= e.srcElement || event.target,
+                $li=$(target).closest('.my-search-box');
+            if($li.length==0){
+                controlSearchModal(false);
+            }
+        });
+
+        function controlSearchModal(flag){
+            if(flag==undefined){
+                flag=true;
+            }
+            var $target=$('.my-search-result');
+            if(flag) {
+                $target.show();
+            }else{
+                $target.hide();
+            }
+        }
+
         //提交编辑
         window.setDataBeforeCommit=function(){
             var val=editor.getValue();
