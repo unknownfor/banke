@@ -28,7 +28,7 @@ class CreateOrgUserRequest extends Request
             'name' => 'required',
             'mobile' => 'required|mobile|unique:users,mobile',
             'password' => 'required|min:6|max:32',
-            'status' => 'required',
+//            'status' => 'required',
             'org_id' => 'required'
         ];
     }

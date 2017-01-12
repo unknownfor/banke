@@ -407,6 +407,7 @@ class AppUserRepository
 	public function store_org_account($request){
 		$user = new User;
 		$userData = $request->all();
+		$userData['status'] = 1;
 		//密码进行加密
 		$userData['password'] = bcrypt($userData['password']);
 
