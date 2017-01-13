@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\Banke\BankeCashBackUser;
 use App\Models\Banke\BankeOrg;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -12,7 +13,7 @@ use RoleRepository;
 use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Log;
 
-class SignupController extends Controller
+class OrderController extends Controller
 {
 	/**
      * 提现列表
@@ -22,7 +23,7 @@ class SignupController extends Controller
      */
     public function index()
     {
-        return view('admin.signup.list');
+        return view('admin.order.list');
     }
 
     /**
@@ -45,7 +46,7 @@ class SignupController extends Controller
     public function create()
     {
         $orgs = BankeOrg::where('status', 1)->get(['id', 'name']);
-        return view('admin.signup.create')->with(compact(['orgs']));
+        return view('admin.order.create')->with(compact(['orgs']));
     }
 
     /**
@@ -58,7 +59,7 @@ class SignupController extends Controller
     public function store(OrderRequest $request)
     {
         OrderRepository::store($request);
-        return redirect('admin/signup');
+        return redirect('admin/order');
     }
 
     /**
@@ -70,8 +71,9 @@ class SignupController extends Controller
      */
     public function edit($id)
     {
-        $order = OrderRepository::edit($id);
-        return view('admin.signup.edit')->with(compact('order'));
+        $order = BankeCashBackUser::find($id);
+        $orgs = BankeOrg::where('status', 1)->get(['id', 'name']);
+        return view('admin.order.edit')->with(compact(['order','orgs']));
     }
     /**
      * 修改机构资料
@@ -81,10 +83,10 @@ class SignupController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(UpdateOrgRequest $request,$id)
+    public function update(OrderRequest $request,$id)
     {
-        OrgRepository::update($request,$id);
-        return redirect('admin/org');
+        OrderRepository::update($request,$id);
+        return redirect('admin/order');
     }
 
     /**
@@ -97,8 +99,8 @@ class SignupController extends Controller
      */
     public function mark($id,$status)
     {
-        UserRepository::mark($id,$status);
-        return redirect('admin/org');
+        OrderRepository::mark($id,$status);
+        return redirect('admin/order');
     }
 
     /**
@@ -110,8 +112,8 @@ class SignupController extends Controller
      */
     public function destroy($id)
     {
-        OrgRepository::destroy($id);
-        return redirect('admin/org');
+        OrderRepository::destroy($id);
+        return redirect('admin/order');
     }
 
     /**
@@ -123,7 +125,7 @@ class SignupController extends Controller
      */
     public function show($id)
     {
-        $org = OrgRepository::show($id);
-        return view('admin.org.show')->with(compact('org'));
+        $org = OrderRepository::show($id);
+        return view('admin.order.show')->with(compact('order'));
     }
 }

@@ -148,8 +148,9 @@ return [
 		'cashList' => '<i class="fa fa-th-list"></i> 提现列表',
 		'checkinsList' => '<i class="fa fa-th-list"></i> 签到列表',
 		'invitationList' => '<i class="fa fa-share-alt"></i> 邀请列表',
-		'signupList' => '<i class="fa fa-share-alt"></i> 报名列表',
-		'signupCreate' => '<i class="fa fa-user-plus"></i> 添加报名',
+		'orderList' => '<i class="fa fa-share-alt"></i> 报名列表',
+		'orderCreate' => '<i class="fa fa-user-plus"></i> 添加报名',
+		'orderEdit' => '<i class="fa fa-user-plus"></i> 编辑报名',
 		'invitationList' => '<i class="fa fa-th-list"></i> 邀请列表',
 		'orgAccountList' => '<i class="fa fa-bars"></i> 机构账户列表',
 		'orgAccountCreate' => '<i class="fa fa-bars"></i> 创建机构账户'
@@ -322,7 +323,7 @@ return [
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'info' => '暂无额外权限',
 	],
-	'signup' => [
+	'order' => [
 		'id' => '序号',
 		'uid' => '学员id',
 		'name' => '姓名',
@@ -341,6 +342,7 @@ return [
 		'payback'=>'返现金额',
 		'check_in_amount'=>'打卡奖励金额',
 		'do_task_amount'=>'任务奖励金额',
+		'comment'=>'备注',
 		'list' => '报名列表',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',

@@ -7,11 +7,13 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/signup/ajaxIndex',
+        'url' : '/admin/order/ajaxIndex',
         "data": function ( d ) {
           d.name =$('.filter input[name="name"]').val();
           d.mobile =$('.filter input[name="mobile"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
+          d.created_at_from = $('.filter input[name="created_at_from"]').val();
+          d.created_at_to = $('.filter input[name="created_at_to"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -33,24 +35,24 @@ var TableDatatablesAjax = function() {
           "name": "mobile",
           "orderable" : false,
         },
-        {
-          "data": "org_name",
-          "name": "org_name",
-          "orderable" : true,
-        },
+        //{
+        //  "data": "org_name",
+        //  "name": "org_name",
+        //  "orderable" : true,
+        //},
         {
           "data": "course_name",
           "name": "course_name",
           "orderable" : true,
         },
+        //{
+        //  "data": "org_account_name",
+        //  "name": "org_account_name",
+        //  "orderable" : true,
+        //},
         {
-          "data": "org_account_name",
-          "name": "org_account_name",
-          "orderable" : true,
-        },
-        {
-          "data": "operator_name",
-          "name": "operator_name",
+          "data": "created_at",
+          "name": "created_at",
           "orderable" : true,
         },
         { 

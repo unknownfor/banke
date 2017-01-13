@@ -46,11 +46,11 @@ class OrderRequest extends Request
     {
         return [
             'id'            => trans('labels.id'),
-            'uid'          => trans('labels.signup.uid'),
-            'org_id'          => trans('labels.signup.org_id'),
-            'course_id'   => trans('labels.signup.course_id'),
-            'tuition_amount' => trans('labels.signup.tuition_amount'),
-            'status'        => trans('labels.signup.status'),
+            'uid'          => trans('labels.order.uid'),
+            'org_id'          => trans('labels.order.org_id'),
+            'course_id'   => trans('labels.order.course_id'),
+            'tuition_amount' => trans('labels.order.tuition_amount'),
+            'status'        => trans('labels.order.status'),
         ];
     }
 }

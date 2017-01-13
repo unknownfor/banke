@@ -102,15 +102,18 @@ return[
 		'undo' 		=> 'admin.enrol.undo',
 	],
 	'cash' => [
-		'destroy' 	=> 'admin.enrol.delete',
-		'trash' 	=> 'admin.enrol.trash',
-		'undo' 		=> 'admin.enrol.undo',
+		'destroy' 	=> 'admin.cash.delete',
+		'trash' 	=> 'admin.cash.trash',
+		'undo' 		=> 'admin.cash.undo',
 	],
 
-	'signup' => [
-		'create' 	=> 'admin.signup.create',
-		'destroy' 	=> 'admin.signup.delete',
-		'trash' 	=> 'admin.signup.trash',
-		'undo' 		=> 'admin.signup.undo',
+//	±¨Ãû
+	'order' => [
+		'create' 	=> 'admin.order.create',
+		'edit' 		=> 'admin.order.edit',
+		'destroy' 	=> 'admin.order.delete',
+		'show' 	=> 'admin.order.show',
+		/*'trash' 	=> 'admin.dict.trash',
+		'undo' 		=> 'admin.dict.undo',*/
 	],
 ];

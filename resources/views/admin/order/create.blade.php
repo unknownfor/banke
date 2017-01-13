@@ -10,11 +10,11 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <a href="{{url('admin/signup')}}">{!! trans('labels.breadcrumb.signupList') !!}</a>
+                <a href="{{url('admin/order')}}">{!! trans('labels.breadcrumb.orderList') !!}</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <span>{!! trans('labels.breadcrumb.signupCreate') !!}</span>
+                <span>{!! trans('labels.breadcrumb.orderCreate') !!}</span>
             </li>
         </ul>
     </div>
@@ -25,7 +25,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="icon-settings font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.signupCreate') !!}</span>
+                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.orderCreate') !!}</span>
                     </div>
                     <div class="actions">
                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -40,13 +40,13 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal signup-info-box" method="POST" action="{{url('admin/signup')}}">
+                    <form role="form" class="form-horizontal order-info-box" method="POST" action="{{url('admin/order')}}">
                         {!! csrf_field() !!}
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="name">{{trans('labels.signup.name')}}</label>
+                                <label class="col-md-1 control-label" for="name">{{trans('labels.order.name')}}</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" id="name" name="name" disabled value="">
+                                    <input type="text" class="form-control" readonly = "readonly" id="name" name="name" value="">
                                     <input type="hidden" class="form-control" name="uid">
                                     <input type="hidden" class="form-control" name="mobile">
                                     <div class="form-control-focus"> </div>
@@ -65,7 +65,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.signup.org_name')}}</label>
+                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.order.org_name')}}</label>
                                 <div class="col-md-4">
                                     <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
                                         @if($orgs)
@@ -78,7 +78,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="course_name">{{trans('labels.signup.course_name')}}</label>
+                                <label class="col-md-1 control-label" for="course_name">{{trans('labels.order.course_name')}}</label>
                                 <div class="col-md-4">
                                     <select name="course_id" class="courseSelectpicker show-tick form-control" id="course_id" data-live-search="true"></select>
                                     <div class="form-control-focus"> </div>
@@ -87,46 +87,53 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="tuition_amount">{{trans('labels.signup.tuition_amount')}}</label>
-                                <div class="col-md-9">
+                                <label class="col-md-1 control-label" for="tuition_amount">{{trans('labels.order.tuition_amount')}}</label>
+                                <div class="col-md-7">
                                     <input type="text" class="form-control" id="tuition_amount" name="tuition_amount" placeholder="必填">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="sort">{{trans('labels.signup.payback')}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" disabled id="payback" name="payback" placeholder="{{trans('labels.signup.payback')}}">
+                                <label class="col-md-1 control-label" for="sort">{{trans('labels.order.payback')}}</label>
+                                <div class="col-md-7">
+                                    <input type="text" class="form-control" disabled id="payback" name="payback" placeholder="{{trans('labels.order.payback')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="comment">{{trans('labels.order.comment')}}</label>
+                                <div class="col-md-7">
+                                    <textarea  class="form-area col-md-12" name="comment" placeholder="{{trans('labels.order.comment')}}"></textarea>
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.signup.status')}}</label>
-                                <div class="col-md-9">
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.order.status')}}</label>
+                                <div class="col-md-7">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
                                             <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn">
                                             <label for="status1">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.signup.active.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.order.active.1')}} </label>
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.signup.audit.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.order.audit.1')}} </label>
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn">
                                             <label for="status3">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.signup.trash.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.order.trash.1')}} </label>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +143,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
-                                    <a href="{{url('admin/signup')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                                    <a href="{{url('admin/order')}}" class="btn default">{{trans('crud.cancel')}}</a>
                                     <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
@@ -157,5 +164,5 @@
             });
         });
     </script>
-    <script type="text/javascript" src="{{asset('backend/js/signup/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/order/index.js')}}"></script>
 @endsection

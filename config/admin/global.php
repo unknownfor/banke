@@ -122,14 +122,14 @@ return[
 		// 控制是否显示查看按钮
 		'show' => false,
 		// trait 中的 action 参数
-		'action' => 'enrol',
+		'action' => 'cash',
 	],
 
-	//报名
-	'signup' => [
+	//报名   order  和 modal 的名字 要一致
+	'order' => [
 		// 控制是否显示查看按钮
-		'show' => false,
+		'show' => true,
 		// trait 中的 action 参数
-		'action' => 'enrol',
+		'action' => 'order',
 	],
 ];

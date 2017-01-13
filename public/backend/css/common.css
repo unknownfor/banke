@@ -1,3 +1,6 @@
+.form-area {
+  min-height: 200px;
+}
 .loding-modal {
   position: fixed;
   width: 80px;

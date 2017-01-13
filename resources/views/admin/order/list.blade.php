@@ -13,7 +13,7 @@
           <i class="fa fa-angle-right"></i>
       </li>
       <li>
-          <span>{!! trans('labels.breadcrumb.signupList') !!}</span>
+          <span>{!! trans('labels.breadcrumb.orderList') !!}</span>
       </li>
   </ul>
 </div>
@@ -26,12 +26,12 @@
             <div class="portlet-title">
             <div class="caption">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.signup.list')}}</span>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.order.list')}}</span>
             </div>
             <div class="actions">
                     <div class="btn-group">
-                        @permission(config('admin.permissions.signup.create'))
-                        <a href="{{url('admin/signup/create')}}" class="btn btn-success btn-outline btn-circle">
+                        @permission(config('admin.permissions.order.create'))
+                        <a href="{{url('admin/order/create')}}" class="btn btn-success btn-outline btn-circle">
                             <i class="fa fa-user-plus"></i>
                             <span class="hidden-xs">{{trans('crud.create')}}</span>
                         </a>
@@ -46,7 +46,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="uname" placeholder="{{ trans('labels.signup.uname') }}">
+                            <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.order.name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -57,24 +57,24 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-mobile-phone"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.signup.phone_number') }}">
+                            <input type="text" class="form-control form-filter" name="mobile" placeholder="{{ trans('labels.order.mobile') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="col-md-2" style="display: flex;height: 65px;align-items: center">
-                        <label>{{ trans('labels.signup.created_at') }}</label>
+                        <label>{{ trans('labels.order.created_at') }}</label>
                     </div>
                     <div class="col-md-8">
                         <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="signup_at_from">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="created_at_from">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
                     </div>
                         <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="signup_at_to">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
@@ -94,16 +94,16 @@
                     <thead>
                         <tr role="row" class="heading">
                               <th>id</th>
-                              <th width="15%"> {{ trans('labels.signup.uname') }} </th>
-                              <th width="10%"> {{ trans('labels.signup.phone_number') }} </th>
-                              <th width="20%"> {{ trans('labels.signup.org_name') }} </th>
-                              <th width="20%"> {{ trans('labels.signup.course_name') }} </th>
-                              <th width="10%"> {{ trans('labels.signup.created_at') }} </th>
-                              <th width="5%"> {{ trans('labels.signup.status') }} </th>
-                              <th width="10%"> {{ trans('labels.signup.org_account_name') }} </th>
-                              <th width="10%"> {{ trans('labels.signup.manage_name') }} </th>
-                              <th width="10%"> {{ trans('labels.signup.manage_time') }} </th>
-                            <th width="8%"> {{ trans('labels.action') }} </th>
+                              <th width="15%"> {{ trans('labels.order.name') }} </th>
+                              <th width="10%"> {{ trans('labels.order.mobile') }} </th>
+                              {{--<th width="20%"> {{ trans('labels.order.org_name') }} </th>--}}
+                              <th width="20%"> {{ trans('labels.order.course_name') }} </th>
+                              <th width="10%"> {{ trans('labels.order.created_at') }} </th>
+                              <th width="5%"> {{ trans('labels.order.status') }} </th>
+                              {{--<th width="10%"> {{ trans('labels.order.org_account_name') }} </th>--}}
+                              {{--<th width="10%"> {{ trans('labels.order.manage_name') }} </th>--}}
+                              {{--<th width="10%"> {{ trans('labels.order.manage_time') }} </th>--}}
+                            <th width="18%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>
@@ -119,7 +119,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/signup/signup-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/order/order-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {

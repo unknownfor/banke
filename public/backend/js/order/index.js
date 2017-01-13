@@ -2,11 +2,11 @@
  * Created by jimmy-jiang on 2016/11/14.
  */
     $(function(){
-       var signup = new singup();
+       var order = new singup();
 
         //提交
         window.setDataBeforeCommit=function(){
-            $('input[name="course_name"]').val(signup.$courseSelect.find('option:selected').text());
+            $('input[name="course_name"]').val(order.$courseSelect.find('option:selected').text());
         };
 });
 
