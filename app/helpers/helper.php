@@ -88,3 +88,13 @@ if(!function_exists('curlRequest')){
 		return $result;
 	}
 }
+
+/**
+ *	金额都保留2位小数，不四舍五入
+ */
+if(!function_exists('moneyFormat')){
+	function moneyFormat($num=null){
+		$new_input = sprintf("%.2f",substr(sprintf("%.3f", $num), 0, -2));
+		return $new_input;
+	}
+}
