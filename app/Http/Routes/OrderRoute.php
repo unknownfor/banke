@@ -12,6 +12,8 @@ $router->group(['prefix' => 'order'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
+	$router->get('ajaxCheck', 'OrderController@ajaxCheck');
+	$router->get('check', 'OrderController@check');
 });
 
 $router->resource('order', 'OrderController');
