@@ -28,14 +28,17 @@
 
         //搜索
         $(document).on('click','.search-btn',function(){
-            controlSearchModal(true);
-            var res=[{id:'1',name:'Mike'},{id:'2',name:'Jeck'},{id:'3',name:'Jimmy'}];
-            var str='',len=res.length;
-            for(var i=0;i<len;i++){
-                str+='<li class="" data-uid="'+res[i].id+'"><p>'+res[i].name+'</p><i class="check"></i></li>';
-            }
-            $('.my-search-result-ul').html(str);
-            controlSearchModal();
+            var url='',paraData={mobile:'18600466074'};
+            getDataAsync(url,paraData,function(res){
+                console.log(res);
+                var res=[{id:'1',name:'Mike'},{id:'2',name:'Jeck'},{id:'3',name:'Jimmy'}];
+                var str='',len=res.length;
+                for(var i=0;i<len;i++){
+                    str+='<li class="" data-uid="'+res[i].id+'"><p>'+res[i].name+'</p><i class="check"></i></li>';
+                }
+                $('.my-search-result-ul').html(str);
+                controlSearchModal();
+            });
         });
 
         //选择目标用户
@@ -64,6 +67,21 @@
             }else{
                 $target.hide();
             }
+        }
+
+        function getDataAsync(url,data,callback){
+            $.ajax({
+                type:'POST',
+                url:url,
+                data:data,
+                beforeSend:function(request){
+                    console.log($('input[name="_token"]').val());
+                    request.setRequestHeader('_token',$('input[name="_token"]').val());
+                },
+                success:function(res){
+                    callback(res);
+                }
+            });
         }
 
         //提交编辑
