@@ -141,6 +141,6 @@ class SignupController extends Controller
     public function show($id)
     {
         //$org = OrgRepository::show($id);
-        return view('admin.org.show')->with(compact('org'));
+        //return view('admin.org.show')->with(compact('org'));
     }
 }
