@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeCashBackUser;
+use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use Carbon\Carbon;
 use Flash;
@@ -103,12 +104,21 @@ class OrderRepository
 	 */
 	public function store($request)
 	{
-		$role = new BankeDict;
-		if ($role->fill($request->all())->save()) {
-			Flash::success(trans('alerts.dict.created_success'));
+		$input = $request->all();
+		$role = new BankeCashBackUser;
+		$input['order_id'] = date("YmdHis").mt_rand(10, 99);
+		$course = BankeCourse::find($input['course_id']);
+		$input['period'] = $course['period'];
+		$check_in_config = BankeDict::find(3);
+		$input['check_in_amount'] = $input['tuition_amount'] * $check_in_config['value'] / 100;
+		$do_task_config = BankeDict::find(4);
+		$input['do_task_amount'] = $input['tuition_amount'] * $do_task_config['value'] / 100;
+		$input['pay_tuition_time'] = date("Y-m-d H:i:s");
+		if ($role->fill($input)->save()) {
+			Flash::success(trans('alerts.order.created_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.dict.created_error'));
+		Flash::error(trans('alerts.order.created_error'));
 		return false;
 	}
 	/**
