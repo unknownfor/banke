@@ -1,10 +1,16 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeBalanceLog;
 use App\Models\Banke\BankeCashBackUser;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
+use App\Models\Banke\BankeMessage;
+use App\Models\Banke\BankeUserProfiles;
 use Carbon\Carbon;
 use Flash;
+use Illuminate\Support\Facades\Log;
+use League\Flysystem\Exception;
+
 /**
 * 权限仓库
 */
@@ -104,22 +110,80 @@ class OrderRepository
 	 */
 	public function store($request)
 	{
-		$input = $request->all();
-		$role = new BankeCashBackUser;
-		$input['order_id'] = date("YmdHis").mt_rand(10, 99);
-		$course = BankeCourse::find($input['course_id']);
-		$input['period'] = $course['period'];
-		$check_in_config = BankeDict::find(3);
-		$input['check_in_amount'] = $input['tuition_amount'] * $check_in_config['value'] / 100;
-		$do_task_config = BankeDict::find(4);
-		$input['do_task_amount'] = $input['tuition_amount'] * $do_task_config['value'] / 100;
-		$input['pay_tuition_time'] = date("Y-m-d H:i:s");
-		if ($role->fill($input)->save()) {
-			Flash::success(trans('alerts.order.created_success'));
-			return true;
-		}
-		Flash::error(trans('alerts.order.created_error'));
-		return false;
+		DB::transaction(function () use ($request) {
+			try{
+				$input = $request->all();
+				$role = new BankeCashBackUser;
+				$input['order_id'] = date("YmdHis").mt_rand(10, 99);
+				$course = BankeCourse::find($input['course_id']);
+				$input['period'] = $course['period'];
+				$check_in_config = BankeDict::find(3);
+				$input['check_in_amount'] = $input['tuition_amount'] * $check_in_config['value'] / 100;
+				$do_task_config = BankeDict::find(4);
+				$input['do_task_amount'] = $input['tuition_amount'] * $do_task_config['value'] / 100;
+				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
+				$cur_user = Auth::user();
+				$input['operator_uid'] = $cur_user->id;
+				//创建新订单
+				$role->fill($input)->save();
+				//订单状态为已审核
+				if($input['status'] == config('admin.global.status.active')){
+					$userProfile = BankeUserProfiles::where('uid', $input['uid'])->lockForUpdate()->first();
+					$userProfile->check_in_amount += $input['check_in_amount'];
+					$userProfile->do_task_amount += $input['do_task_amount'];
+					$userProfile->total_cashback_amount += ($input['check_in_amount'] + $input['do_task_amount']);
+					//更新报名学生的信息
+					$userProfile->save();
+					//如果有邀请人
+					if($userProfile->invitation_uid > 0){
+						$invitation_user = BankeUserProfiles::where('uid', $userProfile->invitation_uid)->lockForUpdate()->first();
+						//邀请成功报名缴费
+						$invite_enrol_config = BankeDict::find(7);
+						$invitation_award = $input['tuition_amount'] * $invite_enrol_config['value'] / 100;
+						$invitation_user->account_balance += $invitation_award;
+						$invitation_user->do_task_amount -= $invitation_award;
+						//更新邀请人信息
+						$invitation_user->save();
+
+						$message1 = [
+							'uid'=>$userProfile->invitation_uid,
+							'title'=>'您的好友报名成功',
+							'content'=>'您的好友“'.$input['name'].'”已成功报名，您将获得'.$invitation_award
+								.'元返现奖励，已存入您的钱包',
+							'type'=>'FRIEND_ENROL_SUCCESS'
+						];
+						//记录消息
+						BankeMessage::create($message1);
+
+						$balance_log = [
+							'uid'=>$userProfile->invitation_uid,
+							'change_amount'=>$invitation_award,
+							'change_type'=>'+',
+							'business_type'=>'INVITE_FRIEND_ENROL_SUCCESS',
+							'operator_uid'=>$input['operator_uid']
+						];
+						//记录余额变动日志
+						BankeBalanceLog::create($balance_log);
+					}
+					$message = [
+						'uid'=>$input['uid'],
+						'title'=>'您已报名成功',
+						'content'=>'您已成功报名“'.$input['course_name'].'”课程，上课打卡将获取'
+							.$input['check_in_amount'].'元返现，完成邀请任务将获取'.$input['do_task_amount']
+							.'元返现',
+						'type'=>'USER_ENROL_SUCCESS'
+					];
+					//记录消息
+					BankeMessage::create($message);
+				}
+				Flash::success(trans('alerts.order.created_success'));
+				return true;
+			}catch (Exception $e){
+				Log::info($e);
+				Flash::error(trans('alerts.order.created_error'));
+				return false;
+			}
+		});
 	}
 	/**
 	 * 修改配置视图
