@@ -10,8 +10,8 @@ class BankeCashBackUser extends Model
     //
     use ActionAttributeTrait;
 
-    protected $fillable = ['order_id', 'uid', 'org_id', 'course_id', 'org_account', 'mobile', 'tuition_amount',
-        'check_in_amount', 'do_task_amount', 'period', 'comment',
+    protected $fillable = ['order_id', 'uid','name', 'course_name', 'org_id', 'course_id', 'org_account', 'mobile', 'tuition_amount',
+        'check_in_amount', 'do_task_amount', 'period', 'comment', 'pay_tuition_time',
         'operator_uid', 'status'];
 
     private $action;
