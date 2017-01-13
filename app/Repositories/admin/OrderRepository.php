@@ -120,9 +120,9 @@ class OrderRepository
 				$course = BankeCourse::find($input['course_id']);
 				$input['period'] = $course['period'];
 				$check_in_config = BankeDict::find(3);
-				$input['check_in_amount'] = $input['tuition_amount'] * $check_in_config['value'] / 100;
+				$input['check_in_amount'] = moneyFormat(($input['tuition_amount'] * $check_in_config['value'] / 100));
 				$do_task_config = BankeDict::find(4);
-				$input['do_task_amount'] = $input['tuition_amount'] * $do_task_config['value'] / 100;
+				$input['do_task_amount'] = moneyFormat(($input['tuition_amount'] * $do_task_config['value'] / 100));
 				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
 				$cur_user = Auth::user();
 				$input['operator_uid'] = $cur_user->id;
@@ -141,7 +141,11 @@ class OrderRepository
 						$invitation_user = BankeUserProfiles::where('uid', $userProfile->invitation_uid)->lockForUpdate()->first();
 						//邀请成功报名缴费
 						$invite_enrol_config = BankeDict::find(7);
-						$invitation_award = $input['tuition_amount'] * $invite_enrol_config['value'] / 100;
+						$invitation_award = moneyFormat(($input['tuition_amount'] * $invite_enrol_config['value'] / 100));
+						//剩余任务金额小于奖励金额，则返回剩余全部
+						if($invitation_user->do_task_amount <= $invitation_award){
+							$invitation_award = $invitation_user->do_task_amount;
+						}
 						$invitation_user->account_balance += $invitation_award;
 						$invitation_user->do_task_amount -= $invitation_award;
 						//更新邀请人信息
