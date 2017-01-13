@@ -287,7 +287,7 @@ class OrderRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeDict::find($id);
+		$role = BankeCashBackUser::find($id);
 		if ($role) {
 			$roleArray = $role->toArray();
 			return $roleArray;
@@ -304,13 +304,13 @@ class OrderRepository
 	 */
 	public function update($request,$id)
 	{
-		$role = BankeDict::find($id);
+		$role = BankeCashBackUser::find($id);
 		if ($role) {
 			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.dict.updated_success'));
+				Flash::success(trans('alerts.order.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.dict.updated_error'));
+			Flash::error(trans('alerts.order.updated_error'));
 			return false;
 		}
 		abort(404);

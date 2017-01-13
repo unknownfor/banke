@@ -11,7 +11,7 @@
 });
 
     function singup(){
-        this.$orgSelect=$('select[name="org_id"]');
+        this.$orgSelect=$('.orgSelectpicker');
         this.$courseSelect=$('.courseSelectpicker');
         var that=this;
         this.$orgSelect.selectpicker({

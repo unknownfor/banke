@@ -105,6 +105,7 @@ class OrderController extends Controller
 
     public function update(OrderRequest $request,$id)
     {
+        Log::info('--------------------------------------'.$request['comment']);
         OrderRepository::update($request,$id);
         return redirect('admin/order');
 

@@ -51,15 +51,16 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="name">{{trans('labels.order.name')}}</label>
                           <div class="col-md-9">
-                              <input disabled type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.order.name')}}" value="{{$order['name']}}">
-
+                              <input readonly type="text" class="form-control"  name="name" value="{{$order['name']}}">
+                              <input  type="hidden" class="form-control" name="uid" value="{{$order['uid']}}">
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="email">{{trans('labels.order.org_id')}}</label>
+                          <label class="col-md-1 control-label" for="email">{{trans('labels.order.org_name')}}</label>
                           <div class="col-md-4">
-                              <select disabled name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
+                              <input type="hidden" name="org_id" value="{{$order['org_id']}}">
+                              <select disabled class="orgSelectpicker show-tick form-control" data-live-search="true">
                                   @if($orgs)
                                       @foreach($orgs as $org)
                                           @if($org->id == $order['org_id'])
@@ -77,22 +78,22 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" >{{trans('labels.order.course_name')}}</label>
                           <div class="col-md-9">
-                              <input type="text" disabled class="form-control"  placeholder="{{trans('labels.order.course_name')}}" value="{{$order['course_name']}}">
-                              <input type="hidden" name="course_id" value="{{$order['course_name']}}>
+                              <input type="text" readonly class="form-control" name="course_name" value="{{$order['course_name']}}">
+                              <input type="hidden" name="course_id" value="{{$order['course_id']}}"}>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="period">{{trans('labels.order.tuition_amount')}}</label>
+                          <label class="col-md-1 control-label" for="tuition_amount">{{trans('labels.order.tuition_amount')}}</label>
                           <div class="col-md-9">
-                              <input type="text" disabled class="form-control" id="period" name="period"  value="{{$order['tuition_amount']}}">
+                              <input type="text" readonly class="form-control" id="tuition_amount" name="tuition_amount"  value="{{$order['tuition_amount']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="comment">{{trans('labels.order.comment')}}</label>
                           <div class="col-md-7">
-                              <textarea  class="form-area col-md-12" name="comment" placeholder="{{trans('labels.order.comment')}}"></textarea>
+                              <textarea  class="form-area col-md-12" name="comment">{{$order['comment']}}</textarea>
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
