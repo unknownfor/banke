@@ -11,6 +11,7 @@ use OrderRepository;
 use PermissionRepository;
 use RoleRepository;
 use App\Http\Requests\OrderRequest;
+
 use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
@@ -37,6 +38,24 @@ class OrderController extends Controller
         $data = OrderRepository::ajaxIndex();
         return response()->json($data);
     }
+
+    public function check()
+    {
+        return view('admin.signup.check');
+    }
+
+    /**
+     * datatable 获取数据
+     * @author 晚黎
+     * @date   2016-04-13T11:25:58+0800
+     * @return [type]                   [description]
+     */
+    public function ajaxCheck()
+    {
+        $data = OrderRepository::ajaxCheck();
+        return response()->json($data);
+    }
+
     /**
      * 添加机构视图
      * @author 晚黎
@@ -56,7 +75,7 @@ class OrderController extends Controller
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(OrderRequest $request)
+    public function store(Requests\OrderRequest $request)
     {
         OrderRepository::store($request);
         return redirect('admin/order');
@@ -64,7 +83,7 @@ class OrderController extends Controller
 
     /**
      * 修改机构视图
-     * @author 晚黎
+     * @author shaolei
      * @date   2016-04-14T15:01:16+0800
      * @param  [type]                   $id [description]
      * @return [type]                       [description]
@@ -77,16 +96,18 @@ class OrderController extends Controller
     }
     /**
      * 修改机构资料
-     * @author 晚黎
+     * @author shaolei
      * @date   2016-04-14T15:16:54+0800
      * @param  UpdateUserRequest        $request [description]
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
+
     public function update(OrderRequest $request,$id)
     {
         OrderRepository::update($request,$id);
         return redirect('admin/order');
+
     }
 
     /**
@@ -99,8 +120,10 @@ class OrderController extends Controller
      */
     public function mark($id,$status)
     {
+
         OrderRepository::mark($id,$status);
         return redirect('admin/order');
+
     }
 
     /**
@@ -112,8 +135,10 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
+
         OrderRepository::destroy($id);
         return redirect('admin/order');
+
     }
 
     /**
@@ -125,7 +150,9 @@ class OrderController extends Controller
      */
     public function show($id)
     {
+
         $org = OrderRepository::show($id);
         return view('admin.order.show')->with(compact('order'));
+
     }
 }
