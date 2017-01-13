@@ -310,7 +310,7 @@ class UserRepository
 	public function search_by_mobile()
 	{
 		$mobile = request('mobile', '');
-		$user_info = BankeUserProfiles::where('mobile', $mobile)->get(['uid', 'name']);
+		$user_info = BankeUserProfiles::where('mobile', $mobile)->get(['uid', 'name', 'mobile']);
 		return $user_info;
 	}
 }

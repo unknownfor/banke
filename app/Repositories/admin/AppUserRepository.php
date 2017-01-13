@@ -1,5 +1,7 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeBalanceLog;
+use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeUserAuthentication;
@@ -250,6 +252,23 @@ class AppUserRepository
 						$register_award = BankeDict::where('id', 1)->first();
 						$user_profile->account_balance += $register_award->value;
 						$user_profile->register_amount += $register_award->value;
+						$balance_log = [
+							'uid'=>$id,
+							'change_amount'=>$register_award->value,
+							'change_type'=>'+',
+							'business_type'=>'REGISTER_AND_CERTIFICATE_SUCCESS',
+							'operator_uid'=>$cur_user->id
+						];
+						//记录余额变动日志
+						BankeBalanceLog::create($balance_log);
+						$message1 = [
+							'uid'=>$id,
+							'title'=>'您已认证成功',
+							'content'=>'您的身份认证信息已审核通过，你可以去提现了',
+							'type'=>'USER_CERTIFICATE_SUCCESS'
+						];
+						//记录消息
+						BankeMessage::create($message1);
 
 						if($user_profile->invitation_uid > 0){
 							$invitation_user = BankeUserProfiles::where('uid', $user_profile->invitation_uid)->lockForUpdate()->first();
@@ -258,7 +277,35 @@ class AppUserRepository
 							$invitation_user->invitation_amount += $invitation_award->value;
 							$invitation_user->account_balance += $invitation_award->value;
 							$invitation_user->save();
+							$balance_log1 = [
+								'uid'=>$user_profile->invitation_uid,
+								'change_amount'=>$invitation_award->value,
+								'change_type'=>'+',
+								'business_type'=>'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS',
+								'operator_uid'=>$cur_user->id
+							];
+							//记录余额变动日志
+							BankeBalanceLog::create($balance_log1);
+
+							$message3 = [
+								'uid'=>$user_profile->invitation_uid,
+								'title'=>'您的好友已通过认证',
+								'content'=>'您的好友“'.$user_profile->name.'”已通过身份认证，您将获得'
+									.$invitation_award->value.'元奖励，已存入您的钱包',
+								'type'=>'FRIEND_CERTIFICATE_SUCCESS'
+							];
+							//记录消息
+							BankeMessage::create($message3);
 						}
+					}elseif($status == config('admin.global.certification_status.trash')){
+						$message2 = [
+							'uid'=>$id,
+							'title'=>'您已认证失败',
+							'content'=>'您的身份认证信息审核未通过，请重新提交申请',
+							'type'=>'USER_CERTIFICATE_FAIL'
+						];
+						//记录消息
+						BankeMessage::create($message2);
 					}
 					//同步认证状态
 					$user_profile->save();
@@ -413,7 +460,6 @@ class AppUserRepository
 		$userData['status'] = 1;
 		//密码进行加密
 		$userData['password'] = bcrypt($userData['password']);
-		Log::info('info================>'.json_encode($userData));
 		if ($user->fill($userData)->save()) {
 			// 自动更新用户资料关系
 			$profiles = [
