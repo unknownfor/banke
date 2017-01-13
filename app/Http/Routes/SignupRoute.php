@@ -13,6 +13,7 @@ $router->group(['prefix' => 'signup'], function($router){
 		   				config('admin.global.status.active')
 		  	]);
 	$router->get('check', 'SignupController@check');
+	$router->get('ajaxCheck', 'SignupController@ajaxCheck');
 });
 
 $router->resource('signup', 'SignupController');
