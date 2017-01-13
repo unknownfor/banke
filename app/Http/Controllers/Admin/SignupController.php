@@ -9,6 +9,7 @@ use Laracasts\Flash\Flash;
 use OrgRepository;
 use PermissionRepository;
 use RoleRepository;
+use OrderRepository;
 use Illuminate\Support\Facades\Log;
 
 class SignupController extends Controller
