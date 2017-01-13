@@ -7,11 +7,13 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/signup/ajaxCheck',
+        'url' : '/admin/order/ajaxCheck',
         "data": function ( d ) {
           d.name =$('.filter input[name="name"]').val();
           d.mobile =$('.filter input[name="mobile"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
+          d.created_at_from = $('.filter input[name="created_at_from"]').val();
+          d.created_at_to = $('.filter input[name="created_at_to"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -33,27 +35,27 @@ var TableDatatablesAjax = function() {
           "name": "mobile",
           "orderable" : false,
         },
-        {
-          "data": "org_name",
-          "name": "org_name",
-          "orderable" : true,
-        },
+        //{
+        //  "data": "org_name",
+        //  "name": "org_name",
+        //  "orderable" : true,
+        //},
         {
           "data": "course_name",
           "name": "course_name",
           "orderable" : true,
         },
+        //{
+        //  "data": "org_account_name",
+        //  "name": "org_account_name",
+        //  "orderable" : true,
+        //},
         {
-          "data": "org_account_name",
-          "name": "org_account_name",
+          "data": "created_at",
+          "name": "created_at",
           "orderable" : true,
         },
         {
-          "data": "operator_name",
-          "name": "operator_name",
-          "orderable" : true,
-        },
-        { 
           "data": "status",
           "name": "status",
           "orderable" : false,
@@ -67,7 +69,7 @@ var TableDatatablesAjax = function() {
             }
           }
         },
-        { 
+        {
           "data": "actionButton",
           "name": "actionButton",
           "type": "html",
@@ -78,7 +80,7 @@ var TableDatatablesAjax = function() {
         ajax_datatable.$('.tooltips').tooltip( {
           placement : 'top',
           html : true
-        });  
+        });
       },
       "language": {
         url: '/admin/i18n'
@@ -86,18 +88,18 @@ var TableDatatablesAjax = function() {
     });
 
     $(document).on('click', '.filter-submit', function(){
-      ajax_datatable.ajax.reload(); 
+      ajax_datatable.ajax.reload();
     });
 
     dt.on('click', '.filter-cancel', function(){
       $('textarea.form-filter, select.form-filter, input.form-filter', dt).each(function() {
-          $(this).val("");
+        $(this).val("");
       });
 
       $('select.form-filter').selectpicker('refresh');
 
       $('input.form-filter[type="checkbox"]', dt).each(function() {
-          $(this).attr("checked", false);
+        $(this).attr("checked", false);
       });
       ajax_datatable.ajax.reload();
     });
