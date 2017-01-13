@@ -41,7 +41,7 @@ class OrderController extends Controller
 
     public function check()
     {
-        return view('admin.signup.check');
+        return view('admin.order.check');
     }
 
     /**
