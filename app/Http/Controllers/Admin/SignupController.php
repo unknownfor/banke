@@ -114,7 +114,7 @@ class SignupController extends Controller
      */
     public function mark($id,$status)
     {
-        UserRepository::mark($id,$status);
+        //UserRepository::mark($id,$status);
         return redirect('admin/org');
     }
 
@@ -127,7 +127,7 @@ class SignupController extends Controller
      */
     public function destroy($id)
     {
-        OrgRepository::destroy($id);
+        //OrgRepository::destroy($id);
         return redirect('admin/org');
     }
 
@@ -140,7 +140,7 @@ class SignupController extends Controller
      */
     public function show($id)
     {
-        $org = OrgRepository::show($id);
+        //$org = OrgRepository::show($id);
         return view('admin.org.show')->with(compact('org'));
     }
 }
