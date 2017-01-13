@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
-use OrgRepository;
+use OrderRepository;
 use PermissionRepository;
 use RoleRepository;
+use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Log;
 
 class SignupController extends Controller

@@ -44,16 +44,17 @@
                         {!! csrf_field() !!}
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="uname">{{trans('labels.signup.uname')}}</label>
+                                <label class="col-md-1 control-label" for="name">{{trans('labels.signup.name')}}</label>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" id="uname" name="uname" disabled value="">
-                                    <input type="hidden" class="form-control" id="uid" name="uid">
+                                    <input type="text" class="form-control" id="name" name="name" disabled value="">
+                                    <input type="hidden" class="form-control" name="uid">
+                                    <input type="hidden" class="form-control" name="mobile">
                                     <div class="form-control-focus"> </div>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="my-search-box">
                                         <div class="my-search-header">
-                                            <input type="text" class="my-search-input" id="phone" placeholder="输入手机号进行搜索">
+                                            <input type="text" class="my-search-input" id="phone-search-input" placeholder="输入手机号进行搜索">
                                             <a href="javascript:void(0)" class="search-btn btn blue">搜索</a>
                                         </div>
                                         <div class="my-search-result">
@@ -65,7 +66,7 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="org_name">{{trans('labels.signup.org_name')}}</label>
-                                <div class="col-md-9">
+                                <div class="col-md-4">
                                     <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
                                         @if($orgs)
                                             @foreach($orgs as $org)
@@ -78,16 +79,17 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="course_name">{{trans('labels.signup.course_name')}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" id="course_name" name="course_name" placeholder="必填">
+                                <div class="col-md-4">
+                                    <select name="course_id" class="courseSelectpicker show-tick form-control" id="course_id" data-live-search="true"></select>
                                     <div class="form-control-focus"> </div>
+                                    <input type="hidden" name="course_name">
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="payment">{{trans('labels.signup.payment')}}必填</label>
+                                <label class="col-md-1 control-label" for="tuition_amount">{{trans('labels.signup.tuition_amount')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="payment" name="payment" placeholder="必填">
+                                    <input type="text" class="form-control" id="tuition_amount" name="tuition_amount" placeholder="必填">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>

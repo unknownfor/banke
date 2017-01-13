@@ -2,15 +2,33 @@
  * Created by jimmy-jiang on 2016/11/14.
  */
     $(function(){
+       var signup = new singup();
 
-        $('.userSelectpicker').selectpicker({
+        //提交
+        window.setDataBeforeCommit=function(){
+            $('input[name="course_name"]').val(signup.$courseSelect.find('option:selected').text());
+        };
+});
+
+    function singup(){
+        this.$orgSelect=$('select[name="org_id"]');
+        this.$courseSelect=$('.courseSelectpicker');
+        var that=this;
+        this.$orgSelect.selectpicker({
             liveSearchNormalize:true,
-            liveSearchPlaceholder:'输入手机号进行搜索',
-            //'selectedText': 'cat',
-            actionsBox:true
+            liveSearchPlaceholder:'输入名称进行搜索'
+        }).on('changed.bs.select', function (e) {
+            that.refressCourseSelect(e.currentTarget.value);
+        });
+        that.refressCourseSelect(this.$orgSelect.val());
+
+        //课程选择
+        this.$courseSelect.selectpicker({
+            liveSearchNormalize:true,
+            liveSearchPlaceholder:'输入名称进行搜索'
         });
 
-        $(document).on('blur','#payment',function(){
+        $(document).on('blur','#tuition_amount',function(){
             var val=$(this).val();
             if(!/^[0-9]*$/.test(val)){
                 alert("请输入数值");
@@ -22,30 +40,35 @@
 
         $(document).on('focus','.my-search-input',function(){
             if($('.my-search-result-ul').children().length>0){
-                controlSearchModal();
+                that.controlSearchModal();
             }
         });
 
         //搜索
         $(document).on('click','.search-btn',function(){
-            var url='',paraData={mobile:'18600466074'};
-            getDataAsync(url,paraData,function(res){
-                console.log(res);
-                var res=[{id:'1',name:'Mike'},{id:'2',name:'Jeck'},{id:'3',name:'Jimmy'}];
+            var number=$('#phone-search-input').val();
+            if(!/^1[3|4|5|7|8]\d{9}$/.test(number)){
+                alert('请正确输入手机号');
+                return;
+            }
+            var url='/admin/user/search_by_mobile',
+                paraData={mobile:number};
+            that.getDataAsync(url,paraData,function(res){
                 var str='',len=res.length;
                 for(var i=0;i<len;i++){
-                    str+='<li class="" data-uid="'+res[i].id+'"><p>'+res[i].name+'</p><i class="check"></i></li>';
+                    str+='<li data-uid="'+res[i].uid+'" data-mobile="'+res[i].mobile+'"><p>'+res[i].name+'</p></li>';
                 }
                 $('.my-search-result-ul').html(str);
-                controlSearchModal();
-            });
+                that.controlSearchModal();
+            },'post');
         });
 
         //选择目标用户
         $(document).on('click','.my-search-result-ul li',function(){
-            controlSearchModal(false);
-            $('#uname').val($(this).find('p').text());
-            $('#uid').val($(this).attr('data-uid'));
+            that.controlSearchModal(false);
+            $('input[name="name"]').val($(this).find('p').text());
+            $('input[name="uid"]').val($(this).attr('data-uid'));
+            $('input[name="mobile"]').val($(this).attr('data-mobile'));
         });
 
         $(document).on('click',function(e){
@@ -53,11 +76,29 @@
                 target= e.srcElement || event.target,
                 $li=$(target).closest('.my-search-box');
             if($li.length==0){
-                controlSearchModal(false);
+                that.controlSearchModal(false);
             }
         });
+    };
 
-        function controlSearchModal(flag){
+    singup.prototype={
+
+        //刷新课程列表
+        refressCourseSelect:function (id,flag){
+            var url='/admin/course/search_by_org',
+                paraData={org_id:id},
+                that=this;
+            this.getDataAsync(url,paraData,function(res){
+                var str='',len=res.length;
+                for(var i=0;i<len;i++){
+                    str+='<option value="'+res[i].id+'">'+res[i].name+'</option>';
+                }
+                that.$courseSelect.html(str).selectpicker('refresh');
+            })
+        },
+
+        //控制搜索结果模态窗
+         controlSearchModal:function(flag){
             if(flag==undefined){
                 flag=true;
             }
@@ -67,33 +108,23 @@
             }else{
                 $target.hide();
             }
-        }
+        },
 
-        function getDataAsync(url,data,callback){
+        //请求数据
+         getDataAsync:function(url,data,callback,type){
+            type = type ||'get';
+            data._token=$('input[name="_token"]').val();
             $.ajax({
-                type:'POST',
+                type:type,
                 url:url,
                 data:data,
-                beforeSend:function(request){
-                    console.log($('input[name="_token"]').val());
-                    request.setRequestHeader('_token',$('input[name="_token"]').val());
-                },
                 success:function(res){
                     callback(res);
                 }
             });
+        },
+        //设置机构id
+        setOrgId:function(){
+
         }
-
-        //提交编辑
-        window.setDataBeforeCommit=function(){
-            var val=editor.getValue();
-            val=val.replace(/\n/g,"<br/>");
-            $('#target-area').text(val);
-
-            //相册
-            $('#cover').val(editor.getCoverImg().join(','));
-
-            //logo
-            $('#logo-input').val($('#logo').attr('src'));
-        };
-});
+    };
