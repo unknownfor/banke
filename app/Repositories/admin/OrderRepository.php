@@ -322,10 +322,10 @@ class OrderRepository
 						//创建新订单
 						$role->fill($input)->save();
 						//订单状态为已审核
-						$userProfile = BankeUserProfiles::where('uid', $input['uid'])->lockForUpdate()->first();
-						$userProfile->check_in_amount += $input['check_in_amount'];
-						$userProfile->do_task_amount += $input['do_task_amount'];
-						$userProfile->total_cashback_amount += ($input['check_in_amount'] + $input['do_task_amount']);
+						$userProfile = BankeUserProfiles::where('uid', $role->uid)->lockForUpdate()->first();
+						$userProfile->check_in_amount += $role['check_in_amount'];
+						$userProfile->do_task_amount += $role['do_task_amount'];
+						$userProfile->total_cashback_amount += ($role['check_in_amount'] + $role['do_task_amount']);
 						$userProfile->period += $role->period;
 						//更新报名学生的信息
 						$userProfile->save();
@@ -336,7 +336,7 @@ class OrderRepository
 							if($invitation_user->do_task_amount > 0){
 								//邀请成功报名缴费
 								$invite_enrol_config = BankeDict::find(7);
-								$invitation_award = moneyFormat(($input['tuition_amount'] * $invite_enrol_config['value'] / 100));
+								$invitation_award = moneyFormat(($role['tuition_amount'] * $invite_enrol_config['value'] / 100));
 								if($invitation_user->do_task_amount <= $invitation_award){
 									$invitation_award = $invitation_user->do_task_amount;
 								}
