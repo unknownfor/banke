@@ -370,7 +370,7 @@ class OrderRepository
 						$org = BankeOrg::find($role->org_id);
 						$cash_back_percent = BankeDict::whereIn('id', [3, 4])->sum('value');
 						$message = [
-							'uid'=>$input['uid'],
+							'uid'=>$role['uid'],
 							'title'=>'您已报名成功',
 							'content'=>'尊敬的'.$role->name.'用户，您已'.$role->pay_tuition_time.'于'.$org->name.'报名了'
 								.$role->course_name.'培训课程，学费为'.$role->tuition_amount.'元，平台返现学费'
