@@ -92,10 +92,10 @@
                     <thead>
                         <tr role="row" class="heading">
                             <th>id</th>
-                            <th width="12%"> {{ trans('labels.cash.uname') }} </th>
-                            <th width="12%"> {{ trans('labels.cash.phone_number') }} </th>
-                            <th width="10%"> {{ trans('labels.cash.cash_amount') }} </th>
-                            <th width="25%"> {{ trans('labels.cash.cash_account') }} </th>
+                            <th width="15%"> {{ trans('labels.cash.uname') }} </th>
+                            <th width="10%"> {{ trans('labels.cash.phone_number') }} </th>
+                            <th width="15%"> {{ trans('labels.cash.cash_amount') }} </th>
+                            <th width="15%"> {{ trans('labels.cash.left_amount') }} </th>
                             <th width="15%"> {{ trans('labels.cash.manage_time') }} </th>
                             <th width="8%"> {{ trans('labels.cash.status') }} </th>
                             <th width="15%"> {{ trans('labels.action') }} </th>

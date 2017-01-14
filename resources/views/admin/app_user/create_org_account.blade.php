@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+@endsection
 @section('content')
 <div class="page-bar">
 	<ul class="page-breadcrumb">
@@ -66,10 +69,10 @@
 
                       <div class="form-group form-md-line-input has-warning">
                         <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.app_user.org_name')}}</label>
-                        <div class="col-md-10">
+                        <div class="col-md-4">
                           <div class="md-checkbox-inline">
                               @if(!$orgs->isEmpty())
-                              <select name="org_id">
+                              <select name="org_id" class="orgSelect show-tick form-control" data-live-search="true">
                               @foreach($orgs as $org)
                                   <option value="{{$org->id}}" > {{$org->name}}</option>
                               @endforeach
@@ -100,12 +103,17 @@
 </div>
 @endsection
 @section('js')
-<script type="text/javascript">
-  $(function() {
-    /*modal事件监听*/
-    $(".modal").on("hidden.bs.modal", function() {
-         $(".modal-content").empty();
-    });
-  });
-</script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+    <script type="text/javascript">
+      $(function() {
+        /*modal事件监听*/
+        $(".modal").on("hidden.bs.modal", function() {
+             $(".modal-content").empty();
+        });
+        $('.orgSelect').selectpicker({
+            liveSearchNormalize:true,
+            liveSearchPlaceholder:'输入名称进行搜索',
+        });
+      });
+    </script>
 @endsection

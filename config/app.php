@@ -245,6 +245,7 @@ return [
         'NewsRepository' => App\Facades\NewsFacade::class,
         'EnrolRepository' => App\Facades\EnrolFacade::class,
         'OrderRepository' => App\Facades\OrderFacade::class,
+        'CashRepository' => App\Facades\OrderFacade::class,
     ],
 
 ];

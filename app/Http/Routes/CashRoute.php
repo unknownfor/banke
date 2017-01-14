@@ -8,9 +8,8 @@ $router->group(['prefix' => 'cash'], function($router){
 	$router->get('/{id}/mark/{status}', 'CashController@mark')
 		   ->where([
 		   	'id' => '[0-9]+',
-		   	'status' => config('admin.global.status.trash').'|'.
-		   				config('admin.global.status.audit').'|'.
-		   				config('admin.global.status.active')
+		   	'status' => config('admin.global.cash_status.applying').'|'.
+		   				config('admin.global.cash_status.active')
 		  	]);
 });
 

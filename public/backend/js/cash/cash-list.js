@@ -7,10 +7,10 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        //'url' : '/admin/org/ajaxIndex',
+        'url' : '/admin/cash/ajaxIndex',
         "data": function ( d ) {
           d.name =$('.filter input[name="name"]').val();
-          d.city =$('.filter input[name="city"]').val();
+          d.mobile =$('.filter input[name="mobile"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
@@ -32,13 +32,23 @@ var TableDatatablesAjax = function() {
           }
         },
         {
-          "data": "city",
-          "name": "city",
+          "data": "mobile",
+          "name": "mobile",
           "orderable" : false,
         },
         {
-          "data": "address",
-          "name": "address",
+          "data": "cash_amount",
+          "name": "cash_amount",
+          "orderable" : false,
+        }
+        , {
+          "data": "left_amount",
+          "name": "left_amount",
+          "orderable" : true,
+        },
+        {
+          "data": "manage_time",
+          "name": "manage_time",
           "orderable" : true,
         },
         { 
@@ -47,11 +57,10 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
           render:function(data){
             if (data == 1) {
-              return '<span class="label label-success"> 正常 </span>';
-            }else if(data == 0){
-              return '<span class="label label-warning"> 待审核 </span>';
-            }else{
-              return '<span class="label label-danger"> 未通过 </span>';
+              return '<span class="label label-success"> 已提现 </span>';
+            }
+            else{
+              return '<span class="label label-info> 申请中 </span>';
             }
           }
         },
@@ -60,6 +69,11 @@ var TableDatatablesAjax = function() {
           "name": "actionButton",
           "type": "html",
           "orderable" : false,
+          render:function(data,full){
+            if(full.status==1){
+              return '';
+            }
+          }
         },
       ],
       "drawCallback": function( settings ) {

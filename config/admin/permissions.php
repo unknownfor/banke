@@ -116,4 +116,9 @@ return[
 		/*'trash' 	=> 'admin.dict.trash',
 		'undo' 		=> 'admin.dict.undo',*/
 	],
+	//ÌáÏÖ
+	'cash' => [
+		'edit' 		=> 'admin.cash.edit',
+		'destroy' 	=> 'admin.cash.delete',
+	],
 ];

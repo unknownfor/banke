@@ -21,9 +21,15 @@ return[
 	//认证状态
 	'certification_status' => [
 		'no_apply' => 0,
-		'audit' => 1,
-		'active' => 2,
+		'active' => 1,
+		'audit' => 2,
 		'trash' => 3,
+	],
+
+	//提现状态
+	'cash_status' => [
+		'applying' => 0,
+		'active' => 1,
 	],
 	//分页
 	'list' => [
@@ -120,7 +126,7 @@ return[
 	//提现
 	'cash' => [
 		// 控制是否显示查看按钮
-		'show' => false,
+		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'cash',
 	],

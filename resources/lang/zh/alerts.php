@@ -116,4 +116,10 @@ return [
         'soft_deleted_success' => '删除报名成功',
         'soft_deleted_error' => '删除报名失败',
     ],
+    'cash' => [
+        'updated_success'   => '修改提现成功.',
+        'updated_error'     => '修改提现失败.',
+        'soft_deleted_success' => '删除提现成功',
+        'soft_deleted_error' => '删除提现失败',
+    ],
 ];

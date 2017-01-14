@@ -90,14 +90,14 @@
                     <thead>
                         <tr role="row" class="heading">
                               <th>id</th>
-                              <th width="15%"> {{ trans('labels.checkin.uname') }} </th>
+                              <th width="10%"> {{ trans('labels.checkin.uname') }} </th>
                               <th width="10%"> {{ trans('labels.checkin.phone_number') }} </th>
                               <th width="20%"> {{ trans('labels.checkin.course_name') }} </th>
                               <th width="20%"> {{ trans('labels.checkin.org_name') }} </th>
-                              <th width="15%"> {{ trans('labels.checkin.price_amount') }} </th>
-                            <th width="15%"> {{ trans('labels.checkin.checkin_time') }} </th>
-                          <th width="8%"> {{ trans('labels.checkin.status') }} </th>
-                          <th width="15%"> {{ trans('labels.action') }} </th>
+                              <th width="8%"> {{ trans('labels.checkin.price_amount') }} </th>
+                                <th width="15%"> {{ trans('labels.checkin.checkin_time') }} </th>
+                              <th width="8%"> {{ trans('labels.checkin.status') }} </th>
+                              <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>

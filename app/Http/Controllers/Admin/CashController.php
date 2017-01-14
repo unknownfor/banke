@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use UpdateCashRequest;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
-use OrgRepository;
+use CashRepository;
 use PermissionRepository;
 use RoleRepository;
 use Illuminate\Support\Facades\Log;
@@ -31,33 +32,8 @@ class CashController extends Controller
      */
     public function ajaxIndex()
     {
-        $data = OrgRepository::ajaxIndex();
+        $data = CashRepository::ajaxIndex();
         return response()->json($data);
-    }
-    /**
-     * 添加机构视图
-     * @author 晚黎
-     * @date   2016-04-13T11:26:16+0800
-     * @return [type]                   [description]
-     */
-    public function create()
-    {
-        $permissions = PermissionRepository::findPermissionWithArray();
-        $roles = RoleRepository::findRoleWithObject();
-        return view('admin.org.create')->with(compact(['permissions','roles']));
-    }
-
-    /**
-     * 添加机构
-     * @author 晚黎
-     * @date   2016-04-14T11:31:29+0800
-     * @param  CreateUserRequest        $request [description]
-     * @return [type]                            [description]
-     */
-    public function store(CreateOrgRequest $request)
-    {
-        OrgRepository::store($request);
-        return redirect('admin/org');
     }
 
     /**
@@ -69,8 +45,8 @@ class CashController extends Controller
      */
     public function edit($id)
     {
-        $org = OrgRepository::edit($id);
-        return view('admin.org.edit')->with(compact('org'));
+        $cash = CashRepository::edit($id);
+        return view('admin.cash.edit')->with(compact('cash'));
     }
     /**
      * 修改机构资料
@@ -80,24 +56,10 @@ class CashController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(UpdateOrgRequest $request,$id)
+    public function update(UpdateCashRequest $request,$id)
     {
-        OrgRepository::update($request,$id);
-        return redirect('admin/org');
-    }
-
-    /**
-     * 修改用户状态
-     * @author 晚黎
-     * @date   2016-04-14T11:50:04+0800
-     * @param  [type]                   $id     [description]
-     * @param  [type]                   $status [description]
-     * @return [type]                           [description]
-     */
-    public function mark($id,$status)
-    {
-        UserRepository::mark($id,$status);
-        return redirect('admin/org');
+        CashRepository::update($request,$id);
+        return redirect('admin/cash');
     }
 
     /**
@@ -109,8 +71,8 @@ class CashController extends Controller
      */
     public function destroy($id)
     {
-        OrgRepository::destroy($id);
-        return redirect('admin/org');
+        CashRepository::destroy($id);
+        return redirect('admin/cash');
     }
 
     /**
@@ -122,7 +84,7 @@ class CashController extends Controller
      */
     public function show($id)
     {
-        $org = OrgRepository::show($id);
-        return view('admin.org.show')->with(compact('org'));
+        $cash = CashRepository::show($id);
+        return view('admin.cash.show')->with(compact('cash'));
     }
 }
