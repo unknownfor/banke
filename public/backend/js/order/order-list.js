@@ -64,6 +64,8 @@ var TableDatatablesAjax = function() {
               return '<span class="label label-success"> 正常 </span>';
             }else if(data == 0){
               return '<span class="label label-warning"> 待审核 </span>';
+            }else if(data==2){
+              return '<span class="label label-info"> 已退款 </span>';
             }else{
               return '<span class="label label-danger"> 未通过 </span>';
             }

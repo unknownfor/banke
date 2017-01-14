@@ -39,7 +39,7 @@ $(function(){
                 var $editor = $('#my-editor'),
                     toolbar = ['title', 'bold', 'italic', 'underline', 'fontScale', 'color', '|',
                         'ol', 'ul', 'blockquote', 'table', '|',
-                        'link', 'image', 'hr', '|',
+                        'code','link', 'image', 'hr', '|',
                         'indent', 'outdent', 'alignment'
                     ];
                 this.editor = new Simditor({

@@ -111,7 +111,7 @@ return[
 	'order' => [
 		'create' 	=> 'admin.order.create',
 		'edit' 		=> 'admin.order.edit',
-		'destroy' 	=> 'admin.order.delete',
+//		'destroy' 	=> 'admin.order.delete',
 		'show' 	=> 'admin.order.show',
 		/*'trash' 	=> 'admin.dict.trash',
 		'undo' 		=> 'admin.dict.undo',*/
