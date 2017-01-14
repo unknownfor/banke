@@ -1,10 +1,4 @@
 @extends('layouts.admin')
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/order.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
-@endsection
 @section('content')
 <div class="page-bar">
 	<ul class="page-breadcrumb">
@@ -123,6 +117,13 @@
                                           <span class="check"></span>
                                           <span class="box"></span> {{trans('strings.order.trash.1')}} </label>
                                   </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="status4" name="status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($order['status'] == config('admin.global.status.ban')) checked @endif>
+                                      <label for="status4">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.order.ban.1')}} </label>
+                                  </div>
                               </div>
                           </div>
                       </div>
@@ -142,47 +143,4 @@
       </div>
   </div>
 </div>
-<div class="modal fade" id="draggable" role="basic" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-        </div>
-    </div>
-</div>
-<form id="upImgForm" method="post" class="hiddenForm">
-    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif,image/jpeg">
-</form>
-
-<form id="upImgForm1" method="post" class="hiddenForm">
-    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
-</form>
-<div class="loding-modal">
-    <i id="imgLoadingCircle" class="loadingCircle active"></i>
-    <div>上传中…</div>
-</div>
-@endsection
-@section('js')
-    <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-    {{--编辑器--}}
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
-    {{--图片查看--}}
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
-    <script type="text/javascript">
-        window.urlObj={
-            apiUrl:'http://api.hisihi.com/'
-        };
-      $(function() {
-        /*modal事件监听*/
-        $(".modal").on("hidden.bs.modal", function() {
-             $(".modal-content").empty();
-        });
-      });
-    </script>
-    <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/order/index.js')}}"></script>
 @endsection

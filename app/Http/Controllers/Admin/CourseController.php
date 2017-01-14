@@ -126,8 +126,9 @@ class CourseController extends Controller
      */
     public function show($id)
     {
+        $orgs=BankeOrg::where('status',1)->orderBy('sort', 'desc')->get(['id','name']);
         $course = CourseRepository::show($id);
-        return view('admin.course.show')->with(compact('course'));
+        return view('admin.course.show')->with(compact(['course','orgs']));
     }
 
     public function search_by_org()

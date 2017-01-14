@@ -348,12 +348,12 @@ class OrderRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeDict::destroy($id);
+		$isDelete = BankeCashBackUser::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.dict.deleted_success'));
+			Flash::success(trans('alerts.order.soft_deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.dict.deleted_error'));
+		Flash::error(trans('alerts.order.soft_deleted_error'));
 		return false;
 	}
 

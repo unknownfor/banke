@@ -114,5 +114,6 @@ return [
         'created_success'   => '创建报名成功.',
         'created_error'     => '创建报名失败.',
         'soft_deleted_success' => '删除报名成功',
+        'soft_deleted_error' => '删除报名失败',
     ],
 ];
