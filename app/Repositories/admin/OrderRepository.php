@@ -398,8 +398,9 @@ class OrderRepository
 				Flash::error(trans('alerts.order.created_error'));
 				return false;
 			}
+		}else{
+			abort(404);
 		}
-		abort(404);
 	}
 
 	/**
