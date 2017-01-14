@@ -263,8 +263,8 @@ class AppUserRepository
 						BankeBalanceLog::create($balance_log);
 						$message1 = [
 							'uid'=>$id,
-							'title'=>'您已认证成功',
-							'content'=>'您的身份认证信息已审核通过，你可以去提现了',
+							'title'=>'认证成功',
+							'content'=>'您的认证信息审核通过，平台已奖励您'.$register_award->value.'元现金，快去现金钱包里查看吧！',
 							'type'=>'USER_CERTIFICATE_SUCCESS'
 						];
 						//记录消息
@@ -289,9 +289,9 @@ class AppUserRepository
 
 							$message3 = [
 								'uid'=>$user_profile->invitation_uid,
-								'title'=>'您的好友已通过认证',
-								'content'=>'您的好友“'.$user_profile->name.'”已通过身份认证，您将获得'
-									.$invitation_award->value.'元奖励，已存入您的钱包',
+								'title'=>'好友认证成功',
+								'content'=>'您的好友'.$user_profile->mobile.'已经认证成功！平台已奖励您'
+									.$invitation_award->value.'元现金，快去现金钱包里查看吧！',
 								'type'=>'FRIEND_CERTIFICATE_SUCCESS'
 							];
 							//记录消息
@@ -301,7 +301,7 @@ class AppUserRepository
 						$message2 = [
 							'uid'=>$id,
 							'title'=>'您已认证失败',
-							'content'=>'您的身份认证信息审核未通过，请重新提交申请',
+							'content'=>'您的认证信息未通过审核，请重新提交申请',
 							'type'=>'USER_CERTIFICATE_FAIL'
 						];
 						//记录消息
