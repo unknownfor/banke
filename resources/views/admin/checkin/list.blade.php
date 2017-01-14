@@ -13,7 +13,7 @@
           <i class="fa fa-angle-right"></i>
       </li>
       <li>
-          <span>{!! trans('labels.breadcrumb.checkinsList') !!}</span>
+          <span>{!! trans('labels.breadcrumb.checkinList') !!}</span>
       </li>
   </ul>
 </div>
@@ -26,7 +26,7 @@
             <div class="portlet-title">
             <div class="caption">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.checkins.list')}}</span>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.checkin.list')}}</span>
             </div>
           </div>
             <div class="search-box filter">
@@ -36,7 +36,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-book"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="course_name" placeholder="{{ trans('labels.checkins.course_name') }}">
+                            <input type="text" class="form-control form-filter" name="course_name" placeholder="{{ trans('labels.checkin.course_name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-building"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="org_name" placeholder="{{ trans('labels.checkins.org_name') }}">
+                            <input type="text" class="form-control form-filter" name="org_name" placeholder="{{ trans('labels.checkin.org_name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -58,20 +58,20 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-mobile-phone"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.checkins.phone_number') }}">
+                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.checkin.phone_number') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="checkins_at_from">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="checkin_at_from">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
                     </div>
                     <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="checkins_at_to">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="checkin_at_to">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
@@ -90,13 +90,13 @@
                     <thead>
                         <tr role="row" class="heading">
                               <th>id</th>
-                              <th width="15%"> {{ trans('labels.checkins.uname') }} </th>
-                              <th width="10%"> {{ trans('labels.checkins.phone_number') }} </th>
-                              <th width="20%"> {{ trans('labels.checkins.course_name') }} </th>
-                              <th width="20%"> {{ trans('labels.checkins.org_name') }} </th>
-                              <th width="15%"> {{ trans('labels.checkins.price_amount') }} </th>
-                            <th width="15%"> {{ trans('labels.checkins.checkins_time') }} </th>
-                          <th width="8%"> {{ trans('labels.checkins.status') }} </th>
+                              <th width="15%"> {{ trans('labels.checkin.uname') }} </th>
+                              <th width="10%"> {{ trans('labels.checkin.phone_number') }} </th>
+                              <th width="20%"> {{ trans('labels.checkin.course_name') }} </th>
+                              <th width="20%"> {{ trans('labels.checkin.org_name') }} </th>
+                              <th width="15%"> {{ trans('labels.checkin.price_amount') }} </th>
+                            <th width="15%"> {{ trans('labels.checkin.checkin_time') }} </th>
+                          <th width="8%"> {{ trans('labels.checkin.status') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
@@ -113,7 +113,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/checkins/checkins-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/checkin/checkin-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {

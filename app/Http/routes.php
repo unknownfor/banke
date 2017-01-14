@@ -81,7 +81,7 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //提现记录
         require(__DIR__ . '/Routes/CashRoute.php');
         //签到记录
-        require(__DIR__ . '/Routes/CheckinsRoute.php');
+        require(__DIR__ . '/Routes/CheckinRoute.php');
          //邀请记录
         require(__DIR__ . '/Routes/InvitationRoute.php');
         //报名记录

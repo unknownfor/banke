@@ -146,7 +146,7 @@ return [
 		'enrolList' => '<i class="fa fa-bars"></i> 预约报名列表',
 		'enrolEdit' => '<i class="fa fa-user-plus"></i> 编辑预约报名',
 		'cashList' => '<i class="fa fa-th-list"></i> 提现列表',
-		'checkinsList' => '<i class="fa fa-th-list"></i> 签到列表',
+		'checkinList' => '<i class="fa fa-th-list"></i> 签到列表',
 		'invitationList' => '<i class="fa fa-share-alt"></i> 邀请列表',
 		'orderList' => '<i class="fa fa-share-alt"></i> 报名列表',
 		'orderCreate' => '<i class="fa fa-user-plus"></i> 添加报名',
@@ -285,7 +285,7 @@ return [
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
 	],
-	'checkins' => [
+	'checkin' => [
 		'id' => '序号',
 		'uid' => '学员id',
 		'uname' => '姓名',

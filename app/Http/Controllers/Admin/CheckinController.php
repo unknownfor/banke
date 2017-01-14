@@ -10,7 +10,7 @@ use PermissionRepository;
 use RoleRepository;
 use Illuminate\Support\Facades\Log;
 
-class CheckinsController extends Controller
+class CheckinController extends Controller
 {
 	/**
      * 签到列表
@@ -20,7 +20,7 @@ class CheckinsController extends Controller
      */
     public function index()
     {
-        return view('admin.checkins.list');
+        return view('admin.checkin.list');
     }
 
     /**
