@@ -122,4 +122,11 @@ return [
         'soft_deleted_success' => '删除提现成功',
         'soft_deleted_error' => '删除提现失败',
     ],
+
+    'feedback' => [
+        'updated_success'   => '修改反馈成功.',
+        'updated_error'     => '修改反馈失败.',
+        'soft_deleted_success' => '删除反馈成功',
+        'soft_deleted_error' => '删除反馈失败',
+    ],
 ];

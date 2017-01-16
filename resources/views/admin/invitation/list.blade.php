@@ -80,9 +80,7 @@
                         <tr role="row" class="heading">
                               <th>id</th>
                               <th width="15%"> {{ trans('labels.invitation.uname') }} </th>
-                              <th width="15%"> {{ trans('labels.invitation.phone_number') }} </th>
                               <th width="15%"> {{ trans('labels.invitation.target_uname') }} </th>
-                              <th width="15%"> {{ trans('labels.invitation.target_phone_number') }} </th>
                               <th width="20%"> {{ trans('labels.invitation.register_time') }} </th>
                               <th width="10%"> {{ trans('labels.invitation.isCheck') }} </th>
                               <th width="10%"> {{ trans('labels.invitation.isEnrol') }} </th>

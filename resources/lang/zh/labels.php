@@ -156,6 +156,8 @@ return [
 		'orgAccountCreate' => '<i class="fa fa-bars"></i> 创建机构账户',
 		'cashList' => '<i class="fa fa-share-alt"></i> 提现列表',
 		'cashEdit' => '<i class="fa fa-pencil"></i> 审核提现',
+		'feedbackList' => '<i class="fa fa-exchange"></i> 反馈列表',
+		'feedbackShow' => '<i class="fa fa-search"></i> 反馈详情',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -310,11 +312,11 @@ return [
 	],
 	'invitation' => [
 		'id' => '序号',
-		'uid' => '学员id',
-		'uname' => '姓名',
+		'uid' => '邀请人id',
+		'uname' => '邀请人',
 		'phone_number' => '手机号',
 		'target_uid' => '被邀请人id',
-		'target_uname' => '被邀请人姓名',
+		'target_uname' => '被邀请人',
 		'target_phone_number' => '被邀请人手机号',
 		'register_time'=>'注册时间',
 		'isCheck'=>'认证状态',
@@ -352,5 +354,14 @@ return [
 		'active' => '<span class="label label-success"> 已验证 </span>',
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'info' => '暂无额外权限',
+	],
+	'feedback' => [
+		'id' => '序号',
+		'name' => '反馈人',
+		'content' => '内容',
+		'created_at' => '反馈时间',
+		'updated_at' => '修改时间',
+		'list' => '反馈列表',
+		'show'=>'查看详情'
 	],
 ];

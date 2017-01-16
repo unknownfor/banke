@@ -131,11 +131,19 @@ return[
 		'action' => 'cash',
 	],
 
-	//报名   order  和 modal 的名字 要一致
+	//报名
 	'order' => [
 		// 控制是否显示查看按钮
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'order',
+	],
+
+	//反馈
+	'feedback' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'feedback',
 	],
 ];

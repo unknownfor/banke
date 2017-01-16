@@ -106,3 +106,10 @@
   font-size: 12px;
   color: #808080;
 }
+.txt-ellipsis-single {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
