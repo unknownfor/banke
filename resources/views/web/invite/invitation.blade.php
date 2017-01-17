@@ -65,7 +65,7 @@
 </body>
 <script src="/front/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script>
-
+    var baseApiUrl='/invitation';
     $(function(){
         var apiUrl="";
         $(document).on('input','.mobile',function(){
@@ -82,7 +82,7 @@
         $(document).on('click','.getCheckCode',function(){
             var moblie = $('.mobile').val();
             if(/^1[3|4|5|7|8]\d{9}$/.test(moblie)){
-                var url='/Share/requestSmsCode'
+                var url=baseApiUrl+'/requestSmsCode'
                 getDataAsync(url,{mobile:moblie},function(res){
                     alert(res);
                 },'post');
