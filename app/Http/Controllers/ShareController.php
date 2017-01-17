@@ -139,15 +139,10 @@ class ShareController extends Controller
                             .'初始密码为'.$password.'，记得登陆后修改密码！【半课】'
                     ]
                 ];
-                $index = 0;
-                //最多循环10次发送短信
-                do{
-                    $response = $http->request('post', env('BMOB_REST_API_URL').'requestSms', $param);
-                    Log::info('$response=================='.json_encode($response));
-                    $code = $response->getStatusCode();
-                    Log::info('$code=================='.$code);
-                    $index++;
-                }while($code != 200 && $index < 10);
+                $response = $http->request('post', env('BMOB_REST_API_URL').'requestSms', $param);
+                Log::info('$response=================='.json_encode($response));
+                $code = $response->getStatusCode();
+                Log::info('$code=================='.$code);
                 /*if($code != 200){
                     return ApiResponseService::showError(Code::SMSID_ERROR);
                 }*/
