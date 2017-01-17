@@ -12,7 +12,6 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="../css/wechat.css" rel="stylesheet">
     <link href="/front/assets/css/invitation.css" rel="stylesheet" type="text/css"/>
     <title>邀请注册</title>
 </head>
