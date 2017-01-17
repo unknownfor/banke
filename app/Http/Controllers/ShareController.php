@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Banke\BankeDict;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -134,20 +135,21 @@ class ShareController extends Controller
                     ]
                 ];
                 $http = new Client($header);
+                $config = BankeDict::find(1);
                 $param = [
                     'json'=>[
                         'mobilePhoneNumber'=>$userData['mobile'],
-                        'content'=>'您好！20元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
-                            .'初始密码为'.$password.'，记得登陆后修改密码！【半课】'
+                        'content'=>'您好！'.$config['value'].'元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
+                            .'初始密码为'.$password.'，记得登陆后修改密码！'
                     ]
                 ];
                 $response = $http->request('post', env('BMOB_REST_API_URL').'requestSms', $param);
                 Log::info('$response=================='.json_encode($response));
                 $code = $response->getStatusCode();
                 Log::info('$code=================='.$code);
-                /*if($code != 200){
-                    return ApiResponseService::showError(Code::SMSID_ERROR);
-                }*/
+                if($code != 200){
+                    return ApiResponseService::showError(Code::SEND_SMS_ERROR);
+                }
             }catch (ClientException $e){
                 var_dump($e);
                 return ApiResponseService::showError(Code::SEND_SMS_ERROR);
