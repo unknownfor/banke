@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class BankeInvitation extends Model
 {
-    //
     use ActionAttributeTrait;
-
+    //
+    /**
+     * 与模型关联的数据表
+     *
+     * @var string
+     */
     protected $table = 'banke_invitation';
 
-    protected $fillable = ['name', 'uid', 'name', 'mobile', 'target_mobile', 'status', 'certification_status', 'enrol_status'];
+    protected $fillable = ['uid', 'name', 'status', 'mobile', 'target_mobile'];
 
     private $action;
 

@@ -87,6 +87,8 @@ class ShareController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'mobile' => 'required|mobile|unique:users,mobile',
+            'smsId' => 'required',
+            'welcome'   => 'required'
         ]);
 
         if ($validator->fails()) {
