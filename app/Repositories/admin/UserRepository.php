@@ -336,7 +336,7 @@ class UserRepository
 		if ($user->fill($userData)->save()) {
 			//邀请人信息
 			$invitation_user = BankeUserProfiles::where('invitation_code', $userData['welcome'])->first();
-			$invitation_user->$invitation_user += 1;
+			$invitation_user->invitation_count += 1;
 			$invitation_user->save();
 
 			// 自动更新用户资料关系
