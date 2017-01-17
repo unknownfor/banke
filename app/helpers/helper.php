@@ -122,3 +122,14 @@ if(!function_exists('randCode')){
 		return $password;
 	}
 }
+
+/**
+ * 生成半课用户名
+ */
+if(!function_exists('createUserName')){
+	function createUserName($mobile=null){
+		$str = str_random(5);
+		$num = substr($mobile, -3);
+		return '半课'.$str.$num;
+	}
+}
