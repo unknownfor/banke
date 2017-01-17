@@ -52,4 +52,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function profiles(){
         return $this->hasOne('App\Models\Banke\BankeUserProfiles', 'uid');
     }
+
+    //身份认证信息
+    public function authentication(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication', 'uid');
+    }
 }
