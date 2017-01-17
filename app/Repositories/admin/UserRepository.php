@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeInvitation;
 use App\Models\Banke\BankeUserProfiles;
 use App\User;
 use Carbon\Carbon;
@@ -354,7 +355,15 @@ class UserRepository
 				'mobile'=> $userData['mobile']
 			];
 			$user->authentication()->create($authentication);
-			
+
+			//记录邀请信息
+			$invitation_log = [
+				'uid'=>$invitation_user['uid'],
+				'name'=>$invitation_user['name'],
+				'mobile'=>$invitation_user['mobile'],
+				'target_mobile'=>$userData['mobile']
+			];
+			BankeInvitation::create($invitation_log);
 			return true;
 		}
 		return false;
