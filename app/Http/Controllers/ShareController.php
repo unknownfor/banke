@@ -143,13 +143,16 @@ class ShareController extends Controller
                 //最多循环10次发送短信
                 do{
                     $response = $http->request('post', env('BMOB_REST_API_URL').'requestSms', $param);
+                    Log::info('$response=================='.json_encode($response));
                     $code = $response->getStatusCode();
+                    Log::info('$code=================='.$code);
                     $index++;
                 }while($code != 200 && $index < 10);
                 /*if($code != 200){
                     return ApiResponseService::showError(Code::SMSID_ERROR);
                 }*/
             }catch (ClientException $e){
+                var_dump($e);
                 return ApiResponseService::showError(Code::SEND_SMS_ERROR);
             }
             return ApiResponseService::success('', Code::SUCCESS, '注册成功');
