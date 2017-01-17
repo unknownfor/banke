@@ -5,8 +5,6 @@ use App\User;
 use Carbon\Carbon;
 use Flash;
 use Uuid;
-use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
 /**
 * 用户仓库
 */

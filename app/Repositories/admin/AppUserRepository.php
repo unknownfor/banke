@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Flash;
 use DB;
 use Auth;
+use Uuid;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -466,7 +467,8 @@ class AppUserRepository
 				'uid' => $user->id,
 				'name' => $userData['name'],
 				'mobile'=> $userData['mobile'],
-				'org_id' => $userData['org_id']
+				'org_id' => $userData['org_id'],
+				'invitation_code'=>Uuid::generate(4)
 			];
 			$user->profiles()->create($profiles);
 			Flash::success(trans('alerts.users.created_success'));
