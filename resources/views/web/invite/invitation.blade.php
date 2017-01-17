@@ -23,7 +23,7 @@
     <!--手机注册-->
     <div class="register">
         {!! csrf_field() !!}
-        <input class="register-code" type="hidden" name="welcome" value="{{$welcome}}"/>
+        <input type="hidden" name="welcome" value="{{$welcome}}"/>
         <div class="register-box phone">
             <div class="register-img phone-img"></div>
             <input class="mobile register-input" placeholder="输入手机号"/>
@@ -32,9 +32,9 @@
         </div>
         <div class="register-box code">
             <div class="register-img code-img"></div>
-            <input class="register-input" placeholder="验证码"/>
+            <input class="register-input register-code" placeholder="验证码"/>
         </div>
-        <button class="btn">注册获得20元现金</button>
+        <button class="btn register-btn">注册获得20元现金</button>
     </div>
     <!--注册成功-->
     <div class="register-success notices hide">
@@ -84,6 +84,25 @@
             if(/^1[3|4|5|7|8]\d{9}$/.test(moblie)){
                 var url=baseApiUrl+'/requestSmsCode'
                 getDataAsync(url,{mobile:moblie},function(res){
+                    alert(res);
+                },'post');
+            }
+        });
+
+        //注册
+        $(document).on('click','.register-btn',function(){
+            var moblie = $('.mobile').val(),
+                code=$('.register-code').val();
+            if(/^1[3|4|5|7|8]\d{9}$/.test(moblie)){
+
+                var url=baseApiUrl+'/register',
+                        data={
+                            mobile:moblie,
+                            smsId:code,
+                            welcome:$('input[name="welcome"]').val()
+                        };
+
+                getDataAsync(url,data,function(res){
                     alert(res);
                 },'post');
             }
