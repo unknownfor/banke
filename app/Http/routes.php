@@ -87,6 +87,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //报名记录
         require(__DIR__ . '/Routes/OrderRoute.php');
 
+        //反馈记录
+        require(__DIR__ . '/Routes/FeedBackRoute.php');
+
     });
 });
 

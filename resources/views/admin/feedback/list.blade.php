@@ -1,0 +1,80 @@
+@extends('layouts.admin')
+@section('css')
+<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/datatables.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+@endsection
+@section('content')
+<div class="page-bar">
+  <ul class="page-breadcrumb">
+      <li>
+          <a href="{{url('admin/')}}">{!! trans('labels.breadcrumb.home') !!}</a>
+          <i class="fa fa-angle-right"></i>
+      </li>
+      <li>
+          <span>{!! trans('labels.breadcrumb.newsList') !!}</span>
+      </li>
+  </ul>
+</div>
+<!-- END PAGE BAR -->
+<div class="row margin-top-40">
+    <div class="col-md-12">
+        @include('flash::message')
+        <!-- Begin: life time stats -->
+        <div class="portlet light portlet-fit portlet-datatable bordered">
+          <div class="portlet-title">
+            <div class="caption">
+              <i class="icon-settings font-dark"></i>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.feedback.list')}}</span>
+            </div>
+          </div>
+            <div class="portlet-body">
+              <div class="table-container">
+                <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
+                    <thead>
+                        <tr role="row" class="heading">
+                          <th>#</th>
+                          <th width="15%"> {{ trans('labels.feedback.name') }} </th>
+                          <th width="35%"> {{ trans('labels.feedback.content') }} </th>
+                          <th width="25%"> {{ trans('labels.feedback.created_at') }} </th>
+                          <th width="15%"> {{ trans('labels.action') }} </th>
+                        </tr>
+                    </thead>
+                    <tbody> </tbody>
+                </table>
+              </div>
+            </div>
+        </div>
+        <!-- End: life time stats -->
+    </div>
+</div>
+<div class="modal fade" id="draggable" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+@endsection
+@section('js')
+<script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/feedback/feedback-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
+<script type="text/javascript">
+  $(function() {
+    TableDatatablesAjax.init();
+    $(document).on('click','#destory',function() {
+      layer.msg('{{trans('alerts.deleteTitle')}}', {
+        time: 0, //不自动关闭
+        btn: ['{{trans('crud.destory')}}', '{{trans('crud.cancel')}}'],
+        icon: 5,
+        yes: function(index){
+          $('form[name="delete_item"]').submit();
+          layer.close(index);
+        }
+      });
+    });
+  })
+</script>
+@endsection

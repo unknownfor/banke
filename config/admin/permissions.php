@@ -121,4 +121,10 @@ return[
 		'edit' 		=> 'admin.cash.edit',
 		'destroy' 	=> 'admin.cash.delete',
 	],
+
+	//·´À¡
+	'feedback' => [
+		'show' 		=> 'admin.feedback.show',
+		'destroy' 	=> 'admin.feedback.delete',
+	],
 ];

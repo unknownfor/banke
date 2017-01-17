@@ -247,6 +247,7 @@ return [
         'EnrolRepository' => App\Facades\EnrolFacade::class,
         'OrderRepository' => App\Facades\OrderFacade::class,
         'CashRepository' => App\Facades\OrderFacade::class,
+        'FeedbackRepository' => App\Facades\FeedbackFacade::class,
     ],
 
 ];
