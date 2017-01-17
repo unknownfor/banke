@@ -23,18 +23,18 @@
     <!--手机注册-->
     <div class="register">
         {!! csrf_field() !!}
-        <input class="register-code" type="hidden" name="welcome" value="{{$welcome}}"/>
+        <input type="hidden" name="welcome" value="{{$welcome}}"/>
         <div class="register-box phone">
             <div class="register-img phone-img"></div>
-            <input class="register-code" placeholder="输入手机号"/>
+            <input class="mobile register-input" placeholder="输入手机号"/>
             <hr />
-            <button>获取验证码</button>
+            <button class="getCheckCode disabled">获取验证码</button>
         </div>
         <div class="register-box code">
             <div class="register-img code-img"></div>
-            <input class="register-code" placeholder="验证码"/>
+            <input class="register-input register-code" placeholder="验证码"/>
         </div>
-        <button class="btn">注册获得20元现金</button>
+        <button class="btn register-btn">注册获得20元现金</button>
     </div>
     <!--注册成功-->
     <div class="register-success notices hide">
@@ -63,13 +63,65 @@
         </div>
     </div>
 </body>
+<script src="/front/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
 <script>
-    window.hisihiUrlObj={
-        api_url_php:'http://{$Think.server.HTTP_HOST}/api.php?s=',
-        img_url:'__IMG__',
-        js: "__JS__",
-        api_url:'__API_URL__'
-    };
+    var baseApiUrl='/invitation';
+    $(function(){
+        var apiUrl="";
+        $(document).on('input','.mobile',function(){
+            var moblie = $(this).val(),
+                $btn=$('.getCheckCode');
+            if(/^1[3|4|5|7|8]\d{9}$/.test(moblie)){
+                $btn.removeClass('disabled');
+            }else{
+                $btn.addClass('disabled');
+            }
+        });
+
+        //得到验证码
+        $(document).on('click','.getCheckCode',function(){
+            var moblie = $('.mobile').val();
+            if(/^1[3|4|5|7|8]\d{9}$/.test(moblie)){
+                var url=baseApiUrl+'/requestSmsCode'
+                getDataAsync(url,{mobile:moblie},function(res){
+                    alert(res);
+                },'post');
+            }
+        });
+
+        //注册
+        $(document).on('click','.register-btn',function(){
+            var moblie = $('.mobile').val(),
+                code=$('.register-code').val();
+            if(/^1[3|4|5|7|8]\d{9}$/.test(moblie)){
+
+                var url=baseApiUrl+'/register',
+                        data={
+                            mobile:moblie,
+                            smsId:code,
+                            welcome:$('input[name="welcome"]').val()
+                        };
+
+                getDataAsync(url,data,function(res){
+                    alert(res);
+                },'post');
+            }
+        });
+
+        //请求数据
+        function getDataAsync(url,data,callback,type){
+            type = type ||'get';
+            data._token=$('input[name="_token"]').val();
+            $.ajax({
+                type:type,
+                url:url,
+                data:data,
+                success:function(res){
+                    callback(res);
+                }
+            });
+        }
+    });
 </script>
 <!--<script type="application/javascript" src="__JS__/require.js" data-main="__JS__/config"></script>-->
 <!--<script type="text/javascript" data-main="__JS__/famous-teacher-3.4.min"  src="__JS__/require.js" ></script>-->

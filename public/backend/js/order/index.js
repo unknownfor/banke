@@ -110,7 +110,7 @@
             }
         },
 
-        //请求数据
+         //请求数据
          getDataAsync:function(url,data,callback,type){
             type = type ||'get';
             data._token=$('input[name="_token"]').val();
