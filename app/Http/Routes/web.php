@@ -22,7 +22,7 @@ Route::group(['prefix'=>"invitation"],function(){
     //Create a test user, you don't need this if you already have.
     Route::post('register','ShareController@register');
 
-    Route::get('invitation/{welcome}', 'ShareController@invitation');
+    Route::get('/{welcome}', 'ShareController@invitation');
 });
 
 

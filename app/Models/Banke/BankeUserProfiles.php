@@ -14,7 +14,7 @@ class BankeUserProfiles extends Model
     protected $table = 'banke_user_profiles';
 
     protected $fillable = ['uid', 'name', 'mobile', 'avatar', 'sex', 'account_balance', 'register_amount',
-        'certification_status', 'certification_time', 'org_id'];
+        'certification_status', 'certification_time', 'org_id', 'invitation_code'];
 
     private $action;
 
