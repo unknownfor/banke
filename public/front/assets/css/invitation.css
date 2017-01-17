@@ -41,7 +41,7 @@ button {
   flex: 0 1 16px;
   background: url('../img/invitation/sprite.png') no-repeat;
 }
-.register .register-box .register-code {
+.register .register-box .register-input {
   border-radius: 4px;
   height: 40px;
   padding: 0px;
@@ -51,20 +51,26 @@ button {
   -ms-flex: 1;
   flex: 1;
 }
-.register .register-box .register-code:focus {
+.register .register-box .register-input:focus,
+button {
   outline: none;
 }
-.register .register-box > button {
+.register .register-box .getCheckCode{
   -webkit-box-flex: 0;
   -webkit-flex: 0 2 100px;
   -ms-flex: 0 2 100px;
   flex: 0 2 100px;
-  border-radius: 4px;
   background-color: #ffffff;
   border: none;
   text-align: center;
   line-height: 40px;
   color: #9B9B9B;
+  cursor: pointer;
+}
+.register .register-box .getCheckCode.disabled{
+  pointer-events:none;
+  color: #ccc9c9;
+  cursor: not-allowed;
 }
 .register .register-box > hr {
   color: #FFE747;
@@ -177,3 +183,5 @@ button {
 .notices.hide {
   display: none;
 }
+
+
