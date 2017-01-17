@@ -4,6 +4,9 @@ use App\Models\Banke\BankeUserProfiles;
 use App\User;
 use Carbon\Carbon;
 use Flash;
+use Uuid;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 /**
 * 用户仓库
 */
@@ -312,5 +315,50 @@ class UserRepository
 		$mobile = request('mobile', '');
 		$user_info = BankeUserProfiles::where('mobile', $mobile)->get(['uid', 'name', 'mobile']);
 		return $user_info;
+	}
+
+	/**
+	 * 注册半课APP用户
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function register($request)
+	{
+		$user = new User;
+		$userData = $request->all();
+		//注册用户生成用户名
+		$userData['name'] = createUserName($userData['mobile']);
+		//密码进行加密
+		
+		$userData['password'] = bcrypt($request['password']);
+
+		if ($user->fill($userData)->save()) {
+			//邀请人信息
+			$invitation_user = BankeUserProfiles::where('invitation_code', $userData['welcome'])->first();
+			$invitation_user->$invitation_user += 1;
+			$invitation_user->save();
+
+			// 自动更新用户资料关系
+			$profiles = [
+				'uid' => $user->id,
+				'name' => $userData['name'],
+				'mobile'=> $userData['mobile'],
+				'invitation_uid'=>$invitation_user['uid'],
+				'invitation_code'=>Uuid::generate(4)
+			];
+			$user->profiles()->create($profiles);
+
+			// 自动更新用户资料关系
+			$authentication = [
+				'uid' => $user->id,
+				'mobile'=> $userData['mobile']
+			];
+			$user->authentication()->create($authentication);
+			
+			return true;
+		}
+		return false;
 	}
 }

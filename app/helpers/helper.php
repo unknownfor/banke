@@ -94,7 +94,31 @@ if(!function_exists('curlRequest')){
  */
 if(!function_exists('moneyFormat')){
 	function moneyFormat($num=null){
-		$new_input = sprintf("%.2f",substr(sprintf("%.3f", $num), 0, -2));
+		$new_input = sprintf("%.2f",substr(sprintf("%.3f", $num), 0, -1));
 		return $new_input;
+	}
+}
+
+/**
+ *	//随机产生六位数密码Begin
+ */
+if(!function_exists('randCode')){
+	function randCode($len=6,$format='ALL'){
+		switch($format) {
+			case 'ALL':
+				$chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-@#~'; break;
+			case 'CHAR':
+				$chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-@#~'; break;
+			case 'NUMBER':
+				$chars='0123456789'; break;
+			default :
+				$chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-@#~';
+				break;
+		}
+		mt_srand((double)microtime()*1000000*getmypid());
+		$password="";
+		while(strlen($password)<$len)
+			$password.=substr($chars,(mt_rand()%strlen($chars)),1);
+		return $password;
 	}
 }

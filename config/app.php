@@ -223,6 +223,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        'Uuid' => Webpatser\Uuid\Uuid::class,
         'Active' => HieuLe\Active\Facades\Active::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,

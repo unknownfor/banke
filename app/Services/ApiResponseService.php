@@ -10,7 +10,7 @@ class ApiResponseService {
 	{
 		$result = [
 			'data' 		=> $data,
-			'code' 		=> $code,
+			'status_code' 		=> $code,
 			'message' 	=> $message	
 		];
 		return response()->json($result);
@@ -23,7 +23,7 @@ class ApiResponseService {
 		$message = Code::getErrorMsg($code);
 		$result = [
 			'data' 		=> '',
-			'code' 		=> $code,
+			'status_code' 		=> $code,
 			'message' 	=> $message
 		];
 		return response()->json($result);

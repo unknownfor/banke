@@ -19,7 +19,8 @@
         "predis/predis":"^1.1",
         "jlapp/swaggervel":"dev-master",
         "doctrine/dbal": "^2.5",
-        "aliyuncs/oss-sdk-php": "^2.2"
+        "aliyuncs/oss-sdk-php": "^2.2",
+        "webpatser/laravel-uuid": "2.*"
         
     },
     "require-dev": {
