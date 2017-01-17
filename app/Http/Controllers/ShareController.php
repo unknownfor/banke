@@ -124,6 +124,8 @@ class ShareController extends Controller
         $result = UserRepository::register($request);
         if($result){
             try{
+                Log::info('$password=================='.$password);
+                Log::info('$result=================='.$result);
                 $header = [
                     'headers'=>[
                         'X-Bmob-Application-Id'=>env('BMOB_APP_ID'),
