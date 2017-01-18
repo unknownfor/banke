@@ -90,6 +90,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //反馈记录
         require(__DIR__ . '/Routes/FeedbackRoute.php');
 
+        //常见问题记录
+        require(__DIR__ . '/Routes/FaqRoute.php');
+
     });
 });
 

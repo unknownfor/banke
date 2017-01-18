@@ -146,4 +146,12 @@ return[
 		// trait 中的 action 参数
 		'action' => 'feedback',
 	],
+
+	//常见问题
+	'faq' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'faq',
+	],
 ];

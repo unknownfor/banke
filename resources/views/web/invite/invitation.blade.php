@@ -123,6 +123,4 @@
         }
     });
 </script>
-<!--<script type="application/javascript" src="__JS__/require.js" data-main="__JS__/config"></script>-->
-<!--<script type="text/javascript" data-main="__JS__/famous-teacher-3.4.min"  src="__JS__/require.js" ></script>-->
 </html>

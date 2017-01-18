@@ -7,11 +7,10 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/invitation/ajaxIndex',
+        'url' : '/admin/faq/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
-          d.mobile =$('.filter input[name="mobile"]').val();
-          d.target_mobile =$('.filter input[name="target_mobile"]').val();
+          d.title =$('.filter input[name="title"]').val();
+          d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -24,59 +23,53 @@ var TableDatatablesAjax = function() {
           "name" : "id",
         },
         {
-          "data": "name",
-          "name" : "name",
+          "data": "title",
+          "name" : "title",
           "orderable" : false,
         },
         {
-          "data": "mobile",
-          "name": "mobile",
+          "data": "content",
+          "name": "content",
           "orderable" : false,
+          render:function(val){
+            val=val.replace(/\\n/g,'');
+            return '<p class="txt-ellipsis-single" title="'+val+'">'+val+'</p>';
+          },
         },
         {
-          "data": "target_mobile",
-          "name": "target_mobile",
-          "orderable" : false,
+          "data": "sort",
+          "name": "sort",
         },
-         {
-          "data": "register_at",
-          "name": "register_at",
-          "orderable" : false,
-           render:function(data) {
-             return data.date.replace(/\..*/,'');
-           }
-        },
-        {
-          "data": "authentivation_status",
-          "name": "authentivation_status",
-          "orderable" : false,
-          render:function(data,funll,all){
-            all;
-            if (data == 1) {
-              return '<span class="label label-success"> 已认证 </span>';
-            }else{
-              return '<span class="label label-danger"> 未认证 </span>';
-            }
-          }
-        },
-        {
-          "data": "enrol_status",
-          "name": "enrol_status",
-          "orderable" : false,
+        { 
+          "data": "status",
+          "name": "status",
+          "orderable" : true,
           render:function(data){
             if (data == 1) {
-              return '<span class="label label-success"> 已报名 </span>';
+              return '<span class="label label-success"> 正常 </span>';
+            }else if(data == 0){
+              return '<span class="label label-warning"> 待审核 </span>';
             }else{
-              return '<span class="label label-danger"> 未报名 </span>';
+              return '<span class="label label-danger"> 未通过 </span>';
             }
           }
-        }
+        },
+        {
+          "data": "created_at",
+          "name": "created_at"
+        },
+        { 
+          "data": "actionButton",
+          "name": "actionButton",
+          "type": "html",
+          "orderable" : false,
+        },
       ],
       "drawCallback": function( settings ) {
         ajax_datatable.$('.tooltips').tooltip( {
           placement : 'top',
           html : true
-        });
+        });  
       },
       "language": {
         url: '/admin/i18n'
@@ -84,20 +77,28 @@ var TableDatatablesAjax = function() {
     });
 
     $(document).on('click', '.filter-submit', function(){
-      ajax_datatable.ajax.reload();
+      ajax_datatable.ajax.reload(); 
     });
 
     dt.on('click', '.filter-cancel', function(){
       $('textarea.form-filter, select.form-filter, input.form-filter', dt).each(function() {
-        $(this).val("");
+          $(this).val("");
       });
 
       $('select.form-filter').selectpicker('refresh');
 
       $('input.form-filter[type="checkbox"]', dt).each(function() {
-        $(this).attr("checked", false);
+          $(this).attr("checked", false);
       });
       ajax_datatable.ajax.reload();
+    });
+
+    $('.input-group.date').datepicker({
+      autoclose: true
+    });
+    $(".bs-select").selectpicker({
+      iconBase: "fa",
+      tickIcon: "fa-check"
     });
   };
 
