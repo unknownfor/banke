@@ -18,16 +18,20 @@ class ShareController extends Controller
      * 分享机构详情
      */
     public function share_org($id){
-
-        return view('web.org.share_org');
+        $org = BankeOrg::find($id);
+        return view('web.org.share_org')->with(compact(['org']));
     }
 
     /**
      * 分享课程详情
      */
-    public function share_course($org_id){
-
-        return view('web.org.share_course');
+    public function share_course($id){
+        $course = BankeCourse::find($id);
+        $course['discount'] = BankeDict::whereIn('id', [3, 4])->sum('value');
+        $course['real_price'] = moneyFormat($course['price'] * $course['discount'] / 100);
+        $org = BankeOrg::find($course['org_id']);
+        $course['org'] = $org;
+        return view('web.org.share_course')->with(compact(['course']));
     }
 
     /**
