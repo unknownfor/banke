@@ -68,4 +68,10 @@ return [
 		'trash' => ['fa fa-trash','未通过'],
 		'ban' => ['fa fa-trash','已退款']
 	],
+
+	'faq' => [
+		'audit' => ['fa fa-paw','未审核'],
+		'active' => ['fa fa-navicon','审核通过'],
+		'trash' => ['fa fa-trash','未通过'],
+	],
 ];

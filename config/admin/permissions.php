@@ -127,4 +127,12 @@ return[
 		'show' 		=> 'admin.feedback.show',
 		'destroy' 	=> 'admin.feedback.delete',
 	],
+
+	//常见问题
+	'faq' => [
+		'show' 		=> 'admin.faq.show',
+		'create' 	=> 'admin.faq.create',
+		'edit' 		=> 'admin.faq.edit',
+		'destroy' 	=> 'admin.faq.delete',
+	],
 ];

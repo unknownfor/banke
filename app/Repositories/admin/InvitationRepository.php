@@ -1,17 +1,20 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeInvitation;
 use Carbon\Carbon;
 use Flash;
-use App\Models\Banke\BankeFeedback;
+use App\Models\Banke\BankeUserAuthentication;
+use App\Models\Banke\BankeEnrol;
+use App\User;
 use Illuminate\Support\Facades\Log;
 use League\Flysystem\Exception;
 use DB;
 use Auth;
 
 /**
-* 邀请仓库
+* 权限仓库
 */
-class InvitaionRepository
+class InvitationRepository
 {
 	/**
 	 * datatable获取数据
@@ -30,55 +33,73 @@ class InvitaionRepository
 		$search_pattern = true;
 
 		$name = request('name' ,'');
-		$created_at_from = request('created_at_from' ,'');
-		$created_at_to = request('created_at_to' ,'');
-		$updated_at_from = request('updated_at_from' ,'');
-		$updated_at_to = request('updated_at_to' ,'');
-		$orders = request('order', []);
+		$mobile = request('mobile' ,'');
+		$target_mobile= request('target_mobile' ,'');
 
-		$feedback = new BankeFeedback;
+		$invitation = new BankeInvitation;
 
 		/*配置名称搜索*/
 		if($name){
 			if($search_pattern){
-				$feedback = $feedback->where('name', 'like', $name);
+				$invitation = $invitation->where('name', 'like', $name);
 			}else{
-				$feedback = $feedback->where('name', $name);
+				$invitation = $invitation->where('name', $name);
+			}
+		}
+		if($mobile){
+			if($search_pattern){
+				$invitation = $invitation->where('mobile', 'like', $mobile);
+			}else{
+				$invitation = $invitation->where('mobile', $mobile);
+			}
+		}
+		if($target_mobile){
+			if($search_pattern){
+				$invitation = $invitation->where('target_mobile', 'like', $target_mobile);
+			}else{
+				$invitation = $invitation->where('target_mobile', $target_mobile);
 			}
 		}
 
 
-		/*配置创建时间搜索*/
-		if($created_at_from){
-			$feedback = $feedback->where('created_at', '>=', getTime($created_at_from));
-		}
-		if($created_at_to){
-			$feedback = $feedback->where('created_at', '<=', getTime($created_at_to, false));
-		}
+		$count = $invitation->count();
 
 
-		$count = $feedback->count();
+		$invitation = $invitation->offset($start)->limit($length);
+		$invitations = $invitation->get();
 
-
-		if($orders){
-			$orderName = request('columns.' . request('order.0.column') . '.name');
-			$orderDir = request('order.0.dir');
-			$feedback = $feedback->orderBy($orderName, $orderDir);
-		}
-
-		$feedback = $feedback->offset($start)->limit($length);
-		$feedbacks = $feedback->get();
-
-		if ($feedbacks) {
-			foreach ($feedbacks as &$v) {
+		if ($invitations) {
+			$authentication = new BankeUserAuthentication;
+			$enrol = new BankeEnrol;
+			$user = new User;
+			foreach ($invitations as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
+				//认证状态
+				$authen = $authentication->where('mobile', $v['target_mobile']);
+				$isAuthen=0;
+				if($authen->count()>0){
+					$isAuthen=1;
+				}
+				$v['authentivation_status'] = $isAuthen;
+
+				//报名状态
+				$en = $enrol->where('mobile', $v['target_mobile']);
+				if($en->count()>0) {
+					$v['enrol_status'] = 1;
+				}
+
+				//注册日期
+				$userInfo = $user->find($v['uid']);
+				if($userInfo) {
+					$v['register_at']=$userInfo['created_at'];
+				}
 			}
 		}
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $feedbacks,
+			'data' => $invitations,
 		];
 	}
 
@@ -91,13 +112,82 @@ class InvitaionRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeCashBackUser::destroy($id);
+		$isDelete = BankeInvitation::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.feedback.soft_deleted_success'));
+			Flash::success(trans('alerts.invitation.soft_deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.feedback.soft_deleted_error'));
+		Flash::error(trans('alerts.invitation.soft_deleted_error'));
 		return false;
+	}
+
+	/**添加常见问题
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function store($request)
+	{
+		$role = new BankeOrg;
+		if ($role->fill($request->all())->save()) {
+			Flash::success(trans('alerts.org.created_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.org.created_error'));
+		return false;
+	}
+
+	/**
+	 * 修改常见问题视图
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:34+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function edit($id)
+	{
+		$role = BankeOrg::find($id);
+		if ($role) {
+			$roleArray = $role->toArray();
+			return $roleArray;
+		}
+		abort(404);
+	}
+
+	/**
+	 * 查看常见问题
+	 * @author 晚黎
+	 * @date   2016-04-13T17:09:22+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function show($id)
+	{
+		$org = BankeOrg::find($id)->toArray();
+		return $org;
+	}
+
+	/**
+	 * 修改常见问题
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public function update($request,$id)
+	{
+		$role = BankeOrg::find($id);
+		if ($role) {
+			if ($role->fill($request->all())->save()) {
+				Flash::success(trans('alerts.org.updated_success'));
+				return true;
+			}
+			Flash::error(trans('alerts.org.updated_error'));
+			return false;
+		}
+		abort(404);
 	}
 
 }

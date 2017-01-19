@@ -12,8 +12,6 @@ $router->group(['prefix' => 'feedback'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
-	$router->get('ajaxCheck', 'FeedbackController@ajaxCheck');
-	$router->get('check', 'FeedbackController@check');
 });
 
 $router->resource('feedback', 'FeedbackController');
