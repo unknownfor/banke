@@ -113,7 +113,7 @@ trait ActionAttributeTrait{
 	 */
 	public function getCertificateActionButton()
 	{
-		if (($this->certification_status == config('admin.global.certification_status.audit'))) {
+		if (($this->certification_status != config('admin.global.certification_status.audit'))) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
 				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
 			}
@@ -127,7 +127,7 @@ trait ActionAttributeTrait{
 	 */
 	public function getRefuseCertificateActionButton()
 	{
-		if (($this->certification_status == config('admin.global.certification_status.audit'))) {
+		if (($this->certification_status != config('admin.global.certification_status.audit'))) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
 				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.trash')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
 			}
