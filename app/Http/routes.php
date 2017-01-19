@@ -93,6 +93,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //常见问题记录
         require(__DIR__ . '/Routes/FaqRoute.php');
 
+        //提现记录
+        require(__DIR__ . '/Routes/WithdrawRoute.php');
+
     });
 });
 
