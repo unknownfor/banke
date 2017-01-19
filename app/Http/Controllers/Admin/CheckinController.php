@@ -8,6 +8,7 @@ use Laracasts\Flash\Flash;
 //use OrgRepository;
 use PermissionRepository;
 use RoleRepository;
+use CheckinRepository;
 use Illuminate\Support\Facades\Log;
 
 class CheckinController extends Controller
@@ -31,7 +32,7 @@ class CheckinController extends Controller
      */
     public function ajaxIndex()
     {
-        $data = OrgRepository::ajaxIndex();
+        $data = CheckinRepository::ajaxIndex();
         return response()->json($data);
     }
     /**
@@ -42,9 +43,7 @@ class CheckinController extends Controller
      */
     public function create()
     {
-        $permissions = PermissionRepository::findPermissionWithArray();
-        $roles = RoleRepository::findRoleWithObject();
-        return view('admin.org.create')->with(compact(['permissions','roles']));
+//        return view('admin.org.create')->with(compact(['permissions','roles']));
     }
 
     /**
@@ -54,10 +53,10 @@ class CheckinController extends Controller
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(CreateOrgRequest $request)
+    public function store(Request $request)
     {
-        OrgRepository::store($request);
-        return redirect('admin/org');
+        CheckinRepository::store($request);
+        return redirect('admin/chechin');
     }
 
     /**
@@ -69,8 +68,8 @@ class CheckinController extends Controller
      */
     public function edit($id)
     {
-        $org = OrgRepository::edit($id);
-        return view('admin.org.edit')->with(compact('org'));
+        $checkin = CheckinRepository::edit($id);
+        return view('admin.checkin.edit')->with(compact('checkin'));
     }
     /**
      * 修改机构资料
@@ -82,7 +81,7 @@ class CheckinController extends Controller
      */
     public function update(UpdateOrgRequest $request,$id)
     {
-        OrgRepository::update($request,$id);
+        CheckinRepository::update($request,$id);
         return redirect('admin/org');
     }
 
@@ -96,7 +95,7 @@ class CheckinController extends Controller
      */
     public function mark($id,$status)
     {
-        UserRepository::mark($id,$status);
+        CheckinRepository::mark($id,$status);
         return redirect('admin/org');
     }
 
@@ -109,7 +108,7 @@ class CheckinController extends Controller
      */
     public function destroy($id)
     {
-        OrgRepository::destroy($id);
+        CheckinRepository::destroy($id);
         return redirect('admin/org');
     }
 
@@ -122,7 +121,7 @@ class CheckinController extends Controller
      */
     public function show($id)
     {
-        $org = OrgRepository::show($id);
+        $org = CheckinRepository::show($id);
         return view('admin.org.show')->with(compact('org'));
     }
 }
