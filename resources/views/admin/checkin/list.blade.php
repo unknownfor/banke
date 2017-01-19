@@ -58,20 +58,20 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-mobile-phone"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.checkin.phone_number') }}">
+                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.checkin.mobile') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="checkin_at_from">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="created_at_from">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
                     </div>
                     <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="checkin_at_to">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
@@ -90,12 +90,13 @@
                     <thead>
                         <tr role="row" class="heading">
                               <th>id</th>
-                              <th width="10%"> {{ trans('labels.checkin.uname') }} </th>
-                              <th width="10%"> {{ trans('labels.checkin.phone_number') }} </th>
+                              <th width="10%"> {{ trans('labels.checkin.name') }} </th>
+                              <th width="10%"> {{ trans('labels.checkin.mobile') }} </th>
                               <th width="20%"> {{ trans('labels.checkin.course_name') }} </th>
                               <th width="20%"> {{ trans('labels.checkin.org_name') }} </th>
-                              <th width="8%"> {{ trans('labels.checkin.price_amount') }} </th>
-                                <th width="15%"> {{ trans('labels.checkin.checkin_time') }} </th>
+                              <th width="8%"> {{ trans('labels.checkin.award_amount') }} </th>
+                                <th width="15%"> {{ trans('labels.checkin.created_at') }} </th>
+                                <th width="15%"> {{ trans('labels.checkin.updated_at') }} </th>
                               <th width="8%"> {{ trans('labels.checkin.status') }} </th>
                               <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
@@ -113,7 +114,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/checkin/checkin-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/checkins/checkins-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {

@@ -129,7 +129,6 @@ return [
         'soft_deleted_success' => '删除反馈成功',
         'soft_deleted_error' => '删除反馈失败',
     ],
-
     'faq' => [
         'created_success'   => '创建问题成功.',
         'created_error'     => '创建问题失败.',
@@ -137,5 +136,11 @@ return [
         'updated_error'     => '修改问题失败.',
         'soft_deleted_success' => '删除问题成功',
         'soft_deleted_error' => '删除问题失败',
+    ],
+    'checkin' => [
+        'updated_success'   => '修改签到成功.',
+        'updated_error'     => '修改签到失败.',
+        'soft_deleted_success' => '删除签到成功',
+        'soft_deleted_error' => '删除签到失败',
     ],
 ];

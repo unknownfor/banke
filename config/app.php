@@ -250,6 +250,7 @@ return [
         'FeedbackRepository' => App\Facades\FeedbackFacade::class,
         'InvitationRepository' => App\Facades\InvitationFacade::class,
         'FaqRepository' => App\Facades\FaqFacade::class,
+        'CheckinRepository' => App\Facades\CheckinFacade::class,
     ],
 
 ];
