@@ -94,5 +94,10 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('FaqRepository', function($app){
             return new \App\Repositories\admin\FaqRepository();
         });
+
+        //签到列表
+        $this->app->singleton('CheckinRepository', function($app){
+            return new \App\Repositories\admin\CheckinRepository();
+        });
     }
 }

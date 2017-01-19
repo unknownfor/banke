@@ -50,7 +50,8 @@ return[
 		'REGISTER_AND_CERTIFICATE_SUCCESS' => ' 注册奖励',
 		'USER_CERTIFICATE_SUCCESS' => '邀请注册奖励',
 		'PUNISHMENT' => '惩罚',
-		'REFUND' => '退款'
+		'REFUND' => '退款',
+		'WITHDRAW_FAIL' => '提现失败退回'
 	],
 	//角色
 	'role' => [
