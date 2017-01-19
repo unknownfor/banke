@@ -51,9 +51,9 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="moblie">{{trans('labels.checkin.moblie')}}</label>
+                          <label class="col-md-1 control-label" for="moblie">{{trans('labels.checkin.mobile')}}</label>
                           <div class="col-md-4">
-                              <input type="text" readonly class="form-control" value="{{$checkin['moblie']}}">
+                              <input type="text" readonly class="form-control" value="{{$checkin['mobile']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
