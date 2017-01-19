@@ -65,7 +65,7 @@ class DictController extends Controller {
     public function edit($id)
     {
         $dict = DictFacade::edit($id);
-        return view('admin.dict.edit')->with(compact(['dict']));
+        return view('admin.dict.edit')->with(compact('dict'));
     }
     /**
      * 修改配置

@@ -98,4 +98,61 @@ class FaqRepository
 		return $faq;
 	}
 
+	/**
+	 * 修改常见问题视图
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:34+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function edit($id)
+	{
+		$role = BankeFaq::find($id);
+		if ($role) {
+			$roleArray = $role->toArray();
+			return $roleArray;
+		}
+		abort(404);
+	}
+
+	/**
+	 * 修改问题
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public function update($request,$id)
+	{
+		$role = BankeFaq::find($id);
+		if ($role) {
+			if ($role->fill($request->all())->save()) {
+				Flash::success(trans('alerts.faq.updated_success'));
+				return true;
+			}
+			Flash::error(trans('alerts.faq.updated_error'));
+			return false;
+		}
+		abort(404);
+	}
+
+
+	/**添加问题
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function store($request)
+	{
+		$faq = new BankeFaq;
+		if ($faq->fill($request->all())->save()) {
+			Flash::success(trans('alerts.faq.created_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.faq.created_error'));
+		return false;
+	}
+
 }

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Requests\FaqRequest;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
 use FaqRepository;
+use PermissionRepository;
+use RoleRepository;
 use Illuminate\Support\Facades\Log;
 
 class FaqController extends Controller
@@ -52,7 +54,7 @@ class FaqController extends Controller
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(CreateOrgRequest $request)
+    public function store(FaqRequest $request)
     {
         FaqRepository::store($request);
         return redirect('admin/faq');
@@ -68,7 +70,7 @@ class FaqController extends Controller
     public function edit($id)
     {
         $faq = FaqRepository::edit($id);
-        return view('admin.faq.edit')->with(compact('org'));
+        return view('admin.faq.edit')->with(compact('faq'));
     }
     /**
      * 修改机构资料
@@ -78,7 +80,7 @@ class FaqController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(UpdateOrgRequest $request,$id)
+    public function update(FaqRequest $request,$id)
     {
         FaqRepository::update($request,$id);
         return redirect('admin/faq');

@@ -160,6 +160,7 @@ return [
 		'feedbackShow' => '<i class="fa fa-search"></i> 反馈详情',
 		'faqList' => '<i class="fa fa-exchange"></i> 问题列表',
 		'faqShow' => '<i class="fa fa-search"></i> 问题详情',
+		'faqCreate'=>'<i class="fa fa-user-plus"></i> 添加问题',
 		'faqList' => '<i class="fa fa-search"></i> 常见问题列表',
 		'faqShow' => '<i class="fa fa-search"></i> 问题详情',
 		'faqEdit' => '<i class="fa fa-search"></i> 编辑问题',
