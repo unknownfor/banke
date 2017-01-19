@@ -123,6 +123,13 @@ class CheckinRepository
 	{
 		$role = BankeCheckIn::find($id);
 		if ($role) {
+			$user = BankeUserProfiles::find($role['uid']);
+			$role['name'] = $user['name'];
+			$role['mobile'] = $user['mobile'];
+			$org = BankeOrg::find($role['org_id']);
+			$role['org_name'] = $org['name'];
+			$course = BankeCourse::find($role['course_id']);
+			$role['course_name'] = $course['name'];
 			$roleArray = $role->toArray();
 			return $roleArray;
 		}
