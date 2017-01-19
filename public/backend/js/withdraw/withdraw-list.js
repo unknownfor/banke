@@ -7,10 +7,11 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/cash/ajaxIndex',
+        'url' : '/admin/withdraw/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
           d.mobile =$('.filter input[name="mobile"]').val();
+          d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
+          d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
@@ -27,9 +28,6 @@ var TableDatatablesAjax = function() {
           "data": "name",
           "name" : "name",
           "orderable" : false,
-          render:function(res,type,full){
-            return '<img class="table-cell-logo" src="'+full.logo+'"><label>'+res+'</label>';
-          }
         },
         {
           "data": "mobile",
@@ -37,18 +35,23 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "cash_amount",
-          "name": "cash_amount",
+          "data": "org_name",
+          "name": "org_name",
           "orderable" : false,
         }
         , {
-          "data": "left_amount",
-          "name": "left_amount",
+          "data": "withdraw_amount",
+          "name": "withdraw_amount",
           "orderable" : true,
         },
         {
-          "data": "manage_time",
-          "name": "manage_time",
+          "data": "updated_at",
+          "name": "updated_at",
+          "orderable" : true,
+        },
+        {
+          "data": "operator_name",
+          "name": "operator_name",
           "orderable" : true,
         },
         { 

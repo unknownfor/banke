@@ -36,7 +36,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="uname" placeholder="{{ trans('labels.withdraw.uname') }}">
+                            <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.withdraw.name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-phone"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.withdraw.phone_number') }}">
+                            <input type="text" class="form-control form-filter" name="mobile" placeholder="{{ trans('labels.withdraw.mobile') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -67,13 +67,13 @@
                 </div>
                 <div class="col-md-2">
                     <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="checkins_at_from">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="updated_at_from">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
                     </div>
                     <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="checkins_at_to">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
@@ -92,11 +92,12 @@
                     <thead>
                         <tr role="row" class="heading">
                             <th>id</th>
-                            <th width="15%"> {{ trans('labels.withdraw.uname') }} </th>
-                            <th width="10%"> {{ trans('labels.withdraw.phone_number') }} </th>
+                            <th width="15%"> {{ trans('labels.withdraw.name') }} </th>
+                            <th width="10%"> {{ trans('labels.withdraw.mobile') }} </th>
+                            <th width="15%"> {{ trans('labels.withdraw.org_name') }} </th>
                             <th width="15%"> {{ trans('labels.withdraw.withdraw_amount') }} </th>
-                            <th width="15%"> {{ trans('labels.withdraw.left_amount') }} </th>
-                            <th width="15%"> {{ trans('labels.withdraw.manage_time') }} </th>
+                            <th width="15%"> {{ trans('labels.withdraw.updated_at') }} </th>
+                            <th width="15%"> {{ trans('labels.withdraw.operator_name') }} </th>
                             <th width="8%"> {{ trans('labels.withdraw.status') }} </th>
                             <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>

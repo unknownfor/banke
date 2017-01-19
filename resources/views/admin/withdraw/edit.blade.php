@@ -7,11 +7,11 @@
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <a href="{{url('admin/cash')}}">{!! trans('labels.breadcrumb.cashList') !!}</a>
+	        <a href="{{url('admin/withdraw')}}">{!! trans('labels.breadcrumb.withdrawList') !!}</a>
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <span>{!! trans('labels.breadcrumb.cashEdit') !!}</span>
+	        <span>{!! trans('labels.breadcrumb.withdrawEdit') !!}</span>
 	    </li>
 	</ul>
 </div>
@@ -22,7 +22,7 @@
           <div class="portlet-title">
               <div class="caption font-green-haze">
                   <i class="icon-settings font-green-haze"></i>
-                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.cashEdit') !!}</span>
+                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.withdrawEdit') !!}</span>
               </div>
               <div class="actions">
                   <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -37,31 +37,31 @@
 					        @endforeach
 					    </div>
 					    @endif
-              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/cash/'.$cash['id'])}}">
+              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/withdraw/'.$withdraw['id'])}}">
               		{!! csrf_field() !!}
                   <input type="hidden" name="_method" value="PATCH">
-                  <input type="hidden" name="id" value="{{$cash['id']}}">
+                  <input type="hidden" name="id" value="{{$withdraw['id']}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label">{{trans('labels.cash.name')}}</label>
+                          <label class="col-md-1 control-label">{{trans('labels.withdraw.name')}}</label>
                           <div class="col-md-9">
-                              <input type="text" readonly class="form-control" value="{{$cash['name']}}">
+                              <input type="text" readonly class="form-control" value="{{$withdraw['name']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-1 control-label" for="moblie">{{trans('labels.cash.moblie')}}</label>--}}
+                          {{--<label class="col-md-1 control-label" for="moblie">{{trans('labels.withdraw.moblie')}}</label>--}}
                           {{--<div class="col-md-4">--}}
-                              {{--<input type="text" readonly class="form-control" value="{{$cash['moblie']}}">--}}
+                              {{--<input type="text" readonly class="form-control" value="{{$withdraw['moblie']}}">--}}
                               {{--<div class="form-control-focus"> </div>--}}
                           {{--</div>--}}
                       {{--</div>--}}
 
                       {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-1 control-label" for="cash_amount">{{trans('labels.cash.cash_amount')}}</label>--}}
+                          {{--<label class="col-md-1 control-label" for="withdraw_amount">{{trans('labels.withdraw.withdraw_amount')}}</label>--}}
                           {{--<div class="col-md-9">--}}
-                              {{--<input type="text" readonly class="form-control" value="{{$cash['cash_amount']}}">--}}
+                              {{--<input type="text" readonly class="form-control" value="{{$withdraw['withdraw_amount']}}">--}}
                               {{--<div class="form-control-focus"> </div>--}}
                           {{--</div>--}}
                       {{--</div>--}}
@@ -69,36 +69,36 @@
                       {{--<div class="form-group form-md-line-input">--}}
                           {{--<label class="col-md-1 control-label" for="period">{{trans('labels.left_amount')}}</label>--}}
                           {{--<div class="col-md-9">--}}
-                              {{--<input type="text" readonly class="form-control" value="{{$cash['left_amount']}}">--}}
+                              {{--<input type="text" readonly class="form-control" value="{{$withdraw['left_amount']}}">--}}
                               {{--<div class="form-control-focus"> </div>--}}
                           {{--</div>--}}
                       {{--</div>--}}
 
                       {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-1 control-label" for="cash_account">{{trans('labels.cash.cash_account')}}</label>--}}
+                          {{--<label class="col-md-1 control-label" for="withdraw_account">{{trans('labels.withdraw.withdraw_account')}}</label>--}}
                           {{--<div class="col-md-9">--}}
-                              {{--<input type="text" readonly class="form-control" name="cash_account" value="{{$cash['cash_account']}}">--}}
+                              {{--<input type="text" readonly class="form-control" name="withdraw_account" value="{{$withdraw['withdraw_account']}}">--}}
                               {{--<div class="form-control-focus"> </div>--}}
                           {{--</div>--}}
                       {{--</div>--}}
 
                       {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-1 control-label" for="form_control_1">{{trans('labels.cash.status')}}</label>--}}
+                          {{--<label class="col-md-1 control-label" for="form_control_1">{{trans('labels.withdraw.status')}}</label>--}}
                           {{--<div class="col-md-11">--}}
                               {{--<div class="md-radio-inline">--}}
                                   {{--<div class="md-radio">--}}
-                                      {{--<input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($cash['status'] == config('admin.global.status.active')) checked @endif>--}}
+                                      {{--<input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.active')) checked @endif>--}}
                                       {{--<label for="status1">--}}
                                           {{--<span></span>--}}
                                           {{--<span class="check"></span>--}}
-                                          {{--<span class="box"></span> {{trans('strings.cash.active.1')}} </label>--}}
+                                          {{--<span class="box"></span> {{trans('strings.withdraw.active.1')}} </label>--}}
                                   {{--</div>--}}
                                   {{--<div class="md-radio">--}}
-                                      {{--<input type="radio" id="status2" name="status" value="{{config('admin.global.status.applying')}}" class="md-radiobtn" @if($cash['status'] == config('admin.global.status.applying')) checked @endif>--}}
+                                      {{--<input type="radio" id="status2" name="status" value="{{config('admin.global.status.applying')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.applying')) checked @endif>--}}
                                       {{--<label for="status2">--}}
                                           {{--<span></span>--}}
                                           {{--<span class="check"></span>--}}
-                                          {{--<span class="box"></span> {{trans('strings.cash.applying.1')}} </label>--}}
+                                          {{--<span class="box"></span> {{trans('strings.withdraw.applying.1')}} </label>--}}
                                   {{--</div>--}}
                               {{--</div>--}}
                           {{--</div>--}}
@@ -109,7 +109,7 @@
                   <div class="form-actions">
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
-                              <a href="{{url('admin/cash')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                              <a href="{{url('admin/withdraw')}}" class="btn default">{{trans('crud.cancel')}}</a>
                               <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
