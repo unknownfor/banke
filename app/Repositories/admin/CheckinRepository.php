@@ -176,9 +176,12 @@ class CheckinRepository
 						return false;
 					}
 				}
+				Flash::success(trans('alerts.checkin.updated_success'));
+				return true;
+			}else{
+				Flash::error(trans('alerts.checkin.updated_error'));
+				return false;
 			}
-			Flash::error(trans('alerts.checkin.updated_error'));
-			return false;
 		}else{
 			abort(404);
 		}
