@@ -13,7 +13,7 @@
           <i class="fa fa-angle-right"></i>
       </li>
       <li>
-          <span>{!! trans('labels.breadcrumb.cashList') !!}</span>
+          <span>{!! trans('labels.breadcrumb.withdrawList') !!}</span>
       </li>
   </ul>
 </div>
@@ -26,7 +26,7 @@
             <div class="portlet-title">
             <div class="caption">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.cash.list')}}</span>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.withdraw.list')}}</span>
             </div>
           </div>
             <div class="search-box filter">
@@ -36,7 +36,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="uname" placeholder="{{ trans('labels.cash.uname') }}">
+                            <input type="text" class="form-control form-filter" name="uname" placeholder="{{ trans('labels.withdraw.uname') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-phone"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.cash.phone_number') }}">
+                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.withdraw.phone_number') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -57,8 +57,8 @@
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
                             <option value="" data-icon="fa-glass icon-success">状态....</option>
-                            @if(trans('strings.cash'))
-                                @foreach(trans('strings.cash') as $status_key => $status_value)
+                            @if(trans('strings.withdraw'))
+                                @foreach(trans('strings.withdraw') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif
@@ -92,12 +92,12 @@
                     <thead>
                         <tr role="row" class="heading">
                             <th>id</th>
-                            <th width="15%"> {{ trans('labels.cash.uname') }} </th>
-                            <th width="10%"> {{ trans('labels.cash.phone_number') }} </th>
-                            <th width="15%"> {{ trans('labels.cash.cash_amount') }} </th>
-                            <th width="15%"> {{ trans('labels.cash.left_amount') }} </th>
-                            <th width="15%"> {{ trans('labels.cash.manage_time') }} </th>
-                            <th width="8%"> {{ trans('labels.cash.status') }} </th>
+                            <th width="15%"> {{ trans('labels.withdraw.uname') }} </th>
+                            <th width="10%"> {{ trans('labels.withdraw.phone_number') }} </th>
+                            <th width="15%"> {{ trans('labels.withdraw.withdraw_amount') }} </th>
+                            <th width="15%"> {{ trans('labels.withdraw.left_amount') }} </th>
+                            <th width="15%"> {{ trans('labels.withdraw.manage_time') }} </th>
+                            <th width="8%"> {{ trans('labels.withdraw.status') }} </th>
                             <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
@@ -114,7 +114,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/cash/cash-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/withdraw/withdraw-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {

@@ -277,14 +277,16 @@ return [
 		'permission' => '权限',
 		'module' => '模块',
 	],
-	'cash' => [
+
+	//提现
+	'withdraw' => [
 		'id' => '序号',
 		'uid' => '学员id',
 		'name' => '姓名',
 		'mobile' => '手机号',
-		'cash_amount'=>'提现金额',
+		'withdraw_amount'=>'提现金额',
 		'left_amount'=>'余额',
-		'cash_account'=>'提现账户',
+		'zhifubao_account'=>'提现账户',
 		'status' => '状态',
 		'list' => '提现列表',
 		'created_at' => '申请时间',
