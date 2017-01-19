@@ -82,7 +82,7 @@ class CheckinController extends Controller
     public function update(UpdateOrgRequest $request,$id)
     {
         CheckinRepository::update($request,$id);
-        return redirect('admin/org');
+        return redirect('admin/checkin');
     }
 
     /**
@@ -96,7 +96,7 @@ class CheckinController extends Controller
     public function mark($id,$status)
     {
         CheckinRepository::mark($id,$status);
-        return redirect('admin/org');
+        return redirect('admin/checkin');
     }
 
     /**
@@ -109,7 +109,7 @@ class CheckinController extends Controller
     public function destroy($id)
     {
         CheckinRepository::destroy($id);
-        return redirect('admin/org');
+        return redirect('admin/checkin');
     }
 
     /**
@@ -122,6 +122,6 @@ class CheckinController extends Controller
     public function show($id)
     {
         $org = CheckinRepository::show($id);
-        return view('admin.org.show')->with(compact('org'));
+        return view('admin.checkin.show')->with(compact('org'));
     }
 }

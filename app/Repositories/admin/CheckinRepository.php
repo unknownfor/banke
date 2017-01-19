@@ -7,6 +7,8 @@ use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserProfiles;
 use Carbon\Carbon;
 use Flash;
+use DB;
+use Auth;
 /**
 * 权限仓库
 */
@@ -136,16 +138,43 @@ class CheckinRepository
 	 */
 	public function update($request,$id)
 	{
+		$input = $request->only(['status', 'comment']);
 		$role = BankeCheckIn::find($id);
 		if ($role) {
-			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.checkin.updated_success'));
-				return true;
+			if ($role->fill($input)->save()) {
+				if($input['status'] == config('admin.global.status.ban')){
+					DB::beginTransaction();
+					try {
+						$user_profile = BankeUserProfiles::where('uid', $role['uid'])->lockForUpdate()->first();
+						$user_profile->account_balance -= $role['award_amount'];
+						$user_profile->save();
+
+						$cur_user = Auth::user();
+						$balance_log = [
+							'uid'=>$role['uid'],
+							'change_amount'=>$role['award_amount'],
+							'change_type'=>'-',
+							'business_type'=>'PUNISHMENT',
+							'withdraw_id'=>$cur_user->id
+						];
+						//记录余额变动日志
+						BankeBalanceLog::create($balance_log);
+						DB::commit();
+						Flash::success(trans('alerts.checkin.updated_success'));
+						return true;
+					} catch (Exception $e) {
+						DB::rollback();
+						Log::info($e);
+						Flash::error(trans('alerts.checkin.updated_error'));
+						return false;
+					}
+				}
 			}
 			Flash::error(trans('alerts.checkin.updated_error'));
 			return false;
+		}else{
+			abort(404);
 		}
-		abort(404);
 	}
 
 	/**
