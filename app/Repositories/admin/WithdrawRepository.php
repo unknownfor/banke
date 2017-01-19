@@ -4,6 +4,7 @@ use App\Models\Banke\BankeBalanceLog;
 use App\Models\Banke\BankeCheckIn;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
+use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeWithdraw;
@@ -85,6 +86,8 @@ class WithdrawRepository
 				$user = BankeUserProfiles::find($v['uid']);
 				$v['name'] = $user['name'];
 				$v['mobile'] = $user['mobile'];
+				$cur_user = Auth::user();
+				$v['operator_name'] = $cur_user['name'];
 			}
 		}
 		return [
@@ -126,10 +129,8 @@ class WithdrawRepository
 			$user = BankeUserProfiles::find($role['uid']);
 			$role['name'] = $user['name'];
 			$role['mobile'] = $user['mobile'];
-			$org = BankeOrg::find($role['org_id']);
-			$role['org_name'] = $org['name'];
-			$course = BankeCourse::find($role['course_id']);
-			$role['course_name'] = $course['name'];
+			$cur_user = Auth::user();
+			$v['operator_name'] = $cur_user['name'];
 			$roleArray = $role->toArray();
 			return $roleArray;
 		}
@@ -145,7 +146,7 @@ class WithdrawRepository
 	 */
 	public function update($request,$id)
 	{
-		$input = $request->only(['status', 'comment']);
+		$input = $request->only(['status', 'processing_result']);
 		$role = BankeWithdraw::find($id);
 		if ($role) {
 			if ($role->fill($input)->save()) {
@@ -153,33 +154,53 @@ class WithdrawRepository
 					DB::beginTransaction();
 					try {
 						$user_profile = BankeUserProfiles::where('uid', $role['uid'])->lockForUpdate()->first();
-						$user_profile->account_balance -= $role['award_amount'];
+						$user_profile->account_balance += $role['withdraw_amount'];
 						$user_profile->save();
 
 						$cur_user = Auth::user();
 						$balance_log = [
 							'uid'=>$role['uid'],
-							'change_amount'=>$role['award_amount'],
-							'change_type'=>'-',
-							'business_type'=>'PUNISHMENT',
+							'change_amount'=>$role['withdraw_amount'],
+							'change_type'=>'+',
+							'business_type'=>'WITHDRAW_FAIL',
 							'operator_uid'=>$cur_user['id']
 						];
 						//记录余额变动日志
 						BankeBalanceLog::create($balance_log);
+
+						$message1 = [
+							'uid'=>$role['uid'],
+							'title'=>'提现失败',
+							'content'=>'您于'.$role['created_at'].'发起的'.$role['withdraw_amount'].'元提现失败！
+							'.$input['processing_result'],
+							'type'=>'WITHDRAW_FAIL'
+						];
+						//记录消息
+						BankeMessage::create($message1);
+
 						DB::commit();
-						Flash::success(trans('alerts.checkin.updated_success'));
+						Flash::success(trans('alerts.withdraw.updated_success'));
 						return true;
 					} catch (Exception $e) {
 						DB::rollback();
 						Log::info($e);
-						Flash::error(trans('alerts.checkin.updated_error'));
+						Flash::error(trans('alerts.withdraw.updated_error'));
 						return false;
 					}
+				}elseif($input['status'] == config('admin.global.status.active')){
+					$message1 = [
+						'uid'=>$role['uid'],
+						'title'=>'提现成功',
+						'content'=>'您于'.$role['created_at'].'发起的'.$role['withdraw_amount'].'元提现已成功！',
+						'type'=>'WITHDRAW_SUCCESS'
+					];
+					//记录消息
+					BankeMessage::create($message1);
+					Flash::success(trans('alerts.withdraw.updated_success'));
+					return true;
 				}
-				Flash::success(trans('alerts.checkin.updated_success'));
-				return true;
 			}else{
-				Flash::error(trans('alerts.checkin.updated_error'));
+				Flash::error(trans('alerts.withdraw.updated_error'));
 				return false;
 			}
 		}else{
