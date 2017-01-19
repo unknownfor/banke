@@ -12,8 +12,7 @@ class BankeCheckIn extends Model
 
     protected $table = 'banke_check_in';
 
-    protected $fillable = ['name', 'logo','city', 'cover', 'intro', 'sort', 'address', 'tel_phone',
-        'details', 'status'];
+    protected $fillable = [ 'status', 'comment'];
 
     private $action;
 

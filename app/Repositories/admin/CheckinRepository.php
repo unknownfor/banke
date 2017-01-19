@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeBalanceLog;
 use App\Models\Banke\BankeCheckIn;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
@@ -9,6 +10,7 @@ use Carbon\Carbon;
 use Flash;
 use DB;
 use Auth;
+use Illuminate\Support\Facades\Log;
 /**
 * 权限仓库
 */

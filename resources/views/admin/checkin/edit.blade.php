@@ -83,8 +83,8 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="description">{{trans('labels.checkin.comment')}}</label>
-                          <div class="col-md-8">
+                          <label class="col-md-1 control-label" for="description">{{trans('labels.checkin.comment')}}</label>
+                          <div class="col-md-9">
                               <input type="text" class="form-control" id="description" name="comment" placeholder="{{trans('labels.checkin.comment')}}" value="{{$checkin['comment']}}">
                               <div class="form-control-focus"> </div>
                           </div>
