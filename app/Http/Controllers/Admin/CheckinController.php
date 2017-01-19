@@ -79,7 +79,7 @@ class CheckinController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(UpdateOrgRequest $request,$id)
+    public function update(Request $request,$id)
     {
         CheckinRepository::update($request,$id);
         return redirect('admin/checkin');
