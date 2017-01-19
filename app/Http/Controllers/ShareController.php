@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
+use App\Models\Banke\BankeNews;
+use App\Models\Banke\BankeOrg;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +16,40 @@ use Illuminate\Http\Request;
 
 class ShareController extends Controller
 {
+    /**
+     * 规则详情
+     */
+    public function rule_page(){
+        return view('web.rule_page');
+    }
+
+    /**
+     * 动态详情
+     */
+    public function news($id){
+        $news = BankeNews::find($id);
+        return view('web.news.news')->with(compact(['news']));
+    }
+
+    /**
+     * 机构详情
+     */
+    public function org($id){
+        $org = BankeOrg::find($id);
+        return view('web.org.org')->with(compact(['org']));
+    }
+
+    /**
+     * 课程详情
+     */
+    public function course($id){
+        $course = BankeCourse::find($id);
+        $course['discount'] = BankeDict::whereIn('id', [3, 4])->sum('value');
+        $course['real_price'] = moneyFormat($course['price'] * $course['discount'] / 100);
+        $org = BankeOrg::find($course['org_id']);
+        $course['org'] = $org;
+        return view('web.org.course')->with(compact(['course']));
+    }
 
     /**
      * 分享机构详情
