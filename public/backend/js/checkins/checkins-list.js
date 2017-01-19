@@ -48,7 +48,17 @@ var TableDatatablesAjax = function() {
           "name": "award_amount",
           "orderable" : true,
         },
-        { 
+        {
+          "data": "created_at",
+          "name": "created_at",
+          "orderable" : true,
+        },
+        {
+          "data": "updated_at",
+          "name": "updated_at",
+          "orderable" : true,
+        },
+        {
           "data": "status",
           "name": "status",
           "orderable" : false,
@@ -61,16 +71,6 @@ var TableDatatablesAjax = function() {
               return '<span class="label label-danger"> 未通过 </span>';
             }
           }
-        },
-        {
-          "data": "created_at",
-          "name": "created_at",
-          "orderable" : true,
-        },
-        {
-          "data": "updated_at",
-          "name": "updated_at",
-          "orderable" : true,
         },
         { 
           "data": "actionButton",
