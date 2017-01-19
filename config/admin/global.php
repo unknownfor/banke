@@ -164,4 +164,12 @@ return[
 		// trait 中的 action 参数
 		'action' => 'faq',
 	],
+
+	//签到
+	'checkin' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		// trait 中的 action 参数
+		'action' => 'checkin',
+	],
 ];
