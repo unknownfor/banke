@@ -164,7 +164,7 @@ class CheckinRepository
 							'change_amount'=>$role['award_amount'],
 							'change_type'=>'-',
 							'business_type'=>'PUNISHMENT',
-							'withdraw_id'=>$cur_user->id
+							'operator_uid'=>$cur_user['id']
 						];
 						//记录余额变动日志
 						BankeBalanceLog::create($balance_log);
