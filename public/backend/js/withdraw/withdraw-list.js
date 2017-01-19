@@ -35,14 +35,14 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "org_name",
-          "name": "org_name",
-          "orderable" : false,
-        }
-        , {
           "data": "withdraw_amount",
           "name": "withdraw_amount",
           "orderable" : true,
+        },
+        {
+          "data": "zhifubao_account",
+          "name": "zhifubao_account",
+          "orderable" : false,
         },
         {
           "data": "updated_at",
@@ -62,8 +62,11 @@ var TableDatatablesAjax = function() {
             if (data == 1) {
               return '<span class="label label-success"> 已提现 </span>';
             }
+            else if(data==0){
+              return '<span class="label label-info"> 申请中 </span>';
+            }
             else{
-              return '<span class="label label-info> 申请中 </span>';
+              return '<span class="label label-danger"> 未通过 </span>';
             }
           }
         },
@@ -71,12 +74,7 @@ var TableDatatablesAjax = function() {
           "data": "actionButton",
           "name": "actionButton",
           "type": "html",
-          "orderable" : false,
-          render:function(data,full){
-            if(full.status==1){
-              return '';
-            }
-          }
+          "orderable" : false
         },
       ],
       "drawCallback": function( settings ) {

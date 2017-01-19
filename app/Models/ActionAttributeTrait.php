@@ -113,7 +113,7 @@ trait ActionAttributeTrait{
 	 */
 	public function getCertificateActionButton()
 	{
-		if (($this->certification_status != config('admin.global.certification_status.audit'))) {
+		if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
 				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
 			}
@@ -127,13 +127,29 @@ trait ActionAttributeTrait{
 	 */
 	public function getRefuseCertificateActionButton()
 	{
-		if (($this->certification_status != config('admin.global.certification_status.audit'))) {
+		if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
 				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.trash')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
 			}
 		}
 		return $this;
 	}
+
+	/**
+	 * 提现认证按钮
+	 * @return $this
+	 */
+//	public function getWithdrawActionButton()
+//	{
+//		if (($this->status == config('admin.global.withdraw_status.audit'))) {
+//			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.editWithdraw'))) {
+//				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/edit').'" class="btn btn-xs btn-primary tooltips" data-original-title="' . trans('crud.edit') . '"  data-placement="top"><i class="fa fa-pencil"></i></a>';
+//			}
+//		}else{
+//			$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id).'" class="btn btn-xs btn-info tooltips" data-container="body" data-original-title="' . trans('labels.view') . '"  data-placement="top"><i class="fa fa-search"></i></a>';
+//		}
+//		return $this;
+//	}
 
 	/**
 	 * 组合按钮

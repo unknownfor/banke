@@ -44,7 +44,7 @@ class FaqRepository
 			}
 		}
 		/*状态搜索*/
-		if ($status) {
+		if ($status!=null) {
 			$faq = $faq->where('status', $status);
 		}
 

@@ -48,7 +48,7 @@ class OrgRepository
 		}
 
 		/*状态搜索*/
-		if ($status) {
+		if ($status!=null) {
 			$org = $org->where('status', $status);
 		}
 
