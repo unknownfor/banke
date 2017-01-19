@@ -10,7 +10,7 @@ var TableDatatablesAjax = function() {
         'url' : '/admin/checkin/ajaxIndex',
         "data": function ( d ) {
           d.name =$('.filter input[name="name"]').val();
-          d.city =$('.filter input[name="city"]').val();
+          d.mobile =$('.filter input[name="mobile"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
@@ -27,9 +27,6 @@ var TableDatatablesAjax = function() {
           "data": "name",
           "name" : "name",
           "orderable" : false,
-          render:function(res,type,full){
-            return '<img class="table-cell-logo" src="'+full.logo+'"><label>'+res+'</label>';
-          }
         },
         {
           "data": "mobile",
