@@ -95,7 +95,8 @@
                               <th width="20%"> {{ trans('labels.checkin.course_name') }} </th>
                               <th width="20%"> {{ trans('labels.checkin.org_name') }} </th>
                               <th width="8%"> {{ trans('labels.checkin.award_amount') }} </th>
-                                <th width="15%"> {{ trans('labels.checkin.checkin_time') }} </th>
+                                <th width="15%"> {{ trans('labels.checkin.created_at') }} </th>
+                                <th width="15%"> {{ trans('labels.checkin.updated_at') }} </th>
                               <th width="8%"> {{ trans('labels.checkin.status') }} </th>
                               <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
