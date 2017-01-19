@@ -102,12 +102,12 @@ class CheckinRepository
 	 */
 	public function store($request)
 	{
-		$role = new BankeDict;
+		$role = new BankeCheckIn;
 		if ($role->fill($request->all())->save()) {
-			Flash::success(trans('alerts.dict.created_success'));
+			Flash::success(trans('alerts.checkin.created_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.dict.created_error'));
+		Flash::error(trans('alerts.checkin.created_error'));
 		return false;
 	}
 	/**
@@ -119,7 +119,7 @@ class CheckinRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeDict::find($id);
+		$role = BankeCheckIn::find($id);
 		if ($role) {
 			$roleArray = $role->toArray();
 			return $roleArray;
@@ -136,13 +136,13 @@ class CheckinRepository
 	 */
 	public function update($request,$id)
 	{
-		$role = BankeDict::find($id);
+		$role = BankeCheckIn::find($id);
 		if ($role) {
 			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.dict.updated_success'));
+				Flash::success(trans('alerts.checkin.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.dict.updated_error'));
+			Flash::error(trans('alerts.checkin.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -158,14 +158,14 @@ class CheckinRepository
 	 */
 	public function mark($id,$status)
 	{
-		$role = BankeDict::find($id);
+		$role = BankeCheckIn::find($id);
 		if ($role) {
 			$role->status = $status;
 			if ($role->save()) {
-				Flash::success(trans('alerts.dict.updated_success'));
+				Flash::success(trans('alerts.checkin.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.dict.updated_error'));
+			Flash::error(trans('alerts.checkin.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -180,12 +180,12 @@ class CheckinRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeDict::destroy($id);
+		$isDelete = BankeCheckIn::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.dict.deleted_success'));
+			Flash::success(trans('alerts.checkin.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.dict.deleted_error'));
+		Flash::error(trans('alerts.checkin.deleted_error'));
 		return false;
 	}
 

@@ -107,7 +107,7 @@ return[
 		'undo' 		=> 'admin.cash.undo',
 	],
 
-//	±¨Ãû
+//	ï¿½ï¿½ï¿½ï¿½
 	'order' => [
 		'create' 	=> 'admin.order.create',
 		'edit' 		=> 'admin.order.edit',
@@ -116,23 +116,28 @@ return[
 		/*'trash' 	=> 'admin.dict.trash',
 		'undo' 		=> 'admin.dict.undo',*/
 	],
-	//ÌáÏÖ
+	//ï¿½ï¿½ï¿½ï¿½
 	'cash' => [
 		'edit' 		=> 'admin.cash.edit',
 		'destroy' 	=> 'admin.cash.delete',
 	],
 
-	//·´À¡
+	//ï¿½ï¿½ï¿½ï¿½
 	'feedback' => [
 		'show' 		=> 'admin.feedback.show',
 		'destroy' 	=> 'admin.feedback.delete',
 	],
 
-	//³£¼ûÎÊÌâ
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	'faq' => [
 		'show' 		=> 'admin.faq.show',
 		'create' 	=> 'admin.faq.create',
 		'edit' 		=> 'admin.faq.edit',
 		'destroy' 	=> 'admin.faq.delete',
+	],
+	//ç­¾åˆ°
+	'checkin' => [
+		'show' 		=> 'admin.checkin.show',
+		'edit' 		=> 'admin.checkin.edit',
 	],
 ];
