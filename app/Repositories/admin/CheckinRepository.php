@@ -11,6 +11,7 @@ use Flash;
 use DB;
 use Auth;
 use Illuminate\Support\Facades\Log;
+use League\Flysystem\Exception;
 /**
 * 权限仓库
 */
