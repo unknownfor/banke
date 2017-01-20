@@ -16,6 +16,10 @@ var TableDatatablesAjax = function() {
       "orderCellsTop": true,
       "dom" : "<'row'<'col-sm-3'l><'col-sm-6'<'customtoolbar'>><'col-sm-3'f>>" +"<'row'<'col-sm-12'tr>>" +"<'row'<'col-sm-5'i><'col-sm-7'p>>",
       "columns": [
+          {
+              "data": "id",
+              "name" : "id",
+          },
         {
         	"data": "version_code",
         	"name" : "version_code",

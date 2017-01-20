@@ -43,6 +43,13 @@
                   <input type="hidden" name="id" value="{{$appUpdate['id']}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-2 control-label" for="name">{{trans('labels.appUpdate.version_code')}}</label>
+                          <div class="col-md-8">
+                              <input type="text" class="form-control" id="name" name="version_code" placeholder="{{trans('labels.appUpdate.version_code')}}" value="{{$dict['version_code']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="name">{{trans('labels.appUpdate.version_name')}}</label>
                           <div class="col-md-8">
                               <input type="text" class="form-control" id="name" name="version_name" placeholder="{{trans('labels.appUpdate.version_name')}}" value="{{$dict['version_name']}}">

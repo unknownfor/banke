@@ -94,10 +94,10 @@ class AppUpdateRepository
 	{
 		$role = new BankeAppUpdate;
 		if ($role->fill($request->all())->save()) {
-			Flash::success(trans('alerts.AppUpdate.created_success'));
+			Flash::success(trans('alerts.appUpdate.created_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.AppUpdate.created_error'));
+		Flash::error(trans('alerts.appUpdate.created_error'));
 		return false;
 	}
 	/**
@@ -129,10 +129,10 @@ class AppUpdateRepository
 		$role = BankeAppUpdate::find($id);
 		if ($role) {
 			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.AppUpdate.updated_success'));
+				Flash::success(trans('alerts.appUpdate.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.AppUpdate.updated_error'));
+			Flash::error(trans('alerts.appUpdate.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -152,10 +152,10 @@ class AppUpdateRepository
 		if ($role) {
 			$role->status = $status;
 			if ($role->save()) {
-				Flash::success(trans('alerts.AppUpdate.updated_success'));
+				Flash::success(trans('alerts.appUpdate.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.AppUpdate.updated_error'));
+			Flash::error(trans('alerts.appUpdate.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -172,10 +172,10 @@ class AppUpdateRepository
 	{
 		$isDelete = BankeAppUpdate::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.AppUpdate.deleted_success'));
+			Flash::success(trans('alerts.appUpdate.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.AppUpdate.deleted_error'));
+		Flash::error(trans('alerts.appUpdate.deleted_error'));
 		return false;
 	}
 
