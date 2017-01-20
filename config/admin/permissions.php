@@ -141,4 +141,12 @@ return[
 		'show' 		=> 'admin.checkin.show',
 		'edit' 		=> 'admin.checkin.edit',
 	],
+
+	//app升级
+	'appUpdate' => [
+		'show' 		=> 'admin.appUpdate.show',
+		'create' 	=> 'admin.appUpdate.create',
+		'edit' 		=> 'admin.appUpdate.edit',
+		'destroy' 	=> 'admin.appUpdate.delete',
+	],
 ];

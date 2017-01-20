@@ -34,6 +34,9 @@ Route::group(['prefix'=>"web"],function(){
     //课程
     Route::get('course/{id}', 'ShareController@course');
 
+    //动态
+    Route::get('news/{id}', 'ShareController@news');
+
     Route::get('privacy', 'ShareController@privacy');
 
     Route::get('rule', 'ShareController@rule');

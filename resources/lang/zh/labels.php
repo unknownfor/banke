@@ -165,6 +165,9 @@ return [
 		'faqList' => '<i class="fa fa-search"></i> 常见问题列表',
 		'faqShow' => '<i class="fa fa-search"></i> 问题详情',
 		'faqEdit' => '<i class="fa fa-search"></i> 编辑问题',
+		'appUpdateList' => '<i class="fa fa-exchange"></i> 版本列表',
+		'appUpdateCreate'=>'<i class="fa fa-user-plus"></i> 添加版本',
+		'appUpdateEdit' => '<i class="fa fa-search"></i> 编辑版本',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -383,6 +386,18 @@ return [
 		'sort'=>'排序',
 		'status'=>'状态',
 		'list' => '问题列表',
+		'show'=>'查看详情'
+	],
+	'appUpdate' => [
+		'version_code' => '序号',
+		'version_name' => '版本号',
+		'instruction' => '更新内容',
+		'url' => '下载地址',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'sort'=>'排序',
+		'status'=>'状态',
+		'list' => '版本列表',
 		'show'=>'查看详情'
 	],
 ];
