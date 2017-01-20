@@ -160,6 +160,8 @@ class WithdrawRepository
 	public function update($request,$id)
 	{
 		$input = $request->only(['status', 'processing_result']);
+		$cur_user = Auth::user();
+		$input['operator_uid'] = $cur_user['id'];
 		$role = BankeWithdraw::find($id);
 		if ($role) {
 			if ($role->fill($input)->save()) {
@@ -170,13 +172,13 @@ class WithdrawRepository
 						$user_profile->account_balance += $role['withdraw_amount'];
 						$user_profile->save();
 
-						$cur_user = Auth::user();
 						$balance_log = [
 							'uid'=>$role['uid'],
 							'change_amount'=>$role['withdraw_amount'],
 							'change_type'=>'+',
 							'business_type'=>'WITHDRAW_FAIL',
-							'operator_uid'=>$cur_user['id']
+							'operator_uid'=>$cur_user['id'],
+							'withdraw_id'=>$id
 						];
 						//记录余额变动日志
 						BankeBalanceLog::create($balance_log);
