@@ -16,21 +16,6 @@
     <title>机构详情</title>
 </head>
 <body>
-<div class="head container">
-    @if($org['cover'])
-        <?php
-        $imgs=explode(',',$org['cover']);
-        ?>
-        <img class="head-bg" src="{{$imgs[0]}}" />
-    @else
-        <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
-    @endif
-    <div class="head-img">
-        <img src="{{$org['logo']}}"/>
-    </div>
-    <div class="head-name">{{$org['name']}}</div>
-    <div class="head-title">{{$org['intro']}}</div>
-</div>
 <div class="address container">
     <div class="container-head">
         <span>机构地址</span>
