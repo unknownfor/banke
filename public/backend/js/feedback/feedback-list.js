@@ -38,6 +38,18 @@ var TableDatatablesAjax = function() {
         	"name": "created_at",
         	"orderable" : true,
         },
+        {
+          "data": "status",
+          "name": "status",
+          "orderable" : true,
+          render:function(data){
+            if (data == 1) {
+              return '<span class="label label-success"> 已审核 </span>';
+            }else{
+              return '<span class="label label-danger"> 待审核 </span>';
+            }
+          }
+        },
         { 
           "data": "actionButton",
           "name": "actionButton",

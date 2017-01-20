@@ -37,18 +37,20 @@
                               <div class="form-control form-control-static"> {{$feedback['name']}} </div>
                           </div>
                       </div>
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="name">{{trans('labels.feedback.created_at')}}</label>
-                          <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$feedback['created_at']}} </div>
-                          </div>
-                      </div>
+
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="details">{{trans('labels.feedback.content')}}</label>
                           <div class="col-md-9">
                               <textarea id="target-area" style="height:255px;width: 100%;">{{$feedback['content']}}</textarea>
                           </div>
                       </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="name">{{trans('labels.feedback.created_at')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$feedback['created_at']}} </div>
+                          </div>
+                      </div>
+
                   </div>
                   <div class="form-actions">
                       <div class="row">

@@ -38,7 +38,8 @@
                           <th width="15%"> {{ trans('labels.feedback.name') }} </th>
                           <th width="35%"> {{ trans('labels.feedback.content') }} </th>
                           <th width="25%"> {{ trans('labels.feedback.created_at') }} </th>
-                          <th width="15%"> {{ trans('labels.action') }} </th>
+                          <th width="8%"> {{ trans('labels.feedback.status') }} </th>
+                          <th width="20%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>

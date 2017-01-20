@@ -200,4 +200,12 @@ class ShareController extends Controller
             return ApiResponseService::showError(Code::REGISTER_ERROR);
         }
     }
+
+
+    /**
+     * 隐私政策
+     */
+    public function privacy(){
+        return view('web.privacy.privacy');
+    }
 }

@@ -370,6 +370,7 @@ return [
 		'content' => '内容',
 		'created_at' => '反馈时间',
 		'updated_at' => '修改时间',
+		'status'=>'状态',
 		'list' => '反馈列表',
 		'show'=>'查看详情'
 	],
