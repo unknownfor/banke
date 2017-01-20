@@ -49,13 +49,15 @@ ul {
 }
 .head {
   text-align: center;
+  height: 260px;
 }
 .head .head-bg {
-  max-height: 230px;
+  height: 180px;
   position: relative;
 }
 .head .head-img {
   position: absolute;
+  top: 145px;
   margin: 0 auto;
   width: 100%;
 }
@@ -173,25 +175,16 @@ ul {
   margin: 0;
 }
 @media screen and (max-width: 420px) {
-  .head .head-img {
-    top: 193px;
-  }
   #downloadCon {
     height: 78px;
   }
 }
 @media screen and (max-width: 380px) {
-  .head .head-img {
-    top: 180px;
-  }
   #downloadCon {
     height: 71px;
   }
 }
 @media screen and (max-width: 320px) {
-  .head .head-img {
-    top: 148px;
-  }
   #downloadCon {
     height: 61px;
   }
