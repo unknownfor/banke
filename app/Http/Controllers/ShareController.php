@@ -19,8 +19,15 @@ class ShareController extends Controller
     /**
      * 规则详情
      */
-    public function rule_page(){
-        return view('web.rule_page');
+    public function rule(){
+        return view('web.rule.rule');
+    }
+
+    /**
+     * 规则详情
+     */
+    public function share_rule(){
+        return view('web.rule.share_rule');
     }
 
     /**
@@ -199,5 +206,13 @@ class ShareController extends Controller
         }else{
             return ApiResponseService::showError(Code::REGISTER_ERROR);
         }
+    }
+
+
+    /**
+     * 隐私政策
+     */
+    public function privacy(){
+        return view('web.privacy.privacy');
     }
 }

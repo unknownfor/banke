@@ -10,6 +10,8 @@ Route::group(['prefix'=>"share"],function(){
     //课程
     Route::get('course/{id}', 'ShareController@share_course');
 
+    Route::get('rule', 'ShareController@share_rule');
+
 });
 
 //邀请
@@ -31,6 +33,10 @@ Route::group(['prefix'=>"web"],function(){
     Route::get('org/{id}', 'ShareController@org');
     //课程
     Route::get('course/{id}', 'ShareController@course');
+
+    Route::get('privacy', 'ShareController@privacy');
+
+    Route::get('rule', 'ShareController@rule');
 
 });
 

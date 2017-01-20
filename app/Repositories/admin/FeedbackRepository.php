@@ -71,7 +71,7 @@ class FeedbackRepository
 
 		if ($feedbacks) {
 			foreach ($feedbacks as &$v) {
-				$v['actionButton'] = $v->getActionButtonAttribute(false);
+				$v['actionButton'] = $v->getActionButtonAttribute(true);
 			}
 		}
 		return [

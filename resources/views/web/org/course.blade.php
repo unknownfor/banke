@@ -12,7 +12,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/class-detail.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/course/course.css" rel="stylesheet">
     <title>课程详情</title>
 </head>
 <body>
@@ -30,7 +30,7 @@
     </div>
     <div class="head-right">
         <div class="price"><span class="price-info">参考价</span><span id="price-num">￥{{$course['price']}}</span></div>
-        <div class="real-price"><span class="price-info">最终成交价格</span><span id="price-real-num">￥{{$course['real_price']}}</span></div>
+        <div class="real-price"><span class="price-info">最终成交价</span><span id="price-real-num">￥{{$course['real_price']}}</span></div>
     </div>
 </div>
 <!--返现规则-->
@@ -39,9 +39,9 @@
         <span>返现规则</span>
     </div>
     <div class="pay-rule-box container-box">
-        <div class="tips">在机构付费时预计将减免10%的学费；</div>
-        <div class="tips">剩余学费将会以每日打卡的形式返还到您的小金库余额里，每日打卡将获得1000-1不等的学费返现；</div>
-        <div class="tips">最终解释权由本平台所有。</div>
+        <div class="tips"><span>在机构付费时预计将减免10%的学费；</span></div>
+        <div class="tips"><span>剩余学费将会以每日打卡的形式返还到您的小金库余额里，每日打卡将获得1000-1不等的学费返现；</span></div>
+        <div class="tips"><span>最终解释权由本平台所有。</span></div>
     </div>
 </div>
 <!--机构地址-->
@@ -70,7 +70,7 @@
         <span>课程介绍</span>
     </div>
     <div class="class-info-box container-box">
-       {!! $course['details'] !!}
+        {!! $course['details'] !!}
     </div>
 </div>
 </body>
