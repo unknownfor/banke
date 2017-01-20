@@ -45,6 +45,7 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
+                            <th > {{ trans('labels.appUpdate.version_code') }} </th>
                           <th width="15%"> {{ trans('labels.appUpdate.version_name') }} </th>
                           <th> {{ trans('labels.appUpdate.instruction') }} </th>
                           <th> {{ trans('labels.appUpdate.url') }} </th>
@@ -54,6 +55,7 @@
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
+                            <td></td>
                             <td></td>
                             <td>
                               <div class="form-group form-md-line-input">
