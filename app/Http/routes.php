@@ -94,6 +94,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //提现记录
         require(__DIR__ . '/Routes/WithdrawRoute.php');
 
+        //app升级
+        require(__DIR__ . '/Routes/appUpdateRoute.php');
+
     });
 });
 

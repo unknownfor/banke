@@ -143,4 +143,11 @@ return [
         'soft_deleted_success' => '删除签到成功',
         'soft_deleted_error' => '删除签到失败',
     ],
+    'appUpdate' => [
+        'updated_success'   => '修改升级信息成功.',
+        'updated_error'     => '修改升级信息失败.',
+        'soft_deleted_success' => '删除升级信息成功',
+        'soft_deleted_error' => '删除升级信息失败',
+    ],
+
 ];
