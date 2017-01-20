@@ -1,0 +1,28 @@
+.size(@width: 100%,@height: 100%){
+  width: @width;
+  height: @height;
+}
+.border-radius(@r:3px){
+  border-radius: @r;
+  background-clip: padding-box;
+}
+.middle-absolute(@l,@t){
+  position: absolute;
+  top:50%;
+  left: 50%;
+  margin-top: -@t;
+  margin-left: -@l;
+}
+//
+.txt-ellipsis{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.txt-ellipsis-p(@line-num:10,@type:ellipsis){
+  text-overflow: @type;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line-num;
+}

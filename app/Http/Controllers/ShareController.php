@@ -19,8 +19,15 @@ class ShareController extends Controller
     /**
      * 规则详情
      */
-    public function rule_page(){
-        return view('web.rule_page');
+    public function rule(){
+        return view('web.rule.rule');
+    }
+
+    /**
+     * 规则详情
+     */
+    public function share_rule(){
+        return view('web.rule.share_rule');
     }
 
     /**

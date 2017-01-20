@@ -12,7 +12,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/organization.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/org/org.css" rel="stylesheet">
     <title>机构详情</title>
 </head>
 <body>

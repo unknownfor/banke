@@ -12,11 +12,11 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Cache-control" content="no-cache">
 	<meta http-equiv="Cache" content="no-cache">
-	<link type="text/css" href="/front/assets/css/class-rule2.css" rel="stylesheet">
+	<link type="text/css" href="/front/assets/css/rule/rule.css" rel="stylesheet">
 	<title>首页规则</title>
 </head>
 <body>
-<img class="banner" src="/front/assets/img/class-rule/bg.png"/>
+<img class="banner" src="/front/assets/img/rule/bg.png"/>
 <!--关于半课-->
 <div class="about-banke content">
 	<div class="title">

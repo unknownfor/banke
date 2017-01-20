@@ -12,8 +12,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/common.css" rel="stylesheet">
-    <link type="text/css" href="/front/assets/css/class-detail.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/course/course.css" rel="stylesheet">
     <title>课程详情</title>
 </head>
 <body>
