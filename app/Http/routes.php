@@ -95,7 +95,7 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/WithdrawRoute.php');
 
         //app升级
-        require(__DIR__ . '/Routes/appUpdateRoute.php');
+        require(__DIR__ . '/Routes/AppUpdateRoute.php');
 
     });
 });
