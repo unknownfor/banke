@@ -42,6 +42,7 @@ ul {
   width: 23px;
   height: 23px;
   background: url("../../img/rule/icon.png") no-repeat;
+  -webkit-background-size: 111.3px 23.1px;
   background-size: 111.3px 23.1px;
 }
 .content .title .icon.about-banke-img {
