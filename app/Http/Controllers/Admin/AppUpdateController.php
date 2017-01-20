@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Facades\DictFacade;
 use App\Http\Requests\DictRequest;
 use AppUpdateRepository;
+use Illuminate\Support\Facades\Log;
 
 class AppUpdateController extends Controller {
 
@@ -66,6 +67,7 @@ class AppUpdateController extends Controller {
     public function edit($id)
     {
         $appUpdate = AppUpdateRepository::edit($id);
+        Log::info('$appUpdate===================='.json_encode($appUpdate));
         return view('admin.appUpdate.edit')->with(compact('appUpdate'));
     }
     /**
