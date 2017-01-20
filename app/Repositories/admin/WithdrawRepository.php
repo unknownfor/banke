@@ -177,7 +177,8 @@ class WithdrawRepository
 							'change_amount'=>$role['withdraw_amount'],
 							'change_type'=>'+',
 							'business_type'=>'WITHDRAW_FAIL',
-							'operator_uid'=>$cur_user['id']
+							'operator_uid'=>$cur_user['id'],
+							'withdraw_id'=>$id
 						];
 						//记录余额变动日志
 						BankeBalanceLog::create($balance_log);
