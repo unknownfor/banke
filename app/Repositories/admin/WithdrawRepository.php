@@ -9,6 +9,7 @@ use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeWithdraw;
 use Carbon\Carbon;
+use App\User;
 use Flash;
 use DB;
 use Auth;
@@ -33,7 +34,7 @@ class WithdrawRepository
 
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 		
-		$name = request('name' ,'');
+		$status= request('status' ,'');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
 		$updated_at_from = request('updated_at_from' ,'');
@@ -42,14 +43,12 @@ class WithdrawRepository
 
 		$role = new BankeWithdraw;
 
-		/*配置名称搜索*/
-/*		if($name){
-			if($search_pattern){
-				$role = $role->where('key', 'like', $name);
-			}else{
-				$role = $role->where('key', $name);
-			}
-		}*/
+
+
+		/*状态搜索*/
+		if ($status!=null) {
+			$role = $role->where('status', $status);
+		}
 
 		/*配置创建时间搜索*/
 		if($created_at_from){
@@ -81,13 +80,19 @@ class WithdrawRepository
 		$roles = $role->get();
 
 		if ($roles) {
+			$operator = new User;
 			foreach ($roles as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 				$user = BankeUserProfiles::find($v['uid']);
 				$v['name'] = $user['name'];
 				$v['mobile'] = $user['mobile'];
-				$cur_user = Auth::user();
-				$v['operator_name'] = $cur_user['name'];
+				$operator_name="";
+				if($v['operator_uid']!=""){
+					$operator_name=$operator::find(($v['operator_uid']))['name'];
+				}
+				$v['operator_name'] = $operator_name;
+
+
 			}
 		}
 		return [
@@ -129,8 +134,16 @@ class WithdrawRepository
 			$user = BankeUserProfiles::find($role['uid']);
 			$role['name'] = $user['name'];
 			$role['mobile'] = $user['mobile'];
-			$cur_user = Auth::user();
-			$v['operator_name'] = $cur_user['name'];
+
+			Log::info('----------------------'.$user['account_balance']);
+			$role['account_balance'] = $user['account_balance'];
+
+			$operator_name='';
+			$operator = new User;
+			if($role['operator_uid']!=""){
+				$operator_name=$operator::find(($role['operator_uid']))['name'];
+			}
+			$v['operator_name'] = $operator_name;
 			$roleArray = $role->toArray();
 			return $roleArray;
 		}

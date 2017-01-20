@@ -27,8 +27,8 @@ return[
 	],
 
 	//提现状态
-	'cash_status' => [
-		'applying' => 0,
+	'withdraw_status' => [
+		'audit' => 0,
 		'active' => 1,
 	],
 	//分页
@@ -134,11 +134,11 @@ return[
 	],
 
 	//提现
-	'cash' => [
+	'withdraw' => [
 		// 控制是否显示查看按钮
-		'show' => true,
+		'show' => false,
 		// trait 中的 action 参数
-		'action' => 'cash',
+		'action' => 'withdraw',
 	],
 
 	//报名

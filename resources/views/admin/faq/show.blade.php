@@ -42,7 +42,7 @@
                           <label class="col-md-1 control-label" for="intro">{{trans('labels.faq.content')}}</label>
                           <div class="col-md-9">
                               <input type="hidden" class="content-origin" value="{{$faq['content']}}"></input>
-                              <div class="form-control form-control-static content"></div>
+                              <div class="form-control form-control-static content" style="line-height: 30px;"></div>
                           </div>
                       </div>
 
@@ -106,7 +106,6 @@
         });
 
         var content=$('.content-origin').val();
-            content=content.replace(/\\n/g,'<p>'+RegExp.$1+'</p>');
         $('.content').html(content);
       });
 </script>

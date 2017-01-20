@@ -69,7 +69,7 @@ class CourseRepository
 		}
 		
 		/*状态搜索*/
-		if ($status) {
+		if ($status!=null) {
 			$user = $user->where('status', $status);
 		}
 

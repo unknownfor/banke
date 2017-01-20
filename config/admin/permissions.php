@@ -107,7 +107,7 @@ return[
 		'undo' 		=> 'admin.cash.undo',
 	],
 
-//	����
+	//报名
 	'order' => [
 		'create' 	=> 'admin.order.create',
 		'edit' 		=> 'admin.order.edit',
@@ -116,19 +116,20 @@ return[
 		/*'trash' 	=> 'admin.dict.trash',
 		'undo' 		=> 'admin.dict.undo',*/
 	],
-	//����
-	'cash' => [
-		'edit' 		=> 'admin.cash.edit',
-		'destroy' 	=> 'admin.cash.delete',
+
+	//提现
+	'withdraw' => [
+		'show' 		=> 'admin.withdraw.show',
+		'edit'	=> 'admin.withdraw.edit',
 	],
 
-	//����
+	//反馈
 	'feedback' => [
 		'show' 		=> 'admin.feedback.show',
 		'destroy' 	=> 'admin.feedback.delete',
 	],
 
-	//��������
+	//常见问题
 	'faq' => [
 		'show' 		=> 'admin.faq.show',
 		'create' 	=> 'admin.faq.create',

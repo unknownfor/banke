@@ -7,10 +7,11 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/cash/ajaxIndex',
+        'url' : '/admin/withdraw/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
           d.mobile =$('.filter input[name="mobile"]').val();
+          d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
+          d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
@@ -27,9 +28,6 @@ var TableDatatablesAjax = function() {
           "data": "name",
           "name" : "name",
           "orderable" : false,
-          render:function(res,type,full){
-            return '<img class="table-cell-logo" src="'+full.logo+'"><label>'+res+'</label>';
-          }
         },
         {
           "data": "mobile",
@@ -37,18 +35,23 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "cash_amount",
-          "name": "cash_amount",
-          "orderable" : false,
-        }
-        , {
-          "data": "left_amount",
-          "name": "left_amount",
+          "data": "withdraw_amount",
+          "name": "withdraw_amount",
           "orderable" : true,
         },
         {
-          "data": "manage_time",
-          "name": "manage_time",
+          "data": "zhifubao_account",
+          "name": "zhifubao_account",
+          "orderable" : false,
+        },
+        {
+          "data": "updated_at",
+          "name": "updated_at",
+          "orderable" : true,
+        },
+        {
+          "data": "operator_name",
+          "name": "operator_name",
           "orderable" : true,
         },
         { 
@@ -59,8 +62,11 @@ var TableDatatablesAjax = function() {
             if (data == 1) {
               return '<span class="label label-success"> 已提现 </span>';
             }
+            else if(data==0){
+              return '<span class="label label-info"> 申请中 </span>';
+            }
             else{
-              return '<span class="label label-info> 申请中 </span>';
+              return '<span class="label label-danger"> 未通过 </span>';
             }
           }
         },
@@ -68,12 +74,7 @@ var TableDatatablesAjax = function() {
           "data": "actionButton",
           "name": "actionButton",
           "type": "html",
-          "orderable" : false,
-          render:function(data,full){
-            if(full.status==1){
-              return '';
-            }
-          }
+          "orderable" : false
         },
       ],
       "drawCallback": function( settings ) {
