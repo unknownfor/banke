@@ -1,122 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>分享课程详情</title>
-    <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="/front/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="/front/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="/front/assets/css/style.css" rel="stylesheet" type="text/css"/>
-    <!-- END GLOBAL MANDATORY STYLES -->
-    <script src="/front/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="Resource-type" content="Document">
+    <!--禁止缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--禁止数字识别为手机号-->
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link type="text/css" href="/front/assets/css/common.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/class-detail.css" rel="stylesheet">
+    <title>课程详情</title>
 </head>
-<style>
-    .masking {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top:0;
-        left: 0;
-        background-color: #000;
-        opacity: 0.8;
-        filter: alpha(opacity=80);
-        z-index: 1;
-    }
-    .box{
-        position: absolute;
-        top:20%;
-        width: 99%;
-    }
-    .money_title{
-        font-size:16px;
-        line-height: 50px;
-        border-bottom: 1px solid #d2d2d2;
-    }
-
-    .reward_box{
-        position: relative;
-        padding: 10px;
-        border-radius: 5px;
-        z-index:8888;
-        background-color: #e2e2e2;
-        width: 300px;
-        height: 300px;
-        margin:0 auto;
-
-    }
-    .input_money{
-        margin-top: 10px;
-        margin-bottom:25px;
-    }
-    .mark_btn{
-        width: 100%;
-        background: #0da3e2;
-        line-height: 30px;
-        color:#fff;
-    }
-    .money_btn{
-        margin: 5px;
-        width: 80px;
-        background: #fff;
-        color:#000
-
-    }
-    .blue_btn{
-        color:#fff !important;
-        background: #0da3e2 !important;
-        margin: 5px;
-        width: 80px;
-    }
-</style>
-<body >
-
-<div class="masking">
-
-</div>
-<div class="box">
-    <div class="reward_box">
-        <p class="money_title">机构详情</p>
-
-        <div class="money">
-            <a class="btn money_btn click" data-money="1">1元</a>
-            <a class="btn money_btn click" data-money="21">21元</a>
-            <a class="btn money_btn click" data-money="66">66元</a>
-            <a class="btn money_btn click" data-money="88">88元</a>
-            <a class="btn money_btn click" data-money="188">188元</a>
-            <a class="btn money_btn click" data-money="520">520元</a>
+<body>
+<!--课程头部-->
+<div class="head container">
+    <div class="head-left">
+        <img src="{{$course['cover']}}" />
+    </div>
+    <div class="head-middle">
+        <div class="name">{{$course['name']}}</div>
+        <div class="save">
+            <span class="save-img"></span>
+            <span class="save-num">{{$course['discount']}}%</span>
         </div>
-
-        <div class="input_money">
-            <input class="form-control" id="money" name="money" value="" placeholder="手动输入打赏金额">
-        </div>
-        <div align="center">
-            <a  class="btn mark_btn" href="javascript:void(0)" onclick="reward()">赏了</a>
-        </div>
-
+    </div>
+    <div class="head-right">
+        <div class="price"><span class="price-info">参考价</span><span id="price-num">￥{{$course['price']}}</span></div>
+        <div class="real-price"><span class="price-info">最终成交价</span><span id="price-real-num">￥{{$course['real_price']}}</span></div>
     </div>
 </div>
-<script>
-    $(function(){
-        $(".click").click(function(){
-            $("#money").val($(this).attr('data-money'));
-            $(".click").removeClass("blue_btn");
-            $(this).addClass("blue_btn");
-
-        })
-
-
-    });
-    function reward(){
-        var price = $("#money").val();
-        if(price){
-            location.href = "/wechat/pay?price="+price*100;
-        }else{
-            location.href = "/wechat/pay";
-        }
-
-    }
-</script>
+<!--返现规则-->
+<div class="pay-rule container">
+    <div class="container-head">
+        <span>返现规则</span>
+    </div>
+    <div class="pay-rule-box container-box">
+        <div class="tips"><span>在机构付费时预计将减免10%的学费；</span></div>
+        <div class="tips"><span>剩余学费将会以每日打卡的形式返还到您的小金库余额里，每日打卡将获得1000-1不等的学费返现；</span></div>
+        <div class="tips"><span>最终解释权由本平台所有。</span></div>
+    </div>
+</div>
+<!--机构地址-->
+<div class="address container">
+    <div class="container-head">
+        <span>机构地址</span>
+    </div>
+    <div class="address-box container-box">
+        <div class="address">
+            <div class="address-img"></div>
+            <div class="address-detail">{{$course['org']['address']}}</div>
+        </div>
+        <div class="address-call">
+            <a href="tel:{{$course['org']['tel_phone']}}">
+                <div id="address-call-box">
+                    <div id="img">
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<!--课程介绍-->
+<div class="class-info container">
+    <div class="container-head">
+        <span>课程介绍</span>
+    </div>
+    <div class="class-info-box container-box">
+        {!! $course['details'] !!}
+    </div>
+</div>
 </body>
+<script src="/front/assets/plugins/zepto.min.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 </html>
-

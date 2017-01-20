@@ -12,17 +12,24 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link rel="stylesheet" type="text/css" href="{{asset('front/assets/css/org/organization.css')}}">
+    <link type="text/css" href="/front/assets/css/organization.css" rel="stylesheet">
     <title>机构详情</title>
 </head>
 <body>
 <div class="head container">
-    <img class="head-bg" src="{{asset('front/assets/img/org/bg.jpg')}}" />
+    @if($org['cover'])
+        <?php
+            $imgs=explode(',',$org['cover']);
+        ?>
+        <img class="head-bg" src="{{$imgs[0]}}" />
+        @else
+        <img class="head-bg" src="{{asset('front/assets/img/org/bg.jpg')}}" />
+    @endif
     <div class="head-img">
-        <img src="{{asset('front/assets/img/org/pineapple1.jpg')}}"/>
+        <img src="{{$org['logo']}}"/>
     </div>
-    <div class="head-name">嘿设汇出品诚信机构</div>
-    <div class="head-title">华中地区最权威的设计培训机构</div>
+    <div class="head-name">{{$org['name']}}</div>
+    <div class="head-title">{{$org['intro']}}</div>
 </div>
 <div class="address container">
     <div class="container-head">
@@ -31,10 +38,10 @@
     <div class="address-box container-box">
         <div class="address">
             <div class="address-img"></div>
-            <div class="address-detail">武汉市洪山区野芷</div>
+            <div class="address-detail">{{$org['address']}}</div>
         </div>
         <div class="address-call">
-            <a href="tel:18140662282">
+            <a href="tel:{{$org['tel_phone']}}}}">
                 <div id="address-call-box">
                     <div id="img"></div>
                 </div>
@@ -45,11 +52,10 @@
 <!--课程介绍-->
 <div class="class-info container">
     <div class="class-info-box container-box">
-        流免不了常被邀请作演讲，鲁迅也不例外。他演讲时旁征博引，妙趣横生，常常被掌声和笑声包围。
-        有一次他从上海回到北平，北师大请他去讲演，题目是《文学与武力》。
-        有的同学已在报上看到不少攻击他的文章，很为他不平。
-        他在讲演中说：“有人说我这次到北平，是来抢饭碗的，是‘卷土重来’；但是请放心，我马上要‘卷土重去’了。”一席话顿时引得会场上充满了笑声。
-    </div>
+        {!!$org['details']!!}
+</div>
 </div>
 </body>
+<script src="/front/assets/plugins/zepto.min.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 </html>
