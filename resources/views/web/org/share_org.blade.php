@@ -23,7 +23,7 @@
         ?>
         <img class="head-bg" src="{{$imgs[0]}}" />
         @else
-        <img class="head-bg" src="{{asset('front/assets/img/org/bg.jpg')}}" />
+        <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
     @endif
     <div class="head-img">
         <img src="{{$org['logo']}}"/>

@@ -12,10 +12,25 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/organization.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/org/org.css" rel="stylesheet">
     <title>机构详情</title>
 </head>
 <body>
+<div class="head container">
+    @if($org['cover'])
+        <?php
+        $imgs=explode(',',$org['cover']);
+        ?>
+        <img class="head-bg" src="{{$imgs[0]}}" />
+    @else
+        <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
+    @endif
+    <div class="head-img">
+        <img src="{{$org['logo']}}"/>
+    </div>
+    <div class="head-name">{{$org['name']}}</div>
+    <div class="head-title">{{$org['intro']}}</div>
+</div>
 <div class="address container">
     <div class="container-head">
         <span>机构地址</span>
@@ -26,7 +41,7 @@
             <div class="address-detail">{{$org['address']}}</div>
         </div>
         <div class="address-call">
-            <a href="tel:{{$org['tel_phone']}}">
+            <a href="tel:{{$org['tel_phone']}}}}">
                 <div id="address-call-box">
                     <div id="img"></div>
                 </div>
@@ -37,7 +52,7 @@
 <!--课程介绍-->
 <div class="class-info container">
     <div class="class-info-box container-box">
-        {!! $org['details'] !!}
+        {!!$org['details']!!}
     </div>
 </div>
 </body>
