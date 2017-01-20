@@ -13,4 +13,4 @@ $router->group(['prefix' => 'appUpdate'], function($router){
 		  	]);
 });
 
-$router->resource('appUpdate', 'appUpdateController');
+$router->resource('appUpdate', 'AppUpdateController');
