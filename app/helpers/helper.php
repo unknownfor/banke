@@ -149,10 +149,10 @@ if(!function_exists('request_by_curl')){
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
 		curl_exec($ch);
 		$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		if($httpCode == 200){
-			return true;
+		if($httpCode != 200){
+			return false;
 		}
 		curl_close($ch);
-		return false;
+		return true;
 	}
 }
