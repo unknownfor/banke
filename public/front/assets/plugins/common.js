@@ -5,7 +5,7 @@ $(function () {
     // 匹配ip地址  http://91.16.0.1/hisihi-cms/api.php?s=/public/topContentV2_9/id/1263  参考嘿设汇
     var isFromApp = href.indexOf('banke-app') >= 0;  //是否来源于app
 
-    downloadBar();
+    //downloadBar();
     setFootStyle();
 
     //添加下载条
