@@ -204,7 +204,6 @@ class ShareController extends Controller
                 var_dump($e);
                 return ApiResponseService::showError(Code::SEND_SMS_ERROR);
             }
-            return ApiResponseService::success('', Code::SUCCESS, '注册成功');
         }else{
             return ApiResponseService::showError(Code::REGISTER_ERROR);
         }
