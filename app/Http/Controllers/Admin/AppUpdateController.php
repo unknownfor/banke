@@ -67,7 +67,6 @@ class AppUpdateController extends Controller {
     public function edit($id)
     {
         $appUpdate = AppUpdateRepository::edit($id);
-        Log::info('$appUpdate===================='.json_encode($appUpdate));
         return view('admin.appUpdate.edit')->with(compact('appUpdate'));
     }
     /**
