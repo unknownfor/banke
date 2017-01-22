@@ -55,7 +55,6 @@
         {!!$org['details']!!}
 </div>
 </div>
+@include('web.layout.downloadbar')
 </body>
-<script src="/front/assets/plugins/zepto.min.js" type="text/javascript"></script>
-<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 </html>

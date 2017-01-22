@@ -151,6 +151,7 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = OrderRepository::show($id);
+        $orgs = BankeOrg::where('status', 1)->get(['id', 'name']);
         return view('admin.order.show')->with(compact('order'));
 
     }

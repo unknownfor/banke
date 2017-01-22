@@ -78,7 +78,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="comment">{{trans('labels.order.comment')}}</label>
                           <div class="col-md-7">
-                              <textarea readonly  class="form-area col-md-12" name="comment">{{$order['comment']}}</textarea>
+                              <textarea re  class="form-area col-md-12" name="comment">{{$order['comment']}}</textarea>
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>

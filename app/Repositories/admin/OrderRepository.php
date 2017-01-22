@@ -409,29 +409,6 @@ class OrderRepository
 	}
 
 	/**
-	 * 修改配置状态
-	 * @author shaolei
-	 * @date   2016-04-13T11:51:02+0800
-	 * @param  [type]                   $id     [description]
-	 * @param  [type]                   $status [description]
-	 * @return [type]                           [description]
-	 */
-	public function mark($id,$status)
-	{
-		$role = BankeDict::find($id);
-		if ($role) {
-			$role->status = $status;
-			if ($role->save()) {
-				Flash::success(trans('alerts.dict.updated_success'));
-				return true;
-			}
-			Flash::error(trans('alerts.dict.updated_error'));
-			return false;
-		}
-		abort(404);
-	}
-
-	/**
 	 * 删除配置
 	 * @author shaolei
 	 * @date   2016-04-13T11:51:19+0800
@@ -458,12 +435,8 @@ class OrderRepository
 	 */
 	public function show($id)
 	{
-		$role = BankeCashBackUser::find($id);
-		if ($role) {
-			$roleArray = $role->toArray();
-			return $roleArray;
-		}
-		abort(404);
+		$order = BankeCashBackUser::find($id)->toArray();
+		return $order;
 	}
 
 }
