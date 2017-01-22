@@ -43,7 +43,7 @@
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="intro">{{trans('labels.order.org')}}</label>
+                          <label class="col-md-1 control-label" for="intro">{{trans('labels.order.org_name')}}</label>
                           <div class="col-md-4">
                               <input type="hidden" name="org_id" value="{{$order['org_id']}}">
                               <select disabled class="orgSelectpicker show-tick form-control" data-live-search="true">
@@ -78,7 +78,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="comment">{{trans('labels.order.comment')}}</label>
                           <div class="col-md-7">
-                              <textarea re  class="form-area col-md-12" name="comment">{{$order['comment']}}</textarea>
+                              <textarea readonly  class="form-area col-md-12" name="comment">{{$order['comment']}}</textarea>
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>

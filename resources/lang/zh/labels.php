@@ -152,6 +152,7 @@ return [
 		'orderList' => '<i class="fa fa-share-alt"></i> 报名列表',
 		'orderCreate' => '<i class="fa fa-user-plus"></i> 添加报名',
 		'orderEdit' => '<i class="fa fa-user-plus"></i> 编辑报名',
+		'orderShow' => '<i class="fa fa-search"></i> 报名详情',
 		'invitationList' => '<i class="fa fa-th-list"></i> 邀请列表',
 		'orgAccountList' => '<i class="fa fa-bars"></i> 机构账户列表',
 		'orgAccountCreate' => '<i class="fa fa-bars"></i> 创建机构账户',

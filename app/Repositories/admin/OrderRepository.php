@@ -98,7 +98,7 @@ class OrderRepository
 
 		if ($roles) {
 			foreach ($roles as &$v) {
-				$v['actionButton'] = $v->getActionButtonAttribute(false);
+				$v['actionButton'] = $v->getActionButtonAttribute(true);
 			}
 		}
 		return [
