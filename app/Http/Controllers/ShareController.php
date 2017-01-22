@@ -183,7 +183,9 @@ class ShareController extends Controller
                     ]
                 ];
                 $http = new Client($header);
+                Log::info('$http==========================='.json_encode($http));
                 $config = BankeDict::find(1);
+                Log::info('$config==========================='.json_encode($config));
                 $param = [
                     'json'=>[
                         'mobilePhoneNumber'=>$userData['mobile'],
@@ -191,6 +193,7 @@ class ShareController extends Controller
                             .'初始密码为'.$password.'，记得登陆后修改密码！'
                     ]
                 ];
+                Log::info('$param==========================='.json_encode($param));
                 $response = $http->request('post', env('BMOB_REST_API_URL').'requestSms', $param);
                 Log::info('$response=================='.json_encode($response));
                 $code = $response->getStatusCode();
