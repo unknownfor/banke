@@ -54,9 +54,11 @@ $(function () {
             getDataAsync(url, {mobile: $('#phone-num').val()},
                 function (res) {
                     window.showTips(res.message);
-                    countdown = 0;
-                    clearTimeout(timer);
-                    setGetCodeBtn();
+                    if(res.status_code!=0) {
+                        countdown = 0;
+                        clearTimeout(timer);
+                        setGetCodeBtn();
+                    }
                 },function(){
                     countdown = 0;
                     clearTimeout(timer);
@@ -90,6 +92,7 @@ $(function () {
                 smsId:code,
                 welcome:$('input[name="welcome"]').val()
             };
+        $(this).removeClass('active');
         getDataAsync(url,data,function(res){
             //成功返回之后调用的函数
             window.controlLoadingBox(false);
@@ -97,6 +100,7 @@ $(function () {
             showSuccessPage();
         },function(){
             window.controlLoadingBox(false);
+            $(this).addClass('active');
         },'post');
     });
 
