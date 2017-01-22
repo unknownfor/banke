@@ -41,6 +41,8 @@ Route::group(['prefix'=>"web"],function(){
 
     Route::get('rule', 'ShareController@rule');
 
+    Route::get('download', 'ShareController@download');
+
 });
 
 

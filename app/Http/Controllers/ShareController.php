@@ -210,4 +210,8 @@ class ShareController extends Controller
     public function privacy(){
         return view('web.privacy.privacy');
     }
+
+    public function download(){
+        return redirect(env('APP_DOWNLOAD'));
+    }
 }
