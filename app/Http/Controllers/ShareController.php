@@ -195,7 +195,9 @@ class ShareController extends Controller
                 Log::info('$response=================='.json_encode($response));
                 $code = $response->getStatusCode();
                 Log::info('$code=================='.$code);
-                if($code != 200){
+                if($code == 200){
+                    return ApiResponseService::success('', Code::SUCCESS, '注册成功');
+                }else{
                     return ApiResponseService::showError(Code::SEND_SMS_ERROR);
                 }
             }catch (ClientException $e){
