@@ -136,3 +136,23 @@ if(!function_exists('createUserName')){
 		return '半课'.$str.$num;
 	}
 }
+
+if(!function_exists('request_by_curl')){
+	function request_by_curl($url, $header_data, $post_data) {
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_HEADER, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $header_data);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+		curl_exec($ch);
+		$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		if($httpCode == 200){
+			return true;
+		}
+		curl_close($ch);
+		return false;
+	}
+}
