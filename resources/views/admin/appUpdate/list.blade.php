@@ -45,14 +45,14 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
-                            <th > {{ trans('labels.appUpdate.version_code') }} </th>
-                          <th width="15%"> {{ trans('labels.appUpdate.version_name') }} </th>
-                          <th> {{ trans('labels.appUpdate.instruction') }} </th>
-                          <th> {{ trans('labels.appUpdate.url') }} </th>
-                          <th> {{ trans('labels.appUpdate.status') }} </th>
+                          <th> {{ trans('labels.appUpdate.version_code') }} </th>
+                          <th width="10%"> {{ trans('labels.appUpdate.version_name') }} </th>
+                          <th width="25%"> {{ trans('labels.appUpdate.instruction') }} </th>
+                          <th width="20%"> {{ trans('labels.appUpdate.url') }} </th>
+                          <th width="10%"> {{ trans('labels.appUpdate.status') }} </th>
                           <th width="15%"> {{ trans('labels.appUpdate.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.appUpdate.updated_at') }} </th>
-                          <th width="15%"> {{ trans('labels.action') }} </th>
+                          <th width="8%"> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
                             <td></td>

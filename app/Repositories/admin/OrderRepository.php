@@ -37,7 +37,6 @@ class OrderRepository
 		$name = request('name' ,'');
 		$mobile = request('mobile' ,'');
 		$status = request('status' ,'');
-		Log::info('--------------------1313-----'.$status);
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
 		$updated_at_from = request('updated_at_from' ,'');
@@ -448,6 +447,23 @@ class OrderRepository
 		}
 		Flash::error(trans('alerts.order.soft_deleted_error'));
 		return false;
+	}
+
+	/**
+	 * 修改配置视图
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:34+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function show($id)
+	{
+		$role = BankeCashBackUser::find($id);
+		if ($role) {
+			$roleArray = $role->toArray();
+			return $roleArray;
+		}
+		abort(404);
 	}
 
 }
