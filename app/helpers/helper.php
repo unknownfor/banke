@@ -147,13 +147,12 @@ if(!function_exists('request_by_curl')){
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $header_data);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-		$result = curl_exec($ch);
-		/*curl_exec($ch);
+		curl_exec($ch);
 		$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		if($httpCode != 200){
-			return false;
-		}*/
+		if($httpCode == 200){
+			return true;
+		}
 		curl_close($ch);
-		return $result;
+		return false;
 	}
 }
