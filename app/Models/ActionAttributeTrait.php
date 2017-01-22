@@ -115,7 +115,7 @@ trait ActionAttributeTrait{
 	{
 		if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
-				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.audit')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
 			}
 		}
 		return $this;
