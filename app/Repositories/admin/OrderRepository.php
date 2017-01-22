@@ -280,6 +280,8 @@ class OrderRepository
 					];
 					//记录消息
 					BankeMessage::create($message);
+				}elseif ($input['status'] == config('admin.global.status.ban')){
+					//详细规则未定
 				}
 				Flash::success(trans('alerts.order.created_success'));
 				return true;
