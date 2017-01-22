@@ -36,6 +36,7 @@ class OrderRepository
 
 		$name = request('name' ,'');
 		$mobile = request('mobile' ,'');
+		$status = request('status' ,'');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
 		$updated_at_from = request('updated_at_from' ,'');
@@ -60,6 +61,10 @@ class OrderRepository
 			}else{
 				$role = $role->where('mobile', $mobile);
 			}
+		}
+		/*状态搜索*/
+		if ($status!=null) {
+			$role = $role->where('status', $status);
 		}
 
 		/*配置创建时间搜索*/
@@ -180,7 +185,7 @@ class OrderRepository
 
 		if ($roles) {
 			foreach ($roles as &$v) {
-				$v['actionButton'] = $v->getActionButtonAttribute(false);
+				$v['actionButton'] = $v->getActionButtonAttribute(true);
 			}
 		}
 		return [
@@ -442,6 +447,23 @@ class OrderRepository
 		}
 		Flash::error(trans('alerts.order.soft_deleted_error'));
 		return false;
+	}
+
+	/**
+	 * 修改配置视图
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:34+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function show($id)
+	{
+		$role = BankeCashBackUser::find($id);
+		if ($role) {
+			$roleArray = $role->toArray();
+			return $roleArray;
+		}
+		abort(404);
 	}
 
 }

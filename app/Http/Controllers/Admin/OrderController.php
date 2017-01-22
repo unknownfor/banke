@@ -150,8 +150,7 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-
-        $org = OrderRepository::show($id);
+        $order = OrderRepository::show($id);
         return view('admin.order.show')->with(compact('order'));
 
     }

@@ -1,4 +1,16 @@
 @extends('layouts.admin')
+@section('css')
+    <style type="text/css" rel="stylesheet">
+        #content{
+            height:300px;
+            width:100%;
+            white-space:nowrap;
+        }
+        #content-origin{
+            display: none;
+        }
+    </style>
+@endsection
 @section('content')
 <div class="page-bar">
 	<ul class="page-breadcrumb">
@@ -59,7 +71,8 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="slug">{{trans('labels.appUpdate.instruction')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="slug" name="instruction" placeholder="{{trans('labels.appUpdate.instruction')}}" value="{{old('instruction')}}">
+                              <textarea id="content" placeholder="{{trans('labels.appUpdate.instruction')}}"></textarea>
+                              <textarea id="content-origin" name="instruction" placeholder="{{trans('labels.appUpdate.instruction')}}"></textarea>
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -98,7 +111,7 @@
                       <div class="row">
                           <div class="col-md-offset-2 col-md-10">
                               <a href="{{url('admin/appUpdate')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                              <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
+                              <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
                   </div>
@@ -107,4 +120,12 @@
       </div>
   </div>
 </div>
+@endsection
+@section('js')
+    <script type="text/javascript">
+        function setDataBeforeCommit(){
+            var content=$('#content').val().replace(/(\r\n)|(\n)/g,'<br/>');
+            $('#content-origin').val(content);
+        }
+    </script>
 @endsection
