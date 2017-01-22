@@ -187,8 +187,16 @@ class ShareController extends Controller
                     'X-Bmob-REST-API-Key'=>env('BMOB_REST_API_KEY'),
                     'Content-Type'=>'application/json'
                 ];
+                $headers['X-Bmob-Application-Id'] = env('BMOB_APP_ID');
+                $headers['X-Bmob-REST-API-Key'] = env('BMOB_REST_API_KEY');
+                $headers['Content-Type'] = 'application/json';
+                $headerArr = array();
+                foreach( $headers as $n => $v ) {
+                    $headerArr[] = $n .':' . $v;
+                }
                 Log::info('url====================='.env('BMOB_REST_API_URL').'requestSms');
-                $res = curlRequest(env('BMOB_REST_API_URL').'requestSms',$pa,'post', '', $he);
+                $post_data = json_encode($pa);
+                $res = request_by_curl(env('BMOB_REST_API_URL').'requestSms',$headerArr, $post_data);
                 Log::info('$res====================='.json_encode($res));
 
                 $header = [
