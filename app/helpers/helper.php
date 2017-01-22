@@ -41,10 +41,13 @@ if(!function_exists('confirmEmail')){
 }
 
 if(!function_exists('curlRequest')){
-	 function curlRequest($url, $postData = array(), $launch = 'post', $contentType = 'text/html') {
+	 function curlRequest($url, $postData = array(), $launch = 'post', $contentType = 'text/html', $header=null) {
 		$result = "";
 		try {
-			$header = array("Content-Type:" . $contentType . ";charset=utf-8");
+			if(empty($header)){
+				$header = array("Content-Type:" . $contentType . ";charset=utf-8");
+			}
+
 			if (!empty($_SERVER['HTTP_USER_AGENT'])) {		//是否有user_agent信息
 				$user_agent = $_SERVER['HTTP_USER_AGENT'];
 			}

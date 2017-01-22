@@ -175,6 +175,22 @@ class ShareController extends Controller
             try{
                 Log::info('$password=================='.$password);
                 Log::info('$result=================='.$result);
+                $config = BankeDict::find(1);
+                Log::info('$config==========================='.json_encode($config));
+                $pa = [
+                    'mobilePhoneNumber'=>$userData['mobile'],
+                    'content'=>'您好！'.$config['value'].'元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
+                        .'初始密码为'.$password.'，记得登陆后修改密码！'
+                ];
+                $he = [
+                    'X-Bmob-Application-Id'=>env('BMOB_APP_ID'),
+                    'X-Bmob-REST-API-Key'=>env('BMOB_REST_API_KEY'),
+                    'Content-Type'=>'application/json'
+                ];
+                Log::info('url====================='.env('BMOB_REST_API_URL').'requestSms');
+                $res = curlRequest(env('BMOB_REST_API_URL').'requestSms',$pa,'post', '', $he);
+                Log::info('$res====================='.json_encode($res));
+
                 $header = [
                     'headers'=>[
                         'X-Bmob-Application-Id'=>env('BMOB_APP_ID'),
@@ -182,10 +198,10 @@ class ShareController extends Controller
                         'Content-Type'=>'application/json'
                     ]
                 ];
+
                 $http = new Client($header);
                 Log::info('$http==========================='.json_encode($http));
-                $config = BankeDict::find(1);
-                Log::info('$config==========================='.json_encode($config));
+
                 $param = [
                     'json'=>[
                         'mobilePhoneNumber'=>$userData['mobile'],
@@ -194,6 +210,7 @@ class ShareController extends Controller
                     ]
                 ];
                 Log::info('$param==========================='.json_encode($param));
+
                 $response = $http->request('post', env('BMOB_REST_API_URL').'requestSms', $param);
                 Log::info('$response=================='.json_encode($response));
                 $code = $response->getStatusCode();
