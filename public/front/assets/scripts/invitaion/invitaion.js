@@ -1,0 +1,137 @@
+/**
+ * Created by hisihi on 2017/1/16.
+ */
+$(function () {
+    window.addTip();
+    //填充信息，按钮变色
+    $(document).on('input', '#phone-num', function(){
+        var number=$(this).val(),
+        reg = /^1(3|4|5|7|8)\d{9}$/;
+        var $code=$('#phone-code-btn'),
+            $btn=$('.btn'),
+            code=$('#user-code').val();
+        if(reg.test(number)) {
+           $code.removeClass('disabled');
+           if(code!=''){
+               $btn.addClass('active');
+           }else{
+               $btn.removeClass('active');
+           }
+        }else{
+            $code.addClass('disabled');
+            $btn.removeClass('active');
+        }
+    });
+
+    //填充信息，按钮变色
+    $(document).on('input', '#user-code', function() {
+        var number=$('#phone-num').val(),
+            reg = /^1(3|4|5|7|8)\d{9}$/;
+        var $btn=$('.btn'),
+            code=$(this).val();
+        if(reg.test(number)) {
+            if(code!=''){
+                $btn.addClass('active');
+            }else{
+                $btn.removeClass('active');
+            }
+        }else{
+            $btn.removeClass('active');
+        }
+    });
+
+    //倒计时
+    var countdown = 60;
+    $(document).on('click','#phone-code-btn', function setTime() {
+        var timer = setTimeout(function () {
+            setGetCodeBtn();
+        }, 1000);
+
+        //请求验证码
+        if(countdown==60) {
+            var url = '/invitation/requestSmsCode';
+            getDataAsync(url, {mobile: $('#phone-num').val()},
+                function (res) {
+                    alert(res.message);
+                    if(res.status_code==50016){
+                        countdown = 0;
+                        clearTimeout(timer);
+                        setGetCodeBtn();
+                    }
+                },function(){
+                    countdown = 0;
+                    clearTimeout(timer);
+                    setGetCodeBtn();
+                },'post');
+        }
+    });
+
+    function setGetCodeBtn(){
+        var obj=$('#phone-code-btn')[0];
+        if (countdown == 0) {
+            obj.removeAttribute("disabled");
+            obj.value = "获取验证码";
+            countdown = 60;
+            return;
+        } else {
+            obj.setAttribute("disabled", true);
+            obj.value = " " + countdown + " s";
+            countdown--;
+        }
+    }
+
+    //注册
+    $(document).on('click','.btn.active', function () {
+            $('#wrapper').hide();
+            window.addLoadingImg();
+            window.controlLoadingBox(true);
+            var phone = $('#phone-num').val,
+                code = $('#user-code').val;
+        var url='/invitation/register',
+            data={
+                mobile:$('#phone-num').val(),
+                smsId:code,
+                welcome:$('input[name="welcome"]').val()
+            };
+
+        getDataAsync(url,data,function(res){
+            //成功返回之后调用的函数
+            window.controlLoadingBox(false),
+            showSuccessPage();
+        },null,'post');
+    });
+
+    //请求数据
+    function getDataAsync(url,data,callback,eCallback,type){
+        type = type ||'get';
+        data._token=$('input[name="_token"]').val();
+        $.ajax({
+            type: type,
+            url: url,
+            data: data,
+            success: function (res) {
+                callback(res);
+            },
+            error: function () {
+                //请求出错处理
+                window.controlLoadingBox(false),
+                window.showTips('操作失败');
+                eCallback && eCallback();
+            }
+        });
+    }
+
+
+    /**
+     * 显示报名成功页面
+     */
+    function showSuccessPage() {
+        //隐藏注册框
+        $('.register').hide();
+        $('.coupon').removeClass('hide');
+        $('.reward').removeClass('hide');
+    };
+
+
+
+});
