@@ -21,7 +21,7 @@
         <span>机构地址</span>
     </div>
     <div class="address-box container-box">
-        <div class="address">
+        <div class="address-info">
             <div class="address-img"></div>
             <div class="address-detail">{{$org['address']}}</div>
         </div>
