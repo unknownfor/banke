@@ -7,7 +7,7 @@
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <a href="{{url('admin/dict')}}">{!! trans('labels.breadcrumb.appUpdateList') !!}</a>
+	        <a href="{{url('admin/appUpdate')}}">{!! trans('labels.breadcrumb.appUpdateList') !!}</a>
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
@@ -45,14 +45,14 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="name">{{trans('labels.appUpdate.version_code')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="name" name="version_code" placeholder="{{trans('labels.appUpdate.version_code')}}" value="{{$dict['version_code']}}">
+                              <input type="text" class="form-control" id="name" name="version_code" placeholder="{{trans('labels.appUpdate.version_code')}}" value="{{$appUpdate['version_code']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="name">{{trans('labels.appUpdate.version_name')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="name" name="version_name" placeholder="{{trans('labels.appUpdate.version_name')}}" value="{{$dict['version_name']}}">
+                              <input type="text" class="form-control" id="name" name="version_name" placeholder="{{trans('labels.appUpdate.version_name')}}" value="{{$appUpdate['version_name']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -60,7 +60,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="slug">{{trans('labels.appUpdate.instruction')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="slug" name="instruction" placeholder="{{trans('labels.appUpdate.instruction')}}" value="{{$dict['instruction']}}">
+                              <input type="text" class="form-control" id="slug" name="instruction" placeholder="{{trans('labels.appUpdate.instruction')}}" value="{{$appUpdate['instruction']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -68,7 +68,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="description">{{trans('labels.appUpdate.url')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="description" name="url" placeholder="{{trans('labels.appUpdate.url')}}" value="{{$dict['url']}}">
+                              <input type="text" class="form-control" id="description" name="url" placeholder="{{trans('labels.appUpdate.url')}}" value="{{$appUpdate['url']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -78,14 +78,14 @@
                         <div class="col-md-10">
                             <div class="md-radio-inline">
                                 <div class="md-radio">
-                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($dict['status'] == config('admin.global.status.active')) checked @endif>
+                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($appUpdate['status'] == config('admin.global.status.active')) checked @endif>
                                     <label for="status1">
                                         <span></span>
                                         <span class="check"></span>
                                         <span class="box"></span> {{trans('strings.appUpdate.active.1')}} </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($dict['status'] == config('admin.global.status.trash')) checked @endif>
+                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($appUpdate['status'] == config('admin.global.status.trash')) checked @endif>
                                     <label for="status3">
                                         <span></span>
                                         <span class="check"></span>
