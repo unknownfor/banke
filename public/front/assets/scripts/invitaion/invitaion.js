@@ -43,8 +43,9 @@ $(function () {
 
     //倒计时
     var countdown = 60;
+    var timer;
     $(document).on('click','#phone-code-btn', function setTime() {
-        var timer = setTimeout(function () {
+        timer = window.setInterval(function () {
             setGetCodeBtn();
         }, 1000);
 
@@ -56,12 +57,10 @@ $(function () {
                     window.showTips(res.message);
                     if(res.status_code!=0) {
                         countdown = 0;
-                        clearTimeout(timer);
                         setGetCodeBtn();
                     }
                 },function(){
                     countdown = 0;
-                    clearTimeout(timer);
                     setGetCodeBtn();
                 },'post');
         }
@@ -73,6 +72,7 @@ $(function () {
             obj.removeAttribute("disabled");
             obj.value = "获取验证码";
             countdown = 60;
+            clearInterval(timer);
             return;
         } else {
             obj.setAttribute("disabled", true);
