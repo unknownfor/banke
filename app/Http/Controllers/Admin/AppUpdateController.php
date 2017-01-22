@@ -78,7 +78,7 @@ class AppUpdateController extends Controller {
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(DictRequest $request,$id)
+    public function update(Request $request,$id)
     {
         AppUpdateRepository::update($request,$id);
         return redirect('admin/appUpdate');
