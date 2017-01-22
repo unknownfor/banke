@@ -1,5 +1,5 @@
 <div id="downloadCon">
-    <a id="downloadBar" href="http://www.hisihi.com/download.php">
+    <a id="downloadBar" href="{{env('APP_DOWNLOAD_URL')}}">
         <img id="downloadBar-img" src="http://pic.hisihi.com/2017-01-18/1484705240013582.png" />
     </a>
 </div>
