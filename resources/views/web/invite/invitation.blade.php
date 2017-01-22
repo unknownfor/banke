@@ -12,49 +12,86 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link href="/front/assets/css/invitation.css" rel="stylesheet" type="text/css"/>
+    <link href="/front/assets/css/invitation/invitation.css" rel="stylesheet" type="text/css"/>
     <title>邀请注册</title>
 </head>
 <body>
+{!! csrf_field() !!}
+<input type="hidden" name="welcome" value="{{$welcome}}"/>
+<div id="wrapper">
     <!--顶部图片-->
     <div class="head">
         <img src="/front/assets/img/invitation/bg_top.png" />
     </div>
     <!--手机注册-->
     <div class="register">
-        {!! csrf_field() !!}
-        <input type="hidden" name="welcome" value="{{$welcome}}"/>
         <div class="register-box phone">
             <div class="register-img phone-img"></div>
-            <input class="mobile register-input" placeholder="输入手机号"/>
+            <input class="register-code" id="phone-num" placeholder="输入手机号"/>
             <hr />
-            <button class="getCheckCode disabled">获取验证码</button>
+            <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
         </div>
         <div class="register-box code">
             <div class="register-img code-img"></div>
-            <input class="register-input register-code" placeholder="验证码"/>
+            <input class="register-code" id="user-code" placeholder="验证码" />
         </div>
-        <button class="btn register-btn">注册获得20元现金</button>
+        <div class="btn">注册获得20元现金</div>
     </div>
-    <!--注册成功-->
-    <div class="register-success notices hide">
-        <div class="head">注册成功</div>
-        <div class="head-title">您已经获得最高50%学费返现~</div>
-        <div class="btn">下载领取</div>
-        <div class="telephone"><span class="question">有任何疑问可致电客服：</span><span class="number">400 034 0033</span></div>
+    <!--领取优惠券-->
+    <div class="coupon hide">
+        <div class="coupon-box">
+            <img class="ticket" id="one" src="/front/assets/img/invitation/20.png" />
+            <img class="ticket" id="two" src="/front/assets/img/invitation/50.png">
+            <div class="coupon-count">奖励已放至账户<span></span></div>
+            <a href="{{env('APP_DOWNLOAD_URL')}}" >
+                <div class="btn-active">下载半课领取</div>
+            </a>
+        </div>
     </div>
-    <!--领取奖励-->
-    <div class="register-reward notices hide">
-        <div class="head">您已领取过奖励</div>
-        <div class="head-title">快快把好东西分享给您的朋友吧~</div>
-        <div class="btn">分享给朋友</div>
-        <div class="telephone"><span class="question">有任何疑问可致电客服：</span><span class="number">400 034 0033</span></div>
+    <!--朋友获得奖励-->
+    <div class="reward hide">
+        <div class="second-title reward-title"><span>哪些朋友获得了奖励</span></div>
+        <div class="reward-box">
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305502.jpg"/>
+            <span class="reward-name">李小婷</span>
+            <div class="reward-time-box">
+                <span class="reward-time">2017-01-18</span>
+            </div>
+        </div>
+        <div class="reward-box">
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305572.jpg"/>
+            <span class="reward-name">王凯</span>
+            <div class="reward-time-box">
+                <span class="reward-time">2017-01-19</span>
+            </div>
+        </div>
+        <div class="reward-box">
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305524.jpg"/>
+            <span class="reward-name">谢永明</span>
+            <div class="reward-time-box">
+                <span class="reward-time">2017-01-20</span>
+            </div>
+        </div>
+        <div class="reward-box">
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305519.jpg"/>
+            <span class="reward-name">周子棋</span>
+            <div class="reward-time-box">
+                <span class="reward-time">2017-01-22</span>
+            </div>
+        </div>
+        <div class="reward-box">
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305582.jpg"/>
+            <span class="reward-name">叶佳</span>
+            <div class="reward-time-box">
+                <span class="reward-time">2017-01-23</span>
+            </div>
+        </div>
     </div>
     <!--活动细则-->
-    <div class="active">
-        <div class="active-head"><span>活动细则</span></div>
+    <div class="activity">
+        <div class="second-title activity-head"><span>活动细则</span></div>
         <img src="/front/assets/img/invitation/bg_down.png" />
-        <div class="active-txt">
+        <div class="activity-txt">
             <div class="txt">1.新用户通过此页面注册会获得20元现金；</div>
             <div class="txt">2.需下载半课app，登陆并认证；</div>
             <div class="txt">3.提现流程参见半课app；</div>
@@ -62,65 +99,11 @@
             <div class="txt">5.半课保留法律范围内允许的对活动的解释权。</div>
         </div>
     </div>
+    <!--遮罩-->
+    <div class="mask"></div>
+</div>
 </body>
-<script src="/front/assets/plugins/jquery-1.10.2.min.js" type="text/javascript"></script>
-<script>
-    var baseApiUrl='/invitation';
-    $(function(){
-        var apiUrl="";
-        $(document).on('input','.mobile',function(){
-            var moblie = $(this).val(),
-                $btn=$('.getCheckCode');
-            if(/^1[3|4|5|7|8]\d{9}$/.test(moblie)){
-                $btn.removeClass('disabled');
-            }else{
-                $btn.addClass('disabled');
-            }
-        });
-
-        //得到验证码
-        $(document).on('click','.getCheckCode',function(){
-            var moblie = $('.mobile').val();
-            if(/^1[3|4|5|7|8]\d{9}$/.test(moblie)){
-                var url=baseApiUrl+'/requestSmsCode'
-                getDataAsync(url,{mobile:moblie},function(res){
-                    alert(res);
-                },'post');
-            }
-        });
-
-        //注册
-        $(document).on('click','.register-btn',function(){
-            var moblie = $('.mobile').val(),
-                code=$('.register-code').val();
-            if(/^1[3|4|5|7|8]\d{9}$/.test(moblie)){
-
-                var url=baseApiUrl+'/register',
-                        data={
-                            mobile:moblie,
-                            smsId:code,
-                            welcome:$('input[name="welcome"]').val()
-                        };
-
-                getDataAsync(url,data,function(res){
-                    alert(res);
-                },'post');
-            }
-        });
-
-        //请求数据
-        function getDataAsync(url,data,callback,type){
-            type = type ||'get';
-            data._token=$('input[name="_token"]').val();
-            $.ajax({
-                type:type,
-                url:url,
-                data:data,
-                success:function(res){
-                    callback(res);
-                }
-            });
-        }
-    });
-</script>
+<script src="/front/assets/plugins/zepto.min.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/invitaion/invitaion.js" type="text/javascript"></script>
 </html>
