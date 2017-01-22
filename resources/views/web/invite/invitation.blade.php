@@ -42,8 +42,8 @@
         <div class="coupon-box">
             <img class="ticket" id="one" src="/front/assets/img/invitation/20.png" />
             <img class="ticket" id="two" src="/front/assets/img/invitation/50.png">
-            <div class="coupon-count">奖励已放至账户<span>18140662282</span></div>
-            <a href="http://www.hisihi.com/download.php" >
+            <div class="coupon-count">奖励已放至账户<span></span></div>
+            <a href="{{env('APP_DOWNLOAD_URL')}}" >
                 <div class="btn-active">下载半课领取</div>
             </a>
         </div>
@@ -52,10 +52,38 @@
     <div class="reward hide">
         <div class="second-title reward-title"><span>哪些朋友获得了奖励</span></div>
         <div class="reward-box">
-            <img class="reward-img"  src="../img/banana.jpg"/>
-            <span class="reward-name">小野妹子</span>
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305502.jpg"/>
+            <span class="reward-name">李小婷</span>
             <div class="reward-time-box">
                 <span class="reward-time">2017-01-18</span>
+            </div>
+        </div>
+        <div class="reward-box">
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305572.jpg"/>
+            <span class="reward-name">王凯</span>
+            <div class="reward-time-box">
+                <span class="reward-time">2017-01-19</span>
+            </div>
+        </div>
+        <div class="reward-box">
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305524.jpg"/>
+            <span class="reward-name">谢永明</span>
+            <div class="reward-time-box">
+                <span class="reward-time">2017-01-20</span>
+            </div>
+        </div>
+        <div class="reward-box">
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305519.jpg"/>
+            <span class="reward-name">周子棋</span>
+            <div class="reward-time-box">
+                <span class="reward-time">2017-01-22</span>
+            </div>
+        </div>
+        <div class="reward-box">
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305582.jpg"/>
+            <span class="reward-name">叶佳</span>
+            <div class="reward-time-box">
+                <span class="reward-time">2017-01-23</span>
             </div>
         </div>
     </div>

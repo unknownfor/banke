@@ -3,6 +3,7 @@
  */
 $(function () {
     window.addTip();
+    window.addLoadingImg();
     //填充信息，按钮变色
     $(document).on('input', '#phone-num', function(){
         var number=$(this).val(),
@@ -52,12 +53,10 @@ $(function () {
             var url = '/invitation/requestSmsCode';
             getDataAsync(url, {mobile: $('#phone-num').val()},
                 function (res) {
-                    alert(res.message);
-                    if(res.status_code==50016){
-                        countdown = 0;
-                        clearTimeout(timer);
-                        setGetCodeBtn();
-                    }
+                    window.showTips(res.message);
+                    countdown = 0;
+                    clearTimeout(timer);
+                    setGetCodeBtn();
                 },function(){
                     countdown = 0;
                     clearTimeout(timer);
@@ -82,23 +81,23 @@ $(function () {
 
     //注册
     $(document).on('click','.btn.active', function () {
-            $('#wrapper').hide();
-            window.addLoadingImg();
             window.controlLoadingBox(true);
-            var phone = $('#phone-num').val,
-                code = $('#user-code').val;
+            var phone = $('#phone-num').val(),
+                code = $('#user-code').val();
         var url='/invitation/register',
             data={
-                mobile:$('#phone-num').val(),
+                mobile:phone,
                 smsId:code,
                 welcome:$('input[name="welcome"]').val()
             };
-
         getDataAsync(url,data,function(res){
             //成功返回之后调用的函数
-            window.controlLoadingBox(false),
+            window.controlLoadingBox(false);
+            $('.coupon-count span').text(phone);
             showSuccessPage();
-        },null,'post');
+        },function(){
+            window.controlLoadingBox(false);
+        },'post');
     });
 
     //请求数据
@@ -126,6 +125,7 @@ $(function () {
      * 显示报名成功页面
      */
     function showSuccessPage() {
+
         //隐藏注册框
         $('.register').hide();
         $('.coupon').removeClass('hide');
