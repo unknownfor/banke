@@ -36,6 +36,8 @@ class OrderRepository
 
 		$name = request('name' ,'');
 		$mobile = request('mobile' ,'');
+		$status = request('status' ,'');
+		Log::info('--------------------1313-----'.$status);
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
 		$updated_at_from = request('updated_at_from' ,'');
@@ -60,6 +62,10 @@ class OrderRepository
 			}else{
 				$role = $role->where('mobile', $mobile);
 			}
+		}
+		/*状态搜索*/
+		if ($status!=null) {
+			$role = $role->where('status', $status);
 		}
 
 		/*配置创建时间搜索*/
@@ -180,7 +186,7 @@ class OrderRepository
 
 		if ($roles) {
 			foreach ($roles as &$v) {
-				$v['actionButton'] = $v->getActionButtonAttribute(false);
+				$v['actionButton'] = $v->getActionButtonAttribute(true);
 			}
 		}
 		return [

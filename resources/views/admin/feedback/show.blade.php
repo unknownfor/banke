@@ -41,7 +41,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="details">{{trans('labels.feedback.content')}}</label>
                           <div class="col-md-9">
-                              <textarea id="target-area" style="height:255px;width: 100%;">{{$feedback['content']}}</textarea>
+                              <div style="width: 80%;line-height: 25px;">{{$feedback['content']}}</div>
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">

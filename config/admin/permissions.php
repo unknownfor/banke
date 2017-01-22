@@ -126,6 +126,7 @@ return[
 	//反馈
 	'feedback' => [
 		'show' 		=> 'admin.feedback.show',
+		'edit' 		=> 'admin.feedback.edit',
 		'destroy' 	=> 'admin.feedback.delete',
 	],
 

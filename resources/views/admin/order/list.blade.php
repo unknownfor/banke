@@ -62,7 +62,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
+                    <div class="form-group form-md-line-input">
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
+                            @if(trans('strings.order'))
+                                @foreach(trans('strings.order') as $status_key => $status_value)
+                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
+                                @endforeach
+                            @endif
+                            <option value="" data-icon="fa-glass icon-success">状态....</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
                     <div class="col-md-2" style="display: flex;height: 65px;align-items: center">
                         <label>{{ trans('labels.order.created_at') }}</label>
                     </div>

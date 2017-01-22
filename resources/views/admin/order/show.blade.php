@@ -42,83 +42,83 @@
                               <div class="form-control form-control-static"> {{$order['name']}} </div>
                           </div>
                       </div>
-                      @if($orgs)
-                      <? php
-
-                      ?>
-
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="intro">{{trans('labels.order.org')}}</label>
-                          <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$order['intro']}} </div>
+                          <div class="col-md-4">
+                              <input type="hidden" name="org_id" value="{{$order['org_id']}}">
+                              <select disabled class="orgSelectpicker show-tick form-control" data-live-search="true">
+                                  @if($orgs)
+                                      @foreach($orgs as $org)
+                                          @if($org->id == $order['org_id'])
+                                              <option value="{{$org->id}}" selected> {{$org->name}}</option>
+                                          @else
+                                              <option value="{{$org->id}}" > {{$org->name}}</option>
+                                          @endif
+                                      @endforeach
+                                  @endif
+                              </select>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="city">{{trans('labels.order.city')}}</label>
+                          <label class="col-md-1 control-label" >{{trans('labels.order.course_name')}}</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$order['city']}} </div>
+                              <input type="text" readonly class="form-control" name="course_name" value="{{$order['course_name']}}">
+                              <input type="hidden" name="course_id" value="{{$order['course_id']}}"}>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="address">{{trans('labels.order.address')}}</label>
+                          <label class="col-md-1 control-label" for="tuition_amount">{{trans('labels.order.tuition_amount')}}</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$order['address']}} </div>
-                          </div>
-                      </div>
-
-                      <div class="form-group form-md-line-input form-md-line-cover">
-                          <label class="col-md-1 control-label">{{trans('labels.order.cover')}}</label>
-                          <div class="col-md-9">
-                              <div class="cover-box">
-                                  {{--<div class="add-cover-img-btn">+</div>--}}
-                                  <ul class="cover-list-box">
-                                      @if($order['cover'])
-                                          <?php
-                                            $imgs=explode(',',$order['cover']);
-                                          ?>
-                                          @foreach($imgs as $img)
-                                              <li>
-                                                  <a href="{{$img}}" data-size="435x263"></a>
-                                                  <img src="{{$img}}@142w_80h_1e">
-                                              </li>
-                                          @endforeach
-                                      @endif
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="details">{{trans('labels.order.details')}}</label>
-                          <div class="col-md-9">
-                              <textarea style="display: none" name="details" id="target-area">{{$order['details']}}</textarea>
-                              <textarea id="my-editor"></textarea>
+                              <input type="text" readonly class="form-control" id="tuition_amount" name="tuition_amount"  value="{{$order['tuition_amount']}}">
+                              <div class="form-control-focus"> </div>
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.order.tel_phone')}}</label>
-                          <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$order['tel_phone']}} </div>
+                          <label class="col-md-1 control-label" for="comment">{{trans('labels.order.comment')}}</label>
+                          <div class="col-md-7">
+                              <textarea readonly  class="form-area col-md-12" name="comment">{{$order['comment']}}</textarea>
+                              <div class="form-control-focus"> </div>
                           </div>
                       </div>
+
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.order.status')}}</label>
-                          <div class="col-md-9">
+                          <div class="col-md-11">
                               <div class="md-radio-inline">
-                                  @if($order['status'] == config('admin.global.status.active'))
-                                      <span class="label label-success"> 正常 </span>
-                                  @endif
-                                  @if($order['status'] == config('admin.global.status.audit'))
-                                      <span class="label label-warning"> 待审核 </span>
-                                  @endif
-                                  @if($order['status'] == config('admin.global.status.trash'))
-                                      <span class="label label-danger"> 未通过 </span>
-                                  @endif
+                                  <div class="md-radio">
+                                      <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($order['status'] == config('admin.global.status.active')) checked @endif>
+                                      <label for="status1">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.order.active.1')}} </label>
+                                  </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($order['status'] == config('admin.global.status.audit')) checked @endif>
+                                      <label for="status2">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.order.audit.1')}} </label>
+                                  </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($order['status'] == config('admin.global.status.trash')) checked @endif>
+                                      <label for="status3">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.order.trash.1')}} </label>
+                                  </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="status4" name="status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($order['status'] == config('admin.global.status.ban')) checked @endif>
+                                      <label for="status4">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.order.ban.1')}} </label>
+                                  </div>
                               </div>
                           </div>
                       </div>
+
                   </div>
                   <div class="form-actions">
                       <div class="row">

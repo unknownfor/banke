@@ -159,6 +159,7 @@ return [
 		'withdrawEdit' => '<i class="fa fa-pencil"></i> 审核提现',
 		'feedbackList' => '<i class="fa fa-exchange"></i> 反馈列表',
 		'feedbackShow' => '<i class="fa fa-search"></i> 反馈详情',
+		'feedbackEdit' => '<i class="fa fa-pencil"></i> 编辑反馈',
 		'faqList' => '<i class="fa fa-exchange"></i> 问题列表',
 		'faqShow' => '<i class="fa fa-search"></i> 问题详情',
 		'faqCreate'=>'<i class="fa fa-user-plus"></i> 添加问题',
@@ -366,6 +367,7 @@ return [
 		'active' => '<span class="label label-success"> 已验证 </span>',
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'info' => '暂无额外权限',
+		'show'=>'查看详情'
 	],
 	'feedback' => [
 		'id' => '序号',

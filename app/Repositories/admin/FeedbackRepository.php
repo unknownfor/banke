@@ -83,21 +83,55 @@ class FeedbackRepository
 	}
 
 	/**
-	 * 删除配置
-	 * @author shaolei
-	 * @date   2016-04-13T11:51:19+0800
+	 * 查看反馈信息
+	 * @author 晚黎
+	 * @date   2016-04-13T17:09:22+0800
 	 * @param  [type]                   $id [description]
 	 * @return [type]                       [description]
 	 */
-	public function destroy($id)
+	public function show($id)
 	{
-		$isDelete = BankeCashBackUser::destroy($id);
-		if ($isDelete) {
-			Flash::success(trans('alerts.feedback.soft_deleted_success'));
-			return true;
+		$feedback = BankeFeedback::find($id)->toArray();
+		return $feedback;
+	}
+
+	/**
+	 * 修改反馈信息
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:34+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function edit($id)
+	{
+		$feedback = BankeFeedback::find($id);
+		if ($feedback) {
+			$roleArray = $feedback->toArray();
+			return $roleArray;
 		}
-		Flash::error(trans('alerts.feedback.soft_deleted_error'));
-		return false;
+		abort(404);
+	}
+
+	/**
+	 * 修改反馈信息
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public function update($request,$id)
+	{
+		$role = BankeFeedback::find($id);
+		if ($role) {
+			if ($role->fill($request->all())->save()) {
+				Flash::success(trans('alerts.feedback.updated_success'));
+				return true;
+			}
+			Flash::error(trans('alerts.feedback.updated_error'));
+			return false;
+		}
+		abort(404);
 	}
 
 }
