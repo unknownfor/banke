@@ -104,10 +104,10 @@ $(function () {
             window.controlLoadingBox(false);
             if(res.status_code==0 ||res.status_code==50017) {
                 $('.coupon-count span').text(phone);
-                window.showTips('<p>注册成功!<br/>未收到密码短信,<br/>请到App重置密码</p>');
+                window.showTips('<p>注册成功!<br/>如未收到密码短信,<br/>请到App中重置密码</p>',2000);
                 window.setTimeout(function() {
                     showSuccessPage();
-                },1500);
+                },2000);
             }else{
                 window.showTips(res.message);
             }
