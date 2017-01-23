@@ -102,8 +102,8 @@
     <!--遮罩-->
     <div class="mask"></div>
 </div>
+@include('web.layout.downloadbar')
 </body>
-<script src="/front/assets/plugins/zepto.min.js" type="text/javascript"></script>
-<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/scripts/invitaion/invitaion.js" type="text/javascript"></script>
 </html>

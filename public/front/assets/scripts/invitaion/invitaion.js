@@ -4,6 +4,9 @@
 $(function () {
     window.addTip();
     window.addLoadingImg();
+
+
+
     //填充信息，按钮变色
     $(document).on('input', '#phone-num', function(){
         var number=$(this).val(),
@@ -44,7 +47,7 @@ $(function () {
     //倒计时
     var countdown = 60;
     var timer;
-    $(document).on('click','#phone-code-btn', function setTime() {
+    $(document).on( window.eventName,'#phone-code-btn', function setTime() {
         timer = window.setInterval(function () {
             setGetCodeBtn();
         }, 1000);
@@ -82,7 +85,7 @@ $(function () {
     }
 
     //注册
-    $(document).on('click','.btn.active', function () {
+    $(document).on(window.eventName,'.btn.active', function () {
             window.controlLoadingBox(true);
             var phone = $('#phone-num').val(),
                 code = $('#user-code').val();
@@ -94,10 +97,14 @@ $(function () {
             };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res){
-            //成功返回之后调用的函数
+                //成功返回之后调用的函数
             window.controlLoadingBox(false);
-            $('.coupon-count span').text(phone);
-            showSuccessPage();
+            if(res.status_code==0) {
+                $('.coupon-count span').text(phone);
+                showSuccessPage();
+            }else{
+                window.showTips(res.message);
+            }
         },function(){
             window.controlLoadingBox(false);
             $(this).addClass('active');
