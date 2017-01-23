@@ -104,6 +104,5 @@
 </div>
 @include('web.layout.downloadbar')
 </body>
-<script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/scripts/invitaion/invitaion.js" type="text/javascript"></script>
 </html>
