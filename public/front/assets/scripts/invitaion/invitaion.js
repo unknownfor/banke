@@ -86,9 +86,9 @@ $(function () {
 
     //注册
     $(document).on(window.eventName,'.btn.active', function () {
-            window.controlLoadingBox(true);
-            var phone = $('#phone-num').val(),
-                code = $('#user-code').val();
+        window.controlLoadingBox(true);
+        var phone = $('#phone-num').val(),
+            code = $('#user-code').val();
         var url='/invitation/register',
             data={
                 mobile:phone,
@@ -99,9 +99,12 @@ $(function () {
         getDataAsync(url,data,function(res){
                 //成功返回之后调用的函数
             window.controlLoadingBox(false);
-            if(res.status_code==0) {
+            if(res.status_code==0 ||res.status_code==50017) {
                 $('.coupon-count span').text(phone);
-                showSuccessPage();
+                window.showTips('<p>如未收到密码短信,<br/>请到App重置密码</p>');
+                window.setTimeout(function() {
+                    showSuccessPage();
+                },1500);
             }else{
                 window.showTips(res.message);
             }
