@@ -86,9 +86,9 @@ $(function () {
 
     //注册
     $(document).on(window.eventName,'.btn.active', function () {
-        window.setTimeout(function() {
-            showSuccessPage();
-        },1500);
+        //window.setTimeout(function() {
+        //    showSuccessPage();
+        //},1500);
         window.controlLoadingBox(true);
         var phone = $('#phone-num').val(),
             code = $('#user-code').val();
