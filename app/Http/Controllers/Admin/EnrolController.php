@@ -3,11 +3,14 @@
  * 网站功能设置
  */
 namespace App\Http\Controllers\Admin;
+use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeCourse;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use EnrolRepository;
 use App\Http\Requests\NewsRequest;
+use Illuminate\Support\Facades\Log;
 
 class EnrolController extends Controller {
 
@@ -65,7 +68,11 @@ class EnrolController extends Controller {
     public function edit($id)
     {
         $enrol = EnrolRepository::edit($id);
-        return view('admin.enrol.edit')->with(compact(['enrol']));
+        $org = new BankeOrg;
+        $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
+        $course = new BankeCourse;
+        $courseInfo = $course::find($enrol['course_id']);
+        return view('admin.enrol.edit')->with(compact(['enrol','courseInfo','orgs']));
     }
     /**
      * 修改配置

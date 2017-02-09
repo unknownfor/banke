@@ -18,7 +18,12 @@ return[
 		'trash' => 99,
 		'destroy' => -1
 	],
-	//认证状态
+
+	/*认证状态  此处弄反，和其他的不一样
+	* audit 	正常
+	* active 	待审核
+	* trash	回收站
+	 */
 	'certification_status' => [
 		'no_apply' => 0,
 		'active' => 1,

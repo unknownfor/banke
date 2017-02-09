@@ -46,16 +46,16 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
-                          <th width="10%"> {{ trans('labels.app_user.real_name') }} </th>
+                          <th width="8%"> {{ trans('labels.app_user.real_name') }} </th>
                           <th> {{ trans('labels.app_user.mobile') }} </th>
                             <th> {{ trans('labels.app_user.birthday') }} </th>
                             <th> {{ trans('labels.app_user.school') }} </th>
                             <th> {{ trans('labels.app_user.major') }} </th>
                             <th> {{ trans('labels.app_user.certification_picture') }} </th>
-                          <th> {{ trans('labels.app_user.certification_status') }} </th>
+                          <th width="8%"> {{ trans('labels.app_user.certification_status') }} </th>
                             <th> {{ trans('labels.app_user.certification_time') }} </th>
-                          <th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>
-                          <th width="18%"> {{ trans('labels.action') }} </th>
+                          <th width="11%"> {{ trans('labels.app_user.updated_at') }} </th>
+                          <th width="5%"> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
                             <td></td>
