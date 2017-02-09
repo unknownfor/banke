@@ -213,22 +213,21 @@ class ShareController extends Controller
 
     public function download(){
         $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+        Log::info('$agent=====================>'.$agent);
         $is_weixin = strpos($agent, 'micromessenger') ? true : false ;
         if($is_weixin){
-            return redirect(env('APP_DOWNLOAD'));
+            return view("web.download.downloadPrompt");
         }else{
             header("Content-type:text/html; charset=utf-8");
-            $channel = $_GET["channel"];
             if(stristr($_SERVER['HTTP_USER_AGENT'],'Android')) {
-                if(!empty($channel)){
-                    header('Location: '.env('APP_DOWNLOAD'));
-                } else {
-                    header('Location: '.env('APP_DOWNLOAD'));
-                }
+                header('Location: '.env('APP_DOWNLOAD'));
+                exit;
             }else if(stristr($_SERVER['HTTP_USER_AGENT'],'iPhone')){
                 header('Location: https://itunes.apple.com/cn/app/ban-ke/id1188151603?mt=8');
+                exit;
             }else{
                 header('Location: '.env('APP_DOWNLOAD'));
+                exit;
             }
         }
     }
