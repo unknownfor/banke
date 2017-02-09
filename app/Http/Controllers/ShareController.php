@@ -212,6 +212,24 @@ class ShareController extends Controller
     }
 
     public function download(){
-        return redirect(env('APP_DOWNLOAD'));
+        $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
+        $is_weixin = strpos($agent, 'micromessenger') ? true : false ;
+        if($is_weixin){
+            return redirect(env('APP_DOWNLOAD'));
+        }else{
+            header("Content-type:text/html; charset=utf-8");
+            $channel = $_GET["channel"];
+            if(stristr($_SERVER['HTTP_USER_AGENT'],'Android')) {
+                if(!empty($channel)){
+                    header('Location: '.env('APP_DOWNLOAD'));
+                } else {
+                    header('Location: '.env('APP_DOWNLOAD'));
+                }
+            }else if(stristr($_SERVER['HTTP_USER_AGENT'],'iPhone')){
+                header('Location: https://itunes.apple.com/cn/app/ban-ke/id1188151603?mt=8');
+            }else{
+                header('Location: '.env('APP_DOWNLOAD'));
+            }
+        }
     }
 }
