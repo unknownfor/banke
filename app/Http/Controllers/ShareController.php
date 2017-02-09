@@ -220,8 +220,13 @@ class ShareController extends Controller
         }else{
             header("Content-type:text/html; charset=utf-8");
             if(stristr($_SERVER['HTTP_USER_AGENT'],'Android')) {
-                header('Location: '.env('APP_DOWNLOAD'));
-                exit;
+                $is_qq = strpos($agent, 'mqqbrowser') ? true : false ;
+                if($is_qq){
+                    return view("web.download.downloadPrompt");
+                }else{
+                    header('Location: '.env('APP_DOWNLOAD'));
+                    exit;
+                }
             }else if(stristr($_SERVER['HTTP_USER_AGENT'],'iPhone')){
                 header('Location: https://itunes.apple.com/cn/app/ban-ke/id1188151603?mt=8');
                 exit;
