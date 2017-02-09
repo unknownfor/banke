@@ -220,7 +220,7 @@ class ShareController extends Controller
         }else{
             header("Content-type:text/html; charset=utf-8");
             if(stristr($_SERVER['HTTP_USER_AGENT'],'Android')) {
-                $is_qq = strpos($agent, 'mqqbrowser') ? true : false ;
+                $is_qq = strpos($agent, 'mobile mqqbrowser') ? true : false ;
                 if($is_qq){
                     return view("web.download.downloadPrompt");
                 }else{
