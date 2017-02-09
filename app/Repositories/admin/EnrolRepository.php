@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeEnrol;
 use Carbon\Carbon;
 use Flash;
+use Illuminate\Support\Facades\Log;
 /**
 * 权限仓库
 */
@@ -108,6 +109,7 @@ class EnrolRepository
 	public function store($request)
 	{
 		$role = new BankeEnrol;
+
 		if ($role->fill($request->all())->save()) {
 			Flash::success(trans('alerts.enrol.created_success'));
 			return true;
@@ -143,6 +145,7 @@ class EnrolRepository
 	{
 		$role = BankeEnrol::find($id);
 		if ($role) {
+			$role['operator_uid']=5;
 			if ($role->fill($request->all())->save()) {
 				Flash::success(trans('alerts.enrol.updated_success'));
 				return true;
