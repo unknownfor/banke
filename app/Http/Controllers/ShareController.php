@@ -213,7 +213,6 @@ class ShareController extends Controller
 
     public function download(){
         $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-        Log::info('$agent=====================>'.$agent);
         $is_weixin = strpos($agent, 'micromessenger') ? true : false ;
         if($is_weixin){
             return view("web.download.downloadPrompt");
