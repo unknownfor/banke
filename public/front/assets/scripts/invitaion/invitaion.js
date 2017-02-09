@@ -4,6 +4,9 @@
 $(function () {
     window.addTip();
     window.addLoadingImg();
+
+
+
     //填充信息，按钮变色
     $(document).on('input', '#phone-num', function(){
         var number=$(this).val(),
@@ -44,7 +47,7 @@ $(function () {
     //倒计时
     var countdown = 60;
     var timer;
-    $(document).on('click','#phone-code-btn', function setTime() {
+    $(document).on( window.eventName,'#phone-code-btn', function setTime() {
         timer = window.setInterval(function () {
             setGetCodeBtn();
         }, 1000);
@@ -82,10 +85,13 @@ $(function () {
     }
 
     //注册
-    $(document).on('click','.btn.active', function () {
-            window.controlLoadingBox(true);
-            var phone = $('#phone-num').val(),
-                code = $('#user-code').val();
+    $(document).on(window.eventName,'.btn.active', function () {
+        //window.setTimeout(function() {
+        //    showSuccessPage();
+        //},1500);
+        window.controlLoadingBox(true);
+        var phone = $('#phone-num').val(),
+            code = $('#user-code').val();
         var url='/invitation/register',
             data={
                 mobile:phone,
@@ -94,10 +100,17 @@ $(function () {
             };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res){
-            //成功返回之后调用的函数
+                //成功返回之后调用的函数
             window.controlLoadingBox(false);
-            $('.coupon-count span').text(phone);
-            showSuccessPage();
+            if(res.status_code==0 ||res.status_code==50017) {
+                $('.coupon-count span').text(phone);
+                window.showTips('<p>注册成功!<br/>如未收到密码短信,<br/>请到App中重置密码</p>',2000);
+                window.setTimeout(function() {
+                    showSuccessPage();
+                },2000);
+            }else{
+                window.showTips(res.message);
+            }
         },function(){
             window.controlLoadingBox(false);
             $(this).addClass('active');
