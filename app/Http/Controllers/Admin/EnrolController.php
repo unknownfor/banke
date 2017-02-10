@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use EnrolRepository;
-use App\Http\Requests\NewsRequest;
+use App\Http\Requests\EnrolRequest;
 use Illuminate\Support\Facades\Log;
 
 class EnrolController extends Controller {
@@ -82,7 +82,7 @@ class EnrolController extends Controller {
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(NewsRequest $request,$id)
+    public function update(EnrolRequest $request,$id)
     {
         EnrolRepository::update($request,$id);
         return redirect('admin/enrol');

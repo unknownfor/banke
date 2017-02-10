@@ -4,7 +4,6 @@ use App\Models\Banke\BankeEnrol;
 use Carbon\Carbon;
 use Flash;
 use Auth;
-
 /**
 * 权限仓库
 */
@@ -110,6 +109,7 @@ class EnrolRepository
 	public function store($request)
 	{
 		$role = new BankeEnrol;
+
 		if ($role->fill($request->all())->save()) {
 			Flash::success(trans('alerts.enrol.created_success'));
 			return true;

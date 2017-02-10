@@ -48,7 +48,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="name">{{trans('labels.enrol.name')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="name" name="title" placeholder="{{trans('labels.enrol.name')}}" value="{{$enrol['name']}}">
+                              <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.enrol.name')}}" value="{{$enrol['name']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -56,7 +56,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="slug">{{trans('labels.enrol.mobile')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="slug" name="content" placeholder="{{trans('labels.enrol.mobile')}}" value="{{$enrol['mobile']}}">
+                              <input type="text" class="form-control" id="slug" name="mobile" placeholder="{{trans('labels.enrol.mobile')}}" value="{{$enrol['mobile']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -64,6 +64,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="description">{{trans('labels.enrol.org_id')}}</label>
                           <div class="col-md-4">
+                              <input type="hidden" name="org_id" value="$enrol['org_id']">
                               <select disabled name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
                                   @if($orgs)
                                       @foreach($orgs as $org)
@@ -81,6 +82,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="description">{{trans('labels.enrol.course_id')}}</label>
                           <div class="col-md-4">
+                              <input type="hidden" name="course_id" value="$enrol['course_id']">
                               <select disabled name="course_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
                                   @if($courseInfo)
                                       <option value="{{$courseInfo->id}}" selected> {{$courseInfo->name}}</option>
@@ -92,7 +94,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="description">{{trans('labels.enrol.processing_result')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.enrol.processing_result')}}" value="{{$enrol['processing_result']}}">
+                              <input type="text" class="form-control" id="description" name="processing_result" placeholder="{{trans('labels.enrol.processing_result')}}" value="{{$enrol['processing_result']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
