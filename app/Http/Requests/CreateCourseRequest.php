@@ -29,7 +29,7 @@ class CreateCourseRequest extends Request
             'org_id' => 'required|numeric',
             'price' => 'required|numeric',
 //            'percent' => 'required|numeric',
-            'period' => 'required|numeric',
+            'period' => 'required|numeric|min:1',
             'sort' => 'numeric',
         ];
     }

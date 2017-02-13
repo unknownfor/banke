@@ -85,6 +85,13 @@
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="cashback_amount">{{trans('labels.order.cashback_amount')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" readonly class="form-control" id="cashback_amount" name="cashback_amount"  value="{{$order['cashback_amount']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="comment">{{trans('labels.order.comment')}}</label>
                           <div class="col-md-7">
                               <textarea  class="form-area col-md-12" name="comment">{{$order['comment']}}</textarea>

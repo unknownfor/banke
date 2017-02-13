@@ -321,6 +321,10 @@ class OrderRepository
 		$role = BankeCashBackUser::find($id);
 		$input = $request->only(['comment', 'status']);
 		if ($role) {
+			if($role['status'] == config('admin.global.status.active')){
+				Flash::error(trans('alerts.order.already_active'));
+				return false;
+			}
 			if($input['status'] == config('admin.global.status.active')){
 				DB::transaction(function () use ($input, $role) {
 					try{

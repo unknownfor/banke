@@ -92,6 +92,7 @@ class OrderController extends Controller
     {
         $order = BankeCashBackUser::find($id);
         $orgs = BankeOrg::where('status', 1)->get(['id', 'name']);
+        $order['cashback_amount'] = $order['check_in_amount'] + $order['do_task_amount'];
         return view('admin.order.edit')->with(compact(['order','orgs']));
     }
     /**
