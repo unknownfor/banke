@@ -152,6 +152,9 @@ return[
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'order',
+		'active' => 1,
+		'audit' => 2,
+		'trash' => 3,
 	],
 
 	//反馈
