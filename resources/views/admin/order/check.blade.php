@@ -28,7 +28,7 @@
                         <i class="icon-settings font-dark"></i>
                         <span class="caption-subject font-dark sbold uppercase">{{trans('labels.order.list')}}</span>
                     </div>
-                    <div class="actions">
+                    {{--<div class="actions">
                         <div class="btn-group">
                             @permission(config('admin.permissions.order.create'))
                             <a href="{{url('admin/order/create')}}" class="btn btn-success btn-outline btn-circle">
@@ -37,7 +37,7 @@
                             </a>
                             @endpermission
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
                 <div class="search-box filter">
                     <div class="col-md-2">
