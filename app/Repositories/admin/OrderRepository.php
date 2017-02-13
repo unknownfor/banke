@@ -304,6 +304,7 @@ class OrderRepository
 		$role = BankeCashBackUser::find($id);
 		if ($role) {
 			$roleArray = $role->toArray();
+			$roleArray['cashback_amount'] = $roleArray['check_in_amount'] + $roleArray['do_task_amount'];
 			return $roleArray;
 		}
 		abort(404);
