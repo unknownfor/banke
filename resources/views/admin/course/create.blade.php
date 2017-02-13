@@ -102,9 +102,12 @@
 
                             <div class="form-group form-md-line-input form-md-line-cover">
                                 <label class="col-md-1 control-label">{{trans('labels.course.cover')}}</label>
+
                                 <div class="col-md-9">
                                     <div class="cover-box">
-                                        <div class="add-cover-img-btn">+</div>
+                                        <div class="add-cover-img-btn">+
+                                            <div class="cover-size-tips">300*188</div>
+                                        </div>
                                         <ul class="cover-list-box"></ul>
                                         <input type="hidden" value="" name="cover" id="cover">
                                     </div>
