@@ -99,6 +99,8 @@ class AppUserRepository
 		if ($users) {
 			foreach ($users as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
+				$cur_user = BankeUserAuthentication::find($v['uid']);
+				$v['real_name'] = $cur_user['real_name'];
 			}
 		}
 		
