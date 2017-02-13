@@ -4,6 +4,7 @@ use App\Models\Banke\BankeEnrol;
 use Carbon\Carbon;
 use Flash;
 use Auth;
+use Illuminate\Support\Facades\Log;
 /**
 * 权限仓库
 */
@@ -84,18 +85,19 @@ class EnrolRepository
 		}
 
 		$role = $role->offset($start)->limit($length);
-		$roles = $role->get();
+		$enrols = $role->get();
 
-		if ($roles) {
-			foreach ($roles as &$v) {
+		if ($enrols) {
+			foreach ($enrols as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 			}
 		}
+		$resultEnrols=array_reverse($enrols);
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $roles,
+			'data' => $resultEnrols
 		];
 	}
 

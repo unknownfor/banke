@@ -1,0 +1,48 @@
+.table-box{
+  margin: 80px auto;
+  border: 1px solid #E0E0E0;
+  border-radius: 2px;
+  .head-title{
+    height: 40px;
+    font-size: 16px;
+    display:flex;
+    align-items: center;
+    border-bottom: 1px solid #E0E0E0;
+    padding:0 5px;
+    background-color: #F5F5F5;
+    i{
+      color: #212121;
+      font-size: 20px;
+    }
+    span{
+      color: #212121;
+      margin-left: 5px;
+    }
+  }
+  .table-main{
+    padding:0 5px;
+    display: flex;
+    >div{
+      width:25%;
+      border-right: 1px solid #E0E0E0;
+      text-align: center;
+      >div{
+        margin:10px 0;
+      }
+      &:last-child{
+        border-right:none;
+      }
+    }
+  }
+  table{
+    width: 100%;
+    margin-bottom: 0;
+    thead{
+      tr{
+        th{
+          border: none;
+        }
+      }
+    }
+  }
+}
