@@ -272,7 +272,7 @@ class OrderRepository
 						'uid'=>$input['uid'],
 						'title'=>'报名成功',
 						'content'=>'尊敬的'.$input['name'].'用户，您已'.date("Y-m-d").'于'.$org->name.'报名了'
-							.$input['course_name'].'培训课程，学费为'.$input['tuition_amount'].'元，平台返现学费'
+							.$input['course_name'].'培训课程，学费为'.$input['tuition_amount'].'元，平台奖励学费'
 							.($check_in_config['value'] + $do_task_config['value']).'%，您的待返金额为'
 							.($input['check_in_amount'] + $input['do_task_amount'])
 							.'元，每次上课打卡和做任务即可领取',
@@ -321,6 +321,10 @@ class OrderRepository
 		$role = BankeCashBackUser::find($id);
 		$input = $request->only(['comment', 'status']);
 		if ($role) {
+			if($role['status'] == config('admin.global.status.active')){
+				Flash::error(trans('alerts.order.already_active'));
+				return false;
+			}
 			if($input['status'] == config('admin.global.status.active')){
 				DB::transaction(function () use ($input, $role) {
 					try{
@@ -380,7 +384,7 @@ class OrderRepository
 							'uid'=>$role['uid'],
 							'title'=>'您已报名成功',
 							'content'=>'尊敬的'.$role->name.'用户，您已'.$role->pay_tuition_time.'于'.$org->name.'报名了'
-								.$role->course_name.'培训课程，学费为'.$role->tuition_amount.'元，平台返现学费'
+								.$role->course_name.'培训课程，学费为'.$role->tuition_amount.'元，平台奖励学费'
 								.$cash_back_percent.'%，您的待返金额为'
 								.($role->check_in_amount + $role->do_task_amount)
 								.'元，每次上课打卡和做任务即可领取',

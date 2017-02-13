@@ -33,6 +33,10 @@ trait ActionAttributeTrait{
 	 */
 	public function getEditActionButton()
 	{
+		if ($this->action == 'order') {
+			return $this;
+		}
+
 		if (Auth::user()->can(config('admin.permissions.'.$this->action.'.edit'))) {
 			$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/edit').'" class="btn btn-xs btn-primary tooltips" data-original-title="' . trans('crud.edit') . '"  data-placement="top"><i class="fa fa-pencil"></i></a>';
 		}
@@ -108,7 +112,7 @@ trait ActionAttributeTrait{
 	}
 
 	/**
-	 * 通过身份认证按钮
+	 * 用户实名认证按钮
 	 * @return $this
 	 */
 	public function getCertificateActionButton()
@@ -122,12 +126,40 @@ trait ActionAttributeTrait{
 	}
 
 	/**
-	 * 拒绝身份认证按钮
+	 * 拒绝用户实名认证按钮
 	 * @return $this
 	 */
 	public function getRefuseCertificateActionButton()
 	{
 		if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
+			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
+				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.trash')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
+			}
+		}
+		return $this;
+	}
+
+	/**
+	 * 报名认证按钮
+	 * @return $this
+	 */
+	public function getOrderActionButton()
+	{
+		if (($this->action == 'order')) {
+			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.edit'))) {
+				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/edit').'" class="btn btn-xs btn-primary tooltips" data-original-title="' . trans('crud.check') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+			}
+		}
+		return $this;
+	}
+
+	/**
+	 * 拒绝用户报名认证按钮
+	 * @return $this
+	 */
+	public function getOrderRefuseActionButton()
+	{
+		if (($this->action == 'order')) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
 				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.trash')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
 			}
@@ -161,6 +193,8 @@ trait ActionAttributeTrait{
 	{
 		
 		$this->getShowActionButton($showType)
+					->getOrderActionButton()
+					->getOrderRefuseActionButton()
 					->getResetActionButton()
 					->getEditActionButton()
 					->getUndoActionButton()
@@ -169,6 +203,7 @@ trait ActionAttributeTrait{
 					->getDestroyActionButton()
 					->getCertificateActionButton()
 					->getRefuseCertificateActionButton();
+
 		return $this->html_build;
 	}
 }

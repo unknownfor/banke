@@ -28,10 +28,23 @@ var TableDatatablesAjax = function() {
           "name" : "uid",
         },
         {
+          "data": "real_name",
+          "name" : "real_name",
+          "orderable" : false,
+          render:function(data) {
+            if (data) {
+              return '<span>'+data+ '</span>';
+            }else{
+              return '<span></span>';
+            }
+          }
+        },
+        {
           "data": "name",
           "name" : "name",
           "orderable" : false,
         },
+
         {
           "data": "mobile",
           "name": "mobile",

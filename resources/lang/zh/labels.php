@@ -358,7 +358,7 @@ return [
 		'operator_name'=>'审核人',
 		'operator_time'=>'审核时间',
 		'tuition_amount'=>'缴纳学费',
-		'payback'=>'返现金额',
+		'cashback_amount'=>'待返现金额',
 		'check_in_amount'=>'打卡奖励金额',
 		'do_task_amount'=>'任务奖励金额',
 		'comment'=>'备注',
