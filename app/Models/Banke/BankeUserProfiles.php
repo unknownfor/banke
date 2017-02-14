@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BankeUserProfiles extends Model
 {
-    //
+    //    //±¨Ãû
     use ActionAttributeTrait;
 
     protected $primaryKey = 'uid';

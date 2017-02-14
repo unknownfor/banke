@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BankeCashBackUser extends Model
 {
-    //
+    //±¨Ãû
+
     use ActionAttributeTrait;
 
     protected $fillable = ['order_id', 'uid','name', 'course_name', 'org_id', 'course_id', 'org_account', 'mobile', 'tuition_amount',

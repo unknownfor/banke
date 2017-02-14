@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BankeCheckIn extends Model
 {
-    //
-    //
+    //´ò¿¨
+    //    //
     use ActionAttributeTrait;
 
     protected $table = 'banke_check_in';

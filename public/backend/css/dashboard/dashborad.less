@@ -1,48 +1,114 @@
-.table-box{
-  margin: 80px auto;
+@color1:#c23531;
+@color2:#91c7ae;
+@color3:#2f4554;
+@color4:#d48265;
+@color5:#61A0A8;
+@color6:#DE9325;
+
+.chooseColor(@color:@color3){
+  border-left: 4px solid @color;
+  i {
+    color: @color;
+  }
+  span {
+    color: @color;
+  }
+}
+.table-box {
+  margin: 10px auto;
   border: 1px solid #E0E0E0;
   border-radius: 2px;
-  .head-title{
+  &:nth-of-type(1) {
+    .head-title {
+      .chooseColor();
+    }
+  }
+  &:nth-of-type(2) {
+    .head-title {
+      .chooseColor(@color2);
+    }
+  }
+
+  .head-title {
     height: 40px;
     font-size: 16px;
-    display:flex;
+    display: flex;
     align-items: center;
     border-bottom: 1px solid #E0E0E0;
-    padding:0 5px;
+    padding: 0 5px;
     background-color: #F5F5F5;
-    i{
-      color: #212121;
-      font-size: 20px;
+    i {
+      font-size: 18px;
     }
-    span{
-      color: #212121;
+    span {
       margin-left: 5px;
     }
   }
-  .table-main{
-    padding:0 5px;
-    display: flex;
-    >div{
-      width:25%;
-      border-right: 1px solid #E0E0E0;
-      text-align: center;
-      >div{
-        margin:10px 0;
-      }
-      &:last-child{
-        border-right:none;
-      }
-    }
-  }
-  table{
-    width: 100%;
-    margin-bottom: 0;
-    thead{
-      tr{
-        th{
-          border: none;
+  .table-main {
+    padding: 0 5px;
+    .total-box {
+      display: flex;
+      > div {
+        width: 25%;
+        border-right: 1px solid #E0E0E0;
+        text-align: center;
+        > div {
+          margin: 10px 0;
+        }
+        &:last-child {
+          border-right: none;
         }
       }
+    }
+    table {
+      width: 100%;
+      margin-bottom: 0;
+      thead {
+        tr {
+          th {
+            border: none;
+          }
+        }
+      }
+    }
+
+  }
+}
+.echart-box{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  .echart-main-box{
+    &:nth-of-type(1) {
+      .head-title {
+        .chooseColor(@color1);
+      }
+    }
+    &:nth-of-type(2) {
+      .head-title {
+        .chooseColor(@color4);
+      }
+    }
+    &:nth-of-type(3) {
+      .head-title {
+        .chooseColor(@color5);
+      }
+    }
+    &:nth-of-type(4) {
+      .head-title {
+        .chooseColor(@color6);
+      }
+    }
+    width: 49%;
+    min-width: 400px;
+    margin-right: 2%;
+    .echart-main-content {
+      margin-top: 30px;
+      height: 400px;
+    }
+    &:nth-of-type(2n) {
+      margin-right: 0;
     }
   }
 }
