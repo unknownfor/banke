@@ -28,7 +28,7 @@ class UpdateCourseRequest extends Request
             'name' => 'required',
             'org_id' => 'required|numeric',
             'price' => 'required|numeric',
-//            'period' => 'required|numeric',
+            'period' => 'required|numeric|min:1',
             'status' => 'required',
         ];
     }

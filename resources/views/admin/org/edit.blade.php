@@ -116,7 +116,9 @@
                                 <label class="col-md-1 control-label">{{trans('labels.org.cover')}}</label>
                                 <div class="col-md-9">
                                     <div class="cover-box">
-                                        <div class="add-cover-img-btn">+</div>
+                                        <div class="add-cover-img-btn">+
+                                            <div class="cover-size-tips">300*188</div>
+                                        </div>
                                             <ul class="cover-list-box">
                                                 @if($org['cover'])
                                                     <?php

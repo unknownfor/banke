@@ -45,17 +45,19 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
+                          <th width="8%"> {{ trans('labels.app_user.real_name') }} </th>
                           <th width="10%"> {{ trans('labels.app_user.name') }} </th>
-                          <th> {{ trans('labels.app_user.mobile') }} </th>
-                          <th> {{ trans('labels.app_user.certification_status') }} </th>
-                            <th> {{ trans('labels.app_user.account_balance') }} </th>
-                            <th> {{ trans('labels.app_user.total_cashback_amount') }} </th>
-                            <th> {{ trans('labels.app_user.withdrawal_amount') }} </th>
+                          <th width="12%"> {{ trans('labels.app_user.mobile') }} </th>
+                          <th width="8%"> {{ trans('labels.app_user.certification_status') }} </th>
+                            <th width="8%"> {{ trans('labels.app_user.account_balance') }} </th>
+                            <th width="8%"> {{ trans('labels.app_user.total_cashback_amount') }} </th>
+                            <th width="8%"> {{ trans('labels.app_user.withdrawal_amount') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>
-                          <th width="18%"> {{ trans('labels.action') }} </th>
+                          <th width="8%"> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
+                            <td></td>
                             <td></td>
                             <td>
                               <div class="form-group form-md-line-input">

@@ -99,6 +99,8 @@ class AppUserRepository
 		if ($users) {
 			foreach ($users as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
+				$cur_user = BankeUserAuthentication::find($v['uid']);
+				$v['real_name'] = $cur_user['real_name'];
 			}
 		}
 		
@@ -248,7 +250,7 @@ class AppUserRepository
 					$user_profile->certification_time = $certification_time;
 					$user->save();
 					//处理邀请人奖励金额
-					if($status == config('admin.global.certification_status.active')){
+					if($status == config('admin.global.certification_status.audit')){
 						//查询系统配置里注册认证的奖金
 						$register_award = BankeDict::where('id', 1)->first();
 						$user_profile->account_balance += $register_award->value;

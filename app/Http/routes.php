@@ -97,6 +97,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //app升级
         require(__DIR__ . '/Routes/AppUpdateRoute.php');
 
+        //仪表盘信息
+        require(__DIR__ . '/Routes/DashboardRoute.php');
+
     });
 });
 

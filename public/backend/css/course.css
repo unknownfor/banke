@@ -27,6 +27,7 @@
     height: 100%;
     width: 100%;
 }
+
 .form-md-line-cover .add-cover-img-btn{
     height:80px;
     width: 80px;
@@ -38,9 +39,26 @@
     justify-content: center;
     align-items: center;
     margin-right: 20px;
+    position: relative;
 }
 .form-md-line-cover .add-cover-img-btn:hover{
     box-shadow: 0 0 2px 2px rgba(21,21,21,0.5);
+}
+.form-md-line-cover .add-cover-img-btn .cover-size-tips{
+    background: rgba(0,0,0,.5);
+    display: none;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    font-size: 15px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+}
+.form-md-line-cover .add-cover-img-btn:hover .cover-size-tips{
+    display: block;
 }
 
 .cover-list-box{

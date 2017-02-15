@@ -3,6 +3,8 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeEnrol;
 use Carbon\Carbon;
 use Flash;
+use Auth;
+use Illuminate\Support\Facades\Log;
 /**
 * 权限仓库
 */
@@ -83,18 +85,19 @@ class EnrolRepository
 		}
 
 		$role = $role->offset($start)->limit($length);
-		$roles = $role->get();
+		$enrols = $role->get();
 
-		if ($roles) {
-			foreach ($roles as &$v) {
+		if ($enrols) {
+			foreach ($enrols as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 			}
 		}
+		$resultEnrols=array_reverse($enrols);
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $roles,
+			'data' => $resultEnrols
 		];
 	}
 
@@ -108,6 +111,7 @@ class EnrolRepository
 	public function store($request)
 	{
 		$role = new BankeEnrol;
+
 		if ($role->fill($request->all())->save()) {
 			Flash::success(trans('alerts.enrol.created_success'));
 			return true;
@@ -141,9 +145,12 @@ class EnrolRepository
 	 */
 	public function update($request,$id)
 	{
+		$input = $request->all();
 		$role = BankeEnrol::find($id);
+		$cur_user = Auth::user();
+		$input['operator_uid'] = $cur_user['id'];
 		if ($role) {
-			if ($role->fill($request->all())->save()) {
+			if ($role->fill($input)->save()) {
 				Flash::success(trans('alerts.enrol.updated_success'));
 				return true;
 			}
