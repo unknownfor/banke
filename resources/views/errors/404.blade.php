@@ -34,7 +34,7 @@
             <img src="{{asset('backend/img/earth.jpg')}}" class="img-responsive" alt=""> </div>
         <div class="container error-404">
             <h1>404！</h1>
-            <h2>你要访问的页面以逃离地球，么么哒。</h2>
+            <h2>你要访问的页面已逃离地球，么么哒。</h2>
             <p> 实际上，你正在寻找的页面不存在。 </p>
             <p>
                 <a href="{{url('admin')}}" class="btn red btn-outline"> 返回首页 </a>
