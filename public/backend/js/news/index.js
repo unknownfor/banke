@@ -91,7 +91,7 @@
                     //上传图片，然后回调
                     var info = that.getMaxImgsId();
                     if (info) {
-                        $('#uploadImgFile1').trigger('click');
+                        $('#uploadImgFile').trigger('click');
 
                     } else {
                         alert('最多只能添加100张图片');

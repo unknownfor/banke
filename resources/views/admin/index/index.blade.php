@@ -29,22 +29,22 @@
         </div>
         <div class="table-main">
             <div class="total-box">
-               <div>
-                   <div>总用户数</div>
-                   <div>0</div>
-               </div>
                 <div>
-                   <div>总预约人数</div>
-                   <div>0</div>
-               </div>
+                    <div>总用户数</div>
+                    <div class="total-val">****</div>
+                </div>
                 <div>
-                   <div>总报名人数</div>
-                   <div>0</div>
-               </div>
+                    <div>总预约人数</div>
+                    <div class="total-val">***</div>
+                </div>
                 <div>
-                   <div>总打卡次数</div>
-                   <div>1110</div>
-               </div>
+                    <div>总报名人数</div>
+                    <div class="total-val">**</div>
+                </div>
+                <div>
+                    <div>总打卡次数</div>
+                    <div class="total-val">*</div>
+                </div>
             </div>
         </div>
     </div>
@@ -64,19 +64,19 @@
                     <th class="col-md-2">打卡人数</th>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="today-tr">
                         <td>今日</td>
-                        <td>21123</td>
-                        <td>3331</td>
-                        <td>1254</td>
-                        <td>96523</td>
+                        <td>****</td>
+                        <td>***</td>
+                        <td>**</td>
+                        <td>*</td>
                     </tr>
-                    <tr>
+                    <tr class="yesterday-tr">
                         <td>昨日</td>
-                        <td>95212</td>
-                        <td>856</td>
-                        <td>9651</td>
-                        <td>1245</td>
+                        <td>****</td>
+                        <td>***</td>
+                        <td>**</td>
+                        <td>*</td>
                     </tr>
                 </tbody>
             </table>
