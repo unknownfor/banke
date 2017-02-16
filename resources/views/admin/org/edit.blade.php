@@ -55,6 +55,7 @@
                                 <div class="col-md-9">
                                     <span class="btn default green" id="uploadLogo">{!! trans('labels.breadcrumb.imageUpload') !!}</span>
                                     <div>{!! trans('labels.breadcrumb.imageUploadTips')!!}</div>
+                                    <div>尺寸大小为60*60</div>
                                 </div>
                                 <input type="hidden" value="" name="logo" id="logo-input">
                             </div>
@@ -117,7 +118,7 @@
                                 <div class="col-md-9">
                                     <div class="cover-box">
                                         <div class="add-cover-img-btn">+
-                                            <div class="cover-size-tips">300*188</div>
+                                            <div class="cover-size-tips">400*175</div>
                                         </div>
                                             <ul class="cover-list-box">
                                                 @if($org['cover'])

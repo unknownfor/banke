@@ -103,7 +103,7 @@
                           <div class="col-md-9">
                               <div class="cover-box">
                                   <div class="add-cover-img-btn">+
-                                      <div class="cover-size-tips">300*188</div>
+                                      <div class="cover-size-tips">60*60</div>
                                   </div>
                                   <ul class="cover-list-box">
                                       @if($course['cover'])
