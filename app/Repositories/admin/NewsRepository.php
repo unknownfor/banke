@@ -4,7 +4,7 @@ use App\Models\Banke\BankeNews;
 use Carbon\Carbon;
 use Flash;
 /**
-* 权限仓库
+* 新闻仓库
 */
 class NewsRepository
 {

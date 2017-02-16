@@ -368,4 +368,20 @@ class UserRepository
 		}
 		return false;
 	}
+
+
+	/**
+	 * 根据创建时间，得到 注册半课APP用户
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function getUserInLimitTime($startTime,$endTime)
+	{
+		$user = new User;
+		$user = $user::where('created_at','>=',getTime($startTime));
+		$user = $user::where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
+		return $user;
+	}
 }

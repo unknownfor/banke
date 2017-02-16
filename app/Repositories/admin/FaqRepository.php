@@ -10,7 +10,7 @@ use DB;
 use Auth;
 
 /**
-* 权限仓库
+* 常见问题仓库
 */
 class FaqRepository
 {

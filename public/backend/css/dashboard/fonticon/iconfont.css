@@ -1,10 +1,10 @@
 
 @font-face {font-family: "iconfont";
-  src: url('iconfont.eot?t=1486956160482'); /* IE9*/
-  src: url('iconfont.eot?t=1486956160482#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url('iconfont.woff?t=1486956160482') format('woff'), /* chrome, firefox */
-  url('iconfont.ttf?t=1486956160482') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('iconfont.svg?t=1486956160482#iconfont') format('svg'); /* iOS 4.1- */
+  src: url('iconfont.eot?t=1487229544879'); /* IE9*/
+  src: url('iconfont.eot?t=1487229544879#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1487229544879') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1487229544879') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1487229544879#iconfont') format('svg'); /* iOS 4.1- */
 }
 
 .iconfont {
@@ -15,7 +15,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-chart-icon:before { content: "\e656"; }
+
+.icon-chart:before { content: "\e64a"; }
+
 .icon-register:before { content: "\e602"; }
+
+.icon-linechart:before { content: "\e667"; }
 
 .icon-itotal:before { content: "\e64c"; }
 

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
-use App\Http\Requests\FaqRequest;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
 use RoleRepository;
 use DashboardRepository;
+use OrderRepository;
+use UserRepository;
 use PermissionRepository;
 use Illuminate\Support\Facades\Log;
 
@@ -24,11 +25,24 @@ class DashboardController extends Controller
         $data = DashboardRepository::getTotalData();
         $data1=DashboardRepository::getRecentlyData("today");
         $data2=DashboardRepository::getRecentlyData("yesterday");
+        
+        $witch_day = -date("w");
+        $startTime=date("Y-m-d",strtotime($witch_day));
+        $startTime=date("Y-m-d",strtotime($witch_day));
+
+
+        $data3=UserRepository::getUserInLimitTime("yesterday");
+        $data4=OrderboardRepository::getUserInLimitTime("yesterday");
+        $data5=CheckinRepository::getUserInLimitTime("yesterday");
 
         $arr = array(
             array('total'=>$data),
             array('today'=>$data1),
-            array('yesterday'=>$data2)
+            array('yesterday'=>$data2),
+            array('register'=>$data3),
+            array('signin'=>$data4),
+            array('checkin'=>$data5)
+
         );
         return response()->json($arr);
     }

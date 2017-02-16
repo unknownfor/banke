@@ -95,7 +95,7 @@
         </div>
         <div class="table-box echart-main-box">
                 <div class="head-title">
-                    <i class="iconfont icon-data"></i>
+                    <i class="iconfont icon-chart"></i>
                     <span>报名人数</span>
                 </div>
                 <div class="table-main">
@@ -104,7 +104,7 @@
             </div>
         <div class="table-box echart-main-box">
             <div class="head-title">
-                <i class="iconfont icon-data"></i>
+                <i class="iconfont icon-chart-icon"></i>
                 <span>打卡人数</span>
             </div>
             <div class="table-main">

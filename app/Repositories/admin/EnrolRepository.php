@@ -6,7 +6,7 @@ use Flash;
 use Auth;
 use Illuminate\Support\Facades\Log;
 /**
-* 权限仓库
+* 预约仓库
 */
 class EnrolRepository
 {
@@ -199,6 +199,21 @@ class EnrolRepository
 		}
 		Flash::error(trans('alerts.enrol.deleted_error'));
 		return false;
+	}
+
+	/**
+	 * 根据创建时间，得到 预约用户
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function getUserInLimitTime($startTime,$endTime)
+	{
+		$user = new BankeEnrol();
+		$user = $user::where('created_at','>=',getTime($startTime));
+		$user = $user::where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
+		return $user;
 	}
 
 }

@@ -9,7 +9,7 @@ use DB;
 use Auth;
 
 /**
-* 权限仓库
+* 反馈内容仓库
 */
 class FeedbackRepository
 {

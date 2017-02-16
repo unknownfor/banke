@@ -16,7 +16,7 @@ use Auth;
 use Illuminate\Support\Facades\Log;
 use League\Flysystem\Exception;
 /**
-* 权限仓库
+* 提现仓库
 */
 class WithdrawRepository
 {

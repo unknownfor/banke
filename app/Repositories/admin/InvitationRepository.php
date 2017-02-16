@@ -12,7 +12,7 @@ use DB;
 use Auth;
 
 /**
-* 权限仓库
+* 邀请仓库
 */
 class InvitationRepository
 {
