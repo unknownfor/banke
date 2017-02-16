@@ -253,6 +253,7 @@ return [
         'CheckinRepository' => App\Facades\CheckinFacade::class,
         'WithdrawRepository' => App\Facades\WithdrawFacade::class,
         'AppUpdateRepository' => App\Facades\AppUpdateFacade::class,
+        'DashboardRepository' => App\Facades\DashboardFacade::class,
     ],
 
 ];
