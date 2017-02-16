@@ -114,12 +114,12 @@
 </form>
 <div class="loding-modal">
     <i id="imgLoadingCircle" class="loadingCircle active"></i>
-    <div>ÉÏ´«ÖÐ¡­</div>
+    <div>ä¸Šä¼ ä¸­â€¦â€¦</div>
 </div>
 @endsection
 @section('js')
     <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
-    {{--±à¼­Æ÷--}}
+    {{--????--}}
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
