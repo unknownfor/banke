@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $data = DashboardRepository::getTotalData();
         $data1=DashboardRepository::getRecentlyData("today");
         $data2=DashboardRepository::getRecentlyData("yesterday");
-        
+
         $witch_day = -date("w");
         $startTime=date("Y-m-d",strtotime($witch_day));
         $startTime=date("Y-m-d",strtotime($witch_day));
