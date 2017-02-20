@@ -3,36 +3,14 @@
  */
     $(function(){
 
-        $('.citySelectpicker').selectpicker({
-            liveSearchNormalize:true,
-            liveSearchPlaceholder:'输入城市名称进行搜索',
-            //'selectedText': 'cat',
-            actionsBox:true
-        });
-
         /**定义一个MyEditor对象**/
         var MyEditor=function(){
             this.init();
             var that=this;
 
-            /*上传logo文件*/
-            $(document).on('change','#uploadImgFile', $.proxy(this,'uploadLogo'));
-            $(document).on('click','#uploadLogo', function(){
-                $('#uploadImgFile').trigger('click');
-            });
             /*上传编辑器的文件*/
-            $(document).on('change','#uploadImgFile1', $.proxy(this,'initUploadImgEditor'));
+            $(document).on('change','#uploadImgFile', $.proxy(this,'initUploadImgEditor'));
 
-            /*上传封面文件*/
-            $(document).on('change','#uploadImgFile2', $.proxy(this,'uploadCover'));
-            $(document).on('click','.add-cover-img-btn', function(){
-                $('#uploadImgFile2').trigger('click');
-            });
-
-            $(document).on('click','.remove-cover-img', $.proxy(this,'deletCoverImg'));
-
-            //photoswipe   //图片信息查看  相册、视频信息查看
-            new MyPhotoSwipe('.cover-list-box');
         };
         MyEditor.prototype={
 
@@ -114,7 +92,7 @@
                     //上传图片，然后回调
                     var info = that.getMaxImgsId();
                     if (info) {
-                        $('#uploadImgFile1').trigger('click');
+                        $('#uploadImgFile').trigger('click');
 
                     } else {
                         alert('最多只能添加100张图片');
@@ -180,8 +158,8 @@
 
             //上传图片，编辑器
             initUploadImgEditor:function(){
-                var $target = $('#uploadImgFile1'),
-                    $form=$('#upImgForm1'),
+                var $target = $('#uploadImgFile'),
+                    $form=$('#upImgForm'),
                     that=this;
                 this.controlLoadingCircleStatus(true);
                 this.initUploadImg($target,$form,function(data){
@@ -200,60 +178,6 @@
                 });
             },
 
-            //上传图片
-            uploadLogo:function(e){
-                var $target = $('#uploadImgFile'),
-                    $form=$('#upImgForm'),
-                    that=this;
-                that.controlLoadingCircleStatus(true);
-                this.initUploadImg($target,$form,function(data){
-                    data=JSON.parse(data);
-                    if(data) {
-                        var $img = $('#logo').attr('src', data.filedata);
-                        $img[0].onload = function () {
-                            $img.show();
-                            that.controlLoadingCircleStatus(false);
-                            $form[0].reset();
-                        };
-                    }
-                });
-            },
-
-            //上传封面图
-            uploadCover:function(){
-                var $target = $('#uploadImgFile2'),
-                    $form=$('#upImgForm2'),
-                    that=this;
-                that.controlLoadingCircleStatus(true);
-                this.initUploadImg($target,$form,function(data){
-                    data=JSON.parse(data);
-                    if(data) {
-                        var str=that.getConverImgStr(data.filedata);
-                        $('.cover-list-box').prepend(str);
-                        that.controlLoadingCircleStatus(false);
-                        $form[0].reset();
-                    }
-                });
-            },
-
-            getConverImgStr:function(url){
-                return '<li>'+
-                            '<a href="'+url+'" data-size="435x263"></a>'+
-                            '<img src="'+url+'@142w_80h_1e">'+
-                            '<span class="remove-cover-img">×</span>'+
-                        '</li>';
-            },
-
-            /*删除封面*/
-            deletCoverImg:function(e){
-                e.stopPropagation();
-                if(window.confirm('确定删除该封面么？')) {
-                    var $target=$(e.currentTarget).closest('li').addClass('deleting');
-                    window.setTimeout(function(){
-                        $target.remove();
-                    },300);
-                }
-            },
 
             /*
              *控制旋转圈圈的显示和隐藏
@@ -271,14 +195,6 @@
                 }
             },
 
-            getCoverImg:function(){
-                var $imgs=$('.cover-list-box li'),arr=[];
-
-                $.each($imgs,function(){
-                    arr.push($(this).find('a').attr('href'));
-                });
-                return arr;
-            },
 
             CLASS_NAME:'MyEditor'
 
@@ -315,11 +231,5 @@
             var val=editor.getValue();
             val=val.replace(/\n/g,"<br/>");
             $('#target-area').text(val);
-
-            //相册
-            $('#cover').val(editor.getCoverImg().join(','));
-
-            //logo
-            $('#logo-input').val($('#logo').attr('src'));
         };
 });

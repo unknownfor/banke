@@ -191,7 +191,7 @@ return[
 	//app升级
 	'report' => [
 		// 控制是否显示查看按钮
-		'show' => false,
+		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'report',
 	],

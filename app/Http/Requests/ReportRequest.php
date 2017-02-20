@@ -24,9 +24,9 @@ class ReportRequest extends Request
     public function rules()
     {
         return [
-//            'id' => 'numeric',
+            'id' => 'numeric',
             'title' => 'required',
-            'content' => 'required'
+            'type' => 'required'
         ];
     }
 
@@ -46,7 +46,7 @@ class ReportRequest extends Request
     {
         return [
             'title' => trans('labels.report.title'),
-            'content' => trans('labels.report.content')
+            'type' => trans('labels.report.type')
         ];
     }
 }

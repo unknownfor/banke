@@ -75,13 +75,15 @@
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
                     <thead>
                         <tr role="row" class="heading">
-                          <th>#</th>
-                          <th width="15%"> {{ trans('labels.report.title') }} </th>
-                          <th width="35%"> {{ trans('labels.report.content') }} </th>
-                          <th width="10%"> {{ trans('labels.report.sort') }} </th>
-                          <th width="10%"> {{ trans('labels.report.status') }} </th>
-                          <th width="15%"> {{ trans('labels.report.created_at') }} </th>
-                          <th width="15%"> {{ trans('labels.action') }} </th>
+                            <th>#</th>
+                            <th width="15%"> {{ trans('labels.report.title') }} </th>
+                            <th width="5%"> {{ trans('labels.report.type') }} </th>
+                            <th width="25%"> {{ trans('labels.report.content') }} </th>
+                            <th width="20%"> {{ trans('labels.report.url') }} </th>
+                            <th width="5%"> {{ trans('labels.report.sort') }} </th>
+                            <th width="5%"> {{ trans('labels.report.status') }} </th>
+                            <th width="15%"> {{ trans('labels.report.created_at') }} </th>
+                            <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>

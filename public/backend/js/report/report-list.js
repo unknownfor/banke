@@ -28,6 +28,17 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
+          "data": "type",
+          "name": "type",
+          render:function(val){
+            if(val == 0){
+              return '<span class="label label-success"> 外链内容 </span>';
+            }else{
+              return '<span class="label label-danger"> 内部内容 </span>';
+            }
+          },
+        },
+        {
           "data": "content",
           "name": "content",
           "orderable" : false,
@@ -36,6 +47,15 @@ var TableDatatablesAjax = function() {
             return '<p class="txt-ellipsis-single" title="'+val+'">'+val+'</p>';
           },
         },
+        {
+          "data": "url",
+          "name": "url",
+          "orderable" : false,
+          render:function(val){
+            return '<a href="'+val+'" target="_blank" title="'+val+'">'+val+'</a>';
+          },
+        },
+
         {
           "data": "sort",
           "name": "sort",

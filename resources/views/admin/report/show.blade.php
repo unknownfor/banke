@@ -7,11 +7,11 @@
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <a href="{{url('admin/faq')}}">{!! trans('labels.breadcrumb.faqList') !!}</a>
+	        <a href="{{url('admin/report')}}">{!! trans('labels.breadcrumb.reportList') !!}</a>
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <span>{!! trans('labels.breadcrumb.faqShow') !!}</span>
+	        <span>{!! trans('labels.breadcrumb.reportShow') !!}</span>
 	    </li>
 	</ul>
 </div>
@@ -22,7 +22,7 @@
           <div class="portlet-title">
               <div class="caption font-green-haze">
                   <i class="icon-settings font-green-haze"></i>
-                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.faqShow') !!}</span>
+                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.reportShow') !!}</span>
               </div>
               <div class="actions">
                   <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -32,45 +32,63 @@
               <form role="form" class="form-horizontal">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="name">{{trans('labels.faq.title')}}</label>
+                          <label class="col-md-1 control-label" for="name">{{trans('labels.report.title')}}</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$faq['title']}} </div>
+                              <div class="form-control form-control-static"> {{$report['title']}} </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="intro">{{trans('labels.faq.content')}}</label>
-                          <div class="col-md-9">
-                              <input type="hidden" class="content-origin" value="{{$faq['content']}}"></input>
-                              <div class="form-control form-control-static content" style="line-height: 30px;"></div>
+                          <label class="col-md-1 control-label">{{trans('labels.report.type')}}</label>
+                          <div class="col-md-5">
+                              <div class="md-radio-inline">
+                                  @if($report['type'] == 0)
+                                      <span>外链内容 </span>
+                                      @else
+                                      <span>内部内容 </span>
+                                  @endif
+                              </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="url">{{trans('labels.report.url')}}</label>
+                          <div class="col-md-8">
+                              <div class="form-control form-control-static"><a href="{{$report['url']}}" target="_blank">{{$report['url']}}</a></div>
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="content">{{trans('labels.report.content')}}</label>
+                          <div class="col-md-8">
+                              {!!$report['content']!!}
                           </div>
                       </div>
 
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="address">{{trans('labels.faq.sort')}}</label>
+                          <label class="col-md-1 control-label" for="address">{{trans('labels.report.sort')}}</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$faq['sort']}} </div>
+                              <div class="form-control form-control-static"> {{$report['sort']}} </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.faq.created_at')}}</label>
+                          <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.report.created_at')}}</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$faq['created_at']}} </div>
+                              <div class="form-control form-control-static"> {{$report['created_at']}} </div>
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.faq.status')}}</label>
+                          <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.report.status')}}</label>
                           <div class="col-md-9">
                               <div class="md-radio-inline">
-                                  @if($faq['status'] == config('admin.global.status.active'))
+                                  @if($report['status'] == config('admin.global.status.active'))
                                       <span class="label label-success"> 正常 </span>
                                   @endif
-                                  @if($faq['status'] == config('admin.global.status.audit'))
+                                  @if($report['status'] == config('admin.global.status.audit'))
                                       <span class="label label-warning"> 待审核 </span>
                                   @endif
-                                  @if($faq['status'] == config('admin.global.status.trash'))
+                                  @if($report['status'] == config('admin.global.status.trash'))
                                       <span class="label label-danger"> 未通过 </span>
                                   @endif
                               </div>
@@ -80,7 +98,7 @@
                   <div class="form-actions">
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
-                              <a href="{{url('admin/faq')}}" class="btn default">{{trans('crud.back')}}</a>
+                              <a href="{{url('admin/report')}}" class="btn default">{{trans('crud.back')}}</a>
                           </div>
                       </div>
                   </div>
