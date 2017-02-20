@@ -150,4 +150,11 @@ return[
 		'edit' 		=> 'admin.appUpdate.edit',
 		'destroy' 	=> 'admin.appUpdate.delete',
 	],
+	//媒体报道
+	'report' => [
+		'show' 		=> 'admin.report.show',
+		'create' 	=> 'admin.report.create',
+		'edit' 		=> 'admin.report.edit',
+		'destroy' 	=> 'admin.report.delete',
+	],
 ];

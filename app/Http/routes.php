@@ -100,6 +100,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //仪表盘信息
         require(__DIR__ . '/Routes/DashboardRoute.php');
 
+        //媒体报道信息
+        require(__DIR__ . '/Routes/ReportRoute.php');
+
     });
 });
 

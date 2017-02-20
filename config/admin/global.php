@@ -188,4 +188,11 @@ return[
 		// trait 中的 action 参数
 		'action' => 'appUpdate',
 	],
+	//app升级
+	'report' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		// trait 中的 action 参数
+		'action' => 'report',
+	],
 ];

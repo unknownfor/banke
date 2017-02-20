@@ -164,12 +164,16 @@ return [
 		'faqList' => '<i class="fa fa-exchange"></i> 问题列表',
 		'faqShow' => '<i class="fa fa-search"></i> 问题详情',
 		'faqCreate'=>'<i class="fa fa-user-plus"></i> 添加问题',
-		'faqList' => '<i class="fa fa-search"></i> 常见问题列表',
 		'faqShow' => '<i class="fa fa-search"></i> 问题详情',
 		'faqEdit' => '<i class="fa fa-search"></i> 编辑问题',
 		'appUpdateList' => '<i class="fa fa-exchange"></i> 版本列表',
 		'appUpdateCreate'=>'<i class="fa fa-user-plus"></i> 添加版本',
 		'appUpdateEdit' => '<i class="fa fa-search"></i> 编辑版本',
+		'reportList' => '<i class="fa fa-comment"></i> 媒体报道列表',
+		'reportShow' => '<i class="fa fa-search"></i> 媒体报道详情',
+		'reportCreate'=>'<i class="fa fa-user-plus"></i> 添加媒体报道',
+		'reportShow' => '<i class="fa fa-search"></i> 媒体报道详情',
+		'reportEdit' => '<i class="fa fa-search"></i> 编辑媒体报道',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -401,6 +405,18 @@ return [
 		'sort'=>'排序',
 		'status'=>'状态',
 		'list' => '版本列表',
+		'show'=>'查看详情'
+	],
+	'report' => [
+		'id' => '序号',
+		'title' => '标题',
+		'content' => '内容',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'sort'=>'排序',
+		'type'=>'类型',
+		'status'=>'状态',
+		'list' => '报道列表',
 		'show'=>'查看详情'
 	],
 ];

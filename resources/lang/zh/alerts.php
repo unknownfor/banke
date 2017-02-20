@@ -150,5 +150,13 @@ return [
         'soft_deleted_success' => '删除升级信息成功',
         'soft_deleted_error' => '删除升级信息失败',
     ],
+    'report' => [
+        'created_success'   => '创建报道成功.',
+        'created_error'     => '创建报道失败.',
+        'updated_success'   => '修改报道成功.',
+        'updated_error'     => '修改报道失败.',
+        'soft_deleted_success' => '删除报道成功',
+        'soft_deleted_error' => '删除报道失败',
+    ],
 
 ];

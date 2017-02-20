@@ -254,6 +254,7 @@ return [
         'WithdrawRepository' => App\Facades\WithdrawFacade::class,
         'AppUpdateRepository' => App\Facades\AppUpdateFacade::class,
         'DashboardRepository' => App\Facades\DashboardFacade::class,
+        'ReportRepository' => App\Facades\ReportFacade::class,
     ],
 
 ];
