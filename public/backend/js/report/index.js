@@ -233,21 +233,21 @@
             $('#target-area').text(val);
         };
 
-        //var url = '/bankehome/reports';
-        //getDataAsync(url, null,function(res){
-        //    res;
-        //});
-        ////请求数据
-        //function getDataAsync(url,data,callback,type){
-        //    type = type ||'get';
-        //    //data._token=$('input[name="_token"]').val();
-        //    $.ajax({
-        //        type:type,
-        //        url:url,
-        //        data:data,
-        //        success:function(res){
-        //            callback(res);
-        //        }
-        //    });
-        //};
+        var url = '/bankehome/reports';
+        getDataAsync(url, null,function(res){
+            res;
+        });
+        //请求数据
+        function getDataAsync(url,data,callback,type){
+            type = type ||'get';
+            //data._token=$('input[name="_token"]').val();
+            $.ajax({
+                type:type,
+                url:url,
+                data:data,
+                success:function(res){
+                    callback(res);
+                }
+            });
+        };
 });
