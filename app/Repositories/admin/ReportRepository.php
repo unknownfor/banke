@@ -35,7 +35,6 @@ class ReportRepository
 
 		$report = new BankeReport;
 
-		Log::info('-------------------------show report1---------------');
 
 		/*配置名称搜索*/
 		if($title){
@@ -155,6 +154,21 @@ class ReportRepository
 		}
 		Flash::error(trans('alerts.report.created_error'));
 		return false;
+	}
+
+	/**top5媒体报道
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function getTop5()
+	{
+		$report = new BankeReport;
+		$report = $report->where('status', 1)->orderBy('id', false);
+		$report = $report->offset(0)->limit(5);
+		$reports = $report->get()->all();
+		return $reports;
 	}
 
 }

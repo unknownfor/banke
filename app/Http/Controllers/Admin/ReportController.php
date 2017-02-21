@@ -109,7 +109,6 @@ class ReportController extends Controller
      */
     public function show($id)
     {
-        Log::info('-------------------------show report---------------');
         $report = ReportRepository::show($id);
         return view('admin.report.show')->with(compact('report'));
     }
