@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('css')
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/order.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
@@ -141,6 +142,7 @@
 </div>
 @endsection
 @section('js')
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
     {{--编辑器--}}
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
