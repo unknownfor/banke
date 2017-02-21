@@ -92,12 +92,12 @@ class EnrolRepository
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 			}
 		}
-		$resultEnrols=array_reverse($enrols);
+//		$resultEnrols=array_reverse($enrols);
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $resultEnrols
+			'data' => $enrols
 		];
 	}
 
