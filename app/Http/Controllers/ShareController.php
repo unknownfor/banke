@@ -250,18 +250,17 @@ class ShareController extends Controller
             $http = new Client($header);
             $report= BankeReport::all()->toArray();
             $param = [
-                'json'=>[
                     'data'=>$report,
-                    'template'=>'媒体报道'
-                ]
+                    'template'=>'媒体报道',
+                    'status'=>true
             ];
-            $response = $http->request('post', env('BMOB_REST_API_URL').'requestSmsCode', $param);
-            $code = $response->getStatusCode();
-            if($code == 200){
-                return ApiResponseService::success('', Code::SUCCESS, '媒体报道获取成功');
-            }
+            return ApiResponseService::success('', Code::SUCCESS, $param);
         }catch (ClientException $e){
-            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR);
+            $param = [
+                'template'=>'媒体报道失败',
+                'status'=>false
+            ];
+            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR,$param);
         }
     }
 
