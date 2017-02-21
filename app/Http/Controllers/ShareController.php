@@ -180,6 +180,7 @@ class ShareController extends Controller
                     'content'=>'您好！'.$config['value'].'元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
                         .'初始密码为'.$password.'，记得登陆后修改密码！'
                 ];
+                Log::info('----------------------'.$pa);
                 $headers['X-Bmob-Application-Id'] = env('BMOB_APP_ID');
                 $headers['X-Bmob-REST-API-Key'] = env('BMOB_REST_API_KEY');
                 $headers['Content-Type'] = 'application/json';
