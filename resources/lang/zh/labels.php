@@ -372,7 +372,8 @@ return [
 		'active' => '<span class="label label-success"> 已验证 </span>',
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'info' => '暂无额外权限',
-		'show'=>'查看详情'
+		'show'=>'查看详情',
+		'payback'=>'学习奖励'
 	],
 	'feedback' => [
 		'id' => '序号',
