@@ -162,6 +162,13 @@
             </div>
         </div>
     </div>
+    <form id="upImgForm" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif, image/jpeg">
+    </form>
+    <div class="loding-modal">
+        <i id="imgLoadingCircle" class="loadingCircle active"></i>
+        <div>上传中…</div>
+    </div>
 @endsection
 @section('js')
     <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>

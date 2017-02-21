@@ -45,6 +45,13 @@ Route::group(['prefix'=>"web"],function(){
 
 });
 
+//半课官网调用
+Route::group(['prefix'=>"bankehome"],function(){
+
+    //媒体报道
+    Route::get('reports', 'ShareController@getMediaReport');
+});
+
 
 
 

@@ -5,6 +5,7 @@ use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeNews;
 use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeReport;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -235,4 +236,33 @@ class ShareController extends Controller
             }
         }
     }
+
+    /**获得媒体报道**/
+    public function getMediaReport(){
+        try{
+            $header = [
+                'headers'=>[
+                    'X-Bmob-Application-Id'=>env('BMOB_APP_ID'),
+                    'X-Bmob-REST-API-Key'=>env('BMOB_REST_API_KEY'),
+                    'Content-Type'=>'application/json'
+                ]
+            ];
+            $http = new Client($header);
+            $report= BankeReport::all()->toArray();
+            $param = [
+                'json'=>[
+                    'data'=>$report,
+                    'template'=>'媒体报道'
+                ]
+            ];
+            $response = $http->request('post', env('BMOB_REST_API_URL').'requestSmsCode', $param);
+            $code = $response->getStatusCode();
+            if($code == 200){
+                return ApiResponseService::success('', Code::SUCCESS, '媒体报道获取成功');
+            }
+        }catch (ClientException $e){
+            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR);
+        }
+    }
+
 }

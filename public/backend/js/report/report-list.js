@@ -43,7 +43,7 @@ var TableDatatablesAjax = function() {
           "name": "content",
           "orderable" : false,
           render:function(val){
-            val=val.replace(/\\n/g,'');
+            val=val.replace(/<(\S*?)[^>]*>.*?|<.*? \/>$/g,'');
             return '<p class="txt-ellipsis-single" title="'+val+'">'+val+'</p>';
           },
         },
