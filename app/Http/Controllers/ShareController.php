@@ -205,6 +205,9 @@ class ShareController extends Controller
                 $res = request_by_curl(env('BMOB_REST_API_URL') . 'requestSms', $headerArr, $post_data);
 
                 if ($res) {
+                    Log::info('----------------------------------------');
+                    Log::info('send register successful message');
+                    Log::info('----------------------------------------');
                     return ApiResponseService::success('', Code::SUCCESS, '注册成功');
                 } else {
                     return ApiResponseService::showError(Code::SEND_SMS_ERROR);
