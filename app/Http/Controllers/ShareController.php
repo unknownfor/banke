@@ -191,9 +191,6 @@ class ShareController extends Controller
                     'content' => '您好！' . $config['value'] . '元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
                         . '初始密码为' . $password . '，记得登陆后修改密码！'
                 ];
-                Log::info('----------------------------------------');
-                Log::info($pa);
-                Log::info('----------------------------------------');
                 $headers['X-Bmob-Application-Id'] = env('BMOB_APP_ID');
                 $headers['X-Bmob-REST-API-Key'] = env('BMOB_REST_API_KEY');
                 $headers['Content-Type'] = 'application/json';
@@ -204,6 +201,9 @@ class ShareController extends Controller
                 $post_data = json_encode($pa);
                 $res = request_by_curl(env('BMOB_REST_API_URL') . 'requestSms', $headerArr, $post_data);
 
+                Log::info('----------------------------------------');
+                Log::info($res);
+                Log::info('----------------------------------------');
                 if ($res) {
                     Log::info('----------------------------------------');
                     Log::info('send register successful message');
