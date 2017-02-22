@@ -125,7 +125,9 @@ class ShareController extends Controller
                 'json' => [
                     'mobilePhoneNumber' => $mobile,
                     'template' => '半课验证码'
-                ]
+                ],
+                'verify' => false
+
             ];
             $response = $http->request('post', env('BMOB_REST_API_URL') . 'requestSmsCode', $param);
             $code = $response->getStatusCode();
@@ -170,7 +172,8 @@ class ShareController extends Controller
             $param = [
                 'json' => [
                     'mobilePhoneNumber' => $mobile
-                ]
+                ],
+                'verify' => false
             ];
             $response = $http->request('post', env('BMOB_REST_API_URL') . 'verifySmsCode/' . $smsId, $param);
             $code = $response->getStatusCode();

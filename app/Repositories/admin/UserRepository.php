@@ -5,7 +5,7 @@ use App\Models\Banke\BankeUserProfiles;
 use App\User;
 use Carbon\Carbon;
 use Flash;
-use Uuid;
+
 /**
 * 用户仓库
 */
@@ -338,14 +338,13 @@ class UserRepository
 			$invitation_user = BankeUserProfiles::where('invitation_code', $userData['welcome'])->first();
 			$invitation_user->invitation_count += 1;
 			$invitation_user->save();
-
 			// 自动更新用户资料关系
 			$profiles = [
 				'uid' => $user->id,
 				'name' => $userData['name'],
 				'mobile'=> $userData['mobile'],
 				'invitation_uid'=>$invitation_user['uid'],
-				'invitation_code'=>Uuid::generate(4)
+				'invitation_code'=> $this->create_uuid()
 			];
 			$user->profiles()->create($profiles);
 
@@ -367,6 +366,16 @@ class UserRepository
 			return true;
 		}
 		return false;
+	}
+
+	private function create_uuid($prefix = ""){    //可以指定前缀
+		$str = md5(uniqid(mt_rand(), true));
+		$uuid  = substr($str,0,8) . '-';
+		$uuid .= substr($str,8,4) . '-';
+		$uuid .= substr($str,12,4) . '-';
+		$uuid .= substr($str,16,4) . '-';
+		$uuid .= substr($str,20,12);
+		return $prefix . $uuid;
 	}
 
 
