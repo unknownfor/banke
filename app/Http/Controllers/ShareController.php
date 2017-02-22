@@ -210,10 +210,15 @@ class ShareController extends Controller
                     Log::info('----------------------------------------');
                     return ApiResponseService::success('', Code::SUCCESS, '注册成功');
                 } else {
+                    Log::info('----------------------------------------');
+                    Log::info($res);
+                    Log::info('----------------------------------------');
                     return ApiResponseService::showError(Code::SEND_SMS_ERROR);
                 }
             } catch (ClientException $e) {
-                var_dump($e);
+                Log::info('----------------------------------------');
+                Log::info($e);
+                Log::info('----------------------------------------');
                 return ApiResponseService::showError(Code::SEND_SMS_ERROR);
             }
         } else {
