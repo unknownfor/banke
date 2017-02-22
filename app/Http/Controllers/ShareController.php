@@ -147,7 +147,7 @@ class ShareController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'mobile' => 'required|mobile|unique:users,mobile',
+            'mobile' => 'required|mobile|unique:banke_user_profiles,mobile',
             'smsId' => 'required',
             'welcome' => 'required'
         ]);
