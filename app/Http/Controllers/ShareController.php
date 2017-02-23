@@ -193,7 +193,7 @@ class ShareController extends Controller
                 $pa = [
                     'json' => [
                         'mobilePhoneNumber' => $mobile,
-                        'op' => '付款'
+                        'op' =>$password,
                     ],
                     'verify' => false
                 ];
