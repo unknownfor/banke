@@ -218,8 +218,9 @@ class ShareController extends Controller
 //                {
 //                    $headerArr[] = $n . ':' . $v;
 //                }
-                $post_data = json_encode($pa);
-                $res = request_by_curl(env('LC_REQUEST_URL'), $headers, $post_data);
+//                $post_data = json_encode($pa);
+                $http = new Client($headers);
+                $res = $http->request('post', env('LC_REQUEST_URL'), $pa);
 
                 Log::info('----------------------------------------');
                 Log::info($res);
