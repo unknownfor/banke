@@ -219,12 +219,14 @@ class ShareController extends Controller
 //                    $headerArr[] = $n . ':' . $v;
 //                }
 //                $post_data = json_encode($pa);
+
+                Log::info('----------------------------------------');
+                Log::info($pa);
+                Log::info($headers);
+                Log::info('----------------------------------------');
                 $http = new Client($headers);
                 $res = $http->request('post', env('LC_REQUEST_URL'), $pa);
 
-                Log::info('----------------------------------------');
-                Log::info($res);
-                Log::info('----------------------------------------');
                 if ($res) {
                     Log::info('----------------------------------------');
                     Log::info('send register successful message');
