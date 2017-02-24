@@ -193,7 +193,9 @@ class ShareController extends Controller
                 $pa = [
                     'json' => [
                         'mobilePhoneNumber' => $mobile,
-                        'op' =>$password,
+                        'template' =>'invi_psw',
+                        'money' => $config['value'],
+                        'psw' => $password
                     ],
                     'verify' => false
                 ];
