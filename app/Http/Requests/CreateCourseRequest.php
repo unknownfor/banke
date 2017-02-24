@@ -28,7 +28,8 @@ class CreateCourseRequest extends Request
             'name' => 'required',
             'org_id' => 'required|numeric',
             'price' => 'required|numeric',
-//            'percent' => 'required|numeric',
+            'checkin_award' => 'numeric',
+            'task_award' => 'numeric',
             'period' => 'required|numeric|min:1',
             'sort' => 'numeric',
         ];
@@ -55,7 +56,9 @@ class CreateCourseRequest extends Request
             'price' => trans('labels.course.price'),
 //            'percent' => trans('labels.course.percent'),
             'period' => trans('labels.course.period'),
-            'sort' => trans('labels.course.sort')
+            'sort' => trans('labels.course.sort'),
+            'checkin_award' => trans('labels.course.checkin_award'),
+            'task_award' => trans('labels.course.task_award')
         ];
     }
 }

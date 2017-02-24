@@ -30,6 +30,8 @@ class UpdateCourseRequest extends Request
             'price' => 'required|numeric',
             'period' => 'required|numeric|min:1',
             'status' => 'required',
+//            'checkin_award' => 'numeric',
+//            'task_award' => 'numeric',
         ];
     }
 

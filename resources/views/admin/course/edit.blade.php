@@ -91,6 +91,23 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.checkin_award')}}(%)</label>
+                          <div class="col-md-4">
+                              <input type="text" class="form-control" id="checkin_award" name="checkin_award" placeholder="{{trans('labels.course.checkin_award')}}" value="{{$course['checkin_award'] or $percent[0]['value']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                          <label class="col-md-2 control-label">不填写将使用 <span class="default-txt">{{$percent[0]['value'] }}%</span> 作为默认比例</label>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="task_award">{{trans('labels.course.task_award')}}(%)</label>
+                          <div class="col-md-4">
+                              <input type="text" class="form-control" id="task_award" name="task_award" placeholder="{{trans('labels.course.task_award')}}" value="{{$course['task_award'] or $percent[1]['value']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                          <label class="col-md-2 control-label">不填写将使用 <span class="default-txt">{{$percent[1]['value']}}%</span> 作为默认比例</label>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="sort">{{trans('labels.course.sort')}}</label>
                           <div class="col-md-9">
                               <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.course.sort')}}" value="{{$course['sort']}}">

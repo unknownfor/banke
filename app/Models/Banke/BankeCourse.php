@@ -11,7 +11,7 @@ class BankeCourse extends Model
 
     protected $table = 'banke_course';
 
-    protected $fillable = ['name', 'org_id', 'cover', 'price','period', 'intro', 'sort', 'details', 'status'];
+    protected $fillable = ['name', 'org_id', 'cover', 'price','period', 'intro', 'sort', 'details', 'status','checkin_award','task_award'];
 
     private $action;
 

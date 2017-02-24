@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeDict;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -47,7 +48,8 @@ class CourseController extends Controller
     {
         $org = new BankeOrg;
         $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
-        return view('admin.course.create')->with(compact(['orgs']));
+        $percent=$this->getDict();
+        return view('admin.course.create')->with(compact(['orgs','percent']));
     }
 
     /**
@@ -59,6 +61,13 @@ class CourseController extends Controller
      */
     public function store(CreateCourseRequest $request)
     {
+        $percent=$this->getDict();
+        if($request['checkin_award']==''){
+            $request['checkin_award']=$percent[0]['value'];
+        }
+        if($request['task_award']==''){
+            $request['task_award']=$percent[1]['value'];
+        }
         CourseRepository::store($request);
         return redirect('admin/course');
     }
@@ -75,7 +84,8 @@ class CourseController extends Controller
         $org = new BankeOrg;
         $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
         $course = CourseRepository::edit($id);
-        return view('admin.course.edit')->with(compact(['course', 'orgs']));
+        $percent=$this->getDict();
+        return view('admin.course.edit')->with(compact(['course', 'orgs','percent']));
     }
     /**
      * 修改课程资料
@@ -87,6 +97,7 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request,$id)
     {
+        Log::info('-------------------------'+$request['checkin_award']+'---------------------------');
         CourseRepository::update($request,$id);
         return redirect('admin/course');
     }
@@ -128,7 +139,14 @@ class CourseController extends Controller
     {
         $orgs=BankeOrg::where('status',1)->orderBy('sort', 'desc')->get(['id','name']);
         $course = CourseRepository::show($id);
-        return view('admin.course.show')->with(compact(['course','orgs']));
+        $percent=$this->getDict();
+        return view('admin.course.show')->with(compact(['course','orgs','percent']));
+    }
+
+    public function  getDict(){
+        $percent = new BankeDict;
+        $percent = $percent->whereIn('id', [3, 4])->get();
+        return $percent;
     }
 
     public function search_by_org()

@@ -107,14 +107,16 @@
                                 <label class="col-md-1 control-label">{{trans('labels.org.cover')}}</label>
                                 <div class="col-md-9">
                                     <div class="cover-box">
-                                        <div class="add-cover-img-btn">+
+                                        <div class="add-img-btn add-cover-img-btn">+
                                             <div class="cover-size-tips">400*175</div>
                                         </div>
-                                        <ul class="cover-list-box"></ul>
+                                        <ul class="img-list-box cover-list-box"></ul>
                                         <input id="cover" name="cover" type="hidden" value="">
                                     </div>
                                 </div>
                             </div>
+
+
 
 
 
@@ -124,6 +126,19 @@
                                 <div class="col-md-9">
                                     <textarea style="display: none" name="details" id="target-area"></textarea>
                                     <textarea id="my-editor"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input form-md-line-cover">
+                                <label class="col-md-1 control-label">{{trans('labels.org.album')}}</label>
+                                <div class="col-md-9">
+                                    <div class="cover-box">
+                                        <div class="add-img-btn add-album-img-btn">+
+                                            {{--<div class="cover-size-tips">400*175</div>--}}
+                                        </div>
+                                        <ul class="img-list-box album-list-box"></ul>
+                                        <input id="album" name="album" type="hidden" value="">
+                                    </div>
                                 </div>
                             </div>
 
@@ -194,6 +209,9 @@
     </form>
     <form id="upImgForm2" method="post" class="hiddenForm">
         <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg">
+    </form>
+    <form id="upImgForm3" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile3" size="28" accept="image/png,image/gif, image/jpeg">
     </form>
     <div class="loding-modal">
         <i id="imgLoadingCircle" class="loadingCircle active"></i>

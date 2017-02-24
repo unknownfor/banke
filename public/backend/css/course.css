@@ -113,3 +113,8 @@
 .remove-cover-img:hover{
     background-color: rgba(250,80,58,1);
 }
+
+.default-txt{
+    color: #000;
+    font-weight: bold;
+}

@@ -142,11 +142,13 @@
                         headers: {'Authorization':tokenStr},
                         success: function (result) {
                             callback(result);
-                        },error:function(result){
-                            alert('图片上传失败，图片太大');
+                        },error:function(XMLHttpRequest, textStatus, errorThrown){
+                            if(XMLHttpRequest.responseText=='') {
+                                alert('图片上传失败，图片太大');
+                            }
                             that.controlLoadingCircleStatus(false);
                             $formObj[0].reset();
-                        }
+                        },
                     };
                     $formObj.ajaxSubmit(ajax_option);
                 }catch(ex){

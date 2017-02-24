@@ -191,9 +191,6 @@ class ShareController extends Controller
                     'content' => '您好！' . $config['value'] . '元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
                         . '初始密码为' . $password . '，记得登陆后修改密码！'
                 ];
-                Log::info('----------------------------------------');
-                Log::info($pa);
-                Log::info('----------------------------------------');
                 $headers['X-Bmob-Application-Id'] = env('BMOB_APP_ID');
                 $headers['X-Bmob-REST-API-Key'] = env('BMOB_REST_API_KEY');
                 $headers['Content-Type'] = 'application/json';
@@ -261,6 +258,26 @@ class ShareController extends Controller
             $param = [
                 'data' => $report,
                 'template' => '媒体报道',
+                'status' => true
+            ];
+            return ApiResponseService::success('', Code::SUCCESS, $param);
+        } catch (ClientException $e) {
+            $param = [
+                'template' => '媒体报道失败',
+                'status' => false
+            ];
+            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
+        }
+    }
+
+    /**获得前50个机构**/
+    public function getTopOrg(){
+        try{
+            $repository=new OrgRepository;
+            $report=$repository->getTop(50);
+            $param = [
+                'data' => $report,
+                'template' => '机构列表',
                 'status' => true
             ];
             return ApiResponseService::success('', Code::SUCCESS, $param);

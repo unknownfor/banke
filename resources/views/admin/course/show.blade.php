@@ -76,6 +76,19 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.checkin_award')}}(%)</label>
+                          <div class="col-md-4" style="line-height: 60px;">
+                              <div>{{$course['checkin_award'] or $percent[0]['value']}}</div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="task_award">{{trans('labels.course.task_award')}}(%)</label>
+                          <div class="col-md-4" style="line-height: 60px;">
+                              <div>{{$course['task_award'] or $percent[1]['value']}}</div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="address">{{trans('labels.course.sort')}}</label>
                           <div class="col-md-9">
                               <div class="form-control form-control-static"> {{$course['sort']}} </div>

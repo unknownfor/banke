@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/org.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/orgapply.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
 @endsection
@@ -13,11 +13,11 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <a href="{{url('admin/org')}}">{!! trans('labels.breadcrumb.orgList') !!}</a>
+                <a href="{{url('admin/orgapply')}}">{!! trans('labels.breadcrumb.orgapplyList') !!}</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <span>{!! trans('labels.breadcrumb.orgEdit') !!}</span>
+                <span>{!! trans('labels.breadcrumb.orgapplyEdit') !!}</span>
             </li>
         </ul>
     </div>
@@ -28,7 +28,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="icon-settings font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.orgEdit') !!}</span>
+                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.orgapplyEdit') !!}</span>
                     </div>
                     <div class="actions">
                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -43,14 +43,14 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal org-info-box" method="POST" action="{{url('admin/org/'.$org['id'])}}">
+                    <form role="form" class="form-horizontal orgapply-info-box" method="POST" action="{{url('admin/orgapply/'.$orgapply['id'])}}">
                         {!! csrf_field() !!}
                         <input type="hidden" name="_method" value="PATCH">
-                        <input type="hidden" name="id" value="{{$org['id']}}">
+                        <input type="hidden" name="id" value="{{$orgapply['id']}}">
                         <div class="form-body">
                             <div class="form-group form-md-line-input form-md-line-logo">
                                 <div class="col-md-1">
-                                    <img src="{{$org['logo']}}" class="img-circle" id="logo"/>
+                                    <img src="{{$orgapply['logo']}}" class="img-circle" id="logo"/>
                                 </div>
                                 <div class="col-md-9">
                                     <span class="btn default green" id="uploadLogo">{!! trans('labels.breadcrumb.imageUpload') !!}</span>
@@ -60,31 +60,31 @@
                                 <input type="hidden" value="" name="logo" id="logo-input">
                             </div>
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="name">{{trans('labels.org.name')}}</label>
+                                <label class="col-md-1 control-label" for="name">{{trans('labels.orgapply.name')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.org.name')}}" value="{{$org['name']}}">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.orgapply.name')}}" value="{{$orgapply['name']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="intro">{{trans('labels.org.intro')}}</label>
+                                <label class="col-md-1 control-label" for="intro">{{trans('labels.orgapply.intro')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="intro" name="intro" placeholder="{{trans('labels.org.intro')}}" value="{{$org['intro']}}">
+                                    <input type="text" class="form-control" id="intro" name="intro" placeholder="{{trans('labels.orgapply.intro')}}" value="{{$orgapply['intro']}}">
                                     <div class="form-control-focus"></div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="city">{{trans('labels.org.city')}}</label>
+                                <label class="col-md-1 control-label" for="city">{{trans('labels.orgapply.city')}}</label>
                                 <div class="col-md-4">
                                     <select id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
-                                        @if($org['city'])
+                                        @if($orgapply['city'])
                                             <?php
                                             $citys=array("武汉","北京","上海","广州","深圳");
                                             ?>
                                             @foreach($citys as $city)
-                                                @if($org['city']==$city)
+                                                @if($orgapply['city']==$city)
                                                         <option value="{{$city}}" selected>{{$city}}</option>
                                                     @else
                                                         <option value="{{$city}}">{{$city}}</option>
@@ -98,32 +98,32 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="address">{{trans('labels.org.address')}}</label>
+                                <label class="col-md-1 control-label" for="address">{{trans('labels.orgapply.address')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="{{trans('labels.org.address')}}" value="{{$org['address']}}">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="{{trans('labels.orgapply.address')}}" value="{{$orgapply['address']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="sort">{{trans('labels.org.sort')}}</label>
+                                <label class="col-md-1 control-label" for="sort">{{trans('labels.orgapply.sort')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.org.sort')}}" value="{{$org['sort']}}">
+                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.orgapply.sort')}}" value="{{$orgapply['sort']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-1 control-label">{{trans('labels.org.cover')}}</label>
+                                <label class="col-md-1 control-label">{{trans('labels.orgapply.cover')}}</label>
                                 <div class="col-md-9">
                                     <div class="cover-box">
                                         <div class="add-img-btn add-cover-img-btn">+
                                             <div class="cover-size-tips">400*175</div>
                                         </div>
                                             <ul class="img-list-box cover-list-box">
-                                                @if($org['cover'])
+                                                @if($orgapply['cover'])
                                                     <?php
-                                                    $imgs=explode(',',$org['cover']);
+                                                    $imgs=explode(',',$orgapply['cover']);
                                                     ?>
                                                     @foreach($imgs as $img)
                                                         <li>
@@ -142,23 +142,23 @@
 
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
+                                <label class="col-md-1 control-label" for="details">{{trans('labels.orgapply.details')}}</label>
                                 <div class="col-md-9">
-                                    <textarea style="display: none" name="details" id="target-area">{{$org['details']}}</textarea>
+                                    <textarea style="display: none" name="details" id="target-area">{{$orgapply['details']}}</textarea>
                                     <textarea id="my-editor"></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-1 control-label">{{trans('labels.org.album')}}</label>
+                                <label class="col-md-1 control-label">{{trans('labels.orgapply.album')}}</label>
                                 <div class="col-md-9">
                                     <div class="cover-box">
                                         <div class="add-img-btn add-album-img-btn">+
                                         </div>
                                         <ul class="img-list-box album-list-box">
-                                            @if($org['album'])
+                                            @if($orgapply['album'])
                                                 <?php
-                                                $imgs=explode(',',$org['album']);
+                                                $imgs=explode(',',$orgapply['album']);
                                                 ?>
                                                 @foreach($imgs as $img)
                                                     <li>
@@ -175,37 +175,37 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}</label>
+                                <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.orgapply.tel_phone')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.org.tel_phone')}}" value="{{$org['tel_phone']}}">
+                                    <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.orgapply.tel_phone')}}" value="{{$orgapply['tel_phone']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.orgapply.status')}}</label>
                                 <div class="col-md-9">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
-                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($org['status'] == config('admin.global.status.active')) checked @endif>
+                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($orgapply['status'] == config('admin.global.status.active')) checked @endif>
                                             <label for="status1">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.org.active.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.orgapply.active.1')}} </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($org['status'] === config('admin.global.status.audit')) checked @endif>
+                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($orgapply['status'] === config('admin.global.status.audit')) checked @endif>
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.org.audit.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.orgapply.audit.1')}} </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($org['status'] == config('admin.global.status.trash')) checked @endif>
+                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($orgapply['status'] == config('admin.global.status.trash')) checked @endif>
                                             <label for="status3">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.org.trash.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.orgapply.trash.1')}} </label>
                                         </div>
                                     </div>
                                 </div>
@@ -215,7 +215,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
-                                    <a href="{{url('admin/org')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                                    <a href="{{url('admin/orgapply')}}" class="btn default">{{trans('crud.cancel')}}</a>
                                     <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
@@ -275,5 +275,5 @@
         });
     </script>
     <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/orgapply/index.js')}}"></script>
 @endsection

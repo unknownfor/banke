@@ -115,9 +115,14 @@ class BackendServiceProvider extends ServiceProvider
             return new \App\Repositories\admin\DashboardRepository();
         });
 
-        //媒体报道盘
+        //媒体报道
         $this->app->singleton('ReportRepository', function($app){
             return new \App\Repositories\admin\ReportRepository();
+        });
+
+        //机构申请
+        $this->app->singleton('OrgApplyRepository', function($app){
+            return new \App\Repositories\admin\OrgApplyRepository();
         });
     }
 }

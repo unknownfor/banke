@@ -2,12 +2,12 @@
 namespace App\Repositories\admin;
 use Carbon\Carbon;
 use Flash;
-use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeOrgApply;
 use Illuminate\Support\Facades\Log;
 /**
-* 机构仓库
+* 机构申请仓库
 */
-class OrgRepository
+class OrgApplyRepository
 {
 	/**
 	 * datatable获取数据
@@ -27,7 +27,7 @@ class OrgRepository
 		$city =request('city' ,'');
 		$status = request('status' ,'');
 
-		$org = new BankeOrg;
+		$org = new BankeOrgApply;
 
 		/*机构名称搜索*/
 		if($name){
@@ -78,7 +78,7 @@ class OrgRepository
 	 */
 	public function store($request)
 	{
-		$role = new BankeOrg;
+		$role = new BankeOrgApply;
 		if ($role->fill($request->all())->save()) {
 			Flash::success(trans('alerts.org.created_success'));
 			return true;
@@ -87,22 +87,6 @@ class OrgRepository
 		return false;
 	}
 
-	/**
-	 * 修改机构视图
-	 * @author shaolei
-	 * @date   2016-04-13T11:50:34+0800
-	 * @param  [type]                   $id [description]
-	 * @return [type]                       [description]
-	 */
-	public function edit($id)
-	{
-		$role = BankeOrg::find($id);
-		if ($role) {
-			$roleArray = $role->toArray();
-			return $roleArray;
-		}
-		abort(404);
-	}
 
 	/**
 	 * 查看机构信息
@@ -113,31 +97,10 @@ class OrgRepository
 	 */
 	public function show($id)
 	{
-		$org = BankeOrg::find($id)->toArray();
+		$org = BankeOrgApply::find($id)->toArray();
 		return $org;
 	}
 
-	/**
-	 * 修改机构
-	 * @author shaolei
-	 * @date   2016-04-13T11:50:46+0800
-	 * @param  [type]                   $request [description]
-	 * @param  [type]                   $id      [description]
-	 * @return [type]                            [description]
-	 */
-	public function update($request,$id)
-	{
-		$role = BankeOrg::find($id);
-		if ($role) {
-			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.org.updated_success'));
-				return true;
-			}
-			Flash::error(trans('alerts.org.updated_error'));
-			return false;
-		}
-		abort(404);
-	}
 
 	/**
 	 * 修改机构状态
@@ -149,7 +112,7 @@ class OrgRepository
 	 */
 	public function mark($id,$status)
 	{
-		$role = BankeOrg::find($id);
+		$role = BankeOrgApply::find($id);
 		if ($role) {
 			$role->status = $status;
 			if ($role->save()) {
@@ -171,29 +134,13 @@ class OrgRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeOrg::destroy($id);
+		$isDelete = BankeOrgApply::destroy($id);
 		if ($isDelete) {
 			Flash::success(trans('alerts.org.deleted_success'));
 			return true;
 		}
 		Flash::error(trans('alerts.org.deleted_error'));
 		return false;
-	}
-
-	/**
-	 * 前几个机构
-	 * @author jimmy
-	 * @date   2017-02-23T11:51:19+0800
-	 * @param  [type]                   $id [description]
-	 * @return [type]                       [description]
-	 */
-	public function getTop($num)
-	{
-		$report = new BankeOrg;
-		$report = $report->where('status', 1);
-		$report = $report->offset(0)->limit($num);
-		$reports = $report->get()->all();
-		return $reports;
 	}
 
 }

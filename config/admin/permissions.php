@@ -157,4 +157,8 @@ return[
 		'edit' 		=> 'admin.report.edit',
 		'destroy' 	=> 'admin.report.delete',
 	],
+	//机构入驻申请
+	'orgapply' => [
+		'show' 	=> 'admin.org.show',
+	],
 ];
