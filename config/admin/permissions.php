@@ -159,6 +159,7 @@ return[
 	],
 	//机构入驻申请
 	'orgapply' => [
-		'show' 	=> 'admin.org.show',
+		'show' 	=> 'admin.orgapply.show',
+		'edit' 	=> 'admin.orgapply.edit',
 	],
 ];

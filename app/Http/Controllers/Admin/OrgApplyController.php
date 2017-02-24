@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
 use OrgApplyRepository;
 use App\Http\Requests\CreateOrgApplyRequest;
+use App\Http\Requests\UpdateOrgApplyRequest;
 use PermissionRepository;
 use RoleRepository;
 use Illuminate\Support\Facades\Log;
@@ -70,8 +71,8 @@ class OrgApplyController extends Controller
      */
     public function edit($id)
     {
-        $org = OrgApplyRepository::edit($id);
-        return view('admin.orgapply.edit')->with(compact('org'));
+        $orgapply = OrgApplyRepository::edit($id);
+        return view('admin.orgapply.edit')->with(compact('orgapply'));
     }
     /**
      * 修改机构资料
@@ -83,36 +84,12 @@ class OrgApplyController extends Controller
      */
     public function update(UpdateOrgApplyRequest $request,$id)
     {
-        OrgApplyRepository::update($request,$id);
+        Log::info('--------------------234324-------------------------');
+        OrgApplyRepository::mark($id,$request['status']);
         return redirect('admin/orgapply');
     }
 
-    /**
-     * 修改用户状态
-     * @author 晚黎
-     * @date   2016-04-14T11:50:04+0800
-     * @param  [type]                   $id     [description]
-     * @param  [type]                   $status [description]
-     * @return [type]                           [description]
-     */
-    public function mark($id,$status)
-    {
-        UserRepository::mark($id,$status);
-        return redirect('admin/orgapply');
-    }
 
-    /**
-     * 删除用户
-     * @author 晚黎
-     * @date   2016-04-14T11:52:40+0800
-     * @param  [type]                   $id [description]
-     * @return [type]                       [description]
-     */
-    public function destroy($id)
-    {
-        OrgApplyRepository::destroy($id);
-        return redirect('admin/orgapply');
-    }
 
     /**
      * 查看机构信息
@@ -123,7 +100,7 @@ class OrgApplyController extends Controller
      */
     public function show($id)
     {
-        $org = OrgApplyRepository::show($id);
-        return view('admin.orgapply.show')->with(compact('org'));
+        $orgapply = OrgApplyRepository::show($id);
+        return view('admin.orgapply.show')->with(compact('orgapply'));
     }
 }

@@ -99,7 +99,7 @@
                           <th width="30%"> {{ trans('labels.orgapply.name') }} </th>
                           <th width="10%"> {{ trans('labels.orgapply.city') }} </th>
                           <th width="30%"> {{ trans('labels.orgapply.address') }} </th>
-                          <th width="10%"> {{ trans('labels.orgapply.sort') }} </th>
+                          <th width="8%"> {{ trans('labels.orgapply.created_at') }} </th>
                           <th width="8%"> {{ trans('labels.orgapply.status') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>

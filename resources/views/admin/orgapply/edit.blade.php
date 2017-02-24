@@ -1,10 +1,4 @@
 @extends('layouts.admin')
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/orgapply.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
-@endsection
 @section('content')
     <div class="page-bar">
         <ul class="page-breadcrumb">
@@ -48,136 +42,42 @@
                         <input type="hidden" name="_method" value="PATCH">
                         <input type="hidden" name="id" value="{{$orgapply['id']}}">
                         <div class="form-body">
-                            <div class="form-group form-md-line-input form-md-line-logo">
-                                <div class="col-md-1">
-                                    <img src="{{$orgapply['logo']}}" class="img-circle" id="logo"/>
-                                </div>
-                                <div class="col-md-9">
-                                    <span class="btn default green" id="uploadLogo">{!! trans('labels.breadcrumb.imageUpload') !!}</span>
-                                    <div>{!! trans('labels.breadcrumb.imageUploadTips')!!}</div>
-                                    <div>尺寸大小为60*60</div>
-                                </div>
-                                <input type="hidden" value="" name="logo" id="logo-input">
-                            </div>
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="name">{{trans('labels.orgapply.name')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.orgapply.name')}}" value="{{$orgapply['name']}}">
+                                    <input type="text" readonly class="form-control" id="name" name="name" placeholder="{{trans('labels.orgapply.name')}}" value="{{$orgapply['name']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="intro">{{trans('labels.orgapply.intro')}}</label>
+                                <label class="col-md-1 control-label" for="introduce">{{trans('labels.orgapply.introduce')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="intro" name="intro" placeholder="{{trans('labels.orgapply.intro')}}" value="{{$orgapply['intro']}}">
+                                    <div>{{$orgapply['introduce']}}</div>
                                     <div class="form-control-focus"></div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="city">{{trans('labels.orgapply.city')}}</label>
-                                <div class="col-md-4">
-                                    <select id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
-                                        @if($orgapply['city'])
-                                            <?php
-                                            $citys=array("武汉","北京","上海","广州","深圳");
-                                            ?>
-                                            @foreach($citys as $city)
-                                                @if($orgapply['city']==$city)
-                                                        <option value="{{$city}}" selected>{{$city}}</option>
-                                                    @else
-                                                        <option value="{{$city}}">{{$city}}</option>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                                <div class="form-control-focus"> </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="address">{{trans('labels.orgapply.address')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="{{trans('labels.orgapply.address')}}" value="{{$orgapply['address']}}">
+                                    <input type="text" readonly class="form-control" id="address" name="address" placeholder="{{trans('labels.orgapply.address')}}" value="{{$orgapply['address']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="sort">{{trans('labels.orgapply.sort')}}</label>
+                                <label class="col-md-1 control-label" for="contacter">{{trans('labels.orgapply.contacter')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.orgapply.sort')}}" value="{{$orgapply['sort']}}">
+                                    <input type="text" readonly class="form-control" id="contacter" name="contacter" placeholder="{{trans('labels.orgapply.contacter')}}" value="{{$orgapply['contacter']}}">
                                     <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-1 control-label">{{trans('labels.orgapply.cover')}}</label>
-                                <div class="col-md-9">
-                                    <div class="cover-box">
-                                        <div class="add-img-btn add-cover-img-btn">+
-                                            <div class="cover-size-tips">400*175</div>
-                                        </div>
-                                            <ul class="img-list-box cover-list-box">
-                                                @if($orgapply['cover'])
-                                                    <?php
-                                                    $imgs=explode(',',$orgapply['cover']);
-                                                    ?>
-                                                    @foreach($imgs as $img)
-                                                        <li>
-                                                            <a href="{{$img}}" data-size="435x263"></a>
-                                                            <img src="{{$img}}@142w_80h_1e">
-                                                            <span class="remove-img-btn">×</span>
-                                                        </li>
-                                                    @endforeach
-                                                @endif
-                                            </ul>
-                                       <input id="cover" name="cover" type="hidden" value="">
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="details">{{trans('labels.orgapply.details')}}</label>
-                                <div class="col-md-9">
-                                    <textarea style="display: none" name="details" id="target-area">{{$orgapply['details']}}</textarea>
-                                    <textarea id="my-editor"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-1 control-label">{{trans('labels.orgapply.album')}}</label>
-                                <div class="col-md-9">
-                                    <div class="cover-box">
-                                        <div class="add-img-btn add-album-img-btn">+
-                                        </div>
-                                        <ul class="img-list-box album-list-box">
-                                            @if($orgapply['album'])
-                                                <?php
-                                                $imgs=explode(',',$orgapply['album']);
-                                                ?>
-                                                @foreach($imgs as $img)
-                                                    <li>
-                                                        <a href="{{$img}}" data-size="435x263"></a>
-                                                        <img src="{{$img}}@142w_80h_1e">
-                                                        <span class="remove-img-btn">×</span>
-                                                    </li>
-                                                @endforeach
-                                            @endif
-                                        </ul>
-                                        <input id="album" name="album" type="hidden" value="">
-                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.orgapply.tel_phone')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.orgapply.tel_phone')}}" value="{{$orgapply['tel_phone']}}">
+                                    <input type="text" readonly class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.orgapply.tel_phone')}}" value="{{$orgapply['tel_phone']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -216,7 +116,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <a href="{{url('admin/orgapply')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                    <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
+                                    <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -232,41 +132,9 @@
         </div>
     </div>
 
-    <form id="upImgForm" method="post" class="hiddenForm">
-        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="280" accept="image/png,image/gif,image/jpeg">
-    </form>
-
-    <form id="upImgForm1" method="post" class="hiddenForm">
-        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
-    </form>
-    <form id="upImgForm2" method="post" class="hiddenForm">
-        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg">
-    </form>
-    <form id="upImgForm3" method="post" class="hiddenForm">
-        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile3" size="28" accept="image/png,image/gif, image/jpeg">
-    </form>
-    <div class="loding-modal">
-        <i id="imgLoadingCircle" class="loadingCircle active"></i>
-        <div>上传中…</div>
-    </div>
-
 @endsection
 @section('js')
-    <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-    {{--编辑器--}}
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
-    {{--图片查看--}}
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
     <script type="text/javascript">
-        window.urlObj={
-            apiUrl:'http://api.hisihi.com/'
-        };
         $(function() {
             /*modal事件监听*/
             $(".modal").on("hidden.bs.modal", function() {
@@ -274,6 +142,4 @@
             });
         });
     </script>
-    <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/orgapply/index.js')}}"></script>
 @endsection

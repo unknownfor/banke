@@ -27,9 +27,6 @@ var TableDatatablesAjax = function() {
           "data": "name",
           "name" : "name",
           "orderable" : false,
-          render:function(res,type,full){
-            return '<img class="table-cell-logo" src="'+full.logo+'"><label>'+res+'</label>';
-          }
         },
         {
           "data": "city",
@@ -42,9 +39,9 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "sort",
-          "name": "sort",
-          "orderable" : true,
+          "data": "created_at",
+          "name": "created_at",
+          "orderable" : false,
         },
         { 
           "data": "status",
@@ -60,13 +57,6 @@ var TableDatatablesAjax = function() {
             }
           }
         },
-        //{
-        //  "data": "id",
-        //  "name": "id",
-        //  render:function(res){
-        //      return '<a href="/admin/course/orgid/'+res+'">课程列表</a>';
-        //  }
-        //},
         { 
           "data": "actionButton",
           "name": "actionButton",

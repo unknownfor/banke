@@ -37,12 +37,6 @@
           <div class="portlet-body form">
               <form role="form" class="form-horizontal">
                   <div class="form-body">
-                      <div class="form-group form-md-line-input form-md-line-logo">
-                          <label class="col-md-1 control-label" for="name" style="margin-top: 60px;">{{trans('labels.orgapply.logo')}}</label>
-                          <div class="col-md-9">
-                              <img src="{{$orgapply['logo']}}" class="img-circle"/>
-                          </div>
-                      </div>
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="name">{{trans('labels.orgapply.name')}}</label>
                           <div class="col-md-9">
@@ -50,30 +44,13 @@
                           </div>
                       </div>
 
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="intro">{{trans('labels.orgapply.intro')}}</label>
-                          <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$orgapply['intro']}} </div>
-                          </div>
-                      </div>
+
+
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="city">{{trans('labels.orgapply.city')}}</label>
-                          <div class="col-md-4">
-                              <select disabled id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
-                                  @if($orgapply['city'])
-                                      <?php
-                                      $citys=array("武汉","北京","上海","广州","深圳");
-                                      ?>
-                                      @foreach($citys as $city)
-                                          @if($orgapply['city']==$city)
-                                              <option value="{{$city}}" selected>{{$city}}</option>
-                                          @else
-                                              <option value="{{$city}}">{{$city}}</option>
-                                          @endif
-                                      @endforeach
-                                  @endif
-                              </select>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$orgapply['city']}} </div>
                           </div>
                       </div>
 
@@ -84,55 +61,10 @@
                           </div>
                       </div>
 
-                      <div class="form-group form-md-line-input form-md-line-cover">
-                          <label class="col-md-1 control-label">{{trans('labels.orgapply.cover')}}</label>
-                          <div class="col-md-9">
-                              <div class="cover-box">
-                                  {{--<div class="add-cover-img-btn">+</div>--}}
-                                  <ul class="img-list-box">
-                                      @if($orgapply['cover'])
-                                          <?php
-                                            $imgs=explode(',',$orgapply['cover']);
-                                          ?>
-                                          @foreach($imgs as $img)
-                                              <li>
-                                                  <a href="{{$img}}" data-size="435x263"></a>
-                                                  <img src="{{$img}}@142w_80h_1e">
-                                              </li>
-                                          @endforeach
-                                      @endif
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="details">{{trans('labels.orgapply.details')}}</label>
+                          <label class="col-md-1 control-label" for="contacter">{{trans('labels.orgapply.contacter')}}</label>
                           <div class="col-md-9">
-                              <textarea readonly style="display: none" name="details" id="target-area">{{$orgapply['details']}}</textarea>
-                              <textarea disabled id="my-editor"></textarea>
-                          </div>
-                      </div>
-
-                      <div class="form-group form-md-line-input form-md-line-cover">
-                          <label class="col-md-1 control-label">{{trans('labels.orgapply.album')}}</label>
-                          <div class="col-md-9">
-                              <div class="cover-box">
-                                  {{--<div class="add-cover-img-btn">+</div>--}}
-                                  <ul class="img-list-box">
-                                      @if($orgapply['album'])
-                                          <?php
-                                          $imgs=explode(',',$orgapply['album']);
-                                          ?>
-                                          @foreach($imgs as $img)
-                                              <li>
-                                                  <a href="{{$img}}" data-size="435x263"></a>
-                                                  <img src="{{$img}}@142w_80h_1e">
-                                              </li>
-                                          @endforeach
-                                      @endif
-                                  </ul>
-                              </div>
+                              <div class="form-control form-control-static"> {{$orgapply['contacter']}} </div>
                           </div>
                       </div>
 
@@ -140,6 +72,18 @@
                           <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.orgapply.tel_phone')}}</label>
                           <div class="col-md-9">
                               <div class="form-control form-control-static"> {{$orgapply['tel_phone']}} </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="introduce">{{trans('labels.orgapply.introduce')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$orgapply['introduce']}} </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.orgapply.created_at')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$orgapply['created_at']}} </div>
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">

@@ -101,6 +101,24 @@ class OrgApplyRepository
 		return $org;
 	}
 
+	/**
+	 * 审核申请入驻机构视图
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:34+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function edit($id)
+	{
+		$role = BankeOrgApply::find($id);
+		if ($role) {
+			$roleArray = $role->toArray();
+			return $roleArray;
+		}
+		abort(404);
+	}
+
+
 
 	/**
 	 * 修改机构状态
@@ -116,10 +134,10 @@ class OrgApplyRepository
 		if ($role) {
 			$role->status = $status;
 			if ($role->save()) {
-				Flash::success(trans('alerts.org.updated_success'));
+				Flash::success(trans('alerts.orgapply.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.org.updated_error'));
+			Flash::error(trans('alerts.orgapply.updated_error'));
 			return false;
 		}
 		abort(404);

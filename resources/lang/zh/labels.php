@@ -175,7 +175,7 @@ return [
 		'reportShow' => '<i class="fa fa-search"></i> 媒体报道详情',
 		'reportEdit' => '<i class="fa fa-search"></i> 编辑媒体报道',
 		'orgapplyList' => '<i class="fa fa-th-list"></i> 机构入驻申请列表',
-		'orgapplyCreate' => '<i class="fa fa-user-plus"></i> 创建机构入驻申请',
+		'orgapplyEdit' => '<i class="fa fa-user-plus"></i> 创建机构入驻申请',
 		'orgapplyShow' => '<i class="fa fa-building"></i> 机构入驻申请信息',
 	],
 	'dict' => [
@@ -432,7 +432,7 @@ return [
 		'city' => '城市',
 		'contacter' => '联系人',
 		'address' => '地址',
-		'indtroduce'=>'机构简介',
+		'introduce'=>'机构简介',
 		'tel_phone'=>'联系电话',
 		'status' => '状态',
 		'created_at' => '创建时间',

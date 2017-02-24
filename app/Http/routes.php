@@ -103,6 +103,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //媒体报道信息
         require(__DIR__ . '/Routes/ReportRoute.php');
 
+        //机构申请入驻
+        require(__DIR__ . '/Routes/OrgApplyRoute.php');
+
     });
 });
 
