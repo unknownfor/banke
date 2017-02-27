@@ -63,10 +63,10 @@ class ShareController extends Controller
         $percent = $percent->whereIn('id', [3, 4])->get();
 
         if($course['checkin_award']=='' || $course['checkin_award']==0){
-            $request['checkin_award']=$percent[0]['value'];
+            $course['checkin_award']=$percent[0]['value'];
         }
         if($course['task_award']=='' || $course['task_award']==0){
-            $request['task_award']=$percent[1]['value'];
+            $course['task_award']=$percent[1]['value'];
         }
         $course['discount'] = $course['checkin_award'] + $course['task_award'];
         $course['real_price'] = moneyFormat($course['price'] * $course['discount'] / 100);
