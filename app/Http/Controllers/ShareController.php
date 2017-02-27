@@ -57,8 +57,17 @@ class ShareController extends Controller
      */
     public function course($id)
     {
-        $course = $this.getCourseInfo($id);
+        $course = $this->getCourseInfo($id);
         return view('web.org.course')->with(compact(['course']));
+    }
+
+    /**
+     * 分享课程详情
+     */
+    public function share_course($id)
+    {
+        $course = $this->getCourseInfo($id);
+        return view('web.org.share_course')->with(compact(['course']));
     }
 
     /**
@@ -70,14 +79,7 @@ class ShareController extends Controller
         return view('web.org.share_org')->with(compact(['org']));
     }
 
-    /**
-     * 分享课程详情
-     */
-    public function share_course($id)
-    {
-        $course = $this.getCourseInfo($id);
-        return view('web.org.share_course')->with(compact(['course']));
-    }
+
 
     public function  getCourseInfo($id){
         $course = BankeCourse::find($id);
