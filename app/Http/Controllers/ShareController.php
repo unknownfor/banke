@@ -268,14 +268,17 @@ class ShareController extends Controller
         $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
         $is_weixin = strpos($agent, 'micromessenger') ? true : false;
         if ($is_weixin) {
-            return view("web.download.downloadPrompt");
+//            return view("web.download.downloadPrompt");
+            header("Location: http://a.app.qq.com/o/simple.jsp?pkgname=com.banke");
+            exit;
         }
         else {
             header("Content-type:text/html; charset=utf-8");
             if (stristr($_SERVER['HTTP_USER_AGENT'], 'Android')) {
                 $is_qq = strpos($agent, 'mobile mqqbrowser') ? true : false;
                 if ($is_qq) {
-                    return view("web.download.downloadPrompt");
+//                    return view("web.download.downloadPrompt");
+                    header("Location: http://a.app.qq.com/o/simple.jsp?pkgname=com.banke");
                 }
                 else {
                     header('Location: ' . env('APP_DOWNLOAD'));
