@@ -36,7 +36,7 @@ class OrgApplyForRepository
 		$updated_at_to = request('updated_at_to' ,'');
 		$orders = request('order', []);
 
-		$feedback = new BankeFeedback;
+		$feedback = new BankeOrgApplyFor();
 
 		/*配置名称搜索*/
 		if($name){

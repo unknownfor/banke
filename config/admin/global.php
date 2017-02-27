@@ -197,10 +197,10 @@ return[
 	],
 
 	//机构申请
-	'orgapply' => [
+	'orgapplyfor' => [
 		// 控制是否显示查看按钮
 		'show' => true,
 		// trait 中的 action 参数
-		'action' => 'orgapply',
+		'action' => 'orgapplyfor',
 	],
 ];

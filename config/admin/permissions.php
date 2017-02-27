@@ -158,8 +158,8 @@ return[
 		'destroy' 	=> 'admin.report.delete',
 	],
 	//机构入驻申请
-	'orgapply' => [
-		'show' 	=> 'admin.orgapply.show',
-		'edit' 	=> 'admin.orgapply.edit',
+	'orgapplyfor' => [
+		'show' 	=> 'admin.orgapplyfor.show',
+		'edit' 	=> 'admin.orgapplyfor.edit',
 	],
 ];
