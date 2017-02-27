@@ -33,8 +33,8 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "indroduce",
-          "name": "indroduce",
+          "data": "introduce",
+          "name": "introduce",
           "orderable" : false,
           render:function(val){
             return '<p class="txt-ellipsis-single" title="'+val+'">'+val+'</p>';

@@ -44,9 +44,9 @@
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
                     <thead>
                         <tr role="row" class="heading">
-                          <th>#</th>
+                          <th width="5%">#</th>
                           <th width="10%"> {{ trans('labels.app_user.name') }} </th>
-                          <th> {{ trans('labels.app_user.mobile') }} </th>
+                          <th width="10%"> {{ trans('labels.app_user.mobile') }} </th>
                           <th> {{ trans('labels.app_user.org_name') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>

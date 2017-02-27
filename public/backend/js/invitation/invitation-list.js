@@ -43,7 +43,11 @@ var TableDatatablesAjax = function() {
           "name": "register_at",
           "orderable" : false,
            render:function(data) {
-             return data.date.replace(/\s.*/g,'');
+             if(data && data.date) {
+               return data.date.replace(/\s.*/g, '');
+             }else{
+               return'';
+             }
            }
         },
         {

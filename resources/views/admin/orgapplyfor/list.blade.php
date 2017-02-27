@@ -78,7 +78,7 @@
                           <th>#</th>
                           <th width="15%"> {{ trans('labels.orgapplyfor.name') }} </th>
                           <th width="35%"> {{ trans('labels.orgapplyfor.address') }} </th>
-                          <th width="10%"> {{ trans('labels.orgapplyfor.indroduce') }} </th>
+                          <th width="10%"> {{ trans('labels.orgapplyfor.introduce') }} </th>
                           <th width="10%"> {{ trans('labels.orgapplyfor.status') }} </th>
                           <th width="15%"> {{ trans('labels.orgapplyfor.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>

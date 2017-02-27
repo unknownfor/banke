@@ -75,12 +75,14 @@ class InvitationRepository
 			foreach ($invitations as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 				//认证状态
-				$authen = $authentication->where('mobile', $v['target_mobile']);
+				$authen = $authentication->find($v['uid']);
 				$isAuthen=0;
-				if($authen->count()>0){
+				if($authen && $authen->count()>0){
 					$isAuthen=1;
+					$v['name']=$authen['real_name'];
 				}
 				$v['authentivation_status'] = $isAuthen;
+
 
 				//报名状态
 				$en = $enrol->where('mobile', $v['target_mobile']);

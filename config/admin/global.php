@@ -22,12 +22,13 @@ return[
 	/*认证状态  此处弄反，和其他的不一样
 	* audit 	正常
 	* active 	待审核
-	* trash	回收站
+	* no_apply  未申请
+	* trash		回收站
 	 */
 	'certification_status' => [
-		'no_apply' => 0,
-		'active' => 1,
 		'audit' => 2,
+		'active' => 1,
+		'no_apply' => 0,
 		'trash' => 3,
 	],
 

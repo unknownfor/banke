@@ -27,9 +27,16 @@ return [
 		'trash' => ['fa fa-trash','回收站'],
 	],
 
+	/*认证状态  此处弄反，和其他的不一样
+	* audit 	正常 2
+	* active 	待审核1
+	* no_apply  未申请0
+	* trash		回收站3
+	 */
+
 	'app_user' => [
-		'audit' => ['fa fa-paw','待审核'],
-		'active' => ['fa fa-navicon','已认证'],
+		'active' => ['fa fa-navicon','待审核'],
+		'audit' => ['fa fa-paw','已认证'],
 		'trash' => ['fa fa-trash','未通过'],
 		'no_apply' => ['fa fa-paw','未申请'],
 	],

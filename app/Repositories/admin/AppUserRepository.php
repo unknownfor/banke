@@ -63,7 +63,7 @@ class AppUserRepository
 		}
 		
 		/*状态搜索*/
-		if ($status) {
+		if ($status!=null) {
 			$user = $user->where('certification_status', $status);
 		}
 
@@ -444,8 +444,13 @@ class AppUserRepository
 		if ($users) {
 			foreach ($users as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
-				$org = BankeOrg::find($v['org_id']);
-				$v['org_name'] = $org->name;
+				$v['org_name'] = '';
+				if($v['org_id']) {
+					$org = BankeOrg::find($v['org_id']);
+					if ($org) {
+						$v['org_name'] = $org->name;
+					}
+				}
 			}
 		}
 
