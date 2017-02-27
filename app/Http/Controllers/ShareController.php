@@ -58,7 +58,8 @@ class ShareController extends Controller
     public function course($id)
     {
         $course = BankeCourse::find($id);
-        $course['discount'] = BankeDict::whereIn('id', [3, 4])->sum('value');
+        $course['discount'] = BankeDict::whereIn('id', [3, 4])
+            ->sum('value');
         $course['real_price'] = moneyFormat($course['price'] * $course['discount'] / 100);
         $org = BankeOrg::find($course['org_id']);
         $course['org'] = $org;
@@ -80,7 +81,8 @@ class ShareController extends Controller
     public function share_course($id)
     {
         $course = BankeCourse::find($id);
-        $course['discount'] = BankeDict::whereIn('id', [3, 4])->sum('value');
+        $course['discount'] = BankeDict::whereIn('id', [3, 4])
+            ->sum('value');
         $course['real_price'] = moneyFormat($course['price'] * $course['discount'] / 100);
         $org = BankeOrg::find($course['org_id']);
         $course['org'] = $org;
@@ -102,7 +104,7 @@ class ShareController extends Controller
     public function requestSmsCode(Request $request)
     {
         $validator = Validator::make($request->all(), [
-//            'mobile' => 'required|mobile|unique:users,mobile',
+            //            'mobile' => 'required|mobile|unique:users,mobile',
             'mobile' => 'required|mobile|unique:banke_user_profiles,mobile'
         ]);
 
@@ -115,8 +117,8 @@ class ShareController extends Controller
         try {
             $header = [
                 'headers' => [
-                    'X-Bmob-Application-Id' => env('BMOB_APP_ID'),
-                    'X-Bmob-REST-API-Key' => env('BMOB_REST_API_KEY'),
+                    'X-LC-Id' => env('LC_APP_ID'),
+                    'X-LC-Key' => env('LC_APP_KEY'),
                     'Content-Type' => 'application/json'
                 ]
             ];
@@ -124,15 +126,17 @@ class ShareController extends Controller
             $param = [
                 'json' => [
                     'mobilePhoneNumber' => $mobile,
-                    'template' => '半课验证码'
-                ]
+                    'op' => '验证'
+                ],
+                'verify' => false
             ];
-            $response = $http->request('post', env('BMOB_REST_API_URL') . 'requestSmsCode', $param);
+            $response = $http->request('post', env('LC_REQUEST_URL'), $param);
             $code = $response->getStatusCode();
             if ($code == 200) {
                 return ApiResponseService::success('', Code::SUCCESS, '获取短信验证码成功');
             }
-        } catch (ClientException $e) {
+        }
+        catch (ClientException $e) {
             return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR);
         }
     }
@@ -161,23 +165,23 @@ class ShareController extends Controller
         try {
             $header = [
                 'headers' => [
-                    'X-Bmob-Application-Id' => env('BMOB_APP_ID'),
-                    'X-Bmob-REST-API-Key' => env('BMOB_REST_API_KEY'),
+                    'X-LC-Id' => env('LC_APP_ID'),
+                    'X-LC-Key' => env('LC_APP_KEY'),
                     'Content-Type' => 'application/json'
                 ]
             ];
             $http = new Client($header);
             $param = [
-                'json' => [
-                    'mobilePhoneNumber' => $mobile
-                ]
+                'verify' => false
             ];
-            $response = $http->request('post', env('BMOB_REST_API_URL') . 'verifySmsCode/' . $smsId, $param);
+            $verifyUrl = env('LC_VERIFY_URL').'/'.$smsId.'?mobilePhoneNumber='.$mobile;
+            $response = $http->request('post', $verifyUrl, $param);
             $code = $response->getStatusCode();
             if ($code != 200) {
                 return ApiResponseService::showError(Code::SMSID_ERROR);
             }
-        } catch (ClientException $e) {
+        }
+        catch (ClientException $e) {
             return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR);
         }
         $password = randCode(6, 'NUMBER');
@@ -187,30 +191,65 @@ class ShareController extends Controller
             try {
                 $config = BankeDict::find(1);
                 $pa = [
-                    'mobilePhoneNumber' => $userData['mobile'],
-                    'content' => '您好！' . $config['value'] . '元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
-                        . '初始密码为' . $password . '，记得登陆后修改密码！'
+                    'json' => [
+                        'mobilePhoneNumber' => $mobile,
+                        'template' =>'invi_psw',
+                        'money' => $config['value'],
+                        'psw' => $password
+                    ],
+                    'verify' => false
                 ];
-                $headers['X-Bmob-Application-Id'] = env('BMOB_APP_ID');
-                $headers['X-Bmob-REST-API-Key'] = env('BMOB_REST_API_KEY');
-                $headers['Content-Type'] = 'application/json';
-                $headerArr = array();
-                foreach ($headers as $n => $v) {
-                    $headerArr[] = $n . ':' . $v;
-                }
-                $post_data = json_encode($pa);
-                $res = request_by_curl(env('BMOB_REST_API_URL') . 'requestSms', $headerArr, $post_data);
+//                $pa = [
+//                    'mobilePhoneNumber' => $userData['mobile'],
+//                    'content' => '您好！' . $config['value'] . '元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
+//                        . '初始密码为' . $password . '，记得登陆后修改密码！'
+//                ];
+                $headers = [
+                    'headers' => [
+                        'X-LC-Id' => env('LC_APP_ID'),
+                        'X-LC-Key' => env('LC_APP_KEY'),
+                        'Content-Type' => 'application/json'
+                    ]
+                ];
+//                $headerArr = array();
+//                foreach ($headers
+//                         as
+//                         $n
+//                =>
+//                         $v)
+//                {
+//                    $headerArr[] = $n . ':' . $v;
+//                }
+//                $post_data = json_encode($pa);
+
+                Log::info('----------------------------------------');
+                Log::info($pa);
+                Log::info($headers);
+                Log::info('----------------------------------------');
+                $http = new Client($headers);
+                $res = $http->request('post', env('LC_REQUEST_URL'), $pa);
 
                 if ($res) {
+                    Log::info('----------------------------------------');
+                    Log::info('send register successful message');
+                    Log::info('----------------------------------------');
                     return ApiResponseService::success('', Code::SUCCESS, '注册成功');
-                } else {
+                }
+                else {
+                    Log::info('----------------------------------------');
+                    Log::info($res);
+                    Log::info('----------------------------------------');
                     return ApiResponseService::showError(Code::SEND_SMS_ERROR);
                 }
-            } catch (ClientException $e) {
-                var_dump($e);
+            }
+            catch (ClientException $e) {
+                Log::info('----------------------------------------');
+                Log::info($e);
+                Log::info('----------------------------------------');
                 return ApiResponseService::showError(Code::SEND_SMS_ERROR);
             }
-        } else {
+        }
+        else {
             return ApiResponseService::showError(Code::REGISTER_ERROR);
         }
     }
@@ -230,20 +269,24 @@ class ShareController extends Controller
         $is_weixin = strpos($agent, 'micromessenger') ? true : false;
         if ($is_weixin) {
             return view("web.download.downloadPrompt");
-        } else {
+        }
+        else {
             header("Content-type:text/html; charset=utf-8");
             if (stristr($_SERVER['HTTP_USER_AGENT'], 'Android')) {
                 $is_qq = strpos($agent, 'mobile mqqbrowser') ? true : false;
                 if ($is_qq) {
                     return view("web.download.downloadPrompt");
-                } else {
+                }
+                else {
                     header('Location: ' . env('APP_DOWNLOAD'));
                     exit;
                 }
-            } else if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPhone')) {
+            }
+            else if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPhone')) {
                 header('Location: https://itunes.apple.com/cn/app/ban-ke/id1188151603?mt=8');
                 exit;
-            } else {
+            }
+            else {
                 header('Location: ' . env('APP_DOWNLOAD'));
                 exit;
             }
@@ -251,37 +294,19 @@ class ShareController extends Controller
     }
 
     /**获得媒体报道**/
-    public function getMediaReport(){
-        try{
-            $repository=new ReportRepository;
-            $report=$repository->getTop5();
+    public function getMediaReport()
+    {
+        try {
+            $repository = new ReportRepository;
+            $report = $repository->getTop5();
             $param = [
                 'data' => $report,
                 'template' => '媒体报道',
                 'status' => true
             ];
             return ApiResponseService::success('', Code::SUCCESS, $param);
-        } catch (ClientException $e) {
-            $param = [
-                'template' => '媒体报道失败',
-                'status' => false
-            ];
-            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
         }
-    }
-
-    /**获得前50个机构**/
-    public function getTopOrg(){
-        try{
-            $repository=new OrgRepository;
-            $report=$repository->getTop(50);
-            $param = [
-                'data' => $report,
-                'template' => '机构列表',
-                'status' => true
-            ];
-            return ApiResponseService::success('', Code::SUCCESS, $param);
-        } catch (ClientException $e) {
+        catch (ClientException $e) {
             $param = [
                 'template' => '媒体报道失败',
                 'status' => false
