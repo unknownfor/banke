@@ -40,8 +40,8 @@
     </div>
     <div class="pay-rule-box container-box">
         <div class="tips"><span>学员将学费支付到半课平台官方支付宝</span></div>
-        <div class="tips"><span>上课期间打卡签到领取当次课时奖励，全勤可领取学费{{$course['checkin_award']}}奖励</span></div>
-        <div class="tips"><span>完成任务中心的赏金任务领取剩余学费{{$course['task_award']}}奖励</span></div>
+        <div class="tips"><span>上课期间打卡签到领取当次课时奖励，全勤可领取学费{{$course['checkin_award']}}%奖励</span></div>
+        <div class="tips"><span>完成任务中心的赏金任务领取剩余学费{{$course['task_award']}}%奖励</span></div>
     </div>
 </div>
 <!--机构地址-->
