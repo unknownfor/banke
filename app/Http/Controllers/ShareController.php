@@ -59,6 +59,10 @@ class ShareController extends Controller
     {
         $course = BankeCourse::find($id);
         $course['discount'] = $course['checkin_award'] + $course['task_award'];
+        if($course['discount']==0) {
+            $course['discount'] = BankeDict::whereIn('id', [3, 4])
+                ->sum('value');
+        }
         $course['real_price'] = moneyFormat($course['price'] * $course['discount'] / 100);
         $org = BankeOrg::find($course['org_id']);
         $course['org'] = $org;
