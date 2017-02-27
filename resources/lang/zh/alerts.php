@@ -159,4 +159,14 @@ return [
         'soft_deleted_error' => '删除报道失败',
     ],
 
+    'orgapplyfor' => [
+        'updated_success'   => '审核申请机构成功.',
+        'updated_error'     => '审核申请机构失败.',
+        'created_success'   => '创建机构成功.',
+        'created_error'     => '创建机构失败.',
+        'deleted_success'   => '删除机构成功.',
+        'deleted_error'     => '删除机构失败.',
+        'soft_deleted_success' => '删除机构成功',
+    ],
+
 ];

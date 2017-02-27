@@ -33,7 +33,8 @@ trait ActionAttributeTrait{
 	 */
 	public function getEditActionButton()
 	{
-		if ($this->action == 'order' || $this->action == 'orgapply') {
+//		if ($this->action == 'order' || $this->action == 'orgapply') {
+		if ($this->action == 'order') {
 			return $this;
 		}
 
@@ -145,7 +146,8 @@ trait ActionAttributeTrait{
 	 */
 	public function getOrderActionButton()
 	{
-		if (($this->action == 'order') || ($this->action == 'orgapply')) {
+//		if (($this->action == 'order') || ($this->action == 'orgapply')) {
+		if (($this->action == 'order')) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.edit'))) {
 				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/edit').'" class="btn btn-xs btn-primary tooltips" data-original-title="' . trans('crud.check') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
 			}
@@ -159,7 +161,8 @@ trait ActionAttributeTrait{
 	 */
 	public function getOrderRefuseActionButton()
 	{
-		if (($this->action == 'order') || ($this->action == 'orgapply')) {
+//		if (($this->action == 'order') || ($this->action == 'orgapply')) {
+		if (($this->action == 'order')) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
 				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.trash')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
 			}

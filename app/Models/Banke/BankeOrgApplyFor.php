@@ -4,21 +4,24 @@ namespace App\Models\Banke;
 use App\Models\ActionAttributeTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class BankeOrgApply extends Model
+class BankeOrgApplyFor extends Model
 {
-    //
     use ActionAttributeTrait;
-
+    //
+    /**
+     * 与模型关联的数据表
+     *
+     * @var string
+     */
     protected $table = 'banke_org_apply';
 
-    protected $fillable = ['name', 'city', 'contacter', 'introduce', 'address', 'tel_phone',
-        'updated_at', 'status'];
+    protected $fillable = ['updated_at', 'status'];
 
     private $action;
 
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.orgapply.action');
+        $this->action = config('admin.global.orgapplyfor.action');
     }
 }

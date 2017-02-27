@@ -7,10 +7,9 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/orgapply/ajaxIndex',
+        'url' : '/admin/orgapplyfor/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
-          d.city =$('.filter input[name="city"]').val();
+          d.title =$('.filter input[name="name"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
@@ -29,19 +28,17 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "city",
-          "name": "city",
-          "orderable" : false,
-        },
-        {
           "data": "address",
-          "name": "address",
+          "name" : "address",
           "orderable" : false,
         },
         {
-          "data": "created_at",
-          "name": "created_at",
+          "data": "indroduce",
+          "name": "indroduce",
           "orderable" : false,
+          render:function(val){
+            return '<p class="txt-ellipsis-single" title="'+val+'">'+val+'</p>';
+          },
         },
         { 
           "data": "status",
@@ -57,6 +54,10 @@ var TableDatatablesAjax = function() {
             }
           }
         },
+        {
+          "data": "created_at",
+          "name": "created_at"
+        },
         { 
           "data": "actionButton",
           "name": "actionButton",
@@ -65,7 +66,7 @@ var TableDatatablesAjax = function() {
         },
       ],
       "drawCallback": function( settings ) {
-        ajax_datatable.$('.tooltips').tooltip( {
+        ajax_datatable.$('.tooltips').tooltip({
           placement : 'top',
           html : true
         });  

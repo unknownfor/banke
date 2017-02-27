@@ -174,9 +174,9 @@ return [
 		'reportCreate'=>'<i class="fa fa-user-plus"></i> 添加媒体报道',
 		'reportShow' => '<i class="fa fa-search"></i> 媒体报道详情',
 		'reportEdit' => '<i class="fa fa-search"></i> 编辑媒体报道',
-		'orgapplyList' => '<i class="fa fa-th-list"></i> 机构入驻申请列表',
-		'orgapplyEdit' => '<i class="fa fa-user-plus"></i> 创建机构入驻申请',
-		'orgapplyShow' => '<i class="fa fa-building"></i> 机构入驻申请信息',
+		'orgapplyforList' => '<i class="fa fa-th-list"></i> 机构入驻申请列表',
+		'orgapplyforEdit' => '<i class="fa fa-user-plus"></i> 创建机构入驻申请',
+		'orgapplyforShow' => '<i class="fa fa-building"></i> 机构入驻申请信息',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -426,7 +426,7 @@ return [
 		'url'=>'外链地址',
 		'show'=>'查看详情'
 	],
-	'orgapply' => [
+	'orgapplyfor' => [
 		'id' => '序号',
 		'name' => '名称',
 		'city' => '城市',

@@ -29,16 +29,10 @@
                 $('#uploadImgFile2').trigger('click');
             });
 
-            /*上传相册文件*/
-            $(document).on('change','#uploadImgFile3', $.proxy(this,'uploadAlbum'));
-            $(document).on('click','.add-album-img-btn', function(){
-                $('#uploadImgFile3').trigger('click');
-            });
-
-            $(document).on('click','.remove-img-btn', $.proxy(this,'deletCoverImg'));
+            $(document).on('click','.remove-cover-img', $.proxy(this,'deletCoverImg'));
 
             //photoswipe   //图片信息查看  相册、视频信息查看
-            new MyPhotoSwipe('.img-list-box');
+            new MyPhotoSwipe('.cover-list-box');
         };
         MyEditor.prototype={
 
@@ -242,35 +236,18 @@
                 });
             },
 
-            //上传相册图
-            uploadAlbum:function(){
-                var $target = $('#uploadImgFile3'),
-                    $form=$('#upImgForm3'),
-                    that=this;
-                that.controlLoadingCircleStatus(true);
-                this.initUploadImg($target,$form,function(data){
-                    data=JSON.parse(data);
-                    if(data) {
-                        var str=that.getConverImgStr(data.filedata);
-                        $('.album-list-box').prepend(str);
-                        that.controlLoadingCircleStatus(false);
-                        $form[0].reset();
-                    }
-                });
-            },
-
             getConverImgStr:function(url){
                 return '<li>'+
                             '<a href="'+url+'" data-size="435x263"></a>'+
                             '<img src="'+url+'@142w_80h_1e">'+
-                            '<span class="remove-img-btn">×</span>'+
+                            '<span class="remove-cover-img">×</span>'+
                         '</li>';
             },
 
             /*删除封面*/
             deletCoverImg:function(e){
                 e.stopPropagation();
-                if(window.confirm('确定删除该图片么？')) {
+                if(window.confirm('确定删除该封面么？')) {
                     var $target=$(e.currentTarget).closest('li').addClass('deleting');
                     window.setTimeout(function(){
                         $target.remove();
@@ -294,14 +271,9 @@
                 }
             },
 
-            getCoverImg:function(type){
-                var $imgs;
-                if(type=='cover') {
-                    $imgs = $('.cover-list-box li');
-                }else{
-                    $imgs = $('.album-list-box li');
-                }
-                var arr=[];
+            getCoverImg:function(){
+                var $imgs=$('.cover-list-box li'),arr=[];
+
                 $.each($imgs,function(){
                     arr.push($(this).find('a').attr('href'));
                 });
@@ -344,11 +316,8 @@
             val=val.replace(/\n/g,"<br/>");
             $('#target-area').text(val);
 
-            //封面
-            $('#cover').val(editor.getCoverImg('cover').join(','));
-
             //相册
-            $('#album').val(editor.getCoverImg('album').join(','));
+            $('#cover').val(editor.getCoverImg().join(','));
 
             //logo
             $('#logo-input').val($('#logo').attr('src'));
