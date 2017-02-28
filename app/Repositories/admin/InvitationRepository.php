@@ -86,10 +86,10 @@ class InvitationRepository
 
 				//报名状态
 				$en = $enrol->where('mobile', $v['target_mobile']);
+				$v['order_status'] = 0;
 				if($en->count()>0) {
-					$v['enrol_status'] = 1;
+					$v['order_status'] = 1;
 				}
-
 				//注册日期
 				$userInfo = $user->find($v['uid']);
 				if($userInfo) {

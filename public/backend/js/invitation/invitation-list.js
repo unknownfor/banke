@@ -64,8 +64,8 @@ var TableDatatablesAjax = function() {
           }
         },
         {
-          "data": "enrol_status",
-          "name": "enrol_status",
+          "data": "order_status",
+          "name": "order_status",
           "orderable" : false,
           render:function(data){
             if (data == 1) {

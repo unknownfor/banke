@@ -53,6 +53,7 @@ return[
 		'WITHDRAW' => '提现',
 		'CHECK_IN_SUCCESS' => '打卡奖励',
 		'INVITE_FRIEND_ENROL_SUCCESS' => '邀请报名成功奖励',
+		'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS' => '邀请认证成功奖励',
 		'REGISTER_AND_CERTIFICATE_SUCCESS' => ' 注册奖励',
 		'USER_CERTIFICATE_SUCCESS' => '邀请注册奖励',
 		'PUNISHMENT' => '惩罚',
