@@ -210,11 +210,6 @@ class ShareController extends Controller
                     ],
                     'verify' => false
                 ];
-//                $pa = [
-//                    'mobilePhoneNumber' => $userData['mobile'],
-//                    'content' => '您好！' . $config['value'] . '元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
-//                        . '初始密码为' . $password . '，记得登陆后修改密码！'
-//                ];
                 $headers = [
                     'headers' => [
                         'X-LC-Id' => env('LC_APP_ID'),
@@ -222,41 +217,18 @@ class ShareController extends Controller
                         'Content-Type' => 'application/json'
                     ]
                 ];
-//                $headerArr = array();
-//                foreach ($headers
-//                         as
-//                         $n
-//                =>
-//                         $v)
-//                {
-//                    $headerArr[] = $n . ':' . $v;
-//                }
-//                $post_data = json_encode($pa);
 
-                Log::info('----------------------------------------');
-                Log::info($pa);
-                Log::info($headers);
-                Log::info('----------------------------------------');
                 $http = new Client($headers);
                 $res = $http->request('post', env('LC_REQUEST_URL'), $pa);
 
                 if ($res) {
-                    Log::info('----------------------------------------');
-                    Log::info('send register successful message');
-                    Log::info('----------------------------------------');
                     return ApiResponseService::success('', Code::SUCCESS, '注册成功');
                 }
                 else {
-                    Log::info('----------------------------------------');
-                    Log::info($res);
-                    Log::info('----------------------------------------');
                     return ApiResponseService::showError(Code::SEND_SMS_ERROR);
                 }
             }
             catch (ClientException $e) {
-                Log::info('----------------------------------------');
-                Log::info($e);
-                Log::info('----------------------------------------');
                 return ApiResponseService::showError(Code::SEND_SMS_ERROR);
             }
         }
