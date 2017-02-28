@@ -237,9 +237,11 @@ class OrderRepository
 							//邀请成功报名缴费
 							$invite_enrol_config = BankeDict::find(7);
 							$invitation_award = moneyFormat(($input['tuition_amount'] * $invite_enrol_config['value'] / 100));
-							if($invitation_user->do_task_amount <= $invitation_award){
-								$invitation_award = $invitation_user->do_task_amount;
-							}
+
+							//TODO 这里是否要去掉限制
+//							if($invitation_user->do_task_amount <= $invitation_award){
+//								$invitation_award = $invitation_user->do_task_amount;
+//							}
 							$invitation_user->account_balance += $invitation_award;
 							$invitation_user->do_task_amount -= $invitation_award;
 							//更新邀请人信息
