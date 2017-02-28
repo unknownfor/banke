@@ -277,6 +277,7 @@ return [
 		'permission' => '权限',
 		'module' => '模块',
 	],
+	/*预约*/
 	'enrol' => [
 		'id' => '序号',
 		'name' => '姓名',

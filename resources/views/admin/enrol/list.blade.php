@@ -18,6 +18,9 @@
   </ul>
 </div>
 <!-- END PAGE BAR -->
+
+<!-- 预约-->
+
 <div class="row margin-top-40">
     <div class="col-md-12">
         @include('flash::message')
@@ -45,14 +48,14 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
-                          <th width="15%"> {{ trans('labels.enrol.name') }} </th>
+                          <th width="10%"> {{ trans('labels.enrol.name') }} </th>
                           <th> {{ trans('labels.enrol.mobile') }} </th>
-                            <th> {{ trans('labels.enrol.org_id') }} </th>
-                            <th> {{ trans('labels.enrol.course_id') }} </th>
+                            <th width="17%"> {{ trans('labels.enrol.org_id') }} </th>
+                            <th width="17%"> {{ trans('labels.enrol.course_id') }} </th>
                           <th> {{ trans('labels.enrol.status') }} </th>
                           <th width="15%"> {{ trans('labels.enrol.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.enrol.updated_at') }} </th>
-                          <th width="15%"> {{ trans('labels.action') }} </th>
+                          <th width="10%"> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
                             <td></td>
