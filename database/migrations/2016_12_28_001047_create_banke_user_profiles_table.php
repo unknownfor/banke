@@ -24,7 +24,7 @@ class CreateBankeUserProfilesTable extends Migration
             $table->integer('account_balance')->comment('账户余额')->default('0');
             $table->integer('total_cashback_amount')->comment('返现总金额')->default('0');
             $table->integer('remaining_cashback_amount')->comment('剩余返现金额')->default('0');
-            $table->integer('withdrawal_amount')->comment('已提现金额')->default('0');
+            $table->integer('withdraw_amount')->comment('已提现金额')->default('0');
             $table->integer('invitation_count')->comment('邀请注册的人数')->default('0');
             $table->integer('invitation_uid')->comment('我的邀请人id')->default('0');
             $table->integer('percentage_cashback_days')->comment('按百分比返现的天数')->default('0');

@@ -77,8 +77,8 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "withdrawal_amount",
-          "name": "withdrawal_amount",
+          "data": "withdraw_amount",
+          "name": "withdraw_amount",
           "orderable" : false,
         },
         { 

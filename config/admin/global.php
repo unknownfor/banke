@@ -36,6 +36,7 @@ return[
 	'withdraw_status' => [
 		'audit' => 0,
 		'active' => 1,
+		'ban' => 2,
 	],
 	//分页
 	'list' => [

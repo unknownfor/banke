@@ -56,12 +56,12 @@
                 <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
+                            <option value="" data-icon="fa-glass icon-success">状态....</option>
                             @if(trans('strings.withdraw'))
                                 @foreach(trans('strings.withdraw') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif
-                            <option value="" data-icon="fa-glass icon-success">状态....</option>
                         </select>
                     </div>
                 </div>

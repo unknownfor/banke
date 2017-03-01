@@ -256,7 +256,7 @@ return [
 		'account_balance' => '账户余额',
 		'total_cashback_amount' => '返现总金额',
 		'remaining_cashback_amount' => '待返现金额',
-		'withdrawal_amount' => '提现金额',
+		'withdraw_amount' => '提现金额',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'active' => '<span class="label label-success"> 已认证 </span>',

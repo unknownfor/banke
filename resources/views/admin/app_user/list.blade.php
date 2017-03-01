@@ -51,7 +51,7 @@
                           <th width="8%"> {{ trans('labels.app_user.certification_status') }} </th>
                             <th width="8%"> {{ trans('labels.app_user.account_balance') }} </th>
                             <th width="8%"> {{ trans('labels.app_user.total_cashback_amount') }} </th>
-                            <th width="8%"> {{ trans('labels.app_user.withdrawal_amount') }} </th>
+                            <th width="8%"> {{ trans('labels.app_user.withdraw_amount') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>
                           <th width="8%"> {{ trans('labels.action') }} </th>

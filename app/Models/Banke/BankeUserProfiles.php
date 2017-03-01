@@ -18,7 +18,7 @@ class BankeUserProfiles extends Model
         'total_cashback_amount',
         'check_in_amount',
         'do_task_amount',
-        'withdrawal_amount',
+        'withdraw_amount',
         'invitation_count',
         'register_amount',
         'invitation_amount',
