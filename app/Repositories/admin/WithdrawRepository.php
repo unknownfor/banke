@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeBalanceLog;
 use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeUserAuthentication;
+use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeWithdraw;
 use Carbon\Carbon;
 use App\User;
@@ -148,13 +149,11 @@ class WithdrawRepository
 	{
 		$withDraw = BankeWithdraw::find($id);
 		if ($withDraw) {
+			$userAu = BankeUserAuthentication::find($withDraw['uid']);
 			$user = BankeUserProfiles::find($withDraw['uid']);
-			$withDraw['name'] = $user['name'];
+			$withDraw['name'] = $userAu['real_name'];
 			$withDraw['mobile'] = $user['mobile'];
-
-			Log::info('----------------------'.$user['account_balance']);
 			$withDraw['account_balance'] = $user['account_balance'];
-
 			$operator_name='';
 			$operator = new User;
 			if($withDraw['operator_uid']!=""){
