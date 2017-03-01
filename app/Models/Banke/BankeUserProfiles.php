@@ -32,4 +32,9 @@ class BankeUserProfiles extends Model
         parent::__construct($attributes);
         $this->action = config('admin.global.app_user.action');
     }
+
+    public function withdraws()
+    {
+        return $this->hasMany('App\Models\Banke\BankeWithDraw','uid','uid');
+    }
 }

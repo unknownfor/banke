@@ -61,7 +61,7 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
           render:function(data){
             if (data == 1) {
-              return '<span class="label label-success"> 已提现 </span>';
+              return '<span class="label label-success"> 已打款 </span>';
             }
             else if(data==0){
               return '<span class="label label-info"> 申请中 </span>';

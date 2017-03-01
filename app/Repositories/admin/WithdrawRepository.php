@@ -110,7 +110,6 @@ class WithdrawRepository
 				}
 				$v['operator_name'] = $operator_name;
 
-
 			}
 		}
 		return [
@@ -218,7 +217,8 @@ class WithdrawRepository
 						Flash::error(trans('alerts.withdraw.updated_error'));
 						return false;
 					}
-				}elseif($input['status'] == config('admin.global.status.active')){
+				}
+				elseif($input['status'] == config('admin.global.status.active')){
 					$message1 = [
 						'uid'=>$withDraw['uid'],
 						'title'=>'提现成功',
@@ -228,6 +228,7 @@ class WithdrawRepository
 					//记录消息
 					BankeMessage::create($message1);
 					Flash::success(trans('alerts.withdraw.updated_success'));
+
 					return true;
 				}
 			}else{
