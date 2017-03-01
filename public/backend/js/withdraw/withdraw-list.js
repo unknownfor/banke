@@ -13,6 +13,7 @@ var TableDatatablesAjax = function() {
           d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
           d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
+          d.name = $('.filter input[name="name"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",

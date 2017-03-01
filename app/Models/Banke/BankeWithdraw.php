@@ -9,8 +9,8 @@ class BankeWithdraw extends Model
     //
     use ActionAttributeTrait;
     //
-    /**
-     * 与模型关联的数据表
+    /**提现
+     * * 与模型关联的数据表
      *
      * @var string
      */
