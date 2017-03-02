@@ -6,6 +6,7 @@ use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeNews;
 use App\Models\Banke\BankeOrg;
+use App\Repositories\admin\OrgRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -295,6 +296,28 @@ class ShareController extends Controller
         catch (ClientException $e) {
             $param = [
                 'template' => '媒体报道失败',
+                'status' => false
+            ];
+            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
+        }
+    }
+
+    /**获得入驻机构**/
+    public function getChoicenessOrgs()
+    {
+        try {
+            $repository = new OrgRepository();
+            $org = $repository->getTop(10);
+            $param = [
+                'data' => $org,
+                'template' => '获取精选机构成功',
+                'status' => true
+            ];
+            return ApiResponseService::success('', Code::SUCCESS, $param);
+        }
+        catch (ClientException $e) {
+            $param = [
+                'template' => '获取媒体报道失败',
                 'status' => false
             ];
             return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
