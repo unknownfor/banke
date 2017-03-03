@@ -12,16 +12,16 @@
 
     function singup(){
 
-        var url='/bankehome/org/6',
-            paraData={},
-            that=this;
-        this.getDataAsync(url,paraData,function(res){
-            var str='',len=res.length;
-            for(var i=0;i<len;i++){
-                str+='<option value="'+res[i].id+'">'+res[i].name+'</option>';
-            }
-            that.$courseSelect.html(str).selectpicker('refresh');
-        });
+        //var url='/bankehome/org/6',
+        //    paraData={},
+        //    that=this;
+        //this.getDataAsync(url,paraData,function(res){
+        //    var str='',len=res.length;
+        //    for(var i=0;i<len;i++){
+        //        str+='<option value="'+res[i].id+'">'+res[i].name+'</option>';
+        //    }
+        //    that.$courseSelect.html(str).selectpicker('refresh');
+        //});
 
 
         this.$orgSelect=$('.orgSelectpicker');

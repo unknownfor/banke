@@ -75,7 +75,12 @@ class InvitationRepository
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 				$v['order_status'] = 0;
 				$v['authentivation_status']=0;
-				$v['name']='';
+				$v['name']='';//认证状态
+				$authentication = new BankeUserAuthentication;
+				$authen = $authentication->find($v['uid']);
+				if ($authen && $authen->count() > 0 && $authen['certification_status']==2) {
+					$v['name'] = $authen['real_name'];
+				}
 				$user = new User;
 				$user = $user->where('mobile', $v['target_mobile']); //被邀请人的信息
 				if($user && $user->count()>0) {
@@ -84,9 +89,8 @@ class InvitationRepository
 					$v['register_at'] = $user['created_at'];
 
 					//认证状态
-					$authentication = new BankeUserAuthentication;
-					$authen = $authentication->find($user['id']);
-					if ($authen && $authen->count() > 0 && $authen['certification_status']==2) {
+					$authen1 = $authentication->find($user['id']);
+					if ($authen1 && $authen1->count() > 0 && $authen1['certification_status']==2) {
 						$v['authentivation_status'] = 1;
 						$v['name'] = $authen['real_name'];
 					}
