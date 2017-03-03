@@ -55,7 +55,7 @@ Route::group(['prefix'=>"bankehome"],function(){
     Route::get('orgs', 'ShareController@getChoicenessOrgs');
 
     //机构详情
-//    Route::get('orgs', 'ShareController@getChoicenessOrgs');
+    Route::get('org/{id}', 'ShareController@getOrgDetail');
 
 });
 

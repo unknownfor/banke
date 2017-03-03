@@ -114,4 +114,3 @@ Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web'] ],function($
 
     require(__DIR__ . '/Routes/web.php');
 });
-

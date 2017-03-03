@@ -1,6 +1,8 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeCashBackUser;
 use App\Models\Banke\BankeInvitation;
+use App\Models\Banke\BankeOrg;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeUserAuthentication;
@@ -69,32 +71,34 @@ class InvitationRepository
 		$invitations = $invitation->get();
 
 		if ($invitations) {
-			$authentication = new BankeUserAuthentication;
-			$enrol = new BankeEnrol;
-			$user = new User;
 			foreach ($invitations as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
-				//认证状态
-				$authen = $authentication->find($v['uid']);
-				$isAuthen=0;
-				if($authen && $authen->count()>0){
-					$isAuthen=1;
-					$v['name']=$authen['real_name'];
-				}
-				$v['authentivation_status'] = $isAuthen;
-
-
-				//报名状态
-				$en = $enrol->where('mobile', $v['target_mobile']);
 				$v['order_status'] = 0;
-				if($en->count()>0) {
-					$v['order_status'] = 1;
+				$v['authentivation_status']=0;
+				$v['name']='';
+				$user = new User;
+				$user = $user->where('mobile', $v['target_mobile']); //被邀请人的信息
+				if($user && $user->count()>0) {
+					$user = $user->first();
+					//注册日期
+					$v['register_at'] = $user['created_at'];
+
+					//认证状态
+					$authentication = new BankeUserAuthentication;
+					$authen = $authentication->find($user['id']);
+					if ($authen && $authen->count() > 0 && $authen['certification_status']==2) {
+						$v['authentivation_status'] = 1;
+						$v['name'] = $authen['real_name'];
+					}
+
+					//报名状态
+					$order = new BankeCashBackUser;
+					$order = $order->where('uid',$user['id']);
+					if ($order && $order->count()>0) {
+						$v['order_status'] = 1;
+					}
 				}
-				//注册日期
-				$userInfo = $user->find($v['uid']);
-				if($userInfo) {
-					$v['register_at']=$userInfo['created_at'];
-				}
+
 			}
 		}
 		return [
