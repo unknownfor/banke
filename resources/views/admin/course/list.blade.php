@@ -78,6 +78,7 @@
                           <th>#</th>
                           <th width="20%"> {{ trans('labels.course.name') }} </th>
                           <th width="30%"> {{ trans('labels.course.org_id') }} </th>
+                          <th width="10%"> {{ trans('labels.course.period') }} </th>
                           <th width="10%"> {{ trans('labels.course.price') }} </th>
                           <th width="10%"> {{ trans('labels.course.status') }} </th>
                           <th width="23%"> {{ trans('labels.action') }} </th>

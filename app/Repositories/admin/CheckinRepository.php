@@ -131,7 +131,13 @@ class CheckinRepository
 		$role = BankeCheckIn::find($id);
 		if ($role) {
 			$user = BankeUserProfiles::find($role['uid']);
-			$role['name'] = $user['name'];
+			$authen = new BankeUserAuthentication;
+			$authen = $authen->find($role['uid']);
+			if ($authen && $authen->count() > 0 && $authen['certification_status']==2) {
+				$role['name'] = $authen['real_name'];
+			}else{
+				$role['name'] = $user['name'];
+			}
 			$role['mobile'] = $user['mobile'];
 			$org = BankeOrg::find($role['org_id']);
 			$role['org_name'] = $org['name'];

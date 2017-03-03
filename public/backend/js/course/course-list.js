@@ -36,6 +36,11 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
+          "data": "period",
+          "name": "period",
+          "orderable" : false,
+        },
+        {
           "data": "price",
           "name": "price",
           "orderable" : false,
