@@ -3,7 +3,7 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeBalanceLog;
 use App\Models\Banke\BankeCheckIn;
 use App\Models\Banke\BankeCourse;
-use App\Models\Banke\BankeDict;
+use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserProfiles;
 use Carbon\Carbon;
@@ -82,7 +82,11 @@ class CheckinRepository
 			foreach ($roles as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 				$user = BankeUserProfiles::find($v['uid']);
-				$v['name'] = $user['name'];
+				$authen = new BankeUserAuthentication;
+				$authen = $authen->find($v['uid']);
+				if ($authen && $authen->count() > 0 && $authen['certification_status']==2) {
+					$v['name'] = $authen['real_name'];
+				}
 				$v['mobile'] = $user['mobile'];
 				$org = BankeOrg::find($v['org_id']);
 				$v['org_name'] = $org['name'];

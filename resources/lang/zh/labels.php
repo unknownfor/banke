@@ -327,7 +327,7 @@ return [
 		'status' => '状态',
 		'comment' => '备注',
 		'list' => '签到列表',
-		'created_at' => '创建时间',
+		'created_at' => '签到时间',
 		'updated_at' => '修改时间',
 		'active' => '<span class="label label-success"> 已验证 </span>',
 		'audit' => '<span class="label label-warning"> 未验证 </span>',

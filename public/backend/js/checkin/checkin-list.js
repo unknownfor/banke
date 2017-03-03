@@ -2,7 +2,7 @@ var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
     ajax_datatable = dt.DataTable({
-      "lengthMenu": [[ 50,100], [ 50, 100]],
+      "lengthMenu": [[ 10,20], [ 10, 20]],
       "processing": true,
       "serverSide": true,
       "searching" : false,
@@ -51,11 +51,6 @@ var TableDatatablesAjax = function() {
         {
           "data": "created_at",
           "name": "created_at",
-          "orderable" : true,
-        },
-        {
-          "data": "updated_at",
-          "name": "updated_at",
           "orderable" : true,
         },
         {
