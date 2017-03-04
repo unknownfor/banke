@@ -9,9 +9,11 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/checkin/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
+          d.course_name =$('.filter input[name="course_name"]').val();
           d.mobile =$('.filter input[name="mobile"]').val();
-          d.status = $('.filter select[name="status"] option:selected').val();
+          d.org_name = $('.filter select[name="org_name"]').val();
+          d.created_at_from = $('.filter select[name="created_at_from"]').val();
+          d.created_at_to = $('.filter select[name="created_at_to"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",

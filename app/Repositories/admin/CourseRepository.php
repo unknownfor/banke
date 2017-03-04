@@ -24,53 +24,30 @@ class CourseRepository
 
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 
-		$name = request('name' ,'');
-		$org_id = request('org_id' ,'');
-		$price = request('price' ,'');
-		$intro = request('intro' ,'');
-		$status = request('status' ,'');
+		$course_name = request('course_name' ,'');
+		$org_name = request('org_name' ,'');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
-		$updated_at_from = request('updated_at_from' ,'');
-		$updated_at_to = request('updated_at_to' ,'');
 		$orders = request('order', []);
 
 		$user = new BankeCourse;
 
 		/*课程名称搜索*/
-		if($name){
+		if($course_name){
 			if($search_pattern){
-				$user = $user->where('name', 'like', $name);
+				$user = $user->where('name', 'like', $course_name);
 			}else{
-				$user = $user->where('name', $name);
+				$user = $user->where('name', $course_name);
 			}
 		}
 
-		/*价格搜索*/
-		if($price){
+		/*机构搜索*/
+		if($org_name){
 			if($search_pattern){
-				$user = $user->where('price', 'like', $price);
+				$user = $user->where('price', 'like', $org_name);
 			}else{
-				$user = $user->where('price', $price);
+				$user = $user->where('price', $org_name);
 			}
-		}
-		/*简介搜索*/
-		if($intro){
-			if($search_pattern){
-				$user = $user->where('intro', 'like', $intro);
-			}else{
-				$user = $user->where('intro', $intro);
-			}
-		}
-
-		/*机构id搜索*/
-		if($org_id){
-			$user = $user->where('org_id', $intro);
-		}
-		
-		/*状态搜索*/
-		if ($status!=null) {
-			$user = $user->where('status', $status);
 		}
 
 		/*创建时间搜索*/
