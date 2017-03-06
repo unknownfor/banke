@@ -7,6 +7,7 @@ use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeNews;
 use App\Models\Banke\BankeOrg;
 use App\Repositories\admin\OrgRepository;
+use App\Repositories\admin\OrgApplyForRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -355,4 +356,29 @@ class ShareController extends Controller
         }
     }
 
+    /**添加入驻机构**/
+    public function addOrgApplyFor(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'city' => 'required',
+            'name'=>'required',
+            'contactor'=>'required',
+            'tel_phone'=>'required',
+            'address'=>'required',
+            'introduce'=>'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['msg' => '字段信息不能为空', 'status' => false]);
+        }
+        $request = $request->all();
+
+        $repository = new  OrgApplyForRepository();
+        $result = $repository->addOrgApplyFor($request);
+        if(!$result['status']){
+            return response()->json($result);
+        }else{
+            return response()->json(['msg' => '机构申请添加成功', 'status' => true]);
+        }
+    }
 }
