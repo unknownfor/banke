@@ -362,7 +362,7 @@ class ShareController extends Controller
         $validator = Validator::make($request->all(), [
             'city' => 'required',
             'name'=>'required',
-            'contactor'=>'required',
+            'contact'=>'required',
             'tel_phone'=>'required',
             'address'=>'required',
             'introduce'=>'required'

@@ -58,7 +58,7 @@ Route::group(['prefix'=>"bankehome"],function(){
     Route::get('org/{id}', 'ShareController@getOrgDetail');
 
     //申请机构
-    Route::post('org/{id}', 'ShareController@addOrgApplyFor');
+    Route::post('addorgapplyfor', 'ShareController@addOrgApplyFor');
 
 });
 
