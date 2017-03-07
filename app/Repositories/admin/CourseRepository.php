@@ -24,64 +24,50 @@ class CourseRepository
 
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 
-		$course_name = request('course_name' ,'');
-		$org_name = request('org_name' ,'');
-		$created_at_from = request('created_at_from' ,'');
-		$created_at_to = request('created_at_to' ,'');
+		$course_name = request('name' ,'');
+//		$org_name = request('org_name' ,'');
 		$orders = request('order', []);
+		$status = request('status' ,'');
 
-		$user = new BankeCourse;
+		$course = new BankeCourse;
 
 		/*课程名称搜索*/
 		if($course_name){
 			if($search_pattern){
-				$user = $user->where('name', 'like', $course_name);
+				$course = $course->where('name', 'like', $course_name);
 			}else{
-				$user = $user->where('name', $course_name);
+				$course = $course->where('name', $course_name);
 			}
 		}
-
-		/*机构搜索*/
-		if($org_name){
-			if($search_pattern){
-				$user = $user->where('price', 'like', $org_name);
-			}else{
-				$user = $user->where('price', $org_name);
-			}
+		/*状态搜索*/
+		if ($status!=null) {
+			$course = $course->where('status', $status);
 		}
 
-		/*创建时间搜索*/
-		if($created_at_from){
-			$user = $user->where('created_at', '>=', getTime($created_at_from));	
-		}
-		if($created_at_to){
-			$user = $user->where('created_at', '<=', getTime($created_at_to, false));	
-		}
+//		/*机构搜索*/
+//		if($org_name){
+//			if($search_pattern){
+//				$course = $course->where('price', 'like', $org_name);
+//			}else{
+//				$course = $course->where('price', $org_name);
+//			}
+//		}
 
-		/*修改时间搜索*/
-		if($updated_at_from){
-			$uafc = new Carbon($updated_at_from);
-			$user = $user->where('created_at', '>=', getTime($updated_at_from));	
-		}
-		if($updated_at_to){
-			$user = $user->where('created_at', '<=', getTime($updated_at_to, false));	
-		}
-
-		$count = $user->count();
+		$count = $course->count();
 
 
 		if($orders){
 			$orderName = request('columns.' . request('order.0.column') . '.name');
 			$orderDir = request('order.0.dir');
-			$user = $user->orderBy($orderName, $orderDir);
+			$course = $course->orderBy($orderName, $orderDir);
 		}
 
-		$user = $user->offset($start)->limit($length);
-		$users = $user->get();
+		$course = $course->offset($start)->limit($length);
+		$courses = $course->get();
 
-		if ($users) {
+		if ($courses) {
 			$org = new BankeOrg;
-			foreach ($users as &$v) {
+			foreach ($courses as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
 				$that_org = $org->find($v['org_id']);
 				$v['org_name'] = $that_org['name'];
@@ -92,7 +78,7 @@ class CourseRepository
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $users,
+			'data' => $courses,
 		];
 	}
 

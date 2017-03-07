@@ -359,6 +359,7 @@ class ShareController extends Controller
     /**添加入驻机构**/
     public function addOrgApplyFor(Request $request)
     {
+        Log::info('---------in----------');
         $validator = Validator::make($request->all(), [
             'city' => 'required',
             'name'=>'required',
@@ -372,7 +373,7 @@ class ShareController extends Controller
             return response()->json(['msg' => '字段信息不能为空', 'status' => false]);
         }
         $request = $request->all();
-
+        Log::info('---------'+$request['name']+'----------');
         $repository = new  OrgApplyForRepository();
         $result = $repository->addOrgApplyFor($request);
         if(!$result['status']){
