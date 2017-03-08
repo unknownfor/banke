@@ -34,10 +34,11 @@ class CourseRepository
 
 		/*课程名称搜索*/
 		if($course_name){
+			Log::info('-------------------------'+$course_name);
 			if($search_pattern){
 				$course = $course->where('name', 'like', $course_name);
 			}else{
-				Log::info('-------------------------'+$course_name);
+				Log::info('--------------------131313-----'+$course_name);
 				$course = $course->where('name', $course_name);
 			}
 		}
