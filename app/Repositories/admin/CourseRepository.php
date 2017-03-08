@@ -25,11 +25,12 @@ class CourseRepository
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 
 		$course_name = request('name' ,'');
-//		$org_name = request('org_name' ,'');
+		$org_name = request('org_name' ,'');
 		$orders = request('order', []);
 		$status = request('status' ,'');
 
 		$course = new BankeCourse;
+		$org = new BankeOrg;
 
 		/*课程名称搜索*/
 		if($course_name){
@@ -44,14 +45,22 @@ class CourseRepository
 			$course = $course->where('status', $status);
 		}
 
-//		/*机构搜索*/
-//		if($org_name){
-//			if($search_pattern){
-//				$course = $course->where('price', 'like', $org_name);
-//			}else{
-//				$course = $course->where('price', $org_name);
-//			}
-//		}
+		/*机构搜索*/
+		if($org_name){
+			$tempOrg = $org->where('name', $org_name);
+			if($tempOrg && $tempOrg->count()>0) {
+				$tempOrg = $tempOrg->first();
+				$course = $course->where('org_id', $tempOrg['id']);
+			}else{
+				$courses=$course->where('id','-1')->get();
+				return [
+					'draw' => $draw,
+					'recordsTotal' => 0,
+					'recordsFiltered' => 0,
+					'data' => $courses
+				];
+			}
+		}
 
 		$count = $course->count();
 
@@ -66,7 +75,6 @@ class CourseRepository
 		$courses = $course->get();
 
 		if ($courses) {
-			$org = new BankeOrg;
 			foreach ($courses as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
 				$that_org = $org->find($v['org_id']);

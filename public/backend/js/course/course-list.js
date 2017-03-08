@@ -10,6 +10,7 @@ var TableDatatablesAjax = function() {
         'url' : '/admin/course/ajaxIndex',
         "data": function ( d ) {
           d.name = $('.filter input[name="name"]').val();
+          d.org_name = $('.filter input[name="org_name"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },

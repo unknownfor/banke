@@ -97,7 +97,6 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request,$id)
     {
-        Log::info('-------------------------'+$request['checkin_award']+'---------------------------');
         CourseRepository::update($request,$id);
         return redirect('admin/course');
     }

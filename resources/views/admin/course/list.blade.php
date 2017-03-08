@@ -53,6 +53,17 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
+                        <div class="input-group has-success">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-book"></i>
+                                    </span>
+                            <input type="text" class="form-control form-filter" name="org_name" placeholder="{{ trans('labels.course.org_id') }}">
+                            <div class="form-control-focus"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
                             <option value="" data-icon="fa-glass icon-success">状态....</option>
                             @if(trans('strings.course'))
