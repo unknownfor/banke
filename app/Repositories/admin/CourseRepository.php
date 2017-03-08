@@ -37,6 +37,7 @@ class CourseRepository
 			if($search_pattern){
 				$course = $course->where('name', 'like', $course_name);
 			}else{
+				Log::info('-------------------------'+$course_name);
 				$course = $course->where('name', $course_name);
 			}
 		}
