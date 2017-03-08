@@ -31,7 +31,7 @@ class CourseRepository
 
 		$course = new BankeCourse;
 		$org = new BankeOrg;
-		Log::info('-------------------------哈哈谷侃侃保人');
+		Log::info('-------------------------哈哈谷侃侃保人-----'+$course_name);
 		/*课程名称搜索*/
 		if($course_name){
 			Log::info('-------------------------'+$course_name);
