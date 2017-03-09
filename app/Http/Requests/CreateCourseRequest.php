@@ -58,7 +58,9 @@ class CreateCourseRequest extends Request
             'period' => trans('labels.course.period'),
             'sort' => trans('labels.course.sort'),
             'checkin_award' => trans('labels.course.checkin_award'),
-            'task_award' => trans('labels.course.task_award')
+            'task_award' => trans('labels.course.task_award'),
+            'z_award_amount' => trans('labels.course.z_award_amount'),
+             'enddated' => trans('labels.course.enddated'),
         ];
     }
 }

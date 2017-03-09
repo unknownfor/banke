@@ -235,8 +235,15 @@ class OrderRepository
 						$invitation_user = BankeUserProfiles::where('uid', $userProfile->invitation_uid)->lockForUpdate()->first();
 						if ($invitation_user->do_task_amount > 0) {
 							//邀请成功报名缴费
-							$invite_enrol_config = BankeDict::find(7);
+                                                        // 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
+                                                    $invite_enrol_course =BankeCourse::find( $input['course_id']);
+                                                    if($invite_enrol_course['z_award_amount']==''){
+                                                        $invite_enrol_config = BankeDict::find(7);
 							$invitation_award = moneyFormat(($input['tuition_amount'] * $invite_enrol_config['value'] / 100));
+                                                    }else{
+                                                        $invitation_award=$invite_enrol_course['z_award_amount'];
+                                                    }
+							
 
 							//TODO 这里是否要去掉限制
 //							if($invitation_user->do_task_amount <= $invitation_award){

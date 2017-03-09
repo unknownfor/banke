@@ -26,7 +26,7 @@ class NewsController extends Controller {
      * @return [type]                   [description]
      */
     public function ajaxIndex()
-    {
+    { 
         $data = NewsRepository::ajaxIndex();
         return response()->json($data);
     }
@@ -50,7 +50,7 @@ class NewsController extends Controller {
      * @return [type]                            [description]
      */
     public function store(NewsRequest $request)
-    {
+    {  
         NewsRepository::store($request);
         return redirect('admin/news');
     }

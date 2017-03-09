@@ -15,7 +15,7 @@ class NewsRepository
 	 * @return [type]                   [description]
 	 */
 	public function ajaxIndex()
-	{
+	{   
 		$draw = request('draw', 1);/*获取请求次数*/
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
@@ -29,7 +29,6 @@ class NewsRepository
 		$updated_at_from = request('updated_at_from' ,'');
 		$updated_at_to = request('updated_at_to' ,'');
 		$orders = request('order', []);
-
 		$role = new BankeNews;
 
 		/*配置名称搜索*/
@@ -74,12 +73,14 @@ class NewsRepository
 
 		$role = $role->offset($start)->limit($length);
 		$roles = $role->get();
+               
 
 		if ($roles) {
 			foreach ($roles as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 			}
 		}
+               
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,
@@ -96,7 +97,7 @@ class NewsRepository
 	 * @return [type]                            [description]
 	 */
 	public function store($request)
-	{
+	{   
 		$role = new BankeNews;
 		if ($role->fill($request->all())->save()) {
 			Flash::success(trans('alerts.news.created_success'));
