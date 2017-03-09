@@ -34,7 +34,7 @@ class OrderController extends Controller
      * @return [type]                   [description]
      */
     public function ajaxIndex()
-    {
+    {   
         $data = OrderRepository::ajaxIndex();
         return response()->json($data);
     }

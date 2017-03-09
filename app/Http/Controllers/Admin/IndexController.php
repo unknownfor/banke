@@ -18,7 +18,7 @@ class IndexController extends Controller
 	 * @return   [type]     [description]
 	 */
     public function index()
-    {
+    {   
         return view('admin.index.index');
     }
 
