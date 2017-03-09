@@ -59,7 +59,7 @@ class WithdrawRepository
 			if($user['uid']!=null) {
 				$withDraw = $withDraw->where('uid', $user['uid']);
 			}else{
-				$withDraw = $withDraw->where('uid','0ox3safwvd3gf');
+				$withDraw = $withDraw->where('uid','0');
 			}
 		}
 
