@@ -8,3 +8,4 @@ Homestead.json
 .tags*
 .idea
 public/md5list2.txt
+/nbproject/private/
