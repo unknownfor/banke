@@ -177,6 +177,11 @@ return [
 		'orgapplyforList' => '<i class="fa fa-th-list"></i> 机构入驻申请列表',
 		'orgapplyforEdit' => '<i class="fa fa-user-plus"></i> 创建机构入驻申请',
 		'orgapplyforShow' => '<i class="fa fa-building"></i> 机构入驻申请信息',
+		'orgrebatesList' => '<i class="fa fa-exchange"></i> 返款列表',
+		'orgrebatesShow' => '<i class="fa fa-search"></i> 返款详情',
+		'orgrebatesCreate'=>'<i class="fa fa-user-plus"></i> 添加返款',
+		'orgrebatesShow' => '<i class="fa fa-search"></i> 返款详情',
+		'orgrebatesEdit' => '<i class="fa fa-search"></i> 编辑返款',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -442,5 +447,19 @@ return [
 		'active' => '<span class="label label-success"> 已验证 </span>',
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
+	],
+	'orgrebates' => [
+		'id' => '序号',
+		'org_id' => '机构',
+		'org_name' => '机构名称',
+		'student_mobile' => '学生手机号',
+		'account' => '金额',
+		'opertator_id'=>'处理人',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'status'=>'状态',
+		'list' => '机构返款列表',
+		'show'=>'查看详情',
+		'detail'=>'备注详情'
 	],
 ];

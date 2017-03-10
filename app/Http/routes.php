@@ -106,6 +106,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //机构申请入驻
         require(__DIR__ . '/Routes/OrgApplyForRoute.php');
 
+        //机构返款
+        require(__DIR__ . '/Routes/OrgRebatesRoute.php');
+
     });
 });
 

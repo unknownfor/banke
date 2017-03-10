@@ -162,4 +162,11 @@ return[
 		'show' 	=> 'admin.orgapplyfor.show',
 		'edit' 	=> 'admin.orgapplyfor.edit',
 	],
+	//常见问题
+	'orgrebates' => [
+		'show' 		=> 'admin.orgrebates.show',
+		'create' 	=> 'admin.orgrebates.create',
+		'edit' 		=> 'admin.orgrebates.edit',
+		'destroy' 	=> 'admin.orgrebates.delete',
+	],
 ];
