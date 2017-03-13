@@ -206,4 +206,20 @@ return[
 		// trait 中的 action 参数
 		'action' => 'orgapplyfor',
 	],
+
+	//机构申请
+	'orgapplyfor' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'orgapplyfor',
+	],
+
+	//机构返款
+	'orgrebates' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'orgrebates',
+	],
 ];

@@ -169,4 +169,13 @@ return [
         'soft_deleted_success' => '删除机构成功',
     ],
 
+    'orgrebates' => [
+        'created_success'   => '创建返款成功.',
+        'created_error'     => '创建返款失败.',
+        'updated_success'   => '修改返款成功.',
+        'updated_error'     => '修改返款失败.',
+        'soft_deleted_success' => '删除返款成功',
+        'soft_deleted_error' => '删除返款失败',
+    ],
+
 ];
