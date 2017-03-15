@@ -181,7 +181,7 @@ return [
 		'orgrebatesShow' => '<i class="fa fa-search"></i> 返款详情',
 		'orgrebatesCreate'=>'<i class="fa fa-user-plus"></i> 添加返款',
 		'orgrebatesShow' => '<i class="fa fa-search"></i> 返款详情',
-		'orgrebatesEdit' => '<i class="fa fa-search"></i> 编辑返款',
+		'orgrebatesEdit' => '<i class="fa fa-pencil"></i> 编辑返款',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -454,7 +454,7 @@ return [
 		'org_name' => '机构名称',
 		'student_mobile' => '学生手机号',
 		'account' => '金额',
-		'opertator_id'=>'处理人',
+		'operator_name'=>'处理人',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'status'=>'状态',

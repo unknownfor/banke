@@ -2,18 +2,16 @@ var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
     ajax_datatable = dt.DataTable({
-      "lengthMenu": [[ 50,100], [ 50, 100]],
+      "lengthMenu": [[ 20,50], [ 20, 50]],
       "processing": true,
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/order/ajaxIndex',
+        'url' : '/admin/orgrebates/ajaxIndex',
         "data": function ( d ) {
           d.name =$('.filter input[name="name"]').val();
-          d.mobile =$('.filter input[name="mobile"]').val();
+          d.city =$('.filter input[name="city"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
-          d.created_at_from = $('.filter input[name="created_at_from"]').val();
-          d.created_at_to = $('.filter input[name="created_at_to"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -26,51 +24,51 @@ var TableDatatablesAjax = function() {
           "name" : "id",
         },
         {
-          "data": "name",
-          "name" : "name",
+          "data": "student_mobile",
+          "name" : "student_mobile",
           "orderable" : false,
         },
         {
-          "data": "mobile",
-          "name": "mobile",
+          "data": "org_name",
+          "name": "org_name",
           "orderable" : false,
         },
-        //{
-        //  "data": "org_name",
-        //  "name": "org_name",
-        //  "orderable" : true,
-        //},
         {
-          "data": "course_name",
-          "name": "course_name",
+          "data": "account",
+          "name": "account",
+          "orderable" : false,
+        },
+        {
+          "data": "updated_at",
+          "name": "updated_at",
           "orderable" : true,
         },
-        //{
-        //  "data": "org_account_name",
-        //  "name": "org_account_name",
-        //  "orderable" : true,
-        //},
         {
-          "data": "created_at",
-          "name": "created_at",
+          "data": "operator_name",
+          "name": "operator_name",
           "orderable" : true,
         },
         { 
           "data": "status",
           "name": "status",
-          "orderable" : false,
+          "orderable" : true,
           render:function(data){
             if (data == 1) {
               return '<span class="label label-success"> 正常 </span>';
             }else if(data == 0){
               return '<span class="label label-warning"> 待审核 </span>';
-            }else if(data==2){
-              return '<span class="label label-info"> 已退款 </span>';
             }else{
               return '<span class="label label-danger"> 未通过 </span>';
             }
           }
         },
+        //{
+        //  "data": "id",
+        //  "name": "id",
+        //  render:function(res){
+        //      return '<a href="/admin/course/orgid/'+res+'">课程列表</a>';
+        //  }
+        //},
         { 
           "data": "actionButton",
           "name": "actionButton",
@@ -106,19 +104,9 @@ var TableDatatablesAjax = function() {
       ajax_datatable.ajax.reload();
     });
 
-    //设置查询时间
-    var $date=$('.input-group.date'),
-        $input=$date.find('.input-sm'),
-        date=new Date(),
-        date1=date.getTime()-3*30*24*60*60*1000;
-    $input.eq(0).val(new Date(date1).format('yyyy-MM-dd'));
-    $input.eq(1).val(date.format('yyyy-MM-dd'));
-    $date.datepicker({
-      autoclose: true,
-      todayHighlight:true
+    $('.input-group.date').datepicker({
+      autoclose: true
     });
-
-
     $(".bs-select").selectpicker({
       iconBase: "fa",
       tickIcon: "fa-check"

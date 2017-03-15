@@ -147,7 +147,7 @@ $(function(){
     //注册人数
     new dashBoard({
         id:'main-register',
-        title:'上周注册人数变化',
+        title:'七日注册人数变化',
         xAxix:['周一','周二','周三','周四','周五','周六','周日'],
         yData:[11, 11, 15, 13, 12, 13, 10],
         yStyle:{symbolColor:'#c23531',lineColor:'#c23531'}
@@ -156,7 +156,7 @@ $(function(){
     //报名人数
     new dashBoard({
         id:'main-signin',
-        title:'上周报名人数变化',
+        title:'七日报名人数变化',
         xAxix:['周一','周二','周三','周四','周五','周六','周日'],
         yData:[11, 11, 15, 13, 12, 13, 10],
         yStyle:{symbolColor:'#d48265',lineColor:'#d48265'}
@@ -165,7 +165,7 @@ $(function(){
     //打卡人数
     new dashBoard({
         id:'main-clock',
-        title:'上周打卡人数变化',
+        title:'七日打卡人数变化',
         xAxix:['周一','周二','周三','周四','周五','周六','周日'],
         yData:[11, 11, 15, 13, 12, 13, 10],
         yStyle:{symbolColor:'#61A0A8',lineColor:'#61A0A8'}

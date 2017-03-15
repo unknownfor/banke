@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeOrgRebates;
+use App\Models\Banke\BankeOrg;
 use App\User;
 use Illuminate\Support\Facades\Log;
 use League\Flysystem\Exception;
@@ -56,6 +57,16 @@ class OrgRebatesRepository
 		if ($rebatess) {
 			foreach ($rebatess as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
+				$BankeOrg = new BankeOrg();
+				$v['org_name'] = $BankeOrg::find($v['org_id'])['name'];
+
+//				操作人
+				$operator_name='';
+				$operator = new User;
+				if($v['operator_id']!=""){
+					$operator_name=$operator::find(($v['operator_id']))['name'];
+				}
+				$v['operator_name'] = $operator_name;
 			}
 		}
 		return [
@@ -109,6 +120,9 @@ class OrgRebatesRepository
 	{
 		$rebates = BankeOrgRebates::find($id);
 		if ($rebates) {
+
+			$BankeOrg = new BankeOrg();
+			$rebates['org_name'] = $BankeOrg::find($rebates['org_id'])['name'];
 			$rebatesArray = $rebates->toArray();
 			return $rebatesArray;
 		}
@@ -147,6 +161,8 @@ class OrgRebatesRepository
 	public function store($request)
 	{
 		$rebates = new BankeOrgRebates;
+		$cur_user = Auth::user();
+		$rebates['operator_id'] = $cur_user['id'];
 		if ($rebates->fill($request->all())->save()) {
 			Flash::success(trans('alerts.orgrebates.created_success'));
 			return true;

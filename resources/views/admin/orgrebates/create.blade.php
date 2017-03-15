@@ -66,14 +66,14 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="student_mobile">{{trans('labels.orgrebates.student_mobile')}}</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="student_mobile" placeholder="{{trans('labels.orgrebates.student_mobile')}}" value="{{old('title')}}">
+                                    <input type="text" class="form-control" id="student_mobile" name="student_mobile" placeholder="{{trans('labels.orgrebates.student_mobile')}}" value="">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="account">{{trans('labels.orgrebates.account')}}</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="account" placeholder="{{trans('labels.orgrebates.account')}}" value="{{old('title')}}">
+                                    <input type="text" class="form-control" name="account" id="account" placeholder="{{trans('labels.orgrebates.account')}}" value="">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -89,21 +89,21 @@
                                 <div class="col-md-10">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
-                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.active')) checked @endif>
+                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn">
                                             <label for="status1">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> {{trans('strings.orgrebates.active.1')}} </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if(old('status') === config('admin.global.status.audit')) checked @endif>
+                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" checked>
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> {{trans('strings.orgrebates.audit.1')}} </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>
+                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn">
                                             <label for="status3">
                                                 <span></span>
                                                 <span class="check"></span>
@@ -117,7 +117,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <a href="{{url('admin/orgrebates')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                    <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
+                                    <button type="submit" onclick="submitData()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -140,5 +140,23 @@
         $('.orgSelectpicker').selectpicker({
             liveSearchPlaceholder:'输入机构名称进行搜索'
         });
+
+        window.submitData=function(){
+            var reg=/^1(3|4|5|7|8)\d{9}$/,
+                moblie=$('#student_mobile').val();
+            if(!reg.test(moblie)){
+                alert('学生手机号格式有误！');
+                event.preventDefault();
+                return false;
+            }
+
+            var reg1=/^\d*$/,
+                    account=$('#account').val();
+            if(!reg1.test(account)){
+                alert('金额信息格式有误！');
+                event.preventDefault();
+                return false;
+            }
+        }
     </script>
 @endsection

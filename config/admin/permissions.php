@@ -162,7 +162,7 @@ return[
 		'show' 	=> 'admin.orgapplyfor.show',
 		'edit' 	=> 'admin.orgapplyfor.edit',
 	],
-	//常见问题
+	//机构返款
 	'orgrebates' => [
 		'show' 		=> 'admin.orgrebates.show',
 		'create' 	=> 'admin.orgrebates.create',

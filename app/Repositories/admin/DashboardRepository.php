@@ -25,7 +25,7 @@ class DashboardRepository
 	{
 		$count1= BankeUserProfiles::all()->toArray();//注册
 		$count2 = BankeEnrol::all()->toArray();//预约
-		$count3 = BankeCashBackUser::all()->toArray();//报名
+		$count3 = BankeCashBackUser::where('status',1)->get()->toArray();//报名
 		$count4 = BankeCheckIn::all()->toArray();//打卡
 
 		return array(count($count1),count($count2),count($count3),count($count4));

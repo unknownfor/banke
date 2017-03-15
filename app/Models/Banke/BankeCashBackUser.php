@@ -17,6 +17,8 @@ class BankeCashBackUser extends Model
 
     private $action;
 
+    protected $table = 'banke_cash_back_users';
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);

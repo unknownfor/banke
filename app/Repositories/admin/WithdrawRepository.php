@@ -135,7 +135,6 @@ class WithdrawRepository
 			$role['name'] = $user['name'];
 			$role['mobile'] = $user['mobile'];
 
-			Log::info('----------------------'.$user['account_balance']);
 			$role['account_balance'] = $user['account_balance'];
 
 			$operator_name='';

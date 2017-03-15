@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Http\Requests\CreateOrgRebatesRequest;
 use Illuminate\Http\Request;
 use App\Models\Banke\BankeOrg;
-use App\Http\Requests\OrgRebatesRequest;
+use App\Http\Requests\UpdateOrgRebatesRequest;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
 use OrgRebatesRepository;
@@ -55,7 +56,7 @@ class OrgRebatesController extends Controller
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(OrgRebatesRequest $request)
+    public function store(CreateOrgRebatesRequest $request)
     {
         OrgRebatesRepository::store($request);
         return redirect('admin/orgrebates');
@@ -81,7 +82,7 @@ class OrgRebatesController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(OrgRebatesRequest $request,$id)
+    public function update(UpdateOrgRebatesRequest $request,$id)
     {
         OrgRebatesRepository::update($request,$id);
         return redirect('admin/orgrebates');

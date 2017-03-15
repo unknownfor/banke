@@ -256,7 +256,7 @@ return [
         'DashboardRepository' => App\Facades\DashboardFacade::class,
         'ReportRepository' => App\Facades\ReportFacade::class,
         'OrgApplyForRepository' => App\Facades\OrgApplyForFacade::class,
-        'OrgRebatesRepository' => App\Facades\OrgRebatesRepository::class,
+        'OrgRebatesRepository' => App\Facades\OrgRebatesFacade::class,
     ],
 
 ];

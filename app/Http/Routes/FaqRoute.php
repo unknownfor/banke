@@ -1,6 +1,6 @@
 <?php
 /**
- * 邀请路由
+ * 常见问题路由
  */
 $router->group(['prefix' => 'faq'], function($router){
 	$router->get('ajaxIndex', 'FaqController@ajaxIndex');

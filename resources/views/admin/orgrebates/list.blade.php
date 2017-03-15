@@ -46,7 +46,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="title" placeholder="{{ trans('labels.orgrebates.title') }}">
+                            <input type="text" class="form-control form-filter" name="title" placeholder="{{ trans('labels.orgrebates.org_name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -75,13 +75,14 @@
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
                     <thead>
                         <tr role="row" class="heading">
-                          <th>#</th>
-                          <th width="15%"> {{ trans('labels.orgrebates.title') }} </th>
-                          <th width="35%"> {{ trans('labels.orgrebates.content') }} </th>
-                          <th width="10%"> {{ trans('labels.orgrebates.sort') }} </th>
-                          <th width="10%"> {{ trans('labels.orgrebates.status') }} </th>
-                          <th width="15%"> {{ trans('labels.orgrebates.created_at') }} </th>
-                          <th width="15%"> {{ trans('labels.action') }} </th>
+                            <th>#</th>
+                            <th width="10%"> {{ trans('labels.orgrebates.student_mobile') }} </th>
+                            <th width="32%"> {{ trans('labels.orgrebates.org_name') }} </th>
+                            <th width="10%"> {{ trans('labels.orgrebates.account') }} </th>
+                            <th width="15%"> {{ trans('labels.orgrebates.updated_at') }} </th>
+                            <th width="10%"> {{ trans('labels.orgrebates.operator_name') }} </th>
+                            <th width="10%"> {{ trans('labels.orgrebates.status') }} </th>
+                            <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>

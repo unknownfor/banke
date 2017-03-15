@@ -318,6 +318,7 @@ class OrderRepository
 	 */
 	public function update($request,$id)
 	{
+		Log::info('------------commont------------  '.$request['commont']);
 		$role = BankeCashBackUser::find($id);
 		$input = $request->only(['comment', 'status']);
 		if ($role) {
@@ -446,7 +447,7 @@ class OrderRepository
 	}
 
 	/**
-	 * 根据创建时间，得到 注册半课APP用户
+	 * 根据创建时间，得到 报名用户
 	 * @author shaolei
 	 * @date   2016-04-14T11:32:04+0800
 	 * @param  [type]                   $request [description]
@@ -455,9 +456,9 @@ class OrderRepository
 	public function getUserInLimitTime($startTime,$endTime)
 	{
 		$user = new BankeCashBackUser;
-		$user = $user::where('created_at','>=',getTime($startTime));
-		$user = $user::where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
-		return $user;
+		$user = $user->where('created_at','>=',getTime($startTime));
+		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
+		return $user->get();
 	}
 
 }
