@@ -13,8 +13,17 @@ class BankeUserProfiles extends Model
 
     protected $table = 'banke_user_profiles';
 
-    protected $fillable = ['uid', 'name', 'mobile', 'avatar', 'sex', 'account_balance', 'register_amount',
-        'certification_status', 'certification_time', 'org_id', 'invitation_code'];
+    protected $fillable = ['uid', 'name', 'mobile', 'avatar', 'sex', 'certification_status','org_id','invitation_code','invitation_uid',
+        'account_balance',
+        'total_cashback_amount',
+        'check_in_amount',
+        'do_task_amount',
+        'withdraw_amount',
+        'invitation_count',
+        'register_amount',
+        'invitation_amount',
+        'certification_time',
+        ];
 
     private $action;
 
@@ -22,5 +31,10 @@ class BankeUserProfiles extends Model
     {
         parent::__construct($attributes);
         $this->action = config('admin.global.app_user.action');
+    }
+
+    public function withdraws()
+    {
+        return $this->hasMany('App\Models\Banke\BankeWithDraw','uid','uid');
     }
 }

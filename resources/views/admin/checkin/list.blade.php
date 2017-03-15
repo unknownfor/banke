@@ -96,7 +96,6 @@
                               <th width="20%"> {{ trans('labels.checkin.org_name') }} </th>
                               <th width="8%"> {{ trans('labels.checkin.award_amount') }} </th>
                                 <th width="15%"> {{ trans('labels.checkin.created_at') }} </th>
-                                <th width="15%"> {{ trans('labels.checkin.updated_at') }} </th>
                               <th width="8%"> {{ trans('labels.checkin.status') }} </th>
                               <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
@@ -114,7 +113,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/checkins/checkins-list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/checkin/checkin-list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {

@@ -96,28 +96,32 @@
                               <div class="col-md-11">
                                   @if($withdraw['status']==0)
                                     <div class="md-radio-inline">
-                                  <div class="md-radio">
-                                      <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.active')) checked @endif>
-                                      <label for="status1">
-                                          <span></span>
-                                          <span class="check"></span>
-                                          <span class="box"></span> {{trans('strings.withdraw.active.1')}} </label>
-                                  </div>
-                                  <div class="md-radio">
-                                      <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.audit')) checked @endif>
-                                      <label for="status2">
-                                          <span></span>
-                                          <span class="check"></span>
-                                          <span class="box"></span> {{trans('strings.withdraw.audit.1')}} </label>
-                                  </div>
-                                 <div class="md-radio">
-                                      <input type="radio" id="status3" name="status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.ban')) checked @endif>
-                                      <label for="status3">
-                                          <span></span>
-                                          <span class="check"></span>
-                                          <span class="box"></span> {{trans('strings.withdraw.ban.1')}} </label>
-                                  </div>
-                              </div>
+                                      <div class="md-radio">
+                                          <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.active')) checked @endif>
+                                          <label for="status1">
+                                              <span></span>
+                                              <span class="check"></span>
+                                              <span class="box"></span> {{trans('strings.withdraw.active.1')}} </label>
+                                      </div>
+                                      <div class="md-radio">
+                                          <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.audit')) checked @endif>
+                                          <label for="status2">
+                                              <span></span>
+                                              <span class="check"></span>
+                                              <span class="box"></span> {{trans('strings.withdraw.audit.1')}} </label>
+                                      </div>
+                                     <div class="md-radio">
+                                          <input type="radio" id="status3" name="status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.ban')) checked @endif>
+                                          <label for="status3">
+                                              <span></span>
+                                              <span class="check"></span>
+                                              <span class="box"></span> {{trans('strings.withdraw.ban.1')}} </label>
+                                      </div>
+                                    </div>
+                                    @elseif($withdraw['status']==2)
+                                      <div class="md-radio-inline">
+                                          未通过
+                                      </div>
                                     @else
                                     <div class="md-radio-inline">
                                         已打款

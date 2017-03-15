@@ -51,7 +51,7 @@
                           <th width="8%"> {{ trans('labels.app_user.certification_status') }} </th>
                             <th width="8%"> {{ trans('labels.app_user.account_balance') }} </th>
                             <th width="8%"> {{ trans('labels.app_user.total_cashback_amount') }} </th>
-                            <th width="8%"> {{ trans('labels.app_user.withdrawal_amount') }} </th>
+                            <th width="8%"> {{ trans('labels.app_user.withdraw_amount') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>
                           <th width="8%"> {{ trans('labels.action') }} </th>
@@ -86,7 +86,9 @@
                                         <option value="" data-icon="fa-glass icon-success">认证状态</option>
                                         @if(trans('strings.app_user'))
                                             @foreach(trans('strings.app_user') as $status_key => $status_value)
-                                                <option value="{{config('admin.global.certification_status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
+                                                @if($status_value[1]=='已认证' || $status_value[1]=='未申请')
+                                                    <option value="{{config('admin.global.certification_status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
+                                                @endif
                                             @endforeach
                                         @endif
                                     </select>

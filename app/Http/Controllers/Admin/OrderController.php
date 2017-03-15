@@ -76,7 +76,7 @@ class OrderController extends Controller
      * @return [type]                            [description]
      */
     public function store(Requests\OrderRequest $request)
-    {
+    {   
         OrderRepository::store($request);
         return redirect('admin/order');
     }
@@ -105,7 +105,7 @@ class OrderController extends Controller
      */
 
     public function update(OrderRequest $request,$id)
-    {
+    {  
         OrderRepository::update($request,$id);
         return redirect('admin/order');
 

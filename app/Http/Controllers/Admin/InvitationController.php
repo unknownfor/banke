@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Log;
 class InvitationController extends Controller
 {
 	/**
-     * 提现列表
+     * 邀请列表
      * @author jimmy
      * @date   2016-12-27
      * @return [type]                   [description]

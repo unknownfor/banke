@@ -1,11 +1,8 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeBalanceLog;
-use App\Models\Banke\BankeCheckIn;
-use App\Models\Banke\BankeCourse;
-use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeMessage;
-use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeWithdraw;
 use Carbon\Carbon;
@@ -39,52 +36,73 @@ class WithdrawRepository
 		$created_at_to = request('created_at_to' ,'');
 		$updated_at_from = request('updated_at_from' ,'');
 		$updated_at_to = request('updated_at_to' ,'');
+		$mobile = request('mobile' ,'');
+		$name = request('name' ,'');
 		$orders = request('order', []);
 
-		$role = new BankeWithdraw;
+		$withDraw = new BankeWithdraw;
 
+		/*手机号搜索*/
+		if($mobile){
+			$user = BankeUserAuthentication::where('mobile',$mobile)->first();
+			if($user['uid']!=null) {
+				$withDraw = $withDraw->where('uid', $user['uid']);
+			}
+			else{
+				$withDraw = $withDraw->where('uid','0ox3safwvd3gf');
+			}
+		}
 
+		/*真实姓名搜索*/
+		if ($name) {
+			$user = BankeUserAuthentication::where('real_name',$name)->first();
+			if($user['uid']!=null) {
+				$withDraw = $withDraw->where('uid', $user['uid']);
+			}else{
+				$withDraw = $withDraw->where('uid','0');
+			}
+		}
 
 		/*状态搜索*/
 		if ($status!=null) {
-			$role = $role->where('status', $status);
+			$withDraw = $withDraw->where('status', $status);
 		}
 
 		/*配置创建时间搜索*/
 		if($created_at_from){
-			$role = $role->where('created_at', '>=', getTime($created_at_from));	
+			$withDraw = $withDraw->where('created_at', '>=', getTime($created_at_from));
 		}
 		if($created_at_to){
-			$role = $role->where('created_at', '<=', getTime($created_at_to, false));	
+			$withDraw = $withDraw->where('created_at', '<=', getTime($created_at_to, false));
 		}
 
 		/*配置修改时间搜索*/
 		if($updated_at_from){
 			$uafc = new Carbon($updated_at_from);
-			$role = $role->where('created_at', '>=', getTime($updated_at_from));	
+			$withDraw = $withDraw->where('created_at', '>=', getTime($updated_at_from));
 		}
 		if($updated_at_to){
-			$role = $role->where('created_at', '<=', getTime($updated_at_to, false));	
+			$withDraw = $withDraw->where('created_at', '<=', getTime($updated_at_to, false));
 		}
 
-		$count = $role->count();
+		$count = $withDraw->count();
 
 
 		if($orders){
 			$orderName = request('columns.' . request('order.0.column') . '.name');
 			$orderDir = request('order.0.dir');
-			$role = $role->orderBy($orderName, $orderDir);
+			$withDraw = $withDraw->orderBy($orderName, $orderDir);
 		}
 
-		$role = $role->offset($start)->limit($length);
-		$roles = $role->get();
+		$withDraw = $withDraw->offset($start)->limit($length);
+		$withDraws = $withDraw->get();
 
-		if ($roles) {
+		if ($withDraws) {
 			$operator = new User;
-			foreach ($roles as &$v) {
+			foreach ($withDraws as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
-				$user = BankeUserProfiles::find($v['uid']);
-				$v['name'] = $user['name'];
+				$user = BankeUserAuthentication::where('uid',$v['uid'])->first();
+				$v['name'] = $user['real_name'];
 				$v['mobile'] = $user['mobile'];
 				$operator_name="";
 				if($v['operator_uid']!=""){
@@ -92,14 +110,13 @@ class WithdrawRepository
 				}
 				$v['operator_name'] = $operator_name;
 
-
 			}
 		}
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $roles,
+			'data' => $withDraws,
 		];
 	}
 
@@ -112,8 +129,8 @@ class WithdrawRepository
 	 */
 	public function store($request)
 	{
-		$role = new BankeWithdraw;
-		if ($role->fill($request->all())->save()) {
+		$withDraw = new BankeWithdraw;
+		if ($withDraw->fill($request->all())->save()) {
 			Flash::success(trans('alerts.checkin.created_success'));
 			return true;
 		}
@@ -129,22 +146,21 @@ class WithdrawRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeWithdraw::find($id);
-		if ($role) {
-			$user = BankeUserProfiles::find($role['uid']);
-			$role['name'] = $user['name'];
-			$role['mobile'] = $user['mobile'];
-
-			$role['account_balance'] = $user['account_balance'];
-
+		$withDraw = BankeWithdraw::find($id);
+		if ($withDraw) {
+			$userAu = BankeUserAuthentication::find($withDraw['uid']);
+			$user = BankeUserProfiles::find($withDraw['uid']);
+			$withDraw['name'] = $userAu['real_name'];
+			$withDraw['mobile'] = $user['mobile'];
+			$withDraw['account_balance'] = $user['account_balance'];
 			$operator_name='';
 			$operator = new User;
-			if($role['operator_uid']!=""){
-				$operator_name=$operator::find(($role['operator_uid']))['name'];
+			if($withDraw['operator_uid']!=""){
+				$operator_name=$operator::find(($withDraw['operator_uid']))['name'];
 			}
 			$v['operator_name'] = $operator_name;
-			$roleArray = $role->toArray();
-			return $roleArray;
+			$withDrawArray = $withDraw->toArray();
+			return $withDrawArray;
 		}
 		abort(404);
 	}
@@ -161,19 +177,19 @@ class WithdrawRepository
 		$input = $request->only(['status', 'processing_result']);
 		$cur_user = Auth::user();
 		$input['operator_uid'] = $cur_user['id'];
-		$role = BankeWithdraw::find($id);
-		if ($role) {
-			if ($role->fill($input)->save()) {
+		$withDraw = BankeWithdraw::find($id);
+		if ($withDraw) {
+			if ($withDraw->fill($input)->save()) {
 				if($input['status'] == config('admin.global.status.ban')){
 					DB::beginTransaction();
 					try {
-						$user_profile = BankeUserProfiles::where('uid', $role['uid'])->lockForUpdate()->first();
-						$user_profile->account_balance += $role['withdraw_amount'];
+						$user_profile = BankeUserProfiles::where('uid', $withDraw['uid'])->lockForUpdate()->first();
+						$user_profile->account_balance += $withDraw['withdraw_amount'];
 						$user_profile->save();
 
 						$balance_log = [
-							'uid'=>$role['uid'],
-							'change_amount'=>$role['withdraw_amount'],
+							'uid'=>$withDraw['uid'],
+							'change_amount'=>$withDraw['withdraw_amount'],
 							'change_type'=>'+',
 							'business_type'=>'WITHDRAW_FAIL',
 							'operator_uid'=>$cur_user['id'],
@@ -183,9 +199,9 @@ class WithdrawRepository
 						BankeBalanceLog::create($balance_log);
 
 						$message1 = [
-							'uid'=>$role['uid'],
+							'uid'=>$withDraw['uid'],
 							'title'=>'提现失败',
-							'content'=>'您于'.$role['created_at'].'发起的'.$role['withdraw_amount'].'元提现失败！
+							'content'=>'您于'.$withDraw['created_at'].'发起的'.$withDraw['withdraw_amount'].'元提现失败！
 							'.$input['processing_result'],
 							'type'=>'WITHDRAW_FAIL'
 						];
@@ -201,16 +217,18 @@ class WithdrawRepository
 						Flash::error(trans('alerts.withdraw.updated_error'));
 						return false;
 					}
-				}elseif($input['status'] == config('admin.global.status.active')){
+				}
+				elseif($input['status'] == config('admin.global.status.active')){
 					$message1 = [
-						'uid'=>$role['uid'],
+						'uid'=>$withDraw['uid'],
 						'title'=>'提现成功',
-						'content'=>'您于'.$role['created_at'].'发起的'.$role['withdraw_amount'].'元提现已成功！',
+						'content'=>'您于'.$withDraw['created_at'].'发起的'.$withDraw['withdraw_amount'].'元提现已成功！',
 						'type'=>'WITHDRAW_SUCCESS'
 					];
 					//记录消息
 					BankeMessage::create($message1);
 					Flash::success(trans('alerts.withdraw.updated_success'));
+
 					return true;
 				}
 			}else{
@@ -232,10 +250,10 @@ class WithdrawRepository
 	 */
 	public function mark($id,$status)
 	{
-		$role = BankeWithdraw::find($id);
-		if ($role) {
-			$role->status = $status;
-			if ($role->save()) {
+		$withDraw = BankeWithdraw::find($id);
+		if ($withDraw) {
+			$withDraw->status = $status;
+			if ($withDraw->save()) {
 				Flash::success(trans('alerts.checkin.updated_success'));
 				return true;
 			}

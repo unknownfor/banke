@@ -68,6 +68,10 @@ class CourseController extends Controller
         if($request['task_award']==''){
             $request['task_award']=$percent[1]['value'];
         }
+//        如果没有手动设置转介绍金额奖励则调用系统分配
+        if($request['z_award_amount']==''){
+            $request['z_award_amount']=$percent[2]['value'];
+        }
         CourseRepository::store($request);
         return redirect('admin/course');
     }
@@ -96,8 +100,18 @@ class CourseController extends Controller
      * @return [type]                            [description]
      */
     public function update(UpdateCourseRequest $request,$id)
-    {
-        Log::info('-------------------------'+$request['checkin_award']+'---------------------------');
+    {   
+        $percent=$this->getDict();
+        if($request['checkin_award']==''){
+            $request['checkin_award']=$percent[0]['value'];
+        }
+        if($request['task_award']==''){
+            $request['task_award']=$percent[1]['value'];
+        }
+//        如果没有手动设置转介绍金额奖励则调用系统分配
+        if($request['z_award_amount']==''){
+            $request['z_award_amount']=$percent[2]['value'];
+        }
         CourseRepository::update($request,$id);
         return redirect('admin/course');
     }
@@ -145,7 +159,7 @@ class CourseController extends Controller
 
     public function  getDict(){
         $percent = new BankeDict;
-        $percent = $percent->whereIn('id', [3, 4])->get();
+        $percent = $percent->whereIn('id', [3, 4, 7])->get();
         return $percent;
     }
 

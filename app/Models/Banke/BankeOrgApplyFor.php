@@ -13,7 +13,7 @@ class BankeOrgApplyFor extends Model
      *
      * @var string
      */
-    protected $table = 'banke_org_apply';
+    protected $table = 'banke_org_apply_for';
 
     protected $fillable = ['updated_at', 'status'];
 

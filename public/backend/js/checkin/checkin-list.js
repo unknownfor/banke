@@ -2,16 +2,18 @@ var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
     ajax_datatable = dt.DataTable({
-      "lengthMenu": [[ 50,100], [ 50, 100]],
+      "lengthMenu": [[ 10,20], [ 10, 20]],
       "processing": true,
       "serverSide": true,
       "searching" : false,
       "ajax": {
         'url' : '/admin/checkin/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
+          d.course_name =$('.filter input[name="course_name"]').val();
           d.mobile =$('.filter input[name="mobile"]').val();
-          d.status = $('.filter select[name="status"] option:selected').val();
+          d.org_name = $('.filter select[name="org_name"]').val();
+          d.created_at_from = $('.filter select[name="created_at_from"]').val();
+          d.created_at_to = $('.filter select[name="created_at_to"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -51,11 +53,6 @@ var TableDatatablesAjax = function() {
         {
           "data": "created_at",
           "name": "created_at",
-          "orderable" : true,
-        },
-        {
-          "data": "updated_at",
-          "name": "updated_at",
           "orderable" : true,
         },
         {

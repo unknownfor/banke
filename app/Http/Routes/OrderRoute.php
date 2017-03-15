@@ -14,6 +14,7 @@ $router->group(['prefix' => 'order'], function($router){
 		  	]);
 	$router->get('ajaxCheck', 'OrderController@ajaxCheck');
 	$router->get('check', 'OrderController@check');
+       
 });
 
 $router->resource('order', 'OrderController');

@@ -13,6 +13,7 @@ var TableDatatablesAjax = function() {
           d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
           d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
+          d.name = $('.filter input[name="name"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -60,7 +61,7 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
           render:function(data){
             if (data == 1) {
-              return '<span class="label label-success"> 已提现 </span>';
+              return '<span class="label label-success"> 已打款 </span>';
             }
             else if(data==0){
               return '<span class="label label-info"> 申请中 </span>';

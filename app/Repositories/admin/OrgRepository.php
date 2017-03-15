@@ -189,11 +189,31 @@ class OrgRepository
 	 */
 	public function getTop($num)
 	{
-		$report = new BankeOrg;
-		$report = $report->where('status', 1);
-		$report = $report->offset(0)->limit($num);
-		$reports = $report->get()->all();
-		return $reports;
+		$org = new BankeOrg;
+		$org = $org->where('status', 1);
+		$org = $org->offset(0)->limit($num);
+		$orgs = $org->get()->all();
+		return $orgs;
+	}
+
+	/**
+	 * 机构具体信息
+	 * @author jimmy
+	 * @date   2017-02-23T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function getDetail($id)
+	{
+		$org = new BankeOrg;
+		$org = $org->find($id);
+		if ($org) {
+			foreach ($org as &$v) {
+				$v['course'] = $v->course()->where('status', 1);
+			}
+		}
+		$orgs = $org->get()->all();
+		return $orgs;
 	}
 
 }

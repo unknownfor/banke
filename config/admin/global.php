@@ -22,12 +22,13 @@ return[
 	/*认证状态  此处弄反，和其他的不一样
 	* audit 	正常
 	* active 	待审核
-	* trash	回收站
+	* no_apply  未申请
+	* trash		回收站
 	 */
 	'certification_status' => [
-		'no_apply' => 0,
-		'active' => 1,
 		'audit' => 2,
+		'active' => 1,
+		'no_apply' => 0,
 		'trash' => 3,
 	],
 
@@ -35,6 +36,7 @@ return[
 	'withdraw_status' => [
 		'audit' => 0,
 		'active' => 1,
+		'ban' => 2,
 	],
 	//分页
 	'list' => [
@@ -52,6 +54,7 @@ return[
 		'WITHDRAW' => '提现',
 		'CHECK_IN_SUCCESS' => '打卡奖励',
 		'INVITE_FRIEND_ENROL_SUCCESS' => '邀请报名成功奖励',
+		'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS' => '邀请认证成功奖励',
 		'REGISTER_AND_CERTIFICATE_SUCCESS' => ' 注册奖励',
 		'USER_CERTIFICATE_SUCCESS' => '邀请注册奖励',
 		'PUNISHMENT' => '惩罚',

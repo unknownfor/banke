@@ -50,6 +50,16 @@ Route::group(['prefix'=>"bankehome"],function(){
 
     //媒体报道
     Route::get('reports', 'ShareController@getMediaReport');
+
+    //精选机构
+    Route::get('orgs', 'ShareController@getChoicenessOrgs');
+
+    //机构详情
+    Route::get('org/{id}', 'ShareController@getOrgDetail');
+
+    //申请机构
+    Route::post('addorgapplyfor', 'ShareController@addOrgApplyFor');
+
 });
 
 Route::group(['prefix'=>"smstest"],function(){

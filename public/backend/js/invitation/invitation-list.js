@@ -2,7 +2,7 @@ var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
     ajax_datatable = dt.DataTable({
-      "lengthMenu": [[ 50,100], [ 50, 100]],
+      "lengthMenu": [[10, 20,50], [10,20, 50]],
       "processing": true,
       "serverSide": true,
       "searching" : false,
@@ -43,7 +43,11 @@ var TableDatatablesAjax = function() {
           "name": "register_at",
           "orderable" : false,
            render:function(data) {
-             return data.date.replace(/\s.*/g,'');
+             if(data && data.date) {
+               return data.date.replace(/\s.*/g, '');
+             }else{
+               return'';
+             }
            }
         },
         {
@@ -60,8 +64,8 @@ var TableDatatablesAjax = function() {
           }
         },
         {
-          "data": "enrol_status",
-          "name": "enrol_status",
+          "data": "order_status",
+          "name": "order_status",
           "orderable" : false,
           render:function(data){
             if (data == 1) {

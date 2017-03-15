@@ -6,6 +6,8 @@ use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeNews;
 use App\Models\Banke\BankeOrg;
+use App\Repositories\admin\OrgRepository;
+use App\Repositories\admin\OrgApplyForRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -57,13 +59,17 @@ class ShareController extends Controller
      */
     public function course($id)
     {
-        $course = BankeCourse::find($id);
-        $course['discount'] = BankeDict::whereIn('id', [3, 4])
-            ->sum('value');
-        $course['real_price'] = moneyFormat($course['price'] * $course['discount'] / 100);
-        $org = BankeOrg::find($course['org_id']);
-        $course['org'] = $org;
+        $course = $this->getCourseInfo($id);
         return view('web.org.course')->with(compact(['course']));
+    }
+
+    /**
+     * 分享课程详情
+     */
+    public function share_course($id)
+    {
+        $course = $this->getCourseInfo($id);
+        return view('web.org.share_course')->with(compact(['course']));
     }
 
     /**
@@ -75,18 +81,25 @@ class ShareController extends Controller
         return view('web.org.share_org')->with(compact(['org']));
     }
 
-    /**
-     * 分享课程详情
-     */
-    public function share_course($id)
-    {
+
+
+    public function  getCourseInfo($id){
         $course = BankeCourse::find($id);
-        $course['discount'] = BankeDict::whereIn('id', [3, 4])
-            ->sum('value');
+
+        $percent = new BankeDict;
+        $percent = $percent->whereIn('id', [3, 4])->get();
+
+        if($course['checkin_award']=='' || $course['checkin_award']==0){
+            $course['checkin_award']=$percent[0]['value'];
+        }
+        if($course['task_award']=='' || $course['task_award']==0){
+            $course['task_award']=$percent[1]['value'];
+        }
+        $course['discount'] = $course['checkin_award'] + $course['task_award'];
         $course['real_price'] = moneyFormat($course['price'] * $course['discount'] / 100);
         $org = BankeOrg::find($course['org_id']);
         $course['org'] = $org;
-        return view('web.org.share_course')->with(compact(['course']));
+        return $course;
     }
 
     /**
@@ -199,11 +212,6 @@ class ShareController extends Controller
                     ],
                     'verify' => false
                 ];
-//                $pa = [
-//                    'mobilePhoneNumber' => $userData['mobile'],
-//                    'content' => '您好！' . $config['value'] . '元现金红包已成功发送至您的半课APP账户中！登陆账号为您的领取手机号码，'
-//                        . '初始密码为' . $password . '，记得登陆后修改密码！'
-//                ];
                 $headers = [
                     'headers' => [
                         'X-LC-Id' => env('LC_APP_ID'),
@@ -211,41 +219,18 @@ class ShareController extends Controller
                         'Content-Type' => 'application/json'
                     ]
                 ];
-//                $headerArr = array();
-//                foreach ($headers
-//                         as
-//                         $n
-//                =>
-//                         $v)
-//                {
-//                    $headerArr[] = $n . ':' . $v;
-//                }
-//                $post_data = json_encode($pa);
 
-                Log::info('----------------------------------------');
-                Log::info($pa);
-                Log::info($headers);
-                Log::info('----------------------------------------');
                 $http = new Client($headers);
                 $res = $http->request('post', env('LC_REQUEST_URL'), $pa);
 
                 if ($res) {
-                    Log::info('----------------------------------------');
-                    Log::info('send register successful message');
-                    Log::info('----------------------------------------');
                     return ApiResponseService::success('', Code::SUCCESS, '注册成功');
                 }
                 else {
-                    Log::info('----------------------------------------');
-                    Log::info($res);
-                    Log::info('----------------------------------------');
                     return ApiResponseService::showError(Code::SEND_SMS_ERROR);
                 }
             }
             catch (ClientException $e) {
-                Log::info('----------------------------------------');
-                Log::info($e);
-                Log::info('----------------------------------------');
                 return ApiResponseService::showError(Code::SEND_SMS_ERROR);
             }
         }
@@ -318,4 +303,83 @@ class ShareController extends Controller
         }
     }
 
+    /**获得入驻机构**/
+    public function getChoicenessOrgs()
+    {
+        try {
+            $repository = new OrgRepository();
+            $org = $repository->getTop(10);
+            $param = [
+                'data' => $org,
+                'template' => '获取精选机构成功',
+                'status' => true
+            ];
+            return ApiResponseService::success('', Code::SUCCESS, $param);
+        }
+        catch (ClientException $e) {
+            $param = [
+                'template' => '获取精选机构失败',
+                'status' => false
+            ];
+            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
+        }
+    }
+
+    /**获得入驻机构的具体信息**/
+    public function getOrgDetail($id)
+    {
+//        $validator = Validator::make($request->all(), [
+//            'id' => 'required'
+//        ]);
+
+//        if ($validator->fails()) {
+//            return response()->json(['msg' => '机构id不能为空', 'status' => false]);
+//        }
+//        $request = $request->all();
+//        $id = $request['mobile'];
+        try {
+            $repository = new OrgRepository();
+            $org = $repository->getDetail($id);
+            $param = [
+                'data' => $org,
+                'template' => '获取机构信息成功',
+                'status' => true
+            ];
+            return ApiResponseService::success('', Code::SUCCESS, $param);
+        }
+        catch (ClientException $e) {
+            $param = [
+                'template' => '获选机构信息失败',
+                'status' => false
+            ];
+            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
+        }
+    }
+
+    /**添加入驻机构**/
+    public function addOrgApplyFor(Request $request)
+    {
+        Log::info('---------in----------');
+        $validator = Validator::make($request->all(), [
+            'city' => 'required',
+            'name'=>'required',
+            'contact'=>'required',
+            'tel_phone'=>'required',
+            'address'=>'required',
+            'introduce'=>'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['msg' => '字段信息不能为空', 'status' => false]);
+        }
+        $request = $request->all();
+        Log::info('---------'+$request['name']+'----------');
+        $repository = new  OrgApplyForRepository();
+        $result = $repository->addOrgApplyFor($request);
+        if(!$result['status']){
+            return response()->json($result);
+        }else{
+            return response()->json(['msg' => '机构申请添加成功', 'status' => true]);
+        }
+    }
 }

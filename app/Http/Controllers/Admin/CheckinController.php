@@ -35,16 +35,6 @@ class CheckinController extends Controller
         $data = CheckinRepository::ajaxIndex();
         return response()->json($data);
     }
-    /**
-     * 添加机构视图
-     * @author 晚黎
-     * @date   2016-04-13T11:26:16+0800
-     * @return [type]                   [description]
-     */
-    public function create()
-    {
-//        return view('admin.org.create')->with(compact(['permissions','roles']));
-    }
 
     /**
      * 添加机构

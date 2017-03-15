@@ -51,6 +51,7 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         $router->get('/image/lib', 'ImageController@showImageLib');
         $router->get('/image/image_list', 'ImageController@showImageList');
         $router->post('/image/destroy/{id}', 'ImageController@destroy');
+        
 
         //操作日志
         $router->get('/actionlog', 'ActionLogController@actionList');
@@ -117,4 +118,3 @@ Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web'] ],function($
 
     require(__DIR__ . '/Routes/web.php');
 });
-

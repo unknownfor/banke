@@ -54,7 +54,7 @@ class EnrolRepository
 		}
 
 		/*状态搜索*/
-		if ($status) {
+		if ($status!=null) {
 			$role = $role->where('status', $status);
 		}
 

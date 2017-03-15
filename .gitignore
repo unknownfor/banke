@@ -7,4 +7,6 @@ Homestead.json
 /public/backend/uploads
 .tags*
 .idea
-public/md5list2.txt
+/public/md5list2.txt
+/nbproject
+/public/.user.ini

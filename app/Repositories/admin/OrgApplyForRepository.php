@@ -134,4 +134,29 @@ class OrgApplyForRepository
 		abort(404);
 	}
 
+	/**
+	 * 添加申请机构信息
+	 * @author jimmy
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public function addOrgApplyFor($request)
+	{
+		$org = BankeOrgApplyFor::where('name',$request['name']);
+		if ($org->count()>0) {
+			if ($org->fill($request->all())->save()) {
+				Flash::success(trans('alerts.orgapplyfor.updated_success'));
+				return array("status"=>true,"msg"=>"机构申请添加成功");
+			}
+			return array("status"=>false,"msg"=>"机构申请添加失败");
+		}else{
+			return array("status"=>false,"msg"=>"该机构已存在");
+		}
+	}
+
+
+
+
 }
