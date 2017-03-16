@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeInvitation;
+use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeUserProfiles;
 use App\User;
 use Carbon\Carbon;
@@ -96,7 +97,7 @@ class UserRepository
 		}
 
 		$user = $user->offset($start)->limit($length);
-		$users = $user->get();
+		$users = $user->orderBy("id", "desc")->get();
 
 		if ($users) {
 			foreach ($users as &$v) {
@@ -312,8 +313,16 @@ class UserRepository
 	public function search_by_mobile()
 	{
 		$mobile = request('mobile', '');
-		$user_info = BankeUserProfiles::where('mobile', $mobile)->get(['uid', 'name', 'mobile']);
-//		if($user_info[])
+		$auth = request('auth', '');  //是否查询已认证
+		if($auth==true) {
+			$user_info=new BankeUserAuthentication;
+			$user_info = $user_info->where('mobile', $mobile);
+			$user_info = $user_info->where('certification_status','2')->get(['uid', 'real_name', 'mobile']);
+		}else{
+			$user_info =new BankeUserProfiles;
+			$user_info = $user_info::where('mobile', $mobile)->get(['uid', 'name', 'mobile']);
+		}
+
 		return $user_info;
 	}
 

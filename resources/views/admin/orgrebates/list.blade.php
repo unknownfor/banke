@@ -46,7 +46,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="title" placeholder="{{ trans('labels.orgrebates.org_name') }}">
+                            <input type="text" class="form-control form-filter" name="org_name" placeholder="{{ trans('labels.orgrebates.org_name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>

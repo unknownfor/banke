@@ -71,7 +71,7 @@ class CourseRepository
 		}
 
 		$course = $course->offset($start)->limit($length);
-		$courses = $course->get();
+		$courses = $course->orderBy("id", "desc")->get();
 
 		if ($courses) {
 			foreach ($courses as &$v) {

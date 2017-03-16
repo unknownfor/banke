@@ -3,10 +3,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <style type="text/css">
         #detail{
-            margin-top: 20px;
-            height: 200px;
-            width: 100%;
-        }
+             margin-top: 20px;
+             height: 200px;
+             width: 100%;
+         }
     </style>
 @endsection
 @section('content')
@@ -47,7 +47,7 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/orgrebates')}}">
+                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/orgrebates')}}" onSubmit="return submitData();">
                         {!! csrf_field() !!}
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
@@ -63,13 +63,29 @@
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
+
+
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="student_mobile">{{trans('labels.orgrebates.student_mobile')}}</label>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" id="student_mobile" name="student_mobile" placeholder="{{trans('labels.orgrebates.student_mobile')}}" value="">
+                                <label class="col-md-1 control-label" for="student_mobile">{{trans('labels.orgrebates.student_name')}}</label>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control" readonly = "readonly" id="name" name="name" value="">
+                                    <input type="hidden" class="form-control" name="student_mobile">
                                     <div class="form-control-focus"> </div>
                                 </div>
+                                <div class="col-md-9">
+                                    <div class="my-search-box">
+                                        <div class="my-search-header">
+                                            <input type="text" class="my-search-input" id="phone-search-input" placeholder="输入手机号进行搜索">
+                                            <a href="javascript:void(0)" class="search-btn btn blue">搜索</a>
+                                        </div>
+                                        <div class="my-search-result">
+                                            <ul class="my-search-result-ul"></ul>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
+
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="account">{{trans('labels.orgrebates.account')}}</label>
                                 <div class="col-md-8">
@@ -117,7 +133,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <a href="{{url('admin/orgrebates')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                    <button type="submit" onclick="submitData()" class="btn blue">{{trans('crud.submit')}}</button>
+                                    <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -136,27 +152,5 @@
 @endsection
 @section('js')
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-    <script type="text/javascript">
-        $('.orgSelectpicker').selectpicker({
-            liveSearchPlaceholder:'输入机构名称进行搜索'
-        });
-
-        window.submitData=function(){
-            var reg=/^1(3|4|5|7|8)\d{9}$/,
-                moblie=$('#student_mobile').val();
-            if(!reg.test(moblie)){
-                alert('学生手机号格式有误！');
-                event.preventDefault();
-                return false;
-            }
-
-            var reg1=/^\d*$/,
-                    account=$('#account').val();
-            if(!reg1.test(account)){
-                alert('金额信息格式有误！');
-                event.preventDefault();
-                return false;
-            }
-        }
-    </script>
+    <script type="text/javascript" src="{{asset('backend/js/orgrebates/index.js')}}"></script>
 @endsection

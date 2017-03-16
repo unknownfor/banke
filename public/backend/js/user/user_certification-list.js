@@ -9,13 +9,13 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/app_user/ajaxCertification',
         "data": function ( d ) {
-          d.name = $('.filter input[name="real_name"]').val();
-          d.mobile = $('.filter input[name="mobile"]').val();
+          d.name = $('.filter input[name="name"]').val().replace(/(^\s+)|(\s+$)/g,"");
+          d.mobile = $('.filter input[name="mobile"]').val().replace(/(^\s+)|(\s+$)/g,"");
           d.certification_status = $('.filter select[name="certification_status"] option:selected').val();
-          d.school = $('.filter input[name="school"]').val();
-          d.major = $('.filter input[name="major"]').val();
-          d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
-          d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
+          d.school = $('.filter input[name="school"]').val().replace(/(^\s+)|(\s+$)/g,"");
+          d.major = $('.filter input[name="major"]').val().replace(/(^\s+)|(\s+$)/g,"");
+          //d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
+          //d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -78,16 +78,16 @@ var TableDatatablesAjax = function() {
             }
           }
         },
-        {
-          "data": "certification_time",
-          "name": "certification_time",
-          "orderable" : false,
-        },
-        { 
-          "data": "updated_at",
-          "name": "updated_at",
-          "orderable" : true,
-        },
+        //{
+        //  "data": "certification_time",
+        //  "name": "certification_time",
+        //  "orderable" : false,
+        //},
+        //{
+        //  "data": "updated_at",
+        //  "name": "updated_at",
+        //  "orderable" : true,
+        //},
         { 
           "data": "actionButton",
           "name": "actionButton",

@@ -51,6 +51,13 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="short_name">{{trans('labels.org.short_name')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$org['short_name']}} </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="intro">{{trans('labels.org.intro')}}</label>
                           <div class="col-md-9">
                               <div class="form-control form-control-static"> {{$org['intro']}} </div>

@@ -95,7 +95,7 @@ class WithdrawRepository
 		}
 
 		$withDraw = $withDraw->offset($start)->limit($length);
-		$withDraws = $withDraw->get();
+		$withDraws = $withDraw->orderBy("id", "desc")->get();
 
 		if ($withDraws) {
 			$operator = new User;

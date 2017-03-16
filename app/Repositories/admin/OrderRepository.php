@@ -94,7 +94,7 @@ class OrderRepository
 		}
 
 		$role = $role->offset($start)->limit($length);
-		$roles = $role->get();
+		$roles = $role->orderBy("id", "desc")->get();
 
 		if ($roles) {
 			foreach ($roles as &$v) {
@@ -181,7 +181,7 @@ class OrderRepository
 		}
 
 		$role = $role->offset($start)->limit($length);
-		$roles = $role->get();
+		$roles = $role->orderBy("id", "desc")->get();
 
 		if ($roles) {
 			foreach ($roles as &$v) {

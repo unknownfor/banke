@@ -75,7 +75,7 @@ class OrderController extends Controller
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(Requests\OrderRequest $request)
+    public function store(OrderRequest $request)
     {   
         OrderRepository::store($request);
         return redirect('admin/order');

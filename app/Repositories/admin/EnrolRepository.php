@@ -85,7 +85,7 @@ class EnrolRepository
 		}
 
 		$role = $role->offset($start)->limit($length);
-		$enrols = $role->get();
+		$enrols = $role->orderBy("id", "desc")->get();
 
 		if ($enrols) {
 			foreach ($enrols as &$v) {

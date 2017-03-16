@@ -102,7 +102,7 @@ class PermissionRepository
 		}
 
 		$permission = $permission->offset($start)->limit($length);
-		$permissions = $permission->get();
+		$permissions = $permission->orderBy("id", "desc")->get();
 
 		if ($permissions) {
 			foreach ($permissions as &$v) {

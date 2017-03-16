@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeUserAuthentication;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeOrgRebates;
@@ -28,21 +29,22 @@ class OrgRebatesRepository
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
-//		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
-		$search_pattern = true;
 
-		$title = request('title' ,'');
+		$org_name = request('org_name' ,'');
 		$status = request('status' ,'');
 
 		$rebates = new BankeOrgRebates();
 
 		/*配置名称搜索*/
-		if($title){
-			if($search_pattern){
-				$rebates = $rebates->where('title', 'like', $title);
-			}else{
-				$rebates = $rebates->where('title', $title);
+		if($org_name){
+			$org=new BankeOrg();
+			$org=$org->where('name',$org_name);
+			$org_id=0;
+			if($org->count()>0) {
+				$org=$org->get()[0];
+				$org_id =$org['id'];
 			}
+			$rebates = $rebates->where('org_id', $org_id);
 		}
 		/*状态搜索*/
 		if ($status!=null) {
@@ -52,13 +54,13 @@ class OrgRebatesRepository
 		$count = $rebates->count();
 
 		$rebates = $rebates->offset($start)->limit($length);
-		$rebatess = $rebates->get();
+		$rebatess = $rebates->orderBy("id", "desc")->get();
 
 		if ($rebatess) {
 			foreach ($rebatess as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
-				$BankeOrg = new BankeOrg();
-				$v['org_name'] = $BankeOrg::find($v['org_id'])['name'];
+				$bankeOrg = new BankeOrg();
+				$v['org_name'] = $bankeOrg::find($v['org_id'])['name'];
 
 //				操作人
 				$operator_name='';
@@ -106,6 +108,11 @@ class OrgRebatesRepository
 	{
 
 		$rebates = BankeOrgRebates::find($id)->toArray();
+		$bankeOrg = new BankeOrg();
+		$rebates['org_name'] = $bankeOrg::find($rebates['org_id'])['name'];
+		$user=BankeUserAuthentication::where('mobile',$rebates['student_mobile']);
+		$user=$user->first();
+		$rebates['student_name'] = $user['real_name'];
 		return $rebates;
 	}
 

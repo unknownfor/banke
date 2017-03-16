@@ -55,7 +55,7 @@ class OrgRepository
 		$count = $org->count();
 
 		$org = $org->offset($start)->limit($length);
-		$orgs = $org->get();
+		$orgs = $org->orderBy("id", "desc")->get();
 
 		if ($orgs) {
 			foreach ($orgs as &$v) {

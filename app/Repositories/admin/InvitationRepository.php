@@ -68,7 +68,7 @@ class InvitationRepository
 
 
 		$invitation = $invitation->offset($start)->limit($length);
-		$invitations = $invitation->get();
+		$invitations = $invitation->orderBy("id", "desc")->get();
 
 		if ($invitations) {
 			foreach ($invitations as &$v) {

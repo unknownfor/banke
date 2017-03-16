@@ -94,7 +94,7 @@ class AppUserRepository
 		}
 
 		$user = $user->offset($start)->limit($length);
-		$users = $user->get();
+		$users = $user->orderBy("uid", "desc")->get();
 
 		if ($users) {
 			foreach ($users as &$v) {
@@ -214,7 +214,7 @@ class AppUserRepository
 		}
 
 		$user = $user->offset($start)->limit($length);
-		$users = $user->get();
+		$users = $user->orderBy("uid", "desc")->get();
 
 		if ($users) {
 			foreach ($users as &$v) {
@@ -444,7 +444,7 @@ class AppUserRepository
 		}
 
 		$user = $user->offset($start)->limit($length);
-		$users = $user->get();
+		$users = $user->orderBy('uid','desc')->get();
 
 		if ($users) {
 			foreach ($users as &$v) {

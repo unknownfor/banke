@@ -24,7 +24,7 @@ class CreateOrgRebatesRequest extends Request
     public function rules()
     {
         return [
-//            'id' => 'numeric',
+            'id' => 'numeric',
             'org_id' => 'required',
             'student_mobile' => 'required',
             'account' => 'required',

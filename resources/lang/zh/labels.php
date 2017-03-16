@@ -199,6 +199,7 @@ return [
 	'org' => [
 		'id' => '序号',
 		'name' => '名称',
+		'short_name' => '简称',
 		'logo'=>'Logo',
 		'intro'=>'一句话简介',
 		'city' => '城市',
@@ -454,6 +455,7 @@ return [
 		'org_id' => '机构',
 		'org_name' => '机构名称',
 		'student_mobile' => '学生手机号',
+		'student_name' => '学生姓名',
 		'account' => '金额',
 		'operator_name'=>'处理人',
 		'created_at' => '创建时间',

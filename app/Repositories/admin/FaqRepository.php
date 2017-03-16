@@ -51,7 +51,7 @@ class FaqRepository
 		$count = $faq->count();
 
 		$faq = $faq->offset($start)->limit($length);
-		$faqs = $faq->get();
+		$faqs = $faq->orderBy("id", "desc")->get();
 
 		if ($faqs) {
 			foreach ($faqs as &$v) {

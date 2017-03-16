@@ -67,7 +67,7 @@ class OrgApplyForRepository
 		}
 
 		$feedback = $feedback->offset($start)->limit($length);
-		$feedbacks = $feedback->get();
+		$feedbacks = $feedback->orderBy("id", "desc")->get();
 
 		if ($feedbacks) {
 			foreach ($feedbacks as &$v) {

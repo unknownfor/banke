@@ -9,8 +9,7 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/orgrebates/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
-          d.city =$('.filter input[name="city"]').val();
+          d.org_name =$('.filter input[name="org_name"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },

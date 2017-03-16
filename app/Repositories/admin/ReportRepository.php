@@ -52,7 +52,7 @@ class ReportRepository
 		$count = $report->count();
 
 		$report = $report->offset($start)->limit($length);
-		$reports = $report->get();
+		$reports = $report->orderBy("id", "desc")->get();
 
 		if ($reports) {
 			foreach ($reports as &$v) {
