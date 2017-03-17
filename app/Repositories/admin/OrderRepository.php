@@ -217,12 +217,12 @@ class OrderRepository
 				$do_task_config = BankeDict::find(4);
 				$input['do_task_amount'] = moneyFormat(($input['tuition_amount'] * $do_task_config['value'] / 100));
 				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
-                                $input['enddated_at']=$course->enddated;
+                                $input['enddated_at']=$course->enddated_at;
 				$cur_user = Auth::user();
 				$input['operator_uid'] = $cur_user->id;
 				//创建新订单
 				$role->fill($input)->save();
-                               // var_dump($input);die;
+                                
 				//订单状态为已审核
 				if($input['status'] == config('admin.global.status.active')){
 					$userProfile = BankeUserProfiles::where('uid', $input['uid'])->lockForUpdate()->first();
@@ -230,21 +230,15 @@ class OrderRepository
 					$userProfile->do_task_amount += $input['do_task_amount'];
 					$userProfile->total_cashback_amount += ($input['check_in_amount'] + $input['do_task_amount']);
 					$userProfile->period += $course['period'];
-                                         //判断新订单中的打卡截止时间是否早于用户表中的截止打卡时间(针对一个用户报多个课程的)
-                                        //echo $role['uid'];
-                                        $userCount=BankeCashBackUser::where('uid',$role['uid'])->count();
-                                        //echo $userCount;die;
-                                        if($userCount>0){
+                                                                             
                                             //对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中                                         
                                             if($input['enddated_at']>$userProfile->enddated_at){
                                               $userProfile->enddated_at= $input['enddated_at'];  
                                               //echo $userProfile->enddated_at;die;
+                                              //更新报名学生的信息
                                               $userProfile->save();
                                             }
-                                        }
-					//更新报名学生的信息
-					
-                                       
+                                                                                   
                                         //获取用户报名课程 的次数
                                         $courseCout= BankeCashBackUser::where(['uid'=>$role['uid'],'course_id'=>$role['course_id']])->count();
 					//如果有邀请人
@@ -362,7 +356,6 @@ class OrderRepository
                                                 
 						//创建新订单
 						$role->fill($input)->save();
-                                                //var_dump($input);die;
 						//订单状态为已审核
 						$userProfile = BankeUserProfiles::where('uid', $role->uid)->lockForUpdate()->first();
 						$userProfile->check_in_amount += $role['check_in_amount'];
@@ -371,6 +364,16 @@ class OrderRepository
 						$userProfile->period += $role->period;
 						//更新报名学生的信息
 						$userProfile->save();
+
+                                                $course = BankeCourse::find($role['course_id']);                                                  
+                                                    //对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中                                         
+                                                if($course->enddated_at>$userProfile->enddated_at){
+                                                    $userProfile->enddated_at= $course->enddated_at;                                                           
+                                                    //更新报名学生的信息
+                                                    $userProfile->save();
+                                                     // echo $userProfile->enddated_at;die;
+                                                }
+
                                                 //获取用户报名课程 的次数
                                                  $courseCout= BankeCashBackUser::where(['uid'=>$role['uid'],'course_id'=>$role['course_id']])->count();
                                                    //var_dump($userProfile->invitation_uid) ;die;
