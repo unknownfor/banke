@@ -8,6 +8,23 @@ $(function(){
             liveSearchPlaceholder:'输入机构名称进行搜索'
         });
 
+        //设置查询时间
+        var $date=$('.input-group.date');
+        if($date.datepicker) {
+            var $input = $date.find('.input-sm').eq(0),
+                date=$input.val();
+            if(!date){
+                date = new Date(),
+                date = date.getTime() + 3 * 30 * 24 * 60 * 60 * 1000;
+            }
+
+            $input.val(new Date(date).format('yyyy-MM-dd'));
+            $date.datepicker({
+                autoclose: true,
+                todayHighlight: true
+            });
+        }
+
         /**定义一个MyEditor对象**/
         var MyEditor=function(){
             this.init();

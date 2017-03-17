@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/course.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
 @endsection
 @section('content')
     <div class="page-bar">
@@ -90,7 +91,7 @@
                                     <input type="text" class="form-control" id="checkin_award" name="checkin_award" placeholder="{{trans('labels.course.checkin_award')}}" value="">
                                     <div class="form-control-focus"> </div>
                                 </div>
-                                <label class="col-md-2 control-label">不填写将使用 <span class="default-txt">{{$percent[0]['value']}}%</span> 作为默认比例</label>
+                                <label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[0]['value']}}%</span> 作为默认比例</label>
                             </div>
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="task_award">{{trans('labels.course.task_award')}}(%)</label>
@@ -98,8 +99,18 @@
                                     <input type="text" class="form-control" id="task_award" name="task_award" placeholder="{{trans('labels.course.task_award')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
-                                <label class="col-md-2 control-label">不填写将使用 <span class="default-txt">{{$percent[1]['value']}}%</span> 作为默认比例</label>
+                                <label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[1]['value']}}%</span> 作为默认比例</label>
                             </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.z_award_amount')}}(%)</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="z_award_amount" name="z_award_amount" placeholder="{{trans('labels.course.z_award_amount')}}" value="">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                                <label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[2]['value']}}%</span> 作为默认比例</label>
+                            </div>
+
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="percent">{{trans('labels.course.sort')}}</label>
@@ -163,6 +174,17 @@
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>
+                                <div class="col-md-3">
+                                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="课程截止" name="enddated_at">
+                                        <span class="input-group-addon">
+                                          <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                         <div class="form-actions">
@@ -199,6 +221,7 @@
 @section('js')
     <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     {{--编辑器--}}
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>

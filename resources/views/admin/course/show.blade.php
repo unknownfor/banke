@@ -87,6 +87,12 @@
                               <div>{{$course['task_award'] or $percent[1]['value']}}</div>
                           </div>
                       </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="z_award_amount">{{trans('labels.course.z_award_amount')}}(%)</label>
+                          <div class="col-md-4" style="line-height: 60px;">
+                              <div>{{$course['z_award_amount'] or $percent[2]['value']}}</div>
+                          </div>
+                      </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="address">{{trans('labels.course.sort')}}</label>
@@ -134,6 +140,13 @@
                                       <span class="label label-danger"> 未通过 </span>
                                   @endif
                               </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>
+                          <div class="col-md-3">
+                             {{$course['enddated_at']}}
                           </div>
                       </div>
 
