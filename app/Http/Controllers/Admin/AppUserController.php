@@ -173,6 +173,7 @@ class AppUserController extends Controller
      */
     public function store_org_account(CreateOrgUserRequest $request)
     {
+
         AppUserRepository::store_org_account($request);
         return redirect('admin/app_user/org_account');
     }

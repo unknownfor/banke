@@ -40,7 +40,7 @@
 					        @endforeach
 					    </div>
 					    @endif
-              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/store_org_account')}}">
+              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/store_org_account')}}" onSubmit="return submitData();">
               		{!! csrf_field() !!}
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
@@ -114,6 +114,27 @@
             liveSearchNormalize:true,
             liveSearchPlaceholder:'输入名称进行搜索',
         });
+        var isRegister=false;
+        $(document).on('blur','#mobile',function(){
+            var mobile=$(this).val();
+            var url='/admin/user/search_by_mobile',
+                    paraData={mobile:mobile};
+            $.post(url,paraData,function(res){
+                if(res.length>0){
+                    isRegister=true;
+                }
+            });
+        });
+
+        window.submitData=function(){
+            if(isRegister){
+               if(window.confirm('该用手机号已经注册过，是否变更为机构账号？')){
+                   return true;
+               }
+                return false;
+            }
+            return true;
+        };
       });
     </script>
 @endsection

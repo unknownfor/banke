@@ -354,6 +354,29 @@ class AppUserRepository
 	}
 
 	/**
+	 * 修改用户状态
+	 * @author 晚黎
+	 * @date   2016-04-14T11:50:45+0800
+	 * @param  [type]                   $id     [description]
+	 * @param  [type]                   $status [description]
+	 * @return [type]                           [description]
+	 */
+	public function changeUserType($id,$oid)
+	{
+		$user = User::find($id);
+		if ($user) {
+			$user->org_id = $oid;
+			if ($user->save()) {
+				Flash::success(trans('alerts.users.updated_success'));
+				return true;
+			}
+			Flash::error(trans('alerts.users.updated_error'));
+			return false;
+		}
+		abort(404);
+	}
+
+	/**
 	 * 删除角色
 	 * @author 晚黎
 	 * @date   2016-04-13T11:51:19+0800
@@ -470,23 +493,30 @@ class AppUserRepository
 	public function store_org_account($request){
 		$user = new User;
 		$userData = $request->all();
-		$userData['status'] = 1;
-		//密码进行加密
-		$userData['password'] = bcrypt($userData['password']);
-		if ($user->fill($userData)->save()) {
-			// 自动更新用户资料关系
-			$profiles = [
-				'uid' => $user->id,
-				'name' => $userData['name'],
-				'mobile'=> $userData['mobile'],
-				'org_id' => $userData['org_id'],
-				'invitation_code'=>Uuid::generate(4)
-			];
-			$user->profiles()->create($profiles);
-			Flash::success(trans('alerts.users.created_success'));
-			return true;
+		$mobile=$userData['mobile'];
+		$user = new BankeUserProfiles;
+		$user = $user->where('mobile',$mobile);
+		if($user->count()>0){
+			$tihs->change
+		}else {
+			$userData['status'] = 1;
+			//密码进行加密
+			$userData['password'] = bcrypt($userData['password']);
+			if ($user->fill($userData)->save()) {
+				// 自动更新用户资料关系
+				$profiles = [
+					'uid' => $user->id,
+					'name' => $userData['name'],
+					'mobile' => $userData['mobile'],
+					'org_id' => $userData['org_id'],
+					'invitation_code' => Uuid::generate(4)
+				];
+				$user->profiles()->create($profiles);
+				Flash::success(trans('alerts.users.created_success'));
+				return true;
+			}
+			Flash::error(trans('alerts.users.created_error'));
+			return false;
 		}
-		Flash::error(trans('alerts.users.created_error'));
-		return false;
 	}
 }
