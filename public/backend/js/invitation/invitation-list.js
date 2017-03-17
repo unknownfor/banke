@@ -33,6 +33,11 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
+          "data": "target_uname",
+          "name": "target_uname",
+          "orderable" : false,
+        },
+        {
           "data": "target_mobile",
           "name": "target_mobile",
           "orderable" : false,

@@ -79,6 +79,7 @@
                               <th>id</th>
                               <th width="15%"> {{ trans('labels.invitation.name') }} </th>
                               <th width="15%"> {{ trans('labels.invitation.mobile') }} </th>
+                              <th width="15%"> {{ trans('labels.invitation.target_uname') }} </th>
                               <th width="15%"> {{ trans('labels.invitation.target_mobile') }} </th>
                               <th width="20%"> {{ trans('labels.invitation.register_at') }} </th>
                               <th width="10%"> {{ trans('labels.invitation.authentivation_status') }} </th>

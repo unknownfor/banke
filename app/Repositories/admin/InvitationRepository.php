@@ -81,6 +81,7 @@ class InvitationRepository
 				if ($authen && $authen->count() > 0 && $authen['certification_status']==2) {
 					$v['name'] = $authen['real_name'];
 				}
+				$v['target_uname'] = "";
 				$user = new User;
 				$user = $user->where('mobile', $v['target_mobile']); //被邀请人的信息
 				if($user && $user->count()>0) {
@@ -93,6 +94,9 @@ class InvitationRepository
 					if ($authen1 && $authen1->count() > 0 && $authen1['certification_status']==2) {
 						$v['authentivation_status'] = 1;
 						$v['name'] = $authen['real_name'];
+						$v['target_uname'] = $authen1['real_name'];
+					}else {
+						$v['target_uname'] = $user['name'];
 					}
 
 					//报名状态
