@@ -60,7 +60,7 @@ class CreateCourseRequest extends Request
             'checkin_award' => trans('labels.course.checkin_award'),
             'task_award' => trans('labels.course.task_award'),
             'z_award_amount' => trans('labels.course.z_award_amount'),
-             'enddated' => trans('labels.course.enddated'),
+             'enddated_at' => trans('labels.course.enddated_at'),
         ];
     }
 }
