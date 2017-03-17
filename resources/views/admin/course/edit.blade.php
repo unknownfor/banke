@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/course.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
 @endsection
 @section('content')
 <div class="page-bar">
@@ -145,7 +146,17 @@
                           </div>
                       </div>
 
-
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>
+                          <div class="col-md-3">
+                              <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                  <input type="text" class="form-control form-filter input-sm" readonly placeholder="课程截止" id="enddated_at" name="enddated_at" value="{{$course['enddated_at']}}">
+                                        <span class="input-group-addon">
+                                          <i class="fa fa-calendar"></i>
+                                        </span>
+                              </div>
+                          </div>
+                      </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="details">{{trans('labels.course.details')}}</label>
@@ -184,17 +195,7 @@
                           </div>
                       </div>
 
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>
-                          <div class="col-md-3">
-                              <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                                  <input type="text" class="form-control form-filter input-sm" readonly placeholder="课程截止" name="enddated_at" value="{{$course['enddated_at']}}">
-                                        <span class="input-group-addon">
-                                          <i class="fa fa-calendar"></i>
-                                        </span>
-                              </div>
-                          </div>
-                      </div>
+
 
 
                   </div>

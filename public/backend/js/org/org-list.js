@@ -9,8 +9,8 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/org/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
-          d.city =$('.filter input[name="city"]').val();
+          d.name =$('.filter input[name="name"]').val().replace(/(^\s*)|(\s*$)/g, "");
+          d.city =$('.filter input[name="city"]').val().replace(/(^\s*)|(\s*$)/g, "");
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },

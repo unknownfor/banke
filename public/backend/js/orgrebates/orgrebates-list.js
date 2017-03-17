@@ -9,7 +9,7 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/orgrebates/ajaxIndex',
         "data": function ( d ) {
-          d.org_name =$('.filter input[name="org_name"]').val();
+          d.org_name =$('.filter input[name="org_name"]').val().replace(/(^\s*)|(\s*$)/g, "");
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },

@@ -9,8 +9,8 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/order/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val();
-          d.mobile =$('.filter input[name="mobile"]').val();
+          d.name =$('.filter input[name="name"]').val().replace(/(^\s*)|(\s*$)/g, "");
+          d.mobile =$('.filter input[name="mobile"]').val().replace(/(^\s*)|(\s*$)/g, "");
           d.status = $('.filter select[name="status"] option:selected').val();
           d.created_at_from = $('.filter input[name="created_at_from"]').val();
           d.created_at_to = $('.filter input[name="created_at_to"]').val();

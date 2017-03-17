@@ -9,22 +9,22 @@ $(function(){
         });
 
         //设置查询时间
-        var $date=$('.input-group.date');
-        if($date.datepicker) {
-            var $input = $date.find('.input-sm').eq(0),
-                date=$input.val();
-            if(!date){
-                date = new Date(),
-                date = date.getTime() + 3 * 30 * 24 * 60 * 60 * 1000;
+        var $inputEndedAt=$('#enddated_at'),
+            val=$inputEndedAt.val();
+        if($inputEndedAt.datepicker) {
+            if(!val){
+                val = new Date(),
+                val = val.getTime() + 3 * 30 * 24 * 60 * 60 * 1000;
             }
-
-            $input.val(new Date(date).format('yyyy-MM-dd'));
-            $date.datepicker({
+            $inputEndedAt.val(new Date(val).format('yyyy-MM-dd'));
+            $('.input-group.date').datepicker({
                 autoclose: true,
                 todayHighlight: true
             });
+        }else{
+            val = new Date(val).format('yyyy-MM-dd');
+            $inputEndedAt.val(val);
         }
-
         /**定义一个MyEditor对象**/
         var MyEditor=function(){
             this.init();

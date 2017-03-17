@@ -9,7 +9,7 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/report/ajaxIndex',
         "data": function ( d ) {
-          d.title =$('.filter input[name="title"]').val();
+          d.title =$('.filter input[name="title"]').val().replace(/(^\s*)|(\s*$)/g, "");
           d.status = $('.filter select[name="status"] option:selected').val();
         }
       },

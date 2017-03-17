@@ -134,6 +134,18 @@
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>
+                                <div class="col-md-3">
+                                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="课程截止" id="enddated_at" name="enddated_at">
+                                        <span class="input-group-addon">
+                                          <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
 
 
                             <div class="form-group form-md-line-input">
@@ -174,17 +186,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>
-                                <div class="col-md-3">
-                                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="课程截止" name="enddated_at">
-                                        <span class="input-group-addon">
-                                          <i class="fa fa-calendar"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+
 
                         </div>
                         <div class="form-actions">

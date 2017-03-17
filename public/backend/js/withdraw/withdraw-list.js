@@ -9,11 +9,11 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/withdraw/ajaxIndex',
         "data": function ( d ) {
-          d.mobile =$('.filter input[name="mobile"]').val();
+          d.mobile =$('.filter input[name="mobile"]').val().replace(/(^\s*)|(\s*$)/g, "");
           d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
           d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
-          d.name = $('.filter input[name="name"]').val();
+          d.name = $('.filter input[name="name"]').val().replace(/(^\s*)|(\s*$)/g, "");
         }
       },
       "pagingType": "bootstrap_full_number",

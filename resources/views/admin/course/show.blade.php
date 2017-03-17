@@ -39,8 +39,8 @@
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="name">{{trans('labels.course.name')}}</label>
-                          <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$course['name']}} </div>
+                          <div class="col-md-4">
+                              <input type="text" readonly class="form-control" value="{{$course['name']}}"/>
                           </div>
                       </div>
 
@@ -63,41 +63,41 @@
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="city">{{trans('labels.course.price')}}</label>
-                          <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$course['price']}} </div>
+                          <div class="col-md-4">
+                              <input type="text" readonly class="form-control" value="{{$course['price']}}"/>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>
-                          <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$course['period']}} </div>
+                          <div class="col-md-4">
+                              <input type="text" readonly class="form-control" value="{{$course['period']}}">
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.checkin_award')}}(%)</label>
                           <div class="col-md-4" style="line-height: 60px;">
-                              <div>{{$course['checkin_award'] or $percent[0]['value']}}</div>
+                              <input type="text" readonly class="form-control" value="{{$course['checkin_award'] or $percent[0]['value']}}">
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="task_award">{{trans('labels.course.task_award')}}(%)</label>
                           <div class="col-md-4" style="line-height: 60px;">
-                              <div>{{$course['task_award'] or $percent[1]['value']}}</div>
+                              <input type="text" readonly class="form-control" value="{{$course['task_award'] or $percent[1]['value']}}">
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="z_award_amount">{{trans('labels.course.z_award_amount')}}(%)</label>
                           <div class="col-md-4" style="line-height: 60px;">
-                              <div>{{$course['z_award_amount'] or $percent[2]['value']}}</div>
+                              <input type="text" readonly class="form-control" value="{{$course['z_award_amount'] or $percent[2]['value']}}">
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="address">{{trans('labels.course.sort')}}</label>
-                          <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$course['sort']}} </div>
+                          <div class="col-md-4">
+                              <input type="text" readonly class="form-control" value="{{$course['sort']}}">
                           </div>
                       </div>
 
@@ -116,7 +116,12 @@
                               </div>
                           </div>
                       </div>
-
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>
+                          <div class="col-md-3">
+                              <input type="text" readonly class="form-control" id="enddated_at" value="{{$course['enddated_at']}}">
+                          </div>
+                      </div>
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="details">{{trans('labels.course.details')}}</label>
                           <div class="col-md-9">
@@ -143,12 +148,7 @@
                           </div>
                       </div>
 
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>
-                          <div class="col-md-3">
-                             {{$course['enddated_at']}}
-                          </div>
-                      </div>
+
 
                   </div>
                   <div class="form-actions">
