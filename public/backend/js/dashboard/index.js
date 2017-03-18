@@ -100,48 +100,6 @@ function initChart(id){
     return echarts.init(document.getElementById(id));
 }
 
-var myChart = initChart('main');
-option = {
-    title : {
-        text: 'LAdmin网站用户访问来源',
-        subtext: '纯属虚构',
-        x:'center'
-    },
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    },
-    legend: {
-        orient: 'vertical',
-        left: 'left',
-        data: ['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
-    },
-    series : [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius : '55%',
-            center: ['50%', '60%'],
-            data:[
-                {value:335, name:'直接访问'},
-                {value:310, name:'邮件营销'},
-                {value:234, name:'联盟广告'},
-                {value:135, name:'视频广告'},
-                {value:1548, name:'搜索引擎'}
-            ],
-            itemStyle: {
-                emphasis: {
-                    shadowBlur: 10,
-                    shadowOffsetX: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
-            }
-        }
-    ]
-};
-// 使用刚指定的配置项和数据显示图表。
-myChart.setOption(option);
-
 $(function(){
 
     //注册人数
@@ -169,6 +127,14 @@ $(function(){
         xAxix:['周一','周二','周三','周四','周五','周六','周日'],
         yData:[11, 11, 15, 13, 12, 13, 10],
         yStyle:{symbolColor:'#61A0A8',lineColor:'#61A0A8'}
+    });
+    //预约人数
+    new dashBoard({
+        id:'main',
+        title:'七日预约人数变化',
+        xAxix:['周一','周二','周三','周四','周五','周六','周日'],
+        yData:[11, 11, 15, 13, 12, 13, 10],
+        yStyle:{symbolColor:'#de9325',lineColor:'#de9325'}
     });
 
     //刷新课程列表

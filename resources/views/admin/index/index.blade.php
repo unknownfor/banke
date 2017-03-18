@@ -114,36 +114,13 @@
         <div class="table-box echart-main-box">
             <div class="head-title">
                 <i class="iconfont icon-data"></i>
-                <span>徦的数据</span>
+                <span>预约人数</span>
             </div>
             <div class="table-main">
                 <div id="main" class="echart-main-content"></div>
             </div>
         </div>
     </div>
-
-    {{--<div class="echart-box">--}}
-        {{--<div class="table-box echart-main-box">--}}
-            {{--<div class="head-title">--}}
-                {{--<i class="iconfont icon-data"></i>--}}
-                {{--<span>打卡人数</span>--}}
-            {{--</div>--}}
-            {{--<div class="table-main">--}}
-                {{--<div id="main-clock" class="echart-main-content"></div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="table-box echart-main-box">--}}
-            {{--<div class="head-title">--}}
-                {{--<i class="iconfont icon-data"></i>--}}
-                {{--<span>徦的数据</span>--}}
-            {{--</div>--}}
-            {{--<div class="table-main">--}}
-                {{--<div id="main" class="echart-main-content"></div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-
 </div>
 </form>
 
@@ -153,4 +130,3 @@
 <script src="{{asset('backend/plugins/echarts/echarts.min.js')}}"></script>
 <script src="{{asset('backend/js/dashboard/index.js')}}"></script>
 @endsection
-
