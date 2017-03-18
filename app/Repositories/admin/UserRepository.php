@@ -314,15 +314,15 @@ class UserRepository
 	{
 		$mobile = request('mobile', '');
 		$auth = request('auth', '');  //是否查询已认证
-		if($auth==true) {
-			$user_info=new BankeUserAuthentication;
-			$user_info = $user_info->where('mobile', $mobile);
-			$user_info = $user_info->where('certification_status','2')->get(['uid', 'real_name', 'mobile']);
-		}else{
-			$user_info =new BankeUserProfiles;
-			$user_info = $user_info::where('mobile', $mobile)->get(['uid', 'name', 'mobile']);
-		}
 
+		$user_info =new BankeUserProfiles;
+		$user_info = $user_info::where('mobile', $mobile)->get(['uid', 'name', 'mobile','org_id']);
+		if($auth==true) {
+			$user_info1=new BankeUserAuthentication;
+			$user_info1 = $user_info1->where('mobile', $mobile);
+			$user_info1 = $user_info1->where('certification_status','2')->get(['real_name']);
+			$user_info['name'] = $user_info1['real_name '];
+		}
 		return $user_info;
 	}
 

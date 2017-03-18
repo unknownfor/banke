@@ -46,7 +46,7 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-user"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="title" placeholder="{{ trans('labels.orgapplyfor.name') }}">
+                            <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.orgapplyfor.name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>

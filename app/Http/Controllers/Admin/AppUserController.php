@@ -12,6 +12,7 @@ use RoleRepository;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\CreateOrgUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Log;
 
 
 class AppUserController extends Controller
@@ -173,7 +174,7 @@ class AppUserController extends Controller
      */
     public function store_org_account(CreateOrgUserRequest $request)
     {
-
+        Log::info('------------------org register-------------');
         AppUserRepository::store_org_account($request);
         return redirect('admin/app_user/org_account');
     }

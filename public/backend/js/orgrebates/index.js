@@ -38,7 +38,7 @@ function orgrebates(){
         that.getDataAsync(url,paraData,function(res){
             var str='',len=res.length;
             for(var i=0;i<len;i++){
-                str+='<li data-uid="'+res[i].uid+'" data-mobile="'+res[i].mobile+'"><p>'+res[i].real_name+'</p></li>';
+                str+='<li data-uid="'+res[i].uid+'" data-mobile="'+res[i].mobile+'"><p>'+res[i].name+'</p></li>';
             }
             $('.my-search-result-ul').html(str);
             that.controlSearchModal();

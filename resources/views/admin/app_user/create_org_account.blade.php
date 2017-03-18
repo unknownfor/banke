@@ -114,24 +114,32 @@
             liveSearchNormalize:true,
             liveSearchPlaceholder:'输入名称进行搜索',
         });
-        var isRegister=false;
+        var registerStatus=0;  //三种状态，0 表示未注册，1表示 已经注册为普通用户，2表示已经注册为机构老师账号
+
         $(document).on('blur','#mobile',function(){
             var mobile=$(this).val();
             var url='/admin/user/search_by_mobile',
-                    paraData={mobile:mobile};
+                    paraData={mobile:mobile,_token:$('input[name="_token"]').val()};
             $.post(url,paraData,function(res){
                 if(res.length>0){
-                    isRegister=true;
+                    if(res[0].org_id!=0){
+                        registerStatus=2;
+                    }else {
+                        registerStatus=1;
+                    }
                 }
             });
         });
 
         window.submitData=function(){
-            if(isRegister){
+            if(registerStatus==1){
                if(window.confirm('该用手机号已经注册过，是否变更为机构账号？')){
                    return true;
                }
                 return false;
+            }
+            if(registerStatus==2){
+                alert('该用手机号已经注册为机构账号！');
             }
             return true;
         };

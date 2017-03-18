@@ -24,11 +24,10 @@ class CreateOrgUserRequest extends Request
     public function rules()
     {
         return [
-            'id' => 'numeric',
+//            'id' => 'numeric',
             'name' => 'required',
             'mobile' => 'required|mobile|unique:users,mobile',
             'password' => 'required|min:6|max:32',
-//            'status' => 'required',
             'org_id' => 'required'
         ];
     }
@@ -53,7 +52,6 @@ class CreateOrgUserRequest extends Request
             'name' => trans('labels.user.name'),
             'mobile' => trans('labels.app_user.mobile'),
             'password' => trans('labels.user.password'),
-//            'status' => trans('labels.user.status'),
             'org_id' => trans('labels.user.org_id'),
         ];
     }

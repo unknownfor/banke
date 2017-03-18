@@ -497,7 +497,8 @@ class AppUserRepository
 		$user = new BankeUserProfiles;
 		$user = $user->where('mobile',$mobile);
 		if($user->count()>0){
-			$tihs->change
+			$this->changeUserType($user->first()['uid'],$userData['org_id']);
+			return true;
 		}else {
 			$userData['status'] = 1;
 			//密码进行加密
