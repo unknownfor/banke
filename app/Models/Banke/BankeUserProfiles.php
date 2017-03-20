@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BankeUserProfiles extends Model
 {
-    //    //±¨Ãû
+    //    //ï¿½ï¿½ï¿½ï¿½
     use ActionAttributeTrait;
 
     protected $primaryKey = 'uid';
@@ -23,6 +23,7 @@ class BankeUserProfiles extends Model
         'register_amount',
         'invitation_amount',
         'certification_time',
+        'enddated_at',
         ];
 
     private $action;

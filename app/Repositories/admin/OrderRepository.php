@@ -212,12 +212,21 @@ class OrderRepository
 				$input['order_id'] = date("YmdHis").mt_rand(10, 99);
 				$course = BankeCourse::find($input['course_id']);
 				$input['period'] = $course['period'];
-				$check_in_config = BankeDict::find(3);
-				$input['check_in_amount'] = moneyFormat(($input['tuition_amount'] * $check_in_config['value'] / 100));
-				$do_task_config = BankeDict::find(4);
-				$input['do_task_amount'] = moneyFormat(($input['tuition_amount'] * $do_task_config['value'] / 100));
+                                if($course->checkin_award){
+                                    $input['check_in_amount']=moneyFormat(($input['tuition_amount'] * $course->checkin_award / 100));
+                                }else{
+                                    $check_in_config = BankeDict::find(3);
+                                    $input['check_in_amount'] = moneyFormat(($input['tuition_amount'] * $check_in_config['value'] / 100));
+                                }
+                                if($course->task_award){
+                                    $input['do_task_amount']=moneyFormat(($input['tuition_amount'] * $course->task_award / 100));
+                                }else{
+                                    $do_task_config = BankeDict::find(4);
+                                    $input['do_task_amount'] = moneyFormat(($input['tuition_amount'] * $do_task_config['value'] / 100)); 
+                                }
+				
 				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
-                                $input['enddated_at']=$course->enddated_at;
+                                
 				$cur_user = Auth::user();
 				$input['operator_uid'] = $cur_user->id;
 				//创建新订单
@@ -232,12 +241,11 @@ class OrderRepository
 					$userProfile->period += $course['period'];
                                                                              
                                             //对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中                                         
-                                            if($input['enddated_at']>$userProfile->enddated_at){
-                                              $userProfile->enddated_at= $input['enddated_at'];  
-                                              //echo $userProfile->enddated_at;die;
-                                              //更新报名学生的信息
-                                              $userProfile->save();
-                                            }
+                                        if($input['end_date']>$userProfile->enddated_at){
+                                            $userProfile->enddated_at= $input['end_date'];                                               
+                                            //更新报名学生的信息
+                                            $userProfile->save();
+                                        }
                                                                                    
                                         //获取用户报名课程 的次数
                                         $courseCout= BankeCashBackUser::where(['uid'=>$role['uid'],'course_id'=>$role['course_id']])->count();
@@ -340,9 +348,10 @@ class OrderRepository
 	{
 		$role = BankeCashBackUser::find($id);
                 
-		$input = $request->only(['comment', 'status']);
+                
+		$input = $request->only(['comment', 'status','end_date']);
   
-		if ($role) {
+		if ($role) { 
  
 			if($role['status'] == config('admin.global.status.active')){
 				Flash::error(trans('alerts.order.already_active'));
@@ -353,22 +362,32 @@ class OrderRepository
 					try{  
 						$cur_user = Auth::user();
 						$input['operator_uid'] = $cur_user->id;
-                                                
+                                                //$end_date=$role->end_date;
+                                               var_dump($role);
+                                               echo "<br/>";
 						//创建新订单
+                                                var_dump($input);
+                                                  echo "<br/>";
 						$role->fill($input)->save();
+                                                 var_dump($role);die;
 						//订单状态为已审核
+                                                  var_dump($end_date);die;
 						$userProfile = BankeUserProfiles::where('uid', $role->uid)->lockForUpdate()->first();
 						$userProfile->check_in_amount += $role['check_in_amount'];
 						$userProfile->do_task_amount += $role['do_task_amount'];
 						$userProfile->total_cashback_amount += ($role['check_in_amount'] + $role['do_task_amount']);
 						$userProfile->period += $role->period;
+                                               
 						//更新报名学生的信息
 						$userProfile->save();
+                                                
 
-                                                $course = BankeCourse::find($role['course_id']);                                                  
+                                               // $course = BankeCourse::find($role['course_id']); 
+                                               var_dump($role);
+                                               var_dump($role->end_date) ;  die;                                            
                                                     //对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中                                         
-                                                if($course->enddated_at>$userProfile->enddated_at){
-                                                    $userProfile->enddated_at= $course->enddated_at;                                                           
+                                                if($input->end_date>$userProfile->enddated_at){
+                                                    $userProfile->enddated_at= $input->end_date;                                                           
                                                     //更新报名学生的信息
                                                     $userProfile->save();
                                                      // echo $userProfile->enddated_at;die;
