@@ -349,7 +349,7 @@ class OrderRepository
 		$role = BankeCashBackUser::find($id);
                 
                 
-		$input = $request->only(['comment', 'status','end_date']);
+		$input = $request->only(['comment', 'status']);
   
 		if ($role) { 
  
@@ -361,38 +361,23 @@ class OrderRepository
 				DB::transaction(function () use ($input, $role) {
 					try{  
 						$cur_user = Auth::user();
-						$input['operator_uid'] = $cur_user->id;
-                                                //$end_date=$role->end_date;
-                                               var_dump($role);
-                                               echo "<br/>";
-						//创建新订单
-                                                var_dump($input);
-                                                  echo "<br/>";
+						$input['operator_uid'] = $cur_user->id;                                               
 						$role->fill($input)->save();
-                                                 var_dump($role);die;
+                                                 //var_dump($role);die;
 						//订单状态为已审核
-                                                  var_dump($end_date);die;
+                                                 // var_dump($end_date);die;
+                                                
 						$userProfile = BankeUserProfiles::where('uid', $role->uid)->lockForUpdate()->first();
 						$userProfile->check_in_amount += $role['check_in_amount'];
 						$userProfile->do_task_amount += $role['do_task_amount'];
 						$userProfile->total_cashback_amount += ($role['check_in_amount'] + $role['do_task_amount']);
 						$userProfile->period += $role->period;
-                                               
-						//更新报名学生的信息
-						$userProfile->save();
-                                                
-
-                                               // $course = BankeCourse::find($role['course_id']); 
-                                               var_dump($role);
-                                               var_dump($role->end_date) ;  die;                                            
-                                                    //对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中                                         
-                                                if($input->end_date>$userProfile->enddated_at){
-                                                    $userProfile->enddated_at= $input->end_date;                                                           
-                                                    //更新报名学生的信息
-                                                    $userProfile->save();
-                                                     // echo $userProfile->enddated_at;die;
+                                               //对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中                                         
+                                                if($role->end_date>$userProfile->enddated_at){
+                                                    $userProfile->enddated_at= $role->end_date;                                                                                                             
                                                 }
-
+						//更新报名学生的信息
+						$userProfile->save();                                                                                           
                                                 //获取用户报名课程 的次数
                                                  $courseCout= BankeCashBackUser::where(['uid'=>$role['uid'],'course_id'=>$role['course_id']])->count();
                                                    //var_dump($userProfile->invitation_uid) ;die;
