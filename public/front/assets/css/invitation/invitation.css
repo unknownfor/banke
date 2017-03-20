@@ -223,9 +223,17 @@ button {
   background-position: 0px 0px;
 }
 #wrapper .register .register-box.code {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 #wrapper .register .register-box.code .code-img {
+  -webkit-background-size: 38.4px 21.6px;
+  background-size: 38.4px 21.6px;
+  background-position: -24px 0px;
+}
+#wrapper .register .register-box.password {
+  margin-bottom: 30px;
+}
+#wrapper .register .register-box.password .code-img {
   -webkit-background-size: 38.4px 21.6px;
   background-size: 38.4px 21.6px;
   background-position: -24px 0px;
