@@ -124,13 +124,13 @@
                                           <span class="check"></span>
                                           <span class="box"></span> {{trans('strings.order.trash.1')}} </label>
                                   </div>
-                                  <div class="md-radio">
-                                      <input type="radio" id="status4" name="status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($order['status'] == config('admin.global.status.ban')) checked @endif>
-                                      <label for="status4">
-                                          <span></span>
-                                          <span class="check"></span>
-                                          <span class="box"></span> {{trans('strings.order.ban.1')}} </label>
-                                  </div>
+                                  {{--<div class="md-radio">--}}
+                                      {{--<input type="radio" id="status4" name="status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($order['status'] == config('admin.global.status.ban')) checked @endif>--}}
+                                      {{--<label for="status4">--}}
+                                          {{--<span></span>--}}
+                                          {{--<span class="check"></span>--}}
+                                          {{--<span class="box"></span> {{trans('strings.order.ban.1')}} </label>--}}
+                                  {{--</div>--}}
                               </div>
                           </div>
                       </div>

@@ -174,14 +174,20 @@ return [
 		'reportCreate'=>'<i class="fa fa-user-plus"></i> 添加媒体报道',
 		'reportShow' => '<i class="fa fa-search"></i> 媒体报道详情',
 		'reportEdit' => '<i class="fa fa-search"></i> 编辑媒体报道',
+
 		'orgapplyforList' => '<i class="fa fa-th-list"></i> 机构入驻申请列表',
 		'orgapplyforEdit' => '<i class="fa fa-user-plus"></i> 创建机构入驻申请',
 		'orgapplyforShow' => '<i class="fa fa-building"></i> 机构入驻申请信息',
+
 		'orgrebatesList' => '<i class="fa fa-exchange"></i> 返款列表',
-		'orgrebatesShow' => '<i class="fa fa-search"></i> 返款详情',
 		'orgrebatesCreate'=>'<i class="fa fa-user-plus"></i> 添加返款',
 		'orgrebatesShow' => '<i class="fa fa-search"></i> 返款详情',
 		'orgrebatesEdit' => '<i class="fa fa-pencil"></i> 编辑返款',
+
+		'drawbackList' => '<i class="fa fa-exchange"></i> 退款列表',
+		'drawbackShow' => '<i class="fa fa-search"></i> 退款详情',
+		'drawbackCreate'=>'<i class="fa fa-user-plus"></i> 添加退款',
+		'drawbackEdit' => '<i class="fa fa-pencil"></i> 编辑退款',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -466,5 +472,21 @@ return [
 		'list' => '机构返款列表',
 		'show'=>'查看详情',
 		'detail'=>'备注详情'
+	],
+
+	'drawback' => [
+		'id' => '序号',
+		'student_mobile' => '学生手机号',
+		'student_name' => '学生姓名',
+		'order_id' => '订单编号',
+		'account' => '金额',
+		'operator_name'=>'处理人',
+		'course_name'=>'退款课程',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'status'=>'状态',
+		'list' => '学生退款列表',
+		'show'=>'查看详情',
+		'comment'=>'备注详情'
 	],
 ];

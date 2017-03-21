@@ -6,7 +6,9 @@ use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeUserProfiles;
+use App\Models\Banke\BankeWithdraw;
 use Carbon\Carbon;
 use Flash;
 use Illuminate\Support\Facades\Log;
@@ -503,5 +505,43 @@ class OrderRepository
 		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
 		return $user->get();
 	}
+
+
+	/**
+	 * 根据用户手机号得到他的全部订单
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function search_by_mobile()
+	{
+		$mobile = request('mobile', '');
+
+		$user_info = new BankeUserAuthentication();
+		$user_info = $user_info->where('mobile', $mobile);
+
+		$uid = 0;
+		$order = new BankeCashBackUser;
+		if ($user_info->count() > 0) {
+			$user_info=$user_info->first();
+			$uid =$user_info['uid'];
+			$order = $order->where('uid', $uid);
+			$order = $order->where('status', 1)->get(['course_name', 'order_id','tuition_amount']);
+			if ($order) {
+				foreach ($order as &$v) {
+					$v['real_name'] = $user_info['real_name'];
+				}
+			}
+
+			return $order;
+		}else{
+			$order = $order->where('uid', $uid);
+			return $order->get();
+		}
+
+	}
+
+
 
 }

@@ -257,6 +257,7 @@ return [
         'ReportRepository' => App\Facades\ReportFacade::class,
         'OrgApplyForRepository' => App\Facades\OrgApplyForFacade::class,
         'OrgRebatesRepository' => App\Facades\OrgRebatesFacade::class,
+        'DrawbackRepository' => App\Facades\DrawbackFacade::class,
     ],
 
 ];

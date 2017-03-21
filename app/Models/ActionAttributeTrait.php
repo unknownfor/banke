@@ -34,7 +34,7 @@ trait ActionAttributeTrait{
 	public function getEditActionButton()
 	{
 //		if ($this->action == 'order' || $this->action == 'orgapply') {
-		if ($this->action == 'order') {
+		if ($this->action == 'order' || $this->action == 'drawback') {
 			return $this;
 		}
 
@@ -92,7 +92,7 @@ trait ActionAttributeTrait{
 	 */
 	public function getDestroyActionButton()
 	{
-		if (($this->status == config('admin.global.status.active'))) {
+		if (($this->status != config('admin.global.status.active'))) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.destroy'))) {
 				$this->html_build .= '<a href="javascript:;" onclick="return false" class="btn btn-xs btn-danger tooltips" data-container="body" data-original-title="' . trans('crud.destory') . '"  data-placement="top" id="destory"><i class="fa fa-trash"></i><form action="'.url('admin/'.$this->action.'/'.$this->id).'" method="POST" name="delete_item" style="display:none"><input type="hidden" name="_method" value="delete"><input type="hidden" name="_token" value="'.csrf_token().'"></form></a>';
 			}
@@ -146,10 +146,11 @@ trait ActionAttributeTrait{
 	 */
 	public function getOrderActionButton()
 	{
-//		if (($this->action == 'order') || ($this->action == 'orgapply')) {
 		if (($this->action == 'order')) {
-			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.edit'))) {
-				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/edit').'" class="btn btn-xs btn-primary tooltips" data-original-title="' . trans('crud.check') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+			if (($this->status == config('admin.global.order.audit'))) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.edit'))) {
+					$this->html_build .= '<a href="' . url('admin/' . $this->action . '/' . $this->id . '/edit') . '" class="btn btn-xs btn-primary tooltips" data-original-title="' . trans('crud.check') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+				}
 			}
 		}
 		return $this;
@@ -161,7 +162,7 @@ trait ActionAttributeTrait{
 	 */
 	public function getOrderRefuseActionButton()
 	{
-//		if (($this->action == 'order') || ($this->action == 'orgapply')) {
+//		if (($this->action == 'order') || ($this->action == 'drawback')) {
 		if (($this->action == 'order')) {
 			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
 				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.trash')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
@@ -187,6 +188,23 @@ trait ActionAttributeTrait{
 //	}
 
 	/**
+	 * 退款认证按钮
+	 * @return $this
+	 */
+	public function getDrawbackActionButton()
+	{
+		if (($this->action == 'drawback')) {
+			if ($this->status == config('admin.global.drawback.audit')) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.edit'))) {
+					$this->html_build .= '<a href="' . url('admin/' . $this->action . '/' . $this->id . '/edit') . '" class="btn btn-xs btn-primary tooltips" data-original-title="' . trans('crud.check') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+				}
+			}
+		}
+		return $this;
+	}
+
+
+	/**
 	 * 组合按钮
 	 * @param bool $showType
 	 * @return $this
@@ -205,7 +223,8 @@ trait ActionAttributeTrait{
 					->getTrashActionButton()
 					->getDestroyActionButton()
 					->getCertificateActionButton()
-					->getRefuseCertificateActionButton();
+					->getRefuseCertificateActionButton()
+					->getDrawbackActionButton();
 
 		return $this->html_build;
 	}

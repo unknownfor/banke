@@ -133,7 +133,7 @@
 
         window.submitData=function(){
             if(registerStatus==1){
-               if(window.confirm('该用手机号已经注册过，是否变更为机构账号？')){
+               if(window.confirm('该用手机号已经注册过，是否变更为机构账号？密码仍然使用旧密码。')){
                    return true;
                }
                 return false;

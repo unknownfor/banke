@@ -14,7 +14,10 @@ $router->group(['prefix' => 'order'], function($router){
 		  	]);
 	$router->get('ajaxCheck', 'OrderController@ajaxCheck');
 	$router->get('check', 'OrderController@check');
-       
+
+	//手机号查询
+	$router->post('/search_by_mobile','OrderController@search_by_mobile');
+
 });
 
 $router->resource('order', 'OrderController');

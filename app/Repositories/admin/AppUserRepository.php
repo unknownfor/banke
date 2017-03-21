@@ -361,11 +361,12 @@ class AppUserRepository
 	 * @param  [type]                   $status [description]
 	 * @return [type]                           [description]
 	 */
-	public function changeUserType($id,$oid)
+	public function changeUserType($id,$userData)
 	{
-		$user = User::find($id);
+		$user = BankeUserProfiles::find($id);
 		if ($user) {
-			$user->org_id = $oid;
+			$user['org_id'] = $userData['org_id'];
+			$user['name']= $userData['name'];
 			if ($user->save()) {
 				Flash::success(trans('alerts.users.updated_success'));
 				return true;
@@ -491,13 +492,13 @@ class AppUserRepository
 	}
 
 	public function store_org_account($request){
-		$user = new User;
+//		$user = new User;
 		$userData = $request->all();
 		$mobile=$userData['mobile'];
 		$user = new BankeUserProfiles;
 		$user = $user->where('mobile',$mobile);
 		if($user->count()>0){
-			$this->changeUserType($user->first()['uid'],$userData['org_id']);
+			$this->changeUserType($user->first()['uid'],$userData);
 			return true;
 		}else {
 			$userData['status'] = 1;

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CreateOrgUserRequest extends Request
+class UpdateDrawbackRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,9 @@ class CreateOrgUserRequest extends Request
     public function rules()
     {
         return [
-//            'id' => 'numeric',
-            'name' => 'required',
-//            'mobile' => 'required|mobile|unique:users,mobile',
-            'mobile' => 'required|mobile',
-            'password' => 'required|min:6|max:32',
-            'org_id' => 'required'
+            'id' => 'numeric',
+            'account' => 'required',
+            'status' => 'required',
         ];
     }
 
@@ -42,18 +39,14 @@ class CreateOrgUserRequest extends Request
             'min' => trans('validation.min.string'),
             'max' => trans('validation.max.string'),
             'email' => trans('validation.email'),
-            'mobile' => trans('validation.mobile'),
         ];
     }
 
     public function attributes()
     {
         return [
-            'id' => trans('labels.id'),
-            'name' => trans('labels.user.name'),
-            'mobile' => trans('labels.app_user.mobile'),
-            'password' => trans('labels.user.password'),
-            'org_id' => trans('labels.user.org_id'),
+            'account' => trans('labels.drawback.account'),
+            'status' => trans('labels.drawback.status')
         ];
     }
 }

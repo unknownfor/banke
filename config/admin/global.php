@@ -155,9 +155,10 @@ return[
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'order',
-		'active' => 1,
-		'audit' => 2,
-		'trash' => 3,
+		'active' => 1,  //通过 正常
+		'audit' => 0,//待审
+		'ban' => 2,  //退款
+		'trash' => 99, //不通过
 	],
 
 	//反馈
@@ -221,5 +222,16 @@ return[
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'orgrebates',
+	],
+
+	//学生退款
+	'drawback' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'drawback',
+		'active' => 1,
+		'audit' => 0,
+		'trash' => 99,
 	],
 ];

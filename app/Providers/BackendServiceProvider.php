@@ -129,5 +129,10 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('OrgRebatesRepository', function($app){
             return new \App\Repositories\admin\OrgRebatesRepository();
         });
+
+        //学生退款
+        $this->app->singleton('DrawbackRepository', function($app){
+            return new \App\Repositories\admin\DrawbackRepository();
+        });
     }
 }

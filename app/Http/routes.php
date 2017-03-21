@@ -110,6 +110,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //机构返款
         require(__DIR__ . '/Routes/OrgRebatesRoute.php');
 
+        //学生退款
+        require(__DIR__ . '/Routes/DrawbackRoute.php');
+
     });
 });
 

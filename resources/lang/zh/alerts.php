@@ -178,4 +178,13 @@ return [
         'soft_deleted_error' => '删除返款失败',
     ],
 
+    'drawback' => [
+        'created_success'   => '创建退款成功.',
+        'created_error'     => '创建退款失败.',
+        'updated_success'   => '修改退款成功.',
+        'updated_error'     => '修改退款失败.',
+        'soft_deleted_success' => '删除退款成功',
+        'soft_deleted_error' => '删除退款失败',
+    ],
+
 ];

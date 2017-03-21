@@ -48,10 +48,10 @@
                           <th width="15%"> {{ trans('labels.permission.name') }} </th>
                           <th width="15%"> {{ trans('labels.permission.slug') }} </th>
                           <th> {{ trans('labels.permission.description') }} </th>
-                          <th> {{ trans('labels.permission.model') }} </th>
+                          {{--<th> {{ trans('labels.permission.model') }} </th>--}}
                           <th> {{ trans('labels.permission.status') }} </th>
-                          <th width="12%"> {{ trans('labels.permission.created_at') }} </th>
-                          <th width="12%"> {{ trans('labels.permission.updated_at') }} </th>
+                          {{--<th width="12%"> {{ trans('labels.permission.created_at') }} </th>--}}
+                          {{--<th width="12%"> {{ trans('labels.permission.updated_at') }} </th>--}}
                           <th> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
@@ -88,17 +88,17 @@
                                 </div>
                               </div>
                             </td>
-                            <td>
-                              <div class="form-group form-md-line-input">
-                                <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-cogs"></i>
-                                    </span>
-                                    <input type="text" class="form-control form-filter" name="model" placeholder="{{ trans('labels.permission.model') }}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                              </div>
-                            </td>
+                            {{--<td>--}}
+                              {{--<div class="form-group form-md-line-input">--}}
+                                {{--<div class="input-group has-success">--}}
+                                    {{--<span class="input-group-addon">--}}
+                                        {{--<i class="fa fa-cogs"></i>--}}
+                                    {{--</span>--}}
+                                    {{--<input type="text" class="form-control form-filter" name="model" placeholder="{{ trans('labels.permission.model') }}">--}}
+                                    {{--<div class="form-control-focus"> </div>--}}
+                                {{--</div>--}}
+                              {{--</div>--}}
+                            {{--</td>--}}
                             <td>
                               <div class="form-group form-md-line-input">
                                 <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
@@ -110,35 +110,35 @@
                                     @endif
                                 </select>
                               </div>
-                            <td>
-                              <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </span>
-                              </div>
+                            {{--<td>--}}
+                              {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
+                                {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">--}}
+                                {{--<span class="input-group-addon">--}}
+                                  {{--<i class="fa fa-calendar"></i>--}}
+                                {{--</span>--}}
+                              {{--</div>--}}
 
-                              <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </span>
-                              </div>
-                            <td>
-                                <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                                  <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">
-                                  <span class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                  </span>
-                                </div>
+                              {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
+                                {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">--}}
+                                {{--<span class="input-group-addon">--}}
+                                  {{--<i class="fa fa-calendar"></i>--}}
+                                {{--</span>--}}
+                              {{--</div>--}}
+                            {{--<td>--}}
+                                {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
+                                  {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">--}}
+                                  {{--<span class="input-group-addon">--}}
+                                    {{--<i class="fa fa-calendar"></i>--}}
+                                  {{--</span>--}}
+                                {{--</div>--}}
 
-                                <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                                  <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">
-                                  <span class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                  </span>
-                                </div>
-                            </td>
+                                {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
+                                  {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">--}}
+                                  {{--<span class="input-group-addon">--}}
+                                    {{--<i class="fa fa-calendar"></i>--}}
+                                  {{--</span>--}}
+                                {{--</div>--}}
+                            {{--</td>--}}
                             <td>
                                 <div class="margin-bottom-5">
                                     <button class="btn btn-sm green btn-outline filter-submit margin-bottom">

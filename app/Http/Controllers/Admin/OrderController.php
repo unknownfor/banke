@@ -143,7 +143,7 @@ class OrderController extends Controller
     }
 
     /**
-     * 查看机构信息
+     * 查看订单信息
      * @author 晚黎
      * @date   2016-04-14T13:49:32+0800
      * @param  [type]                   $id [description]
@@ -154,6 +154,20 @@ class OrderController extends Controller
         $order = OrderRepository::show($id);
         $orgs = BankeOrg::where('status', 1)->get(['id', 'name']);
         return view('admin.order.show')->with(compact(['order','orgs']));
+
+    }
+
+    /**
+     * 查看订单信息
+     * @author 晚黎
+     * @date   2016-04-14T13:49:32+0800
+     * @param  [type]                   $id [description]
+     * @return [type]                       [description]
+     */
+    public function search_by_mobile()
+    {
+        $order = OrderRepository::search_by_mobile();
+        return response()->json($order);
 
     }
 }

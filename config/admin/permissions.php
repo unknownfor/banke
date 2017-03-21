@@ -169,4 +169,12 @@ return[
 		'edit' 		=> 'admin.orgrebates.edit',
 		'destroy' 	=> 'admin.orgrebates.delete',
 	],
+
+	//学生退款
+	'drawback' => [
+		'show' 		=> 'admin.drawback.show',
+		'create' 	=> 'admin.drawback.create',
+		'edit' 		=> 'admin.drawback.edit',
+		'destroy' 	=> 'admin.drawback.delete',
+	],
 ];

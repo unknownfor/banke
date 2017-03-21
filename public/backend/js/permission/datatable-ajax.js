@@ -44,11 +44,11 @@ var TableDatatablesAjax = function() {
           "name": "description",
           "orderable" : true,
         },
-        { 
-          "data": "model",
-          "name": "model",
-          "orderable" : true,
-        },
+        //{
+        //  "data": "model",
+        //  "name": "model",
+        //  "orderable" : true,
+        //},
         { 
         	"data": "status",
         	"name": "status",
@@ -63,16 +63,16 @@ var TableDatatablesAjax = function() {
             }
           }
         },
-        { 
-        	"data": "created_at",
-        	"name": "created_at",
-        	"orderable" : true,
-        },
-        { 
-        	"data": "updated_at",
-        	"name": "updated_at",
-        	"orderable" : true,
-        },
+        //{
+        //	"data": "created_at",
+        //	"name": "created_at",
+        //	"orderable" : true,
+        //},
+        //{
+        //	"data": "updated_at",
+        //	"name": "updated_at",
+        //	"orderable" : true,
+        //},
         { 
           "data": "actionButton",
           "name": "actionButton",
