@@ -185,6 +185,7 @@ class WithdrawRepository
 					try {
 						$user_profile = BankeUserProfiles::where('uid', $withDraw['uid'])->lockForUpdate()->first();
 						$user_profile->account_balance += $withDraw['withdraw_amount'];
+                                                $user_profile->total_withdraw_amount-=$withDraw['withdraw_amount'];
 						$user_profile->save();
 
 						$balance_log = [
