@@ -24,6 +24,7 @@ class BankeUserProfiles extends Model
         'invitation_amount',
         'certification_time',
         'enddated_at',
+        'total_withdraw_amount',
         ];
 
     private $action;
