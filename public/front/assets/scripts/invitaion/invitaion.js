@@ -13,7 +13,9 @@ $(function () {
         reg = /^1(3|4|5|7|8)\d{9}$/;
         var $code=$('#phone-code-btn'),
             $btn=$('.btn'),
-            code=$('#user-code').val();
+            code=$('#user-code').val(),
+            //新增登陆密码
+            password=$('#user-password');
         if(reg.test(number)) {
            $code.removeClass('disabled');
            if(code!=''){
