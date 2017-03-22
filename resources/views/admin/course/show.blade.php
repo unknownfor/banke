@@ -116,12 +116,14 @@
                               </div>
                           </div>
                       </div>
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>
-                          <div class="col-md-3">
-                              <input type="text" readonly class="form-control" id="enddated_at" value="{{$course['enddated_at']}}">
-                          </div>
-                      </div>
+
+                      {{--<div class="form-group form-md-line-input">--}}
+                          {{--<label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>--}}
+                          {{--<div class="col-md-3">--}}
+                              {{--<input type="text" readonly class="form-control" id="enddated_at" value="{{$course['enddated_at']}}">--}}
+                          {{--</div>--}}
+                      {{--</div>--}}
+
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="details">{{trans('labels.course.details')}}</label>
                           <div class="col-md-9">
