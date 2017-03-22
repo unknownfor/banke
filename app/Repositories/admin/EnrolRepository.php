@@ -211,8 +211,8 @@ class EnrolRepository
 	public function getUserInLimitTime($startTime,$endTime)
 	{
 		$user = new BankeEnrol();
-		$user = $user::where('created_at','>=',getTime($startTime));
-		$user = $user::where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
+		$user = $user->where('created_at','>=',getTime($startTime));
+		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','created_at']);
 		return $user;
 	}
 

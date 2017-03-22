@@ -142,8 +142,9 @@ class DrawbackRepository
 		$drawback = BankeDrawback::find($id);
 		if ($drawback) {
 			if ($drawback->fill($request->all())->save()) {
+  				//TODO 放着先不做
 
-				$input = $request->only(['comment', 'status']);
+				$input = $request->only(['comment', 'status','account']);
 				//确定订单退款
 				if ($input['status'] == config('admin.global.status.active')) {
 
@@ -160,6 +161,15 @@ class DrawbackRepository
 							$order = BankeCashBackUser::where('order_id',$order_id)->lockForUpdate()->first();
 							$order->statu=2;  //标识为退款款
 							$order->save();
+
+							//更新用户的待返金额状态，将 打卡可奖励 金额去除相应的数值，任务可返金额也去除相应数字
+							$userProfile = BankeUserProfiles::where('uid', $order->uid)->lockForUpdate()->first();
+							$userProfile->check_in_amount -= $input['account'];
+							$userProfile->do_task_amount += $role['do_task_amount'];
+							$userProfile->total_cashback_amount += ($role['check_in_amount'] + $role['do_task_amount']);
+							$userProfile->period += $role->period;
+							//更新报名学生的信息
+							$userProfile->save();
 
 						} catch (Exception $e) {
 							Log::info($e);

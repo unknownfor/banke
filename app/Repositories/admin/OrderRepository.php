@@ -507,7 +507,7 @@ class OrderRepository
 		$user = new BankeCashBackUser;
 		$user = $user->where('created_at','>=',getTime($startTime));
 		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
-		return $user->get();
+		return $user;
 	}
 
 

@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use Carbon\Carbon;
+use EasyWeChat\Payment\Order;
 use Flash;
 use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeEnrol;
@@ -84,5 +85,35 @@ class DashboardRepository
 
 		return array($count1,$count2,$count3,$count4);
 	}
+
+	/*
+	 *过去7天的数据
+	 */
+	public function getPassSeventDaysData()
+	{
+		$time = time();
+		$today = date("Y-m-d",$time); //2010-08-29
+		$yesterdate=date("Y-m-d",strtotime("-6 day"));
+
+		//注册
+		$registerUser=new AppUserRepository();
+		$count1=$registerUser->getUserInLimitTime($yesterdate,$today)->count();
+
+		//预约
+		$enrol=new EnrolRepository();
+		$count2=$enrol->getUserInLimitTime($yesterdate,$today)->count();
+
+		//打卡
+		$enrol=new CheckinRepository();
+		$count3=$enrol->getUserInLimitTime($yesterdate,$today)->count();
+
+		//报名
+		$enrol=new OrderRepository();
+		$count4=$enrol->getUserInLimitTime($yesterdate,$today)->count();
+
+		return array($count1,$count2,$count3,$count4);
+
+	}
+
 
 }

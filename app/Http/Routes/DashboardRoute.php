@@ -4,6 +4,7 @@
  */
 $router->group(['prefix' => 'dashboard'], function($router){
 	$router->get('gettotaldata', 'DashboardController@gettotaldata');
+	$router->get('getchartdata', 'DashboardController@getchartdata');
 });
 
 $router->resource('dashboard', 'DashboardController');

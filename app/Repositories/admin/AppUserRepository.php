@@ -501,10 +501,13 @@ class AppUserRepository
 			$this->changeUserType($user->first()['uid'],$userData);
 			return true;
 		}else {
+			$user = new BankeUserProfiles;
 			$userData['status'] = 1;
 			//密码进行加密
 			$userData['password'] = bcrypt($userData['password']);
-			if ($user->fill($userData)->save()) {
+//			$code = Uuid::generate(4);
+			$user->fill($userData);
+//			if ($user->fill($userData)->save()) {
 				// 自动更新用户资料关系
 				$profiles = [
 					'uid' => $user->id,
@@ -513,7 +516,7 @@ class AppUserRepository
 					'org_id' => $userData['org_id'],
 					'invitation_code' => Uuid::generate(4)
 				];
-				$user->profiles()->create($profiles);
+			if($user->profiles()->create($profiles)){
 				Flash::success(trans('alerts.users.created_success'));
 				return true;
 			}
@@ -521,4 +524,20 @@ class AppUserRepository
 			return false;
 		}
 	}
+
+	/**
+	 * 根据创建时间，得到 注册用户
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function getUserInLimitTime($startTime,$endTime)
+	{
+		$user = new BankeUserProfiles();
+		$user = $user->where('created_at','>=',getTime($startTime));
+		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
+		return $user;
+	}
+
 }

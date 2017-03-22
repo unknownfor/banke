@@ -14,15 +14,24 @@ dashBoard.prototype={
 
     showChart:function(){
         var registerOption = this.setUpChartBasicInfo();
+
+        //this.getData(){}
         // 使用刚指定的配置项和数据显示图表。
         this.initChart(this.options.id).setOption(registerOption);//报名人数
     },
     getDate:function(){
+
+        //上周
+        //var time=new Date(),
+        //    diffNumber=time.getDay(),
+        //    date1=new Date(time-diffNumber*24*60*60*1000),
+        //    date2=new Date(time-((6+diffNumber)*24*60*60*1000));
+        //return date2.format('yyyy-MM-dd')+'—'+date1.format('yyyy-MM-dd');
+
+        //过去7天
         var time=new Date(),
-            diffNumber=time.getDay(),
-            date1=new Date(time-diffNumber*24*60*60*1000),
-            date2=new Date(time-((6+diffNumber)*24*60*60*1000));
-        return date2.format('yyyy-MM-dd')+'—'+date1.format('yyyy-MM-dd');
+            time1=new Date(time-6*24*60*60*1000);
+        return time1.format('yyyy-MM-dd')+'—'+time.format('yyyy-MM-dd');
     },
 
     setUpChartBasicInfo:function(){
@@ -102,41 +111,6 @@ function initChart(id){
 
 $(function(){
 
-    //注册人数
-    new dashBoard({
-        id:'main-register',
-        title:'七日注册人数变化',
-        xAxix:['周一','周二','周三','周四','周五','周六','周日'],
-        yData:[11, 11, 15, 13, 12, 13, 10],
-        yStyle:{symbolColor:'#c23531',lineColor:'#c23531'}
-    });
-
-    //报名人数
-    new dashBoard({
-        id:'main-signin',
-        title:'七日报名人数变化',
-        xAxix:['周一','周二','周三','周四','周五','周六','周日'],
-        yData:[11, 11, 15, 13, 12, 13, 10],
-        yStyle:{symbolColor:'#d48265',lineColor:'#d48265'}
-    });
-
-    //打卡人数
-    new dashBoard({
-        id:'main-clock',
-        title:'七日打卡人数变化',
-        xAxix:['周一','周二','周三','周四','周五','周六','周日'],
-        yData:[11, 11, 15, 13, 12, 13, 10],
-        yStyle:{symbolColor:'#61A0A8',lineColor:'#61A0A8'}
-    });
-    //预约人数
-    new dashBoard({
-        id:'main',
-        title:'七日预约人数变化',
-        xAxix:['周一','周二','周三','周四','周五','周六','周日'],
-        yData:[11, 11, 15, 13, 12, 13, 10],
-        yStyle:{symbolColor:'#de9325',lineColor:'#de9325'}
-    });
-
     //刷新课程列表
     getTotalData();
     function getTotalData(){
@@ -144,10 +118,69 @@ $(function(){
             paraData={},
             that=this;
         getDataAsync(url,paraData,function(res){
-            var str='',len=res.length;
-            console.log(len);
+            fillInTotalData(res);
+            //fillInChartData(res);
         });
     };
+
+
+    function fillInTotalData(res){
+        var totalData=res[0].total,
+            todayData=res[1].today,
+            yesterdayDay=res[2].yesterday;
+        var $val=$('.total-val');
+        for(var i=0;i<totalData.length;i++){
+            $val.eq(i).text(totalData[i]);
+        }
+
+        var $todayTr=$('.today-tr td');
+        for(var i=0;i<todayData.length;i++){
+            $todayTr.eq(i+1).text(todayData[i]);
+        }
+
+        var $yesterdayTr=$('.yesterday-tr td');
+        for(var i=0;i<yesterdayDay.length;i++){
+            $yesterdayTr.eq(i+1).text(yesterdayDay[i]);
+        }
+    }
+
+    function fillInChartData(res){
+        //注册人数
+        new dashBoard({
+            id:'main-register',
+            title:'七日注册人数变化',
+            xAxix:['周一','周二','周三','周四','周五','周六','周日'],
+            yData:[11, 11, 15, 13, 12, 13, 10],
+            yStyle:{symbolColor:'#c23531',lineColor:'#c23531'}
+        });
+
+        //报名人数
+        new dashBoard({
+            id:'main-signin',
+            title:'七日报名人数变化',
+            xAxix:['周一','周二','周三','周四','周五','周六','周日'],
+            yData:[11, 11, 15, 13, 12, 13, 10],
+            yStyle:{symbolColor:'#d48265',lineColor:'#d48265'}
+        });
+
+        //打卡人数
+        new dashBoard({
+            id:'main-clock',
+            title:'七日打卡人数变化',
+            xAxix:['周一','周二','周三','周四','周五','周六','周日'],
+            yData:[11, 11, 15, 13, 12, 13, 10],
+            yStyle:{symbolColor:'#61A0A8',lineColor:'#61A0A8'}
+        });
+        //预约人数
+        new dashBoard({
+            id:'main',
+            title:'七日预约人数变化',
+            xAxix:['周一','周二','周三','周四','周五','周六','周日'],
+            yData:[11, 11, 15, 13, 12, 13, 10],
+            yStyle:{symbolColor:'#de9325',lineColor:'#de9325'}
+        });
+    }
+
     //请求数据
     function getDataAsync(url,data,callback,type){
         type = type ||'get';
@@ -157,23 +190,7 @@ $(function(){
             url:url,
             data:data,
             success:function(res){
-                var totalData=res[0].total,
-                    todayData=res[1].today,
-                    yesterdayDay=res[2].yesterday;
-                var $val=$('.total-val');
-                for(var i=0;i<totalData.length;i++){
-                    $val.eq(i).text(totalData[i]);
-                }
-
-                var $todayTr=$('.today-tr td');
-                for(var i=0;i<todayData.length;i++){
-                    $todayTr.eq(i+1).text(todayData[i]);
-                }
-
-                var $yesterdayTr=$('.yesterday-tr td');
-                for(var i=0;i<yesterdayDay.length;i++){
-                    $yesterdayTr.eq(i+1).text(yesterdayDay[i]);
-                }
+                callback && callback(res);
             }
         });
     }
