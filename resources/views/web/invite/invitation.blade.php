@@ -37,10 +37,10 @@
         </div>
 
         {{--登陆密码--}}
-        <div class="register-box password">
-            <div class="register-img code-img"></div>
-            <input class="register-code" id="user-password" placeholder="登陆密码" />
-        </div>
+        {{--<div class="register-box password">--}}
+            {{--<div class="register-img code-img"></div>--}}
+            {{--<input class="register-code" id="user-password" placeholder="登陆密码" />--}}
+        {{--</div>--}}
 
         <div class="btn">注册获得20元现金</div>
     </div>
