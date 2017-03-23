@@ -119,7 +119,7 @@ $(function(){
             that=this;
         getDataAsync(url,paraData,function(res){
             fillInTotalData(res);
-            //fillInChartData(res);
+            fillInChartData(res);
         });
     };
 
