@@ -52,7 +52,7 @@
                             <th width="10%"> {{ trans('labels.app_user.account_balance') }} </th>
                             <th width="10%"> {{ trans('labels.app_user.total_cashback_amount') }} </th>
                             <th width="10%"> {{ trans('labels.app_user.withdraw_amount') }} </th>
-                          {{--<th width="15%"> {{ trans('labels.app_user.created_at') }} </th>--}}
+                          <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
                           {{--<th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>--}}
                           <th width="10%"> {{ trans('labels.action') }} </th>
                         </tr>
@@ -96,22 +96,22 @@
                             </td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            {{--<td>--}}
-                              {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
-                                {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">--}}
-                                {{--<span class="input-group-addon">--}}
-                                  {{--<i class="fa fa-calendar"></i>--}}
-                                {{--</span>--}}
-                              {{--</div>--}}
+                            {{--<td></td>--}}
+                            <td>
+                              <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">
+                                <span class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </span>
+                              </div>
 
-                              {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
-                                {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">--}}
-                                {{--<span class="input-group-addon">--}}
-                                  {{--<i class="fa fa-calendar"></i>--}}
-                                {{--</span>--}}
-                              {{--</div>--}}
-                            {{--<td>--}}
+                              <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">
+                                <span class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </span>
+                              </div>
+                            <td>
                                 {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
                                   {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">--}}
                                   {{--<span class="input-group-addon">--}}
