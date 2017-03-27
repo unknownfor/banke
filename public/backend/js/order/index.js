@@ -92,6 +92,14 @@
                 that.controlSearchModal(false);
             }
         });
+
+        //设置查询时间
+        var $date=$('.input-group.date');
+        $date.datepicker({
+            autoclose: true,
+            todayHighlight:true
+        });
+
     };
 
     singup.prototype={

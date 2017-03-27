@@ -42,8 +42,16 @@
                     <div class="total-val">**</div>
                 </div>
                 <div>
+                    <div>总认证人数</div>
+                    <div class="total-val">**</div>
+                </div>
+                <div>
                     <div>总打卡次数</div>
                     <div class="total-val">*</div>
+                </div>
+                <div>
+                    <div>总提现人数</div>
+                    <div class="total-val">**</div>
                 </div>
             </div>
         </div>
@@ -60,12 +68,16 @@
                     <th class="col-md-2"></th>
                     <th class="col-md-2">新增注册人数</th>
                     <th class="col-md-2">预约人数</th>
+                    <th class="col-md-2">认证人数</th>
                     <th class="col-md-2">报名人数</th>
                     <th class="col-md-2">打卡人数</th>
+                    <th class="col-md-2">提现人数</th>
                 </thead>
                 <tbody>
                     <tr class="today-tr">
                         <td>今日</td>
+                        <td>******</td>
+                        <td>*****</td>
                         <td>****</td>
                         <td>***</td>
                         <td>**</td>
@@ -73,6 +85,8 @@
                     </tr>
                     <tr class="yesterday-tr">
                         <td>昨日</td>
+                        <td>******</td>
+                        <td>*****</td>
                         <td>****</td>
                         <td>***</td>
                         <td>**</td>

@@ -92,6 +92,13 @@
                           </div>
                       </div>
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="end_date">{{trans('labels.order.end_date')}}</label>
+                          <div class="col-md-7">
+                              <input type="text" class="form-control" readonly name="end_date" value="{{$order['end_date']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="comment">{{trans('labels.order.comment')}}</label>
                           <div class="col-md-7">
                               <textarea  class="form-area col-md-12" name="comment">{{$order['comment']}}</textarea>

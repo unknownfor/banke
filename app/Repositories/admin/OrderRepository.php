@@ -214,18 +214,19 @@ class OrderRepository
 				$input['order_id'] = date("YmdHis").mt_rand(10, 99);
 				$course = BankeCourse::find($input['course_id']);
 				$input['period'] = $course['period'];
-                                if($course->checkin_award){
-                                    $input['check_in_amount']=moneyFormat(($input['tuition_amount'] * $course->checkin_award / 100));
-                                }else{
-                                    $check_in_config = BankeDict::find(3);
-                                    $input['check_in_amount'] = moneyFormat(($input['tuition_amount'] * $check_in_config['value'] / 100));
-                                }
-                                if($course->task_award){
-                                    $input['do_task_amount']=moneyFormat(($input['tuition_amount'] * $course->task_award / 100));
-                                }else{
-                                    $do_task_config = BankeDict::find(4);
-                                    $input['do_task_amount'] = moneyFormat(($input['tuition_amount'] * $do_task_config['value'] / 100)); 
-                                }
+				$check_in_config = BankeDict::find(3);
+				$do_task_config = BankeDict::find(4);
+				if($course->checkin_award){
+					$input['check_in_amount']=moneyFormat(($input['tuition_amount'] * $course->checkin_award / 100));
+				}else{
+					$input['check_in_amount'] = moneyFormat(($input['tuition_amount'] * $check_in_config['value'] / 100));
+				}
+				if($course->task_award){
+					$input['do_task_amount']=moneyFormat(($input['tuition_amount'] * $course->task_award / 100));
+				}else{
+
+					$input['do_task_amount'] = moneyFormat(($input['tuition_amount'] * $do_task_config['value'] / 100));
+				}
 				
 				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
                                 

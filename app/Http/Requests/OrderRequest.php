@@ -30,6 +30,7 @@ class OrderRequest extends Request
             'course_id' => 'required',
             'tuition_amount' => 'required|numeric',
             'status' => 'required',
+            'end_date'=>'required'
         ];
     }
 
@@ -51,6 +52,7 @@ class OrderRequest extends Request
             'course_id'   => trans('labels.order.course_id'),
             'tuition_amount' => trans('labels.order.tuition_amount'),
             'status'        => trans('labels.order.status'),
+            'end_date'        => trans('labels.order.end_date'),
         ];
     }
 }

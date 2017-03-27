@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
 @endsection
 @section('content')
     <div class="page-bar">
@@ -101,6 +102,19 @@
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="end_date">{{trans('labels.order.end_date')}}</label>
+                                <div class="col-md-4">
+                                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                        <input type="text" class="form-control form-filter input-sm" placeholder="{{trans('labels.order.end_date')}}" name="end_date">
+                                        <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="comment">{{trans('labels.order.comment')}}</label>
@@ -155,6 +169,7 @@
     </div>
 @endsection
 @section('js')
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
     <script type="text/javascript">
         $(function() {

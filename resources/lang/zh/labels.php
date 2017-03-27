@@ -387,6 +387,7 @@ return [
 		'list' => '报名列表',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
+		'end_date' => '截止时间',
 		'active' => '<span class="label label-success"> 已验证 </span>',
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'info' => '暂无额外权限',
