@@ -214,7 +214,7 @@ class AppUserRepository
 		}
 
 		$user = $user->offset($start)->limit($length);
-		$users = $user->orderBy("uid", "desc")->get();
+		$users = $user->orderBy("updated_at", "desc")->get();
 
 		if ($users) {
 			foreach ($users as &$v) {

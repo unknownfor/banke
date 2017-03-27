@@ -14,8 +14,8 @@ var TableDatatablesAjax = function() {
           d.certification_status = $('.filter select[name="certification_status"] option:selected').val();
           d.school = $('.filter input[name="school"]').val().replace(/(^\s+)|(\s+$)/g,"");
           d.major = $('.filter input[name="major"]').val().replace(/(^\s+)|(\s+$)/g,"");
-          //d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
-          //d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
+          d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
+          d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -37,11 +37,7 @@ var TableDatatablesAjax = function() {
           "name": "mobile",
           "orderable" : false,
         },
-        {
-          "data": "birthday",
-          "name": "birthday",
-          "orderable" : false,
-        },
+
         {
           "data": "school",
           "name": "school",
@@ -83,11 +79,11 @@ var TableDatatablesAjax = function() {
         //  "name": "certification_time",
         //  "orderable" : false,
         //},
-        //{
-        //  "data": "updated_at",
-        //  "name": "updated_at",
-        //  "orderable" : true,
-        //},
+        {
+          "data": "updated_at",
+          "name": "updated_at",
+          "orderable" : false,
+        },
         { 
           "data": "actionButton",
           "name": "actionButton",

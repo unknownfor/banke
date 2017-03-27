@@ -45,17 +45,16 @@
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
                     <thead>
                         <tr role="row" class="heading">
-                          <th>#</th>
-                          <th width="10%"> {{ trans('labels.app_user.real_name') }} </th>
-                          <th> {{ trans('labels.app_user.mobile') }} </th>
-                            <th width="8%"> {{ trans('labels.app_user.birthday') }} </th>
+                            <th>#</th>
+                            <th width="10%"> {{ trans('labels.app_user.real_name') }} </th>
+                            <th> {{ trans('labels.app_user.mobile') }} </th>
                             <th> {{ trans('labels.app_user.school') }} </th>
                             <th> {{ trans('labels.app_user.major') }} </th>
                             <th> {{ trans('labels.app_user.certification_picture') }} </th>
-                          <th width="8%"> {{ trans('labels.app_user.certification_status') }} </th>
-                            {{--<th> {{ trans('labels.app_user.certification_time') }} </th>--}}
-                          {{--<th width="11%"> {{ trans('labels.app_user.updated_at') }} </th>--}}
-                          <th width="5%"> {{ trans('labels.action') }} </th>
+                            <th width="8%"> {{ trans('labels.app_user.certification_status') }} </th>
+                            <th> {{ trans('labels.app_user.updated_at') }} </th>
+                            {{--<th width="11%"> {{ trans('labels.app_user.updated_at') }} </th>--}}
+                            <th width="5%"> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
                             <td></td>
@@ -80,7 +79,7 @@
                                 </div>
                               </div>
                             </td>
-                            <td></td>
+
                             <td>
                                 <div class="form-group form-md-line-input">
                                     <div class="input-group has-success">
@@ -118,21 +117,21 @@
                                     </select>
                                 </div>
                             </td>
-                            {{--<td>--}}
-                                {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
-                                  {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">--}}
-                                  {{--<span class="input-group-addon">--}}
-                                    {{--<i class="fa fa-calendar"></i>--}}
-                                  {{--</span>--}}
-                                {{--</div>--}}
+                            <td>
+                                <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
+                                  <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">
+                                  <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </span>
+                                </div>
 
-                                {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
-                                  {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">--}}
-                                  {{--<span class="input-group-addon">--}}
-                                    {{--<i class="fa fa-calendar"></i>--}}
-                                  {{--</span>--}}
-                                {{--</div>--}}
-                            {{--</td>--}}
+                                <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                                  <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">
+                                  <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </span>
+                                </div>
+                            </td>
                             <td>
                                 <div class="margin-bottom-5">
                                     <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
