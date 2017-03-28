@@ -50,7 +50,7 @@
                     <div class="total-val">*</div>
                 </div>
                 <div>
-                    <div>总提现人数</div>
+                    <div>总提现次数</div>
                     <div class="total-val">**</div>
                 </div>
             </div>
