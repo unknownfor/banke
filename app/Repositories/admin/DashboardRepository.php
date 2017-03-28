@@ -1,5 +1,7 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeUserAuthentication;
+use App\Models\Banke\BankeWithdraw;
 use Carbon\Carbon;
 use EasyWeChat\Payment\Order;
 use Flash;
@@ -25,13 +27,13 @@ class DashboardRepository
 	public function getTotalData()
 	{
 		$count1= BankeUserProfiles::all()->toArray();//注册
-		$count2 = BankeEnrol::all()->toArray();//预约
-		$count3 = BankeCashBackUser::where('status',1)->get()->toArray();//报名
-		$count3 = BankeCashBackUser::where('status',1)->get()->toArray();//认证
-		$count4 = BankeCheckIn::all()->toArray();//打卡
-		$count4 = BankeCheckIn::all()->toArray();//提现
+		$count2 = BankeUserAuthentication::where('certification_status',2)->get()->toArray();//认证
+		$count3 = BankeEnrol::all()->toArray();//预约
+		$count4 = BankeCashBackUser::where('status',1)->get()->toArray();//报名
+		$count5 = BankeCheckIn::all()->toArray();//打卡
+		$count6 = BankeWithdraw::where('status',1)->get()->toArray();//提现次数
 
-		return array(count($count1),count($count2),count($count3),count($count4));
+		return array(count($count1),count($count2),count($count3),count($count4),count($count5),count($count6));
 	}
 
 	/*
@@ -55,6 +57,16 @@ class DashboardRepository
 		}
 		$count1 = $registerUser->count();//注册
 
+		//认证
+		$authenUser=new BankeUserAuthentication();
+		if($type=='today') {
+			$authenUser = $authenUser->where('created_at', '>=', getTime($today));
+		}else{
+			$authenUser = $authenUser->where('created_at', '>=', getTime($yesterdate));
+			$authenUser = $authenUser->where('created_at', '<', getTime($today));
+		}
+		$count2 = $authenUser->where('certification_status',2)->count();//认证
+
 		//预约
 		$enrol=new BankeEnrol;
 		if($type=='today') {
@@ -63,7 +75,7 @@ class DashboardRepository
 			$enrol = $enrol->where('created_at', '>=', getTime($yesterdate));
 			$enrol = $enrol->where('created_at', '<', getTime($today));
 		}
-		$count2 = $enrol->count();//预约
+		$count3 = $enrol->count();//预约
 
 		//报名
 		$cashUserUser=new BankeCashBackUser;
@@ -73,7 +85,7 @@ class DashboardRepository
 			$cashUserUser = $cashUserUser->where('created_at', '>=', getTime($yesterdate));
 			$cashUserUser = $cashUserUser->where('created_at', '<', getTime($today));
 		}
-		$count3 = $cashUserUser->count();//报名
+		$count4 = $cashUserUser->where('status',1)->count();//报名
 
 		//打卡
 		$checkin=new BankeCheckIn;
@@ -83,9 +95,19 @@ class DashboardRepository
 			$checkin = $checkin->where('created_at', '>=', getTime($yesterdate));
 			$checkin = $checkin->where('created_at', '<', getTime($today));
 		}
-		$count4 = $checkin->count();//打卡
+		$count5 = $checkin->count();//打卡
 
-		return array($count1,$count2,$count3,$count4);
+		//提现
+		$withDraw=new BankeWithdraw();
+		if($type=='today') {
+			$withDraw = $withDraw->where('created_at', '>=', getTime($today));
+		}else{
+			$withDraw = $withDraw->where('created_at', '>=', getTime($yesterdate));
+			$withDraw = $withDraw->where('created_at', '<', getTime($today));
+		}
+		$count6 = $withDraw->where('status',1)->count();//提现
+
+		return array($count1,$count2,$count3,$count4,$count5,$count6);
 	}
 
 	/*
