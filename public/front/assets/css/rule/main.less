@@ -1,8 +1,9 @@
+@mainFontColor:#383d43;
 body {
   margin:0 auto;
   padding:0;
   max-width: 700px;
-  background-color: #f2f2f2;
+  //background-color: #f2f2f2;
   overflow-x: hidden;
   word-wrap:break-word;
   position: relative;
@@ -17,111 +18,60 @@ ul {
   margin: 0;
   padding: 0;
 }
-.banner {
-  background-color: #ffffff;
-}
-.content {
-  margin-bottom: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  background-color: #ffffff;
-  .title {
-    color: #383D43;
-    font-size: 14px;
-    padding: 15px 0px;
-    font-weight: bold;
-    .icon {
-      position: absolute;
-      width: 23px;
-      height: 23px;
-      background: url("../../img/rule/icon.png") no-repeat;
-      background-size: 159px*0.7 33px*0.7;
-      &.about-banke-img {
-        background-position: -89px 0px;
-      }
-      &.service-img {
-        background-position: -89px 0px;
-      }
-    }
-    .text-title {
-      margin-left: 30px;
-      display: inline-block;
-      vertical-align: -4px;
-    }
-  }
-  .text {
-    padding-bottom: 15px;
-    border-top: 1px solid #e5e5e5;
-    line-height: 22px;
-    .second-title {
-      color: #383D43;
-      font-weight: bold;
-      padding-top: 15px;
-    }
-    .text-box {
-      padding-top: 15px;
-      line-height: 25px;
-      > div {
-        line-height: 22px;
-      }
-      .number {
-        margin-right: 10px;
-        text-align: center;
+#rule {
+  .content {
+    padding: 0 15px;
+    .title {
+      background-color: #fff;
+      text-align: left;
+      padding: 15px 0px 15px 15px;
+      .title-img {
+        .size(26px,26px);
         display: inline-block;
-        background-color: #FA4535;
-        width: 20px;
-        height: 20px;
-        line-height: 20px;
-        border-radius: 20px;
-        color: #ffffff;
-        font-weight: bolder;
+        background: url("../../img/rule/sprite.png") no-repeat;
+        background-size: 309px*0.8 58px*0.8;
+        margin-right: 5px;
+        &.service-img {
+          background-position: -190px -1px;
+        }
+      }
+      .title-txt {
+        font-size: 14px;
+        color: @mainFontColor;
+        font-weight: bold;
+        vertical-align: 8px;
       }
     }
-  }
-}
-
-#downloadCon{
-  margin: 0 auto;
-  max-width: 700px;
-  //width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  opacity: 1;
-  max-height: 113px;
-  display: inline-block;
-  background-color: #FFEB3B;
-  .downloadBar-img {
-    max-width: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    opacity: 0;
-    display: inline-block;
-  }
-  a {
-    display:block;
-    text-decoration: none;
-    border: 0;
-    padding: 0;
-    margin: 0;
-  }
-}
-@media screen and (max-width: 420px){
-  #downloadCon {
-    height: 78px;
-  }
-}
-@media screen and (max-width: 380px){
-  #downloadCon {
-    height: 71px;
-  }
-}
-@media screen and (max-width: 320px){
-  #downloadCon {
-    height: 61px;
+    &.service {
+      padding: 0px;
+      background-color: #FFEB3B;
+      .service-box {
+        width: 100%;
+        height: 450px;
+        .service-detail {
+          height: 70px;
+          margin: 15px;
+          background-color: #FFFFFF;
+          .service-title {
+            text-align: center;
+            .title-img {
+              display: inline-block;
+              .size(45px,45px);
+              background: url("../../img/rule/sprite.png") no-repeat;
+              background-size: 309px*0.5 58px*0.5;
+              margin-right: 5px;
+              &.org {
+                .size(27px,25px);
+                background-position: -29px -5px;
+              }
+            }
+            .title-txt {
+              font-size: 20px;
+              color: #fbc02d;
+            }
+          }
+        }
+      }
+    }
   }
 }
