@@ -71,6 +71,16 @@ var TableDatatablesAjax = function() {
             }
           }
         },
+        {
+          "data": "check_in_amount",
+          "name": "check_in_amount",
+          "orderable" : true,
+        },
+        {
+          "data": "get_check_in_amount",
+          "name": "get_check_in_amount",
+          "orderable" : true,
+        },
         { 
           "data": "actionButton",
           "name": "actionButton",

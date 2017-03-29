@@ -112,8 +112,8 @@
                               <th width="20%"> {{ trans('labels.order.course_name') }} </th>
                               <th width="10%"> {{ trans('labels.order.created_at') }} </th>
                               <th width="5%"> {{ trans('labels.order.status') }} </th>
-                              {{--<th width="10%"> {{ trans('labels.order.org_account_name') }} </th>--}}
-                              {{--<th width="10%"> {{ trans('labels.order.manage_name') }} </th>--}}
+                              <th width="10%"> {{ trans('labels.order.check_in_amount') }} </th>
+                              <th width="10%"> {{ trans('labels.order.get_check_in_amount') }} </th>
                               {{--<th width="10%"> {{ trans('labels.order.manage_time') }} </th>--}}
                             <th width="18%"> {{ trans('labels.action') }} </th>
                         </tr>

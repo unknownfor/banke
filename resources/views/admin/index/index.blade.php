@@ -34,15 +34,15 @@
                     <div class="total-val">****</div>
                 </div>
                 <div>
-                    <div>总预约人数</div>
+                    <div>总认证人数</div>
                     <div class="total-val">***</div>
                 </div>
                 <div>
-                    <div>总报名人数</div>
+                    <div>总预约人数</div>
                     <div class="total-val">**</div>
                 </div>
                 <div>
-                    <div>总认证人数</div>
+                    <div>总报名人数</div>
                     <div class="total-val">**</div>
                 </div>
                 <div>
@@ -50,7 +50,7 @@
                     <div class="total-val">*</div>
                 </div>
                 <div>
-                    <div>总提现人数</div>
+                    <div>总提现次数</div>
                     <div class="total-val">**</div>
                 </div>
             </div>
@@ -65,13 +65,13 @@
         <div class="table-main">
             <table class="table table-striped table-hover table-checkable dataTable no-footer">
                 <thead>
-                    <th class="col-md-2"></th>
-                    <th class="col-md-2">新增注册人数</th>
-                    <th class="col-md-2">预约人数</th>
-                    <th class="col-md-2">认证人数</th>
-                    <th class="col-md-2">报名人数</th>
-                    <th class="col-md-2">打卡人数</th>
-                    <th class="col-md-2">提现人数</th>
+                    <th class="col-md-1"></th>
+                    <th class="col-md-1">新增注册人数</th>
+                    <th class="col-md-1">认证人数</th>
+                    <th class="col-md-1">预约人数</th>
+                    <th class="col-md-1">报名人数</th>
+                    <th class="col-md-1">打卡次数</th>
+                    <th class="col-md-1">提现次数</th>
                 </thead>
                 <tbody>
                     <tr class="today-tr">
@@ -119,7 +119,7 @@
         <div class="table-box echart-main-box">
             <div class="head-title">
                 <i class="iconfont icon-chart-icon"></i>
-                <span>打卡人数</span>
+                <span>打卡次数</span>
             </div>
             <div class="table-main">
                 <div id="main-clock" class="echart-main-content"></div>
