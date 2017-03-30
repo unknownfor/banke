@@ -84,13 +84,13 @@
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="cashback_amount">{{trans('labels.order.cashback_amount')}}</label>
-                          <div class="col-md-9">
-                              <input type="text" readonly class="form-control" id="cashback_amount" name="cashback_amount"  value="{{$order['cashback_amount']}}">
-                              <div class="form-control-focus"> </div>
-                          </div>
-                      </div>
+                      {{--<div class="form-group form-md-line-input">--}}
+                          {{--<label class="col-md-1 control-label" for="cashback_amount">{{trans('labels.order.payback')}}</label>--}}
+                          {{--<div class="col-md-9">--}}
+                              {{--<input type="text" readonly class="form-control" value="{{$order['cashback_amount']}}">--}}
+                              {{--<div class="form-control-focus"> </div>--}}
+                          {{--</div>--}}
+                      {{--</div>--}}
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="end_date">{{trans('labels.order.end_date')}}</label>
                           <div class="col-md-7">

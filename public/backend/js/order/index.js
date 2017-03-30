@@ -41,15 +41,15 @@
             liveSearchPlaceholder:'输入名称进行搜索'
         });
 
-        $(document).on('blur','#tuition_amount',function(){
-            var val=$(this).val();
-            if(!/^[0-9]*$/.test(val)){
-                alert("请输入数值");
-                return;
-            }
-            var payback=parseInt(val*0.5);
-            $('#payback').val(payback);
-        });
+        //$(document).on('blur','#tuition_amount',function(){
+        //    var val=$(this).val();
+        //    if(!/^[0-9]*$/.test(val)){
+        //        alert("请输入数值");
+        //        return;
+        //    }
+        //    var payback=parseInt(val*0.5);
+        //    $('#payback').val(payback);
+        //});
 
         $(document).on('focus','.my-search-input',function(){
             if($('.my-search-result-ul').children().length>0){

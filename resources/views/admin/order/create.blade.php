@@ -95,13 +95,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="sort">{{trans('labels.order.payback')}}</label>
-                                <div class="col-md-7">
-                                    <input type="text" class="form-control" disabled id="payback" name="payback" placeholder="{{trans('labels.order.payback')}}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
+                            {{--<div class="form-group form-md-line-input">--}}
+                                {{--<label class="col-md-1 control-label" for="sort">{{trans('labels.order.payback')}}</label>--}}
+                                {{--<div class="col-md-7">--}}
+                                    {{--<input type="text" class="form-control" disabled id="payback" name="payback" placeholder="{{trans('labels.order.payback')}}">--}}
+                                    {{--<div class="form-control-focus"> </div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="end_date">{{trans('labels.order.end_date')}}</label>
                                 <div class="col-md-4">
