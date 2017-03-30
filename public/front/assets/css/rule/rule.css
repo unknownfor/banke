@@ -132,8 +132,6 @@ ul {
   padding: 15px 0px 15px 15px;
 }
 #rule .content .title .title-img {
-  width: 26px;
-  height: 26px;
   display: inline-block;
   background: url("../../img/rule/sprite.png") no-repeat;
   -webkit-background-size: 247.2px 46.4px;
@@ -141,7 +139,14 @@ ul {
   margin-right: 5px;
 }
 #rule .content .title .title-img.service-img {
+  width: 26px;
+  height: 26px;
   background-position: -190px -1px;
+}
+#rule .content .title .title-img.payback-img {
+  width: 26px;
+  height: 23px;
+  background-position: -223px -3px;
 }
 #rule .content .title .title-txt {
   font-size: 14px;
@@ -154,21 +159,22 @@ ul {
   background-color: #FFEB3B;
 }
 #rule .content.service .service-box {
-  width: 100%;
-  height: 450px;
+  height: 500px;
 }
 #rule .content.service .service-box .service-detail {
   height: 70px;
   margin: 15px;
   background-color: #FFFFFF;
+  padding: 20px 15px;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 4px 10px 2px #fbc02d;
+  box-shadow: 0px 4px 10px 2px #fbc02d;
 }
 #rule .content.service .service-box .service-detail .service-title {
   text-align: center;
 }
 #rule .content.service .service-box .service-detail .service-title .title-img {
   display: inline-block;
-  width: 45px;
-  height: 45px;
   background: url("../../img/rule/sprite.png") no-repeat;
   -webkit-background-size: 154.5px 29px;
   background-size: 154.5px 29px;
@@ -179,7 +185,62 @@ ul {
   height: 25px;
   background-position: -29px -5px;
 }
+#rule .content.service .service-box .service-detail .service-title .title-img.price {
+  width: 25px;
+  height: 25px;
+  background-position: -60px -2px;
+}
+#rule .content.service .service-box .service-detail .service-title .title-img.guarantee {
+  width: 25px;
+  height: 25px;
+  background-position: -2px -2px;
+}
+#rule .content.service .service-box .service-detail .service-title .title-img.job {
+  width: 25px;
+  height: 25px;
+  background-position: -90px -1px;
+}
 #rule .content.service .service-box .service-detail .service-title .title-txt {
   font-size: 20px;
   color: #fbc02d;
+  vertical-align: 5px;
+}
+#rule .content.service .service-box .service-detail .service-info > span {
+  border: 1px solid #fbb00a;
+  color: #fbb00a;
+}
+#rule .content.payback .payback-box .payback-detail {
+  position: relative;
+  margin: 15px 0px 35px 0px;
+  padding: 20px 15px;
+  line-height: 22px;
+  border: 1px solid #fbb00a;
+  border-radius: 12px;
+}
+#rule .content.payback .payback-box .payback-detail .payback-title {
+  position: absolute;
+  top: -13px;
+  left: 15px;
+  text-align: center;
+  width: 70px;
+  height: 26px;
+  line-height: 26px;
+  color: #fff;
+  background-color: #fbb00a;
+  font-size: 14px;
+  border-radius: 8px;
+}
+#rule .content.payback .payback-box .payback-detail .payback-info > p > span {
+  display: inline-block;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  line-height: 20px;
+  color: #fff;
+  background-color: #FA4535;
+  margin-right: 8px;
+}
+#rule .statement {
+  text-align: center;
 }
