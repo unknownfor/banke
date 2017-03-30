@@ -50,7 +50,7 @@
 		</div>
 		<div class="second-title">学习奖励</div>
 		<div class="text-box">
-			学员在课程结束前，每次课时都可以领取到一笔学习奖励，累计奖励最高可达到缴纳学费的50%。
+			学员在课程结束前，每天都可以领取到一笔学习奖励，累计奖励最高可达到缴纳学费的50%。
 		</div>
 	</div>
 </div>
@@ -70,7 +70,7 @@
 			<br />
 			<div><span class="number">4</span>半课工作人员为该学员开通学习奖励计划</div>
 			<br />
-			<div><span class="number">5</span>上课时在首页打卡领取奖励</div>
+			<div><span class="number">5</span>每天在首页打卡领取奖励</div>
 		</div>
 	</div>
 </div>
@@ -82,9 +82,9 @@
 	</div>
 	<div class="text">
 		<div class="text-box">
-			<div>1.学员按照课时安排到达指定地点上课学习，App首页签到打卡领取当次课时奖励，旷课者则不享受本次课时的奖励。</div>
+			<div>1.学员每天可在App首页签到打卡，领取当天奖励。</div>
 			<br />
-			<div>2.课程结束时，若全勤可获得学费总额20%的奖励金额。</div>
+			<div>2.课程结束时，学员最高可获得学费总额50%的奖励金额。</div>
 			<br />
 			<div>3.完成任务中心里的任务最高可获得额外30%的学费奖励。</div>
 		</div>
