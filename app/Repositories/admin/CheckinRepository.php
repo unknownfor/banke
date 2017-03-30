@@ -29,57 +29,66 @@ class CheckinRepository
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
-		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
-		
+
+		$mobile = request('mobile' ,'');
 		$name = request('name' ,'');
+		$couse_name=request('course_name','');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
 		$updated_at_from = request('updated_at_from' ,'');
 		$updated_at_to = request('updated_at_to' ,'');
-		$orders = request('order', []);
 
-		$role = new BankeCheckIn;
+		$checkin = new BankeCheckIn;
+		$uid=0;
 
 		/*配置名称搜索*/
-/*		if($name){
-			if($search_pattern){
-				$role = $role->where('key', 'like', $name);
-			}else{
-				$role = $role->where('key', $name);
+		if($mobile){
+			$user = BankeUserProfiles::where('mobile',$mobile);
+			$uid=$user->first()['uid'];
+		}
+		if($name){
+			$user = BankeUserAuthentication::where('real_name',$name);
+			if(count($user)>0){
+				$uid=$user->first()['uid'];
 			}
-		}*/
+		}
+		if($mobile || $name){
+			$checkin=$checkin->where('uid',$uid);
+		}
+
+		if($couse_name){
+			$cid=-1;
+			$course = BankeCourse::where('name',$couse_name);
+			if(count($course)>0){
+				$cid=$course->first()['id'];
+			}
+			$checkin=$checkin->where('course_id',$cid);
+		}
 
 		/*配置创建时间搜索*/
 		if($created_at_from){
-			$role = $role->where('created_at', '>=', getTime($created_at_from));	
+			$checkin = $checkin->where('created_at', '>=', getTime($created_at_from));
 		}
 		if($created_at_to){
-			$role = $role->where('created_at', '<=', getTime($created_at_to, false));	
+			$checkin = $checkin->where('created_at', '<=', getTime($created_at_to, false));
 		}
 
 		/*配置修改时间搜索*/
 		if($updated_at_from){
 			$uafc = new Carbon($updated_at_from);
-			$role = $role->where('created_at', '>=', getTime($updated_at_from));	
+			$checkin = $checkin->where('created_at', '>=', getTime($updated_at_from));
 		}
 		if($updated_at_to){
-			$role = $role->where('created_at', '<=', getTime($updated_at_to, false));	
+			$checkin = $checkin->where('created_at', '<=', getTime($updated_at_to, false));
 		}
 
-		$count = $role->count();
+		$count = $checkin->count();
 
+		$checkin = $checkin->offset($start)->limit($length);
+		$checkins = $checkin->orderBy("id", "desc")->get();
 
-		if($orders){
-			$orderName = request('columns.' . request('order.0.column') . '.name');
-			$orderDir = request('order.0.dir');
-			$role = $role->orderBy($orderName, $orderDir);
-		}
-
-		$role = $role->offset($start)->limit($length);
-		$roles = $role->orderBy("id", "desc")->get();
-
-		if ($roles) {
-			foreach ($roles as &$v) {
+		if ($checkins) {
+			foreach ($checkins as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 				$user = BankeUserProfiles::find($v['uid']);
 				$authen = new BankeUserAuthentication;
@@ -98,7 +107,7 @@ class CheckinRepository
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $roles,
+			'data' => $checkins,
 		];
 	}
 
@@ -111,12 +120,12 @@ class CheckinRepository
 	 */
 	public function store($request)
 	{
-		$role = new BankeCheckIn;
-		if ($role->fill($request->all())->save()) {
-			Flash::success(trans('alerts.checkin.created_success'));
+		$checkin = new BankeCheckIn;
+		if ($checkin->fill($request->all())->save()) {
+			Flash::success(trans('alerts.$checkin.created_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.checkin.created_error'));
+		Flash::error(trans('alerts.$checkin.created_error'));
 		return false;
 	}
 	/**
@@ -128,23 +137,23 @@ class CheckinRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeCheckIn::find($id);
-		if ($role) {
-			$user = BankeUserProfiles::find($role['uid']);
+		$checkin = BankeCheckIn::find($id);
+		if ($checkin) {
+			$user = BankeUserProfiles::find($checkin['uid']);
 			$authen = new BankeUserAuthentication;
-			$authen = $authen->find($role['uid']);
+			$authen = $authen->find($checkin['uid']);
 			if ($authen && $authen->count() > 0 && $authen['certification_status']==2) {
-				$role['name'] = $authen['real_name'];
+				$checkin['name'] = $authen['real_name'];
 			}else{
-				$role['name'] = $user['name'];
+				$checkin['name'] = $user['name'];
 			}
-			$role['mobile'] = $user['mobile'];
-			$org = BankeOrg::find($role['org_id']);
-			$role['org_name'] = $org['name'];
-			$course = BankeCourse::find($role['course_id']);
-			$role['course_name'] = $course['name'];
-			$roleArray = $role->toArray();
-			return $roleArray;
+			$checkin['mobile'] = $user['mobile'];
+			$org = BankeOrg::find($checkin['org_id']);
+			$checkin['org_name'] = $org['name'];
+			$course = BankeCourse::find($checkin['course_id']);
+			$checkin['course_name'] = $course['name'];
+			$checkinArray = $checkin->toArray();
+			return $checkinArray;
 		}
 		abort(404);
 	}
@@ -159,20 +168,20 @@ class CheckinRepository
 	public function update($request,$id)
 	{
 		$input = $request->only(['status', 'comment']);
-		$role = BankeCheckIn::find($id);
-		if ($role) {
-			if ($role->fill($input)->save()) {
+		$checkin = BankeCheckIn::find($id);
+		if ($checkin) {
+			if ($checkin->fill($input)->save()) {
 				if($input['status'] == config('admin.global.status.ban')){
 					DB::beginTransaction();
 					try {
-						$user_profile = BankeUserProfiles::where('uid', $role['uid'])->lockForUpdate()->first();
-						$user_profile->account_balance -= $role['award_amount'];
+						$user_profile = BankeUserProfiles::where('uid', $checkin['uid'])->lockForUpdate()->first();
+						$user_profile->account_balance -= $checkin['award_amount'];
 						$user_profile->save();
 
 						$cur_user = Auth::user();
 						$balance_log = [
-							'uid'=>$role['uid'],
-							'change_amount'=>$role['award_amount'],
+							'uid'=>$checkin['uid'],
+							'change_amount'=>$checkin['award_amount'],
 							'change_type'=>'-',
 							'business_type'=>'PUNISHMENT',
 							'operator_uid'=>$cur_user['id']
@@ -210,10 +219,10 @@ class CheckinRepository
 	 */
 	public function mark($id,$status)
 	{
-		$role = BankeCheckIn::find($id);
-		if ($role) {
-			$role->status = $status;
-			if ($role->save()) {
+		$checkin = BankeCheckIn::find($id);
+		if ($checkin) {
+			$checkin->status = $status;
+			if ($checkin->save()) {
 				Flash::success(trans('alerts.checkin.updated_success'));
 				return true;
 			}

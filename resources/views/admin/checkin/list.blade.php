@@ -30,24 +30,14 @@
             </div>
           </div>
             <div class="search-box filter">
-                <div class="col-md-2">
-                    <div class="form-group form-md-line-input">
-                        <div class="input-group has-success">
-                            <span class="input-group-addon">
-                                <i class="fa fa-book"></i>
-                            </span>
-                            <input type="text" class="form-control form-filter" name="course_name" placeholder="{{ trans('labels.checkin.course_name') }}">
-                            <div class="form-control-focus"> </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
                             <span class="input-group-addon">
                                 <i class="fa fa-building"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="org_name" placeholder="{{ trans('labels.checkin.org_name') }}">
+                            <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.checkin.name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
@@ -58,7 +48,18 @@
                             <span class="input-group-addon">
                                 <i class="fa fa-mobile-phone"></i>
                             </span>
-                            <input type="text" class="form-control form-filter" name="phone_number" placeholder="{{ trans('labels.checkin.mobile') }}">
+                            <input type="text" class="form-control form-filter" name="mobile" placeholder="{{ trans('labels.checkin.mobile') }}">
+                            <div class="form-control-focus"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-md-line-input">
+                        <div class="input-group has-success">
+                            <span class="input-group-addon">
+                                <i class="fa fa-book"></i>
+                            </span>
+                            <input type="text" class="form-control form-filter" name="course_name" placeholder="{{ trans('labels.checkin.course_name') }}">
                             <div class="form-control-focus"> </div>
                         </div>
                     </div>
