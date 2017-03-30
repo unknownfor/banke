@@ -148,7 +148,7 @@
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/order')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                              <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
+                              <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
                   </div>
