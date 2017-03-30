@@ -285,6 +285,8 @@ class OrderRepository
 //							}
 							$invitation_user->account_balance += $invitation_award;
 							$invitation_user->do_task_amount -= $invitation_award;
+                                                        //将给邀请人的奖励累加到邀请人做任务已领的奖励中
+                                                        $invitation_user->get_do_task_amount+=$invitation_award;
 							//更新邀请人信息
 							$invitation_user->save();
 
@@ -412,6 +414,8 @@ class OrderRepository
 								$invitation_award = moneyFormat(($role['tuition_amount'] * $percent / 100));
 //
 								$invitation_user->account_balance += $invitation_award;
+                                                                //将给邀请人的奖励累加到邀请人做任务已领的奖励中
+                                                                $invitation_user->get_do_task_amount+=$invitation_award;
 
 								//更新邀请人信息
 								$invitation_user->save();                                                               
