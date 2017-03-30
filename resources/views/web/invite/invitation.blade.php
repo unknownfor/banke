@@ -17,13 +17,18 @@
 </head>
 <body>
 {!! csrf_field() !!}
-<input type="hidden" name="welcome" value="{{$welcome}}"/>
+<input type="hidden" name="welcome" value="{{$welcome}}"/>i
 <div id="invitation">
     <p class="slogen">注册即刻领取20元现金奖励</p>
     <p class="detail">接受好友邀请，上半课报名学习可省5000元学费</p>
-    <img class="bg" src="/front/assets/img/bg_1.png" />
+    <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
     <form class="register">
-        <input class="input phone">
+        <div class="register-box phone">
+            <i class="register-img phone-img" />
+            <input class="register-code" id="phone-num" placeholder="输入手机号"/>
+            <hr color="#FFE747" />
+            <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
+        </div>
         <input class="inout number">
         <input class="inout password">
         <button class="refored"><span>领取奖励</span></button>
