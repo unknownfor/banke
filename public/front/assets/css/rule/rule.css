@@ -208,6 +208,7 @@ ul {
 #rule .content.service .service-box .service-detail .service-info > span {
   border: 1px solid #fbb00a;
   color: #fbb00a;
+  padding: 3px;
 }
 #rule .content.payback .payback-box .payback-detail {
   position: relative;

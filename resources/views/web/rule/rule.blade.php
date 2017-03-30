@@ -29,36 +29,36 @@
 					<span class="title-img org"></span>
 					<span class="title-txt">精选机构</span>
 				</div>
-				<div class="service-info">
+				<P class="service-info">
 					严选职业培训行业优质机构，保证机构教学质量。
-				</div>
+				</P>
 			</div>
 			<div class="service-detail">
 				<div class="service-title">
 					<span class="title-img price"></span>
 					<span class="title-txt">学费减半</span>
 				</div>
-				<div class="service-info">
+				<P class="service-info">
 					每日打卡和完成指定任务最高可领取50%学费返现。
-				</div>
+				</P>
 			</div>
 			<div class="service-detail">
 				<div class="service-title">
 					<span class="title-img guarantee"></span>
 					<span class="title-txt">七天担保</span>
 				</div>
-				<div class="service-info">
+				<P class="service-info">
 					在带有<span>七天担保</span>的机构报名学习，7天不满意可以退款。
-				</div>
+				</P>
 			</div>
 			<div class="service-detail">
 				<div class="service-title">
 					<span class="title-img job"></span>
 					<span class="title-txt">就业服务</span>
 				</div>
-				<div class="service-info">
+				<P class="service-info">
 					人才入库，智能匹配名企对口岗位，招聘会优先入场。
-				</div>
+				</P>
 			</div>
 		</div>
 	</div>
