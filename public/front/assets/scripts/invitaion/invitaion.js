@@ -2,9 +2,7 @@
  * Created by hisihi on 2017/1/16.
  */
 $(function () {
-    window.addTip();
     window.addLoadingImg();
-
 
     //填充信息，按钮变色
     $(document).on('input', '#phone-num', function(){

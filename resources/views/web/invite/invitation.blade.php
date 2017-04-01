@@ -26,24 +26,21 @@
         <div class="txt detail">接受好友邀请,上半课报名学习可省5000元学费</div>
         <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
         <form class="register">
-            {{--手机号--}}
             <div class="register-box">
                 <i class="iconfont register-img">&#xe659;</i>
                 <input class="register-code" id="phone-num" placeholder="输入手机号"/>
             </div>
-            {{--验证码--}}
             <div class="register-box">
                 <i class="iconfont register-img">&#xe6a0;</i>
                 <input class="register-code" id="user-code" placeholder="验证码"/>
                 <hr color="#9b9b9b" />
                 <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
             </div>
-            {{--密码--}}
             <div class="register-box">
                 <i class="iconfont register-img">&#xe655;</i>
                 <input class="register-code" id="password-num" placeholder="密码"/>
             </div>
-            <button class="btn">领取奖励</button>
+            <button class="btn gift">领取奖励</button>
         </form>
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
@@ -51,15 +48,27 @@
     </div>
     <div class="page">
         <img class="bg second" src="/front/assets/img/invitation/bg_2.png" />
-        <div class="txt detail">上半课报名学习</div>
-        <div class="txt slogen">最高可领取50%学费返现</div>
-        <button class="btn">领取奖励</button>
+        <div class="txt txt-one">上半课报名学习</div>
+        <div class="txt txt-two">最高可领取50%学费返现</div>
+        <button class="btn download">下载半课，体验学费返现</button>
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
     <div class="page">
-        <img class="bg second" src="/front/assets/img/invitation/bg_2.png" />
+        <img class="bg second" src="/front/assets/img/invitation/bg_3.png" />
+        <div class="txt txt-one">坚持每日打卡</div>
+        <div class="txt txt-two">每天开心领学费</div>
+        <button class="btn download">下载半课，体验学费返现</button>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
+        </div>
+    </div>
+    <div class="page">
+        <img class="bg second" src="/front/assets/img/invitation/bg_4.png" />
+        <div class="txt txt-one">完成指定任务</div>
+        <div class="txt txt-two">领取任务奖励</div>
+        <button class="btn download">下载半课，体验学费返现</button>
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
@@ -69,6 +78,8 @@
 </body>
 <script src="/front/assets/plugins/zepto_modify.js"></script>
 <script src="/front/assets/plugins/PageSlider.js"></script>
+<script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 <script src="/front/assets/scripts/invitaion/invitaion.js" type="text/javascript"></script>
 <script>
     new PageSlider({

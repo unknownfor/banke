@@ -1,3 +1,6 @@
+html{
+  height: 100%;
+}
 body {
   margin:0 auto;
   padding:0;
@@ -5,6 +8,7 @@ body {
   overflow-x: hidden;
   word-wrap:break-word;
   color: #9b9b9b;
+  height: 100%;
 }
 ul {
   list-style: none;
@@ -24,10 +28,13 @@ img {
   .page {
     @rbh: 40px;
     @rbr:10px;
-    .size(100%,100%);
+    //width: 100%;
+    height: 100%;
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
+    margin: 0px 20px;
     .txt {
+      letter-spacing: 1px;
       &.slogen {
         padding-top: 35px;
         padding-bottom: 20px;
@@ -39,9 +46,20 @@ img {
         padding-bottom: 20px;
         font-size: 14px;
       }
+      &.txt-one {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 14px;
+      }
+      &.txt-two {
+        font-size: 18px;
+        font-weight: 500;
+        color: #000;
+      }
     }
     .register {
-      margin: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
       .register-box {
         border-radius: @rbr;
         display: flex;
@@ -77,54 +95,54 @@ img {
           -webkit-box-flex: 0;
         }
       }
-      .btn {
-        text-align: center;
-        width: 100%;
-        height: @rbh;
-        line-height: @rbh;
-        color: #ffffff;
-        background-color: #9b9b9b;
-        border-radius: @rbr;
-      }
     }
     .arrow{
       position: absolute;
       .size(30px,30px);
-      left: 50%;
-      bottom: 10px;
+      left: 45%;
+      right: 45%;
+      bottom: 2px;
       color: #FFEB3B;
       background-size: 33px auto;
       > i {
         font-size: 26px;
       }
     }
-    & .current {
-      .arrow {
-        -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
+    .bg {
+      max-width: 80%;
+      &.second {
+        margin-top: 35%;
       }
-      .title{
-        -webkit-animation: slideToTop .8s ease both;
+    }
+    .btn {
+      text-align: center;
+      width: 100%;
+      height: @rbh;
+      line-height: @rbh;
+      color: #ffffff;
+      border-radius: @rbr;
+      &.gift {
+        background-color: #9b9b9b;
       }
-      .subtitle{
-        -webkit-animation: slideToTop .8s 0.3s ease both;
+      &.download {
+        background-color: #FBC02D;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        bottom: @rbh+@rbr;
       }
     }
   }
-
-
-  .page:first-child {
-    background-color: #7B68EE;
-  }
-
-  .page:nth-child(2) {
-    background-color: #00BFFF;
-  }
-
-  .page:nth-child(3) {
-    background-color: #ff8c81;
-  }
-  .bg {
-    max-width: 80%;
+  .current {
+    .arrow {
+      -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
+    }
+    .txt{
+      -webkit-animation: slideToTop .8s ease both;
+    }
+    .subtitle{
+      -webkit-animation: slideToTop .8s 0.3s ease both;
+    }
   }
 }
 
@@ -142,4 +160,13 @@ img {
     opacity: 0;
     -webkit-transform: translate3d(0, -10px, 0);
   }
+}
+@media screen and (max-width:320px){
+  #invitation .page .arrow {
+    bottom: 0px;
+    > i {
+      font-size: 22px;
+    }
+  }
+
 }
