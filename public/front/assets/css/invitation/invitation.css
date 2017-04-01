@@ -187,10 +187,21 @@ img {
   margin-bottom: 10px;
   font-size: 14px;
 }
+#invitation .page .txt.txt-one .save-tel {
+  color: #4a90e2;
+}
 #invitation .page .txt.txt-two {
   font-size: 18px;
   font-weight: 500;
   color: #000;
+}
+#invitation .page .txt.txt-three {
+  margin-top: -10px;
+  margin-bottom: 50px;
+  font-size: 14px;
+}
+#invitation .page .txt.txt-three .save-num {
+  color: #FBC02D;
 }
 #invitation .page .register {
   margin-top: 20px;

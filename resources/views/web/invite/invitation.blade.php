@@ -22,6 +22,20 @@
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
 <div id="invitation">
     <div class="page">
+        {{--20元现金为变量--}}
+        <div class="txt slogen">恭喜您领取成功</div>
+        <div class="txt detail">您已接受半课用户的邀请体验半课学习</div>
+        <div class="txt txt-three">力省<span class="save-num">5000元</span>学费</div>
+        <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
+        <div class="txt txt-one">20元现金奖励已放至账号<span class="save-tel">13554154325</span></div>
+        <div class="txt detail">快登陆APP领取吧~</div>
+        <button class="btn download">领取奖励</button>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
+        </div>
+    </div>
+    <div class="page">
+        {{--20元现金为变量--}}
         <div class="txt slogen">注册即刻领取20元现金奖励</div>
         <div class="txt detail">接受好友邀请,上半课报名学习可省5000元学费</div>
         <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
