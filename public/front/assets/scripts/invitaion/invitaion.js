@@ -6,7 +6,6 @@ $(function () {
     window.addLoadingImg();
 
 
-
     //填充信息，按钮变色
     $(document).on('input', '#phone-num', function(){
         var number=$(this).val(),
@@ -143,14 +142,13 @@ $(function () {
     /**
      * 显示报名成功页面
      */
-    function showSuccessPage() {
-
-        //隐藏注册框
-        $('.register').hide();
-        $('.coupon').removeClass('hide');
-        $('.reward').removeClass('hide');
-    };
-
+    //function showSuccessPage() {
+    //
+    //    //隐藏注册框
+    //    $('.register').hide();
+    //    $('.coupon').removeClass('hide');
+    //    $('.reward').removeClass('hide');
+    //};
 
 
 });

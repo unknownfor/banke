@@ -149,12 +149,36 @@ img {
   max-width: 100%;
 }
 #invitation {
+  width: 100%;
+  height: 100%;
   text-align: center;
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  -webkit-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate(0px, 0px);
 }
-#invitation .register {
+#invitation .page {
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+}
+#invitation .page .txt.slogen {
+  padding-top: 35px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+}
+#invitation .page .txt.detail {
+  padding-bottom: 20px;
+  font-size: 14px;
+}
+#invitation .page .register {
   margin: 20px;
 }
-#invitation .register .register-box {
+#invitation .page .register .register-box {
   border-radius: 10px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -163,7 +187,7 @@ img {
   background-color: #F2F2F2;
   margin-bottom: 10px;
 }
-#invitation .register .register-box .register-img {
+#invitation .page .register .register-box .register-img {
   width: 40px;
   height: 40px;
   font-size: 18px;
@@ -181,7 +205,7 @@ img {
   -ms-flex-pack: center;
   justify-content: center;
 }
-#invitation .register .register-box .register-code {
+#invitation .page .register .register-box .register-code {
   -webkit-box-flex: 3;
   -webkit-flex: 3;
   -ms-flex: 3;
@@ -192,7 +216,7 @@ img {
   border: none;
   background-color: #F2F2F2;
 }
-#invitation .register .register-box .code-btn {
+#invitation .page .register .register-box .code-btn {
   -webkit-box-flex: 0;
   -webkit-flex: 0 2 90px;
   -ms-flex: 0 2 90px;
@@ -208,7 +232,7 @@ img {
   line-height: 40px;
   -webkit-box-flex: 0;
 }
-#invitation .register .btn {
+#invitation .page .register .btn {
   text-align: center;
   width: 100%;
   height: 40px;
@@ -217,24 +241,52 @@ img {
   background-color: #9b9b9b;
   border-radius: 10px;
 }
-#invitation .down > span {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-}
-#invitation .down > span .down-btn {
+#invitation .page .arrow {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 50%;
+  bottom: 10px;
   color: #FFEB3B;
+  -webkit-background-size: 33px auto;
+  background-size: 33px auto;
+}
+#invitation .page .arrow > i {
+  font-size: 26px;
+}
+#invitation .page .current .arrow {
+  -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
+}
+#invitation .page .current .title {
+  -webkit-animation: slideToTop .8s ease both;
+}
+#invitation .page .current .subtitle {
+  -webkit-animation: slideToTop .8s 0.3s ease both;
+}
+#invitation .page:first-child {
+  background-color: #7B68EE;
+}
+#invitation .page:nth-child(2) {
+  background-color: #00BFFF;
+}
+#invitation .page:nth-child(3) {
+  background-color: #ff8c81;
 }
 #invitation .bg {
   max-width: 80%;
 }
-#invitation .slogen {
-  margin-top: 35px;
-  font-size: 18px;
-  font-weight: 500;
-  color: #000;
-}
-#invitation .detail {
-  margin-bottom: 20px;
-  font-size: 14px;
+/*�ϻ���ʾ*/
+@-webkit-keyframes swipeMoveTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10px, 0);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -10px, 0);
+  }
 }
