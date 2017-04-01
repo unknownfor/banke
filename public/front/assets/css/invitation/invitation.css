@@ -250,6 +250,15 @@ img {
   line-height: 40px;
   -webkit-box-flex: 0;
 }
+#invitation .page .register .register-box.active {
+  background-color: #FFFBD8;
+}
+#invitation .page .register .register-box.active > i {
+  color: #FFEB3B;
+}
+#invitation .page .register .register-box.active .register-code {
+  background-color: #FFFBD8;
+}
 #invitation .page .arrow {
   position: absolute;
   width: 30px;
@@ -282,11 +291,14 @@ img {
   background-color: #9b9b9b;
 }
 #invitation .page .btn.download {
-  background-color: #FBC02D;
+  background-color: #fbc02d;
   position: absolute;
   left: 0px;
   right: 0px;
   bottom: 50px;
+}
+#invitation .page .btn.active {
+  background-color: #fbc02d;
 }
 #invitation .current .arrow {
   -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
