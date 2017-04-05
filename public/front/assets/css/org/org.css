@@ -177,7 +177,6 @@ ul {
 }
 .head {
   text-align: center;
-  height: 278px;
 }
 .head .head-bg {
   height: 180px;
@@ -206,15 +205,16 @@ ul {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-.head .head-title {
-  color: #9B9B9B;
+.head .head-tips {
+  padding-top: 8px;
+  padding-bottom: 10px;
   font-size: 12px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  margin: 0px 5px;
+  color: #faaf0a;
+}
+.head .head-tips > span {
+  margin-left: 5px;
+  border: 1px solid #faaf0a;
+  padding: 0 3px;
 }
 .address {
   margin: 15px 0;
