@@ -21,6 +21,21 @@
 {!! csrf_field() !!}
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
 <div id="invitation">
+    {{--已注册页面--}}
+    <div class="page">
+        <img class="bg third" src="/front/assets/img/invitation/bg_1.png" />
+        <div class="txt slogen">您好，老朋友</div>
+        <div class="txt detail">已经为您生成<span class="save-num">专属</span>的邀请链接，马上分享<br />赚取<span class="reward">5元</span>奖励~</div>
+        <div class="box first">
+            <div class="box-title">参与方式</div>
+            <div class="box-info">分享此链接给您的微信、QQ好友或者打开客户端参与推荐有奖活动，当好友完成注册认证后，您将立即获得5元奖励。</div>
+        </div>
+        <div class="box">
+            <div class="box-title">奖励福利</div>
+            <div class="box-info">您获得的现金奖励将在您的半课账户中，现金奖励满100即可提现。</div>
+        </div>
+    </div>
+    {{--注册成功页面--}}
     <div class="page">
         {{--20元现金为变量--}}
         <div class="txt slogen">恭喜您领取成功</div>

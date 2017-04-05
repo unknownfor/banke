@@ -187,9 +187,6 @@ img {
   margin-bottom: 10px;
   font-size: 14px;
 }
-#invitation .page .txt.txt-one .save-tel {
-  color: #4a90e2;
-}
 #invitation .page .txt.txt-two {
   font-size: 18px;
   font-weight: 500;
@@ -200,8 +197,15 @@ img {
   margin-bottom: 50px;
   font-size: 14px;
 }
-#invitation .page .txt.txt-three .save-num {
+#invitation .page .txt .save-tel {
+  color: #4a90e2;
+}
+#invitation .page .txt .save-num {
   color: #FBC02D;
+}
+#invitation .page .txt .reward {
+  color: #FBC02D;
+  font-size: 20px;
 }
 #invitation .page .register {
   margin-top: 20px;
@@ -290,6 +294,9 @@ img {
 #invitation .page .bg.second {
   margin-top: 35%;
 }
+#invitation .page .bg.third {
+  margin-top: 10%;
+}
 #invitation .page .btn {
   text-align: center;
   width: 100%;
@@ -310,6 +317,20 @@ img {
 }
 #invitation .page .btn.active {
   background-color: #fbc02d;
+}
+#invitation .page .box {
+  text-align: left;
+  font-size: 14px;
+}
+#invitation .page .box .box-title {
+  color: #FBC02D;
+  margin-bottom: 5px;
+}
+#invitation .page .box .box-info {
+  line-height: 22px;
+}
+#invitation .page .box.first {
+  margin-bottom: 20px;
 }
 #invitation .current .arrow {
   -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;

@@ -3,6 +3,32 @@
   overflow: hidden;
   white-space: nowrap;
 }
+input {
+  -webkit-appearance: textfield;
+  background-color: white;
+  -webkit-rtl-ordering: logical;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  cursor: auto;
+  padding: 1px;
+  -webkit-border-image: initial;
+  -o-border-image: initial;
+  border-image: initial;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em 0em 0em 0em;
+  font: 13.3333px Arial;
+  outline: none;
+}
 #downloadCon {
   margin: 0 auto;
   max-width: 700px;
@@ -219,6 +245,7 @@ ul {
 .address .address-box .address-info .address-detail {
   display: inline-block;
   margin-left: 25px;
+  margin-right: 10px;
   line-height: 20px;
   color: #808080;
 }
