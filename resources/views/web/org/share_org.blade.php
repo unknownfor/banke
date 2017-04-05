@@ -56,6 +56,9 @@
         {!!$org['details']!!}
 </div>
 </div>
+<div class="mask">
+
+</div>
 @include('web.layout.downloadbar')
 </body>
 </html>
