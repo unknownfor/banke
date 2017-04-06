@@ -51,35 +51,14 @@
     </div>
     <div class="head-middle">
         <div class="head-name">武汉天虎设计培训</div>
-        <div class="head-tips"><span>保就业</span><span>环境好</span><span>师资雄厚</span></div>
+        <div class="head-tips"><span>保就业</span><span>环境好好好</span><span>环境好</span><span>环境好</span><span>师资雄厚</span></div>
     </div>
     <div class="address-call">
         <a href="tel:{{$course['org']['tel_phone']}}">
-            <div id="address-call-box">
-                <div id="img">
-                </div>
+            <div class="address-call-box">
+                <span class="img"></span>
             </div>
         </a>
-    </div>
-</div>
-<!--机构地址-->
-<div class="address container">
-    <div class="container-head">
-        <span>机构地址</span>
-    </div>
-    <div class="address-box container-box">
-        <div class="address-info">
-            <div class="address-img"></div>
-            <div class="address-detail">{{$course['org']['address']}}</div>
-        </div>
-        <div class="address-call">
-            <a href="tel:{{$course['org']['tel_phone']}}">
-                <div id="address-call-box">
-                    <div id="img">
-                    </div>
-                </div>
-            </a>
-        </div>
     </div>
 </div>
 <!--课程介绍-->

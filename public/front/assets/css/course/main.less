@@ -113,27 +113,31 @@ img {
   }
 }
 .org-detail {
-  padding: 15px;
+  padding: 15px  0px 15px 15px;
   display: flex;
   position: relative;
   .head-left {
-    box-flex:1;
-    -moz-box-flex:1;
-    -webkit-box-flex:1;
-    margin-right: 7px;
+    height: 100%;
+    flex: 0 0 80px;
     > img {
       max-width: 80px;
       border-radius: 7px;
     }
   }
   .head-middle {
+    margin-left: 10px;
+    flex: 1;
     padding-top: 7px;
+    border-right: 1px solid #f2f2f2;
     .head-tips {
       padding-top: 8px;
       padding-bottom: 10px;
       font-size: 12px;
       color: #faaf0a;
       > span {
+        display:inline-block;
+        white-space:nowrap;
+        margin-bottom: 10px;
         margin-left: 5px;
         border: 1px solid #faaf0a;
         padding:0 3px;
@@ -141,18 +145,18 @@ img {
     }
   }
   .address-call {
-    width: 70px;
-    height: 100%;
+    @bw:70px;
+    flex: 0 0 @bw;
     a {
       display: block;
     }
-    #address-call-box {
-      width: 80px;
-      height: 50px;
+    .address-call-box {
+      width: @bw;
+      height: 84px;
       display: flex;
       justify-content: center;
       align-items: center;
-      #img {
+      .img {
         width: 33px;
         height: 33px;
         background: url("../../img/org/sprite.png") no-repeat;

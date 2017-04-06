@@ -263,7 +263,7 @@ img {
   display: inline-block;
 }
 .org-detail {
-  padding: 15px;
+  padding: 15px  0px 15px 15px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -271,17 +271,24 @@ img {
   position: relative;
 }
 .org-detail .head-left {
-  box-flex: 1;
-  -moz-box-flex: 1;
-  -webkit-box-flex: 1;
-  margin-right: 7px;
+  height: 100%;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 80px;
+  -ms-flex: 0 0 80px;
+  flex: 0 0 80px;
 }
 .org-detail .head-left > img {
   max-width: 80px;
   border-radius: 7px;
 }
 .org-detail .head-middle {
+  margin-left: 10px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   padding-top: 7px;
+  border-right: 1px solid #f2f2f2;
 }
 .org-detail .head-middle .head-tips {
   padding-top: 8px;
@@ -290,20 +297,25 @@ img {
   color: #faaf0a;
 }
 .org-detail .head-middle .head-tips > span {
+  display: inline-block;
+  white-space: nowrap;
+  margin-bottom: 10px;
   margin-left: 5px;
   border: 1px solid #faaf0a;
   padding: 0 3px;
 }
 .org-detail .address-call {
-  width: 70px;
-  height: 100%;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 70px;
+  -ms-flex: 0 0 70px;
+  flex: 0 0 70px;
 }
 .org-detail .address-call a {
   display: block;
 }
-.org-detail .address-call #address-call-box {
-  width: 80px;
-  height: 50px;
+.org-detail .address-call .address-call-box {
+  width: 70px;
+  height: 84px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -317,7 +329,7 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.org-detail .address-call #address-call-box #img {
+.org-detail .address-call .address-call-box .img {
   width: 33px;
   height: 33px;
   background: url("../../img/org/sprite.png") no-repeat;
