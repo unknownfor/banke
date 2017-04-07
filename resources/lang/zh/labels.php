@@ -388,6 +388,7 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'end_date' => '截止时间',
+		'check_in_days' => '可打卡天数',
 		'active' => '<span class="label label-success"> 已验证 </span>',
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'info' => '暂无额外权限',

@@ -102,15 +102,21 @@
                                     {{--<div class="form-control-focus"> </div>--}}
                                 {{--</div>--}}
                             {{--</div>--}}
+                            {{--<div class="form-group form-md-line-input">--}}
+                                {{--<label class="col-md-1 control-label" for="end_date">{{trans('labels.order.end_date')}}</label>--}}
+                                {{--<div class="col-md-4">--}}
+                                    {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
+                                        {{--<input type="text" class="form-control form-filter input-sm" placeholder="{{trans('labels.order.end_date')}}" name="end_date">--}}
+                                        {{--<span class="input-group-addon">--}}
+                                        {{--<i class="fa fa-calendar"></i>--}}
+                                        {{--</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="end_date">{{trans('labels.order.end_date')}}</label>
+                                <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.order.check_in_days')}}</label>
                                 <div class="col-md-4">
-                                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                                        <input type="text" class="form-control form-filter input-sm" placeholder="{{trans('labels.order.end_date')}}" name="end_date">
-                                        <span class="input-group-addon">
-                                        <i class="fa fa-calendar"></i>
-                                        </span>
-                                    </div>
+                                    <input type="text" class="form-control form-filter input-sm" placeholder="{{trans('labels.order.check_in_days')}}" name="check_in_days">
                                 </div>
                             </div>
 

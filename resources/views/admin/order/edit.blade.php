@@ -92,9 +92,9 @@
                           {{--</div>--}}
                       {{--</div>--}}
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="end_date">{{trans('labels.order.end_date')}}</label>
+                          <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.order.check_in_days')}}</label>
                           <div class="col-md-7">
-                              <input type="text" class="form-control" readonly name="end_date" value="{{$order['end_date']}}">
+                              <input type="text" class="form-control" readonly name="check_in_days" value="{{$order['check_in_days']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
