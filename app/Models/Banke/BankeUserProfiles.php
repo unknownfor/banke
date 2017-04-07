@@ -25,6 +25,7 @@ class BankeUserProfiles extends Model
         'certification_time',
         'enddated_at',
         'total_withdraw_amount',
+        'get_do_task_amount',
         ];
 
     private $action;

@@ -29,7 +29,8 @@
         <img src="{{$org['logo']}}"/>
     </div>
     <div class="head-name">{{$org['name']}}</div>
-    <div class="head-title">{{$org['intro']}}</div>
+    {{--<div class="head-title">{{$org['intro']}}</div>--}}
+    <div class="head-tips"><span>保就业</span><span>环境好</span><span>师资雄厚</span></div>
 </div>
 <div class="address container">
     <div class="container-head">
@@ -54,6 +55,9 @@
     <div class="class-info-box container-box">
         {!!$org['details']!!}
 </div>
+</div>
+<div class="mask">
+
 </div>
 @include('web.layout.downloadbar')
 </body>

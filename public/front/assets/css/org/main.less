@@ -40,7 +40,6 @@ ul {
   text-align: center;
   @headH:278px;
   @headBg:180px;
-  height: @headH;
   .head-bg{
     height: @headBg;
     position: relative;
@@ -65,11 +64,16 @@ ul {
     margin: 43px 0px 6px 0px;
     .txt-ellipsis-p(1);
   }
-  .head-title {
-    color: #9B9B9B;
+  .head-tips {
+    padding-top: 8px;
+    padding-bottom: 10px;
     font-size: 12px;
-    .txt-ellipsis-p(1);
-    margin: 0px 5px;
+    color: #faaf0a;
+    > span {
+      margin-left: 5px;
+      border: 1px solid #faaf0a;
+      padding:0 3px;
+    }
   }
 }
 .address {
@@ -91,6 +95,7 @@ ul {
       .address-detail {
         display: inline-block;
         margin-left: 25px;
+        margin-right: 10px;
         line-height: 20px;
         color: #808080;
       }
@@ -131,7 +136,6 @@ ul {
 #downloadCon{
   margin: 0 auto;
   max-width: 700px;
-  //width: 100%;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -158,31 +162,16 @@ ul {
   }
 }
 @media screen and (max-width: 420px){
-  //.head {
-  //  .head-img {
-  //    top: 193px;
-  //  }
-  //}
   #downloadCon {
     height: 78px;
   }
 }
 @media screen and (max-width: 380px){
-  //.head {
-  //  .head-img {
-  //    top: 180px;
-  //  }
-  //}
   #downloadCon {
     height: 71px;
   }
 }
 @media screen and (max-width: 320px){
-  //.head {
-  //  .head-img {
-  //    top: 148px;
-  //  }
-  //}
   #downloadCon {
     height: 61px;
   }

@@ -260,6 +260,8 @@ class AppUserRepository
 						$register_award = BankeDict::where('id', 1)->first();
 						$user_profile->account_balance += $register_award->value;
 						$user_profile->register_amount += $register_award->value;
+                                                //将用户注册认证的金额加到用户表做任务已领金额中
+                                                $user_profile->get_do_task_amount+= $register_award->value;
 						$balance_log = [
 							'uid'=>$id,
 							'change_amount'=>$register_award->value,
@@ -284,6 +286,8 @@ class AppUserRepository
 							$invitation_award = BankeDict::where('id', 2)->first();
 							$invitation_user->invitation_amount += $invitation_award->value;
 							$invitation_user->account_balance += $invitation_award->value;
+                                                        //将邀请他人注册认证的奖金加大做任务的已领金额中去
+                                                        $invitation_user->get_do_task_amount += $invitation_award->value;
 							$invitation_user->save();
 							$balance_log1 = [
 								'uid'=>$user_profile->invitation_uid,

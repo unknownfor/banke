@@ -16,79 +16,79 @@
 	<title>首页规则</title>
 </head>
 <body>
-<img class="banner" src="/front/assets/img/rule/bg.png"/>
-<!--关于半课-->
-<div class="about-banke content">
-	<div class="title">
-		<div class="about-banke-img icon"></div>
-		<span class="text-title">什么是半课</span>
-	</div>
-	<div class="text">
-		<div class="text-box">
-			半课是武汉迅牛科技联合一批优质培训机构重磅推出的学习保障激励平台，学员在半课上选择机构学习不仅可以得到品质保障、七天退款和就业服务，还可以获得最高学费50%的奖励。</div>
-	</div>
-</div>
-<!--半课服务-->
-<div class="service content">
-	<div class="title">
-		<span class="service-img icon"></span>
-		<span class="text-title">半课服务</span>
-	</div>
-	<div class="text">
-		<div class="second-title">品质保证</div>
-		<div class="text-box">
-			平台上的机构均经过半课严格筛选，考核范围包含且不限于营业执照、营业场所、师资力量、学习环境、就业服务等。平台所推荐机构
-			皆为优质培训机构，课程质量有保障。
+<div id="rule">
+	<img src="/front/assets/img/rule/banner.png">
+	<div class="content service">
+		<div class="title">
+			<span class="title-img service-img"></span>
+			<span class="title-txt">半课有哪些服务</span>
 		</div>
-		<div class="second-title">七天退款</div>
-		<div class="text-box">
-			学员在半课推荐的机构报名并且缴纳学费，即可享受7天内对课程不满意退款服务，届时请联系半课客服。(退回学费中扣除已领取奖励部分)
-		</div>
-		<div class="second-title">就业服务</div>
-		<div class="text-box">
-			半课会定期举办招聘会，并且将有一对一的招聘顾问为您服务。学成后将会为学员推荐企业应聘。
-		</div>
-		<div class="second-title">学习奖励</div>
-		<div class="text-box">
-			学员在课程结束前，每天都可以领取到一笔学习奖励，累计奖励最高可达到缴纳学费的50%。
-		</div>
-	</div>
-</div>
-<!--奖励流程-->
-<div class="process content">
-	<div class="title">
-		<div class="process- icon"></div>
-		<span class="text-title">奖励流程</span>
-	</div>
-	<div class="text">
-		<div class="text-box">
-			<div><span class="number">1</span>点击“我的”，进行实名认证</div>
-			<br />
-			<div><span class="number">2</span>在半课上选择机构学习并到线下缴纳学费</div>
-			<br />
-			<div><span class="number">3</span>机构提交学员报名信息至半课平台</div>
-			<br />
-			<div><span class="number">4</span>半课工作人员为该学员开通学习奖励计划</div>
-			<br />
-			<div><span class="number">5</span>每天在首页打卡领取奖励</div>
+		<div class="service-box">
+			<div class="service-detail">
+				<div class="service-title">
+					<span class="title-img org"></span>
+					<span class="title-txt">精选机构</span>
+				</div>
+				<P class="service-info">
+					严选职业培训行业优质机构，保证机构教学质量。
+				</P>
+			</div>
+			<div class="service-detail">
+				<div class="service-title">
+					<span class="title-img price"></span>
+					<span class="title-txt">学费减半</span>
+				</div>
+				<P class="service-info">
+					每日打卡和完成指定任务最高可领取50%学费返现。
+				</P>
+			</div>
+			<div class="service-detail">
+				<div class="service-title">
+					<span class="title-img guarantee"></span>
+					<span class="title-txt">七天担保</span>
+				</div>
+				<P class="service-info">
+					在带有<span>七天担保</span>的机构报名学习，7天不满意可以退款。
+				</P>
+			</div>
+			<div class="service-detail">
+				<div class="service-title">
+					<span class="title-img job"></span>
+					<span class="title-txt">就业服务</span>
+				</div>
+				<P class="service-info">
+					人才入库，智能匹配名企对口岗位，招聘会优先入场。
+				</P>
+			</div>
 		</div>
 	</div>
-</div>
-<!--奖励规则-->
-<div class="reward content">
-	<div class="title">
-		<div class="process- icon"></div>
-		<span class="text-title">奖励规则</span>
-	</div>
-	<div class="text">
-		<div class="text-box">
-			<div>1.学员每天可在App首页签到打卡，领取当天奖励。</div>
-			<br />
-			<div>2.课程结束时，学员打卡最高可获得学费总额20%的奖励金额。</div>
-			<br />
-			<div>3.完成任务中心里的任务最高可获得30%的学费奖励。</div>
+	<div class="content payback">
+		<div class="title">
+			<span class="title-img payback-img"></span>
+			<span class="title-txt">学费怎么返现</span>
+		</div>
+		<div class="payback-box">
+			<div class="payback-detail">
+				<div class="payback-title">每日打卡</div>
+				<div class="payback-info">
+					缴纳学费后，每日在半课APP首页打卡领取当日返现，直至学习结束当天，打卡奖励金额领取完毕。
+				</div>
+			</div>
+			<div class="payback-detail">
+				<div class="payback-title">任务奖励</div>
+				<div class="payback-info">
+					<p><span>1</span>注册认证</p>
+					<p><span>2</span>邀请好友注册认证</p>
+					<p><span>3</span>邀请好友成功报名</p>
+					<p><span>4</span>完成连续打卡签到任务</p>
+					<p><span>5</span>成功报名后写评论</p>
+					<p><span>6</span>学习过程中写课程心得</p>
+					<div>(更多奖励持续开发中...)</div>
+				</div>
+			</div>
 		</div>
 	</div>
+	<p class="statement">半课官方拥有最终解释权</p>
 </div>
 </body>
 </html>

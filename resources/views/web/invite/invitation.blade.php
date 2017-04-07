@@ -13,103 +13,106 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link href="/front/assets/css/invitation/invitation.css" rel="stylesheet" type="text/css"/>
+    {{--字体图标--}}
+    <link href="/front/assets/css/invitation/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>邀请注册</title>
 </head>
 <body>
 {!! csrf_field() !!}
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
-<div id="wrapper">
-    <!--顶部图片-->
-    <div class="head">
-        <img src="/front/assets/img/invitation/bg_top.png" />
-    </div>
-    <!--手机注册-->
-    <div class="register">
-        <div class="register-box phone">
-            <div class="register-img phone-img"></div>
-            <input class="register-code" id="phone-num" placeholder="输入手机号"/>
-            <hr color="#FFE747" />
-            <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
+<div id="invitation">
+    {{--已注册页面--}}
+    <div class="page">
+        <img class="bg third" src="/front/assets/img/invitation/bg_1.png" />
+        <div class="txt slogen">您好，老朋友</div>
+        <div class="txt detail">已经为您生成<span class="save-num">专属</span>的邀请链接，马上分享<br />赚取<span class="reward">5元</span>奖励~</div>
+        <div class="box first">
+            <div class="box-title">参与方式</div>
+            <div class="box-info">分享此链接给您的微信、QQ好友或者打开客户端参与推荐有奖活动，当好友完成注册认证后，您将立即获得5元奖励。</div>
         </div>
-        <div class="register-box code">
-            <div class="register-img code-img"></div>
-            <input class="register-code" id="user-code" placeholder="验证码" />
-        </div>
-
-        {{--登陆密码--}}
-        {{--<div class="register-box password">--}}
-            {{--<div class="register-img code-img"></div>--}}
-            {{--<input class="register-code" id="user-password" placeholder="登陆密码" />--}}
-        {{--</div>--}}
-
-        <div class="btn">注册获得20元现金</div>
-    </div>
-    <!--领取优惠券-->
-    <div class="coupon hide">
-        <div class="coupon-box">
-            <img class="ticket" id="one" src="/front/assets/img/invitation/20.png" />
-            <img class="ticket" id="two" src="/front/assets/img/invitation/50.png">
-            <div class="coupon-count">奖励已放至账户<span></span></div>
-            <a href="{{env('APP_DOWNLOAD_URL')}}" >
-                <div class="btn-active">下载半课领取</div>
-            </a>
+        <div class="box">
+            <div class="box-title">奖励福利</div>
+            <div class="box-info">您获得的现金奖励将在您的半课账户中，现金奖励满100即可提现。</div>
         </div>
     </div>
-    <!--朋友获得奖励-->
-    <div class="reward hide">
-        <div class="second-title reward-title"><span>哪些朋友获得了奖励</span></div>
-        <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305502.jpg"/>
-            <span class="reward-name">李小婷</span>
-            <div class="reward-time-box">
-                <span class="reward-time">2017-01-18</span>
-            </div>
-        </div>
-        <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305572.jpg"/>
-            <span class="reward-name">王凯</span>
-            <div class="reward-time-box">
-                <span class="reward-time">2017-01-19</span>
-            </div>
-        </div>
-        <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305524.jpg"/>
-            <span class="reward-name">谢永明</span>
-            <div class="reward-time-box">
-                <span class="reward-time">2017-01-20</span>
-            </div>
-        </div>
-        <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305519.jpg"/>
-            <span class="reward-name">周子棋</span>
-            <div class="reward-time-box">
-                <span class="reward-time">2017-01-22</span>
-            </div>
-        </div>
-        <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305582.jpg"/>
-            <span class="reward-name">叶佳</span>
-            <div class="reward-time-box">
-                <span class="reward-time">2017-01-23</span>
-            </div>
+    {{--注册成功页面--}}
+    <div class="page">
+        {{--20元现金为变量--}}
+        <div class="txt slogen">恭喜您领取成功</div>
+        <div class="txt detail">您已接受半课用户的邀请体验半课学习</div>
+        <div class="txt txt-three">力省<span class="save-num">5000元</span>学费</div>
+        <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
+        <div class="txt txt-one">20元现金奖励已放至账号<span class="save-tel">13554154325</span></div>
+        <div class="txt detail">快登陆APP领取吧~</div>
+        <button class="btn download">领取奖励</button>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
-    <!--活动细则-->
-    <div class="activity">
-        <div class="second-title activity-head"><span>活动细则</span></div>
-        <img src="/front/assets/img/invitation/bg_down.png" />
-        <div class="activity-txt">
-            <div class="txt">1.新用户通过此页面注册会获得20元现金；</div>
-            <div class="txt">2.需下载半课app，登陆并认证；</div>
-            <div class="txt">3.提现流程参见半课app；</div>
-            <div class="txt">4.参加学习计划最高可获得学费50%奖励；</div>
-            <div class="txt">5.半课保留法律范围内允许的对活动的解释权。</div>
+    <div class="page">
+        {{--20元现金为变量--}}
+        <div class="txt slogen">注册即刻领取20元现金奖励</div>
+        <div class="txt detail">接受好友邀请,上半课报名学习可省5000元学费</div>
+        <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
+        <form class="register">
+            <div class="register-box">
+                <i class="iconfont register-img">&#xe659;</i>
+                <input class="register-code" id="phone-num" placeholder="输入手机号"/>
+            </div>
+            <div class="register-box">
+                <i class="iconfont register-img">&#xe6a0;</i>
+                <input class="register-code" id="user-code" placeholder="验证码"/>
+                <hr color="#9b9b9b" />
+                <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
+            </div>
+            <div class="register-box">
+                <i class="iconfont register-img">&#xe655;</i>
+                <input class="register-code" id="password-num" placeholder="密码"/>
+            </div>
+            <button class="btn gift">领取奖励</button>
+        </form>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
-    <!--遮罩-->
-    <div class="mask"></div>
+    <div class="page">
+        <img class="bg second" src="/front/assets/img/invitation/bg_2.png" />
+        <div class="txt txt-one">上半课报名学习</div>
+        <div class="txt txt-two">最高可领取50%学费返现</div>
+        <button class="btn download">下载半课，体验学费返现</button>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
+        </div>
+    </div>
+    <div class="page">
+        <img class="bg second" src="/front/assets/img/invitation/bg_3.png" />
+        <div class="txt txt-one">坚持每日打卡</div>
+        <div class="txt txt-two">每天开心领学费</div>
+        <button class="btn download">下载半课，体验学费返现</button>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
+        </div>
+    </div>
+    <div class="page">
+        <img class="bg second" src="/front/assets/img/invitation/bg_4.png" />
+        <div class="txt txt-one">完成指定任务</div>
+        <div class="txt txt-two">领取任务奖励</div>
+        <button class="btn download">下载半课，体验学费返现</button>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
+        </div>
+    </div>
 </div>
-@include('web.layout.downloadbar')
+{{--@include('web.layout.downloadbar')--}}
 </body>
+<script src="/front/assets/plugins/zepto_modify.js"></script>
+<script src="/front/assets/plugins/PageSlider.js"></script>
+<script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 <script src="/front/assets/scripts/invitaion/invitaion.js" type="text/javascript"></script>
+<script>
+    new PageSlider({
+        pages: $('#invitation .page')
+    });
+</script>
 </html>
