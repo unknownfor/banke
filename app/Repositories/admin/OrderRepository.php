@@ -325,6 +325,9 @@ class OrderRepository
 					];
 					//记录消息
 					BankeMessage::create($message);
+                                        //更新机构表中的学生人数
+                                        $org->student_counts++;
+                                        $org->save();
 				}elseif ($input['status'] == config('admin.global.status.ban')){
 					//详细规则未定
 				}
@@ -456,6 +459,10 @@ class OrderRepository
 						];
 						//记录消息
 						BankeMessage::create($message);
+                                                //更新机构表中的学生人数
+                                                $org->student_counts++;
+                                                //echo $org->student_counts;die;
+                                                $org->save();
 						Flash::success(trans('alerts.order.created_success'));
 						return true;
 					}catch (Exception $e){
