@@ -258,6 +258,7 @@ return [
         'OrgApplyForRepository' => App\Facades\OrgApplyForFacade::class,
         'OrgRebatesRepository' => App\Facades\OrgRebatesFacade::class,
         'DrawbackRepository' => App\Facades\DrawbackFacade::class,
+        'BannerRepository' => App\Facades\BannerFacade::class,
     ],
 
 ];

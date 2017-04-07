@@ -111,4 +111,10 @@ return [
 		'active' => ['fa fa-navicon','审核通过'],
 		'trash' => ['fa fa-trash','未通过'],
 	],
+
+	'banner' => [
+		'audit' => ['fa fa-paw','未审核'],
+		'active' => ['fa fa-navicon','审核通过'],
+		'trash' => ['fa fa-trash','未通过'],
+	],
 ];

@@ -188,6 +188,11 @@ return [
 		'drawbackShow' => '<i class="fa fa-search"></i> 退款详情',
 		'drawbackCreate'=>'<i class="fa fa-user-plus"></i> 添加退款',
 		'drawbackEdit' => '<i class="fa fa-pencil"></i> 编辑退款',
+
+		'bannerList' => '<i class="fa fa-exchange"></i> banner列表',
+		'bannerShow' => '<i class="fa fa-search"></i> banner详情',
+		'bannerCreate'=>'<i class="fa fa-user-plus"></i> 添加banner',
+		'bannerEdit' => '<i class="fa fa-pencil"></i> 编辑banner',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -488,5 +493,16 @@ return [
 		'list' => '学生退款列表',
 		'show'=>'查看详情',
 		'comment'=>'备注详情'
+	],
+
+
+	'banner' => [
+		'id' => '序号',
+		'url' => '点击跳转',
+		'type' => '类型',
+		'sort' => '排序',
+		'status' => '状态',
+		'img_url'=>'图片',
+		'title'=>'描述'
 	],
 ];

@@ -187,4 +187,13 @@ return [
         'soft_deleted_error' => '删除退款失败',
     ],
 
+    'banner' => [
+        'created_success'   => '创建banner成功.',
+        'created_error'     => '创建banner失败.',
+        'updated_success'   => '修改banner成功.',
+        'updated_error'     => '修改banner失败.',
+        'soft_deleted_success' => '删除banner成功',
+        'soft_deleted_error' => '删除banner失败',
+    ],
+
 ];
