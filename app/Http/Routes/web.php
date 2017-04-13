@@ -14,6 +14,17 @@ Route::group(['prefix'=>"share"],function(){
 
 });
 
+Route::group(['prefix'=>"share",'namespace'=>'Web'],function(){
+
+    //机构详情分享
+    Route::get('/org_v1_2/{id}', 'OrgController@org_v1_2');
+    //课程
+    Route::get('/course/{id}', 'CourseController@share_course_v1_2');
+
+});
+
+
+
 //邀请
 Route::group(['prefix'=>"invitation"],function(){
 
@@ -34,10 +45,10 @@ Route::group(['prefix'=>"web"],function(){
     //课程
     Route::get('course/{id}', 'ShareController@course');
 
-    //机构详情分享 v1.2
-    Route::get('org/{id}', 'ShareController@org_v1_2');
+    //机构详情 v1.2
+    Route::get('org/{id}', 'Web/OrgController@org_v1_2');
     //课程
-    Route::get('course/{id}', 'ShareController@course_v1_2'); //机构详情分享
+    Route::get('course/{id}', 'Web/CourseController@course_v1_2');
 
     //动态
     Route::get('news/{id}', 'ShareController@news');

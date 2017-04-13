@@ -127,4 +127,10 @@ class OrgController extends Controller
         $org = OrgRepository::show($id);
         return view('admin.org.show')->with(compact('org'));
     }
+
+    public function share_org_v1_2($id){
+        $org = BankeOrg::find($id);
+        return view('web.org.org')->with(compact(['org']));
+    }
+
 }
