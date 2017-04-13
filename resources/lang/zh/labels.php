@@ -189,10 +189,10 @@ return [
 		'drawbackCreate'=>'<i class="fa fa-user-plus"></i> 添加退款',
 		'drawbackEdit' => '<i class="fa fa-pencil"></i> 编辑退款',
 
-		'bannerList' => '<i class="fa fa-exchange"></i> banner列表',
-		'bannerShow' => '<i class="fa fa-search"></i> banner详情',
-		'bannerCreate'=>'<i class="fa fa-user-plus"></i> 添加banner',
-		'bannerEdit' => '<i class="fa fa-pencil"></i> 编辑banner',
+		'bannerList' => '<i class="fa fa-exchange"></i> 轮播图列表',
+		'bannerShow' => '<i class="fa fa-search"></i> 轮播图详情',
+		'bannerCreate'=>'<i class="fa fa-user-plus"></i> 添加轮播图',
+		'bannerEdit' => '<i class="fa fa-pencil"></i> 编辑轮播图',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -503,6 +503,9 @@ return [
 		'sort' => '排序',
 		'status' => '状态',
 		'img_url'=>'图片',
-		'title'=>'描述'
+		'title'=>'标题',
+		'list' => '轮播图列表',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
 	],
 ];

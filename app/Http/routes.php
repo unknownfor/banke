@@ -113,6 +113,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //学生退款
         require(__DIR__ . '/Routes/DrawbackRoute.php');
 
+        //banner轮播图
+        require(__DIR__ . '/Routes/BannerRoute.php');
+
     });
 });
 

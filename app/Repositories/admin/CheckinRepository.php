@@ -265,4 +265,10 @@ class CheckinRepository
 		return $user;
 	}
 
+
+	public function remind(){
+		$mobile = request('ids', '');
+		$mobile='';
+	}
+
 }

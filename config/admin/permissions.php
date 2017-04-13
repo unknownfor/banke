@@ -177,4 +177,12 @@ return[
 		'edit' 		=> 'admin.drawback.edit',
 		'destroy' 	=> 'admin.drawback.delete',
 	],
+
+	//banner
+	'banner' => [
+		'show' 		=> 'admin.banner.show',
+		'create' 	=> 'admin.banner.create',
+		'edit' 		=> 'admin.banner.edit',
+		'destroy' 	=> 'admin.banner.delete',
+	],
 ];

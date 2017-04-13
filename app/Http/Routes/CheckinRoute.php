@@ -5,6 +5,7 @@
 $router->group(['prefix' => 'checkin'], function($router){
 	$router->get('ajaxIndex', 'CheckinController@ajaxIndex');
 	$router->get('sort', 'CheckinController@sort');
+	$router->post('/remind', 'CheckinController@remind');
 	$router->get('/{id}/mark/{status}', 'CheckinController@mark')
 		   ->where([
 		   	'id' => '[0-9]+',

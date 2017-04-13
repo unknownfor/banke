@@ -21,10 +21,9 @@ class BannerRepository
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
 		$status = request('status' ,'');
+		$title = request('title' ,'');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
-		$updated_at_from = request('updated_at_from' ,'');
-		$updated_at_to = request('updated_at_to' ,'');
 		$banner = new BankeBanner;
 
 
@@ -33,21 +32,17 @@ class BannerRepository
 			$banner = $banner->where('status', $status);
 		}
 
+		/*标题*/
+		if ($title) {
+			$banner = $banner->where('title', $title);
+		}
+
 		/*配置创建时间搜索*/
 		if($created_at_from){
 			$banner = $banner->where('created_at', '>=', getTime($created_at_from));
 		}
 		if($created_at_to){
 			$banner = $banner->where('created_at', '<=', getTime($created_at_to, false));
-		}
-
-		/*配置修改时间搜索*/
-		if($updated_at_from){
-			$uafc = new Carbon($updated_at_from);
-			$banner = $banner->where('created_at', '>=', getTime($updated_at_from));
-		}
-		if($updated_at_to){
-			$banner = $banner->where('created_at', '<=', getTime($updated_at_to, false));
 		}
 
 		$count = $banner->count();

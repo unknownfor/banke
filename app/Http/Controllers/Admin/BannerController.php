@@ -12,7 +12,7 @@ use App\Http\Requests\BannerRequest;
 class BannerController extends Controller {
 
     /**
-     * 配置列表
+     * banner列表
      */
     public function index()
     {

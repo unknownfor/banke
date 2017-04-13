@@ -273,6 +273,8 @@
                 return arr;
             },
 
+
+
             CLASS_NAME:'MyEditor'
 
         };

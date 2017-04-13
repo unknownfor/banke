@@ -30,7 +30,7 @@
             </div>
           </div>
             <div class="search-box filter">
-
+                {!! csrf_field() !!}
                 <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
@@ -82,6 +82,9 @@
                     <div class="margin-bottom-5" style="padding-top: 20px;">
                         <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
                             <i class="fa fa-search"></i>{{ trans('labels.search') }}</button>
+
+                        <button class="btn btn-sm green btn-outline remind margin-bottom">
+                            <i class="fa fa-search"></i>提醒</button>
                     </div>
                 </div>
             </div>

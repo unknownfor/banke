@@ -91,6 +91,12 @@ var TableDatatablesAjax = function() {
       ajax_datatable.ajax.reload(); 
     });
 
+    $(document).on('click', '.remind', function(){
+      getDataAsync('/admin/checkin/remind',{ids:[1,2,3]},function(){
+
+      },'post');
+    });
+
     dt.on('click', '.filter-cancel', function(){
       $('textarea.form-filter, select.form-filter, input.form-filter', dt).each(function() {
           $(this).val("");
@@ -127,4 +133,19 @@ var TableDatatablesAjax = function() {
   return {
     init : datatableAjax
   }
+
+  //请求数据
+  function getDataAsync(url,data,callback,type){
+    type = type ||'get';
+    data._token=$('input[name="_token"]').val();
+    $.ajax({
+      type:type,
+      url:url,
+      data:data,
+      success:function(res){
+        callback(res);
+      }
+    });
+  };
+
 }();

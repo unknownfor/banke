@@ -114,4 +114,8 @@ class CheckinController extends Controller
         $org = CheckinRepository::show($id);
         return view('admin.checkin.show')->with(compact('org'));
     }
+
+    public  function  remind(){
+      $result=CheckinRepository::remind();
+    }
 }
