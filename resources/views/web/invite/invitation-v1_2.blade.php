@@ -54,23 +54,23 @@
         <div class="txt slogen">注册即刻领取20元现金奖励</div>
         <div class="txt detail">接受好友邀请,上半课报名学习可省5000元学费</div>
         <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
-        <form class="register">
+        <div class="register">
             <div class="register-box">
                 <i class="iconfont register-img">&#xe659;</i>
-                <input class="register-code" id="phone-num" placeholder="输入手机号"/>
+                <input class="register-code" id="phone-num" placeholder="输入手机号" value="13554154325"/>
             </div>
             <div class="register-box">
                 <i class="iconfont register-img">&#xe6a0;</i>
-                <input class="register-code" id="user-code" placeholder="验证码"/>
+                <input class="register-code" id="user-code" placeholder="验证码" value="123456"/>
                 <hr color="#9b9b9b" />
-                <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
+                <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码" value="123456"/>
             </div>
             <div class="register-box">
                 <i class="iconfont register-img">&#xe655;</i>
-                <input class="register-code" id="password-num" placeholder="密码"/>
+                <input class="register-code" id="password-num" type="password" value="123456" placeholder="密码"/>
             </div>
             <button class="btn gift">领取奖励</button>
-        </form>
+        </div>
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>

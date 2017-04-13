@@ -90,12 +90,14 @@ $(function () {
         //},1500);
         window.controlLoadingBox(true);
         var phone = $('#phone-num').val(),
-            code = $('#user-code').val();
-        var url='/invitation/register',
+            code = $('#user-code').val(),
+            password = $('#password-num').val();
+        var url='/v1.2/share/invitation/register',
             data={
+                welcome:$('input[name="welcome"]').val(),
                 mobile:phone,
                 smsId:code,
-                welcome:$('input[name="welcome"]').val()
+                password:password,
             };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res){
