@@ -12,9 +12,9 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link href="/front/assets/css/invitation/invitation.css" rel="stylesheet" type="text/css"/>
+    <link href="/front/assets/css/invitation/v1.2/invitation.css" rel="stylesheet" type="text/css"/>
     {{--字体图标--}}
-    <link href="/front/assets/css/invitation/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link href="/front/assets/css/invitation/v1.2/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>邀请注册</title>
 </head>
 <body>
@@ -109,7 +109,7 @@
 <script src="/front/assets/plugins/PageSlider.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/invitaion/invitaion.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/invitaion/invitaion.v1.2.js" type="text/javascript"></script>
 <script>
     new PageSlider({
         pages: $('#invitation .page')

@@ -3,25 +3,33 @@
 
 Route::get('/', 'HomeController@index');
 
-//分享
-Route::group(['prefix'=>"share"],function(){
+
+
+//1.2
+Route::group(['prefix'=>"v1.2/share",'namespace'=>'web'],function(){
+
+    //v1.2 以及之后的
     //机构详情分享
-    Route::get('org/{id}', 'ShareController@share_org');
-    //课程
-    Route::get('course/{id}', 'ShareController@share_course');
-
-    Route::get('rule', 'ShareController@share_rule');
-
-});
-
-Route::group(['prefix'=>"share",'namespace'=>'Web'],function(){
-
-    //机构详情分享
-    Route::get('/org_v1_2/{id}', 'OrgController@org_v1_2');
+    Route::get('/org/{id}', 'OrgController@share_org_v1_2');
     //课程
     Route::get('/course/{id}', 'CourseController@share_course_v1_2');
 
+    //微信注册
+    Route::get('/invitation/{welcome}', 'InvitationController@invitation');
+
 });
+
+Route::group(['prefix'=>"v1.2/web",'namespace'=>'web'],function(){
+
+    //v1.2 以及之后的
+    //机构详情分享
+    Route::get('/org/{id}', 'OrgController@org_v1_2');
+    //课程
+    Route::get('/course/{id}', 'CourseController@course_v1_2');
+
+});
+
+
 
 
 
@@ -38,17 +46,24 @@ Route::group(['prefix'=>"invitation"],function(){
 });
 
 
+//分享
+Route::group(['prefix'=>"share"],function(){
+    //机构详情分享  v1.1
+    Route::get('org/{id}', 'ShareController@share_org');
+    //课程 v1.1
+    Route::get('course/{id}', 'ShareController@share_course');
+
+    Route::get('rule', 'ShareController@share_rule');
+
+});
+
+
 //app内页面
 Route::group(['prefix'=>"web"],function(){
-    //机构详情分享 v1.1
+    //机构详情 v1.1
     Route::get('org/{id}', 'ShareController@org');
     //课程
     Route::get('course/{id}', 'ShareController@course');
-
-    //机构详情 v1.2
-    Route::get('org/{id}', 'Web/OrgController@org_v1_2');
-    //课程
-    Route::get('course/{id}', 'Web/CourseController@course_v1_2');
 
     //动态
     Route::get('news/{id}', 'ShareController@news');
@@ -60,6 +75,8 @@ Route::group(['prefix'=>"web"],function(){
     Route::get('download', 'ShareController@download');
 
 });
+
+
 
 //半课官网调用
 Route::group(['prefix'=>"bankehome"],function(){

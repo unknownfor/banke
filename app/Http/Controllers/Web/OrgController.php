@@ -32,7 +32,7 @@ class OrgController extends Controller
     public function share_org_v1_2($id)
     {
         $org = BankeOrg::find($id);
-        return view('web.org.share_org.v1.2')->with(compact(['org']));
+        return view('web.org.share_org-v1_2')->with(compact(['org']));
     }
 
 
