@@ -332,6 +332,9 @@ img {
 #invitation .page .box.first {
   margin-bottom: 20px;
 }
+#invitation .page:last-child .arrow {
+  display: none;
+}
 #invitation .current .arrow {
   -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
 }
