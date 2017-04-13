@@ -24,44 +24,41 @@
     <div class="head-middle">
         <div class="name">{{$course['name']}}</div>
         <div class="save">
-            <span class="save-img"></span>
-            <span class="save-num">{{$course['discount']}}%</span>
+            <span class="save-num">-{{$course['price']}}</span>
+            <span class="save-precent">报名后返{{$course['discount']}}%</span>
         </div>
     </div>
     <div class="head-right">
-        <div class="price"><span class="price-info">参考价</span><span id="price-num">￥{{$course['price']}}</span></div>
-        <div class="real-price"><span class="price-info">最高奖励金额</span><span id="price-real-num">￥{{$course['real_price']}}</span></div>
+        <div class="price">
+            <span id="price-num">￥{{$course['price']}}</span>
+        </div>
     </div>
 </div>
 <!--返现规则-->
 <div class="pay-rule container">
     <div class="container-head">
-        <span>奖励规则</span>
+        <span>返现规则</span>
     </div>
     <div class="pay-rule-box container-box">
-        <div class="tips"><span>学员将学费支付到半课平台官方支付宝</span></div>
-        <div class="tips"><span>上课期间打卡签到领取当次课时奖励，全勤可领取学费{{$course['checkin_award']}}%奖励</span></div>
-        <div class="tips"><span>完成任务中心的赏金任务领取剩余学费{{$course['task_award']}}%奖励</span></div>
+        <div class="tips"><span>每日打卡领取当日奖励，学习结束时共返现学费{{$course['checkin_award']}}%</span></div>
+        <div class="tips"><span>在任务中心领取剩余{{$course['task_award']}}%奖励</span></div>
     </div>
 </div>
-<!--机构地址-->
-<div class="address container">
-    <div class="container-head">
-        <span>机构地址</span>
+{{--机构简介--}}
+<div class="org-detail container">
+    <div class="head-left">
+        <img src="{{$course['cover']}}" />
     </div>
-    <div class="address-box container-box">
-        <div class="address-info">
-            <div class="address-img"></div>
-            <div class="address-detail">{{$course['org']['address']}}</div>
-        </div>
-        <div class="address-call">
-            <a href="tel:{{$course['org']['tel_phone']}}">
-                <div id="address-call-box">
-                    <div id="img">
-                    </div>
-                </div>
-            </a>
-        </div>
+    <div class="head-middle">
+        <div class="head-name">武汉天虎设计培训</div>
+        <div class="head-tips"><span>保就业</span><span>环境好好好</span><span>环境好</span><span>环境好</span><span>师资雄厚</span></div>
+    </div>
+    <div class="address-call">
+        <a href="tel:{{$course['org']['tel_phone']}}">
+            <div class="address-call-box">
+                <span class="img"></span>
+            </div>
+        </a>
     </div>
 </div>
 <!--课程介绍-->
