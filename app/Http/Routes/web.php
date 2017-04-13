@@ -29,10 +29,15 @@ Route::group(['prefix'=>"invitation"],function(){
 
 //app内页面
 Route::group(['prefix'=>"web"],function(){
-    //机构详情分享
+    //机构详情分享 v1.1
     Route::get('org/{id}', 'ShareController@org');
     //课程
     Route::get('course/{id}', 'ShareController@course');
+
+    //机构详情分享 v1.2
+    Route::get('org/{id}', 'ShareController@org_v1_2');
+    //课程
+    Route::get('course/{id}', 'ShareController@course_v1_2'); //机构详情分享
 
     //动态
     Route::get('news/{id}', 'ShareController@news');
