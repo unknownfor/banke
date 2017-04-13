@@ -17,6 +17,9 @@ Route::group(['prefix'=>"v1.2/share",'namespace'=>'web'],function(){
     //微信注册
     Route::get('/invitation/{welcome}', 'InvitationController@invitation');
 
+    //Create a test user, you don't need this if you already have.
+    Route::post('register','InvitationController@register');
+
 });
 
 Route::group(['prefix'=>"v1.2/web",'namespace'=>'web'],function(){
