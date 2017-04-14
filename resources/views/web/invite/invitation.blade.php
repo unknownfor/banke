@@ -59,35 +59,35 @@
     <div class="reward hide">
         <div class="second-title reward-title"><span>哪些朋友获得了奖励</span></div>
         <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305502.jpg"/>
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305502.png"/>
             <span class="reward-name">李小婷</span>
             <div class="reward-time-box">
                 <span class="reward-time">2017-01-18</span>
             </div>
         </div>
         <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305572.jpg"/>
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305572.png"/>
             <span class="reward-name">王凯</span>
             <div class="reward-time-box">
                 <span class="reward-time">2017-01-19</span>
             </div>
         </div>
         <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305524.jpg"/>
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305524.png"/>
             <span class="reward-name">谢永明</span>
             <div class="reward-time-box">
                 <span class="reward-time">2017-01-20</span>
             </div>
         </div>
         <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305519.jpg"/>
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305519.png"/>
             <span class="reward-name">周子棋</span>
             <div class="reward-time-box">
                 <span class="reward-time">2017-01-22</span>
             </div>
         </div>
         <div class="reward-box">
-            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305582.jpg"/>
+            <img class="reward-img"  src="/front/assets/img/invitation/avatar/banke-u-2017012216305582.png"/>
             <span class="reward-name">叶佳</span>
             <div class="reward-time-box">
                 <span class="reward-time">2017-01-23</span>
