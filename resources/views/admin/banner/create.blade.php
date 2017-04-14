@@ -49,7 +49,7 @@
                         {!! csrf_field() !!}
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="name">{{trans('labels.banner.title')}}</label>
+                                <label class="col-md-1 control-label" for="title">{{trans('labels.banner.title')}}</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" name="title" placeholder="{{trans('labels.banner.title')}}" value="{{old('title')}}">
                                     <div class="form-control-focus"> </div>
@@ -59,19 +59,19 @@
 
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="description">{{trans('labels.banner.type')}}</label>
+                                <label class="col-md-1 control-label" for="type">{{trans('labels.banner.type')}}</label>
                                 <div class="col-md-3">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
-                                            <input type="radio" id="status1" name="type" value="0" class="md-radiobtn" @if(old('status') == 0) checked @endif>
-                                            <label for="status1">
+                                            <input type="radio" id="type1" name="type" value="0" class="md-radiobtn" @if(old('status') == 0) checked @endif>
+                                            <label for="type1">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> 内链 </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="status2" name="type" value="1" class="md-radiobtn" @if(old('status') === 1) checked @endif>
-                                            <label for="status2">
+                                            <input type="radio" id="type2" name="type" value="1" class="md-radiobtn" @if(old('status') === 1) checked @endif>
+                                            <label for="type2">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> 外链 </label>
@@ -81,7 +81,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="slug">{{trans('labels.banner.url')}}</label>
+                                <label class="col-md-1 control-label" for="url">{{trans('labels.banner.url')}}</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="description" name="url" placeholder="{{trans('labels.banner.url')}}" value="{{old('sort')}}">
                                     <div class="form-control-focus"> </div>
@@ -90,7 +90,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="description">{{trans('labels.banner.sort')}}</label>
+                                <label class="col-md-1 control-label" for="sort">{{trans('labels.banner.sort')}}</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.banner.sort')}}" value="{{old('sort')}}">
                                     <div class="form-control-focus"> </div>
@@ -106,8 +106,9 @@
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
-                            <div class="form-group form-md-line-input form-md-line-cover col-md-offset-1">
-                                    <ul class="imgs-list-box"></ul>
+                            <div class="col-md-offset-1">
+                                    <ul class="imgs-list-box">
+                                    </ul>
                                     <input type="hidden" value="" name="img_url" id="img_url">
                             </div>
 
@@ -116,7 +117,7 @@
                                 <div class="col-md-10">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
-                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.active')) checked @endif>
+                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn"  checked>
                                             <label for="status1">
                                                 <span></span>
                                                 <span class="check"></span>

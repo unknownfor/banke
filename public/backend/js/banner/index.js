@@ -10,6 +10,11 @@
                 $('#uploadImgFile').trigger('click');
             });
             $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadCoverImg'));
+
+            $(document).on('click','.remove-img', $.proxy(this,'deletImg'));
+
+            //photoswipe   //图片信息查看  相册、视频信息查看
+            new MyPhotoSwipe('.imgs-list-box');
         };
         Banner.prototype={
 
@@ -93,12 +98,23 @@
             },
 
             getCoverImg:function(){
-                var $imgs=$('.cover-list-box li'),arr=[];
+                var $imgs=$('.imgs-list-box li'),arr=[];
 
                 $.each($imgs,function(){
                     arr.push($(this).find('a').attr('href'));
                 });
                 return arr;
+            },
+
+            /*删除封面*/
+            deletImg:function(e){
+                e.stopPropagation();
+                if(window.confirm('确定删除该图片么？')) {
+                    var $target=$(e.currentTarget).closest('li').addClass('deleting');
+                    window.setTimeout(function(){
+                        $target.remove();
+                    },300);
+                }
             },
 
             CLASS_NAME:'Banner'
@@ -108,8 +124,8 @@
         //提交编辑
         window.setDataBeforeCommit=function(){
             //相册
-            $('#img_url').val(editor.getCoverImg().join(','));
+            $('#img_url').val(banner.getCoverImg().join(','));
         };
 
-        new Banner();
+        var banner = new Banner();
 });

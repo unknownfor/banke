@@ -10,7 +10,7 @@ class BankeBanner extends Model
     protected $table = 'banke_banner';
     use ActionAttributeTrait;
     protected $fillable = [
-        'url', 'type', 'sort', 'status','img_url'
+        'url', 'type', 'sort', 'status','img_url','title'
     ];
 
     private $action;
