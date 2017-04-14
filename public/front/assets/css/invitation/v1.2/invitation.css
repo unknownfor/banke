@@ -335,6 +335,9 @@ img {
 #invitation .page:last-child .arrow {
   display: none;
 }
+#invitation .page.hide {
+  display: none;
+}
 #invitation .current .arrow {
   -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
 }
