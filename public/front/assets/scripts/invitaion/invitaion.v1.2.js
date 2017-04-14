@@ -3,6 +3,7 @@
  */
 $(function () {
     window.addLoadingImg();
+    window.addTip();
 
     //填充信息，按钮变色
     $(document).on('input', '#phone-num', function(){
