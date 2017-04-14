@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Banke\BankeOrg;
-use App\Repositories\admin\OrgRepository;
-use App\Repositories\admin\OrgApplyForRepository;
+use App\Models\Banke\BankeDict;
+use App\Repositories\admin\InvitationRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +12,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Validator;
 use Illuminate\Http\Request;
+use UserRepository;
 
 class InvitationController extends Controller
 {
@@ -70,38 +70,7 @@ class InvitationController extends Controller
         }
         $result = UserRepository::register($request);
         if ($result) {
-            try {
-                $config = BankeDict::find(1);
-                $pa = [
-                    'json' => [
-                        'mobilePhoneNumber' => $mobile,
-                        'template' =>'invi_psw',
-                        'money' => $config['value'],
-//                        'psw' => $password
-                    ],
-                    'verify' => false
-                ];
-                $headers = [
-                    'headers' => [
-                        'X-LC-Id' => env('LC_APP_ID'),
-                        'X-LC-Key' => env('LC_APP_KEY'),
-                        'Content-Type' => 'application/json'
-                    ]
-                ];
-
-                $http = new Client($headers);
-                $res = $http->request('post', env('LC_REQUEST_URL'), $pa);
-
-                if ($res) {
-                    return ApiResponseService::success('', Code::SUCCESS, '注册成功');
-                }
-                else {
-                    return ApiResponseService::showError(Code::SEND_SMS_ERROR);
-                }
-            }
-            catch (ClientException $e) {
-                return ApiResponseService::showError(Code::SEND_SMS_ERROR);
-            }
+            return ApiResponseService::success('', Code::SUCCESS, '注册成功');
         }
         else {
             return ApiResponseService::showError(Code::REGISTER_ERROR);
