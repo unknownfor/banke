@@ -21,55 +21,57 @@
 {!! csrf_field() !!}
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
 <div id="invitation">
-    {{--已注册页面--}}
-    <div class="page">
-        <img class="bg third" src="/front/assets/img/invitation/bg_1.png" />
-        <div class="txt slogen">您好，老朋友</div>
-        <div class="txt detail">已经为您生成<span class="save-num">专属</span>的邀请链接，马上分享<br />赚取<span class="reward">5元</span>奖励~</div>
-        <div class="box first">
-            <div class="box-title">参与方式</div>
-            <div class="box-info">分享此链接给您的微信、QQ好友或者打开客户端参与推荐有奖活动，当好友完成注册认证后，您将立即获得5元奖励。</div>
-        </div>
-        <div class="box">
-            <div class="box-title">奖励福利</div>
-            <div class="box-info">您获得的现金奖励将在您的半课账户中，现金奖励满100即可提现。</div>
-        </div>
-    </div>
-    {{--注册成功页面--}}
+    {{--注册页面--}}
     <div class="page">
         {{--20元现金为变量--}}
-        <div class="txt slogen">恭喜您领取成功</div>
-        <div class="txt detail">您已接受半课用户的邀请体验半课学习</div>
-        <div class="txt txt-three">力省<span class="save-num">5000元</span>学费</div>
-        <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
-        <div class="txt txt-one">20元现金奖励已放至账号<span class="save-tel">13554154325</span></div>
-        <div class="txt detail">快登陆APP领取吧~</div>
-        <button class="btn download">领取奖励</button>
-        <div class="arrow">
-            <i class="iconfont down-btn">&#xe7a5;</i>
-        </div>
-    </div>
-    <div class="page">
-        {{--20元现金为变量--}}
-        <div class="txt slogen">注册即刻领取20元现金奖励</div>
-        <div class="txt detail">接受好友邀请,上半课报名学习可省5000元学费</div>
-        <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
         <div class="register">
-            <div class="register-box">
-                <i class="iconfont register-img">&#xe659;</i>
-                <input class="register-code" id="phone-num" placeholder="输入手机号" value="13554154325"/>
+            <div class="register-main">
+                <div class="txt slogen">注册即刻领取20元现金奖励</div>
+                <div class="txt detail">接受好友邀请,上半课报名学习可省5000元学费</div>
+                <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
+                <div class="register-box phone">
+                    <i class="iconfont register-img">&#xe659;</i>
+                    <input class="register-code" id="phone-num" placeholder="输入手机号" value="13554154325"/>
+                </div>
+                <div class="register-box code-num">
+                    <i class="iconfont register-img">&#xe6a0;</i>
+                    <input class="register-code" id="user-code" placeholder="验证码" value=""/>
+                    <hr color="#9b9b9b" />
+                    <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码" value="123456"/>
+                </div>
+                <div class="register-box password">
+                    <i class="iconfont register-img">&#xe655;</i>
+                    <input class="register-code" id="password-num" type="password" value="123456" placeholder="密码"/>
+                </div>
+                <button class="btn gift">领取奖励</button>
             </div>
-            <div class="register-box">
-                <i class="iconfont register-img">&#xe6a0;</i>
-                <input class="register-code" id="user-code" placeholder="验证码" value="123456"/>
-                <hr color="#9b9b9b" />
-                <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码" value="123456"/>
+            <div class="register-done" style="display: none;">
+                <div class="register-new" style="display: none;">
+                    <div class="txt slogen">恭喜您领取成功</div>
+                    <div class="txt detail">您已接受半课用户的邀请体验半课学习</div>
+                    <div class="txt txt-three">力省<span class="save-num">5000元</span>学费</div>
+                    <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
+                    <div class="txt txt-one">20元现金奖励已放至账号<span class="save-tel">13554154325</span></div>
+                    <div class="txt detail">快登陆APP领取吧~</div>
+                    <button class="btn download">领取奖励</button>
+                    <div class="arrow">
+                        <i class="iconfont down-btn">&#xe7a5;</i>
+                    </div>
+                </div>
+                <div class="register_old" style="display: none;">
+                    <img class="bg third" src="/front/assets/img/invitation/bg_1.png" />
+                    <div class="txt slogen">您好，老朋友</div>
+                    <div class="txt detail">已经为您生成<span class="save-num">专属</span>的邀请链接，马上分享<br />赚取<span class="reward">5元</span>奖励~</div>
+                    <div class="box first">
+                        <div class="box-title">参与方式</div>
+                        <div class="box-info">分享此链接给您的微信、QQ好友或者打开客户端参与推荐有奖活动，当好友完成注册认证后，您将立即获得5元奖励。</div>
+                    </div>
+                    <div class="box">
+                        <div class="box-title">奖励福利</div>
+                        <div class="box-info">您获得的现金奖励将在您的半课账户中，现金奖励满100即可提现。</div>
+                    </div>
+                </div>
             </div>
-            <div class="register-box">
-                <i class="iconfont register-img">&#xe655;</i>
-                <input class="register-code" id="password-num" type="password" value="123456" placeholder="密码"/>
-            </div>
-            <button class="btn gift">领取奖励</button>
         </div>
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
@@ -105,6 +107,7 @@
 </div>
 {{--@include('web.layout.downloadbar')--}}
 </body>
+<script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/zepto_modify.js"></script>
 <script src="/front/assets/plugins/PageSlider.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>

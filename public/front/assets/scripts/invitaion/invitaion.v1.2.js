@@ -12,9 +12,10 @@ $(function () {
             $btn=$('.btn'),
             code=$('#user-code').val(),
             //新增登陆密码
-            password=$('#user-password');
+            password=$('#user-password').val();
         if(reg.test(number)) {
            $code.removeClass('disabled');
+            $('.phone').addClass('active');
            if(code!=''){
                $btn.addClass('active');
            }else{
@@ -22,7 +23,6 @@ $(function () {
            }
         }else{
             $code.addClass('disabled');
-            $btn.removeClass('active');
         }
     });
 
@@ -35,8 +35,10 @@ $(function () {
         if(reg.test(number)) {
             if(code!=''){
                 $btn.addClass('active');
+                $('.code-num').addClass('active');
             }else{
                 $btn.removeClass('active');
+                $('.code-num').removeClass('active');
             }
         }else{
             $btn.removeClass('active');
@@ -46,7 +48,7 @@ $(function () {
     //倒计时
     var countdown = 60;
     var timer;
-    $(document).on( window.eventName,'#phone-code-btn', function setTime() {
+    $(document).on( window.eventName,'#phone-code-btn', function() {
         timer = window.setInterval(function () {
             setGetCodeBtn();
         }, 1000);
@@ -56,6 +58,10 @@ $(function () {
             var url = '/invitation/requestSmsCode';
             getDataAsync(url, {mobile: $('#phone-num').val()},
                 function (res) {
+                    if(res.status_code==50016){
+                        $('.register_old').show().parent().show().siblings().hide();
+                        return;
+                    }
                     window.showTips(res.message);
                     if(res.status_code!=0) {
                         countdown = 0;
@@ -103,13 +109,14 @@ $(function () {
         getDataAsync(url,data,function(res){
                 //成功返回之后调用的函数
             window.controlLoadingBox(false);
-            if(res.status_code==0 ||res.status_code==50017) {
+            if(res.status_code==50017) {
                 $('.coupon-count span').text(phone);
-                window.showTips('<p>注册成功!<br/>如未收到密码短信,<br/>请到App中重置密码</p>',2000);
+                window.showTips('<p>恭喜您，注册成功!</p>',2000);
                 window.setTimeout(function() {
                     showSuccessPage();
                 },2000);
-            }else{
+            }
+            else{
                 window.showTips(res.message);
             }
         },function(){
@@ -142,13 +149,9 @@ $(function () {
     /**
      * 显示报名成功页面
      */
-    //function showSuccessPage() {
-    //
-    //    //隐藏注册框
-    //    $('.register').hide();
-    //    $('.coupon').removeClass('hide');
-    //    $('.reward').removeClass('hide');
-    //};
+    function showSuccessPage() {
+        $('.register_new').show().parent().show().siblings().hide();
+    };
 
 
 });
