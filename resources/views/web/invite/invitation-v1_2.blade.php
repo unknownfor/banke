@@ -28,7 +28,7 @@
             <div class="register-main">
                 <div class="txt slogen">注册即刻领取20元现金奖励</div>
                 <div class="txt detail">接受好友邀请,上半课报名学习可省5000元学费</div>
-                <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
+                <img class="bg" src="http://pic.hisihi.com/2017-04-14/1492162966172991.png" />
                 <div class="register-box phone">
                     <i class="iconfont register-img">&#xe659;</i>
                     <input class="register-code" id="phone-num" placeholder="输入手机号" value="13554154325"/>
@@ -50,7 +50,7 @@
                     <div class="txt slogen">恭喜您领取成功</div>
                     <div class="txt detail">您已接受半课用户的邀请体验半课学习</div>
                     <div class="txt txt-three">力省<span class="save-num">5000元</span>学费</div>
-                    <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
+                    <img class="bg" src="http://pic.hisihi.com/2017-04-14/1492162966172991.png" />
                     <div class="txt txt-one">20元现金奖励已放至账号<span class="save-tel">13554154325</span></div>
                     <div class="txt detail">快登陆APP领取吧~</div>
                     <button class="btn download"><a id="downloadBar" href="http://www.hisihi.com/download.php">领取奖励</a></button>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <div class="register_old" style="display: none;">
-                    <img class="bg third" src="/front/assets/img/invitation/bg_1.png" />
+                    <img class="bg third" src="http://pic.hisihi.com/2017-04-14/1492162966172991.png" />
                     <div class="txt slogen">您好，老朋友</div>
                     <div class="txt detail">已经为您生成<span class="save-num">专属</span>的邀请链接，马上分享<br />赚取<span class="reward">5元</span>奖励~</div>
                     <div class="box first">
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div class="page">
-        <img class="bg second" src="/front/assets/img/invitation/bg_2.png" />
+        <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163041837846.png" />
         <div class="txt txt-one">上半课报名学习</div>
         <div class="txt txt-two">最高可领取50%学费返现</div>
         <button class="btn download"><a id="downloadBar" href="http://www.hisihi.com/download.php">下载半课，体验学费返现</a></button>
@@ -87,7 +87,7 @@
         </div>
     </div>
     <div class="page">
-        <img class="bg second" src="/front/assets/img/invitation/bg_3.png" />
+        <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163081632946.png" />
         <div class="txt txt-one">坚持每日打卡</div>
         <div class="txt txt-two">每天开心领学费</div>
         <button class="btn download"><a id="downloadBar" href="http://www.hisihi.com/download.php">下载半课，体验学费返现</a></button>
@@ -96,7 +96,7 @@
         </div>
     </div>
     <div class="page">
-        <img class="bg second" src="/front/assets/img/invitation/bg_4.png" />
+        <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163132658414.png" />
         <div class="txt txt-one">完成指定任务</div>
         <div class="txt txt-two">领取任务奖励</div>
         <button class="btn download"><a id="downloadBar" href="http://www.hisihi.com/download.php">下载半课，体验学费返现</a></button>
