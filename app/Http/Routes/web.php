@@ -6,7 +6,7 @@ Route::get('/', 'HomeController@index');
 
 
 //1.2
-Route::group(['prefix'=>"v1.2/share",'namespace'=>'web'],function(){
+Route::group(['prefix'=>"v1.2/share",'namespace'=>'Web'],function(){
 
     //v1.2 以及之后的
     //机构详情分享
@@ -21,7 +21,7 @@ Route::group(['prefix'=>"v1.2/share",'namespace'=>'web'],function(){
 
 });
 
-Route::group(['prefix'=>"v1.2/web",'namespace'=>'web'],function(){
+Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
 
     //v1.2 以及之后的
     //机构详情分享
