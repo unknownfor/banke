@@ -242,16 +242,11 @@ class OrderRepository
 					$userProfile->do_task_amount += $input['do_task_amount'];
 					$userProfile->total_cashback_amount += ($input['check_in_amount'] + $input['do_task_amount']);
 					$userProfile->period += $course['period'];
-                                                                             
-                                            //对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中                                         
-                                        if($input['end_date']>$userProfile->enddated_at){
-                                            $userProfile->enddated_at= $input['end_date'];                                               
-                                            //更新报名学生的信息
-                                            $userProfile->save();
-                                        }
-                                                                                   
-                                        //获取用户报名课程 的次数
-                                        $courseCout= BankeCashBackUser::where(['uid'=>$role['uid'],'course_id'=>$role['course_id']])->count();
+
+					//更新报名学生的信息
+					$userProfile->save();
+
+					$courseCout= BankeCashBackUser::where(['uid'=>$role['uid'],'course_id'=>$role['course_id']])->count();
 					//如果有邀请人
 					if($userProfile->invitation_uid > 0 && $courseCout==0) {
 						$invitation_user = BankeUserProfiles::where('uid', $userProfile->invitation_uid)->lockForUpdate()->first();
