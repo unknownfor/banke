@@ -198,14 +198,45 @@ class ShareController extends Controller
             return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR);
         }
         $result = UserRepository::register($request);
+
         if ($result) {
-            return ApiResponseService::success('', Code::SUCCESS, '注册成功');
+            try {
+                $config = BankeDict::find(1);
+                $pa = [
+                    'json' => [
+                        'mobilePhoneNumber' => $mobile,
+                        'template' =>'invi_psw',
+                        'money' => $config['value'],
+//                        'psw' => $password
+                    ],
+                    'verify' => false
+                ];
+                $headers = [
+                    'headers' => [
+                        'X-LC-Id' => env('LC_APP_ID'),
+                        'X-LC-Key' => env('LC_APP_KEY'),
+                        'Content-Type' => 'application/json'
+                    ]
+                ];
+
+                $http = new Client($headers);
+                $res = $http->request('post', env('LC_REQUEST_URL'), $pa);
+
+                if ($res) {
+                    return ApiResponseService::success('', Code::SUCCESS, '注册成功');
+                }
+                else {
+                    return ApiResponseService::showError(Code::SEND_SMS_ERROR);
+                }
+            }
+            catch (ClientException $e) {
+                return ApiResponseService::showError(Code::SEND_SMS_ERROR);
+            }
         }
         else {
             return ApiResponseService::showError(Code::REGISTER_ERROR);
         }
     }
-
 
     /**
      * 隐私政策

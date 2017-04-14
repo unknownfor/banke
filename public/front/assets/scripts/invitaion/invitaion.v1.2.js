@@ -99,7 +99,7 @@ $(function () {
         var phone = $('#phone-num').val(),
             code = $('#user-code').val(),
             password = $('#password-num').val();
-        var url='/v1.2/share/invitation/register',
+        var url='/v1.2/share/register',
             data={
                 welcome:$('input[name="welcome"]').val(),
                 mobile:phone,
