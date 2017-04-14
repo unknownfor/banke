@@ -43,7 +43,7 @@
                     <i class="iconfont register-img">&#xe655;</i>
                     <input class="register-code" id="password-num" type="password" value="123456" placeholder="密码"/>
                 </div>
-                <button class="btn gift">领取奖励</button>
+                <button class="btn gift"><a id="downloadBar" href="http://www.hisihi.com/download.php">领取奖励</a></button>
             </div>
             <div class="register-done" style="display: none;">
                 <div class="register-new" style="display: none;">
@@ -53,7 +53,7 @@
                     <img class="bg" src="/front/assets/img/invitation/bg_1.png" />
                     <div class="txt txt-one">20元现金奖励已放至账号<span class="save-tel">13554154325</span></div>
                     <div class="txt detail">快登陆APP领取吧~</div>
-                    <button class="btn download">领取奖励</button>
+                    <button class="btn download"><a id="downloadBar" href="http://www.hisihi.com/download.php">领取奖励</a></button>
                     <div class="arrow">
                         <i class="iconfont down-btn">&#xe7a5;</i>
                     </div>
@@ -81,7 +81,7 @@
         <img class="bg second" src="/front/assets/img/invitation/bg_2.png" />
         <div class="txt txt-one">上半课报名学习</div>
         <div class="txt txt-two">最高可领取50%学费返现</div>
-        <button class="btn download">下载半课，体验学费返现</button>
+        <button class="btn download"><a id="downloadBar" href="http://www.hisihi.com/download.php">下载半课，体验学费返现</a></button>
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
@@ -90,7 +90,7 @@
         <img class="bg second" src="/front/assets/img/invitation/bg_3.png" />
         <div class="txt txt-one">坚持每日打卡</div>
         <div class="txt txt-two">每天开心领学费</div>
-        <button class="btn download">下载半课，体验学费返现</button>
+        <button class="btn download"><a id="downloadBar" href="http://www.hisihi.com/download.php">下载半课，体验学费返现</a></button>
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
@@ -99,7 +99,7 @@
         <img class="bg second" src="/front/assets/img/invitation/bg_4.png" />
         <div class="txt txt-one">完成指定任务</div>
         <div class="txt txt-two">领取任务奖励</div>
-        <button class="btn download">下载半课，体验学费返现</button>
+        <button class="btn download"><a id="downloadBar" href="http://www.hisihi.com/download.php">下载半课，体验学费返现</a></button>
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
