@@ -304,6 +304,7 @@ img {
   line-height: 40px;
   color: #ffffff;
   border-radius: 10px;
+  border: none;
 }
 #invitation .page .btn.gift {
   background-color: #9b9b9b;
