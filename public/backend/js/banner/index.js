@@ -3,16 +3,15 @@
  */
     $(function(){
 
-        /**定义一个MyEditor对象**/
-        var MyEditor=function(){
+        var Banner=function(){
             this.init();
             /*上传封面文件*/
-            $(document).on('click','.add-cover-img-btn', function(){
+            $(document).on('click','.add-img-btn', function(){
                 $('#uploadImgFile').trigger('click');
             });
             $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadCoverImg'));
         };
-        MyEditor.prototype={
+        Banner.prototype={
 
             init:function(){
 
@@ -62,7 +61,7 @@
                     data=JSON.parse(data);
                     if(data) {
                         var str=that.getConverImgStr(data.filedata);
-                        $('.cover-list-box').html(str);
+                        $('.imgs-list-box').html(str);
                         that.controlLoadingCircleStatus(false);
                         $form[0].reset();
                     }
@@ -70,11 +69,11 @@
             },
 
             getConverImgStr:function(url){
-                return '<div>'+
+                return '<li>'+
                     '<a href="'+url+'" data-size="435x263"></a>'+
                     '<img src="'+url+'@142w_80h_1e">'+
-                    '<span class="remove-cover-img">×</span>'+
-                    '</div>';
+                    '<span class="remove-img">×</span>'+
+                    '</li>';
             },
 
             /*
@@ -102,7 +101,7 @@
                 return arr;
             },
 
-            CLASS_NAME:'MyEditor'
+            CLASS_NAME:'Banner'
 
         };
 
@@ -111,4 +110,6 @@
             //相册
             $('#img_url').val(editor.getCoverImg().join(','));
         };
+
+        new Banner();
 });

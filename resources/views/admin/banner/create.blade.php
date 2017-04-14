@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/course.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
+    <style type="text/css">
+        .imgs-list-box li{
+            width: 270px;
+        }
+    </style>
 @endsection
 @section('content')
     <div class="page-bar">
@@ -45,47 +49,39 @@
                         {!! csrf_field() !!}
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="name">{{trans('labels.banner.title')}}</label>
-                                <div class="col-md-8">
+                                <label class="col-md-1 control-label" for="name">{{trans('labels.banner.title')}}</label>
+                                <div class="col-md-4">
                                     <input type="text" class="form-control" name="title" placeholder="{{trans('labels.banner.title')}}" value="{{old('title')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-2 control-label" for="img_url">{{trans('labels.banner.img_url')}}</label>
-                                <div class="col-md-8">
-                                    <div class="add-cover-img-btn">+
-                                        <div class="cover-size-tips">60*60</div>
-                                    </div>
-                                    <div class="form-control-focus"> </div>
-                                    <ul class="cover-list-box"></ul>
-                                    <input type="hidden" value="" name="img_url" id="img_url">
-                                </div>
-                            </div>
+
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="description">{{trans('labels.banner.url')}}</label>
+                                <label class="col-md-1 control-label" for="description">{{trans('labels.banner.type')}}</label>
                                 <div class="col-md-3">
-                                    <div class="md-radio">
-                                        <input type="radio" id="status1" name="type" value="0" class="md-radiobtn" @if(old('status') == 0) checked @endif>
-                                        <label for="status1">
-                                            <span></span>
-                                            <span class="check"></span>
-                                            <span class="box"></span> 内链 </label>
-                                    </div>
-                                    <div class="md-radio">
-                                        <input type="radio" id="status2" name="type" value="1" class="md-radiobtn" @if(old('status') === 1) checked @endif>
-                                        <label for="status2">
-                                            <span></span>
-                                            <span class="check"></span>
-                                            <span class="box"></span> 外链 </label>
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="status1" name="type" value="0" class="md-radiobtn" @if(old('status') == 0) checked @endif>
+                                            <label for="status1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> 内链 </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="status2" name="type" value="1" class="md-radiobtn" @if(old('status') === 1) checked @endif>
+                                            <label for="status2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> 外链 </label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="slug">{{trans('labels.banner.url')}}</label>
+                                <label class="col-md-1 control-label" for="slug">{{trans('labels.banner.url')}}</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="description" name="url" placeholder="{{trans('labels.banner.url')}}" value="{{old('sort')}}">
                                     <div class="form-control-focus"> </div>
@@ -94,15 +90,29 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="description">{{trans('labels.banner.sort')}}</label>
-                                <div class="col-md-8">
+                                <label class="col-md-1 control-label" for="description">{{trans('labels.banner.sort')}}</label>
+                                <div class="col-md-4">
                                     <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.banner.sort')}}" value="{{old('sort')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input form-md-line-cover">
+                                <label class="col-md-1 control-label" for="img_url">{{trans('labels.banner.img_url')}}</label>
+                                <div class="col-md-4">
+                                    <div class="add-img-btn">+
+                                        <div class="img-size-tips">16:7的图片</div>
+                                    </div>
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input form-md-line-cover col-md-offset-1">
+                                    <ul class="imgs-list-box"></ul>
+                                    <input type="hidden" value="" name="img_url" id="img_url">
+                            </div>
+
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.banner.status')}}</label>
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.banner.status')}}</label>
                                 <div class="col-md-10">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
@@ -132,7 +142,7 @@
                         </div>
                         <div class="form-actions">
                             <div class="row">
-                                <div class="col-md-offset-2 col-md-10">
+                                <div class="col-md-offset-1 col-md-10">
                                     <a href="{{url('admin/banner')}}" class="btn default">{{trans('crud.cancel')}}</a>
                                     <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                                 </div>
