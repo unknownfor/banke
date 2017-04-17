@@ -88,6 +88,7 @@ $(function () {
         }
     });
 
+    //获取验证码倒计时
     function setGetCodeBtn(){
         var obj=$('#phone-code-btn')[0];
         if (countdown == 0) {
@@ -105,38 +106,36 @@ $(function () {
 
     //注册
     $(document).on(window.eventName,'.btn.active', function () {
-        //window.setTimeout(function() {
-        //    showSuccessPage();
-        //},1500);
-        window.controlLoadingBox(true);
-        var phone = $('#phone-num').val(),
-            code = $('#user-code').val(),
-            password = $('#password-num').val();
-        var url='/v1.2/share/register',
-            data={
-                welcome:$('input[name="welcome"]').val(),
-                mobile:phone,
-                smsId:code,
-                password:password,
-            };
-        $(this).removeClass('active');
-        getDataAsync(url,data,function(res){
-                //成功返回之后调用的函数
-            window.controlLoadingBox(false);
-            if(res.status_code==0) {
-                $('.coupon-count span').text(phone);
-                window.showTips('<p>恭喜您，注册成功!</p>',2000);
-                window.setTimeout(function() {
-                    showSuccessPage();
-                },2000);
-            }
-            else{
-                window.showTips(res.message);
-            }
-        },function(){
-            window.controlLoadingBox(false);
-            $(this).addClass('active');
-        },'post');
+        //window.controlLoadingBox(true);
+        //var phone = $('#phone-num').val(),
+        //    code = $('#user-code').val(),
+        //    password = $('#password-num').val();
+        //var url='/v1.2/share/register',
+        //    data={
+        //        welcome:$('input[name="welcome"]').val(),
+        //        mobile:phone,
+        //        smsId:code,
+        //        password:password,
+        //    };
+        //$(this).removeClass('active');
+        //getDataAsync(url,data,function(res) {
+            //成功返回之后调用的函数
+            //window.controlLoadingBox(false);
+            //if (res.status_code == 0) {
+                //    $('.coupon-count span').text(phone);
+                //    window.showTips('<p>恭喜您，注册成功!</p>',2000);
+                //    window.setTimeout(function() {
+                showSuccessPage();
+                //        },2000);
+            //}
+            //else{
+            //    window.showTips(res.message);
+            //}
+            //},function(){
+            //    window.controlLoadingBox(false);
+            //    $(this).addClass('active');
+            //},'post');
+        //})
     });
 
     //请求数据
@@ -164,7 +163,10 @@ $(function () {
      * 显示报名成功页面
      */
     function showSuccessPage() {
-        $('.register_new').show().parent().show().siblings().hide();
+        //$('.register_new').show().siblings().hide();
+        $('.register-main').addClass('.hide');
+        $('.register-done').removeClass('.hide');
+        $('.register_new').removeClass('.hide');
     };
 
 
