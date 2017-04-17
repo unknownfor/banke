@@ -234,4 +234,15 @@ return[
 		'audit' => 0,
 		'trash' => 99,
 	],
+
+	//学生退款
+	'banner' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'banner',
+		'active' => 1,
+		'audit' => 0,
+		'trash' => 99,
+	],
 ];

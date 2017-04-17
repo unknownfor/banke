@@ -54,8 +54,8 @@
                     </div>
                     <div class="col-md-2">
                         <div class="form-group form-md-line-input">
-                            <select class="bs-select form-control form-filter" data-show-subtext="true" name="certification_status">
-                                <option value="" data-icon="fa-glass icon-success">认证状态</option>
+                            <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
+                                <option value="" data-icon="fa-glass icon-success">类型</option>
                                 @if(trans('strings.banner'))
                                     @foreach(trans('strings.banner') as $status_key => $status_value)
                                         @if($status_value[1]!='未申请')
@@ -85,7 +85,7 @@
                                 <th> {{ trans('labels.banner.sort') }} </th>
                                 <th width="8%"> {{ trans('labels.banner.status') }} </th>
                                 <th> {{ trans('labels.banner.updated_at') }} </th>
-                                <th width="5%"> {{ trans('labels.action') }} </th>
+                                <th width="8%"> {{ trans('labels.action') }} </th>
                             </tr>
                             </thead>
                             <tbody> </tbody>

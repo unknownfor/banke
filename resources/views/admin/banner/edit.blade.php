@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
+    <style type="text/css">
+        .imgs-list-box li{
+            width: 270px;
+        }
+    </style>
 @endsection
 @section('content')
 <div class="page-bar">
@@ -46,29 +51,76 @@
                   <input type="hidden" name="id" value="{{$banner['id']}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="name">{{trans('labels.banner.title')}}</label>
+                          <label class="col-md-1 control-label" for="title">{{trans('labels.banner.title')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="name" name="title" placeholder="{{trans('labels.banner.title')}}" value="{{$banner['title']}}">
+                              <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.banner.title')}}" value="{{$banner['title']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
+
+
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="description">{{trans('labels.banner.sort')}}</label>
-                          <div class="col-md-8">
-                              <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.banner.sort')}}" value="{{$banner['sort']}}">
-                              <div class="form-control-focus"> </div>
+                          <label class="col-md-1 control-label" for="type">{{trans('labels.banner.type')}}</label>
+                          <div class="col-md-3">
+                              <div class="md-radio-inline">
+                                  <div class="md-radio">
+                                      <input type="radio" id="type1" name="type" value="0" class="md-radiobtn" @if($banner['type'] == 0) checked @endif>
+                                      <label for="type1">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> 内链 </label>
+                                  </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="type2" name="type" value="1" class="md-radiobtn" @if($banner['type'] == 1) checked @endif>
+                                      <label for="type2">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> 外链 </label>
+                                  </div>
+                              </div>
                           </div>
                       </div>
+
+
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="slug">{{trans('labels.banner.content')}}</label>
+                          <label class="col-md-1 control-label" for="url">{{trans('labels.banner.url')}}</label>
                           <div class="col-md-8">
-                              <textarea style="display: none" name="content" id="target-area">{{$banner['content']}}</textarea>
-                              <textarea id="my-editor"></textarea>
+                              <input type="text" class="form-control" id="title" name="url" placeholder="{{trans('labels.banner.url')}}" value="{{$banner['url']}}">
+                              <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.banner.status')}}</label>
+                          <label class="col-md-1 control-label" for="sort">{{trans('labels.banner.sort')}}</label>
+                          <div class="col-md-8">
+                              <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.banner.sort')}}" value="{{$banner['sort']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input form-md-line-cover">
+                          <label class="col-md-1 control-label" for="img_url">{{trans('labels.banner.img_url')}}</label>
+                          <div class="col-md-4">
+                              <div class="add-img-btn">+
+                                  <div class="img-size-tips">16:7的图片</div>
+                              </div>
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+                      <div class="col-md-offset-1">
+                          <ul class="imgs-list-box">
+                              @if($banner['img_url'])
+                                  <li>
+                                      <a href="{{$banner['img_url']}}" data-size="435x263"></a>
+                                      <img src="{{$banner['img_url']}}@142w_80h_1e">
+                                      <span class="remove-img">×</span>
+                                  </li>
+                              @endif
+                          </ul>
+                          <input type="hidden" value="" name="img_url" id="img_url">
+                      </div>
+                      <div class="form-group form-md-line-input">
+                        <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.banner.status')}}</label>
                         <div class="col-md-10">
                             <div class="md-radio-inline">
                                 <div class="md-radio">
@@ -98,7 +150,7 @@
                   </div>
                   <div class="form-actions">
                       <div class="row">
-                          <div class="col-md-offset-2 col-md-10">
+                          <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/banner')}}" class="btn default">{{trans('crud.cancel')}}</a>
                               <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                           </div>
@@ -119,11 +171,10 @@
 @endsection
 @section('js')
     <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
-    {{--????--}}
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
+    {{--图片查看--}}
+    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
     <script type="text/javascript">
         window.urlObj={
             apiUrl:'http://api.hisihi.com/'
