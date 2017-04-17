@@ -48,10 +48,8 @@ $(function () {
     $(document).on('input','#password-num',function(){
         //新增登陆密码
         var password=$('#user-password').val(),
-            reg = /^1(3|4|5|7|8)\d{9}$/;
-        var $btn=$('.btn'),
+            $btn=$('.btn'),
             password=$(this).val;
-        if(reg.test(password)) {
             if(password!=''){
                 $btn.addClass('active');
                 $('.password').addClass('active');
@@ -59,9 +57,6 @@ $(function () {
                 $btn.removeClass('active');
                 $('.password').removeClass('active');
             }
-        }else {
-            $btn.removeClass('active');
-        }
     });
 
     //倒计时
@@ -128,7 +123,7 @@ $(function () {
         getDataAsync(url,data,function(res){
                 //成功返回之后调用的函数
             window.controlLoadingBox(false);
-            if(res.status_code==50017) {
+            if(res.status_code==0) {
                 $('.coupon-count span').text(phone);
                 window.showTips('<p>恭喜您，注册成功!</p>',2000);
                 window.setTimeout(function() {
