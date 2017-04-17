@@ -185,4 +185,11 @@ return[
 		'edit' 		=> 'admin.banner.edit',
 		'destroy' 	=> 'admin.banner.delete',
 	],
+
+	'traincategory' => [
+		'show' 		=> 'admin.traincategory.show',
+		'create' 	=> 'admin.traincategory.create',
+		'edit' 		=> 'admin.traincategory.edit',
+		'destroy' 	=> 'admin.traincategory.delete',
+	],
 ];

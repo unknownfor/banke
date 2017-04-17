@@ -1,12 +1,11 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Banke\BankeBanner;
-use Carbon\Carbon;
+use App\Models\Banke\BankeTrainCategory;
 use Flash;
 /**
-* 新闻仓库
+* 教育分类仓库
 */
-class BannerRepository
+class TrainCategoryRepository
 {
 	/**
 	 * datatable获取数据
@@ -21,40 +20,45 @@ class BannerRepository
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
 		$status = request('status' ,'');
-		$title = request('title' ,'');
+		$name = request('name' ,'');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
-		$banner = new BankeBanner;
+		$trainCategory = new BankeTrainCategory;
 
 
 		/*状态搜索*/
-		if ($status) {
-			$banner = $banner->where('status', $status);
+		if ($status!=null) {
+			$trainCategory = $trainCategory->where('status', $status);
 		}
 
 		/*标题*/
-		if ($title) {
-			$banner = $banner->where('title', $title);
+		if ($name) {
+			$trainCategory = $trainCategory->where('name', $name);
 		}
 
 		/*配置创建时间搜索*/
 		if($created_at_from){
-			$banner = $banner->where('created_at', '>=', getTime($created_at_from));
+			$trainCategory = $trainCategory->where('created_at', '>=', getTime($created_at_from));
 		}
 		if($created_at_to){
-			$banner = $banner->where('created_at', '<=', getTime($created_at_to, false));
+			$trainCategory = $trainCategory->where('created_at', '<=', getTime($created_at_to, false));
 		}
 
-		$count = $banner->count();
+		$count = $trainCategory->count();
 
 
-		$banner = $banner->offset($start)->limit($length);
-		$banners = $banner->orderBy("sort")->get();
+		$trainCategory = $trainCategory->offset($start)->limit($length);
+		$trainCategories = $trainCategory->orderBy("sort")->get();
                
 
-		if ($banners) {
-			foreach ($banners as &$v) {
+		if ($trainCategories) {
+			foreach ($trainCategories as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
+				if($v['pid']!=0){
+					$v['pid']=BankeTrainCategory::find($v['pid'])['name'];
+				}else{
+					$v['pid']='';
+				}
 			}
 		}
                
@@ -62,7 +66,7 @@ class BannerRepository
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $banners,
+			'data' => $trainCategories,
 		];
 	}
 
@@ -75,12 +79,12 @@ class BannerRepository
 	 */
 	public function store($request)
 	{   
-		$banner = new BankeBanner;
-		if ($banner->fill($request->all())->save()) {
-			Flash::success(trans('alerts.news.created_success'));
+		$trainCategory = new BankeTrainCategory;
+		if ($trainCategory->fill($request->all())->save()) {
+			Flash::success(trans('alerts.traincategory.created_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.news.created_error'));
+		Flash::error(trans('alerts.traincategory.created_error'));
 		return false;
 	}
 	/**
@@ -92,10 +96,10 @@ class BannerRepository
 	 */
 	public function edit($id)
 	{
-		$banner = BankeBanner::find($id);
-		if ($banner) {
-			$bannerArray = $banner->toArray();
-			return $bannerArray;
+		$trainCategory = BankeTrainCategory::find($id);
+		if ($trainCategory) {
+			$trainCategoryArray = $trainCategory->toArray();
+			return $trainCategoryArray;
 		}
 		abort(404);
 	}
@@ -109,13 +113,13 @@ class BannerRepository
 	 */
 	public function update($request,$id)
 	{
-		$banner = BankeBanner::find($id);
-		if ($banner) {
-			if ($banner->fill($request->all())->save()) {
-				Flash::success(trans('alerts.news.updated_success'));
+		$trainCategory = BankeTrainCategory::find($id);
+		if ($trainCategory) {
+			if ($trainCategory->fill($request->all())->save()) {
+				Flash::success(trans('alerts.traincategory.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.news.updated_error'));
+			Flash::error(trans('alerts.traincategory.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -131,14 +135,14 @@ class BannerRepository
 	 */
 	public function mark($id,$status)
 	{
-		$banner = BankeBanner::find($id);
-		if ($banner) {
-			$banner->status = $status;
-			if ($banner->save()) {
-				Flash::success(trans('alerts.news.updated_success'));
+		$trainCategory = BankeTrainCategory::find($id);
+		if ($trainCategory) {
+			$trainCategory->status = $status;
+			if ($trainCategory->save()) {
+				Flash::success(trans('alerts.traincategory.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.news.updated_error'));
+			Flash::error(trans('alerts.traincategory.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -153,13 +157,17 @@ class BannerRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeBanner::destroy($id);
+		$isDelete = BankeTrainCategory::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.news.deleted_success'));
+			Flash::success(trans('alerts.traincategory.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.news.deleted_error'));
+		Flash::error(trans('alerts.traincategory.deleted_error'));
 		return false;
 	}
 
+	//得到全部的顶级分类
+	public function  getAllTopCategory(){
+		return BankeTrainCategory::where('pid',0)->get(['id','name']);
+	}
 }

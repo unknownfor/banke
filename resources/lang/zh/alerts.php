@@ -196,4 +196,13 @@ return [
         'soft_deleted_error' => '删除banner失败',
     ],
 
+    'traincategory' => [
+        'created_success'   => '创建分类成功.',
+        'created_error'     => '创建分类失败.',
+        'updated_success'   => '修改分类成功.',
+        'updated_error'     => '修改分类失败.',
+        'soft_deleted_success' => '删除分类成功',
+        'soft_deleted_error' => '删除分类失败',
+    ],
+
 ];
