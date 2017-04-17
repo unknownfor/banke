@@ -345,7 +345,7 @@ img {
 #invitation .page:last-child .arrow {
   display: none;
 }
-#invitation .page.hide {
+#invitation .page .register-done.hide {
   display: none;
 }
 #invitation .current .arrow {

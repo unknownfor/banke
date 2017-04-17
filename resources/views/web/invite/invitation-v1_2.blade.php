@@ -31,22 +31,22 @@
                 <img class="bg" src="http://pic.hisihi.com/2017-04-14/1492162966172991.png" />
                 <div class="register-box phone">
                     <i class="iconfont register-img">&#xe659;</i>
-                    <input class="register-code" id="phone-num" placeholder="输入手机号" value="13554154325"/>
+                    <input class="register-code" id="phone-num" placeholder="输入手机号" value=""/>
                 </div>
                 <div class="register-box code-num">
                     <i class="iconfont register-img">&#xe6a0;</i>
                     <input class="register-code" id="user-code" placeholder="验证码" value=""/>
                     <hr color="#9b9b9b" />
-                    <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码" value="123456"/>
+                    <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
                 </div>
                 <div class="register-box password">
                     <i class="iconfont register-img">&#xe655;</i>
-                    <input class="register-code" id="password-num" type="password" value="123456" placeholder="密码"/>
+                    <input class="register-code" id="password-num" type="password"  placeholder="密码" />
                 </div>
                 <button class="btn gift"><a id="downloadBar" href="http://www.hisihi.com/download.php">领取奖励</a></button>
             </div>
-            <div class="register-done" style="display: none;">
-                <div class="register-new" style="display: none;">
+            <div class="register-done hide">
+                <div class="register-new hide">
                     <div class="txt slogen">恭喜您领取成功</div>
                     <div class="txt detail">您已接受半课用户的邀请体验半课学习</div>
                     <div class="txt txt-three">力省<span class="save-num">5000元</span>学费</div>
@@ -58,7 +58,7 @@
                         <i class="iconfont down-btn">&#xe7a5;</i>
                     </div>
                 </div>
-                <div class="register_old" style="display: none;">
+                <div class="register_old hide">
                     <img class="bg third" src="http://pic.hisihi.com/2017-04-14/1492162966172991.png" />
                     <div class="txt slogen">您好，老朋友</div>
                     <div class="txt detail">已经为您生成<span class="save-num">专属</span>的邀请链接，马上分享<br />赚取<span class="reward">5元</span>奖励~</div>
