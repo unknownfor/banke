@@ -116,6 +116,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //banner轮播图
         require(__DIR__ . '/Routes/BannerRoute.php');
 
+        //教育分类
+        require(__DIR__ . '/Routes/TrainCategoryRoute.php');
+
     });
 });
 

@@ -259,6 +259,7 @@ return [
         'OrgRebatesRepository' => App\Facades\OrgRebatesFacade::class,
         'DrawbackRepository' => App\Facades\DrawbackFacade::class,
         'BannerRepository' => App\Facades\BannerFacade::class,
+        'TrainCategoryRepository' => App\Facades\TrainCategoryFacade::class,
     ],
 
 ];

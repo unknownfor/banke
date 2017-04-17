@@ -14,7 +14,7 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <span>{!! trans('labels.banner.list') !!}</span>
+                <span>{!! trans('labels.traincategory.list') !!}</span>
             </li>
         </ul>
     </div>
@@ -27,12 +27,12 @@
                 <div class="portlet-title">
                     <div class="caption">
                         <i class="icon-settings font-dark"></i>
-                        <span class="caption-subject font-dark sbold uppercase">{{trans('labels.banner.list')}}</span>
+                        <span class="caption-subject font-dark sbold uppercase">{{trans('labels.traincategory.list')}}</span>
                     </div>
                     <div class="actions">
                         <div class="btn-group">
-                            @permission(config('admin.permissions.banner.create'))
-                            <a href="{{url('admin/banner/create')}}" class="btn btn-success btn-outline btn-circle">
+                            @permission(config('admin.permissions.traincategory.create'))
+                            <a href="{{url('admin/traincategory/create')}}" class="btn btn-success btn-outline btn-circle">
                                 <i class="fa fa-user-plus"></i>
                                 <span class="hidden-xs">{{trans('crud.create')}}</span>
                             </a>
@@ -47,7 +47,7 @@
                                 <span class="input-group-addon">
                                     <i class="fa fa-book"></i>
                                 </span>
-                                <input type="text" class="form-control form-filter" name="title" placeholder="{{ trans('labels.banner.title') }}">
+                                <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.traincategory.name') }}">
                                 <div class="form-control-focus"> </div>
                             </div>
                         </div>
@@ -56,8 +56,8 @@
                         <div class="form-group form-md-line-input">
                             <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
                                 <option value="" data-icon="fa-glass icon-success">类型</option>
-                                @if(trans('strings.banner'))
-                                    @foreach(trans('strings.banner') as $status_key => $status_value)
+                                @if(trans('strings.traincategory'))
+                                    @foreach(trans('strings.traincategory') as $status_key => $status_value)
                                         @if($status_value[1]!='未申请')
                                             <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                         @endif
@@ -79,12 +79,14 @@
                             <thead>
                             <tr role="row" class="heading">
                                 <th>#</th>
-                                <th width="20%"> {{ trans('labels.banner.title') }} </th>
-                                <th> {{ trans('labels.banner.img_url') }} </th>
-                                <th> {{ trans('labels.banner.url') }} </th>
-                                <th> {{ trans('labels.banner.sort') }} </th>
-                                <th width="8%"> {{ trans('labels.banner.status') }} </th>
-                                <th> {{ trans('labels.banner.updated_at') }} </th>
+                                <th width="20%"> {{ trans('labels.traincategory.name') }} </th>
+                                <th> {{ trans('labels.traincategory.logo') }} </th>
+                                <th> {{ trans('labels.traincategory.pid') }} </th>
+                                <th> {{ trans('labels.traincategory.desc') }} </th>
+                                <th> {{ trans('labels.traincategory.sort') }} </th>
+                                <th> {{ trans('labels.traincategory.hot') }} </th>
+                                <th width="8%"> {{ trans('labels.traincategory.status') }} </th>
+                                <th> {{ trans('labels.traincategory.updated_at') }} </th>
                                 <th width="8%"> {{ trans('labels.action') }} </th>
                             </tr>
                             </thead>
@@ -101,7 +103,7 @@
     <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/banner/banner-list.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/traincategory/traincategory-list.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/fancybox/jquery.fancybox.js')}}"></script>
     <script type="text/javascript">

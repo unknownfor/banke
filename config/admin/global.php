@@ -208,14 +208,6 @@ return[
 		'action' => 'orgapplyfor',
 	],
 
-	//机构申请
-	'orgapplyfor' => [
-		// 控制是否显示查看按钮
-		'show' => true,
-		// trait 中的 action 参数
-		'action' => 'orgapplyfor',
-	],
-
 	//机构返款
 	'orgrebates' => [
 		// 控制是否显示查看按钮
@@ -241,8 +233,15 @@ return[
 		'show' => true,
 		// trait 中的 action 参数
 		'action' => 'banner',
-		'active' => 1,
-		'audit' => 0,
-		'trash' => 99,
+//		'active' => 1,
+//		'audit' => 0,
+//		'trash' => 99,
+	],
+
+	//教育分类
+	'traincategory' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		'action' => 'traincategory',
 	],
 ];

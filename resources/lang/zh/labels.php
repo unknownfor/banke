@@ -193,6 +193,11 @@ return [
 		'bannerShow' => '<i class="fa fa-search"></i> 轮播图详情',
 		'bannerCreate'=>'<i class="fa fa-user-plus"></i> 添加轮播图',
 		'bannerEdit' => '<i class="fa fa-pencil"></i> 编辑轮播图',
+
+		'traincategoryList' => '<i class="fa fa-exchange"></i>分类列表',
+		'traincategoryShow' => '<i class="fa fa-search"></i> 分类详情',
+		'traincategoryCreate'=>'<i class="fa fa-user-plus"></i> 添加分类',
+		'traincategoryEdit' => '<i class="fa fa-pencil"></i> 编辑分类',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -507,5 +512,19 @@ return [
 		'list' => '轮播图列表',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
+	],
+
+	'traincategory' => [
+		'id' => '序号',
+		'name' => '名称',
+		'desc' => '描述',
+		'sort' => '排序',
+		'status' => '状态',
+		'logo'=>'图片',
+		'pid'=>'上级分类',
+		'hot' => '热门',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '分类列表',
 	],
 ];
