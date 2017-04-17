@@ -10,6 +10,7 @@ use App\Http\Requests\CreateOrgRequest;
 use App\Http\Requests\UpdateOrgRequest;
 use PermissionRepository;
 use RoleRepository;
+use TrainCategoryRepository;
 use Illuminate\Support\Facades\Log;
 
 class OrgController extends Controller
@@ -72,7 +73,9 @@ class OrgController extends Controller
     public function edit($id)
     {
         $org = OrgRepository::edit($id);
-        return view('admin.org.edit')->with(compact('org'));
+        $allCategories=TrainCategoryRepository::getAllTCategory();
+        $myCategories=OrgRepository::getTrainCategoryIds($id);
+        return view('admin.org.edit')->with(compact('org','allCategories','myCategories'));
     }
     /**
      * 修改机构资料
