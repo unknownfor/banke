@@ -22,13 +22,21 @@ class BankeOrg extends Model
         $this->action = config('admin.global.org.action');
     }
 
+    //1对多个课程
     public function course()
     {
         return $this->hasMany('App\Models\Banke\BankeCourse','oid','id');
     }
 
+    //1对多个标签
     public function tags()
     {
         return $this->hasMany('App\Models\Banke\BankeOrgTags','oid','id');
+    }
+
+    //1对多个分类
+    public function categories()
+    {
+        return $this->hasMany('App\Models\Banke\BankeOrgCategory','oid','id');
     }
 }

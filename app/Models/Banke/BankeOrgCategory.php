@@ -20,4 +20,9 @@ class BankeOrgCategory extends Model
         parent::__construct($attributes);
         $this->action = config('admin.global.org.action');
     }
+
+    public function category()
+    {
+        return $this->hasOne('App\Models\Banke\BankeTrainCategory','id','cid');
+    }
 }

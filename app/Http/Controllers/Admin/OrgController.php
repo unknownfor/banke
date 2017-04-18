@@ -11,6 +11,7 @@ use App\Http\Requests\UpdateOrgRequest;
 use PermissionRepository;
 use RoleRepository;
 use TrainCategoryRepository;
+use App\Repositories\admin\OrgCategoryRepository;
 use Illuminate\Support\Facades\Log;
 
 class OrgController extends Controller
@@ -88,6 +89,9 @@ class OrgController extends Controller
     public function update(UpdateOrgRequest $request,$id)
     {
         OrgRepository::update($request,$id);
+        $category = $request->category;
+        $OrgCategory=new OrgCategoryRepository();
+        $OrgCategory->batchStore($category,$id);
         return redirect('admin/org');
     }
 

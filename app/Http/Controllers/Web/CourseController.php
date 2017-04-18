@@ -23,7 +23,6 @@ class CourseController extends Controller
     {
         $course = BankeCourse::find($id);
         $org = $course->org;
-//        $tags = $org->tags;
         return view('web.course.course-v1_2')->with(compact(['course','org']));
     }
 
