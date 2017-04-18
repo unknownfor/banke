@@ -24,7 +24,7 @@
     <div class="head-middle">
         <div class="name">{{$course['name']}}</div>
         <div class="save">
-            <span class="save-num">-{{$course['price']}}</span>
+            <span class="save-num">-{!! $course['price'] * $course['checkin_award']/100!!}</span>
             <span class="save-precent">报名后返{{$course['checkin_award']}}%</span>
         </div>
     </div>
@@ -66,14 +66,16 @@
     </div>
 </div>
 <!--课程介绍-->
-<div class="class-info container">
-    <div class="container-head">
-        <span>课程介绍</span>
+@if($course['details'])
+    <div class="class-info container">
+        <div class="container-head">
+            <span>课程介绍</span>
+        </div>
+        <div class="class-info-box container-box">
+            {!! $course['details'] !!}
+        </div>
     </div>
-    <div class="class-info-box container-box">
-        {!! $course['details'] !!}
-    </div>
-</div>
+@endif
 @include('web.layout.downloadbar')
 </body>
 </html>

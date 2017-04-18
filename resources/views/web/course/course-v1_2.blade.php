@@ -24,7 +24,7 @@
     <div class="head-middle">
         <div class="name">{{$course['name']}}</div>
         <div class="save">
-            <span class="save-num">-{{$course['price']}}</span>
+            <span class="save-num">-{!! $course['price'] * $course['checkin_award']/100!!}</span>
             <span class="save-precent">报名后返{{$course['checkin_award']}}%</span>
         </div>
     </div>
@@ -54,7 +54,7 @@
         <div class="head-tips">
             {{--优势标签--}}
             @foreach($org->tags as $val)
-            <span>{{$val['name']}}</span>
+                <span>{{$val['name']}}</span>
             @endforeach
         </div>
     </div>
@@ -67,6 +67,7 @@
     </div>
 </div>
 <!--课程介绍-->
+@if($course['details'])
 <div class="class-info container">
     <div class="container-head">
         <span>课程介绍</span>
@@ -74,6 +75,12 @@
     <div class="class-info-box container-box">
         {!! $course['details'] !!}
     </div>
+</div>
+@endif
+
+<div class="call-mask">
+    <div class="call-box first"><a>13554154325</a></div>
+    <div class="call-box second"><a>18140662282</a></div>
 </div>
 </body>
 </html>
