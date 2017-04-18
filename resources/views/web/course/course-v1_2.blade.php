@@ -25,7 +25,7 @@
         <div class="name">{{$course['name']}}</div>
         <div class="save">
             <span class="save-num">-{{$course['price']}}</span>
-            <span class="save-precent">报名后返{{$course['discount']}}%</span>
+            <span class="save-precent">报名后返{{$course['checkin_award']}}%</span>
         </div>
     </div>
     <div class="head-right">
