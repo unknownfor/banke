@@ -43,12 +43,14 @@ class OrgCategoryRepository
 				BankeOrgCategory::where('oid', $oid)->delete();  //删除现有的
 
 				//添加新的
-				$arr = Array();
-				foreach ($category as $val) {
-					$tempaArr = Array('oid' => $oid, 'cid' => $val);
-					Array_push($arr, $tempaArr);
+				if ($category && Count($category) > 0){
+					$arr = Array();
+					foreach ($category as $val) {
+						$tempaArr = Array('oid' => $oid, 'cid' => $val);
+						Array_push($arr, $tempaArr);
+					}
+					DB::table('banke_org_category')->insert($arr);
 				}
-				DB::table('banke_org_category')->insert($arr);
 				return true;
 			} catch (Exception $e) {
 				Flash::error(trans('alerts.order.created_error'));

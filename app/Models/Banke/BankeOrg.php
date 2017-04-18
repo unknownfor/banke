@@ -11,8 +11,8 @@ class BankeOrg extends Model
 
     protected $table = 'banke_org';
 
-    protected $fillable = ['name', 'logo','city', 'cover','album', 'intro', 'sort', 'address', 'tel_phone',
-        'details', 'status','short_name','student_counts'];
+    protected $fillable = ['name', 'logo','city', 'cover','album', 'intro', 'sort', 'address', 'tel_phone','tel_phone2',
+        'details', 'status','short_name','student_counts','cash_back_desc'];
 
     private $action;
 

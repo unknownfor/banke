@@ -202,9 +202,33 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}</label>
+                                <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}(必填)</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.org.tel_phone')}}" value="{{$org['tel_phone']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="tel_phone2">{{trans('labels.org.tel_phone2')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="tel_phone2" name="tel_phone2" placeholder="{{trans('labels.org.tel_phone2')}}" value="{{$org['tel_phone2']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="student_counts">{{trans('labels.org.student_counts')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number"  class="form-control" id="student_counts" name="student_counts" min="0" max="10000000" placeholder="{{trans('labels.org.student_counts')}}" value="{{$org['student_counts']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="student_counts">{{trans('labels.org.cash_back_desc')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text"  class="form-control" id="cash_back_desc" name="cash_back_desc" placeholder="{{trans('labels.org.cash_back_desc')}}" value="{{$org['cash_back_desc']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
