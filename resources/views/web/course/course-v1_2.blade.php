@@ -47,11 +47,15 @@
 {{--机构简介--}}
 <div class="org-detail container">
     <div class="head-left">
-        <img src="{{$course['cover']}}" />
+        <img src="{{$org['logo']}}" />
     </div>
     <div class="head-middle">
-        <div class="head-name">武汉天虎设计培训</div>
-        <div class="head-tips"><span>保就业</span><span>环境好好好</span><span>环境好</span><span>环境好</span><span>师资雄厚</span></div>
+        <div class="head-name">{{$org['name']}}</div>
+        <div class="head-tips">
+            @foreach($org->tags as $val)
+            <span>{{$val['name']}}</span>
+            @endforeach
+        </div>
     </div>
     <div class="address-call">
         <a href="tel:{{$course['org']['tel_phone']}}">

@@ -24,6 +24,11 @@ class BankeOrg extends Model
 
     public function course()
     {
-        return $this->hasMany('App\Models\Banke\BankeCourse','org_id')->withTimestamps();
+        return $this->hasMany('App\Models\Banke\BankeCourse','oid','id');
+    }
+
+    public function tags()
+    {
+        return $this->hasMany('App\Models\Banke\BankeOrgTags','oid','id');
     }
 }

@@ -22,7 +22,9 @@ class CourseController extends Controller
     public function course_v1_2($id)
     {
         $course = BankeCourse::find($id);
-        return view('web.course.course-v1_2')->with(compact(['course']));
+        $org = $course->org;
+//        $tags = $org->tags;
+        return view('web.course.course-v1_2')->with(compact(['course','org']));
     }
 
 
@@ -32,7 +34,8 @@ class CourseController extends Controller
     public function share_course_v1_2($id)
     {
         $course = BankeCourse::find($id);
-        return view('web.course.share_course-v1_2')->with(compact(['course']));
+        $org = $course->org;
+        return view('web.course.share_course-v1_2')->with(compact(['course','org']));
     }
 
 }
