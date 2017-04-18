@@ -24,6 +24,6 @@ class BankeCourse extends Model
 
     public function org()
     {
-        return $this->belongsTo('App\Models\Banke\BankeOrg','org_id')->withTimestamps();
+        return $this->belongsTo('App\Models\Banke\BankeOrg','org_id');
     }
 }
