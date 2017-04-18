@@ -45,7 +45,25 @@
             init:function(){
                 this.initEditor();
                 this.initImgsArr();  //定义100个图片id 数组。
+                this.initTags();
 
+            },
+
+            initTags:function(){
+                var tags=$('#tags').val(),
+                    arr=[];
+                if(tags){
+                    arr=tags.split(';');
+                }
+                this.tagsObj=$("#medium").tags({
+                    tagData: arr,
+                    maxNumTags:5
+                });
+            },
+
+            getTags:function(){
+                var tags = this.tagsObj.getTags().join(';');
+                return tags
             },
 
             initEditor:function(){
@@ -352,5 +370,7 @@
 
             //logo
             $('#logo-input').val($('#logo').attr('src'));
+
+            $('#tags').val(editor.getTags());
         };
 });

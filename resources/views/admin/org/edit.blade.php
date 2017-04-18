@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/org.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-tags/bootstrap-tags.css')}}">
 @endsection
 @section('content')
     <div class="page-bar">
@@ -137,6 +138,14 @@
                                             </div>
                                         </div>
                                     @endforeach
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="tags">{{trans('labels.org.tags')}}</label>
+                                <div class="col-md-9">
+                                    <div id="medium"></div>
+                                    <input type="hidden" name="tags" id="tags" value="{!!implode(';',$org['tags']) !!}">
                                 </div>
                             </div>
 
@@ -305,6 +314,7 @@
 @section('js')
     <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-tags/bootstrap-tags.min.js')}}"></script>
     {{--编辑器--}}
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>

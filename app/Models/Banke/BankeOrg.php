@@ -33,7 +33,6 @@ class BankeOrg extends Model
     {
         return $this->hasMany('App\Models\Banke\BankeOrgTags','oid','id');
     }
-
     //1对多个分类
     public function categories()
     {
