@@ -105,25 +105,7 @@
                                 <div class="form-control-focus"> </div>
                             </div>
 
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="category">{{trans('labels.org.category')}}</label>
-                                <div class="col-md-9">
-                                    <?php
-                                    $c=array("2");
-                                    ?>
-                                    @foreach($allCategories as $val)
-                                        <div class="col-md-4">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" name="category[]" id="cate-{{$val->id}}" value="{{$val->id}}" class="md-check" @if(in_array($val->id,$myCategories)) checked @endif>
-                                                <label for="cate-{{$val->id}}" class="tooltips" data-placement="top" data-original-title="">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span> {{$val->name}} </label>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
+
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="address">{{trans('labels.org.address')}}</label>
@@ -138,6 +120,23 @@
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.org.sort')}}" value="{{$org['sort']}}">
                                     <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="category">{{trans('labels.org.category')}}</label>
+                                <div class="col-md-9">
+                                    @foreach($allCategories as $val)
+                                        <div class="col-md-4">
+                                            <div class="md-checkbox">
+                                                <input type="checkbox" name="category[]" id="cate-{{$val->id}}" value="{{$val->id}}" class="md-check" @if(in_array($val->id,$myCategories)) checked @endif>
+                                                <label for="cate-{{$val->id}}" class="tooltips" data-placement="top" data-original-title="">
+                                                    <span></span>
+                                                    <span class="check"></span>
+                                                    <span class="box"></span> {{$val->name}} </label>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
 

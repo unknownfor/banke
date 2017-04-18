@@ -12,6 +12,7 @@ use PermissionRepository;
 use RoleRepository;
 use TrainCategoryRepository;
 use App\Repositories\admin\OrgCategoryRepository;
+use App\Models\Banke\BankeOrg;
 use Illuminate\Support\Facades\Log;
 
 class OrgController extends Controller
@@ -132,7 +133,8 @@ class OrgController extends Controller
     public function show($id)
     {
         $org = OrgRepository::show($id);
-        return view('admin.org.show')->with(compact('org'));
+        $categories=OrgRepository::getCategoryInfo($id);
+        return view('admin.org.show')->with(compact('org','categories'));
     }
 
     public function share_org_v1_2($id){

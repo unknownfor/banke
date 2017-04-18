@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeTrainCategory;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeOrg;
@@ -224,9 +225,18 @@ class OrgRepository
 	 * @param  [type]                   $id [description]
 	 * @return [type]                       [description]
 	 */
-	public function  getTrainCategory($id)
+	public function  getCategoryInfo($id)
 	{
-		return BankeOrgCategory::where('oid',$id);
+		$arr=Array();
+		$myCategories = BankeOrgCategory::where('oid',$id)->get();  //机构分类关联表
+		if ($myCategories) {
+			foreach ($myCategories as &$v) {
+				array_push($arr,$v['cid']);
+			}
+		}
+
+		$categories=BankeTrainCategory::whereIn('id',$arr)->get();
+		return $categories;
 	}
 
 	/**
