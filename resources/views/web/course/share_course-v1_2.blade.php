@@ -25,7 +25,7 @@
         <div class="name">{{$course['name']}}</div>
         <div class="save">
             <span class="save-num">-{{$course['price']}}</span>
-            <span class="save-precent">报名后返{{$course['discount']}}%</span>
+            <span class="save-precent">报名后返{{$course['checkin_award']}}%</span>
         </div>
     </div>
     <div class="head-right">
@@ -50,8 +50,12 @@
         <img src="{{$course['cover']}}" />
     </div>
     <div class="head-middle">
-        <div class="head-name">武汉天虎设计培训</div>
-        <div class="head-tips"><span>保就业</span><span>环境好好好</span><span>环境好</span><span>环境好</span><span>师资雄厚</span></div>
+        <div class="head-name">{{$org['name']}}</div>
+        <div class="head-tips">
+            @foreach($org->tags as $val)
+                <span>{{$val['name']}}</span>
+            @endforeach
+        </div>
     </div>
     <div class="address-call">
         <a href="tel:{{$course['org']['tel_phone']}}">

@@ -25,7 +25,7 @@
         <div class="name">{{$course['name']}}</div>
         <div class="save">
             <span class="save-num">-{{$course['price']}}</span>
-            <span class="save-precent">报名后返{{$course['discount']}}%</span>
+            <span class="save-precent">报名后返{{$course['checkin_award']}}%</span>
         </div>
     </div>
     <div class="head-right">
@@ -52,6 +52,7 @@
     <div class="head-middle">
         <div class="head-name">{{$org['name']}}</div>
         <div class="head-tips">
+            {{--优势标签--}}
             @foreach($org->tags as $val)
             <span>{{$val['name']}}</span>
             @endforeach

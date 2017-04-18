@@ -29,8 +29,14 @@
         <img src="{{$org['logo']}}"/>
     </div>
     <div class="head-name">{{$org['name']}}</div>
+    {{--机构简介--}}
     {{--<div class="head-title">{{$org['intro']}}</div>--}}
-    <div class="head-tips"><span>保就业</span><span>环境好</span><span>师资雄厚</span></div>
+    {{--<div class="head-tips"><span>保就业</span><span>环境好</span><span>师资雄厚</span></div>--}}
+        <div class="head-tips">
+            @foreach($org->tags as $val)
+                <span>{{$val['name']}}</span>
+            @endforeach
+        </div>
 </div>
 <div class="address container">
     <div class="container-head">
