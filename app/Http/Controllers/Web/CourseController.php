@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeCourse;
 use App\Repositories\admin\OrgRepository;
 use App\Repositories\admin\OrgApplyForRepository;
 use App\Services\ApiResponseService;
@@ -17,12 +17,12 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     /**
-     * 机构详情
+     * 课程详情
      */
     public function course_v1_2($id)
     {
-        $org = BankeOrg::find($id);
-        return view('web.org.org-v1_2')->with(compact(['org']));
+        $course = BankeCourse::find($id);
+        return view('web.course.course-v1_2')->with(compact(['course']));
     }
 
 
@@ -31,8 +31,8 @@ class CourseController extends Controller
      */
     public function share_course_v1_2($id)
     {
-        $org = BankeOrg::find($id);
-        return view('web.course.share_cours-v1_2')->with(compact(['org']));
+        $course = BankeCourse::find($id);
+        return view('web.course.share_course-v1_2')->with(compact(['course']));
     }
 
 }

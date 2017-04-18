@@ -230,6 +230,7 @@ return [
 		'sort'=>'排序',
 		'list' => '机构列表',
 		'courseList' => '课程列表',
+		'category' => '所属分类',
 
 		'confirm' => '已验证',
 		'active' => '<span class="label label-success"> 已验证 </span>',

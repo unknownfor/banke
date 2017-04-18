@@ -170,4 +170,8 @@ class TrainCategoryRepository
 	public function  getAllTopCategory(){
 		return BankeTrainCategory::where('pid',0)->get(['id','name']);
 	}
+	//得到全部的分类
+	public function  getAllTCategory(){
+		return BankeTrainCategory::get(['id','name']);
+	}
 }
