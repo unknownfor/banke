@@ -19,7 +19,7 @@
 <!--课程头部-->
 <div class="head container">
     <div class="head-left">
-        <img src="{{$course['cover']}}" />
+        <img src="{{$course['cover']}}@80h_80w_2e" />
     </div>
     <div class="head-middle">
         <div class="name">{{$course['name']}}</div>
@@ -47,7 +47,7 @@
 {{--机构简介--}}
 <div class="org-detail container">
     <div class="head-left">
-        <img src="{{$org['logo']}}" />
+        <img src="{{$course['cover']}}@80h_80w_2e" />
     </div>
     <div class="head-middle">
         <div class="head-name">{{$org['name']}}</div>
