@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeTrainCategory;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeOrg;
@@ -79,10 +80,10 @@ class OrgRepository
 	 */
 	public function store($request)
 	{
-		$role = new BankeOrg;
-		if ($role->fill($request->all())->save()) {
+		$org = new BankeOrg;
+		if ($org->fill($request->all())->save()) {
 			Flash::success(trans('alerts.org.created_success'));
-			return true;
+			return $org->id;
 		}
 		Flash::error(trans('alerts.org.created_error'));
 		return false;
@@ -150,12 +151,12 @@ class OrgRepository
 	 */
 	public function mark($id,$status)
 	{
-		$role = BankeOrg::find($id);
-		if ($role) {
-			$role->status = $status;
-			if ($role->save()) {
+		$org = BankeOrg::find($id);
+		if ($org) {
+			$org->status = $status;
+			if ($org->save()) {
 				Flash::success(trans('alerts.org.updated_success'));
-				return true;
+				return $org->id;
 			}
 			Flash::error(trans('alerts.org.updated_error'));
 			return false;
@@ -224,9 +225,18 @@ class OrgRepository
 	 * @param  [type]                   $id [description]
 	 * @return [type]                       [description]
 	 */
-	public function  getTrainCategory($id)
+	public function  getCategoryInfo($id)
 	{
-		return BankeOrgCategory::where('oid',$id);
+		$arr=Array();
+		$myCategories = BankeOrgCategory::where('oid',$id)->get();  //机构分类关联表
+		if ($myCategories) {
+			foreach ($myCategories as &$v) {
+				array_push($arr,$v['cid']);
+			}
+		}
+
+		$categories=BankeTrainCategory::whereIn('id',$arr)->get();
+		return $categories;
 	}
 
 	/**
@@ -247,5 +257,4 @@ class OrgRepository
 		}
 		return$arr;
 	}
-
 }

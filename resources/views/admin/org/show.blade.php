@@ -84,10 +84,38 @@
                           </div>
                       </div>
 
+
+
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="address">{{trans('labels.org.address')}}</label>
                           <div class="col-md-9">
                               <div class="form-control form-control-static"> {{$org['address']}} </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="category">{{trans('labels.org.category')}}</label>
+                          <div class="col-md-9">
+                              @foreach($categories as $val)
+                                  <div class="col-md-4">
+                                      <div class="md-checkbox">
+                                          <input type="checkbox" id="cate-{{$val->id}}" value="{{$val->id}}" class="md-check" checked disabled>
+                                          <label for="cate-{{$val->id}}" class="tooltips" data-placement="top" data-original-title="">
+                                              <span></span>
+                                              <span class="check"></span>
+                                              <span class="box"></span> {{$val->name}} </label>
+                                      </div>
+                                  </div>
+                              @endforeach
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="tags">{{trans('labels.org.tags')}}</label>
+                          <div class="col-md-9">
+                              @foreach($org->tags as $val)
+                                  <span class="label label-info">{{$val->name}}</span>
+                              @endforeach
                           </div>
                       </div>
 
@@ -149,6 +177,28 @@
                               <div class="form-control form-control-static"> {{$org['tel_phone']}} </div>
                           </div>
                       </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="tel_phone2">{{trans('labels.org.tel_phone2')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$org['tel_phone2']}} </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.student_counts')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$org['student_counts']}} </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.cash_back_desc')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$org['cash_back_desc']}} </div>
+                          </div>
+                      </div>
+
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>
                           <div class="col-md-9">

@@ -12,6 +12,7 @@ use PermissionRepository;
 use RoleRepository;
 use TrainCategoryRepository;
 use App\Repositories\admin\OrgCategoryRepository;
+use App\Models\Banke\BankeOrg;
 use Illuminate\Support\Facades\Log;
 
 class OrgController extends Controller
@@ -48,7 +49,8 @@ class OrgController extends Controller
     {
         $permissions = PermissionRepository::findPermissionWithArray();
         $roles = RoleRepository::findRoleWithObject();
-        return view('admin.org.create')->with(compact(['permissions','roles']));
+        $allCategories=TrainCategoryRepository::getAllTCategory();
+        return view('admin.org.create')->with(compact(['permissions','roles','allCategories']));
     }
 
     /**
@@ -60,7 +62,10 @@ class OrgController extends Controller
      */
     public function store(CreateOrgRequest $request)
     {
-        OrgRepository::store($request);
+        $id = OrgRepository::store($request);
+        $category = $request->category;
+        $OrgCategory=new OrgCategoryRepository();
+        $OrgCategory->batchStore($category,$id);
         return redirect('admin/org');
     }
 
@@ -131,8 +136,9 @@ class OrgController extends Controller
      */
     public function show($id)
     {
-        $org = OrgRepository::show($id);
-        return view('admin.org.show')->with(compact('org'));
+        $org = BankeOrg::find($id);
+        $categories=OrgRepository::getCategoryInfo($id);
+        return view('admin.org.show')->with(compact('org','categories'));
     }
 
     public function share_org_v1_2($id){

@@ -11,8 +11,8 @@ class BankeOrg extends Model
 
     protected $table = 'banke_org';
 
-    protected $fillable = ['name', 'logo','city', 'cover','album', 'intro', 'sort', 'address', 'tel_phone',
-        'details', 'status','short_name','student_counts'];
+    protected $fillable = ['name', 'logo','city', 'cover','album', 'intro', 'sort', 'address', 'tel_phone','tel_phone2',
+        'details', 'status','short_name','student_counts','cash_back_desc'];
 
     private $action;
 
@@ -22,19 +22,19 @@ class BankeOrg extends Model
         $this->action = config('admin.global.org.action');
     }
 
-    //1¶Ô¶à¸ö¿Î³Ì
+    //1å¯¹å¤šä¸ªè¯¾ç¨‹
     public function course()
     {
         return $this->hasMany('App\Models\Banke\BankeCourse','oid','id');
     }
 
-    //1¶Ô¶à¸ö±êÇ©
+    //1å¯¹å¤šä¸ªæ ‡ç­¾
     public function tags()
     {
         return $this->hasMany('App\Models\Banke\BankeOrgTags','oid','id');
     }
 
-    //1¶Ô¶à¸ö·ÖÀà
+    //1å¯¹å¤šä¸ªåˆ†ç±»
     public function categories()
     {
         return $this->hasMany('App\Models\Banke\BankeOrgCategory','oid','id');
