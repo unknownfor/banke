@@ -49,7 +49,8 @@ class OrgController extends Controller
     {
         $permissions = PermissionRepository::findPermissionWithArray();
         $roles = RoleRepository::findRoleWithObject();
-        return view('admin.org.create')->with(compact(['permissions','roles']));
+        $allCategories=TrainCategoryRepository::getAllTCategory();
+        return view('admin.org.create')->with(compact(['permissions','roles','allCategories']));
     }
 
     /**
@@ -61,7 +62,10 @@ class OrgController extends Controller
      */
     public function store(CreateOrgRequest $request)
     {
-        OrgRepository::store($request);
+        $id = OrgRepository::store($request);
+        $category = $request->category;
+        $OrgCategory=new OrgCategoryRepository();
+        $OrgCategory->batchStore($category,$id);
         return redirect('admin/org');
     }
 

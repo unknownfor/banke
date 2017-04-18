@@ -80,10 +80,10 @@ class OrgRepository
 	 */
 	public function store($request)
 	{
-		$role = new BankeOrg;
-		if ($role->fill($request->all())->save()) {
+		$org = new BankeOrg;
+		if ($org->fill($request->all())->save()) {
 			Flash::success(trans('alerts.org.created_success'));
-			return true;
+			return $org->id;
 		}
 		Flash::error(trans('alerts.org.created_error'));
 		return false;
@@ -151,12 +151,12 @@ class OrgRepository
 	 */
 	public function mark($id,$status)
 	{
-		$role = BankeOrg::find($id);
-		if ($role) {
-			$role->status = $status;
-			if ($role->save()) {
+		$org = BankeOrg::find($id);
+		if ($org) {
+			$org->status = $status;
+			if ($org->save()) {
 				Flash::success(trans('alerts.org.updated_success'));
-				return true;
+				return $org->id;
 			}
 			Flash::error(trans('alerts.org.updated_error'));
 			return false;
@@ -257,5 +257,4 @@ class OrgRepository
 		}
 		return$arr;
 	}
-
 }
