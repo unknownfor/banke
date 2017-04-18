@@ -52,6 +52,7 @@
     <div class="head-middle">
         <div class="head-name">{{$org['name']}}</div>
         <div class="head-tips">
+            {{--优势标签--}}
             @foreach($org->tags as $val)
             <span>{{$val['name']}}</span>
             @endforeach
