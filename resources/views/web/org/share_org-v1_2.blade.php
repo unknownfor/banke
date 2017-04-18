@@ -31,7 +31,6 @@
     <div class="head-name">{{$org['name']}}</div>
     {{--机构简介--}}
     {{--<div class="head-title">{{$org['intro']}}</div>--}}
-    {{--<div class="head-tips"><span>保就业</span><span>环境好</span><span>师资雄厚</span></div>--}}
         <div class="head-tips">
             @foreach($org->tags as $val)
                 <span>{{$val['name']}}</span>
@@ -57,14 +56,13 @@
     </div>
 </div>
 <!--课程介绍-->
+@if($org['details'])
 <div class="class-info container">
     <div class="class-info-box container-box">
         {!!$org['details']!!}
 </div>
 </div>
-<div class="mask">
-
-</div>
+@endif
 @include('web.layout.downloadbar')
 </body>
 </html>

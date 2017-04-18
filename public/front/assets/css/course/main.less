@@ -219,7 +219,46 @@ img {
     max-width: 100%;
   }
 }
-
+.call-mask {
+  max-width: 900px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 10000;
+  background-color: rgba(234,237,236,0.8);
+  .call-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @w: 220px;
+    @h: 40px;
+    @r:10px;
+    .size(@w,@h);
+    line-height: @h;
+    margin-left: -@w/2;
+    background-color: #fff;
+    border-radius: @r;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    &.first {
+      //border-top-left-radius: 10px;
+      //border-top-right-radius: 10px;
+      margin-top: -@h/2-@h;
+    }
+    &.second {
+      //border-bottom-left-radius: 10px;
+      //border-bottom-right-radius: 10px;
+      margin-top: -@h/2;
+    }
+    > a {
+      display: inline-block;
+      .size(@w,@h);
+    }
+  }
+}
 
 #downloadCon{
   margin: 0 auto;
