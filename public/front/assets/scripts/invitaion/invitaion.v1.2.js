@@ -2,7 +2,7 @@
  * Created by hisihi on 2017/1/16.
  */
 $(function () {
-    window.addLoadingImg();
+    //window.addLoadingImg();
     window.addTip();
 
     //填充信息，按钮变色

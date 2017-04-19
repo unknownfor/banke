@@ -102,7 +102,6 @@
         </div>
     </div>
 </div>
-{{--@include('web.layout.downloadbar')--}}
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/zepto_modify.js"></script>
