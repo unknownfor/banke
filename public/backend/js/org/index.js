@@ -50,15 +50,18 @@
             },
 
             initTags:function(){
-                var tags=$('#tags').val(),
-                    arr=[];
-                if(tags){
-                    arr=tags.split(';');
+                if(typeof $.tags =='function') {
+                    var tags=$('#tags').val(),
+                        arr=[];
+                    if(tags){
+                        arr=tags.split(';');
+                    }
+                    this.tagsObj = $("#medium").tags({
+                        readOnly: $('#tag').hasClass('readonly'),
+                        tagData: arr,
+                        maxNumTags: 5
+                    });
                 }
-                this.tagsObj=$("#medium").tags({
-                    tagData: arr,
-                    maxNumTags:5
-                });
             },
 
             getTags:function(){
