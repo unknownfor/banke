@@ -3,6 +3,13 @@
   overflow: hidden;
   white-space: nowrap;
 }
+a {
+  display: block;
+  text-decoration: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
 input {
   -webkit-appearance: textfield;
   background-color: white;
@@ -189,7 +196,7 @@ img {
   padding-top: 20px;
 }
 .head .head-middle .name {
-  max-width: 145px;
+  max-width: 140px;
   color: #383D43;
   margin-bottom: 10px;
   display: inline-block;
@@ -290,6 +297,14 @@ img {
   flex: 1;
   padding-top: 7px;
   border-right: 1px solid #f2f2f2;
+}
+.org-detail .head-middle .head-name {
+  max-width: 140px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 .org-detail .head-middle .head-tips {
   padding-top: 8px;
@@ -416,41 +431,45 @@ img {
   left: 0px;
   right: 0px;
   z-index: 10000;
-  background-color: rgba(234, 237, 236, 0.8);
+  background-color: rgba(33, 33, 33, 0.8);
 }
-.call-mask .call-box {
+.call-mask .call-container {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 220px;
-  height: 40px;
-  line-height: 40px;
-  margin-left: -110px;
+  width: 180px;
+  margin-top: -20px;
+  text-align: center;
+  margin-left: -90px;
   background-color: #fff;
   border-radius: 10px;
-  text-align: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
 }
-.call-mask .call-box.first {
-  margin-top: -60px;
-}
-.call-mask .call-box.second {
-  margin-top: -20px;
-}
-.call-mask .call-box > a {
-  display: inline-block;
-  width: 220px;
+.call-mask .call-container .call-box {
+  width: 180px;
   height: 40px;
+  line-height: 40px;
+}
+.call-mask .call-container .call-box > a {
+  width: 180px;
+  height: 40px;
+  color: #5A5A5A;
+}
+.call-mask .call-container > p {
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #5A5A5A;
+  border-bottom: 1px solid #F2F2F2;
+}
+.call-mask.show {
+  display: block;
+  opacity: 1;
 }
 .call-mask.hide {
   display: none;
+  opacity: 0;
 }
 #downloadCon {
   margin: 0 auto;

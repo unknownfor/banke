@@ -31,17 +31,17 @@
                 <img class="bg" src="http://pic.hisihi.com/2017-04-14/1492162966172991.png" />
                 <div class="register-box phone">
                     <i class="iconfont register-img">&#xe659;</i>
-                    <input class="register-code" id="phone-num" placeholder="输入手机号" value="13554154325"/>
+                    <input class="register-code" id="phone-num" placeholder="输入手机号"/>
                 </div>
                 <div class="register-box code-num">
                     <i class="iconfont register-img">&#xe6a0;</i>
-                    <input class="register-code" id="user-code" placeholder="验证码" value="123456"/>
+                    <input class="register-code" id="user-code" placeholder="验证码"/>
                     <hr color="#9b9b9b" />
                     <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
                 </div>
                 <div class="register-box password">
                     <i class="iconfont register-img">&#xe655;</i>
-                    <input class="register-code" id="password-num" type="password"  placeholder="密码" value="123" />
+                    <input class="register-code" id="password-num" type="password"  placeholder="密码"/>
                 </div>
                 <button class="btn gift"><a id="downloadBar" href="http://www.hisihi.com/download.php">领取奖励</a></button>
             </div>
