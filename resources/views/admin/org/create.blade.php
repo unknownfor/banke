@@ -123,7 +123,8 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="tags">{{trans('labels.org.tags')}}</label>
-                                <div class="col-md-9">
+                                <div class="col-md-2" style="color:#32c5d2">输入文字后，回车添加</div>
+                                <div class="col-md-7">
                                     <div id="medium"></div>
                                     <input type="hidden" name="tags" id="tags">
                                 </div>
