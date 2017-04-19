@@ -198,6 +198,8 @@ class OrderRepository
 		];
 	}
 
+
+
 	/**
 	 * 添加配置
 	 * @author shaolei
@@ -351,6 +353,7 @@ class OrderRepository
 		}
 		abort(404);
 	}
+
 	/**
 	 * 修改配置
 	 * @author shaolei
@@ -359,105 +362,107 @@ class OrderRepository
 	 * @param  [type]                   $id      [description]
 	 * @return [type]                            [description]
 	 */
-	public function update($request,$id)
+	public function update1($request,$id)
 	{
-		$role = BankeCashBackUser::find($id);
-                
-                
+		$order = BankeCashBackUser::find($id);
+
+
 		$input = $request->only(['comment', 'status']);
-  
-		if ($role) { 
- 
-			if($role['status'] == config('admin.global.status.active')){
+
+		if ($order) {
+
+			if($order['status'] == config('admin.global.status.active')){
 				Flash::error(trans('alerts.order.already_active'));
 				return false;
 			}
 			if($input['status'] == config('admin.global.status.active')){
-				DB::transaction(function () use ($input, $role) {
-					try{  
+				DB::transaction(function () use ($input, $order) {
+					try{
 						$cur_user = Auth::user();
-						$input['operator_uid'] = $cur_user->id;                                               
-						$role->fill($input)->save();
-                                                 //var_dump($role);die;
+						$input['operator_uid'] = $cur_user->id;
+						$order->fill($input)->save();
+						//var_dump($order);die;
 						//订单状态为已审核
-                                                 // var_dump($end_date);die;
-                                                
-						$userProfile = BankeUserProfiles::where('uid', $role->uid)->lockForUpdate()->first();
-						$userProfile->check_in_amount += $role['check_in_amount'];
-						$userProfile->do_task_amount += $role['do_task_amount'];
-						$userProfile->total_cashback_amount += ($role['check_in_amount'] + $role['do_task_amount']);
-						$userProfile->period += $role->period;
-					   //对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中
-						if($role->end_date>$userProfile->enddated_at){
-							$userProfile->enddated_at= $role->end_date;
+						// var_dump($end_date);die;
+
+						$userProfile = BankeUserProfiles::where('uid', $order->uid)->lockForUpdate()->first();
+						$userProfile->check_in_amount += $order['check_in_amount'];
+						$userProfile->do_task_amount += $order['do_task_amount'];
+						$userProfile->total_cashback_amount += ($order['check_in_amount'] + $order['do_task_amount']);
+						$userProfile->period += $order->period;
+						//对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中
+						if($order->end_date>$userProfile->enddated_at){
+							$userProfile->enddated_at= $order->end_date;
 						}
 						//更新报名学生的信息
-						$userProfile->save();                                                                                           
+						$userProfile->save();
+
+
 						//获取用户报名课程 的次数
-						 $courseCout= BankeCashBackUser::where(['uid'=>$role['uid'],'course_id'=>$role['course_id']])->count();
-						   //var_dump($userProfile->invitation_uid) ;die;
+						$courseCout= BankeCashBackUser::where(['uid'=>$order['uid'],'course_id'=>$order['course_id']])->count();
+						//var_dump($userProfile->invitation_uid) ;die;
 						//如果有邀请人(添加一个条件：且该用户是第一次报这个课程)
-						if($userProfile->invitation_uid > 0 && $courseCout==1){                                                  
+						if($userProfile->invitation_uid > 0 && $courseCout==1){
 							$invitation_user = BankeUserProfiles::where('uid', $userProfile->invitation_uid)->lockForUpdate()->first();
 							//剩余任务金额小于奖励金额，则返回剩余全部
-								//邀请成功报名缴费
-								// 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
-								$invite_enrol_course =BankeCourse::find( $role->course_id);
+							//邀请成功报名缴费
+							// 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
+							$invite_enrol_course =BankeCourse::find( $order->course_id);
 
-								$percent=$invite_enrol_course['z_award_amount'];
-								if($percent==''){
-									$percent= BankeDict::find(7)['value'];
-								}
-
-								$invitation_award = moneyFormat(($role['tuition_amount'] * $percent / 100));
-//
-								$invitation_user->account_balance += $invitation_award;
-                                                                //将给邀请人的奖励累加到邀请人做任务已领的奖励中
-                                                                $invitation_user->get_do_task_amount+=$invitation_award;
-
-								//更新邀请人信息
-								$invitation_user->save();                                                               
-								$message1 = [
-									'uid'=>$userProfile->invitation_uid,
-									'title'=>'您的好友报名成功',
-									'content'=>'您邀请的好友'.$role->mobile.'报名了课程！
-								平台已帮您领取了'.$invitation_award
-										.'元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
-									'type'=>'FRIEND_ENROL_SUCCESS'
-								];
-								//记录消息
-								BankeMessage::create($message1);
-
-								$balance_log = [
-									'uid'=>$userProfile->invitation_uid,
-									'change_amount'=>$invitation_award,
-									'change_type'=>'+',
-									'business_type'=>'INVITE_FRIEND_ENROL_SUCCESS',
-									'operator_uid'=>$input['operator_uid']
-								];
-								//记录余额变动日志
-								BankeBalanceLog::create($balance_log);
-                                                              
+							$percent=$invite_enrol_course['z_award_amount'];
+							if($percent==''){
+								$percent= BankeDict::find(7)['value'];
 							}
-						$org = BankeOrg::find($role->org_id);
+
+							$invitation_award = moneyFormat(($order['tuition_amount'] * $percent / 100));
+//
+							$invitation_user->account_balance += $invitation_award;
+							//将给邀请人的奖励累加到邀请人做任务已领的奖励中
+							$invitation_user->get_do_task_amount+=$invitation_award;
+
+							//更新邀请人信息
+							$invitation_user->save();
+							$message1 = [
+								'uid'=>$userProfile->invitation_uid,
+								'title'=>'您的好友报名成功',
+								'content'=>'您邀请的好友'.$order->mobile.'报名了课程！
+								平台已帮您领取了'.$invitation_award
+									.'元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
+								'type'=>'FRIEND_ENROL_SUCCESS'
+							];
+							//记录消息
+							BankeMessage::create($message1);
+
+							$balance_log = [
+								'uid'=>$userProfile->invitation_uid,
+								'change_amount'=>$invitation_award,
+								'change_type'=>'+',
+								'business_type'=>'INVITE_FRIEND_ENROL_SUCCESS',
+								'operator_uid'=>$input['operator_uid']
+							];
+							//记录余额变动日志
+							BankeBalanceLog::create($balance_log);
+
+						}
+						$org = BankeOrg::find($order->org_id);
 						$cash_back_percent = BankeDict::whereIn('id', [3, 4])->sum('value');
-                                                //var_dump($org);die;
+						//var_dump($org);die;
 						$message = [
-							'uid'=>$role['uid'],
+							'uid'=>$order['uid'],
 							'title'=>'您已报名成功',
-							'content'=>'尊敬的'.$role->name.'用户，您已'.$role->pay_tuition_time.'于'.$org->name.'报名了'
-								.$role->course_name.'培训课程，学费为'.$role->tuition_amount.'元，平台奖励学费'
+							'content'=>'尊敬的'.$order->name.'用户，您已'.$order->pay_tuition_time.'于'.$org->name.'报名了'
+								.$order->course_name.'培训课程，学费为'.$order->tuition_amount.'元，平台奖励学费'
 								.$cash_back_percent.'%，您的待返金额为'
-								.($role->check_in_amount + $role->do_task_amount)
+								.($order->check_in_amount + $order->do_task_amount)
 								.'元，每次上课打卡和做任务即可领取',
 							'type'=>'USER_ENROL_SUCCESS'
 						];
 						//记录消息
 						BankeMessage::create($message);
-                                                //更新机构表中的学生人数
-                                                $org->student_counts++;
-                                                //echo $org->student_counts;die;
-                                                $org->save();
+						//更新机构表中的学生人数
+						$org->student_counts++;
+						//echo $org->student_counts;die;
+						$org->save();
 						Flash::success(trans('alerts.order.created_success'));
 						return true;
 					}catch (Exception $e){
@@ -468,7 +473,7 @@ class OrderRepository
 				});
 			}else{
 				//更新订单
-				if($role->fill($input)->save()){
+				if($order->fill($input)->save()){
 					Flash::success(trans('alerts.order.created_success'));
 					return true;
 				}
@@ -478,6 +483,152 @@ class OrderRepository
 		}else{
 			abort(404);
 		}
+	}
+
+	/**
+	 * 修改配置
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public function update($request,$id)
+	{
+		$order = BankeCashBackUser::find($id);
+                
+                
+		$input = $request->only(['comment', 'status']);
+  
+		if ($order) {
+ 
+			if($order['status'] == config('admin.global.status.active')){
+				Flash::error(trans('alerts.order.already_active'));
+				return false;
+			}
+			$cur_user = Auth::user();
+			$operator_id=$cur_user->id;
+			$result = $order->fill($input)->save();
+
+			if($input['status'] == config('admin.global.status.active')){
+				DB::transaction(function () use ($input, $order,$operator_id) {
+					try{
+						$userProfile = BankeUserProfiles::where('uid', $order->uid)->lockForUpdate()->first();
+
+						$this->execUpadateUserInfo($order,$userProfile); //更新用户信息
+
+						$this->execUpadateInvitorInfo($order,$userProfile,$operator_id);//更新推荐用户信息，并发送短信
+
+						$this->sendMsgToUser($order);  //给用户发送短信
+
+						//更新机构的学习人数
+						$org = $order->org;
+						$org->student_counts++;
+						$org->save();
+
+						Flash::success(trans('alerts.order.created_success'));
+						return true;
+					}catch (Exception $e){
+						Log::info($e);
+						Flash::error(trans('alerts.order.created_error'));
+						return false;
+					}
+				});
+			}
+			else{
+				//更新订单
+				if($result){
+					Flash::success(trans('alerts.order.created_success'));
+					return true;
+				}
+				Flash::error(trans('alerts.order.created_error'));
+				return false;
+			}
+		}else{
+			abort(404);
+		}
+	}
+
+	//更新用户表的信息，包括报名获得奖励，//订单状态为已审核
+	private  function  execUpadateUserInfo($order,$userProfile){
+		$userProfile->check_in_amount += $order['check_in_amount'];
+		$userProfile->do_task_amount += $order['do_task_amount'];
+		$userProfile->total_cashback_amount += ($order['check_in_amount'] + $order['do_task_amount']);
+		$userProfile->period += $order->period;
+		//对比订单表中的截止日期与用户表中的截止日期 如果新增的订单课程的截止时间早于用户表中则将其更新到用户表中
+		if($order->end_date>$userProfile->enddated_at){
+			$userProfile->enddated_at= $order->end_date;
+		}
+		//更新报名用户的信息
+		$userProfile->save();
+	}
+
+	//更新推荐人的用户的信息，包括推荐报名获得奖励，//订单状态为已审核
+	private  function  execUpadateInvitorInfo($order,$userProfile,$operator_id){
+		//获取用户报名课程 的次数
+		$courseCout= BankeCashBackUser::where(['uid'=>$order['uid'],'course_id'=>$order['course_id']])->count();
+
+		//如果有邀请人(添加一个条件：且该用户是第一次报这个课程)
+		if($userProfile->invitation_uid > 0 && $courseCout==1){
+			$invitation_user = BankeUserProfiles::where('uid', $userProfile->invitation_uid)->lockForUpdate()->first();
+			//剩余任务金额小于奖励金额，则返回剩余全部
+			//邀请成功报名缴费
+			// 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
+			$invite_enrol_course =BankeCourse::find( $order->course_id);
+
+			$percent=$invite_enrol_course['z_award_amount'];
+			if($percent==''){
+				$percent= BankeDict::find(7)['value'];
+			}
+
+			$invitation_award = moneyFormat(($order['tuition_amount'] * $percent / 100));
+//
+			$invitation_user->account_balance += $invitation_award;
+			//将给邀请人的奖励累加到邀请人做任务已领的奖励中
+			$invitation_user->get_do_task_amount+=$invitation_award;
+
+			//更新邀请人信息
+			$invitation_user->save();
+			$message1 = [
+				'uid'=>$userProfile->invitation_uid,
+				'title'=>'您的好友报名成功',
+				'content'=>'您邀请的好友'.$order->mobile.'报名了课程！
+								平台已帮您领取了'.$invitation_award
+					.'元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
+				'type'=>'FRIEND_ENROL_SUCCESS'
+			];
+			//记录消息
+			BankeMessage::create($message1);
+
+			$balance_log = [
+				'uid'=>$userProfile->invitation_uid,
+				'change_amount'=>$invitation_award,
+				'change_type'=>'+',
+				'business_type'=>'INVITE_FRIEND_ENROL_SUCCESS',
+				'operator_uid'=>$operator_id
+			];
+			//记录余额变动日志
+			BankeBalanceLog::create($balance_log);
+		}
+	}
+
+	//给用户发送短信
+	private  function sendMsgToUser($order){
+		$org = $order->org;
+		$cash_back_percent = BankeDict::whereIn('id', [3, 4])->sum('value');
+		$message = [
+			'uid'=>$order['uid'],
+			'title'=>'您已报名成功',
+			'content'=>'尊敬的'.$order->name.'用户，您已'.$order->pay_tuition_time.'于'.$org->name.'报名了'
+				.$order->course_name.'培训课程，学费为'.$order->tuition_amount.'元，平台奖励学费'
+				.$cash_back_percent.'%，您的待返金额为'
+				.($order->check_in_amount + $order->do_task_amount)
+				.'元，每次上课打卡和做任务即可领取',
+			'type'=>'USER_ENROL_SUCCESS'
+		];
+		//记录消息
+		BankeMessage::create($message);
+
 	}
 
 	/**
