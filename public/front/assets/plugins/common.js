@@ -13,7 +13,7 @@ $(function () {
     if (this.isLocal) {
         window.eventName = 'touchend';
     }
-    //downloadBar();
+    downloadBar();
     setFootStyle();
 
     //window.deviceType = operationType();
@@ -24,7 +24,7 @@ $(function () {
             return;
         }
         var str = '<div id="downloadCon">' +
-            '<a id="downloadBar" href="http://www.hisihi.com/download.php">' +
+            '<a id="downloadBar" href="http://www.91banke.com/web/download">' +
             '<img id="downloadBar-img" src="http://pic.hisihi.com/2017-01-18/1484705240013582.png" />' +
             '</a>' +
             '</div>';
@@ -147,7 +147,7 @@ $(function () {
             $('html,body').removeClass('noscroll');
             window.scrollTo(0, this.scrollTop);
         }
-    },
+    };
 
     /*
      *判断webview的来源

@@ -13,7 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link href="/front/assets/css/invitation/v1.2/invitation.css" rel="stylesheet" type="text/css"/>
-    {{--字体图标--}}
+    {{--图标字体--}}
     <link href="/front/assets/css/invitation/v1.2/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>邀请注册</title>
 </head>
