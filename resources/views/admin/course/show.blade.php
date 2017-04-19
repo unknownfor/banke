@@ -95,6 +95,14 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.course.check_in_days')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" class="form-control" readonly value="{{$course['check_in_days']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="address">{{trans('labels.course.sort')}}</label>
                           <div class="col-md-4">
                               <input type="text" readonly class="form-control" value="{{$course['sort']}}">

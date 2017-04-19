@@ -54,15 +54,10 @@
                     </div>
                     <div class="col-md-2">
                         <div class="form-group form-md-line-input">
-                            <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
+                            <select class="bs-select form-control form-filter" data-show-subtext="true" name="parent_type">
                                 <option value="" data-icon="fa-glass icon-success">类型</option>
-                                @if(trans('strings.traincategory'))
-                                    @foreach(trans('strings.traincategory') as $status_key => $status_value)
-                                        @if($status_value[1]!='未申请')
-                                            <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
-                                        @endif
-                                    @endforeach
-                                @endif
+                                <option value="0" data-icon="fa-th-large icon-success">顶级</option>
+                                <option value="1" data-icon="fa-columns icon-success">二级</option>
                             </select>
                         </div>
                     </div>

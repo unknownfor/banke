@@ -98,10 +98,10 @@ class CourseRepository
 	 */
 	public function store($request)
 	{
-		$role = new BankeCourse;
-		if ($role->fill($request->all())->save()) {
+		$course = new BankeCourse;
+		if ($course->fill($request->all())->save()) {
 			Flash::success(trans('alerts.course.created_success'));
-			return true;
+			return $course->id;
 		}
 		Flash::error(trans('alerts.course.created_error'));
 		return false;
