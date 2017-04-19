@@ -189,6 +189,7 @@ img {
   padding-top: 20px;
 }
 .head .head-middle .name {
+  max-width: 145px;
   color: #383D43;
   margin-bottom: 10px;
   display: inline-block;
@@ -447,6 +448,9 @@ img {
   display: inline-block;
   width: 220px;
   height: 40px;
+}
+.call-mask.hide {
+  display: none;
 }
 #downloadCon {
   margin: 0 auto;

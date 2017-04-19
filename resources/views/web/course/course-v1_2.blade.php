@@ -78,7 +78,7 @@
 </div>
 @endif
 
-<div class="call-mask">
+<div class="call-mask hide">
     <div class="call-box first"><a>13554154325</a></div>
     <div class="call-box second"><a>18140662282</a></div>
 </div>
