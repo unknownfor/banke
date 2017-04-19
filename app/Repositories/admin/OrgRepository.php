@@ -257,4 +257,24 @@ class OrgRepository
 		}
 		return$arr;
 	}
+
+
+	/**
+	 * 机构的所属分类 ids
+	 * @author jimmy
+	 * @date   2017-02-23T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function  getTags($id)
+	{
+		$arr=Array();
+		$tags=BankeOrg::find($id)->tags;
+		if ($tags) {
+			foreach ($tags as &$v) {
+				array_push($arr,$v['name']);
+			}
+		}
+		return$arr;
+	}
 }

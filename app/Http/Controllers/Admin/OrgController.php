@@ -12,6 +12,7 @@ use PermissionRepository;
 use RoleRepository;
 use TrainCategoryRepository;
 use App\Repositories\admin\OrgCategoryRepository;
+use App\Repositories\admin\OrgTagsReporsitory;
 use App\Models\Banke\BankeOrg;
 use Illuminate\Support\Facades\Log;
 
@@ -66,6 +67,11 @@ class OrgController extends Controller
         $category = $request->category;
         $OrgCategory=new OrgCategoryRepository();
         $OrgCategory->batchStore($category,$id);
+
+        $tags= $request->tags;  //标签
+        $OrgTags=new OrgTagsReporsitory();
+        $OrgTags->batchStore($tags,$id);
+
         return redirect('admin/org');
     }
 
@@ -81,6 +87,8 @@ class OrgController extends Controller
         $org = OrgRepository::edit($id);
         $allCategories=TrainCategoryRepository::getAllTCategory();
         $myCategories=OrgRepository::getTrainCategoryIds($id);
+        $tags=OrgRepository::getTags($id);
+        $org['tags']=$tags;
         return view('admin.org.edit')->with(compact('org','allCategories','myCategories'));
     }
     /**
@@ -94,9 +102,14 @@ class OrgController extends Controller
     public function update(UpdateOrgRequest $request,$id)
     {
         OrgRepository::update($request,$id);
+
         $category = $request->category;
         $OrgCategory=new OrgCategoryRepository();
         $OrgCategory->batchStore($category,$id);
+
+        $tags= $request->tags;  //标签
+        $OrgTags=new OrgTagsReporsitory();
+        $OrgTags->batchStore($tags,$id);
         return redirect('admin/org');
     }
 
