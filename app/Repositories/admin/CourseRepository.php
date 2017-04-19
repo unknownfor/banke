@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeTrainCategory;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeCourse;
@@ -204,5 +205,16 @@ class CourseRepository
 		$org_id = request('org_id', '');
 		$course = BankeCourse::where('org_id', $org_id)->where('status', 1)->get(['id', 'name']);
 		return $course;
+	}
+
+	public function getCategoryName($id)
+	{
+		$category = BankeCourse::find($id)->category();
+		$name='';
+		if($category->count()>0) {
+			$course = BankeTrainCategory::find($category->first()['cid']);
+			$name=$course['name'];
+		}
+		return $name;
 	}
 }

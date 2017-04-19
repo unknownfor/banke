@@ -49,7 +49,8 @@ class CourseCategoryRepository
 			Flash::error(trans('alerts.course.updated_error'));
 			return false;
 		}else{
-			$this->store($category_id,$id);
+			return $this->store($category_id,$id);
+
 		}
 		abort(404);
 	}

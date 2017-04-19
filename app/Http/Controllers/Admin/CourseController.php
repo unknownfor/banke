@@ -168,6 +168,7 @@ class CourseController extends Controller
         $orgs=BankeOrg::where('status',1)->orderBy('sort', 'desc')->get(['id','name']);
         $course = CourseRepository::show($id);
         $percent=$this->getDict();
+        $course['category_name']=CourseRepository::getCategoryName($id);
         return view('admin.course.show')->with(compact(['course','orgs','percent']));
     }
 

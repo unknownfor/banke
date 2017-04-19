@@ -103,6 +103,14 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}}</label>
+                          <div class="col-md-9">
+                              <span class="label label-info">{{$course['category_name']}}</span>
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="address">{{trans('labels.course.sort')}}</label>
                           <div class="col-md-4">
                               <input type="text" readonly class="form-control" value="{{$course['sort']}}">
