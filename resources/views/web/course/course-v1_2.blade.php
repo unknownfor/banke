@@ -58,7 +58,7 @@
             @endforeach
         </div>
     </div>
-    <div class="address-call">
+    <div class="address-call call-box" >
         <a href="tel:{{$course['org']['tel_phone']}}">
             <div class="address-call-box">
                 <span class="img"></span>
@@ -79,8 +79,17 @@
 @endif
 
 <div class="call-mask hide">
-    <div class="call-box first"><a>13554154325</a></div>
-    <div class="call-box second"><a>18140662282</a></div>
+
+    <div class="call-container">
+        <p>点击就送-屠龙宝刀</p>
+        <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
+        <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
+    </div>
+
 </div>
 </body>
+<script src="/front/assets/plugins/zepto.min.js"></script>
+<script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/course/course-v1.2.js" type="text/javascript"></script>
 </html>

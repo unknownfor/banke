@@ -13,8 +13,10 @@ $(function () {
     if (this.isLocal) {
         window.eventName = 'touchend';
     }
-    //downloadBar();
+    downloadBar();
     setFootStyle();
+
+    //window.deviceType = operationType();
 
     //添加下载条
     function downloadBar() {
@@ -22,7 +24,7 @@ $(function () {
             return;
         }
         var str = '<div id="downloadCon">' +
-            '<a id="downloadBar" href="http://www.hisihi.com/download.php">' +
+            '<a id="downloadBar" href="http://www.91banke.com/web/download">' +
             '<img id="downloadBar-img" src="http://pic.hisihi.com/2017-01-18/1484705240013582.png" />' +
             '</a>' +
             '</div>';
@@ -127,6 +129,43 @@ $(function () {
         $tip.hide();
         $p.text('');
         this.timeOutFlag = false;
+    },
+
+
+    /*
+     * 禁止(恢复)滚动
+     * para：
+     * flag - {bool} 允许（true）或者禁止（false）滚动
+     * $target - {jquery obj} 滚动对象
+     */
+    window.scrollControl = function(flag,$target){
+        if(!flag) {
+            $target = $target || $('body');
+            this.scrollTop = $target.scrollTop();
+            $('html,body').addClass('noscroll');
+        }else{
+            $('html,body').removeClass('noscroll');
+            window.scrollTo(0, this.scrollTop);
+        }
+    };
+
+    /*
+     *判断webview的来源
+     */
+    function operationType() {
+        var u = navigator.userAgent, app = navigator.appVersion;
+        return { //移动终端浏览器版本信息
+            trident: u.indexOf('Trident') > -1, //IE内核
+            presto: u.indexOf('Presto') > -1, //opera内核
+            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+            iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+            iPad: u.indexOf('iPad') > -1, //是否iPad
+            webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+        };
     };
 
 });
