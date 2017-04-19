@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeDict;
 use Illuminate\Http\Request;
@@ -13,6 +14,8 @@ use App\Http\Requests\UpdateCourseRequest;
 use PermissionRepository;
 use RoleRepository;
 use Illuminate\Support\Facades\Log;
+use TrainCategoryRepository;
+use App\Repositories\Admin\CourseCategoryRepository;
 
 class CourseController extends Controller
 {
@@ -49,7 +52,8 @@ class CourseController extends Controller
         $org = new BankeOrg;
         $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
         $percent=$this->getDict();
-        return view('admin.course.create')->with(compact(['orgs','percent']));
+        $allCategories=TrainCategoryRepository::getAllSecondCategory();
+        return view('admin.course.create')->with(compact(['orgs','percent','allCategories']));
     }
 
     /**
@@ -72,7 +76,11 @@ class CourseController extends Controller
         if($request['z_award_amount']==''){
             $request['z_award_amount']=$percent[2]['value'];
         }
-        CourseRepository::store($request);
+        $id = CourseRepository::store($request);
+
+        $category = $request->category;
+        $OrgCategory=new OrgCategoryRepository();
+        $OrgCategory->batchStore($category,$id);
         return redirect('admin/course');
     }
 
@@ -87,9 +95,10 @@ class CourseController extends Controller
     {
         $org = new BankeOrg;
         $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
-        $course = CourseRepository::edit($id);
+        $course = BankeCourse::find($id);
         $percent=$this->getDict();
-        return view('admin.course.edit')->with(compact(['course', 'orgs','percent']));
+        $allCategories=TrainCategoryRepository::getAllSecondCategory();
+        return view('admin.course.edit')->with(compact(['course', 'orgs','percent','allCategories']));
     }
     /**
      * 修改课程资料
@@ -113,6 +122,11 @@ class CourseController extends Controller
             $request['z_award_amount']=$percent[2]['value'];
         }
         CourseRepository::update($request,$id);
+
+        $courseCategoryRepository = new CourseCategoryRepository();
+        if($request['category_id']){
+            $courseCategoryRepository->update($request['category_id'],$id);
+        }
         return redirect('admin/course');
     }
 

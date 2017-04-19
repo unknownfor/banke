@@ -19,7 +19,7 @@ class TrainCategoryRepository
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
-		$status = request('status' ,'');
+		$parent_type = request('parent_type' ,'');
 		$name = request('name' ,'');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
@@ -27,8 +27,12 @@ class TrainCategoryRepository
 
 
 		/*状态搜索*/
-		if ($status!=null) {
-			$trainCategory = $trainCategory->where('status', $status);
+		if ($parent_type!=null) {
+			if($parent_type==0) {
+				$trainCategory = $trainCategory->where('pid', $parent_type);
+			}else{
+				$trainCategory = $trainCategory->where('pid','<>', 0);
+			}
 		}
 
 		/*标题*/
@@ -170,6 +174,12 @@ class TrainCategoryRepository
 	public function  getAllTopCategory(){
 		return BankeTrainCategory::where('pid',0)->get(['id','name']);
 	}
+
+	//得到全部的二级分类
+	public function  getAllSecondCategory(){
+		return BankeTrainCategory::where('pid','<>',0)->get(['id','name']);
+	}
+
 	//得到全部的分类
 	public function  getAllTCategory(){
 		return BankeTrainCategory::get(['id','name']);

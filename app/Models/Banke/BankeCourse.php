@@ -12,7 +12,7 @@ class BankeCourse extends Model
     protected $table = 'banke_course';
 
     protected $fillable = ['name', 'org_id', 'cover', 'price','period',
-        'intro', 'sort', 'details', 'status','checkin_award','task_award','z_award_amount'];
+        'intro', 'sort', 'details', 'status','checkin_award','task_award','z_award_amount','check_in_days'];
 
     private $action;
 
@@ -25,5 +25,10 @@ class BankeCourse extends Model
     public function org()
     {
         return $this->hasOne('App\Models\Banke\BankeOrg','id','org_id');
+    }
+
+    public function category()
+    {
+        return $this->hasOne('App\Models\Banke\BankeCourseCategory','course_id','id');
     }
 }

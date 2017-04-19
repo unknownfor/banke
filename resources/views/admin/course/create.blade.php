@@ -113,6 +113,33 @@
 
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.course.check_in_days')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="check_in_days" name="check_in_days" placeholder="{{trans('labels.course.check_in_days')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}}</label>
+                                <div class="col-md-9">
+                                    @foreach($allCategories as $val)
+                                        <div class="col-md-4">
+                                            <div class="md-checkbox">
+                                                <div class="md-radio">
+                                                    <input type="radio" id="cate-{{$val->id}}" name="status" value="{{$val->id}}" class="md-radiobtn">
+                                                    <label for="cate-{{$val->id}}">
+                                                        <span></span>
+                                                        <span class="check"></span>
+                                                        <span class="box"></span> {{$val->name}} </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="percent">{{trans('labels.course.sort')}}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.course.sort')}}">
