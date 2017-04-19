@@ -13,10 +13,10 @@ $(function () {
     if (this.isLocal) {
         window.eventName = 'touchend';
     }
-    downloadBar();
+    //downloadBar();
     setFootStyle();
 
-    //window.deviceType = operationType();
+    window.deviceType = operationType();
 
     //添加下载条
     function downloadBar() {
@@ -148,6 +148,7 @@ $(function () {
             window.scrollTo(0, this.scrollTop);
         }
     };
+
 
     /*
      *判断webview的来源
