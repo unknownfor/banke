@@ -111,6 +111,14 @@
                                 <label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[2]['value']}}%</span> 作为默认比例</label>
                             </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="comment_award">{{trans('labels.course.comment_award')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" min="0" max="100" step="0.1" class="form-control" id="comment_award" name="comment_award" placeholder="{{trans('labels.course.comment_award')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.course.check_in_days')}}</label>

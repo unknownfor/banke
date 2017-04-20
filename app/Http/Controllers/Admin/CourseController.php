@@ -15,7 +15,7 @@ use PermissionRepository;
 use RoleRepository;
 use Illuminate\Support\Facades\Log;
 use TrainCategoryRepository;
-use App\Repositories\Admin\CourseCategoryRepository;
+use App\Repositories\admin\CourseCategoryRepository;
 
 class CourseController extends Controller
 {

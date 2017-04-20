@@ -526,9 +526,11 @@ class OrderRepository
 						$org->student_counts++;
 						$org->save();
 
+						DB::commit();
 						Flash::success(trans('alerts.order.created_success'));
 						return true;
 					}catch (Exception $e){
+						DB::rollBack();
 						Log::info($e);
 						Flash::error(trans('alerts.order.created_error'));
 						return false;
