@@ -353,6 +353,9 @@ img {
 #invitation .page .btn.active {
   background-color: #fbc02d;
 }
+#invitation .page .btn.nouse {
+  pointer-events: none;
+}
 #invitation .page .btn > a {
   display: block;
   color: #FFFFFF;

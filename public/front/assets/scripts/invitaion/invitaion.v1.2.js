@@ -2,7 +2,7 @@
  * Created by hisihi on 2017/1/16.
  */
 $(function () {
-    //window.addLoadingImg();
+    window.addLoadingImg();
     window.addTip();
 
     //填充信息，按钮变色
@@ -30,7 +30,7 @@ $(function () {
         var number=$('#phone-num').val(),
             reg = /^1(3|4|5|7|8)\d{9}$/;
         var $btn=$('.btn'),
-            code=$(this).val();
+            code=$('#user-code').val();
         if(reg.test(number)) {
             if(code!=''){
                 $btn.addClass('active');
@@ -48,15 +48,20 @@ $(function () {
     $(document).on('input','#password-num',function(){
         //新增登陆密码
         var password=$('#user-password').val(),
+            reg = /^1(3|4|5|7|8)\d{9}$/,
+            number=$('#phone-num').val(),
+            code=$('#user-code').val(),
             $btn=$('.btn'),
             password=$(this).val;
-            if(password!=''){
-                $btn.addClass('active');
-                $('.password').addClass('active');
-            }else {
-                $btn.removeClass('active');
-                $('.password').removeClass('active');
-            }
+        if(reg.test(number)&&code != '') {
+                if (password != '') {
+                    $btn.addClass('active').removeClass('nouse');
+                    $('.password').addClass('active');
+                } else {
+                    $btn.removeClass('active').addClass('nouse');
+                    $('.password').removeClass('active');
+                }
+        }
     });
 
     //倒计时

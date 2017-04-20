@@ -43,7 +43,7 @@
                     <i class="iconfont register-img">&#xe655;</i>
                     <input class="register-code" id="password-num" type="password"  placeholder="密码"/>
                 </div>
-                <button class="btn gift"><a id="downloadBar" href="http://www.91banke.com/web/download">领取奖励</a></button>
+                <button class="btn gift nouse"><a id="downloadBar" href="http://www.91banke.com/web/download">领取奖励</a></button>
             </div>
             <div class="register-done" style="display: none;">
                 <div class="register-new" style="display: none;">
