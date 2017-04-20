@@ -46,6 +46,7 @@ var TableDatatablesAjax = function() {
           "name": "sort",
           "orderable" : true,
         },
+
         { 
           "data": "status",
           "name": "status",
@@ -58,6 +59,18 @@ var TableDatatablesAjax = function() {
             }else{
               return '<span class="label label-danger"> 未通过 </span>';
             }
+          }
+        },
+        {
+          "data": "comment_list",
+          "name": "comment_list",
+          "orderable" : true,
+          render:function(data,type,full){
+            var str='';
+            if(data>0){
+              str='<a href="/admin/org/'+full.id+'/comment">'+data+'条评论</a>';
+            }
+            return str;
           }
         },
         //{

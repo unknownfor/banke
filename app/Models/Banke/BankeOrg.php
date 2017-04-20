@@ -12,7 +12,7 @@ class BankeOrg extends Model
     protected $table = 'banke_org';
 
     protected $fillable = ['name', 'logo','city', 'cover','album', 'intro', 'sort', 'address', 'tel_phone','tel_phone2',
-        'details', 'status','short_name','student_counts','cash_back_desc'];
+        'details', 'status','short_name','student_counts','cash_back_desc','comment_award'];
 
     private $action;
 
@@ -37,5 +37,11 @@ class BankeOrg extends Model
     public function categories()
     {
         return $this->hasMany('App\Models\Banke\BankeOrgCategory','oid','id');
+    }
+
+    //1对多个评价
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Banke\BankeCommentOrg','org_id','id');
     }
 }

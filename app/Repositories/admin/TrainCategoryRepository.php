@@ -184,4 +184,11 @@ class TrainCategoryRepository
 	public function  getAllTCategory(){
 		return BankeTrainCategory::get(['id','name']);
 	}
+
+	//根据一级分类得到全部的二级分类
+	public function  getAllSecondCategoryByPid(){
+		$pid = request('pid', '');
+		$arr=explode(',',$pid);
+		return BankeTrainCategory::whereIn('pid',$arr)->get(['id','name']);
+	}
 }

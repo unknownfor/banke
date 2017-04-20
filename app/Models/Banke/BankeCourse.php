@@ -12,7 +12,7 @@ class BankeCourse extends Model
     protected $table = 'banke_course';
 
     protected $fillable = ['name', 'org_id', 'cover', 'price','period',
-        'intro', 'sort', 'details', 'status','checkin_award','task_award','z_award_amount','check_in_days'];
+        'intro', 'sort', 'details', 'status','checkin_award','task_award','z_award_amount','check_in_days','comment_award'];
 
     private $action;
 
@@ -30,5 +30,11 @@ class BankeCourse extends Model
     public function category()
     {
         return $this->hasOne('App\Models\Banke\BankeCourseCategory','course_id','id');
+    }
+
+    //1对多个评价
+    public function commnents()
+    {
+        return $this->hasMany('App\Models\Banke\BankeCommentCourse','course_id','id');
     }
 }

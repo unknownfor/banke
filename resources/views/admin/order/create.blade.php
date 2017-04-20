@@ -134,15 +134,15 @@
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.order.status')}}</label>
                                 <div class="col-md-7">
                                     <div class="md-radio-inline">
+                                        {{--<div class="md-radio">--}}
+                                            {{--<input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn">--}}
+                                            {{--<label for="status1">--}}
+                                                {{--<span></span>--}}
+                                                {{--<span class="check"></span>--}}
+                                                {{--<span class="box"></span> {{trans('strings.order.active.1')}} </label>--}}
+                                        {{--</div>--}}
                                         <div class="md-radio">
-                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn">
-                                            <label for="status1">
-                                                <span></span>
-                                                <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.order.active.1')}} </label>
-                                        </div>
-                                        <div class="md-radio">
-                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" checked class="md-radiobtn">
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>

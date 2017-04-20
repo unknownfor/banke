@@ -117,6 +117,14 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="comment_award">{{trans('labels.org.comment_award')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" min="0" max="100" step="0.1" class="form-control" id="comment_award" name="comment_award" placeholder="{{trans('labels.org.comment_award')}}" value="{{$org['comment_award']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="sort">{{trans('labels.org.sort')}}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.org.sort')}}" value="{{$org['sort']}}">
@@ -125,12 +133,25 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="category">{{trans('labels.org.category')}}</label>
+                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.org.category1')}}</label>
+                                <div class="col-md-4">
+                                    <select name="category1[]" class="orgCategorySelectpicker show-tick form-control" data-live-search="true" multiple>
+                                        @if($category1)
+                                            @foreach($category1 as $val)
+                                                <option value="{{$val->id}}" @if(in_array($val->id,$categoryIds)) selected @endif> {{$val->name}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="category">{{trans('labels.org.category2')}}</label>
                                 <div class="col-md-9">
-                                    @foreach($allCategories as $val)
-                                        <div class="col-md-4">
+                                    @foreach($category2 as $val)
+                                        <div class="col-md-4 my-category2">
                                             <div class="md-checkbox">
-                                                <input type="checkbox" name="category[]" id="cate-{{$val->id}}" value="{{$val->id}}" class="md-check" @if(in_array($val->id,$myCategories)) checked @endif>
+                                                <input type="checkbox" name="category2[]" id="cate-{{$val->id}}" value="{{$val->id}}" class="md-check" checked>
                                                 <label for="cate-{{$val->id}}" class="tooltips" data-placement="top" data-original-title="">
                                                     <span></span>
                                                     <span class="check"></span>
