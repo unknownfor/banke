@@ -173,7 +173,7 @@ img {
   transform: translate(0px, 0px);
 }
 #invitation .page {
-  height: 98%;
+  height: 100%;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
   margin: 0px 20px;
@@ -182,15 +182,14 @@ img {
   letter-spacing: 1px;
 }
 #invitation .page .txt.slogen {
-  padding-top: 35px;
-  padding-bottom: 20px;
+  padding: 15px 0;
   font-size: 18px;
   font-weight: 500;
   color: #000;
 }
 #invitation .page .txt.detail {
-  padding-bottom: 20px;
-  font-size: 14px;
+  margin-bottom: 20px;
+  font-size: 12px;
 }
 #invitation .page .txt.txt-one {
   margin-top: 30px;
@@ -216,10 +215,6 @@ img {
 #invitation .page .txt .reward {
   color: #FBC02D;
   font-size: 20px;
-}
-#invitation .page .register {
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 #invitation .page .register .register-box {
   border-radius: 10px;
@@ -299,7 +294,8 @@ img {
   font-size: 26px;
 }
 #invitation .page .bg {
-  max-width: 80%;
+  max-width: 70%;
+  margin-bottom: 10px;
 }
 #invitation .page .bg.second {
   margin-top: 35%;

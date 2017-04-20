@@ -4,12 +4,12 @@
 $(function() {
 
     var href = window.location.href;
-    var isFromApp = href.indexOf('banke-app') >= 0;  //ÊÇ·ñÀ´Ô´ÓÚapp
+    var isFromApp = href.indexOf('banke-app') >= 0;  //æ˜¯å¦æ¥æºäºapp
 
-    //µã»÷µ¯³ö²¦´òµç»°¿ò£¬ÅĞ¶ÏÀ´Ô´ÊÇ·ñÊÇ·ÖÏíÒ³
+    //ç‚¹å‡»å¼¹å‡ºæ‹¨æ‰“ç”µè¯æ¡†ï¼Œåˆ¤æ–­æ¥æºæ˜¯å¦æ˜¯åˆ†äº«é¡µ
     $(document).on( window.eventName,'.address-call', function() {
         if (isFromApp) {
-            //µ÷ÓÃ¿Í»§¶Ë²¦´òµç»°·½·¨
+            //è°ƒç”¨å®¢æˆ·ç«¯æ‹¨æ‰“ç”µè¯æ–¹æ³•
             showCallNumber();
         }else {
             $('.call-mask').removeClass('hide').addClass('show');
@@ -33,7 +33,7 @@ $(function() {
         hideAndShow();
     };
 
-    //ÊÕÆğ²¦´òµç»°µ¯´°
+    //æ”¶èµ·æ‹¨æ‰“ç”µè¯å¼¹çª—
     function hideAndShow(flag){
         var $target=$('.call-mask');
         if(flag){
@@ -45,19 +45,19 @@ $(function() {
 
 
 
-    //µ÷ÓÃ¿Í»§¶Ë·½·¨,ÏÔÊ¾²¦´òµç»°
+    //è°ƒç”¨å®¢æˆ·ç«¯æ–¹æ³•,æ˜¾ç¤ºæ‹¨æ‰“ç”µè¯
     function showCallNumber(){
         if (window.deviceType.mobile) {
             if (this.deviceType.android) {
-                //Èç¹û·½·¨´æÔÚ
+                //å¦‚æœæ–¹æ³•å­˜åœ¨
                 if (typeof AppFunction != "undefined"&&  typeof AppFunction.callServicePhone !='undefined') {
-                    AppFunction.callServicePhone(); //µ÷ÓÃappµÄ·½·¨£¬µÃµ½ÓÃ»§µÄ»ùÌåĞÅÏ¢
+                    AppFunction.callServicePhone(); //è°ƒç”¨appçš„æ–¹æ³•ï¼Œå¾—åˆ°ç”¨æˆ·çš„åŸºä½“ä¿¡æ¯
                 }
             }
             else {
-                //Èç¹û·½·¨´æÔÚ
+                //å¦‚æœæ–¹æ³•å­˜åœ¨
                 if (typeof callServicePhone != "undefined") {
-                    callServicePhone();//µ÷ÓÃappµÄ·½·¨£¬µÃµ½µç»°
+                    callServicePhone();//è°ƒç”¨appçš„æ–¹æ³•ï¼Œå¾—åˆ°ç”µè¯
                 }
             }
         }
