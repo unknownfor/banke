@@ -19,7 +19,7 @@
 <!--课程头部-->
 <div class="head container">
     <div class="head-left">
-        <img src="{{$course['cover']}}" />
+        <img src="{{$course['cover']}}@70h_70w_2e" />
     </div>
     <div class="head-middle">
         <div class="name">{{$course['name']}}</div>
@@ -47,7 +47,7 @@
 {{--机构简介--}}
 <div class="org-detail container">
     <div class="head-left">
-        <img src="{{$course['cover']}}" />
+        <img src="{{$course['cover']}}@70h_70w_2e" />
     </div>
     <div class="head-middle">
         <div class="head-name">{{$org['name']}}</div>
@@ -78,4 +78,8 @@
 @endif
 @include('web.layout.downloadbar')
 </body>
+<script src="/front/assets/plugins/zepto.min.js"></script>
+<script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/course/course-v1.2.js" type="text/javascript"></script>
 </html>

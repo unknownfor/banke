@@ -186,10 +186,10 @@ img {
   box-flex: 1;
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
-  margin-right: 7px;
+  margin-right: 10px;
 }
 .head .head-left > img {
-  max-width: 80px;
+  max-width: 70px;
   border-radius: 7px;
 }
 .head .head-middle {
@@ -279,14 +279,21 @@ img {
   position: relative;
 }
 .org-detail .head-left {
-  height: 100%;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 80px;
-  -ms-flex: 0 0 80px;
-  flex: 0 0 80px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .org-detail .head-left > img {
-  max-width: 80px;
+  max-width: 70px;
   border-radius: 7px;
 }
 .org-detail .head-middle {
@@ -313,6 +320,7 @@ img {
   color: #faaf0a;
 }
 .org-detail .head-middle .head-tips > span {
+  border-radius: 3px;
   display: inline-block;
   white-space: nowrap;
   margin-bottom: 10px;
@@ -321,10 +329,18 @@ img {
   padding: 0 3px;
 }
 .org-detail .address-call {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 70px;
-  -ms-flex: 0 0 70px;
-  flex: 0 0 70px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 .org-detail .address-call a {
   display: block;

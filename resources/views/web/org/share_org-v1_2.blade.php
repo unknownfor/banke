@@ -65,4 +65,8 @@
 @endif
 @include('web.layout.downloadbar')
 </body>
+<script src="/front/assets/plugins/zepto.min.js"></script>
+<script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/org/org-v1.2.js" type="text/javascript"></script>
 </html>
