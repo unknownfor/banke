@@ -78,9 +78,10 @@ class CourseController extends Controller
         }
         $id = CourseRepository::store($request);
 
-        $category = $request->category;
-        $OrgCategory=new OrgCategoryRepository();
-        $OrgCategory->batchStore($category,$id);
+        $courseCategoryRepository = new CourseCategoryRepository();
+        if($request['category_id']){
+            $courseCategoryRepository->update($request['category_id'],$id);
+        }
         return redirect('admin/course');
     }
 
