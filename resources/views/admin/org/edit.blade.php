@@ -147,9 +147,9 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="category">{{trans('labels.org.category2')}}</label>
-                                <div class="col-md-9">
+                                <div class="col-md-9 my-category2">
                                     @foreach($category2 as $val)
-                                        <div class="col-md-4 my-category2">
+                                        <div class="col-md-4">
                                             <div class="md-checkbox">
                                                 <input type="checkbox" name="category2[]" id="cate-{{$val->id}}" value="{{$val->id}}" class="md-check" checked>
                                                 <label for="cate-{{$val->id}}" class="tooltips" data-placement="top" data-original-title="">

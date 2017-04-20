@@ -361,13 +361,13 @@
                         checkStr='',id;
                     for(var i=0;i<len;i++){
                         checkStr='';
-                        id=res[i].id;
+                        id=res[i].id+'';
                         if($.inArray(id,that.myCategory2)>=0){
                             checkStr='checked';
                         }
                         str+='<div class="col-md-4">'+
                                 '<div class="md-checkbox">'+
-                                    '<input type="checkbox" name="category2[]" '+checkStr+' id="cate-'+id+'" value="'+id+'" class="md-check">'+
+                                    '<input type="checkbox" name="category2[]" '+ checkStr +' id="cate-'+id+'" value="'+id+'" class="md-check">'+
                                     '<label for="cate-'+id+'" class="tooltips" data-placement="top" data-original-title="">'+
                                     '<span></span>'+
                                     '<span class="check"></span>'+
@@ -375,7 +375,7 @@
                                 '</div>'+
                             '</div>';
                     }
-                    $('#second-category').html(str);
+                    $('.my-category2').html(str);
                 })
             },
 

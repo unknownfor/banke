@@ -119,7 +119,7 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="category">{{trans('labels.org.category2')}}</label>
-                                <div class="col-md-9" id="second-category"></div>
+                                <div class="col-md-9 my-category2"></div>
                             </div>
 
                             <div class="form-group form-md-line-input">

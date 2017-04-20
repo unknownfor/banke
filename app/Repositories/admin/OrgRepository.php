@@ -245,6 +245,27 @@ class OrgRepository
 	}
 
 	/**
+	 * 机构的所属分类 一级
+	 * @author jimmy
+	 * @date   2017-02-23T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function  getCategory1Info($id)
+	{
+		$arr=Array();
+		$myCategories = BankeOrgCategory::where('oid',$id)->get();  //机构分类关联表
+		if ($myCategories) {
+			foreach ($myCategories as &$v) {
+				array_push($arr,$v['cid']);
+			}
+		}
+
+		$categories=BankeTrainCategory::whereIn('id',$arr)->where('pid',0)->get();
+		return $categories;
+	}
+
+	/**
 	 * 机构的所属分类 二级
 	 * @author jimmy
 	 * @date   2017-02-23T11:51:19+0800
