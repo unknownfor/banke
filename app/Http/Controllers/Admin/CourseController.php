@@ -78,9 +78,10 @@ class CourseController extends Controller
         }
         $id = CourseRepository::store($request);
 
-        $category = $request->category;
-        $OrgCategory=new OrgCategoryRepository();
-        $OrgCategory->batchStore($category,$id);
+        $courseCategoryRepository = new CourseCategoryRepository();
+        if($request['category_id']){
+            $courseCategoryRepository->update($request['category_id'],$id);
+        }
         return redirect('admin/course');
     }
 
@@ -168,6 +169,7 @@ class CourseController extends Controller
         $orgs=BankeOrg::where('status',1)->orderBy('sort', 'desc')->get(['id','name']);
         $course = CourseRepository::show($id);
         $percent=$this->getDict();
+        $course['category_name']=CourseRepository::getCategoryName($id);
         return view('admin.course.show')->with(compact(['course','orgs','percent']));
     }
 

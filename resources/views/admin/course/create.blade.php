@@ -121,13 +121,13 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}}</label>
+                                <label class="col-md-1 control-label" for="category_id">{{trans('labels.course.category')}}</label>
                                 <div class="col-md-9">
                                     @foreach($allCategories as $val)
                                         <div class="col-md-4">
                                             <div class="md-checkbox">
                                                 <div class="md-radio">
-                                                    <input type="radio" id="cate-{{$val->id}}" name="status" value="{{$val->id}}" class="md-radiobtn">
+                                                    <input type="radio" id="cate-{{$val->id}}" name="category_id" value="{{$val->id}}" class="md-radiobtn">
                                                     <label for="cate-{{$val->id}}">
                                                         <span></span>
                                                         <span class="check"></span>
@@ -189,21 +189,21 @@
                                 <div class="col-md-9">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
-                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.active')) checked @endif>
+                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn"  checked>
                                             <label for="status1">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> {{trans('strings.course.active.1')}} </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if(old('status') === config('admin.global.status.audit')) checked @endif>
+                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> {{trans('strings.course.audit.1')}} </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>
+                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn">
                                             <label for="status3">
                                                 <span></span>
                                                 <span class="check"></span>
