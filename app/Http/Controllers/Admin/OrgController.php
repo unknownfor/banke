@@ -66,6 +66,15 @@ class OrgController extends Controller
         $id = OrgRepository::store($request);
         $category1 = $request->category1;
         $category2 = $request->category2;
+
+        $array=Array();
+        if(!$category1){
+            $category1=$array;
+        }
+        if(!$category2){
+            $category2=$array;
+        }
+
         $OrgCategory=new OrgCategoryRepository();
         $OrgCategory->batchStore( array_merge($category1, $category2),$id);
 
@@ -107,6 +116,15 @@ class OrgController extends Controller
 
         $category1 = $request->category1;
         $category2 = $request->category2;
+
+        $array=Array();
+        if(!$category1){
+            $category1=$array;
+        }
+        if(!$category2){
+            $category2=$array;
+        }
+        
         $OrgCategory=new OrgCategoryRepository();
         $OrgCategory->batchStore( array_merge($category1, $category2),$id);
 
@@ -153,9 +171,7 @@ class OrgController extends Controller
     public function show($id)
     {
         $org = BankeOrg::find($id);
-//        $categories=OrgRepository::getCategoryInfo($id);
         $category1=OrgRepository::getCategory1Info($id);
-//        $categoryIds=OrgRepository::getTrainCategoryIds($id);
         $category2=OrgRepository::getCategory2Info($id);
         return view('admin.org.show')->with(compact('org','category1','category2'));
     }
@@ -175,5 +191,4 @@ class OrgController extends Controller
     {
         return view('admin.org.comment-list');
     }
-
 }
