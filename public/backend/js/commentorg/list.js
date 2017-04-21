@@ -7,11 +7,11 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/org/ajaxIndex',
+        'url' : '/admin/commentorg/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val().replace(/(^\s*)|(\s*$)/g, "");
-          d.city =$('.filter input[name="city"]').val().replace(/(^\s*)|(\s*$)/g, "");
-          d.status = $('.filter select[name="status"] option:selected').val();
+          d.oid =$('.filter input[name="oid"]').val().replace(/(^\s*)|(\s*$)/g, "");
+          //d.city =$('.filter input[name="city"]').val().replace(/(^\s*)|(\s*$)/g, "");
+          //d.status = $('.filter select[name="status"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -24,29 +24,33 @@ var TableDatatablesAjax = function() {
           "name" : "id",
         },
         {
-          "data": "name",
-          "name" : "name",
+          "data": "user_name",
+          "name" : "user_name",
+          "orderable" : false
+        },
+        {
+          "data": "content",
+          "name": "content",
           "orderable" : false,
-          render:function(res,type,full){
-            return '<img class="table-cell-logo" src="'+full.logo+'"><label>'+res+'</label>';
+          render:function(data){
+            return '<p class="txt-ellipsis-single" title="'+data+'">'+data+'</p>';
           }
         },
         {
-          "data": "city",
-          "name": "city",
+          "data": "star_counts",
+          "name": "star_counts",
           "orderable" : false,
         },
         {
-          "data": "address",
-          "name": "address",
-          "orderable" : false,
-        },
-        {
-          "data": "sort",
-          "name": "sort",
+          "data": "award_status",
+          "name": "award_status",
           "orderable" : true,
         },
-
+        {
+          "data": "created_at",
+          "name": "created_at",
+          "orderable" : true,
+        },
         { 
           "data": "status",
           "name": "status",
@@ -61,25 +65,6 @@ var TableDatatablesAjax = function() {
             }
           }
         },
-        {
-          "data": "comment_list",
-          "name": "comment_list",
-          "orderable" : true,
-          render:function(data,type,full){
-            var str='';
-            if(data>0){
-              str='<a href="/admin/commentorg/'+full.id+'">'+data+'条评论</a>';
-            }
-            return str;
-          }
-        },
-        //{
-        //  "data": "id",
-        //  "name": "id",
-        //  render:function(res){
-        //      return '<a href="/admin/course/orgid/'+res+'">课程列表</a>';
-        //  }
-        //},
         { 
           "data": "actionButton",
           "name": "actionButton",
