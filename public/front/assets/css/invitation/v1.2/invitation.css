@@ -326,7 +326,7 @@ img {
   font-size: 26px;
 }
 #invitation .page .bg {
-  max-width: 70%;
+  max-height: 220px;
   margin-bottom: 10px;
 }
 #invitation .page .bg.second {
