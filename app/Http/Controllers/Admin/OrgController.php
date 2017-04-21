@@ -50,7 +50,7 @@ class OrgController extends Controller
     {
         $permissions = PermissionRepository::findPermissionWithArray();
         $roles = RoleRepository::findRoleWithObject();
-        $allCategories=TrainCategoryRepository::getAllTCategory();
+        $allCategories=TrainCategoryRepository::getAllTopCategory();
         return view('admin.org.create')->with(compact(['permissions','roles','allCategories']));
     }
 
@@ -64,9 +64,10 @@ class OrgController extends Controller
     public function store(CreateOrgRequest $request)
     {
         $id = OrgRepository::store($request);
-        $category = $request->category;
+        $category1 = $request->category1;
+        $category2 = $request->category2;
         $OrgCategory=new OrgCategoryRepository();
-        $OrgCategory->batchStore($category,$id);
+        $OrgCategory->batchStore( array_merge($category1, $category2),$id);
 
         $tags= $request->tags;  //标签
         $OrgTags=new OrgTagsReporsitory();
@@ -85,11 +86,12 @@ class OrgController extends Controller
     public function edit($id)
     {
         $org = OrgRepository::edit($id);
-        $allCategories=TrainCategoryRepository::getAllTCategory();
-        $myCategories=OrgRepository::getTrainCategoryIds($id);
+        $category1=TrainCategoryRepository::getAllTopCategory();
+        $categoryIds=OrgRepository::getTrainCategoryIds($id);
+        $category2=OrgRepository::getCategory2Info($id);
         $tags=OrgRepository::getTags($id);
         $org['tags']=$tags;
-        return view('admin.org.edit')->with(compact('org','allCategories','myCategories'));
+        return view('admin.org.edit')->with(compact('org','allCategories','category1','category2','categoryIds'));
     }
     /**
      * 修改机构资料
@@ -103,9 +105,10 @@ class OrgController extends Controller
     {
         OrgRepository::update($request,$id);
 
-        $category = $request->category;
+        $category1 = $request->category1;
+        $category2 = $request->category2;
         $OrgCategory=new OrgCategoryRepository();
-        $OrgCategory->batchStore($category,$id);
+        $OrgCategory->batchStore( array_merge($category1, $category2),$id);
 
         $tags= $request->tags;  //标签
         $OrgTags=new OrgTagsReporsitory();
@@ -150,13 +153,27 @@ class OrgController extends Controller
     public function show($id)
     {
         $org = BankeOrg::find($id);
-        $categories=OrgRepository::getCategoryInfo($id);
-        return view('admin.org.show')->with(compact('org','categories'));
+//        $categories=OrgRepository::getCategoryInfo($id);
+        $category1=OrgRepository::getCategory1Info($id);
+//        $categoryIds=OrgRepository::getTrainCategoryIds($id);
+        $category2=OrgRepository::getCategory2Info($id);
+        return view('admin.org.show')->with(compact('org','category1','category2'));
     }
 
     public function share_org_v1_2($id){
         $org = BankeOrg::find($id);
         return view('web.org.org')->with(compact(['org']));
+    }
+
+    /**
+     * 机构评论列表
+     * @author jimmy
+     * @date   2016-12-27
+     * @return [type]                   [description]
+     */
+    public function comments()
+    {
+        return view('admin.org.comment-list');
     }
 
 }

@@ -196,7 +196,7 @@ class CourseRepository
 	 */
 	public function show($id)
 	{
-		$course = BankeCourse::find($id)->toArray();
+		$course = BankeCourse::find($id);
 		return $course;
 	}
 

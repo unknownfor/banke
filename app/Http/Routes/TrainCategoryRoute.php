@@ -11,6 +11,9 @@ $router->group(['prefix' => 'traincategory'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
+
+	//根据父级找二级分类
+	$router->get('search_by_pid', 'TrainCategoryController@search_by_pid');
 });
 
 $router->resource('traincategory', 'TrainCategoryController');

@@ -95,6 +95,14 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="comment_award">{{trans('labels.course.comment_award')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" readonly class="form-control" value="{{$course['comment_award']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.course.check_in_days')}}</label>
                           <div class="col-md-9">
                               <input type="text" class="form-control" readonly value="{{$course['check_in_days']}}">

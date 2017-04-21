@@ -37,6 +37,15 @@
 
             $(document).on('click','.remove-img-btn', $.proxy(this,'deletCoverImg'));
 
+
+            //机构分类
+            $('.orgCategorySelectpicker').selectpicker({
+                liveSearchNormalize:true,
+                liveSearchPlaceholder:'输入名称进行搜索'
+            }).on('changed.bs.select', function (e) {
+                that.refressCategorySelect($('.orgCategorySelectpicker').val());
+            });
+
             //photoswipe   //图片信息查看  相册、视频信息查看
             new MyPhotoSwipe('.img-list-box');
         };
@@ -46,7 +55,7 @@
                 this.initEditor();
                 this.initImgsArr();  //定义100个图片id 数组。
                 this.initTags();
-
+                this.getCategory();
             },
 
             initTags:function(){
@@ -67,6 +76,15 @@
             getTags:function(){
                 var tags = this.tagsObj.getTags().join(';');
                 return tags
+            },
+
+            /*保存已经选择的分类 编辑的时候使用*/
+            getCategory:function(){
+                var arr=[];
+                $('.my-category2 .md-check').each(function(){
+                    arr.push($(this).val());
+                });
+                this.myCategory2=arr;
             },
 
             initEditor:function(){
@@ -327,6 +345,52 @@
                     arr.push($(this).find('a').attr('href'));
                 });
                 return arr;
+            },
+
+            //刷新分类列表
+            refressCategorySelect:function (arr){
+                var ids='-1';
+                if(arr){
+                    ids=arr.join(',');
+                }
+                var url='/admin/traincategory/search_by_pid',
+                    paraData={pid:ids},
+                    that=this;
+                this.getDataAsync(url,paraData,function(res){
+                    var str='',len=res.length,
+                        checkStr='',id;
+                    for(var i=0;i<len;i++){
+                        checkStr='';
+                        id=res[i].id+'';
+                        if($.inArray(id,that.myCategory2)>=0){
+                            checkStr='checked';
+                        }
+                        str+='<div class="col-md-4">'+
+                                '<div class="md-checkbox">'+
+                                    '<input type="checkbox" name="category2[]" '+ checkStr +' id="cate-'+id+'" value="'+id+'" class="md-check">'+
+                                    '<label for="cate-'+id+'" class="tooltips" data-placement="top" data-original-title="">'+
+                                    '<span></span>'+
+                                    '<span class="check"></span>'+
+                                    '<span class="box"></span>'+res[i].name+'</label>'+
+                                '</div>'+
+                            '</div>';
+                    }
+                    $('.my-category2').html(str);
+                })
+            },
+
+            //请求数据
+            getDataAsync:function(url,data,callback,type){
+                type = type ||'get';
+                data._token=$('input[name="_token"]').val();
+                $.ajax({
+                    type:type,
+                    url:url,
+                    data:data,
+                    success:function(res){
+                        callback(res);
+                    }
+                });
             },
 
             CLASS_NAME:'MyEditor'

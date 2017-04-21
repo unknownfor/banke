@@ -105,20 +105,21 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="category">{{trans('labels.org.category')}}</label>
-                                <div class="col-md-9">
-                                    @foreach($allCategories as $val)
-                                        <div class="col-md-4">
-                                            <div class="md-checkbox">
-                                                <input type="checkbox" name="category[]" id="cate-{{$val->id}}" value="{{$val->id}}" class="md-check">
-                                                <label for="cate-{{$val->id}}" class="tooltips" data-placement="top" data-original-title="">
-                                                    <span></span>
-                                                    <span class="check"></span>
-                                                    <span class="box"></span> {{$val->name}} </label>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.org.category1')}}</label>
+                                <div class="col-md-4">
+                                    <select name="category1[]" class="orgCategorySelectpicker show-tick form-control" data-live-search="true" multiple>
+                                        @if($allCategories)
+                                            @foreach($allCategories as $val)
+                                                <option value="{{$val->id}}" > {{$val->name}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
                                 </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="category">{{trans('labels.org.category2')}}</label>
+                                <div class="col-md-9 my-category2"></div>
                             </div>
 
                             <div class="form-group form-md-line-input">
@@ -127,6 +128,14 @@
                                 <div class="col-md-7">
                                     <div id="medium"></div>
                                     <input type="hidden" name="tags" id="tags">
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="comment_award">{{trans('labels.org.comment_award')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" min="0" max="100" step="0.1" class="form-control" id="comment_award" name="comment_award" placeholder="{{trans('labels.org.comment_award')}}">
+                                    <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 

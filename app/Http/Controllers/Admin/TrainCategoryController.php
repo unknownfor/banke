@@ -109,4 +109,17 @@ class TrainCategoryController extends Controller {
         TrainCategoryRepository::destroy($id);
         return redirect('admin/traincategory');
     }
+
+    /**
+     * 根据一级获得全部二级分类
+     * @author shaolei
+     * @date   2016-04-13T11:27:34+0800
+     * @param  [type]                   $id [description]
+     * @return [type]                       [description]
+     */
+    public function search_by_pid()
+    {
+        $data = TrainCategoryRepository::getAllSecondCategoryByPid();
+        return response()->json($data);
+    }
 }
