@@ -18,7 +18,7 @@ class BankeCommentOrg extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.org.action');
+        $this->action = config('admin.global.commentorg.action');
     }
 
     //评论人 实名后
@@ -29,5 +29,10 @@ class BankeCommentOrg extends Model
     //评论人 未实名
     public  function userInfo(){
         return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid');
+    }
+
+    //对应的机构
+    public  function orgInfo(){
+        return $this->hasOne('App\Models\Banke\BankeOrg','id','org_id');
     }
 }
