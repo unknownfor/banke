@@ -200,6 +200,10 @@ img {
   -ms-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
 }
+#invitation .container {
+  height: 100%;
+  overflow: hidden;
+}
 #invitation .page {
   height: 100%;
   -webkit-backface-visibility: hidden;

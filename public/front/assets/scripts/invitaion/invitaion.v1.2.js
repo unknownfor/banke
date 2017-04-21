@@ -7,6 +7,8 @@ $(function () {
 
     //填充信息，按钮变色
     $(document).on('input', '#phone-num', function(){
+        //window.scrollControl(false);
+        //禁止页面滚动
         var number=$(this).val(),
         reg = /^1(3|4|5|7|8)\d{9}$/;
         var $code=$('#phone-code-btn'),
@@ -33,10 +35,10 @@ $(function () {
             code=$('#user-code').val();
         if(reg.test(number)) {
             if(code!=''){
-                $btn.addClass('active');
+                //$btn.addClass('active');
                 $('.code-num').addClass('active');
             }else{
-                $btn.removeClass('active');
+                //$btn.removeClass('active');
                 $('.code-num').removeClass('active');
             }
         }else{
@@ -61,6 +63,7 @@ $(function () {
                     $btn.removeClass('active').addClass('nouse');
                     $('.password').removeClass('active');
                 }
+            //window.scrollControl(true);
         }
     });
 
