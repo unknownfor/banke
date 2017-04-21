@@ -172,13 +172,8 @@ class OrgController extends Controller
     public function show($id)
     {
         $org = BankeOrg::find($id);
-<<<<<<< HEAD
         $category1=OrgRepository::getCategory1InfoRead($id);
         $category2=OrgRepository::getCategory2InfoRead($id);
-=======
-        $category1=OrgRepository::getCategory1Info($id);
-        $category2=OrgRepository::getCategory2Info($id);
->>>>>>> v1.2
         return view('admin.org.show')->with(compact('org','category1','category2'));
     }
 
