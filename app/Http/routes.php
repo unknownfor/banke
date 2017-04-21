@@ -119,6 +119,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //教育分类
         require(__DIR__ . '/Routes/TrainCategoryRoute.php');
 
+        //机构评论
+        require(__DIR__ . '/Routes/CommentOrgRoute.php');
+
     });
 });
 

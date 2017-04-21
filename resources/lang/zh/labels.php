@@ -198,6 +198,10 @@ return [
 		'traincategoryShow' => '<i class="fa fa-search"></i> 分类详情',
 		'traincategoryCreate'=>'<i class="fa fa-user-plus"></i> 添加分类',
 		'traincategoryEdit' => '<i class="fa fa-pencil"></i> 编辑分类',
+
+		'commentorgList' => '<i class="fa fa-comments"></i>机构评论列表',
+		'commentorgShow' => '<i class="fa fa-search"></i> 机构评论详情',
+		'commentorgEdit' => '<i class="fa fa-check"></i> 审核机构评论',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -536,5 +540,17 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'list' => '分类列表',
+	],
+
+	'commentorg' => [
+		'id' => '序号',
+		'user_name' => '评论人',
+		'content' => '评论内容',
+		'star_counts' => '评分',
+		'award_status' => '奖励状态',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '评论列表',
 	],
 ];

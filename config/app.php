@@ -260,6 +260,7 @@ return [
         'DrawbackRepository' => App\Facades\DrawbackFacade::class,
         'BannerRepository' => App\Facades\BannerFacade::class,
         'TrainCategoryRepository' => App\Facades\TrainCategoryFacade::class,
+        'CommentOrgRepository' => App\Facades\CommentOrgFacade::class,
     ],
 
 ];
