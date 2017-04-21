@@ -207,6 +207,7 @@ class CourseRepository
 		return $course;
 	}
 
+
 	public function getCategoryName($id)
 	{
 		$category = BankeCourse::find($id)->category();

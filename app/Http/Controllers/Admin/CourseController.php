@@ -15,6 +15,7 @@ use PermissionRepository;
 use RoleRepository;
 use Illuminate\Support\Facades\Log;
 use TrainCategoryRepository;
+use OrgRepository;
 use App\Repositories\admin\CourseCategoryRepository;
 
 class CourseController extends Controller
@@ -52,8 +53,7 @@ class CourseController extends Controller
         $org = new BankeOrg;
         $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
         $percent=$this->getDict();
-        $allCategories=TrainCategoryRepository::getAllSecondCategory();
-        return view('admin.course.create')->with(compact(['orgs','percent','allCategories']));
+        return view('admin.course.create')->with(compact(['orgs','percent']));
     }
 
     /**
@@ -98,7 +98,7 @@ class CourseController extends Controller
         $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
         $course = BankeCourse::find($id);
         $percent=$this->getDict();
-        $allCategories=TrainCategoryRepository::getAllSecondCategory();
+        $allCategories=OrgRepository::getCategory2Info($course['org_id']);
         return view('admin.course.edit')->with(compact(['course', 'orgs','percent','allCategories']));
     }
     /**
@@ -182,6 +182,15 @@ class CourseController extends Controller
     public function search_by_org()
     {
         $data = CourseRepository::search_by_org();
+        return response()->json($data);
+    }
+
+
+    //根据机构id 获得可选的分类
+    public function getSecondCategoryByOrg()
+    {
+        $org_id = request('org_id', '');
+        $data = OrgRepository::getCategory2Info($org_id);
         return response()->json($data);
     }
 

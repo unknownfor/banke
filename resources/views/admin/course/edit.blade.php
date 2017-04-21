@@ -135,18 +135,19 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}} {{$course->category['cid']}}</label>
-                          <div class="col-md-9">
+                          <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}} </label>
+                          <input type="hidden" id="category-id" value="{{$course->category['cid']}}">
+                          <div class="col-md-9 my-category2">
                               @foreach($allCategories as $val)
                                   <div class="col-md-4">
                                       <div class="md-checkbox">
                                           <div class="md-radio">
-                                              <input type="radio" id="cate-{{$val->id}}" name="category_id" value="{{$val->id}}" class="md-radiobtn"
-                                                     @if($course->category['cid'] == $val->id) checked @endif>
-                                              <label for="cate-{{$val->id}}">
+                                              <input type="radio" id="cate-{{$val['id']}}" name="category_id" value="{{$val['id']}}" class="md-radiobtn"
+                                                     @if($course->category['cid'] == $val['id']) checked @endif>
+                                              <label for="cate-{{$val['id']}}">
                                                   <span></span>
                                                   <span class="check"></span>
-                                                  <span class="box"></span> {{$val->name}} </label>
+                                                  <span class="box"></span> {{$val['name']}} </label>
                                           </div>
                                       </div>
                                   </div>
