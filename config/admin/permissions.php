@@ -192,4 +192,11 @@ return[
 		'edit' 		=> 'admin.traincategory.edit',
 		'destroy' 	=> 'admin.traincategory.delete',
 	],
+
+	'commentorg' => [
+		'show' 		=> 'admin.commentorg.show',
+		'create' 	=> 'admin.commentorg.create',
+		'edit' 		=> 'admin.commentorg.edit',
+		'destroy' 	=> 'admin.commentorg.delete',
+	],
 ];

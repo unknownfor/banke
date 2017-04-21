@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeCommentOrg;
 use Carbon\Carbon;
 use Flash;
+use DB;
 /**
 * 机构评论
 */
@@ -46,7 +47,7 @@ class CommentOrgRepository
 
 		if ($comments) {
 			foreach ($comments as &$v) {
-				$v['actionButton'] = $v->getActionButtonAttribute(false);
+				$v['actionButton'] = $v->getActionButtonAttribute(true);
 				$v['user_name']=$v->realUserInfo['real_name'];
 				if(!$v['user_name']){
 					$v['user_name']=$v->userInfo['name'];
@@ -88,8 +89,13 @@ class CommentOrgRepository
 	 */
 	public function edit($id)
 	{
-		$comment = BankeNews::find($id);
+		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
+			$comment['user_name']=$comment->realUserInfo['real_name'];
+			if(!$comment['user_name']){
+				$comment['user_name']=$comment->userInfo['name'];
+			}
+			$comment['org_name']=$comment->orgInfo['name'];
 			$commentArray = $comment->toArray();
 			return $commentArray;
 		}
@@ -105,16 +111,25 @@ class CommentOrgRepository
 	 */
 	public function update($request,$id)
 	{
-		$comment = BankeNews::find($id);
+		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
-			if ($comment->fill($request->all())->save()) {
-				Flash::success(trans('alerts.news.updated_success'));
-				return true;
-			}
+			$comment=$comment->fill($request->all());
+			DB::transaction(function () use ($comment) {
+				//TODO 审核通过加钱
+				if ($comment->save()) {
+					Flash::success(trans('alerts.news.updated_success'));
+					return $comment['org_id'];
+				}
+			});
 			Flash::error(trans('alerts.news.updated_error'));
 			return false;
 		}
 		abort(404);
+	}
+
+	/*奖励用户*/
+	private function awardUser(){
+
 	}
 
 	/**

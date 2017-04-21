@@ -244,4 +244,11 @@ return[
 		'show' => true,
 		'action' => 'traincategory',
 	],
+
+	//机构评论
+	'commentorg' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		'action' => 'commentorg',
+	],
 ];
