@@ -59,6 +59,7 @@
                                 <label class="col-md-1 control-label" for="org_id">{{trans('labels.course.org_id')}}</label>
                                 <div class="col-md-4">
                                     <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
+                                        <option value="-1">选择机构</option>
                                         @if($orgs)
                                             @foreach($orgs as $org)
                                                 <option value="{{$org->id}}" > {{$org->name}}</option>
@@ -130,20 +131,7 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="category_id">{{trans('labels.course.category')}}</label>
-                                <div class="col-md-9">
-                                    @foreach($allCategories as $val)
-                                        <div class="col-md-4">
-                                            <div class="md-checkbox">
-                                                <div class="md-radio">
-                                                    <input type="radio" id="cate-{{$val->id}}" name="category_id" value="{{$val->id}}" class="md-radiobtn">
-                                                    <label for="cate-{{$val->id}}">
-                                                        <span></span>
-                                                        <span class="check"></span>
-                                                        <span class="box"></span> {{$val->name}} </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                                <div class="col-md-9 my-category2">
                                 </div>
                             </div>
 

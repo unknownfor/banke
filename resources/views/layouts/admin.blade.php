@@ -198,6 +198,20 @@
                 });
             }
 
+            //请求数据
+            window.getDataAsync=function(url,data,callback,type){
+                type = type ||'get';
+                data._token=$('input[name="_token"]').val();
+                $.ajax({
+                    type:type,
+                    url:url,
+                    data:data,
+                    success:function(res){
+                        callback(res);
+                    }
+                });
+            };
+
 
            
         </script>

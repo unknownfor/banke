@@ -4,9 +4,7 @@
 
 $(function(){
 
-        $('.orgSelectpicker').selectpicker({
-            liveSearchPlaceholder:'输入机构名称进行搜索'
-        });
+
 
         //设置查询时间
         var $inputEndedAt=$('#enddated_at'),
@@ -25,8 +23,10 @@ $(function(){
             val = new Date(val).format('yyyy-MM-dd');
             $inputEndedAt.val(val);
         }
-        /**定义一个MyEditor对象**/
-        var MyEditor=function(){
+
+
+        /**MyCourse**/
+        var MyCourse=function(){
             this.init();
             var that=this;
             /*上传文件*/
@@ -41,10 +41,16 @@ $(function(){
 
             $(document).on('click','.remove-cover-img', $.proxy(this,'deletCoverImg'));
 
+            $('.orgSelectpicker').selectpicker({
+                liveSearchPlaceholder:'输入机构名称进行搜索'
+            }).on('changed.bs.select', function (e) {
+                that.refressCategorySelect(e.currentTarget.value);
+            });
+
             //photoswipe   //图片信息查看  相册、视频信息查看
             new MyPhotoSwipe('.cover-list-box');
         };
-        MyEditor.prototype={
+        MyCourse.prototype={
 
             init:function(){
                 this.initEditor();
@@ -274,22 +280,54 @@ $(function(){
                 return arr;
             },
 
-            CLASS_NAME:'MyEditor'
+
+            //刷新分类列表
+            refressCategorySelect:function (id){
+                var url='/admin/course/getSecondCategoryByOrg',
+                    paraData={org_id:id},
+                    that=this;
+                var categoryId=$('#category-id').val();
+                window.getDataAsync(url,paraData,function(res){
+                    var str='',len=res.length,
+                        checkStr='',id;
+                    for(var i=0;i<len;i++){
+                        checkStr='';
+                        id=res[i].id;
+                        if(categoryId==id){
+                            checkStr='checked';
+                        }
+                        str+='<div class="col-md-4">'+
+                                '<div class="md-checkbox">'+
+                                    '<div class="md-radio">'+
+                                        '<input type="radio" id="cate-'+id+'" name="category_id" value="'+id+'" class="md-radiobtn" '+checkStr+'>'+
+                                        '<label for="cate-'+id+'">'+
+                                        '<span></span>'+
+                                        '<span class="check"></span>'+
+                                        '<span class="box"></span> '+res[i].name+' </label>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>';
+                    }
+                    $('.my-category2').html(str);
+                })
+            },
+
+            CLASS_NAME:'MyCourse'
 
         };
 
-        var editor;
-        initEditor();
+        var course;
+        initCourse();
 
-        function initEditor() {
-            editor=new MyEditor();
+        function initCourse() {
+            course=new MyCourse();
         }
 
         //初始化编辑器内容
         setEditorVal();
         function setEditorVal(){
             var val=$('#target-area').text();
-            editor.setValue(val);
+            course.setValue(val);
         }
 
         setIntroduce();
@@ -308,10 +346,10 @@ $(function(){
 
         //提交编辑
         window.setDataBeforeCommit=function(){
-            var val=editor.getValue();
+            var val=course.getValue();
             val=val.replace(/\n/g,"<br/>");
             $('#target-area').text(val);
             //相册
-            $('#cover').val(editor.getCoverImg().join(','));
+            $('#cover').val(course.getCoverImg().join(','));
         };
 });

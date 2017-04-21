@@ -81,7 +81,7 @@
             /*保存已经选择的分类 编辑的时候使用*/
             getCategory:function(){
                 var arr=[];
-                $('.my-category2 .md-check').each(function(){
+                $('.my-category2 .md-check.checked').each(function(){
                     arr.push($(this).val());
                 });
                 this.myCategory2=arr;

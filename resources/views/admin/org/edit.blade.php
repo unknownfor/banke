@@ -136,9 +136,9 @@
                                 <label class="col-md-1 control-label" for="org_name">{{trans('labels.org.category1')}}</label>
                                 <div class="col-md-4">
                                     <select name="category1[]" class="orgCategorySelectpicker show-tick form-control" data-live-search="true" multiple>
-                                        @if($category1)
-                                            @foreach($category1 as $val)
-                                                <option value="{{$val->id}}" @if(in_array($val->id,$categoryIds)) selected @endif> {{$val->name}}</option>
+                                        @if($org['category1'])
+                                            @foreach($org['category1'] as $val)
+                                                <option value="{{$val['id']}}" @if($val['flag']==true) selected @endif> {{$val['name']}}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -148,14 +148,18 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="category">{{trans('labels.org.category2')}}</label>
                                 <div class="col-md-9 my-category2">
-                                    @foreach($category2 as $val)
+                                    @foreach($org['category2'] as $val)
                                         <div class="col-md-4">
                                             <div class="md-checkbox">
-                                                <input type="checkbox" name="category2[]" id="cate-{{$val->id}}" value="{{$val->id}}" class="md-check" checked>
-                                                <label for="cate-{{$val->id}}" class="tooltips" data-placement="top" data-original-title="">
+                                                @if($val['flag']==true)
+                                                    <input type="checkbox" name="category2[]" id="cate-{{$val['id']}}" value="{{$val['id']}}" class="md-check checked" checked>
+                                                    @else
+                                                    <input type="checkbox" name="category2[]" id="cate-{{$val['id']}}" value="{{$val['id']}}" class="md-check">
+                                                @endif
+                                                <label for="cate-{{$val['id']}}" class="tooltips" data-placement="top" data-original-title="">
                                                     <span></span>
                                                     <span class="check"></span>
-                                                    <span class="box"></span> {{$val->name}} </label>
+                                                    <span class="box"></span> {{$val['name']}} </label>
                                             </div>
                                         </div>
                                     @endforeach

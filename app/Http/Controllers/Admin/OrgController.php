@@ -66,6 +66,15 @@ class OrgController extends Controller
         $id = OrgRepository::store($request);
         $category1 = $request->category1;
         $category2 = $request->category2;
+
+        $newArr=Array();
+        if(!$category1){
+            $category1=$newArr;
+        }
+        if(!$category2){
+            $category2=$newArr;
+        }
+
         $OrgCategory=new OrgCategoryRepository();
         $OrgCategory->batchStore( array_merge($category1, $category2),$id);
 
@@ -86,12 +95,15 @@ class OrgController extends Controller
     public function edit($id)
     {
         $org = OrgRepository::edit($id);
-        $category1=TrainCategoryRepository::getAllTopCategory();
-        $categoryIds=OrgRepository::getTrainCategoryIds($id);
-        $category2=OrgRepository::getCategory2Info($id);
+        $category1=OrgRepository::getCategory1Info($id);  //所有顶级分类
+//        $categoryIds=OrgRepository::getTrainCategoryIds($id);  //我的顶级分类
+        $category2=OrgRepository::getCategory2Info($id); //我的二级分类
+//        $currentCategory=OrgRepository::getCategory2Info($id);
         $tags=OrgRepository::getTags($id);
         $org['tags']=$tags;
-        return view('admin.org.edit')->with(compact('org','allCategories','category1','category2','categoryIds'));
+        $org['category1']=$category1;
+        $org['category2']=$category2;
+        return view('admin.org.edit')->with(compact('org'));
     }
     /**
      * 修改机构资料
@@ -107,6 +119,13 @@ class OrgController extends Controller
 
         $category1 = $request->category1;
         $category2 = $request->category2;
+        $newArr=Array();
+        if(!$category1){
+            $category1=$newArr;
+        }
+        if(!$category2){
+            $category2=$newArr;
+        }
         $OrgCategory=new OrgCategoryRepository();
         $OrgCategory->batchStore( array_merge($category1, $category2),$id);
 
@@ -153,10 +172,8 @@ class OrgController extends Controller
     public function show($id)
     {
         $org = BankeOrg::find($id);
-//        $categories=OrgRepository::getCategoryInfo($id);
-        $category1=OrgRepository::getCategory1Info($id);
-//        $categoryIds=OrgRepository::getTrainCategoryIds($id);
-        $category2=OrgRepository::getCategory2Info($id);
+        $category1=OrgRepository::getCategory1InfoRead($id);
+        $category2=OrgRepository::getCategory2InfoRead($id);
         return view('admin.org.show')->with(compact('org','category1','category2'));
     }
 
@@ -175,5 +192,4 @@ class OrgController extends Controller
     {
         return view('admin.org.comment-list');
     }
-
 }
