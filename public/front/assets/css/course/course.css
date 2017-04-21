@@ -467,6 +467,14 @@ img {
 .class-info > img {
   max-width: 100%;
 }
+.class-info-share {
+  color: #383D43;
+  line-height: 22px;
+  margin-bottom: 80px;
+}
+.class-info-share > img {
+  max-width: 100%;
+}
 .call-mask {
   max-width: 900px;
   height: 100%;
