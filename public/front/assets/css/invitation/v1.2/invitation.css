@@ -313,7 +313,7 @@ img {
   font-size: 26px;
 }
 #invitation .page .bg {
-  max-height: 220px;
+  max-height: 210px;
   margin-bottom: 10px;
 }
 #invitation .page .bg.second {
@@ -352,6 +352,7 @@ img {
   color: #FFFFFF;
   width: 100%;
   height: 40px;
+  font-size: 14px;
 }
 #invitation .page .box {
   text-align: left;
