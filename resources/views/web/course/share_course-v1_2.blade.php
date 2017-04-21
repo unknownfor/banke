@@ -67,7 +67,7 @@
 </div>
 <!--课程介绍-->
 @if($course['details'])
-    <div class="class-info container">
+    <div class="class-info-share container">
         <div class="container-head">
             <span>课程介绍</span>
         </div>
