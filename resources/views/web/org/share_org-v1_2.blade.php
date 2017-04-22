@@ -57,7 +57,7 @@
 </div>
 <!--课程介绍-->
 @if($org['details'])
-<div class="class-info container">
+<div class="class-info-share container">
     <div class="class-info-box container-box">
         {!!$org['details']!!}
 </div>
