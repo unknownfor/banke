@@ -22,17 +22,17 @@ class BankeCommentOrg extends Model
     }
 
     //评论人 实名后
-    public  function realUserInfo(){
+    public  function authenUser(){
         return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','uid');
     }
 
     //评论人 未实名
-    public  function userInfo(){
+    public  function user(){
         return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid');
     }
 
     //对应的机构
-    public  function orgInfo(){
+    public  function org(){
         return $this->hasOne('App\Models\Banke\BankeOrg','id','org_id');
     }
 }

@@ -51,15 +51,16 @@ return[
 		'action' => 'permission',
 	],
 	'balance_log' => [
-		'WITHDRAW' => '提现',
-		'CHECK_IN_SUCCESS' => '打卡奖励',
-		'INVITE_FRIEND_ENROL_SUCCESS' => '邀请报名成功奖励',
-		'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS' => '邀请认证成功奖励',
-		'REGISTER_AND_CERTIFICATE_SUCCESS' => ' 注册奖励',
-		'USER_CERTIFICATE_SUCCESS' => '邀请注册奖励',
-		'PUNISHMENT' => '惩罚',
-		'REFUND' => '退款',
-		'WITHDRAW_FAIL' => '提现失败退回'
+		['key'=>'WITHDRAW','desc' => '提现'],
+		['key'=>'CHECK_IN_SUCCESS','desc' => '打卡奖励'],
+		['key'=>'INVITE_FRIEND_ENROL_SUCCESS','desc' => '邀请报名成功奖励'],
+		['key'=>'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS','desc' => '邀请认证成功奖励'],
+		['key'=>'REGISTER_AND_CERTIFICATE_SUCCESS','desc' => ' 注册并认证奖励'],
+		['key'=>'REGISTER_SUCCESS','desc' => '注册奖励'],
+		['key'=>'PUNISHMENT','desc' => '惩罚'],
+		['key'=>'REFUND','desc' => '退款'],
+		['key'=>'WITHDRAW_FAIL','desc' => '提现失败退回'],
+		['key'=>'COMMENT','desc' => '评论奖励'],
 	],
 	//角色
 	'role' => [

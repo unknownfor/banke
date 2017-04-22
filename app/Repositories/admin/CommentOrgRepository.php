@@ -4,6 +4,10 @@ use App\Models\Banke\BankeCommentOrg;
 use Carbon\Carbon;
 use Flash;
 use DB;
+use App\Repositories\admin\AppUserRepository;
+use League\Flysystem\Exception;
+use App\Models\Banke\BankeMessage;
+
 /**
 * 机构评论
 */
@@ -48,9 +52,9 @@ class CommentOrgRepository
 		if ($comments) {
 			foreach ($comments as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
-				$v['user_name']=$v->realUserInfo['real_name'];
+				$v['user_name']=$v->authenUser['real_name'];
 				if(!$v['user_name']){
-					$v['user_name']=$v->userInfo['name'];
+					$v['user_name']=$v->user['name'];
 				}
 			}
 		}
@@ -91,11 +95,11 @@ class CommentOrgRepository
 	{
 		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
-			$comment['user_name']=$comment->realUserInfo['real_name'];
+			$comment['user_name']=$comment->authenUser['real_name'];
 			if(!$comment['user_name']){
-				$comment['user_name']=$comment->userInfo['name'];
+				$comment['user_name']=$comment->user['name'];
 			}
-			$comment['org_name']=$comment->orgInfo['name'];
+			$comment['org_name']=$comment->org['name'];
 			$commentArray = $comment->toArray();
 			return $commentArray;
 		}
@@ -109,28 +113,68 @@ class CommentOrgRepository
 	 * @param  [type]                   $id      [description]
 	 * @return [type]                            [description]
 	 */
-	public function update($request,$id)
+	public function updateComment($request,$id)
 	{
 		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
 			$comment=$comment->fill($request->all());
 			DB::transaction(function () use ($comment,$request) {
-				//TODO 审核通过加钱
-				$this->awardUser($comment,$request);
-				if ($comment->save()) {
-					Flash::success(trans('alerts.news.updated_success'));
-					return $comment['org_id'];
+				try {
+					//TODO 审核通过加钱
+					$this->awardUser($comment, $request);
+					if ($comment->save()) {
+						Flash::success(trans('alerts.org.updated_success'));
+						return $comment['org_id'];
+					}
+				}catch (Exception $e){
+					Flash::error(trans('alerts.app_user.certificate_error'));
+					var_dump($e);
+					return false;
 				}
 			});
-			Flash::error(trans('alerts.news.updated_error'));
-			return false;
+			return $comment['org_id'];
+		}else {
+			abort(404);
 		}
-		abort(404);
 	}
 
 	/*奖励用户*/
 	private function awardUser($comment,$request){
-		if($comment['award_statsu']){}
+		if($this->isAward($comment,$request)){
+			$org=$comment->org;
+			$comment_award=$org['comment_award'];  //当前机构的奖励金额
+			if(!$comment_award){
+				$comment_award=0;
+			}
+			$userRepository=new AppUserRepository;
+			$userRepository->execUpdateUserAccountInfo($comment['uid'],$comment_award,1,4);  //更新用户账户金额信息以及添加变动记录
+
+			//消息记录
+			$message = [
+				'status'=>1,
+				'uid'=>$comment['uid'],
+				'title'=>'评论奖励',
+				'content'=>'感谢您对机构"'.$org['name'].'" 的精彩评论,平台已奖励您' .$comment_award.'元现金，快去现金钱包里查看吧！',
+				'type'=>'COMMENT'
+			];
+			//记录消息
+			BankeMessage::create($message);
+		}
+		return true;
+	}
+
+	//是否可以奖励 同一个人，同个机构只能打赏一次
+	private function isAward($comment,$request){
+		$flag1=$comment['award_statsu']==0 && $request['award_status']==1;  //更新状态为奖励
+
+		$org_id=$comment['org_id'];
+		$uid=$comment['uid'];
+		//同一个人，同个机构之前没有打赏过
+		$flag2=BankeCommentOrg::where('uid',$uid)
+				->where('org_id',$org_id)
+				->where('award_status',1)->count()==0;
+
+		return $flag1 && $flag2;
 	}
 
 	/**

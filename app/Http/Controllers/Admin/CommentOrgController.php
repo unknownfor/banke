@@ -64,7 +64,7 @@ class CommentOrgController extends Controller
      */
     public function update(CommentOrgRequest $request,$id)
     {
-        $oid = CommentOrgRepository::update($request,$id);
+        $oid = CommentOrgRepository::updateComment($request,$id);
         return redirect('admin/commentorg/'.$oid);
     }
 

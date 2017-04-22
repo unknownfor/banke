@@ -79,14 +79,14 @@
                                 <div class="col-md-9">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
-                                            <input type="radio" id="award_status1" name="award_status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($commentorg['award_status'] == config('admin.global.status.active')) checked @endif>
+                                            <input type="radio" id="award_status1" name="award_status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($commentorg['award_status'] == config('admin.global.status.active')) checked disabled @endif>
                                             <label for="award_status1">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span>奖励</label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="award_status2" name="award_status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($commentorg['award_status'] === config('admin.global.status.audit')) checked @endif>
+                                            <input type="radio" id="award_status2" name="award_status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($commentorg['award_status'] == config('admin.global.status.audit')) checked @else disabled @endif>
                                             <label for="award_status2">
                                                 <span></span>
                                                 <span class="check"></span>

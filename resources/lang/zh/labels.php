@@ -547,7 +547,7 @@ return [
 		'user_name' => '评论人',
 		'content' => '评论内容',
 		'star_counts' => '评分',
-		'award_status' => '奖励状态',
+		'award_status' => '打赏状态',
 		'status' => '状态',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
