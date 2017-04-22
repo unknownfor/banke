@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class BankeCommentCourse extends Model
 {
     //
-    protected $table = 'banke_commnet_course';
+    protected $table = 'banke_comment_course';
     use ActionAttributeTrait;
     protected $fillable = [
-        'status','operator_id'
+        'status','award_status','operator_id'
     ];
 
     private $action;
@@ -19,5 +19,15 @@ class BankeCommentCourse extends Model
     {
         parent::__construct($attributes);
         $this->action = config('admin.global.course.action');
+    }
+
+    //评论人 实名后
+    public  function authenUser(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','uid');
+    }
+
+    //评论人 未实名
+    public  function user(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid');
     }
 }

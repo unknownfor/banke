@@ -261,6 +261,7 @@ return [
         'BannerRepository' => App\Facades\BannerFacade::class,
         'TrainCategoryRepository' => App\Facades\TrainCategoryFacade::class,
         'CommentOrgRepository' => App\Facades\CommentOrgFacade::class,
+        'CommentCourseRepository' => App\Facades\CommentCourseFacade::class,
     ],
 
 ];

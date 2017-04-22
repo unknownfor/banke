@@ -252,4 +252,11 @@ return[
 		'show' => true,
 		'action' => 'commentorg',
 	],
+
+	//机构评论
+	'commentcourse' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		'action' => 'commentcourse',
+	],
 ];

@@ -122,6 +122,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //机构评论
         require(__DIR__ . '/Routes/CommentOrgRoute.php');
 
+         //课程评论
+        require(__DIR__ . '/Routes/CommentCourseRoute.php');
+
     });
 });
 

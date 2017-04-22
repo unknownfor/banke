@@ -35,12 +35,12 @@
             <div class="portlet-title">
             <div class="caption">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.commentorg.list')}}</span>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.commentcourse.list')}}</span>
               <span class="label label-warning">{{$name}}</span>
             </div>
           </div>
             <div class="search-box filter">
-                <input type="hidden" class="form-control form-filter" name="id" value="{{$oid}}">
+                <input type="hidden" class="form-control form-filter" name="id" value="{{$cid}}">
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
@@ -88,7 +88,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/commentorg/list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/commentcourse/list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {

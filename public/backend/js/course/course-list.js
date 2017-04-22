@@ -46,11 +46,18 @@ var TableDatatablesAjax = function() {
           "name": "price",
           "orderable" : false,
         },
-        //{
-        //  "data": "percent",
-        //  "name": "percent",
-        //  "orderable" : false,
-        //},
+        {
+          "data": "comment_list",
+          "name": "comment_list",
+          "orderable" : false,
+          render:function(data,type,full){
+            var str='';
+            if(data>0){
+              str='<a href="/admin/commentcourse/'+full.id+'">'+data+'条评论</a>';
+            }
+            return str;
+          }
+        },
         //{
         //  //"data": "price | percent",
         //  "data": "price",

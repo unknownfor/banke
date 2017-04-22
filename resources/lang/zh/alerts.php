@@ -212,4 +212,11 @@ return [
         'soft_deleted_error' => '删除评论失败',
     ],
 
+    'commentcourse' => [
+        'updated_success'   => '审核评论成功.',
+        'updated_error'     => '审核评论失败.',
+        'soft_deleted_success' => '删除评论成功',
+        'soft_deleted_error' => '删除评论失败',
+    ],
+
 ];
