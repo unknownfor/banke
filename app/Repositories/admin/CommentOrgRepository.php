@@ -114,8 +114,9 @@ class CommentOrgRepository
 		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
 			$comment=$comment->fill($request->all());
-			DB::transaction(function () use ($comment) {
+			DB::transaction(function () use ($comment,$request) {
 				//TODO 审核通过加钱
+				$this->awardUser($comment,$request);
 				if ($comment->save()) {
 					Flash::success(trans('alerts.news.updated_success'));
 					return $comment['org_id'];
@@ -128,8 +129,8 @@ class CommentOrgRepository
 	}
 
 	/*奖励用户*/
-	private function awardUser(){
-
+	private function awardUser($comment,$request){
+		if($comment['award_statsu']){}
 	}
 
 	/**
