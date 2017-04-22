@@ -47,7 +47,7 @@
             <div class="address-detail">{{$org['address']}}</div>
         </div>
         <div class="address-call">
-            <a href="tel:{{$org['tel_phone']}}}}">
+            <a href="tel:{{$org['tel_phone']}}">
                 <div id="address-call-box">
                     <div id="img"></div>
                 </div>
@@ -57,7 +57,7 @@
 </div>
 <!--课程介绍-->
 @if($org['details'])
-<div class="class-info container">
+<div class="class-info-share container">
     <div class="class-info-box container-box">
         {!!$org['details']!!}
 </div>
