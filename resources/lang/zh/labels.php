@@ -572,6 +572,6 @@ return [
 		'updated_at' => '修改时间',
 		'list' => '评论列表',
 		'show'=>'查看详情',
-		'org_name'=>'评论课程',
+		'course_name'=>'评论课程',
 	],
 ];

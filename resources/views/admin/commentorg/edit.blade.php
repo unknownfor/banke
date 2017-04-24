@@ -86,6 +86,7 @@
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.commentorg.award_status')}}</label>
                                 <div class="col-md-9">
                                     <div class="md-radio-inline">
+                                        <span class="label label-warning">￥{{$commentorg['comment_award']}}</span>
                                         <div class="md-radio">
                                             <input type="radio" id="award_status1" name="award_status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($commentorg['award_status'] == config('admin.global.status.active')) checked disabled @endif>
                                             <label for="award_status1">

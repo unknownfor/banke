@@ -100,6 +100,7 @@ class CommentOrgRepository
 				$comment['user_name']=$comment->user['name'];
 			}
 			$comment['org_name']=$comment->org['name'];
+			$comment['comment_award']=$comment->org['comment_award'];
 			$commentArray = $comment->toArray();
 			return $commentArray;
 		}
@@ -117,11 +118,12 @@ class CommentOrgRepository
 	{
 		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
-			$comment=$comment->fill($request->all());
 			DB::transaction(function () use ($comment,$request) {
 				try {
+					$oldAwardStatus=$comment['award_status'];
+					$comment=$comment->fill($request->all());
 					//TODO 审核通过加钱
-					$this->awardUser($comment, $request);
+					$this->awardUser($oldAwardStatus,$comment, $request);
 					if ($comment->save()) {
 						Flash::success(trans('alerts.org.updated_success'));
 						return $comment['org_id'];
@@ -139,33 +141,32 @@ class CommentOrgRepository
 	}
 
 	/*奖励用户*/
-	private function awardUser($comment,$request){
-		if($this->isAward($comment,$request)){
+	private function awardUser($oldAwardStatus,$comment,$request){
+		if($this->isAward($oldAwardStatus,$comment,$request)){
 			$org=$comment->org;
 			$comment_award=$org['comment_award'];  //当前机构的奖励金额
-			if(!$comment_award){
-				$comment_award=0;
-			}
-			$userRepository=new AppUserRepository;
-			$userRepository->execUpdateUserAccountInfo($comment['uid'],$comment_award,1,4);  //更新用户账户金额信息以及添加变动记录
+			if($comment_award) {
+				$userRepository = new AppUserRepository;
+				$userRepository->execUpdateUserAccountInfo($comment['uid'], $comment_award, 1, 4);  //更新用户账户金额信息以及添加变动记录
 
-			//消息记录
-			$message = [
-				'status'=>1,
-				'uid'=>$comment['uid'],
-				'title'=>'评论奖励',
-				'content'=>'感谢您对机构"'.$org['name'].'" 的精彩评论,平台已奖励您' .$comment_award.'元现金，快去现金钱包里查看吧！',
-				'type'=>'COMMENT'
-			];
-			//记录消息
-			BankeMessage::create($message);
+				//消息记录
+				$message = [
+					'status' => 1,
+					'uid' => $comment['uid'],
+					'title' => '评论奖励',
+					'content' => '感谢您对机构"' . $org['name'] . '" 的精彩评论,平台已奖励您' . $comment_award . '元现金，快去现金钱包里查看吧！',
+					'type' => 'COMMENT'
+				];
+				//记录消息
+				BankeMessage::create($message);
+			}
 		}
 		return true;
 	}
 
 	//是否可以奖励 同一个人，同个机构只能打赏一次
-	private function isAward($comment,$request){
-		$flag1=$comment['award_statsu']==0 && $request['award_status']==1;  //更新状态为奖励
+	private function isAward($oldAwardStatus,$comment,$request){
+		$flag1=$oldAwardStatus==0 && $request['award_status']==1;  //更新状态为奖励
 
 		$org_id=$comment['org_id'];
 		$uid=$comment['uid'];

@@ -22,7 +22,7 @@
           <i class="fa fa-angle-right"></i>
       </li>
       <li>
-          <span>{!! trans('labels.breadcrumb.commentorgList') !!}</span>
+          <span>{!! trans('labels.breadcrumb.commentcourseList') !!}</span>
       </li>
   </ul>
 </div>
@@ -45,8 +45,8 @@
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
                             <option value="" data-icon="fa-glass icon-success">状态....</option>
-                            @if(trans('strings.commentorg'))
-                                @foreach(trans('strings.commentorg') as $status_key => $status_value)
+                            @if(trans('strings.commentcourse'))
+                                @foreach(trans('strings.commentcourse') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif
@@ -66,12 +66,12 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>id</th>
-                          <th width="8%"> {{ trans('labels.commentorg.user_name') }} </th>
-                          <th width="35%"> {{ trans('labels.commentorg.content') }} </th>
-                          <th width="8%"> {{ trans('labels.commentorg.star_counts') }} </th>
-                          <th width="10%"> {{ trans('labels.commentorg.award_status') }} </th>
-                          <th width="8%"> {{ trans('labels.commentorg.created_at') }} </th>
-                          <th width="8%"> {{ trans('labels.commentorg.status') }} </th>
+                          <th width="8%"> {{ trans('labels.commentcourse.user_name') }} </th>
+                          <th width="35%"> {{ trans('labels.commentcourse.content') }} </th>
+                          <th width="8%"> {{ trans('labels.commentcourse.star_counts') }} </th>
+                          <th width="10%"> {{ trans('labels.commentcourse.award_status') }} </th>
+                          <th width="8%"> {{ trans('labels.commentcourse.created_at') }} </th>
+                          <th width="8%"> {{ trans('labels.commentcourse.status') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>

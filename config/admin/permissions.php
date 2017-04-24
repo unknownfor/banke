@@ -199,4 +199,12 @@ return[
 		'edit' 		=> 'admin.commentorg.edit',
 		'destroy' 	=> 'admin.commentorg.delete',
 	],
+
+	'commentcourse' => [
+		'show' 		=> 'admin.commentcourse.show',
+		'create' 	=> 'admin.commentcourse.create',
+		'edit' 		=> 'admin.commentcourse.edit',
+		'destroy' 	=> 'admin.commentcourse.delete',
+	],
+
 ];

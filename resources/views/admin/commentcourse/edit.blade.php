@@ -82,8 +82,9 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.commentcourse.award_status')}}</label>
-                                <div class="col-md-9">
+                                <div class="col-md-3">
                                     <div class="md-radio-inline">
+                                        <span class="label label-warning">￥{{$commentcourse['comment_award']}}</span>
                                         <div class="md-radio">
                                             <input type="radio" id="award_status1" name="award_status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($commentcourse['award_status'] == config('admin.global.status.active')) checked disabled @endif>
                                             <label for="award_status1">
