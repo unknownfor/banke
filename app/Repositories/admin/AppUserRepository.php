@@ -544,4 +544,92 @@ class AppUserRepository
 		return $user;
 	}
 
+
+	/*
+	 * 更新用户的余额信息,更新用户信息以及添加余额变动记录
+	 * 情况分为两大种 ：任务(1) , 打卡(2) cms 中没有,提现（3），惩罚（4）
+	 * 任务奖励包括：
+	 * 1：认证奖励，注册奖励金额+20，账户总额 + 20；
+	 * 2：邀请好友注册并认证，邀请人有奖励 +5 元
+	 * 3: 邀请好友报名课程
+	 * 3：评论机构、课程给予奖励
+	 *
+		 * 'balance_log' => [
+				'WITHDRAW' => '提现',
+				'CHECK_IN_SUCCESS' => '打卡奖励',
+				'INVITE_FRIEND_ENROL_SUCCESS' => '邀请报名成功奖励',
+				'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS' => '邀请认证成功奖励',
+				'REGISTER_AND_CERTIFICATE_SUCCESS' => ' 注册并认证奖励',
+				'REGISTER_SUCCESS' => '注册奖励',
+				'PUNISHMENT' => '惩罚',
+				'REFUND' => '退款',
+				'WITHDRAW_FAIL' => '提现失败退回',
+				'COMMENT'=>'评论奖励'
+			],
+		 *
+	 */
+	public function execUpdateUserAccountInfo($uid,$award,$type,$taskType){
+		$user_profile = BankeUserProfiles::find($uid);//更新用户表
+		$changeType='+';  //余额添加还是减
+		$businessTypeIndex='-1';  //事务类型，下标对应 config->admin->balance_log 数组
+
+		if($type==1){
+			$user_profile->account_balance += $award;  //总余额 +
+			switch($taskType){
+				case 1://认证奖励，
+					$user_profile->register_amount += $award;
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=4;
+					break;
+				case 2: //邀请好友注册并认证
+					$user_profile->invitation_amount+=$award;
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=3;
+					break;
+				case 3:  //邀请好友报名课程
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=2;
+					break;
+				case 4:  //评论机构、课程
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=9;
+					break;
+				default:
+					break;
+			}
+		}
+		//提现
+		else if($type==3){
+			$user_profile->account_balance -= $award;  //总余额 +
+			$user_profile->total_withdraw_amount += $award;  //总提现余额 +
+			$user_profile->withdraw_amount = $award;  //当前提现余额 +
+			$changeType='-';
+			$businessTypeIndex=0;
+		}
+
+		//惩罚
+		else if($type==4){
+			//TODO 还在规划
+		}
+
+		$user_profile->save();
+
+
+		//记录余额变动日志
+		$cur_user = Auth::user();
+		$operator_uid = $cur_user->id;
+
+		//事务类型
+		$business_type=config('admin.global.balance_log')[$businessTypeIndex]['key'];
+		$balance_log = [
+			'uid'=>$uid,
+			'change_amount'=>$award,
+			'change_type'=>$changeType,
+			'business_type'=>$business_type,
+			'operator_uid'=>$operator_uid
+		];
+		//记录余额变动日志
+		BankeBalanceLog::create($balance_log);
+	}
+
 }

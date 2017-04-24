@@ -7,9 +7,9 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/commentorg/ajaxIndex',
+        'url' : '/admin/commentcourse/ajaxIndex',
         "data": function ( d ) {
-          d.oid =$('.filter input[name="id"]').val().replace(/(^\s*)|(\s*$)/g, "");
+          d.cid =$('.filter input[name="id"]').val().replace(/(^\s*)|(\s*$)/g, "");
           //d.city =$('.filter input[name="city"]').val().replace(/(^\s*)|(\s*$)/g, "");
           //d.status = $('.filter select[name="status"] option:selected').val();
         }
@@ -44,7 +44,7 @@ var TableDatatablesAjax = function() {
         {
           "data": "award_status",
           "name": "award_status",
-          "orderable" : true,
+          "orderable" : false,
           render:function(data){
             var str='';
             if(data==1) {

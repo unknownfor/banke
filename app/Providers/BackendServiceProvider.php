@@ -149,5 +149,10 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('CommentOrgRepository', function($app){
             return new \App\Repositories\admin\CommentOrgRepository();
         });
+
+        //课程评论分类
+        $this->app->singleton('CommentCourseRepository', function($app){
+            return new \App\Repositories\admin\CommentCourseRepository();
+        });
     }
 }

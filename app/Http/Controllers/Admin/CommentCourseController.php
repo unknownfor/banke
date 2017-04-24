@@ -5,29 +5,27 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
-use CommentOrgRepository;
-use App\Http\Requests\CommentOrgRequest;
+use CommentCourseRepository;
+use App\Http\Requests\CommentCourseRequest;
 use PermissionRepository;
 use RoleRepository;
 use TrainCategoryRepository;
-use App\Repositories\admin\OrgCategoryRepository;
-use App\Repositories\admin\OrgTagsReporsitory;
 use Illuminate\Support\Facades\Log;
-use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeCourse;
 
-class CommentOrgController extends Controller
+class CommentCourseController extends Controller
 {
 	/**
-     * 机构评论列表
+     * 课程评论列表
      * @author jimmy
      * @date   2016-12-27
      * @return [type]                   [description]
      */
     public function show($id)
     {
-        $oid=$id;
-        $name=BankeOrg::find($id)['name'];
-        return view('admin.commentorg.list')->with(compact('oid','name'));
+        $cid=$id;
+        $name=BankeCourse::find($id)['name'];
+        return view('admin.commentcourse.list')->with(compact('cid','name'));
     }
 
     /**
@@ -38,7 +36,7 @@ class CommentOrgController extends Controller
      */
     public function ajaxIndex()
     {
-        $data = CommentOrgRepository::ajaxIndex();
+        $data = CommentCourseRepository::ajaxIndex();
         return response()->json($data);
     }
 
@@ -51,8 +49,8 @@ class CommentOrgController extends Controller
      */
     public function edit($id)
     {
-        $commentorg = CommentOrgRepository::edit($id);
-        return view('admin.commentorg.edit')->with(compact('commentorg'));
+        $commentcourse = CommentCourseRepository::edit($id);
+        return view('admin.commentcourse.edit')->with(compact('commentcourse'));
     }
     /**
      * 修改机构资料
@@ -62,14 +60,14 @@ class CommentOrgController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(CommentOrgRequest $request,$id)
+    public function update(CommentCourseRequest $request,$id)
     {
-        $oid = CommentOrgRepository::updateComment($request,$id);
-        return redirect('admin/commentorg/'.$oid);
+        $oid = CommentCourseRepository::updateComment($request,$id);
+        return redirect('admin/commentcourse/'.$oid);
     }
 
     /**
-     * 修改用户状态
+     * 修改状态
      * @author 晚黎
      * @date   2016-04-14T11:50:04+0800
      * @param  [type]                   $id     [description]
@@ -79,19 +77,6 @@ class CommentOrgController extends Controller
     public function mark($id,$status)
     {
         UserRepository::mark($id,$status);
-        return redirect('admin/org');
-    }
-
-    /**
-     * 删除用户
-     * @author 晚黎
-     * @date   2016-04-14T11:52:40+0800
-     * @param  [type]                   $id [description]
-     * @return [type]                       [description]
-     */
-    public function destroy($id)
-    {
-        OrgRepository::destroy($id);
         return redirect('admin/org');
     }
 }
