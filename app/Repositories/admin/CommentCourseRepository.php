@@ -29,19 +29,14 @@ class CommentCourseRepository
 		
 		$cid = request('cid' ,'');
 		$award_status = request('award_status' ,'');
-		$status = request('status' ,'');
 		$comment = new BankeCommentCourse();
 		$comment = $comment->where('course_id', $cid);
 
 		/*奖励状态搜索*/
-		if ($award_status) {
+		if ($award_status!=null) {
 			$comment = $comment->where('award_status', $award_status);
 		}
 
-		/*状态搜索*/
-		if ($status) {
-			$comment = $comment->where('status', $status);
-		}
 
 		$count = $comment->count();
 

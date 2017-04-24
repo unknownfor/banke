@@ -125,14 +125,12 @@ return [
 	],
 
 	'commentorg' => [
-		'audit' => ['fa fa-paw','未审核'],
-		'active' => ['fa fa-navicon','审核通过'],
-		'trash' => ['fa fa-trash','未通过'],
+		'audit' => ['fa fa-paw','未打赏'],
+		'active' => ['fa fa-navicon','已打赏']
 	],
 
 	'commentcourse' => [
-		'audit' => ['fa fa-paw','未审核'],
-		'active' => ['fa fa-navicon','审核通过'],
-		'trash' => ['fa fa-trash','未通过'],
+		'audit' => ['fa fa-paw','未打赏'],
+		'active' => ['fa fa-navicon','已打赏']
 	],
 ];

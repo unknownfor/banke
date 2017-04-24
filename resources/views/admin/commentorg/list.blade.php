@@ -43,8 +43,8 @@
                 <input type="hidden" class="form-control form-filter" name="id" value="{{$oid}}">
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
-                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
-                            <option value="" data-icon="fa-glass icon-success">状态....</option>
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="award_status">
+                            <option value="" data-icon="fa-glass icon-success">打赏状态....</option>
                             @if(trans('strings.commentorg'))
                                 @foreach(trans('strings.commentorg') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
