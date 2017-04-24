@@ -63,6 +63,13 @@
 </div>
 </div>
 @endif
+<div class="call-mask hide">
+    <div class="call-container">
+        <p>点击拨打电话</p>
+        <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
+        <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
+    </div>
+</div>
 @include('web.layout.downloadbar')
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>

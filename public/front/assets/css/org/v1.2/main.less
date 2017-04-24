@@ -140,6 +140,55 @@ ul {
     max-width: 100%;
   }
 }
+.call-mask {
+  max-width: 900px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 10000;
+  background-color: rgba(33,33,33,0.8);
+  @w: 180px;
+  @h: 40px;
+  @r:10px;
+  .call-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: @w;
+    margin-top: -@h/2;
+    text-align: center;
+    margin-left: -@w/2;
+    background-color: #fff;
+    border-radius: @r;
+    .call-box {
+      .size(@w,@h);
+      line-height: @h;
+      > a {
+        .size(@w,@h);
+        color: #5A5A5A;
+      }
+    }
+    > p {
+      height: @h;
+      line-height: @h;
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+      color: #5A5A5A;
+      border-bottom: 1px solid #F2F2F2;
+    }
+  }
+  &.show{
+    display: block;
+    opacity: 1;
+  }
+  &.hide{
+    display: none;
+    opacity: 0;
+  }
+}
 
 #downloadCon{
   margin: 0 auto;

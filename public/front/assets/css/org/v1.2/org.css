@@ -332,6 +332,54 @@ ul {
 .class-info-share > img {
   max-width: 100%;
 }
+.call-mask {
+  max-width: 900px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 10000;
+  background-color: rgba(33, 33, 33, 0.8);
+}
+.call-mask .call-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  margin-top: -20px;
+  text-align: center;
+  margin-left: -90px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+.call-mask .call-container .call-box {
+  width: 180px;
+  height: 40px;
+  line-height: 40px;
+}
+.call-mask .call-container .call-box > a {
+  width: 180px;
+  height: 40px;
+  color: #5A5A5A;
+}
+.call-mask .call-container > p {
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+  color: #5A5A5A;
+  border-bottom: 1px solid #F2F2F2;
+}
+.call-mask.show {
+  display: block;
+  opacity: 1;
+}
+.call-mask.hide {
+  display: none;
+  opacity: 0;
+}
 #downloadCon {
   margin: 0 auto;
   max-width: 700px;
