@@ -249,14 +249,14 @@ return[
 	//机构评论
 	'commentorg' => [
 		// 控制是否显示查看按钮
-		'show' => true,
+		'show' => false,
 		'action' => 'commentorg',
 	],
 
 	//机构评论
 	'commentcourse' => [
 		// 控制是否显示查看按钮
-		'show' => true,
+		'show' => false,
 		'action' => 'commentcourse',
 	],
 ];
