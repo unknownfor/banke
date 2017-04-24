@@ -77,15 +77,5 @@
     </div>
 </div>
 @endif
-
-<div class="call-mask hide">
-
-    <div class="call-container">
-        <p>点击就送-屠龙宝刀</p>
-        <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
-        <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
-    </div>
-
-</div>
 </body>
 </html>
