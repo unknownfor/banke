@@ -10,8 +10,7 @@ var TableDatatablesAjax = function() {
         'url' : '/admin/commentorg/ajaxIndex',
         "data": function ( d ) {
           d.oid =$('.filter input[name="id"]').val().replace(/(^\s*)|(\s*$)/g, "");
-          //d.city =$('.filter input[name="city"]').val().replace(/(^\s*)|(\s*$)/g, "");
-          //d.status = $('.filter select[name="status"] option:selected').val();
+          d.award_status = $('.filter select[name="award_status"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",

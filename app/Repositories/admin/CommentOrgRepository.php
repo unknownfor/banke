@@ -29,18 +29,12 @@ class CommentOrgRepository
 		
 		$oid = request('oid' ,'');
 		$award_status = request('award_status' ,'');
-		$status = request('status' ,'');
 		$comment = new BankeCommentOrg();
 		$comment = $comment->where('org_id', $oid);
 
 		/*奖励状态搜索*/
-		if ($award_status) {
+		if ($award_status!=null) {
 			$comment = $comment->where('award_status', $award_status);
-		}
-
-		/*状态搜索*/
-		if ($status) {
-			$comment = $comment->where('status', $status);
 		}
 
 		$count = $comment->count();
