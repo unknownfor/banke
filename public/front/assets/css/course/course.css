@@ -170,6 +170,7 @@ body {
   margin: 0 auto;
   padding: 0;
   height: 100%;
+  max-width: 700px;
   overflow-x: hidden;
   background-color: #f5f5f5;
   word-wrap: break-word;
