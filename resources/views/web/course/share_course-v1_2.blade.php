@@ -59,11 +59,11 @@
             </div>
         </div>
         <div class="address-call">
-            <a href="tel:{{$course['org']['tel_phone']}}">
-                <div class="address-call-box">
+            <div class="address-call-box">
+                <a href="tel:{{$course['org']['tel_phone']}}">
                     <span class="img"></span>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
     </div>
     <!--课程介绍-->

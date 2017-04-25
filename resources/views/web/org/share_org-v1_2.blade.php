@@ -48,11 +48,11 @@
                 <div class="address-detail">{{$org['address']}}</div>
             </div>
             <div class="address-call">
-                <a href="tel:{{$org['tel_phone']}}">
-                    <div id="address-call-box">
+                <div id="address-call-box">
+                    <a href="tel:{{$org['tel_phone']}}">
                         <div id="img"></div>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

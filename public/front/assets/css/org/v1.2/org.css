@@ -290,13 +290,14 @@ ul {
   color: #808080;
 }
 .address .address-box .address-call {
-  width: 70px;
+  width: 80px;
   height: 100%;
 }
-.address .address-box .address-call a {
-  display: block;
-}
 .address .address-box .address-call #address-call-box {
+  width: 80px;
+  height: 50px;
+}
+.address .address-box .address-call #address-call-box a {
   width: 80px;
   height: 50px;
   display: -webkit-box;

@@ -375,10 +375,11 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.org-detail .address-call a {
-  display: block;
-}
 .org-detail .address-call .address-call-box {
+  width: 70px;
+  height: 84px;
+}
+.org-detail .address-call .address-call-box a {
   width: 70px;
   height: 84px;
   display: -webkit-box;
