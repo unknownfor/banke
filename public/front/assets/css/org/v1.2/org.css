@@ -191,12 +191,12 @@ ul {
   max-width: 700px;
   margin-bottom: 85px;
 }
-.org-wrapper .container {
+.container {
   font-size: 14px;
   background-color: #fff;
   margin-bottom: 15px;
 }
-.org-wrapper .container .container-head {
+.container .container-head {
   color: #212121;
   height: 35px;
   padding-left: 10px;
@@ -212,30 +212,30 @@ ul {
   -ms-flex-align: center;
   align-items: center;
 }
-.org-wrapper .container .container-box {
+.container .container-box {
   padding: 15px;
 }
-.org-wrapper .head {
+.head {
   text-align: center;
 }
-.org-wrapper .head .head-bg {
+.head .head-bg {
   height: 180px;
   position: relative;
 }
-.org-wrapper .head .head-img {
+.head .head-img {
   position: absolute;
   top: 145px;
   margin: 0 auto;
   width: 100%;
 }
-.org-wrapper .head .head-img > img {
+.head .head-img > img {
   display: inline-block;
   width: 60px;
   height: 60px;
   border-radius: 60px;
   border: 3px solid #ffffff;
 }
-.org-wrapper .head .head-name {
+.head .head-name {
   color: #383D43;
   font-size: 14px;
   margin: 43px 0px 6px 0px;
@@ -245,35 +245,35 @@ ul {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-.org-wrapper .head .head-tips {
+.head .head-tips {
   padding-top: 8px;
   padding-bottom: 10px;
   font-size: 12px;
   color: #faaf0a;
 }
-.org-wrapper .head .head-tips > span {
+.head .head-tips > span {
   margin-left: 5px;
   border: 1px solid #faaf0a;
   padding: 0 3px;
 }
-.org-wrapper .address {
+.address {
   margin: 15px 0;
 }
-.org-wrapper .address .address-box {
+.address .address-box {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   font-size: 12px;
 }
-.org-wrapper .address .address-box .address-info {
+.address .address-box .address-info {
   border-right: 1px solid #f2f2f2;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
-.org-wrapper .address .address-box .address-info .address-img {
+.address .address-box .address-info .address-img {
   position: absolute;
   height: 24px;
   width: 20px;
@@ -282,21 +282,22 @@ ul {
   -webkit-background-size: 79px 33px;
   background-size: 79px 33px;
 }
-.org-wrapper .address .address-box .address-info .address-detail {
+.address .address-box .address-info .address-detail {
   display: inline-block;
   margin-left: 25px;
   margin-right: 10px;
   line-height: 20px;
   color: #808080;
 }
-.org-wrapper .address .address-box .address-call {
-  width: 70px;
+.address .address-box .address-call {
+  width: 80px;
   height: 100%;
 }
-.org-wrapper .address .address-box .address-call a {
-  display: block;
+.address .address-box .address-call #address-call-box {
+  width: 80px;
+  height: 50px;
 }
-.org-wrapper .address .address-box .address-call #address-call-box {
+.address .address-box .address-call #address-call-box a {
   width: 80px;
   height: 50px;
   display: -webkit-box;
@@ -312,7 +313,7 @@ ul {
   -ms-flex-align: center;
   align-items: center;
 }
-.org-wrapper .address .address-box .address-call #address-call-box #img {
+.address .address-box .address-call #address-call-box #img {
   width: 33px;
   height: 33px;
   background: url("../../../img/org/sprite.png") no-repeat;
@@ -320,15 +321,15 @@ ul {
   background-size: 79px 33px;
   background-position: 1px 0px;
 }
-.org-wrapper .class-info {
+.class-info {
   color: #383D43;
   line-height: 24px;
   font-size: 12px;
 }
-.org-wrapper .class-info > img {
+.class-info > img {
   max-width: 100%;
 }
-.org-wrapper .call-mask {
+.call-mask {
   max-width: 900px;
   height: 100%;
   position: fixed;
@@ -338,7 +339,7 @@ ul {
   z-index: 10000;
   background-color: rgba(33, 33, 33, 0.8);
 }
-.org-wrapper .call-mask .call-container {
+.call-mask .call-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -349,17 +350,17 @@ ul {
   background-color: #fff;
   border-radius: 10px;
 }
-.org-wrapper .call-mask .call-container .call-box {
+.call-mask .call-container .call-box {
   width: 180px;
   height: 40px;
   line-height: 40px;
 }
-.org-wrapper .call-mask .call-container .call-box > a {
+.call-mask .call-container .call-box > a {
   width: 180px;
   height: 40px;
   color: #5A5A5A;
 }
-.org-wrapper .call-mask .call-container > p {
+.call-mask .call-container > p {
   height: 40px;
   line-height: 40px;
   padding: 0;
@@ -368,11 +369,11 @@ ul {
   color: #5A5A5A;
   border-bottom: 1px solid #F2F2F2;
 }
-.org-wrapper .call-mask.show {
+.call-mask.show {
   display: block;
   opacity: 1;
 }
-.org-wrapper .call-mask.hide {
+.call-mask.hide {
   display: none;
   opacity: 0;
 }

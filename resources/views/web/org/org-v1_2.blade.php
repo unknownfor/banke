@@ -16,34 +16,32 @@
     <title>机构详情</title>
 </head>
 <body>
-<div class="org-wrapper">
-    <div class="address container">
-        <div class="container-head">
-            <span>机构地址</span>
+<div class="address container">
+    <div class="container-head">
+        <span>机构地址</span>
+    </div>
+    <div class="address-box container-box">
+        <div class="address-info">
+            <div class="address-img"></div>
+            <div class="address-detail">{{$org['address']}}</div>
         </div>
-        <div class="address-box container-box">
-            <div class="address-info">
-                <div class="address-img"></div>
-                <div class="address-detail">{{$org['address']}}</div>
-            </div>
-            <div class="address-call">
-                <a href="tel:{{$org['tel_phone']}}">
-                    <div id="address-call-box">
-                        <div id="img"></div>
-                    </div>
-                </a>
-            </div>
+        <div class="address-call">
+                <div id="address-call-box">
+                    <a href="tel:{{$org['tel_phone']}}">
+                    <div id="img"></div>
+                        </a>
+                </div>
         </div>
     </div>
-    <!--课程介绍-->
-    @if($org['details'])
-        <div class="class-info container">
-            <div class="class-info-box container-box">
-                {!!$org['details']!!}
-            </div>
-        </div>
-    @endif
 </div>
+<!--课程介绍-->
+@if($org['details'])
+<div class="class-info container">
+    <div class="class-info-box container-box">
+        {!!$org['details']!!}
+    </div>
+</div>
+@endif
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>

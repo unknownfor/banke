@@ -182,12 +182,12 @@ img {
   max-width: 700px;
   margin-bottom: 85px;
 }
-.course-wrapper .container {
+.container {
   font-size: 14px;
   background-color: #fff;
   margin-bottom: 15px;
 }
-.course-wrapper .container .container-head {
+.container .container-head {
   color: #212121;
   height: 35px;
   padding-left: 10px;
@@ -203,11 +203,11 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.course-wrapper .container .container-box {
+.container .container-box {
   padding: 15px;
   font-size: 12px;
 }
-.course-wrapper .head {
+.head {
   padding: 15px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -215,20 +215,20 @@ img {
   display: flex;
   position: relative;
 }
-.course-wrapper .head .head-left {
+.head .head-left {
   box-flex: 1;
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   margin-right: 10px;
 }
-.course-wrapper .head .head-left > img {
+.head .head-left > img {
   max-width: 70px;
   border-radius: 7px;
 }
-.course-wrapper .head .head-middle {
+.head .head-middle {
   padding-top: 20px;
 }
-.course-wrapper .head .head-middle .name {
+.head .head-middle .name {
   max-width: 140px;
   color: #383D43;
   margin-bottom: 10px;
@@ -239,21 +239,21 @@ img {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-.course-wrapper .head .head-middle .save {
+.head .head-middle .save {
   display: inline-block;
   vertical-align: 7px;
 }
-.course-wrapper .head .head-middle .save .save-num {
+.head .head-middle .save .save-num {
   color: #FA4535;
 }
-.course-wrapper .head .head-middle .save .save-precent {
+.head .head-middle .save .save-precent {
   border-radius: 3px;
   font-size: 12px;
   padding: 0 5px;
   background-color: #FA4535;
   color: #FFFFFF;
 }
-.course-wrapper .head .head-right {
+.head .head-right {
   position: absolute;
   right: 15px;
   display: inline-table;
@@ -268,32 +268,32 @@ img {
   text-align: right;
   font-size: 12px;
 }
-.course-wrapper .head .head-right .price {
+.head .head-right .price {
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: -22px;
 }
-.course-wrapper .head .head-right .price-info {
+.head .head-right .price-info {
   color: #9B9B9B;
   padding-right: 5px;
 }
-.course-wrapper .head .head-right #price-num {
+.head .head-right #price-num {
   color: #383D43;
 }
-.course-wrapper .head .head-right #price-real-num {
+.head .head-right #price-real-num {
   color: #FA4535;
 }
-.course-wrapper .pay-rule .pay-rule-box {
+.pay-rule .pay-rule-box {
   color: #383D43;
 }
-.course-wrapper .pay-rule .pay-rule-box .tips {
+.pay-rule .pay-rule-box .tips {
   padding-bottom: 10px;
   line-height: 24px;
 }
-.course-wrapper .pay-rule .pay-rule-box .tips:last-child {
+.pay-rule .pay-rule-box .tips:last-child {
   padding-bottom: 0px;
 }
-.course-wrapper .pay-rule .pay-rule-box .tips:before {
+.pay-rule .pay-rule-box .tips:before {
   content: "";
   margin-right: 8px;
   text-align: center;
@@ -303,7 +303,7 @@ img {
   width: 10px;
   display: inline-block;
 }
-.course-wrapper .org-detail {
+.org-detail {
   padding: 15px  0px 15px 15px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -311,7 +311,7 @@ img {
   display: flex;
   position: relative;
 }
-.course-wrapper .org-detail .head-left {
+.org-detail .head-left {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -325,11 +325,11 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.course-wrapper .org-detail .head-left > img {
+.org-detail .head-left > img {
   max-width: 70px;
   border-radius: 7px;
 }
-.course-wrapper .org-detail .head-middle {
+.org-detail .head-middle {
   margin-left: 10px;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -338,7 +338,7 @@ img {
   padding-top: 7px;
   border-right: 1px solid #f2f2f2;
 }
-.course-wrapper .org-detail .head-middle .head-name {
+.org-detail .head-middle .head-name {
   max-width: 140px;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -346,13 +346,13 @@ img {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-.course-wrapper .org-detail .head-middle .head-tips {
+.org-detail .head-middle .head-tips {
   padding-top: 8px;
   padding-bottom: 10px;
   font-size: 12px;
   color: #faaf0a;
 }
-.course-wrapper .org-detail .head-middle .head-tips > span {
+.org-detail .head-middle .head-tips > span {
   border-radius: 3px;
   display: inline-block;
   white-space: nowrap;
@@ -361,7 +361,7 @@ img {
   border: 1px solid #faaf0a;
   padding: 0 3px;
 }
-.course-wrapper .org-detail .address-call {
+.org-detail .address-call {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -375,10 +375,11 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.course-wrapper .org-detail .address-call a {
-  display: block;
+.org-detail .address-call .address-call-box {
+  width: 70px;
+  height: 84px;
 }
-.course-wrapper .org-detail .address-call .address-call-box {
+.org-detail .address-call .address-call-box a {
   width: 70px;
   height: 84px;
   display: -webkit-box;
@@ -394,7 +395,7 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.course-wrapper .org-detail .address-call .address-call-box .img {
+.org-detail .address-call .address-call-box .img {
   width: 33px;
   height: 33px;
   background: url("../../img/org/sprite.png") no-repeat;
@@ -402,24 +403,24 @@ img {
   background-size: 79px 33px;
   background-position: 1px 0px;
 }
-.course-wrapper .address {
+.address {
   margin: 15px 0;
 }
-.course-wrapper .address .address-box {
+.address .address-box {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   font-size: 12px;
 }
-.course-wrapper .address .address-box .address-info {
+.address .address-box .address-info {
   border-right: 1px solid #f2f2f2;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
-.course-wrapper .address .address-box .address-info .address-img {
+.address .address-box .address-info .address-img {
   position: absolute;
   height: 24px;
   width: 20px;
@@ -428,20 +429,20 @@ img {
   -webkit-background-size: 79px 33px;
   background-size: 79px 33px;
 }
-.course-wrapper .address .address-box .address-info .address-detail {
+.address .address-box .address-info .address-detail {
   display: inline-block;
   margin-left: 25px;
   line-height: 20px;
   color: #808080;
 }
-.course-wrapper .address .address-box .address-call {
+.address .address-box .address-call {
   width: 70px;
   height: 100%;
 }
-.course-wrapper .address .address-box .address-call a {
+.address .address-box .address-call a {
   display: block;
 }
-.course-wrapper .address .address-box .address-call #address-call-box {
+.address .address-box .address-call #address-call-box {
   width: 80px;
   height: 50px;
   display: -webkit-box;
@@ -457,7 +458,7 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.course-wrapper .address .address-box .address-call #address-call-box #img {
+.address .address-box .address-call #address-call-box #img {
   width: 33px;
   height: 33px;
   background: url("../../img/org/sprite.png") no-repeat;
@@ -465,14 +466,14 @@ img {
   background-size: 79px 33px;
   background-position: 1px 0px;
 }
-.course-wrapper .class-info {
+.class-info {
   color: #383D43;
   line-height: 22px;
 }
-.course-wrapper .class-info > img {
+.class-info > img {
   max-width: 100%;
 }
-.course-wrapper .call-mask {
+.call-mask {
   max-width: 900px;
   height: 100%;
   position: fixed;
@@ -482,7 +483,7 @@ img {
   z-index: 10000;
   background-color: rgba(33, 33, 33, 0.8);
 }
-.course-wrapper .call-mask .call-container {
+.call-mask .call-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -493,17 +494,17 @@ img {
   background-color: #fff;
   border-radius: 10px;
 }
-.course-wrapper .call-mask .call-container .call-box {
+.call-mask .call-container .call-box {
   width: 180px;
   height: 40px;
   line-height: 40px;
 }
-.course-wrapper .call-mask .call-container .call-box > a {
+.call-mask .call-container .call-box > a {
   width: 180px;
   height: 40px;
   color: #5A5A5A;
 }
-.course-wrapper .call-mask .call-container > p {
+.call-mask .call-container > p {
   height: 40px;
   line-height: 40px;
   padding: 0;
@@ -512,11 +513,11 @@ img {
   color: #5A5A5A;
   border-bottom: 1px solid #F2F2F2;
 }
-.course-wrapper .call-mask.show {
+.call-mask.show {
   display: block;
   opacity: 1;
 }
-.course-wrapper .call-mask.hide {
+.call-mask.hide {
   display: none;
   opacity: 0;
 }
