@@ -1,0 +1,215 @@
+body {
+  margin:0 auto;
+  padding:0;
+  max-width: 700px;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+  word-wrap:break-word;
+}
+img {
+  max-width: 100%;
+}
+.container {
+  font-size: 14px;
+  background-color: #fff;
+  margin-bottom:15px;
+  .container-head {
+    color: #212121;
+    height: 35px;
+    padding-left: 10px;
+    border-left: 3px solid #ffeb3b;
+    border-bottom: 1px solid #e5e5e5;
+    color: #383D43;
+    display: flex;
+    align-items: center;
+  }
+  .container-box {
+    padding: 15px;
+    font-size: 12px;
+  }
+}
+.head {
+  padding: 15px;
+  display: flex;
+  position: relative;
+  .head-left {
+    box-flex:1;
+    -moz-box-flex:1;
+    -webkit-box-flex:1;
+    margin-right: 7px;
+    > img {
+      max-width: 80px;
+      border-radius: 7px;
+    }
+  }
+  .head-middle {
+    width: 37%;
+    padding-top: 20px;
+    .name {
+      color: #383D43;
+      margin-bottom: 10px;
+      display: inline-block;
+      .txt-ellipsis-p(1);
+    }
+    .save {
+      display: inline-block;
+      .save-img {
+        display: inline-block;
+        height: 21px;
+        width: 21px;
+        background: url("../../img/course/sprite.png") no-repeat;
+        background-size: 158px*0.4 66px *0.4;
+        background-position: -26px 0px;
+      }
+      .save-num {
+        color: #FA4535;
+        vertical-align: 7px;
+      }
+    }
+  }
+  .head-right {
+    position: absolute;
+    right: 15px;
+    display: inline-table;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+    font-size: 12px;
+    .price {
+      margin-bottom:10px;
+      display: inline-block;
+      vertical-align: -22px;
+    }
+    .price-info {
+      color: #9B9B9B;
+      padding-right: 5px;
+    }
+    #price-num {
+      color: #383D43;
+    }
+    #price-real-num {
+      color: #FA4535;
+    }
+  }
+}
+.pay-rule {
+  .pay-rule-box {
+    color: #383D43;
+    .tips {
+      padding-bottom: 10px;
+      line-height: 24px;
+      &:last-child {
+        padding-bottom: 0px;
+      }
+    }
+    .tips:before {
+      content: "";
+      margin-right: 8px;
+      text-align: center;
+      background: #ffeb3b;
+      border-radius: 10px;
+      height: 10px;
+      width: 10px;
+      display: inline-block;
+    }
+  }
+}
+.address {
+  margin: 15px 0;
+  .address-box {
+    display: flex;
+    font-size: 12px;
+    .address-info {
+      border-right: 1px solid #f2f2f2;
+      flex: 1;
+      .address-img {
+        position: absolute;
+        height: 24px;
+        width: 20px;
+        background: url("../../img/org/sprite.png") no-repeat;
+        background-position: -61px 0px;
+        background-size: 158px*0.5 66px*0.5;
+      }
+      .address-detail {
+        display: inline-block;
+        margin-left: 25px;
+        line-height: 20px;
+        color: #808080;
+      }
+    }
+    .address-call {
+      width: 70px;
+      height: 100%;
+      a {
+        display: block;
+      }
+      #address-call-box {
+        width: 80px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        #img {
+          width: 33px;
+          height: 33px;
+          background: url("../../img/org/sprite.png") no-repeat;
+          background-size: 158px*0.5 66px*0.5;
+          background-position: 1px 0px;
+        }
+      }
+    }
+  }
+}
+.class-info {
+  color: #383D43;
+  line-height: 22px;
+  > img {
+    max-width: 100%;
+  }
+}
+
+
+#downloadCon{
+  margin: 0 auto;
+  max-width: 700px;
+  //width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  opacity: 1;
+  display: inline-block;
+  background-color: #FFEB3B;
+  .downloadBar-img {
+    max-width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    opacity: 0;
+    display: inline-block;
+  }
+  a {
+    display:block;
+    text-decoration: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 420px){
+  #downloadCon {
+    height: 78px;
+  }
+}
+@media screen and (max-width: 380px){
+  #downloadCon {
+    height: 71px;
+  }
+}
+@media screen and (max-width: 320px){
+  #downloadCon {
+    height: 61px;
+  }
+}
