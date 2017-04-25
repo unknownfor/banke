@@ -10,6 +10,7 @@
 a {
   display: block;
   text-decoration: none;
+  out-line: none;
   border: 0;
   padding: 0;
   margin: 0;
@@ -501,14 +502,14 @@ img {
   height: 40px;
   color: #5A5A5A;
 }
-.call-mask .call-container > p {
+.call-mask .call-container .quite {
   height: 40px;
   line-height: 40px;
   padding: 0;
   margin: 0;
   font-size: 12px;
   color: #5A5A5A;
-  border-bottom: 1px solid #F2F2F2;
+  border-top: 1px solid #F2F2F2;
 }
 .call-mask.show {
   display: block;
