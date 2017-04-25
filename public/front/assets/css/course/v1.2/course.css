@@ -481,17 +481,13 @@ img {
   right: 0;
   z-index: 10000;
   background-color: rgba(33, 33, 33, 0.8);
+  display: none;
 }
 .call-mask .call-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 180px;
-  margin-top: -20px;
   text-align: center;
-  margin-left: -90px;
   background-color: #fff;
   border-radius: 10px;
+  max-height: 120px;
 }
 .call-mask .call-container .call-box {
   width: 180px;
@@ -513,8 +509,18 @@ img {
   border-top: 1px solid #F2F2F2;
 }
 .call-mask.show {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   opacity: 1;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .call-mask.hide {
   display: none;
