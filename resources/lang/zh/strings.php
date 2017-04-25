@@ -124,13 +124,20 @@ return [
 		'trash' => ['fa fa-trash','未通过'],
 	],
 
-	'commentorg' => [
+	'comment_status'=> [
 		'audit' => ['fa fa-paw','未打赏'],
 		'active' => ['fa fa-navicon','已打赏']
 	],
 
+	'commentorg' => [
+		'audit' => ['fa fa-paw','未审核'],
+		'active' => ['fa fa-navicon','审核通过'],
+		'trash' => ['fa fa-trash','未通过'],
+	],
+
 	'commentcourse' => [
-		'audit' => ['fa fa-paw','未打赏'],
-		'active' => ['fa fa-navicon','已打赏']
+		'audit' => ['fa fa-paw','未审核'],
+		'active' => ['fa fa-navicon','审核通过'],
+		'trash' => ['fa fa-trash','未通过'],
 	],
 ];
