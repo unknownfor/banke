@@ -23,167 +23,167 @@ ul {
   max-width: 700px;
   //Ò³Ãæ¿ÕÖÃÏÂÔØÌõ
   margin-bottom: 85px;
-  .container {
-    font-size: 14px;
-    background-color: #fff;
-    margin-bottom:15px;
-    .container-head {
-      color: #212121;
-      height: 35px;
-      padding-left: 10px;
-      border-left: 2px solid #ffeb3b;
-      border-bottom: 1px solid #e5e5e5;
-      color: #383D43;
-      display: flex;
-      align-items: center;
-    }
-    .container-box {
-      padding: 15px;
-    }
-  }
-  .head {
-    text-align: center;
-    @headH:278px;
-    @headBg:180px;
-    .head-bg{
-      height: @headBg;
-      position: relative;
-    }
-    .head-img{
-      position: absolute;
-      @imgH:60px;
-      top:@headBg - (@imgH+ 10)/2;
-      margin: 0 auto;
-      width: 100%;
-      > img {
-        display: inline-block;
-        width: @imgH;
-        height: @imgH;
-        border-radius: @imgH;
-        border: 3px solid #ffffff;
-      }
-    }
-    .head-name {
-      color: #383D43;
-      font-size: 14px;
-      margin: 43px 0px 6px 0px;
-      .txt-ellipsis-p(1);
-    }
-    .head-tips {
-      padding-top: 8px;
-      padding-bottom: 10px;
-      font-size: 12px;
-      color: #faaf0a;
-      > span {
-        margin-left: 5px;
-        border: 1px solid #faaf0a;
-        padding:0 3px;
-      }
-    }
-  }
-  .address {
-    margin: 15px 0;
-    .address-box {
-      display: flex;
-      font-size: 12px;
-      .address-info {
-        border-right: 1px solid #f2f2f2;
-        flex: 1;
-        .address-img {
-          position: absolute;
-          height: 24px;
-          width: 20px;
-          background: url("../../../img/org/sprite.png") no-repeat;
-          background-position: -61px 0px;
-          background-size: 158px*0.5 66px*0.5;
-        }
-        .address-detail {
-          display: inline-block;
-          margin-left: 25px;
-          margin-right: 10px;
-          line-height: 20px;
-          color: #808080;
-        }
-      }
-      .address-call {
-        width: 70px;
-        height: 100%;
-        a {
-          display: block;
-        }
-        #address-call-box {
-          width: 80px;
-          height: 50px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          #img {
-            width: 33px;
-            height: 33px;
-            background: url("../../../img/org/sprite.png") no-repeat;
-            background-size: 158px*0.5 66px*0.5;
-            background-position: 1px 0px;
-          }
-        }
-      }
-    }
-  }
-  .class-info {
+}
+.container {
+  font-size: 14px;
+  background-color: #fff;
+  margin-bottom:15px;
+  .container-head {
+    color: #212121;
+    height: 35px;
+    padding-left: 10px;
+    border-left: 2px solid #ffeb3b;
+    border-bottom: 1px solid #e5e5e5;
     color: #383D43;
-    line-height: 24px;
-    font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
+  .container-box {
+    padding: 15px;
+  }
+}
+.head {
+  text-align: center;
+  @headH:278px;
+  @headBg:180px;
+  .head-bg{
+    height: @headBg;
+    position: relative;
+  }
+  .head-img{
+    position: absolute;
+    @imgH:60px;
+    top:@headBg - (@imgH+ 10)/2;
+    margin: 0 auto;
+    width: 100%;
     > img {
-      max-width: 100%;
+      display: inline-block;
+      width: @imgH;
+      height: @imgH;
+      border-radius: @imgH;
+      border: 3px solid #ffffff;
     }
   }
-  .call-mask {
-    max-width: 900px;
-    height: 100%;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    z-index: 10000;
-    background-color: rgba(33,33,33,0.8);
-    @w: 180px;
-    @h: 40px;
-    @r:10px;
-    .call-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: @w;
-      margin-top: -@h/2;
-      text-align: center;
-      margin-left: -@w/2;
-      background-color: #fff;
-      border-radius: @r;
-      .call-box {
-        .size(@w,@h);
-        line-height: @h;
-        > a {
-          .size(@w,@h);
-          color: #5A5A5A;
+  .head-name {
+    color: #383D43;
+    font-size: 14px;
+    margin: 43px 0px 6px 0px;
+    .txt-ellipsis-p(1);
+  }
+  .head-tips {
+    padding-top: 8px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: #faaf0a;
+    > span {
+      margin-left: 5px;
+      border: 1px solid #faaf0a;
+      padding:0 3px;
+    }
+  }
+}
+.address {
+  margin: 15px 0;
+  .address-box {
+    display: flex;
+    font-size: 12px;
+    .address-info {
+      border-right: 1px solid #f2f2f2;
+      flex: 1;
+      .address-img {
+        position: absolute;
+        height: 24px;
+        width: 20px;
+        background: url("../../../img/org/sprite.png") no-repeat;
+        background-position: -61px 0px;
+        background-size: 158px*0.5 66px*0.5;
+      }
+      .address-detail {
+        display: inline-block;
+        margin-left: 25px;
+        margin-right: 10px;
+        line-height: 20px;
+        color: #808080;
+      }
+    }
+    .address-call {
+      width: 70px;
+      height: 100%;
+      a {
+        display: block;
+      }
+      #address-call-box {
+        width: 80px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        #img {
+          width: 33px;
+          height: 33px;
+          background: url("../../../img/org/sprite.png") no-repeat;
+          background-size: 158px*0.5 66px*0.5;
+          background-position: 1px 0px;
         }
       }
-      > p {
-        height: @h;
-        line-height: @h;
-        padding: 0;
-        margin: 0;
-        font-size: 12px;
+    }
+  }
+}
+.class-info {
+  color: #383D43;
+  line-height: 24px;
+  font-size: 12px;
+  > img {
+    max-width: 100%;
+  }
+}
+.call-mask {
+  max-width: 900px;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 10000;
+  background-color: rgba(33,33,33,0.8);
+  @w: 180px;
+  @h: 40px;
+  @r:10px;
+  .call-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: @w;
+    margin-top: -@h/2;
+    text-align: center;
+    margin-left: -@w/2;
+    background-color: #fff;
+    border-radius: @r;
+    .call-box {
+      .size(@w,@h);
+      line-height: @h;
+      > a {
+        .size(@w,@h);
         color: #5A5A5A;
-        border-bottom: 1px solid #F2F2F2;
       }
     }
-    &.show{
-      display: block;
-      opacity: 1;
+    > p {
+      height: @h;
+      line-height: @h;
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+      color: #5A5A5A;
+      border-bottom: 1px solid #F2F2F2;
     }
-    &.hide{
-      display: none;
-      opacity: 0;
-    }
+  }
+  &.show{
+    display: block;
+    opacity: 1;
+  }
+  &.hide{
+    display: none;
+    opacity: 0;
   }
 }
 
