@@ -16,7 +16,6 @@
     <title>课程详情</title>
 </head>
 <body>
-<div class="course-wrapper">
     <!--课程头部-->
     <div class="head container">
         <div class="head-left">
@@ -79,12 +78,16 @@
     @endif
     <div class="call-mask hide">
         <div class="call-container">
-            <p>点击拨打电话</p>
-            <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
-            <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
+            @if($org['tel_phone'])
+                <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
+            @endif
+            {{--假设机构只有一个电话--}}
+            @if($org['tel_phone2'])
+                <div class="call-box"><a class="" href="tel:{{$org['tel_phone2']}}">{{$org['tel_phone2']}}</a></div>
+            @endif
+            <p class="quite">取消</p>
         </div>
     </div>
-</div>
 
 @include('web.layout.downloadbar')
 </body>

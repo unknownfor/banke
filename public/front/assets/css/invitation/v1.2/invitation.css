@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .txt-ellipsis {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -6,6 +10,7 @@
 a {
   display: block;
   text-decoration: none;
+  out-line: none;
   border: 0;
   padding: 0;
   margin: 0;
@@ -22,10 +27,6 @@ a {
   -ms-user-select: none;
   /*IE10*/
   user-select: none;
-}
-html,
-body {
-  height: 100%;
 }
 ul {
   list-style: none;
