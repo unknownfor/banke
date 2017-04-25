@@ -16,7 +16,6 @@
     <title>课程详情</title>
 </head>
 <body>
-<div class="course-wrapper">
     <!--课程头部-->
     <div class="head container">
         <div class="head-left">
@@ -84,7 +83,6 @@
             <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
         </div>
     </div>
-</div>
 
 @include('web.layout.downloadbar')
 </body>

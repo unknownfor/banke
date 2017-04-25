@@ -16,7 +16,6 @@
     <title>机构详情</title>
 </head>
 <body>
-<div class="org-wrapper">
     <div class="head container">
         @if($org['cover'])
             <?php
@@ -71,8 +70,6 @@
             <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
         </div>
     </div>
-</div>
-
 @include('web.layout.downloadbar')
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
