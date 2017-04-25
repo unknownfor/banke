@@ -355,7 +355,7 @@ class OrderRepository
 	}
 
 	/**
-	 * 修改配置
+	 * 修改配置  老的接口，现在不用
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]

@@ -17,7 +17,11 @@ Route::group(['prefix'=>"v1.2/share",'namespace'=>'Web'],function(){
     //微信注册
     Route::get('/invitation/{welcome}', 'InvitationController@invitation');
 
+
     Route::post('/register','InvitationController@register');
+
+    //规则页面
+    Route::get('/rule', 'ShareController@share_rule_v1_2');
 
 });
 
@@ -28,6 +32,9 @@ Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
     Route::get('/org/{id}', 'OrgController@org_v1_2');
     //课程
     Route::get('/course/{id}', 'CourseController@course_v1_2');
+
+    //规则页面
+    Route::get('/rule', 'ShareController@rule_v1_2');
 
 });
 

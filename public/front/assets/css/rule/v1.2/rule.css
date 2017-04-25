@@ -159,7 +159,7 @@ ul {
 }
 #rule .content .title .title-img {
   display: inline-block;
-  background: url("../../img/rule/sprite.png") no-repeat;
+  background: url("../../../img/rule/sprite.png") no-repeat;
   -webkit-background-size: 247.2px 46.4px;
   background-size: 247.2px 46.4px;
   margin-right: 5px;
@@ -201,7 +201,7 @@ ul {
 }
 #rule .content.service .service-box .service-detail .service-title .title-img {
   display: inline-block;
-  background: url("../../img/rule/sprite.png") no-repeat;
+  background: url("../../../img/rule/sprite.png") no-repeat;
   -webkit-background-size: 154.5px 29px;
   background-size: 154.5px 29px;
   margin-right: 5px;
