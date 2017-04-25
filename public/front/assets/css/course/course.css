@@ -169,20 +169,25 @@ input {
 body {
   margin: 0 auto;
   padding: 0;
-  max-width: 700px;
-  background-color: #f5f5f5;
+  height: 100%;
   overflow-x: hidden;
+  background-color: #f5f5f5;
   word-wrap: break-word;
 }
 img {
   max-width: 100%;
 }
-.container {
+.course-wrapper {
+  position: relative;
+  max-width: 700px;
+  margin-bottom: 85px;
+}
+.course-wrapper .container {
   font-size: 14px;
   background-color: #fff;
   margin-bottom: 15px;
 }
-.container .container-head {
+.course-wrapper .container .container-head {
   color: #212121;
   height: 35px;
   padding-left: 10px;
@@ -198,11 +203,11 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.container .container-box {
+.course-wrapper .container .container-box {
   padding: 15px;
   font-size: 12px;
 }
-.head {
+.course-wrapper .head {
   padding: 15px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -210,20 +215,20 @@ img {
   display: flex;
   position: relative;
 }
-.head .head-left {
+.course-wrapper .head .head-left {
   box-flex: 1;
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   margin-right: 10px;
 }
-.head .head-left > img {
+.course-wrapper .head .head-left > img {
   max-width: 70px;
   border-radius: 7px;
 }
-.head .head-middle {
+.course-wrapper .head .head-middle {
   padding-top: 20px;
 }
-.head .head-middle .name {
+.course-wrapper .head .head-middle .name {
   max-width: 140px;
   color: #383D43;
   margin-bottom: 10px;
@@ -234,21 +239,21 @@ img {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-.head .head-middle .save {
+.course-wrapper .head .head-middle .save {
   display: inline-block;
   vertical-align: 7px;
 }
-.head .head-middle .save .save-num {
+.course-wrapper .head .head-middle .save .save-num {
   color: #FA4535;
 }
-.head .head-middle .save .save-precent {
+.course-wrapper .head .head-middle .save .save-precent {
   border-radius: 3px;
   font-size: 12px;
   padding: 0 5px;
   background-color: #FA4535;
   color: #FFFFFF;
 }
-.head .head-right {
+.course-wrapper .head .head-right {
   position: absolute;
   right: 15px;
   display: inline-table;
@@ -263,32 +268,32 @@ img {
   text-align: right;
   font-size: 12px;
 }
-.head .head-right .price {
+.course-wrapper .head .head-right .price {
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: -22px;
 }
-.head .head-right .price-info {
+.course-wrapper .head .head-right .price-info {
   color: #9B9B9B;
   padding-right: 5px;
 }
-.head .head-right #price-num {
+.course-wrapper .head .head-right #price-num {
   color: #383D43;
 }
-.head .head-right #price-real-num {
+.course-wrapper .head .head-right #price-real-num {
   color: #FA4535;
 }
-.pay-rule .pay-rule-box {
+.course-wrapper .pay-rule .pay-rule-box {
   color: #383D43;
 }
-.pay-rule .pay-rule-box .tips {
+.course-wrapper .pay-rule .pay-rule-box .tips {
   padding-bottom: 10px;
   line-height: 24px;
 }
-.pay-rule .pay-rule-box .tips:last-child {
+.course-wrapper .pay-rule .pay-rule-box .tips:last-child {
   padding-bottom: 0px;
 }
-.pay-rule .pay-rule-box .tips:before {
+.course-wrapper .pay-rule .pay-rule-box .tips:before {
   content: "";
   margin-right: 8px;
   text-align: center;
@@ -298,7 +303,7 @@ img {
   width: 10px;
   display: inline-block;
 }
-.org-detail {
+.course-wrapper .org-detail {
   padding: 15px  0px 15px 15px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -306,7 +311,7 @@ img {
   display: flex;
   position: relative;
 }
-.org-detail .head-left {
+.course-wrapper .org-detail .head-left {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -320,11 +325,11 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.org-detail .head-left > img {
+.course-wrapper .org-detail .head-left > img {
   max-width: 70px;
   border-radius: 7px;
 }
-.org-detail .head-middle {
+.course-wrapper .org-detail .head-middle {
   margin-left: 10px;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
@@ -333,7 +338,7 @@ img {
   padding-top: 7px;
   border-right: 1px solid #f2f2f2;
 }
-.org-detail .head-middle .head-name {
+.course-wrapper .org-detail .head-middle .head-name {
   max-width: 140px;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -341,13 +346,13 @@ img {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-.org-detail .head-middle .head-tips {
+.course-wrapper .org-detail .head-middle .head-tips {
   padding-top: 8px;
   padding-bottom: 10px;
   font-size: 12px;
   color: #faaf0a;
 }
-.org-detail .head-middle .head-tips > span {
+.course-wrapper .org-detail .head-middle .head-tips > span {
   border-radius: 3px;
   display: inline-block;
   white-space: nowrap;
@@ -356,7 +361,7 @@ img {
   border: 1px solid #faaf0a;
   padding: 0 3px;
 }
-.org-detail .address-call {
+.course-wrapper .org-detail .address-call {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -370,10 +375,10 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.org-detail .address-call a {
+.course-wrapper .org-detail .address-call a {
   display: block;
 }
-.org-detail .address-call .address-call-box {
+.course-wrapper .org-detail .address-call .address-call-box {
   width: 70px;
   height: 84px;
   display: -webkit-box;
@@ -389,7 +394,7 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.org-detail .address-call .address-call-box .img {
+.course-wrapper .org-detail .address-call .address-call-box .img {
   width: 33px;
   height: 33px;
   background: url("../../img/org/sprite.png") no-repeat;
@@ -397,24 +402,24 @@ img {
   background-size: 79px 33px;
   background-position: 1px 0px;
 }
-.address {
+.course-wrapper .address {
   margin: 15px 0;
 }
-.address .address-box {
+.course-wrapper .address .address-box {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   font-size: 12px;
 }
-.address .address-box .address-info {
+.course-wrapper .address .address-box .address-info {
   border-right: 1px solid #f2f2f2;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
-.address .address-box .address-info .address-img {
+.course-wrapper .address .address-box .address-info .address-img {
   position: absolute;
   height: 24px;
   width: 20px;
@@ -423,20 +428,20 @@ img {
   -webkit-background-size: 79px 33px;
   background-size: 79px 33px;
 }
-.address .address-box .address-info .address-detail {
+.course-wrapper .address .address-box .address-info .address-detail {
   display: inline-block;
   margin-left: 25px;
   line-height: 20px;
   color: #808080;
 }
-.address .address-box .address-call {
+.course-wrapper .address .address-box .address-call {
   width: 70px;
   height: 100%;
 }
-.address .address-box .address-call a {
+.course-wrapper .address .address-box .address-call a {
   display: block;
 }
-.address .address-box .address-call #address-call-box {
+.course-wrapper .address .address-box .address-call #address-call-box {
   width: 80px;
   height: 50px;
   display: -webkit-box;
@@ -452,7 +457,7 @@ img {
   -ms-flex-align: center;
   align-items: center;
 }
-.address .address-box .address-call #address-call-box #img {
+.course-wrapper .address .address-box .address-call #address-call-box #img {
   width: 33px;
   height: 33px;
   background: url("../../img/org/sprite.png") no-repeat;
@@ -460,22 +465,14 @@ img {
   background-size: 79px 33px;
   background-position: 1px 0px;
 }
-.class-info {
+.course-wrapper .class-info {
   color: #383D43;
   line-height: 22px;
 }
-.class-info > img {
+.course-wrapper .class-info > img {
   max-width: 100%;
 }
-.class-info-share {
-  color: #383D43;
-  line-height: 22px;
-  margin-bottom: 100px;
-}
-.class-info-share > img {
-  max-width: 100%;
-}
-.call-mask {
+.course-wrapper .call-mask {
   max-width: 900px;
   height: 100%;
   position: fixed;
@@ -485,7 +482,7 @@ img {
   z-index: 10000;
   background-color: rgba(33, 33, 33, 0.8);
 }
-.call-mask .call-container {
+.course-wrapper .call-mask .call-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -496,17 +493,17 @@ img {
   background-color: #fff;
   border-radius: 10px;
 }
-.call-mask .call-container .call-box {
+.course-wrapper .call-mask .call-container .call-box {
   width: 180px;
   height: 40px;
   line-height: 40px;
 }
-.call-mask .call-container .call-box > a {
+.course-wrapper .call-mask .call-container .call-box > a {
   width: 180px;
   height: 40px;
   color: #5A5A5A;
 }
-.call-mask .call-container > p {
+.course-wrapper .call-mask .call-container > p {
   height: 40px;
   line-height: 40px;
   padding: 0;
@@ -515,11 +512,11 @@ img {
   color: #5A5A5A;
   border-bottom: 1px solid #F2F2F2;
 }
-.call-mask.show {
+.course-wrapper .call-mask.show {
   display: block;
   opacity: 1;
 }
-.call-mask.hide {
+.course-wrapper .call-mask.hide {
   display: none;
   opacity: 0;
 }
