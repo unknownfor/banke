@@ -15,7 +15,7 @@
 	<link type="text/css" href="/front/assets/css/rule/v1.2/rule.css" rel="stylesheet">
 	<title>首页规则</title>
 </head>
-<body>
+<body>v1.2/
 <div id="rule">
 	<img src="/front/assets/img/rule/banner.png">
 	<div class="content service">

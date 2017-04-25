@@ -338,8 +338,8 @@ img {
 #invitation .page .btn.download {
   background-color: #fbc02d;
   position: absolute;
-  left: 0px;
-  right: 0px;
+  left: 0;
+  right: 0;
   bottom: 50px;
 }
 #invitation .page .btn.active {
@@ -401,7 +401,7 @@ img {
 }
 @media screen and (max-width: 320px) {
   #invitation .page .arrow {
-    bottom: 0px;
+    bottom: 0;
   }
   #invitation .page .arrow > i {
     font-size: 22px;
