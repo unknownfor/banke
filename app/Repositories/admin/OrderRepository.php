@@ -201,7 +201,7 @@ class OrderRepository
 
 
 	/**
-	 * 添加配置
+	 * 添加订单
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:22+0800
 	 * @param  [type]                   $request [description]
@@ -237,7 +237,7 @@ class OrderRepository
 				//创建新订单
 				$role->fill($input)->save();
                                 
-				//订单状态为已审核
+				//订单状态为已审核  现已经屏蔽 v1.2
 				if($input['status'] == config('admin.global.status.active')){
 					$userProfile = BankeUserProfiles::where('uid', $input['uid'])->lockForUpdate()->first();
 					$userProfile->check_in_amount += $input['check_in_amount'];
@@ -568,9 +568,9 @@ class OrderRepository
 	//更新推荐人的用户的信息，包括推荐报名获得奖励，//订单状态为已审核
 	private  function  execUpadateInvitorInfo($order,$userProfile,$operator_id){
 		//获取用户报名课程 的次数
-		$courseCout= BankeCashBackUser::where(['uid'=>$order['uid'],'course_id'=>$order['course_id']])->count();
+		$courseCout= BankeCashBackUser::where(['uid'=>$order['uid']])->count();
 
-		//如果有邀请人(添加一个条件：且该用户是第一次报这个课程)
+		//如果有邀请人(添加一个条件：且该用户是第一次报课程)
 		if($userProfile->invitation_uid > 0 && $courseCout==1){
 			$invitation_user = BankeUserProfiles::where('uid', $userProfile->invitation_uid)->lockForUpdate()->first();
 			//剩余任务金额小于奖励金额，则返回剩余全部

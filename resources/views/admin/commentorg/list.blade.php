@@ -45,8 +45,8 @@
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="award_status">
                             <option value="" data-icon="fa-glass icon-success">打赏状态....</option>
-                            @if(trans('strings.commentorg'))
-                                @foreach(trans('strings.commentorg') as $status_key => $status_value)
+                            @if(trans('strings.comment_status'))
+                                @foreach(trans('strings.comment_status') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif
