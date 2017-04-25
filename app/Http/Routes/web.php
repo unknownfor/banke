@@ -21,7 +21,7 @@ Route::group(['prefix'=>"v1.2/share",'namespace'=>'Web'],function(){
     Route::post('/register','InvitationController@register');
 
     //规则页面
-    Route::get('/rule', 'ShareController@share_rule_v1_2');
+    Route::get('/rule', 'RuleController@share_rule_v1_2');
 
 });
 
@@ -34,7 +34,7 @@ Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
     Route::get('/course/{id}', 'CourseController@course_v1_2');
 
     //规则页面
-    Route::get('/rule', 'ShareController@rule_v1_2');
+    Route::get('/rule', 'RuleController@rule_v1_2');
 
 });
 

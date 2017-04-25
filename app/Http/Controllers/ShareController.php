@@ -37,22 +37,6 @@ class ShareController extends Controller
     }
 
     /**
-     * 规则详情
-     */
-    public function rule_v1_2()
-    {
-        return view('web.rule.rule-v1_2');
-    }
-
-    /**
-     * 规则详情
-     */
-    public function share_rule_v1_2()
-    {
-        return view('web.rule.share_rule-v1_2');
-    }
-
-    /**
      * 动态详情
      */
     public function news($id)
