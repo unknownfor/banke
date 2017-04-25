@@ -17,8 +17,8 @@
 </head>
 <body>
 <div id="rule">
-	<img src="/front/assets/img/rule/banner.png">
-	<div class="content service">v1.2/
+	<img src="/front/assets/img/rule/v1.2/banner.png">
+	<div class="content service">
 		<div class="title">
 			<span class="title-img service-img"></span>
 			<span class="title-txt">半课有哪些服务</span>
