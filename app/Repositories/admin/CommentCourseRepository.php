@@ -129,7 +129,7 @@ class CommentCourseRepository
 
 				//消息记录
 				$message = [
-					'status' => 1,
+					'status' => 0,
 					'uid' => $comment['uid'],
 					'title' => '评论奖励',
 					'content' => '感谢您对课程"' . $course['name'] . '" 的精彩评论,平台已奖励您' . $comment_award . '元现金，快去现金钱包里查看吧！',
