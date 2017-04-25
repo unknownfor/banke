@@ -48,9 +48,7 @@
             </div>
             <div class="address-call">
                 <div id="address-call-box">
-                    <a href="tel:{{$org['tel_phone']}}">
-                        <div id="img"></div>
-                    </a>
+                    <div class="img"></div>
                 </div>
             </div>
         </div>

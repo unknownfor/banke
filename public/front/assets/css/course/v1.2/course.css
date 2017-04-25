@@ -33,9 +33,13 @@ ul {
 }
 a {
   text-decoration: none;
+  -webkit-tap-highlight-color: #fff;
   border: 0;
   padding: 0;
   margin: 0;
+}
+a:hover {
+  -webkit-tap-highlight-color: transparent;
 }
 input {
   -webkit-user-select: auto;
@@ -376,10 +380,6 @@ img {
 .org-detail .address-call .address-call-box {
   width: 70px;
   height: 84px;
-}
-.org-detail .address-call .address-call-box a {
-  width: 70px;
-  height: 84px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -394,6 +394,7 @@ img {
   align-items: center;
 }
 .org-detail .address-call .address-call-box .img {
+  display: inline-block;
   width: 33px;
   height: 33px;
   background: url("../../../img/org/v1.2/sprite.png") no-repeat;
@@ -475,9 +476,9 @@ img {
   max-width: 900px;
   height: 100%;
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 10000;
   background-color: rgba(33, 33, 33, 0.8);
 }

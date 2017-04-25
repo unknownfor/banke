@@ -59,9 +59,7 @@
         </div>
         <div class="address-call">
             <div class="address-call-box">
-                <a href="tel:{{$course['org']['tel_phone']}}">
-                    <span class="img"></span>
-                </a>
+                <span class="img"></span>
             </div>
         </div>
     </div>
