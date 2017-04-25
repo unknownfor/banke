@@ -273,7 +273,7 @@ ul {
   position: absolute;
   height: 24px;
   width: 20px;
-  background: url("../../../img/org/sprite.png") no-repeat;
+  background: url("../../../img/org/v1.2/sprite.png") no-repeat;
   background-position: -61px 0px;
   -webkit-background-size: 79px 33px;
   background-size: 79px 33px;
@@ -312,7 +312,7 @@ ul {
 .address .address-box .address-call #address-call-box #img {
   width: 33px;
   height: 33px;
-  background: url("../../../img/org/sprite.png") no-repeat;
+  background: url("../../../img/org/v1.2/sprite.png") no-repeat;
   -webkit-background-size: 79px 33px;
   background-size: 79px 33px;
   background-position: 1px 0px;
