@@ -16,66 +16,73 @@
     <title>课程详情</title>
 </head>
 <body>
-<!--课程头部-->
-<div class="head container">
-    <div class="head-left">
-        <img src="{{$course['cover']}}@70h_70w_2e" />
-    </div>
-    <div class="head-middle">
-        <div class="name">{{$course['name']}}</div>
-        <div class="save">
-            <span class="save-num">-{!! $course['price'] * $course['checkin_award']/100!!}</span>
-            <span class="save-precent">报名后返{{$course['checkin_award']}}%</span>
+<div class="course-wrapper">
+    <!--课程头部-->
+    <div class="head container">
+        <div class="head-left">
+            <img src="{{$course['cover']}}@70h_70w_2e" />
         </div>
-    </div>
-    <div class="head-right">
-        <div class="price">
-            <span id="price-num">￥{{$course['price']}}</span>
-        </div>
-    </div>
-</div>
-<!--返现规则-->
-<div class="pay-rule container">
-    <div class="container-head">
-        <span>返现规则</span>
-    </div>
-    <div class="pay-rule-box container-box">
-        <div class="tips"><span>每日打卡领取当日奖励，学习结束时共返现学费{{$course['checkin_award']}}%</span></div>
-        <div class="tips"><span>在任务中心领取剩余{{$course['task_award']}}%奖励</span></div>
-    </div>
-</div>
-{{--机构简介--}}
-<div class="org-detail container">
-    <div class="head-left">
-        <img src="{{$course['cover']}}@70h_70w_2e" />
-    </div>
-    <div class="head-middle">
-        <div class="head-name">{{$org['name']}}</div>
-        <div class="head-tips">
-            {{--优势标签--}}
-            @foreach($org->tags as $val)
-                <span>{{$val['name']}}</span>
-            @endforeach
-        </div>
-    </div>
-    <div class="address-call call-box" >
-        <a href="tel:{{$course['org']['tel_phone']}}">
-            <div class="address-call-box">
-                <span class="img"></span>
+        <div class="head-middle">
+            <div class="name">{{$course['name']}}</div>
+            <div class="save">
+                <span class="save-num">-{!! $course['price'] * $course['checkin_award']/100!!}</span>
+                <span class="save-precent">报名后返{{$course['checkin_award']}}%</span>
             </div>
-        </a>
+        </div>
+        <div class="head-right">
+            <div class="price">
+                <span id="price-num">￥{{$course['price']}}</span>
+            </div>
+        </div>
     </div>
+    <!--返现规则-->
+    <div class="pay-rule container">
+        <div class="container-head">
+            <span>返现规则</span>
+        </div>
+        <div class="pay-rule-box container-box">
+            <div class="tips"><span>每日打卡领取当日奖励，学习结束时共返现学费{{$course['checkin_award']}}%</span></div>
+            <div class="tips"><span>在任务中心领取剩余{{$course['task_award']}}%奖励</span></div>
+        </div>
+    </div>
+    {{--机构简介--}}
+    <div class="org-detail container">
+        <div class="head-left">
+            <img src="{{$course['cover']}}@70h_70w_2e" />
+        </div>
+        <div class="head-middle">
+            <div class="head-name">{{$org['name']}}</div>
+            <div class="head-tips">
+                {{--优势标签--}}
+                @foreach($org->tags as $val)
+                    <span>{{$val['name']}}</span>
+                @endforeach
+            </div>
+        </div>
+        <div class="address-call call-box" >
+            <a href="tel:{{$course['org']['tel_phone']}}">
+                <div class="address-call-box">
+                    <span class="img"></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--课程介绍-->
+    @if($course['details'])
+        <div class="class-info container">
+            <div class="container-head">
+                <span>课程介绍</span>
+            </div>
+            <div class="class-info-box container-box">
+                {!! $course['details'] !!}
+            </div>
+        </div>
+    @endif
 </div>
-<!--课程介绍-->
-@if($course['details'])
-<div class="class-info container">
-    <div class="container-head">
-        <span>课程介绍</span>
-    </div>
-    <div class="class-info-box container-box">
-        {!! $course['details'] !!}
-    </div>
-</div>
-@endif
+
 </body>
+<script src="/front/assets/plugins/zepto.min.js"></script>
+<script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/course/course-v1.2.js" type="text/javascript"></script>
 </html>

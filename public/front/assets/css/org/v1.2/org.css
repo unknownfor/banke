@@ -186,12 +186,17 @@ ul {
   margin: 0;
   padding: 0;
 }
-.container {
+.org-wrapper {
+  position: relative;
+  max-width: 700px;
+  margin-bottom: 85px;
+}
+.org-wrapper .container {
   font-size: 14px;
   background-color: #fff;
   margin-bottom: 15px;
 }
-.container .container-head {
+.org-wrapper .container .container-head {
   color: #212121;
   height: 35px;
   padding-left: 10px;
@@ -207,30 +212,30 @@ ul {
   -ms-flex-align: center;
   align-items: center;
 }
-.container .container-box {
+.org-wrapper .container .container-box {
   padding: 15px;
 }
-.head {
+.org-wrapper .head {
   text-align: center;
 }
-.head .head-bg {
+.org-wrapper .head .head-bg {
   height: 180px;
   position: relative;
 }
-.head .head-img {
+.org-wrapper .head .head-img {
   position: absolute;
   top: 145px;
   margin: 0 auto;
   width: 100%;
 }
-.head .head-img > img {
+.org-wrapper .head .head-img > img {
   display: inline-block;
   width: 60px;
   height: 60px;
   border-radius: 60px;
   border: 3px solid #ffffff;
 }
-.head .head-name {
+.org-wrapper .head .head-name {
   color: #383D43;
   font-size: 14px;
   margin: 43px 0px 6px 0px;
@@ -240,35 +245,35 @@ ul {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-.head .head-tips {
+.org-wrapper .head .head-tips {
   padding-top: 8px;
   padding-bottom: 10px;
   font-size: 12px;
   color: #faaf0a;
 }
-.head .head-tips > span {
+.org-wrapper .head .head-tips > span {
   margin-left: 5px;
   border: 1px solid #faaf0a;
   padding: 0 3px;
 }
-.address {
+.org-wrapper .address {
   margin: 15px 0;
 }
-.address .address-box {
+.org-wrapper .address .address-box {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   font-size: 12px;
 }
-.address .address-box .address-info {
+.org-wrapper .address .address-box .address-info {
   border-right: 1px solid #f2f2f2;
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
 }
-.address .address-box .address-info .address-img {
+.org-wrapper .address .address-box .address-info .address-img {
   position: absolute;
   height: 24px;
   width: 20px;
@@ -277,21 +282,21 @@ ul {
   -webkit-background-size: 79px 33px;
   background-size: 79px 33px;
 }
-.address .address-box .address-info .address-detail {
+.org-wrapper .address .address-box .address-info .address-detail {
   display: inline-block;
   margin-left: 25px;
   margin-right: 10px;
   line-height: 20px;
   color: #808080;
 }
-.address .address-box .address-call {
+.org-wrapper .address .address-box .address-call {
   width: 70px;
   height: 100%;
 }
-.address .address-box .address-call a {
+.org-wrapper .address .address-box .address-call a {
   display: block;
 }
-.address .address-box .address-call #address-call-box {
+.org-wrapper .address .address-box .address-call #address-call-box {
   width: 80px;
   height: 50px;
   display: -webkit-box;
@@ -307,7 +312,7 @@ ul {
   -ms-flex-align: center;
   align-items: center;
 }
-.address .address-box .address-call #address-call-box #img {
+.org-wrapper .address .address-box .address-call #address-call-box #img {
   width: 33px;
   height: 33px;
   background: url("../../../img/org/sprite.png") no-repeat;
@@ -315,24 +320,15 @@ ul {
   background-size: 79px 33px;
   background-position: 1px 0px;
 }
-.class-info {
+.org-wrapper .class-info {
   color: #383D43;
   line-height: 24px;
   font-size: 12px;
 }
-.class-info > img {
+.org-wrapper .class-info > img {
   max-width: 100%;
 }
-.class-info-share {
-  color: #383D43;
-  line-height: 24px;
-  font-size: 12px;
-  margin-bottom: 80px;
-}
-.class-info-share > img {
-  max-width: 100%;
-}
-.call-mask {
+.org-wrapper .call-mask {
   max-width: 900px;
   height: 100%;
   position: fixed;
@@ -342,7 +338,7 @@ ul {
   z-index: 10000;
   background-color: rgba(33, 33, 33, 0.8);
 }
-.call-mask .call-container {
+.org-wrapper .call-mask .call-container {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -353,17 +349,17 @@ ul {
   background-color: #fff;
   border-radius: 10px;
 }
-.call-mask .call-container .call-box {
+.org-wrapper .call-mask .call-container .call-box {
   width: 180px;
   height: 40px;
   line-height: 40px;
 }
-.call-mask .call-container .call-box > a {
+.org-wrapper .call-mask .call-container .call-box > a {
   width: 180px;
   height: 40px;
   color: #5A5A5A;
 }
-.call-mask .call-container > p {
+.org-wrapper .call-mask .call-container > p {
   height: 40px;
   line-height: 40px;
   padding: 0;
@@ -372,11 +368,11 @@ ul {
   color: #5A5A5A;
   border-bottom: 1px solid #F2F2F2;
 }
-.call-mask.show {
+.org-wrapper .call-mask.show {
   display: block;
   opacity: 1;
 }
-.call-mask.hide {
+.org-wrapper .call-mask.hide {
   display: none;
   opacity: 0;
 }
