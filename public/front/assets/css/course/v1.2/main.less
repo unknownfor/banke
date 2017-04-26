@@ -229,7 +229,6 @@ img {
   }
 }
 .call-mask {
-  max-width: 900px;
   height: 100%;
   position: fixed;
   top: 0;
@@ -237,22 +236,15 @@ img {
   right: 0;
   z-index: 10000;
   background-color: rgba(33,33,33,0.8);
-  @w: 180px;
-  @h: 40px;
+  @w: 200px;
+  @h: 45px;
   @r:10px;
   display: none;
-
   .call-container {
-    //position: absolute;
-    //top: 50%;
-    //left: 50%;
-    //width: @w;
-    //margin-top: -@h/2;
+    position: absolute;
     text-align: center;
-    //margin-left: -@w/2;
     background-color: #fff;
     border-radius: @r;
-    max-height: @h*3;
     .call-box {
       .size(@w,@h);
       line-height: @h;
@@ -273,9 +265,9 @@ img {
   }
   &.show{
     display: flex;
-    opacity: 1;
-    align-content: center;
+    align-items: center;
     justify-content: center;
+    opacity: 1;
   }
   &.hide{
     display: none;

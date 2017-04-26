@@ -326,39 +326,34 @@ ul {
   max-width: 100%;
 }
 .call-mask {
-  max-width: 900px;
   height: 100%;
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 10000;
   background-color: rgba(33, 33, 33, 0.8);
+  display: none;
 }
 .call-mask .call-container {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 180px;
-  margin-top: -20px;
   text-align: center;
-  margin-left: -90px;
   background-color: #fff;
   border-radius: 10px;
 }
 .call-mask .call-container .call-box {
-  width: 180px;
-  height: 40px;
-  line-height: 40px;
+  width: 200px;
+  height: 45px;
+  line-height: 45px;
 }
 .call-mask .call-container .call-box > a {
-  width: 180px;
-  height: 40px;
+  width: 200px;
+  height: 45px;
   color: #5A5A5A;
 }
 .call-mask .call-container .quite {
-  height: 40px;
-  line-height: 40px;
+  height: 45px;
+  line-height: 45px;
   padding: 0;
   margin: 0;
   font-size: 12px;
@@ -366,7 +361,18 @@ ul {
   border-top: 1px solid #F2F2F2;
 }
 .call-mask.show {
-  display: block;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   opacity: 1;
 }
 .call-mask.hide {
