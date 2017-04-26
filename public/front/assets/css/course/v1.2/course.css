@@ -480,6 +480,7 @@ img {
   right: 0;
   z-index: 10000;
   background-color: rgba(33, 33, 33, 0.8);
+  font-size: 14px;
   display: none;
 }
 .call-mask .call-container {
@@ -489,12 +490,12 @@ img {
   border-radius: 10px;
 }
 .call-mask .call-container .call-box {
-  width: 200px;
+  width: 240px;
   height: 45px;
   line-height: 45px;
 }
 .call-mask .call-container .call-box > a {
-  width: 200px;
+  width: 240px;
   height: 45px;
   color: #5A5A5A;
 }
