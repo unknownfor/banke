@@ -175,16 +175,12 @@ html {
   height: 100%;
 }
 body {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
-  max-width: 700px;
-  overflow-x: hidden;
-  word-wrap: break-word;
+  overflow: hidden;
   color: #9b9b9b;
+  width: 100%;
   height: 100%;
-}
-img {
-  max-width: 100%;
 }
 #invitation {
   width: 100%;
@@ -201,10 +197,14 @@ img {
   overflow: hidden;
 }
 #invitation .page {
+  height: 100%;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
   margin: 0px 20px;
-  height: 100%;
+}
+#invitation .page hr {
+  margin: 5px 0;
+  height: 25px;
 }
 #invitation .page .txt {
   letter-spacing: 1px;
@@ -254,8 +254,8 @@ img {
   margin-bottom: 10px;
 }
 #invitation .page .register .register-box .register-img {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   font-size: 18px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -277,7 +277,7 @@ img {
   -ms-flex: 3;
   flex: 3;
   border-radius: 10px;
-  height: 40px;
+  height: 35px;
   padding: 0px;
   border: none;
   background-color: #F2F2F2;
@@ -295,13 +295,16 @@ img {
   background-color: rgba(255, 255, 255, 0);
   border-radius: 10px;
   color: #9a9a9a;
-  line-height: 40px;
+  line-height: 35px;
   -webkit-box-flex: 0;
 }
 #invitation .page .register .register-box.active {
   background-color: #FFFBD8;
 }
 #invitation .page .register .register-box.active > i {
+  color: #FFEB3B;
+}
+#invitation .page .register .register-box.active hr {
   color: #FFEB3B;
 }
 #invitation .page .register .register-box.active .register-code {
@@ -322,7 +325,7 @@ img {
   font-size: 26px;
 }
 #invitation .page .bg {
-  max-height: 210px;
+  max-height: 195px;
   margin-bottom: 10px;
 }
 #invitation .page .bg.second {
@@ -334,8 +337,8 @@ img {
 #invitation .page .btn {
   text-align: center;
   width: 100%;
-  height: 40px;
-  line-height: 40px;
+  height: 35px;
+  line-height: 35px;
   color: #ffffff;
   border-radius: 10px;
   border: none;
@@ -348,7 +351,7 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 50px;
+  bottom: 45px;
 }
 #invitation .page .btn.active {
   background-color: #fbc02d;
@@ -360,7 +363,7 @@ img {
   display: block;
   color: #FFFFFF;
   width: 100%;
-  height: 40px;
+  height: 35px;
   font-size: 14px;
 }
 #invitation .page .box {

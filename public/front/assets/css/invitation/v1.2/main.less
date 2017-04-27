@@ -2,20 +2,14 @@ html {
   height:100%;
 }
 body {
-  margin:0 auto;
+  margin:0;
   padding:0;
-  max-width: 700px;
-  overflow-x: hidden;
-  word-wrap:break-word;
+  overflow: hidden;
   color: #9b9b9b;
-  height: 100%;
-}
-img {
-  max-width: 100%;
+  .size(100%,100%);
 }
 #invitation{
-  width: 100%;
-  height: 100%;
+  .size(100%,100%);
   text-align: center;
   transition: -webkit-transform 0.5s ease;
   transform: translate(0px, 0px);
@@ -25,12 +19,16 @@ img {
     overflow: hidden;
   }
   .page {
-    @rbh: 40px;
+    height: 100%;
+    @rbh: 35px;
     @rbr:10px;
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
     margin: 0px 20px;
-    height:100%;
+    hr {
+      margin: 5px 0;
+      height: @rbh - 10px;
+    }
     .txt {
       letter-spacing: 1px;
       &.slogen {
@@ -109,9 +107,9 @@ img {
             color: #FFEB3B;
           }
           //获取验证码短竖杠颜色
-          //> hr {
-          //  color: #FFEB3B;
-          //}
+           hr {
+            color: #FFEB3B;
+          }
           background-color: #FFFBD8;
           .register-code {
             background-color: #FFFBD8;
@@ -132,7 +130,7 @@ img {
       }
     }
     .bg {
-      max-height: 210px;
+      max-height: 195px;
       margin-bottom: 10px;
       &.second {
         margin-top: 34%;

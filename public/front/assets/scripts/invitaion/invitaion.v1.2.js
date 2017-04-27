@@ -5,16 +5,16 @@ $(function () {
     window.addLoadingImg();
     window.addTip();
 
-    $(document).ready(function () {
-        $('.page').css({'height':$(window).height()});
-    });
+    // $(document).ready(function () {
+    //     $('.page').css({'height':$(window).height()});
+    // });
 
 
     //安卓下键盘弹出会导致页面resize的，监听resize事件,
-    var HEIGHT = $(window).height();
-    $(window).resize(function() {
-        $('.page').height(HEIGHT);
-    });
+    // var HEIGHT = $(window).height();
+    // $(window).resize(function() {
+    //     $('.page').height(HEIGHT);
+    // });
 
     //填充信息，按钮变色
     $(document).on('input', '#phone-num', function(){
