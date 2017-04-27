@@ -193,14 +193,13 @@ body {
   transform: translate(0px, 0px);
 }
 #invitation .container {
-  height: 100%;
   overflow: hidden;
 }
 #invitation .page {
   height: 100%;
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
-  margin: 0px 20px;
+  margin: 0 20px;
 }
 #invitation .page hr {
   margin: 5px 0;
@@ -278,7 +277,7 @@ body {
   flex: 3;
   border-radius: 10px;
   height: 35px;
-  padding: 0px;
+  padding: 0;
   border: none;
   background-color: #F2F2F2;
 }
@@ -298,13 +297,7 @@ body {
   line-height: 35px;
   -webkit-box-flex: 0;
 }
-#invitation .page .register .register-box.active {
-  background-color: #FFFBD8;
-}
 #invitation .page .register .register-box.active > i {
-  color: #FFEB3B;
-}
-#invitation .page .register .register-box.active hr {
   color: #FFEB3B;
 }
 #invitation .page .register .register-box.active .register-code {
@@ -395,7 +388,6 @@ body {
 #invitation .current .subtitle {
   -webkit-animation: slideToTop .8s 0.3s ease both;
 }
-/*�ϻ���ʾ*/
 @-webkit-keyframes swipeMoveTop {
   0% {
     opacity: 0;

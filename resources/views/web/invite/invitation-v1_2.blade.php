@@ -71,9 +71,9 @@
                     </div>
                 </div>
             </div>
-            <div class="arrow">
-                <i class="iconfont down-btn">&#xe7a5;</i>
-            </div>
+        </div>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
     <div class="page">
