@@ -18,12 +18,9 @@
     <title>邀请注册</title>
 </head>
 <body>
-{!! csrf_field() !!}
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
 <div id="invitation">
-    {{--注册页面--}}
     <div class="page">
-        {{--20元现金为变量--}}
         <div class="container">
             <div class="register">
                 <div class="register-main">
@@ -44,7 +41,7 @@
                         <i class="iconfont register-img">&#xe655;</i>
                         <input class="register-code" id="password-num" type="password"  placeholder="密码"/>
                     </div>
-                    <button class="btn gift nouse"><a class="downloadBar" href="http://www.91banke.com/web/download">领取奖励</a></button>
+                    <button class="btn gift nouse"><a id="downloadBar" href="http://www.91banke.com/web/download">领取奖励</a></button>
                 </div>
                 <div class="register-done" style="display: none;">
                     <div class="register-new" style="display: none;">
@@ -64,16 +61,16 @@
                             <div class="box-title">参与方式</div>
                             <div class="box-info">分享此链接给您的微信、QQ好友或者打开客户端参与推荐有奖活动，当好友完成注册认证后，您将立即获得5元奖励。</div>
                         </div>
-                        <div class="box">
+                        <div class="box second">
                             <div class="box-title">奖励福利</div>
                             <div class="box-info">您获得的现金奖励将在您的半课账户中，现金奖励满100即可提现。</div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="arrow">
-            <i class="iconfont down-btn">&#xe7a5;</i>
+            <div class="arrow">
+                <i class="iconfont down-btn">&#xe7a5;</i>
+            </div>
         </div>
     </div>
     <div class="page">

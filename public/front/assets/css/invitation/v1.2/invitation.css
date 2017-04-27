@@ -173,6 +173,8 @@ input {
 }
 html {
   height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 body {
   margin: 0;
@@ -191,8 +193,10 @@ body {
   -webkit-transform: translate(0px, 0px);
   -ms-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
+  position: relative;
 }
 #invitation .container {
+  height: 100%;
   overflow: hidden;
 }
 #invitation .page {
@@ -219,8 +223,7 @@ body {
   font-size: 12px;
 }
 #invitation .page .txt.txt-one {
-  margin-top: 30px;
-  margin-bottom: 10px;
+  padding: 30px 0 10px 0;
   font-size: 14px;
 }
 #invitation .page .txt.txt-two {
@@ -277,7 +280,7 @@ body {
   flex: 3;
   border-radius: 10px;
   height: 35px;
-  padding: 0;
+  padding: 0px;
   border: none;
   background-color: #F2F2F2;
 }
@@ -297,7 +300,13 @@ body {
   line-height: 35px;
   -webkit-box-flex: 0;
 }
+#invitation .page .register .register-box.active {
+  background-color: #FFFBD8;
+}
 #invitation .page .register .register-box.active > i {
+  color: #FFEB3B;
+}
+#invitation .page .register .register-box.active hr {
   color: #FFEB3B;
 }
 #invitation .page .register .register-box.active .register-code {
@@ -382,12 +391,46 @@ body {
 #invitation .current .arrow {
   -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
 }
-#invitation .current .txt {
+#invitation .current .bg {
+  -webkit-animation: slideToTop .8s 0.6s ease both;
+}
+#invitation .current .bg.second {
   -webkit-animation: slideToTop .8s ease both;
 }
-#invitation .current .subtitle {
+#invitation .current .register-box.phone {
+  -webkit-animation: slideToTop .9s 0.2s ease both;
+}
+#invitation .current .register-box.code-num {
+  -webkit-animation: slideToTop .9s 0.3s ease both;
+}
+#invitation .current .register-box.password {
+  -webkit-animation: slideToTop .9s  0.4s ease both;
+}
+#invitation .current .btn {
+  -webkit-animation: slideToTop .9s 0.7s ease both;
+}
+#invitation .current .txt.slogen {
+  -webkit-animation: slideToTop .8s ease both;
+}
+#invitation .current .txt.detail {
   -webkit-animation: slideToTop .8s 0.3s ease both;
 }
+#invitation .current .txt.txt-one {
+  -webkit-animation: slideToTop .8s 0.2s ease both;
+}
+#invitation .current .txt.txt-two {
+  -webkit-animation: slideToTop .8s 0.5s ease both;
+}
+#invitation .current .txt.txt-three {
+  -webkit-animation: slideToTop .8s 0.7s ease both;
+}
+#invitation .current .box.first {
+  -webkit-animation: slideToTop .9s 0.3s ease both;
+}
+#invitation .current .box.second {
+  -webkit-animation: slideToTop .9s 0.6s ease both;
+}
+/*�ϻ���ʾ*/
 @-webkit-keyframes swipeMoveTop {
   0% {
     opacity: 0;
@@ -400,6 +443,16 @@ body {
   100% {
     opacity: 0;
     -webkit-transform: translate3d(0, -10px, 0);
+  }
+}
+@-webkit-keyframes slideToTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
   }
 }
 @media screen and (max-width: 320px) {
