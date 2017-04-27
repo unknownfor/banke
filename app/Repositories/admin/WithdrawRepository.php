@@ -98,18 +98,14 @@ class WithdrawRepository
 		$withDraws = $withDraw->orderBy("id", "desc")->get();
 
 		if ($withDraws) {
-			$operator = new User;
 			foreach ($withDraws as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
-				$user = BankeUserAuthentication::where('uid',$v['uid'])->first();
-				$v['name'] = $user['real_name'];
-				$v['mobile'] = $user['mobile'];
-				$operator_name="";
-				if($v['operator_uid']!=""){
-					$operator_name=$operator::find(($v['operator_uid']))['name'];
+				$v['name'] = $v->userAuthen['real_name'];
+				$v['mobile'] = $v->userAuthen['mobile'];
+				$v['operator_name']='';
+				if($v->operator) {
+					$v['operator_name'] = $v->operator['name'];
 				}
-				$v['operator_name'] = $operator_name;
-
 			}
 		}
 		return [
@@ -148,11 +144,9 @@ class WithdrawRepository
 	{
 		$withDraw = BankeWithdraw::find($id);
 		if ($withDraw) {
-			$userAu = BankeUserAuthentication::find($withDraw['uid']);
-			$user = BankeUserProfiles::find($withDraw['uid']);
-			$withDraw['name'] = $userAu['real_name'];
-			$withDraw['mobile'] = $user['mobile'];
-			$withDraw['account_balance'] = $user['account_balance'];
+			$withDraw['name'] = $withDraw->userAuthen['real_name'];
+			$withDraw['mobile'] = $withDraw->userAuthen['mobile'];
+			$withDraw['account_balance'] = $withDraw->user['account_balance'];
 			$operator_name='';
 			$operator = new User;
 			if($withDraw['operator_uid']!=""){
