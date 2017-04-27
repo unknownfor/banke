@@ -135,7 +135,9 @@
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/withdraw')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                              @if($withdraw['status']==0)
                               <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
+                              @endif
                           </div>
                       </div>
                   </div>
