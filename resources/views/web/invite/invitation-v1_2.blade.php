@@ -71,9 +71,9 @@
                     </div>
                 </div>
             </div>
-            <div class="arrow">
-                <i class="iconfont down-btn">&#xe7a5;</i>
-            </div>
+        </div>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
     <div class="page">
@@ -82,9 +82,9 @@
             <div class="txt txt-one">上半课报名学习</div>
             <div class="txt txt-two">最高可领取50%学费返现</div>
             <button class="btn download"><a id="downloadBar" href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></button>
-            <div class="arrow">
-                <i class="iconfont down-btn">&#xe7a5;</i>
-            </div>
+        </div>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
     <div class="page">
@@ -93,9 +93,9 @@
             <div class="txt txt-one">坚持每日打卡</div>
             <div class="txt txt-two">每天开心领学费</div>
             <button class="btn download"><a id="downloadBar" href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></button>
-            <div class="arrow">
-                <i class="iconfont down-btn">&#xe7a5;</i>
-            </div>
+        </div>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
     <div class="page">
@@ -104,9 +104,9 @@
             <div class="txt txt-one">完成指定任务</div>
             <div class="txt txt-two">领取任务奖励</div>
             <button class="btn download"><a id="downloadBar" href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></button>
-            <div class="arrow">
-                <i class="iconfont down-btn">&#xe7a5;</i>
-            </div>
+        </div>
+        <div class="arrow">
+            <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
 </div>

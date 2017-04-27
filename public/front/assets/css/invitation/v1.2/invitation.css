@@ -47,14 +47,9 @@ input {
   -webkit-appearance: textfield;
   background-color: white;
   -webkit-rtl-ordering: logical;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
   user-select: text;
   cursor: auto;
   padding: 1px;
-  -webkit-border-image: initial;
-  -o-border-image: initial;
   border-image: initial;
   text-rendering: auto;
   color: initial;
@@ -125,7 +120,6 @@ input {
   margin-left: -80px;
   margin-top: -35px;
   border-radius: 3px;
-  -webkit-background-clip: padding-box;
   background-clip: padding-box;
   color: #fff;
   text-align: center;
@@ -162,13 +156,17 @@ input {
 }
 @keyframes turning {
   to {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
 @-webkit-keyframes turning {
   to {
     -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes turning {
+  to {
+    -moz-transform: rotate(360deg);
   }
 }
 html {
@@ -190,14 +188,10 @@ img {
   width: 100%;
   height: 100%;
   text-align: center;
-  -webkit-transition: -webkit-transform 0.5s ease;
   transition: -webkit-transform 0.5s ease;
-  -webkit-transform: translate(0px, 0px);
-  -ms-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
 }
 #invitation .container {
-  height: 100%;
   overflow: hidden;
 }
 #invitation .page {
@@ -246,9 +240,6 @@ img {
 }
 #invitation .page .register .register-box {
   border-radius: 10px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   background-color: #F2F2F2;
   margin-bottom: 10px;
@@ -257,24 +248,12 @@ img {
   width: 40px;
   height: 40px;
   font-size: 18px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
   display: flex;
   justify-items: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 #invitation .page .register .register-box .register-code {
-  -webkit-box-flex: 3;
-  -webkit-flex: 3;
-  -ms-flex: 3;
   flex: 3;
   border-radius: 10px;
   height: 40px;
@@ -283,9 +262,6 @@ img {
   background-color: #F2F2F2;
 }
 #invitation .page .register .register-box .code-btn {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 2 90px;
-  -ms-flex: 0 2 90px;
   flex: 0 2 90px;
   padding: 0;
   margin: 0;
@@ -315,7 +291,6 @@ img {
   right: 45%;
   bottom: 2px;
   color: #FFEB3B;
-  -webkit-background-size: 33px auto;
   background-size: 33px auto;
 }
 #invitation .page .arrow > i {
