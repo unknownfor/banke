@@ -24,7 +24,7 @@
     {{--注册页面--}}
     <div class="page">
         {{--20元现金为变量--}}
-        <div class="container">
+        {{--<div class="container">--}}
             <div class="register">
                 <div class="register-main">
                     <div class="txt slogen">注册即刻领取20元现金奖励</div>
@@ -71,40 +71,40 @@
                     </div>
                 </div>
             </div>
-        </div>
+        {{--</div>--}}
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
     <div class="page">
-        <div class="container">
+        {{--<div class="container">--}}
             <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163041837846.png" />
             <div class="txt txt-one">上半课报名学习</div>
             <div class="txt txt-two">最高可领取50%学费返现</div>
             <button class="btn download"><a id="downloadBar" href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></button>
-        </div>
+        {{--</div>--}}
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
     <div class="page">
-        <div class="container">
+        {{--<div class="container">--}}
             <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163081632946.png" />
             <div class="txt txt-one">坚持每日打卡</div>
             <div class="txt txt-two">每天开心领学费</div>
             <button class="btn download"><a id="downloadBar" href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></button>
-        </div>
+        {{--</div>--}}
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
     </div>
     <div class="page">
-        <div class="container">
+        {{--<div class="container">--}}
             <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163132658414.png" />
             <div class="txt txt-one">完成指定任务</div>
             <div class="txt txt-two">领取任务奖励</div>
             <button class="btn download"><a id="downloadBar" href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></button>
-        </div>
+        {{--</div>--}}
         <div class="arrow">
             <i class="iconfont down-btn">&#xe7a5;</i>
         </div>
