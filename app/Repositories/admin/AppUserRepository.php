@@ -509,51 +509,47 @@ class AppUserRepository
 
 	//添加从新的账号，并设置为机构账号
 	public function store_org_account($request){
-
-//		$userData = $request->all();
-//		$mobile=$userData['mobile'];
-//		$user = new BankeUserProfiles;
-//		$user = $user->where('mobile',$mobile);
-//		$user = new BankeUserProfiles;
-//		$userData['status'] = 1;
-//		//密码进行加密
-//		$userData['password'] = bcrypt($userData['password']);
-//
-//		DB::transaction(function () use ($input, $order,$operator_id) {
-//			try{
-//				$user = new User;
-//				$user[]
-//			}
-//			catch (Exception$e) {
-//				DB::rollBack();
-//				Log::info($e);
-//				Flash::error(trans('alerts.users.created_error'));
-//				return false;
-//			}
-//		});
-//
-//		$code = Uuid::generate(4);
-//			$user->fill($userData);
-//			if ($user->fill($userData)->save()) {
-////				 自动更新用户资料关系
-//				$profiles = [
-//					'uid' => $user->id,
-//					'name' => $userData['name'],
-//					'mobile' => $userData['mobile'],
-//					'org_id' => $userData['org_id'],
-//					'invitation_code' => Uuid::generate(4)
-//				];
-//			if($user->profiles()->create($profiles)){
-//				Flash::success(trans('alerts.users.created_success'));
-//				return true;
-//			}
-//			Flash::error(trans('alerts.users.created_error'));
-//			return false;
-
+		$userData = $request->all();
+		DB::transaction(function () use ($userData) {
+			try{
+				$uid=$this->insertBasicUserInfo($userData);
+				$this->insertDetailUserInfo($uid,$userData);
+			}
+			catch (Exception$e){
+				DB::rollBack();
+				Log::info($e);
+				Flash::error(trans('alerts.users.created_error'));
+				return false;
+			}
+		});
 	}
 
-	public function insertToUser(){
+	/*用户基本信息创建*/
+	public function insertBasicUserInfo($data){
+		$user = [
+			'name'=>$data['name'],
+			'password'=>bcrypt($data['password']), //密码进行加密
+			'mobile'=>$data['mobile'],
+		];
+		User::create($user);
+		return $user->id;
+	}
 
+	/*用户详细信息创建,自动更新用户资料关系*/
+	public function insertDetailUserInfo($uid,$data){
+		$code = Uuid::generate(4);
+		$profiles = [
+			'uid' => $uid,
+			'name' => $data['name'],
+			'mobile' => $data['mobile'],
+			'org_id' => $data['org_id'],
+			'invitation_code' => $code
+		];
+		if(BankeUserProfiles::create($profiles)){
+			Flash::success(trans('alerts.users.created_success'));
+			return true;
+		}
+		return false;
 	}
 
 
