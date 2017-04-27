@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Flash;
 use DB;
 use Auth;
+use League\Flysystem\Exception;
 use Uuid;
 use Illuminate\Support\Facades\Log;
 
@@ -358,7 +359,7 @@ class AppUserRepository
 	}
 
 	/**
-	 * 修改用户状态
+	 * 修改用户类型
 	 * @author 晚黎
 	 * @date   2016-04-14T11:50:45+0800
 	 * @param  [type]                   $id     [description]
@@ -370,7 +371,6 @@ class AppUserRepository
 		$user = BankeUserProfiles::find($id);
 		if ($user) {
 			$user['org_id'] = $userData['org_id'];
-			$user['name']= $userData['name'];
 			if ($user->save()) {
 				Flash::success(trans('alerts.users.updated_success'));
 				return true;
@@ -495,39 +495,67 @@ class AppUserRepository
 		];
 	}
 
-	public function store_org_account($request){
-//		$user = new User;
+	/*从已有app账户更新为机构账户*/
+	public function store_org_account_old($request){
 		$userData = $request->all();
 		$mobile=$userData['mobile'];
 		$user = new BankeUserProfiles;
 		$user = $user->where('mobile',$mobile);
-		if($user->count()>0){
-			$this->changeUserType($user->first()['uid'],$userData);
-			return true;
-		}else {
-			$user = new BankeUserProfiles;
-			$userData['status'] = 1;
-			//密码进行加密
-			$userData['password'] = bcrypt($userData['password']);
-//			$code = Uuid::generate(4);
-			$user->fill($userData);
-//			if ($user->fill($userData)->save()) {
-				// 自动更新用户资料关系
-				$profiles = [
-					'uid' => $user->id,
-					'name' => $userData['name'],
-					'mobile' => $userData['mobile'],
-					'org_id' => $userData['org_id'],
-					'invitation_code' => Uuid::generate(4)
-				];
-			if($user->profiles()->create($profiles)){
-				Flash::success(trans('alerts.users.created_success'));
-				return true;
-			}
-			Flash::error(trans('alerts.users.created_error'));
-			return false;
+		if($user->count()>0) {
+			return $this->changeUserType($user->first()['uid'], $userData);
 		}
+		return false;
 	}
+
+	//添加从新的账号，并设置为机构账号
+	public function store_org_account($request){
+
+//		$userData = $request->all();
+//		$mobile=$userData['mobile'];
+//		$user = new BankeUserProfiles;
+//		$user = $user->where('mobile',$mobile);
+//		$user = new BankeUserProfiles;
+//		$userData['status'] = 1;
+//		//密码进行加密
+//		$userData['password'] = bcrypt($userData['password']);
+//
+//		DB::transaction(function () use ($input, $order,$operator_id) {
+//			try{
+//				$user = new User;
+//				$user[]
+//			}
+//			catch (Exception$e) {
+//				DB::rollBack();
+//				Log::info($e);
+//				Flash::error(trans('alerts.users.created_error'));
+//				return false;
+//			}
+//		});
+//
+//		$code = Uuid::generate(4);
+//			$user->fill($userData);
+//			if ($user->fill($userData)->save()) {
+////				 自动更新用户资料关系
+//				$profiles = [
+//					'uid' => $user->id,
+//					'name' => $userData['name'],
+//					'mobile' => $userData['mobile'],
+//					'org_id' => $userData['org_id'],
+//					'invitation_code' => Uuid::generate(4)
+//				];
+//			if($user->profiles()->create($profiles)){
+//				Flash::success(trans('alerts.users.created_success'));
+//				return true;
+//			}
+//			Flash::error(trans('alerts.users.created_error'));
+//			return false;
+
+	}
+
+	public function insertToUser(){
+
+	}
+
 
 	/**
 	 * 根据创建时间，得到 注册用户

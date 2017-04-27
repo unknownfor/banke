@@ -83,6 +83,12 @@ class CourseRepository
 				if($comments) {
 					$v['comment_list'] = $comments->count();
 				}
+				$v['category_name']='';
+				$category=$v->category;
+				if($category) {
+					$trainCategpry=new BankeTrainCategory();
+					$v['category_name'] = $trainCategpry::find($category['cid'])['name'];
+				}
 			}
 		}
 		

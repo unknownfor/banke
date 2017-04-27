@@ -11,6 +11,7 @@ use PermissionRepository;
 use RoleRepository;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\CreateOrgUserRequest;
+use App\Http\Requests\CreateOrgUserOldRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Log;
 
@@ -175,6 +176,19 @@ class AppUserController extends Controller
     public function store_org_account(CreateOrgUserRequest $request)
     {
         AppUserRepository::store_org_account($request);
+        return redirect('admin/app_user/org_account');
+    }
+
+    /**
+     * 添加机构用户，从已有的app账号变迁得来
+     * @author shaolei
+     * @date   2016-04-14T11:31:29+0800
+     * @param  CreateUserRequest        $request [description]
+     * @return [type]                            [description]
+     */
+    public function store_org_account_old(CreateOrgUserOldRequest $request)
+    {
+        AppUserRepository::store_org_account_old($request);
         return redirect('admin/app_user/org_account');
     }
 

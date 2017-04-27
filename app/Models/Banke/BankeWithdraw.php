@@ -25,4 +25,14 @@ class BankeWithdraw extends Model
         parent::__construct($attributes);
         $this->action = config('admin.global.withdraw.action');
     }
+    public function  userAuthen(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','uid');
+    }
+    public function  user(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid');
+    }
+
+    public function  operator(){
+        return $this->hasOne('App\Models\Banke\BankeUsers', 'id', 'operator_uid');
+    }
 }

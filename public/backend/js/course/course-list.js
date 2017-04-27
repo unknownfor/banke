@@ -47,6 +47,11 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
+          "data": "category_name",
+          "name": "category_name",
+          "orderable" : false,
+        },
+        {
           "data": "comment_list",
           "name": "comment_list",
           "orderable" : false,

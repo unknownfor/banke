@@ -40,57 +40,107 @@
 					        @endforeach
 					    </div>
 					    @endif
-              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/store_org_account')}}" onSubmit="return submitData();">
-              		{!! csrf_field() !!}
-                  <div class="form-body">
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="name">{{trans('labels.user.name')}}</label>
-                          <div class="col-md-8">
-                              <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.user.name')}}" value="{{old('name')}}">
-                              <div class="form-control-focus"> </div>
-                          </div>
-                      </div>
+                {!! csrf_field() !!}
+                <div class="tabbable" id="tabs-338836">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a  data-toggle="tab" href="#panel-668378">已有App账号</a></li>
+                        <li><a  data-toggle="tab" href="#panel-778016">注册账号</a></li>
+                    </ul>
 
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="mobile">{{trans('labels.app_user.mobile')}}</label>
-                          <div class="col-md-8">
-                              <input type="text" class="form-control" id="mobile" name="mobile" placeholder="{{trans('labels.app_user.mobile')}}" value="{{old('mobile')}}">
-                              <div class="form-control-focus"> </div>
-                          </div>
-                      </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="panel-668378">
+                            <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/store_org_account_old')}}">
+                                <div class="form-body">
 
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-2 control-label" for="password">{{trans('labels.user.password')}}</label>
-                          <div class="col-md-8">
-                              <input type="text" class="form-control" id="password" name="password" placeholder="{{trans('labels.user.password')}}">
-                              <div class="form-control-focus"> </div>
-                          </div>
-                      </div>
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-2 control-label" for="mobile_old">{{trans('labels.app_user.mobile')}}</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="mobile_old" name="mobile_old" placeholder="{{trans('labels.app_user.mobile')}}">
+                                            <div class="form-control-focus"> </div>
+                                        </div>
+                                    </div>
 
-                      <div class="form-group form-md-line-input has-warning">
-                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.app_user.org_name')}}</label>
-                        <div class="col-md-4">
-                          <div class="md-checkbox-inline">
-                              @if(!$orgs->isEmpty())
-                              <select name="org_id" class="orgSelect show-tick form-control" data-live-search="true">
-                              @foreach($orgs as $org)
-                                  <option value="{{$org->id}}" > {{$org->name}}</option>
-                              @endforeach
-                              </select>
-                              @endif
-                          </div>
+                                    <div class="form-group form-md-line-input has-warning">
+                                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.app_user.org_name')}}</label>
+                                        <div class="col-md-4">
+                                            <div class="md-checkbox-inline">
+                                                @if(!$orgs->isEmpty())
+                                                    <select name="org_id_old" class="orgSelect show-tick form-control" data-live-search="true">
+                                                        @foreach($orgs as $org)
+                                                            <option value="{{$org->id}}" > {{$org->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <a href="{{url('admin/app_user/org_account')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                                            <button type="submit" class="btn blue" onclick="return  submitData()">{{trans('crud.submit')}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                      </div>
-                  </div>
-                  <div class="form-actions">
-                      <div class="row">
-                          <div class="col-md-offset-2 col-md-10">
-                              <a href="{{url('admin/app_user/org_account')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                              <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
-                          </div>
-                      </div>
-                  </div>
-              </form>
+
+                        <div class="tab-pane" id="panel-778016">
+                            <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/store_org_account_new')}}">
+
+                                <div class="form-body">
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-2 control-label" for="name_new">{{trans('labels.user.name')}}</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="name_new" name="name_new" placeholder="{{trans('labels.user.name')}}">
+                                            <div class="form-control-focus"> </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-2 control-label" for="mobile_new">{{trans('labels.app_user.mobile')}}</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="mobile_new" name="mobile_new" placeholder="{{trans('labels.app_user.mobile')}}">
+                                            <div class="form-control-focus"> </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-md-line-input">
+                                        <label class="col-md-2 control-label" for="password_new">{{trans('labels.user.password')}}</label>
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="password_new" name="password_new" placeholder="{{trans('labels.user.password')}}">
+                                            <div class="form-control-focus"> </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group form-md-line-input has-warning">
+                                        <label class="col-md-2 control-label" for="form_control_1">{{trans('labels.app_user.org_name')}}</label>
+                                        <div class="col-md-4">
+                                            <div class="md-checkbox-inline">
+                                                @if(!$orgs->isEmpty())
+                                                    <select name="org_id_new" class="orgSelect show-tick form-control" data-live-search="true">
+                                                        @foreach($orgs as $org)
+                                                            <option value="{{$org->id}}" > {{$org->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <a href="{{url('admin/app_user/org_account')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                                            <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
           </div>
       </div>
   </div>
@@ -116,7 +166,7 @@
         });
         var registerStatus=0;  //三种状态，0 表示未注册，1表示 已经注册为普通用户，2表示已经注册为机构老师账号
 
-        $(document).on('blur','#mobile',function(){
+        $(document).on('blur','#mobile_old',function(){
             var mobile=$(this).val();
             var url='/admin/user/search_by_mobile',
                     paraData={mobile:mobile,_token:$('input[name="_token"]').val()};
@@ -136,12 +186,11 @@
                if(window.confirm('该用手机号已经注册过，是否变更为机构账号？密码仍然使用旧密码。')){
                    return true;
                }
-                return false;
             }
             if(registerStatus==2){
                 alert('该用手机号已经注册为机构账号！');
             }
-            return true;
+            return false;
         };
       });
     </script>

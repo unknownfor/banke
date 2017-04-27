@@ -83,14 +83,14 @@
                                             <label for="hot1">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> 是 </label>
+                                                <span class="box"></span> 否 </label>
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="hot2" name="hot" value="1" class="md-radiobtn" @if(old('hot') === 1) checked @endif>
                                             <label for="hot2">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> 否 </label>
+                                                <span class="box"></span> 是 </label>
                                         </div>
                                     </div>
                                 </div>
