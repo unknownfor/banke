@@ -5,21 +5,8 @@ $(function () {
     window.addLoadingImg();
     window.addTip();
 
-    // $(document).ready(function () {
-    //     $('.page').css({'height':$(window).height()});
-    // });
-
-
-    //安卓下键盘弹出会导致页面resize的，监听resize事件,
-    // var HEIGHT = $(window).height();
-    // $(window).resize(function() {
-    //     $('.page').height(HEIGHT);
-    // });
-
-    //填充信息，按钮变色
+    //填充手机号信息，按钮变色
     $(document).on('input', '#phone-num', function(){
-        window.scrollControl(false);
-        //禁止页面滚动
         var number=$(this).val(),
         reg = /^1(3|4|5|7|8)\d{9}$/;
         var $code=$('#phone-code-btn'),
@@ -38,12 +25,13 @@ $(function () {
         }
     });
 
-    //填充信息，按钮变色
+    //填充验证码信息，按钮变色
     $(document).on('input', '#user-code', function() {
         var number=$('#phone-num').val(),
             reg = /^1(3|4|5|7|8)\d{9}$/;
         var $btn=$('.btn'),
-            code=$('#user-code').val();
+            code=$('#user-code').val(),
+            password=$('#password-num').val();
         if(reg.test(number)) {
             if(code!=''){
                 $('.code-num').addClass('active');

@@ -300,6 +300,9 @@ body {
   line-height: 35px;
   -webkit-box-flex: 0;
 }
+#invitation .page .register .register-box .code-btn.disabled {
+  pointer-events: none;
+}
 #invitation .page .register .register-box.active {
   background-color: #FFFBD8;
 }
