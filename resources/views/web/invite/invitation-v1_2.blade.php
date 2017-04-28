@@ -18,6 +18,7 @@
     <title>邀请注册</title>
 </head>
 <body>
+{!! csrf_field() !!}
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
 <div id="invitation">
     <div class="page">
