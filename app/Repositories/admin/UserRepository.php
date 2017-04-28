@@ -6,6 +6,8 @@ use App\Models\Banke\BankeUserProfiles;
 use App\User;
 use Carbon\Carbon;
 use Flash;
+use Mockery\CountValidator\Exception;
+use DB;
 
 /**
 * 用户仓库
@@ -332,49 +334,61 @@ class UserRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function register($request)
+	public function register($userData)
 	{
 		$user = new User;
-		$userData = $request->all();
 		//注册用户生成用户名
 		$userData['name'] = createUserName($userData['mobile']);
 		//密码进行加密
 		
-		$userData['password'] = bcrypt($request['password']);
+		$userData['password'] = bcrypt($userData['password']);
+		$result=false;
 
-		if ($user->fill($userData)->save()) {
-			//邀请人信息
-			$invitation_user = BankeUserProfiles::where('invitation_code', $userData['welcome'])->first();
-			$invitation_user->invitation_count += 1;
-			$invitation_user->save();
-			// 自动更新用户资料关系
-			$profiles = [
-				'uid' => $user->id,
-				'name' => $userData['name'],
-				'mobile'=> $userData['mobile'],
-				'invitation_uid'=>$invitation_user['uid'],
-				'invitation_code'=> $this->create_uuid()
-			];
-			$user->profiles()->create($profiles);
+		DB::transaction(function () use ($user,$userData,$result) {
+			try {
+				$user->fill($userData)->save();
 
-			// 自动更新用户资料关系
-			$authentication = [
-				'uid' => $user->id,
-				'mobile'=> $userData['mobile']
-			];
-			$user->authentication()->create($authentication);
+				$invitation_user = BankeUserProfiles::where('invitation_code', $userData['welcome'])->first();
+				$invitation_user->invitation_count += 1;
+				$invitation_user->save();
+				// 自动更新用户资料关系
+				$profiles = [
+					'uid' => $user->id,
+					'name' => $userData['name'],
+					'mobile'=> $userData['mobile'],
+					'invitation_uid'=>$invitation_user['uid'],
+					'invitation_code'=> $this->create_uuid()
+				];
+				$user->profiles()->create($profiles);
 
-			//记录邀请信息
-			$invitation_log = [
-				'uid'=>$invitation_user['uid'],
-				'name'=>$invitation_user['name'],
-				'mobile'=>$invitation_user['mobile'],
-				'target_mobile'=>$userData['mobile']
-			];
-			BankeInvitation::create($invitation_log);
-			return true;
-		}
-		return false;
+				// 自动更新用户资料关系
+				$authentication = [
+					'uid' => $user->id,
+					'mobile'=> $userData['mobile']
+				];
+				$user->authentication()->create($authentication);
+
+				//记录邀请信息
+				$invitation_log = [
+					'uid'=>$invitation_user['uid'],
+					'name'=>$invitation_user['name'],
+					'mobile'=>$invitation_user['mobile'],
+					'target_mobile'=>$userData['mobile']
+				];
+				BankeInvitation::create($invitation_log);
+				DB::commit();
+				Flash::success(trans('alerts.users.created_success'));
+				$result = true;
+			} catch (Exception $e) {
+				DB::rollBack();
+				Log::info($e);
+				Flash::error(trans('alerts.users.created_error'));
+				$result = false;
+			}
+			return $result;
+
+		});
+		return true;
 	}
 
 	private function create_uuid($prefix = ""){    //可以指定前缀

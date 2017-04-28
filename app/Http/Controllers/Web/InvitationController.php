@@ -68,7 +68,7 @@ class InvitationController extends Controller
         catch (ClientException $e) {
             return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR);
         }
-        $result = UserRepository::register($request);
+        $result = UserRepository::register($userData);
         if ($result) {
             return ApiResponseService::success('', Code::SUCCESS, '注册成功');
         }
