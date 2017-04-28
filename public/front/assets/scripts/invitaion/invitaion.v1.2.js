@@ -77,7 +77,9 @@ $(function () {
             getDataAsync(url, {mobile: $('#phone-num').val()},
                 function (res) {
                     if(res.status_code==50016){
-                        $('.register-old').show().parent().show().siblings().hide();
+                        // $('.register-old').show().parent().show().siblings().hide();
+                        $('register-main').
+                        $('.register-old').removeStyle("delete");
                         return;
                     }
                     window.showTips(res.message);
@@ -126,8 +128,9 @@ $(function () {
             //成功返回之后调用的函数
             window.controlLoadingBox(false);
             if (res.status_code == 0) {
-                    $('.coupon-count span').text(phone);
                     window.showTips('<p>恭喜您，注册成功!</p>',2000);
+                    var mobile = $('#phone-num').val();
+                    $('.save-tel').text(mobile);
                     window.setTimeout(function() {
                         showSuccessPage();
                     },2000);
@@ -166,7 +169,7 @@ $(function () {
      * 显示报名成功页面
      */
     function showSuccessPage() {
-        $('.register-new').show().parent().show().siblings().hide();
+        // $('.register-new').show().parent().show().siblings().hide();
     }
 
 
