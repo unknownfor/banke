@@ -164,7 +164,7 @@
             liveSearchNormalize:true,
             liveSearchPlaceholder:'输入名称进行搜索',
         });
-        var registerStatus=0;  //三种状态，0 表示未注册，1表示 已经注册为普通用户，2表示已经注册为机构老师账号
+        var registerStatusOld=false;  //true表示可以操作，false 表示不操作
 
         $(document).on('blur','#mobile_old',function(){
             var mobile=$(this).val();
@@ -173,10 +173,12 @@
             $.post(url,paraData,function(res){
                 if(res.length>0){
                     if(res[0].org_id!=0){
-                        registerStatus=2;
+                        registerStatusOld=true;
                     }else {
                         registerStatus=1;
                     }
+                }else{
+                    registerStatus=false;
                 }
             });
         });
