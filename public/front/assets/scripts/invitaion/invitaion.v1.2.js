@@ -60,7 +60,6 @@ $(function () {
                     $btn.removeClass('active').addClass('nouse');
                     $('.password').removeClass('active');
                 }
-            window.scrollControl(true);
         }
     });
 
