@@ -211,6 +211,7 @@ body {
 }
 #invitation .page .txt {
   letter-spacing: 1px;
+  opacity: 0 ;
 }
 #invitation .page .txt.slogen {
   padding: 15px 0;
@@ -332,12 +333,15 @@ body {
 #invitation .page .bg {
   max-height: 195px;
   margin-bottom: 10px;
+  opacity: 0;
 }
 #invitation .page .bg.second {
   margin-top: 34%;
+  opacity: 0;
 }
 #invitation .page .bg.third {
   margin-top: 10%;
+  opacity: 0;
 }
 #invitation .page .btn {
   text-align: center;
@@ -347,6 +351,7 @@ body {
   color: #ffffff;
   border-radius: 10px;
   border: none;
+  opacity: 0;
 }
 #invitation .page .btn.gift {
   background-color: #9b9b9b;
@@ -357,6 +362,7 @@ body {
   left: 0;
   right: 0;
   bottom: 45px;
+  opacity: 0;
 }
 #invitation .page .btn.active {
   background-color: #fbc02d;
@@ -374,6 +380,7 @@ body {
 #invitation .page .box {
   text-align: left;
   font-size: 14px;
+  opacity: 0 ;
 }
 #invitation .page .box .box-title {
   color: #FBC02D;
@@ -395,10 +402,13 @@ body {
   -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
 }
 #invitation .current .bg {
-  -webkit-animation: slideToTop .8s 0.6s ease both;
+  -webkit-animation: slideToTop .9s 0.6s ease both;
 }
 #invitation .current .bg.second {
-  -webkit-animation: slideToTop .8s ease both;
+  -webkit-animation: slideToTop .9s ease both;
+}
+#invitation .current .bg.third {
+  -webkit-animation: slideToTop .9s ease both;
 }
 #invitation .current .register-box.phone {
   -webkit-animation: slideToTop .9s 0.2s ease both;
@@ -407,10 +417,10 @@ body {
   -webkit-animation: slideToTop .9s 0.3s ease both;
 }
 #invitation .current .register-box.password {
-  -webkit-animation: slideToTop .9s  0.4s ease both;
+  -webkit-animation: slideToTop .9s 0.4s ease both;
 }
 #invitation .current .btn {
-  -webkit-animation: slideToTop .9s 0.7s ease both;
+  -webkit-animation: slideToTop .9s 0.6s ease both;
 }
 #invitation .current .txt.slogen {
   -webkit-animation: slideToTop .8s ease both;
@@ -428,10 +438,10 @@ body {
   -webkit-animation: slideToTop .8s 0.7s ease both;
 }
 #invitation .current .box.first {
-  -webkit-animation: slideToTop .9s 0.3s ease both;
+  -webkit-animation: slideToTop .9s 0.2s ease both;
 }
 #invitation .current .box.second {
-  -webkit-animation: slideToTop .9s 0.6s ease both;
+  -webkit-animation: slideToTop .9s 0.4s ease both;
 }
 /*�ϻ���ʾ*/
 @-webkit-keyframes swipeMoveTop {

@@ -36,6 +36,7 @@ body {
     }
     .txt {
       letter-spacing: 1px;
+      opacity: 0 ;
       &.slogen {
         padding: 15px 0;
         font-size: 18px;
@@ -141,11 +142,14 @@ body {
     .bg {
       max-height: 195px;
       margin-bottom: 10px;
+      opacity: 0;
       &.second {
         margin-top: 34%;
+        opacity: 0;
       }
       &.third {
         margin-top: 10%;
+        opacity: 0;
       }
     }
     .btn {
@@ -156,6 +160,7 @@ body {
       color: #ffffff;
       border-radius: @rbr;
       border: none;
+      opacity: 0;
       &.gift {
         background-color: #9b9b9b;
       }
@@ -165,6 +170,7 @@ body {
         left: 0;
         right: 0;
         bottom: @rbh+@rbr;
+        opacity: 0;
       }
       &.active {
         background-color: @bc;
@@ -183,6 +189,7 @@ body {
     .box {
       text-align: left;
       font-size: 14px;
+      opacity: 0 ;
       .box-title {
         color: #FBC02D;
         margin-bottom: 5px;
@@ -211,9 +218,12 @@ body {
       -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
     }
     .bg {
-      -webkit-animation: slideToTop .8s 0.6s ease both;
+      -webkit-animation: slideToTop .9s 0.6s ease both;
       &.second {
-        -webkit-animation: slideToTop .8s ease both;
+        -webkit-animation: slideToTop .9s ease both;
+      }
+      &.third {
+        -webkit-animation: slideToTop .9s ease both;
       }
     }
     .register-box {
@@ -224,11 +234,11 @@ body {
         -webkit-animation: slideToTop .9s 0.3s ease both;
       }
       &.password {
-        -webkit-animation: slideToTop .9s  0.4s ease both;
+        -webkit-animation: slideToTop .9s 0.4s ease both;
       }
     }
     .btn {
-      -webkit-animation: slideToTop .9s 0.7s ease both;
+      -webkit-animation: slideToTop .9s 0.6s ease both;
     }
     .txt  {
       &.slogen {
@@ -249,10 +259,10 @@ body {
     }
     .box {
       &.first {
-        -webkit-animation: slideToTop .9s 0.3s ease both;
+        -webkit-animation: slideToTop .9s 0.2s ease both;
       }
       &.second {
-        -webkit-animation: slideToTop .9s 0.6s ease both;
+        -webkit-animation: slideToTop .9s 0.4s ease both;
       }
     }
   }

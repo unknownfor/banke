@@ -36,7 +36,7 @@
                         <i class="iconfont register-img">&#xe6a0;</i>
                         <input class="register-code" id="user-code" placeholder="验证码"/>
                         <hr color="#9b9b9b" />
-                        <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码" />
+                        <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
                     </div>
                     <div class="register-box password">
                         <i class="iconfont register-img">&#xe655;</i>
@@ -118,7 +118,7 @@
 <script>
     new PageSlider({
         pages: $('#invitation .page'),
-        animationPlayOnce: true
+        gestureFollowing: true
     });
 </script>
 </html>
