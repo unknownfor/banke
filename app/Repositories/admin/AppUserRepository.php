@@ -515,7 +515,7 @@ class AppUserRepository
 				$uid=$this->insertBasicUserInfo($userData);
 				$this->insertDetailUserInfo($uid,$userData);
 			}
-			catch (Exception$e){
+			catch (Exception $e){
 				DB::rollBack();
 				Log::info($e);
 				Flash::error(trans('alerts.users.created_error'));
