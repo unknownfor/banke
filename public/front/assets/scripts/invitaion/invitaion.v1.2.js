@@ -77,9 +77,9 @@ $(function () {
             getDataAsync(url, {mobile: $('#phone-num').val()},
                 function (res) {
                     if(res.status_code==50016){
-                        // $('.register-old').show().parent().show().siblings().hide();
-                        $('register-main').
-                        $('.register-old').removeStyle("delete");
+                        $('.register-old').show().parent().show().siblings().hide();
+                        // $('register-main').
+                        // $('.register-old').removeStyle("delete");
                         return;
                     }
                     window.showTips(res.message);
@@ -169,7 +169,7 @@ $(function () {
      * 显示报名成功页面
      */
     function showSuccessPage() {
-        // $('.register-new').show().parent().show().siblings().hide();
+        $('.register-new').show().parent().show().siblings().hide();
     }
 
 
