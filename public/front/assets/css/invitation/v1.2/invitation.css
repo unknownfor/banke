@@ -247,6 +247,9 @@ body {
   color: #FBC02D;
   font-size: 20px;
 }
+#invitation .page .register {
+  height: 100%;
+}
 #invitation .page .register .register-box {
   border-radius: 10px;
   display: -webkit-box;
@@ -394,6 +397,12 @@ body {
 }
 #invitation .page:last-child .arrow {
   display: none;
+}
+#invitation .page .register-done {
+  height: 100%;
+}
+#invitation .page .register-done .register-new {
+  height: 100%;
 }
 #invitation .page .register-done.hide {
   display: none;

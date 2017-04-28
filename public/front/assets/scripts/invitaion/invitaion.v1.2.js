@@ -78,8 +78,6 @@ $(function () {
                 function (res) {
                     if(res.status_code==50016){
                         $('.register-old').show().parent().show().siblings().hide();
-                        // $('register-main').
-                        // $('.register-old').removeStyle("delete");
                         return;
                     }
                     window.showTips(res.message);
