@@ -175,11 +175,6 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
-    <script type="text/javascript">
-        window.urlObj={
-            apiUrl:'http://api.hisihi.com/'
-        };
-    </script>
-    <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/banner/index.js')}}"></script>
 @endsection

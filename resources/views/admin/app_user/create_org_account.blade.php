@@ -40,7 +40,7 @@
 					        @endforeach
 					    </div>
 					    @endif
-                {!! csrf_field() !!}
+
                 <div class="tabbable" id="tabs-338836">
                     <ul class="nav nav-tabs">
                         <li class="active"><a  data-toggle="tab" href="#panel-668378">已有App账号</a></li>
@@ -50,6 +50,7 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="panel-668378">
                             <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/store_org_account_old')}}">
+                                {!! csrf_field() !!}
                                 <div class="form-body">
 
                                     <div class="form-group form-md-line-input">
@@ -85,15 +86,14 @@
                                 </div>
                             </form>
                         </div>
-
                         <div class="tab-pane" id="panel-778016">
                             <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/store_org_account_new')}}">
-
+                                {!! csrf_field() !!}
                                 <div class="form-body">
                                     <div class="form-group form-md-line-input">
-                                        <label class="col-md-2 control-label" for="name_new">{{trans('labels.user.name')}}</label>
+                                        <label class="col-md-2 control-label" for="name">{{trans('labels.user.name')}}</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" id="name_new" name="name_new" placeholder="{{trans('labels.user.name')}}">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.user.name')}}">
                                             <div class="form-control-focus"> </div>
                                         </div>
                                     </div>
@@ -107,9 +107,9 @@
                                     </div>
 
                                     <div class="form-group form-md-line-input">
-                                        <label class="col-md-2 control-label" for="password_new">{{trans('labels.user.password')}}</label>
+                                        <label class="col-md-2 control-label" for="password">{{trans('labels.user.password')}}</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" id="password_new" name="password_new" placeholder="{{trans('labels.user.password')}}">
+                                            <input type="text" class="form-control" id="password" name="password" placeholder="{{trans('labels.user.password')}}">
                                             <div class="form-control-focus"> </div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@
                                     <div class="row">
                                         <div class="col-md-offset-2 col-md-10">
                                             <a href="{{url('admin/app_user/org_account')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                            <button type="submit" class="btn blue">{{trans('crud.submit')}}</button>
+                                            <button type="submit" class="btn blue" onclick="return  submitDataNew()">{{trans('crud.submit')}}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -154,46 +154,5 @@
 @endsection
 @section('js')
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-    <script type="text/javascript">
-      $(function() {
-        /*modal事件监听*/
-        $(".modal").on("hidden.bs.modal", function() {
-             $(".modal-content").empty();
-        });
-        $('.orgSelect').selectpicker({
-            liveSearchNormalize:true,
-            liveSearchPlaceholder:'输入名称进行搜索',
-        });
-        var registerStatusOld=false;  //true表示可以操作，false 表示不操作
-
-        $(document).on('blur','#mobile_old',function(){
-            var mobile=$(this).val();
-            var url='/admin/user/search_by_mobile',
-                    paraData={mobile:mobile,_token:$('input[name="_token"]').val()};
-            $.post(url,paraData,function(res){
-                if(res.length>0){
-                    if(res[0].org_id!=0){
-                        registerStatusOld=true;
-                    }else {
-                        registerStatus=1;
-                    }
-                }else{
-                    registerStatus=false;
-                }
-            });
-        });
-
-        window.submitData=function(){
-            if(registerStatus==1){
-               if(window.confirm('该用手机号已经注册过，是否变更为机构账号？密码仍然使用旧密码。')){
-                   return true;
-               }
-            }
-            if(registerStatus==2){
-                alert('该用手机号已经注册为机构账号！');
-            }
-            return false;
-        };
-      });
-    </script>
+    <script type="text/javascript" src="{{asset('backend/js/user/create_org_user.js')}}"></script>
 @endsection

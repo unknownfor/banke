@@ -10,7 +10,7 @@ use AppUserRepository;
 use PermissionRepository;
 use RoleRepository;
 use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\CreateOrgUserRequest;
+use App\Http\Requests\CreateOrgUserNewRequest;
 use App\Http\Requests\CreateOrgUserOldRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Log;
@@ -173,9 +173,9 @@ class AppUserController extends Controller
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store_org_account(CreateOrgUserRequest $request)
+    public function store_org_account_new(CreateOrgUserNewRequest $request)
     {
-        AppUserRepository::store_org_account($request);
+        AppUserRepository::store_org_account_new($request);
         return redirect('admin/app_user/org_account');
     }
 

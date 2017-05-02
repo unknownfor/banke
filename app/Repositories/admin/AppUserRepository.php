@@ -12,7 +12,7 @@ use Flash;
 use DB;
 use Auth;
 use League\Flysystem\Exception;
-use Uuid;
+use App\Uuid;
 use Illuminate\Support\Facades\Log;
 
 /**
@@ -370,7 +370,7 @@ class AppUserRepository
 	{
 		$user = BankeUserProfiles::find($id);
 		if ($user) {
-			$user['org_id'] = $userData['org_id'];
+			$user['org_id'] = $userData['org_id_old'];
 			if ($user->save()) {
 				Flash::success(trans('alerts.users.updated_success'));
 				return true;
@@ -498,7 +498,7 @@ class AppUserRepository
 	/*从已有app账户更新为机构账户*/
 	public function store_org_account_old($request){
 		$userData = $request->all();
-		$mobile=$userData['mobile'];
+		$mobile=$userData['mobile_old'];
 		$user = new BankeUserProfiles;
 		$user = $user->where('mobile',$mobile);
 		if($user->count()>0) {
@@ -508,7 +508,7 @@ class AppUserRepository
 	}
 
 	//添加从新的账号，并设置为机构账号
-	public function store_org_account($request){
+	public function store_org_account_new($request){
 		$userData = $request->all();
 		DB::transaction(function () use ($userData) {
 			try{
@@ -529,10 +529,10 @@ class AppUserRepository
 		$user = [
 			'name'=>$data['name'],
 			'password'=>bcrypt($data['password']), //密码进行加密
-			'mobile'=>$data['mobile'],
+			'mobile'=>$data['mobile_new'],
 		];
-		User::create($user);
-		return $user->id;
+		$newUser = User::create($user);
+		return $newUser->id;
 	}
 
 	/*用户详细信息创建,自动更新用户资料关系*/
@@ -541,8 +541,8 @@ class AppUserRepository
 		$profiles = [
 			'uid' => $uid,
 			'name' => $data['name'],
-			'mobile' => $data['mobile'],
-			'org_id' => $data['org_id'],
+			'mobile' => $data['mobile_new'],
+			'org_id' => $data['org_id_new'],
 			'invitation_code' => $code
 		];
 		if(BankeUserProfiles::create($profiles)){

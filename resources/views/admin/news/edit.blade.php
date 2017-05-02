@@ -124,11 +124,6 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
-    <script type="text/javascript">
-        window.urlObj={
-            apiUrl:'http://api.hisihi.com/'
-        };
-    </script>
-    <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/news/index.js')}}"></script>
 @endsection

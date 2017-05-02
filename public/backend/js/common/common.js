@@ -3,6 +3,9 @@
  */
 /*请求数据 python*/
 
+window.urlObj={
+    apiUrl:'http://api.hisihi.com/'
+};
 function Token(){
     this.getBasicToken();
 }

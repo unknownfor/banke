@@ -283,9 +283,6 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
     <script type="text/javascript">
-        window.urlObj={
-            apiUrl:'http://api.hisihi.com/'
-        };
       $(function() {
         /*modal事件监听*/
         $(".modal").on("hidden.bs.modal", function() {
@@ -293,6 +290,6 @@
         });
       });
     </script>
-    <script type="text/javascript" src="{{asset('backend/js/common/tokeninfo.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/course/index.js')}}"></script>
 @endsection

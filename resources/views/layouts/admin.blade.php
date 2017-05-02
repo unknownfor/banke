@@ -170,7 +170,9 @@
 
 
         <script src='http://cdn.bootcss.com/socket.io/1.3.7/socket.io.js'></script>
-        
+
+        <script  src="{{asset('backend/js/common/common.js')}}" type="text/javascript"></script>
+
         <script>
             var message_pull_url = "{{$message_pull_url or ''}}";
             if(message_pull_url != '') {
@@ -197,23 +199,6 @@
                     $("#online").html(online_stat);
                 });
             }
-
-            //请求数据
-            window.getDataAsync=function(url,data,callback,type){
-                type = type ||'get';
-                data._token=$('input[name="_token"]').val();
-                $.ajax({
-                    type:type,
-                    url:url,
-                    data:data,
-                    success:function(res){
-                        callback(res);
-                    }
-                });
-            };
-
-
-           
         </script>
         
     </body>
