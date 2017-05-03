@@ -105,17 +105,16 @@
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
                     <thead>
                         <tr role="row" class="heading">
-                              <th>id</th>
-                              <th width="15%"> {{ trans('labels.order.name') }} </th>
+                              {{--<th>id</th>--}}
+                              <th width="10%"> {{ trans('labels.order.name') }} </th>
                               <th width="10%"> {{ trans('labels.order.mobile') }} </th>
-                              {{--<th width="20%"> {{ trans('labels.order.org_name') }} </th>--}}
+                              <th width="15%"> {{ trans('labels.order.org_name') }} </th>
                               <th width="20%"> {{ trans('labels.order.course_name') }} </th>
+                              <th width="10%"> {{ trans('labels.order.check_in_amount') }}/{{ trans('labels.order.get_check_in_amount') }} </th>
+                              <th width="10%">{{trans('labels.order.check_in_days')}}/{{ trans('labels.order.had_check_in_days') }} </th>
                               <th width="10%"> {{ trans('labels.order.created_at') }} </th>
                               <th width="5%"> {{ trans('labels.order.status') }} </th>
-                              <th width="14%"> {{ trans('labels.order.check_in_amount') }} </th>
-                              <th width="14%"> {{ trans('labels.order.get_check_in_amount') }} </th>
-                              {{--<th width="10%"> {{ trans('labels.order.manage_time') }} </th>--}}
-                            <th width="10%"> {{ trans('labels.action') }} </th>
+                              <th width="10%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>

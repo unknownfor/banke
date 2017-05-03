@@ -101,6 +101,10 @@ class OrderRepository
 		if ($roles) {
 			foreach ($roles as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
+				$v['org_name'] = $v->org['name'];
+				$had_check_in_days=CheckinRepository::getHadCheckinDaysByUIdAndCid($v['uid'],$v['course_id']);
+				$v['had_check_in_days'] = $had_check_in_days;
+
 			}
 		}
 		return [

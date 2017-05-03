@@ -12,6 +12,8 @@ use DB;
 use Auth;
 use Illuminate\Support\Facades\Log;
 use League\Flysystem\Exception;
+use Monolog\Handler\NewRelicHandlerTest;
+
 /**
 * 打卡签到仓库
 */
@@ -269,6 +271,17 @@ class CheckinRepository
 	public function remind(){
 		$mobile = request('ids', '');
 		$mobile='';
+	}
+
+	public static  function  getHadCheckinDaysByUIdAndCid($uid,$cid){
+		$checkin=new BankeCheckIn();
+		$count=$checkin::where(['uid'=>$uid,'lession_id'=>$cid]);
+		if($count){
+			$count=count($count);
+		}else{
+			$count=0;
+		}
+		return $count;
 	}
 
 }

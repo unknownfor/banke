@@ -21,10 +21,10 @@ var TableDatatablesAjax = function() {
       "orderCellsTop": true,
       "dom" : "<'row'<'col-sm-3'l><'col-sm-6'<'customtoolbar'>><'col-sm-3'f>>" +"<'row'<'col-sm-12'tr>>" +"<'row'<'col-sm-5'i><'col-sm-7'p>>",
       "columns": [
-        {
-          "data": "id",
-          "name" : "id",
-        },
+        //{
+        //  "data": "id",
+        //  "name" : "id",
+        //},
         {
           "data": "name",
           "name" : "name",
@@ -35,21 +35,32 @@ var TableDatatablesAjax = function() {
           "name": "mobile",
           "orderable" : false,
         },
-        //{
-        //  "data": "org_name",
-        //  "name": "org_name",
-        //  "orderable" : true,
-        //},
+        {
+          "data": "org_name",
+          "name": "org_name",
+          "orderable" : true,
+        },
         {
           "data": "course_name",
           "name": "course_name",
           "orderable" : true,
         },
-        //{
-        //  "data": "org_account_name",
-        //  "name": "org_account_name",
-        //  "orderable" : true,
-        //},
+        {
+          "data": "check_in_amount",
+          "name": "check_in_amount",
+          "orderable" : false,
+          render:function(data,type,full){
+            return data+' / '+full.get_check_in_amount;
+          }
+        },
+        {
+          "data": "check_in_days",
+          "name": "check_in_days",
+          "orderable" : true,
+          render:function(data,type,full){
+            return data+' / '+full.had_check_in_days;
+          }
+        },
         {
           "data": "created_at",
           "name": "created_at",
@@ -71,16 +82,7 @@ var TableDatatablesAjax = function() {
             }
           }
         },
-        {
-          "data": "check_in_amount",
-          "name": "check_in_amount",
-          "orderable" : true,
-        },
-        {
-          "data": "get_check_in_amount",
-          "name": "get_check_in_amount",
-          "orderable" : true,
-        },
+
         { 
           "data": "actionButton",
           "name": "actionButton",
