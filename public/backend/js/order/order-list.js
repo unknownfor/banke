@@ -50,7 +50,11 @@ var TableDatatablesAjax = function() {
           "name": "check_in_amount",
           "orderable" : false,
           render:function(data,type,full){
-            return data+' / '+full.get_check_in_amount;
+            var get=full.get_check_in_amount;
+            if(!get){
+              get=0;
+            }
+            return data+' / '+get;
           }
         },
         {
