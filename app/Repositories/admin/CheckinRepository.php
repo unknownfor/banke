@@ -275,9 +275,9 @@ class CheckinRepository
 
 	public static  function  getHadCheckinDaysByUIdAndCid($uid,$cid){
 		$checkin=new BankeCheckIn();
-		$count=$checkin::where(['uid'=>$uid,'lession_id'=>$cid]);
+		$count=$checkin::where(['uid'=>$uid,'course_id'=>$cid]);
 		if($count){
-			$count=count($count);
+			$count=$count->count();
 		}else{
 			$count=0;
 		}

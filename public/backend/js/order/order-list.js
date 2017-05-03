@@ -58,7 +58,11 @@ var TableDatatablesAjax = function() {
           "name": "check_in_days",
           "orderable" : true,
           render:function(data,type,full){
-            return data+' / '+full.had_check_in_days;
+            var had=full.had_check_in_days;
+            if(!had){
+              had=0;
+            }
+            return data+' / '+ had;
           }
         },
         {
