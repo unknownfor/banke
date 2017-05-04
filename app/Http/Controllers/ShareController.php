@@ -304,36 +304,19 @@ class ShareController extends Controller
     /**获得入驻机构**/
     public function getChoicenessOrgs()
     {
-//        try {
-//            $repository = new OrgRepository();
-//            $org = $repository->getTop(10);
-//            $param = [
-//                'data' => $org,
-//                'template' => '获取精选机构成功',
-//                'status' => true
-//            ];
-//            return ApiResponseService::success('', Code::SUCCESS, $param);
-//        }
-//        catch (ClientException $e) {
-//            $param = [
-//                'template' => '获取精选机构失败',
-//                'status' => false
-//            ];
-//            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
-//        }
         try {
-            $repository = new ReportRepository;
-            $report = $repository->getTop5();
+            $repository = new OrgRepository();
+            $org = $repository->getTop(10);
             $param = [
-                'data' => $report,
-                'template' => '媒体报道',
+                'data' => $org,
+                'template' => '获取精选机构成功',
                 'status' => true
             ];
             return ApiResponseService::success('', Code::SUCCESS, $param);
         }
         catch (ClientException $e) {
             $param = [
-                'template' => '媒体报道失败',
+                'template' => '获取精选机构失败',
                 'status' => false
             ];
             return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
