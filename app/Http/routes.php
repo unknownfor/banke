@@ -129,7 +129,7 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
 });
 
 //前台路由
-Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web'] ],function($router){
+Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web','bankehome'] ],function($router){
 
     require(__DIR__ . '/Routes/web.php');
 });
