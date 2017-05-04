@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Http;
+
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+
 class Kernel extends HttpKernel
 {
     /**
@@ -12,7 +15,13 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \App\Http\Middleware\EncryptCookies::class,
+        \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+        \Illuminate\Session\Middleware\StartSession::class,
+        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \App\Http\Middleware\Cors::class,
     ];
+
     /**
      * The application's route middleware groups.
      *
@@ -26,10 +35,12 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
         ],
+
         'api' => [
             'throttle:60,1',
         ],
     ];
+
     /**
      * The application's route middleware.
      *
@@ -47,7 +58,6 @@ class Kernel extends HttpKernel
         'level' => \Bican\Roles\Middleware\VerifyLevel::class,
         'wechat.oauth' => \Overtrue\LaravelWechat\Middleware\OAuthAuthenticate::class,
         'wechat.oauth2' => \App\Http\Middleware\OAuthAuthenticate::class,
-        'sso'   => \App\Http\Middleware\SSOClientMiddleware::class,
-        'cross' => \App\Http\Middleware\EnableCrossRequestMiddleware::class,
     ];
+
 }

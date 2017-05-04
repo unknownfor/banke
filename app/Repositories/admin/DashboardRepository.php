@@ -115,7 +115,6 @@ class DashboardRepository
 	 */
 	public function getPassSeventDaysData()
 	{
-		$time = time();
 		$yesterdate=date("Y-m-d",strtotime("-6 day"));
 		$today=date("Y-m-d",strtotime("1 day"));
 
