@@ -110,6 +110,7 @@ function initChart(id){
 }
 
 $(function(){
+    var days=sevenDaysString();
 
     //刷新课程列表
     getTotalData();
@@ -149,8 +150,8 @@ $(function(){
         new dashBoard({
             id:'main-register',
             title:'七日注册人数变化',
-            xAxix:['周一','周二','周三','周四','周五','周六','周日'],
-            yData:[11, 11, 15, 13, 12, 13, 10],
+            xAxix:days,
+            yData:dealwithData(JSON.parse(res[3].register)),
             yStyle:{symbolColor:'#c23531',lineColor:'#c23531'}
         });
 
@@ -158,8 +159,8 @@ $(function(){
         new dashBoard({
             id:'main-signin',
             title:'七日报名人数变化',
-            xAxix:['周一','周二','周三','周四','周五','周六','周日'],
-            yData:[11, 11, 15, 13, 12, 13, 10],
+            xAxix:days,
+            yData:dealwithData(JSON.parse(res[4].signin)),
             yStyle:{symbolColor:'#d48265',lineColor:'#d48265'}
         });
 
@@ -167,18 +168,48 @@ $(function(){
         new dashBoard({
             id:'main-clock',
             title:'七日打卡人数变化',
-            xAxix:['周一','周二','周三','周四','周五','周六','周日'],
-            yData:[11, 11, 15, 13, 12, 13, 10],
+            xAxix:days,
+            yData:dealwithData(JSON.parse(res[5].checkin)),
             yStyle:{symbolColor:'#61A0A8',lineColor:'#61A0A8'}
         });
         //预约人数
         new dashBoard({
             id:'main',
             title:'七日预约人数变化',
-            xAxix:['周一','周二','周三','周四','周五','周六','周日'],
-            yData:[11, 11, 15, 13, 12, 13, 10],
+            xAxix:days,
+            yData:dealwithData(JSON.parse(res[6].enrol)),
             yStyle:{symbolColor:'#de9325',lineColor:'#de9325'}
         });
+    }
+
+
+    function dealwithData(data){
+        var len=days.length,
+            newData=[];
+        for(var i=0;i<len;i++){
+            newData.push(daysData(days[i],data));
+        }
+        return newData;
+    }
+
+    function daysData(times,data){
+        var len=data.length;
+        for(var i=0;i<len;i++) {
+            if (times == data[i].date) {
+                return data[i].value;
+            }
+        }
+        return 0;
+    }
+
+    function sevenDaysString(){
+        var time=new Date(),
+            days=[];
+        for(var i=6;i>=0;i--){
+            var tempDay=new Date(time.getTime()-i*(24*60*60*1000)).format('yyyy-MM-dd');
+            days.push(tempDay);
+        }
+        return days;
     }
 
     //请求数据

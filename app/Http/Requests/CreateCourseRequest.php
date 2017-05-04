@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use  Illuminate\Contracts\Validation\Validator;
 
 class CreateCourseRequest extends Request
 {

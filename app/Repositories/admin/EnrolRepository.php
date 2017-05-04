@@ -5,6 +5,7 @@ use Carbon\Carbon;
 use Flash;
 use Auth;
 use Illuminate\Support\Facades\Log;
+use DB;
 /**
 * 预约仓库
 */
@@ -213,6 +214,28 @@ class EnrolRepository
 		$user = new BankeEnrol();
 		$user = $user->where('created_at','>=',getTime($startTime));
 		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','created_at']);
+		return $user;
+	}
+
+	/**
+	 * 根据创建时间，得到 注册半课APP用户 分组，每天多少人
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function getUserInLimitTimeByGroup($startTime,$endTime)
+	{
+		$user = new BankeEnrol();
+		$user = $user::where('created_at','>=',getTime($startTime));
+		$user = $user->where('created_at','<',getTime($endTime));
+		$user = $user->groupBy('date')
+			->orderBy('date','DESC')
+			->get([
+				DB::raw('Date(created_at) as date'),
+				DB::raw('COUNT(*) as value')
+			])
+			->toJSON();
 		return $user;
 	}
 

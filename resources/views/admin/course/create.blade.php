@@ -36,6 +36,7 @@
                     </div>
                 </div>
                 <div class="portlet-body form">
+                    <div>{{isset($errors) > 0}}</div>
                     @if (isset($errors) && count($errors) > 0 )
                         <div class="alert alert-danger">
                             <button class="close" data-close="alert"></button>

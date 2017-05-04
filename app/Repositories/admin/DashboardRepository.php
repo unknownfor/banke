@@ -120,22 +120,22 @@ class DashboardRepository
 		$yesterdate=date("Y-m-d",strtotime("-6 day"));
 
 		//注册
-		$registerUser=new AppUserRepository();
-		$count1=$registerUser->getUserInLimitTime($yesterdate,$today)->count();
+		$registerUser=new UserRepository();
+		$list1=$registerUser->getUserInLimitTimeByGroup($yesterdate,$today);
 
 		//预约
 		$enrol=new EnrolRepository();
-		$count2=$enrol->getUserInLimitTime($yesterdate,$today)->count();
+		$list2=$enrol->getUserInLimitTimeByGroup($yesterdate,$today);
 
 		//打卡
 		$enrol=new CheckinRepository();
-		$count3=$enrol->getUserInLimitTime($yesterdate,$today)->count();
+		$list3=$enrol->getUserInLimitTimeByGroup($yesterdate,$today);
 
 		//报名
 		$enrol=new OrderRepository();
-		$count4=$enrol->getUserInLimitTime($yesterdate,$today)->count();
+		$list4=$enrol->getUserInLimitTimeByGroup($yesterdate,$today);
 
-		return array($count1,$count2,$count3,$count4);
+		return array($list1,$list2,$list3,$list4);
 
 	}
 
