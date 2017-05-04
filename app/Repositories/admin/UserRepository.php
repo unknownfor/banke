@@ -429,7 +429,7 @@ class UserRepository
 	{
 		$user = new User;
 		$user = $user::where('created_at','>=',getTime($startTime));
-		$user = $user->where('created_at','<=',getTime($endTime));
+		$user = $user->where('created_at','<',getTime($endTime));
 		$user = $user->groupBy('date')
 			->orderBy('date','DESC')
 			->get([
