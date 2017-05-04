@@ -52,6 +52,7 @@ class CommentOrgController extends Controller
     public function edit($id)
     {
         $commentorg = CommentOrgRepository::edit($id);
+        CommentOrgRepository::updateReadStatus($id);  //修改阅读状态
         return view('admin.commentorg.edit')->with(compact('commentorg'));
     }
     /**

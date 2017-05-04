@@ -50,6 +50,7 @@ class CommentCourseController extends Controller
     public function edit($id)
     {
         $commentcourse = CommentCourseRepository::edit($id);
+        CommentCourseRepository::updateReadStatus($id);  //修改阅读状态
         return view('admin.commentcourse.edit')->with(compact('commentcourse'));
     }
     /**
@@ -64,19 +65,5 @@ class CommentCourseController extends Controller
     {
         $oid = CommentCourseRepository::updateComment($request,$id);
         return redirect('admin/commentcourse/'.$oid);
-    }
-
-    /**
-     * 修改状态
-     * @author 晚黎
-     * @date   2016-04-14T11:50:04+0800
-     * @param  [type]                   $id     [description]
-     * @param  [type]                   $status [description]
-     * @return [type]                           [description]
-     */
-    public function mark($id,$status)
-    {
-        UserRepository::mark($id,$status);
-        return redirect('admin/org');
     }
 }

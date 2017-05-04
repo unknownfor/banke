@@ -29,12 +29,18 @@ class CommentCourseRepository
 		
 		$cid = request('cid' ,'');
 		$award_status = request('award_status' ,'');
+		$read_status = request('read_status' ,'');
 		$comment = new BankeCommentCourse();
 		$comment = $comment->where('course_id', $cid);
 
 		/*奖励状态搜索*/
 		if ($award_status!=null) {
 			$comment = $comment->where('award_status', $award_status);
+		}
+
+		/*阅读状态搜索*/
+		if ($read_status!=null) {
+			$comment = $comment->where('read_status', $read_status);
 		}
 
 
@@ -146,6 +152,22 @@ class CommentCourseRepository
 	private function isAward($oldAwardStatus,$request){
 		$flag1=$oldAwardStatus==0 && $request['award_status']==1;  //更新状态为奖励
 		return $flag1;
+	}
+
+
+	/**
+	 * 修改阅读状态
+	 * @author jimmy
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public static function updateReadStatus($id)
+	{
+		$commentCourse = BankeCommentCourse::find($id);
+		$commentCourse->read_status=1;
+		$commentCourse->save();
 	}
 
 }

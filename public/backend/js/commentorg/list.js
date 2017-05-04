@@ -11,6 +11,7 @@ var TableDatatablesAjax = function() {
         "data": function ( d ) {
           d.oid =$('.filter input[name="id"]').val().replace(/(^\s*)|(\s*$)/g, "");
           d.award_status = $('.filter select[name="award_status"] option:selected').val();
+          d.read_status = $('.filter select[name="read_status"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -48,6 +49,18 @@ var TableDatatablesAjax = function() {
             var str='';
             if(data==1) {
               str = '<img style="width: 32px; height: 32px;" src="http://pic.hisihi.com/2017-04-22/1492855719604748.png" alt="已打赏">';
+            }
+            return str;
+          }
+        },
+        {
+          "data": "read_status",
+          "name": "read_status",
+          "orderable" : false,
+          render:function(data){
+            var str='';
+            if(data==0) {
+              str = '<div style="height:10px;width:10px;background-color:#d81e06;border-radius: 5px;margin: 10px;"></div>';
             }
             return str;
           }

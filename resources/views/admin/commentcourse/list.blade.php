@@ -41,12 +41,24 @@
           </div>
             <div class="search-box filter">
                 <input type="hidden" class="form-control form-filter" name="id" value="{{$cid}}">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="award_status">
                             <option value="" data-icon="fa-glass icon-success">打赏状态....</option>
                             @if(trans('strings.comment_status'))
                                 @foreach(trans('strings.comment_status') as $status_key => $status_value)
+                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-md-line-input">
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="read_status">
+                            <option value="" data-icon="fa-glass icon-success">阅读状态....</option>
+                            @if(trans('strings.comment_read_status'))
+                                @foreach(trans('strings.read_status') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif
@@ -70,6 +82,7 @@
                           <th width="35%"> {{ trans('labels.commentcourse.content') }} </th>
                           <th width="8%"> {{ trans('labels.commentcourse.star_counts') }} </th>
                           <th width="10%"> {{ trans('labels.commentcourse.award_status') }} </th>
+                          <th width="10%"> {{ trans('labels.commentcourse.read_status') }} </th>
                           <th width="8%"> {{ trans('labels.commentcourse.created_at') }} </th>
                           <th width="8%"> {{ trans('labels.commentcourse.status') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>

@@ -554,12 +554,14 @@ return [
 		'content' => '评论内容',
 		'star_counts' => '评分',
 		'award_status' => '打赏状态',
+		'read_status'=>'阅读状态',
 		'status' => '状态',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'list' => '评论列表',
 		'show'=>'查看详情',
 		'org_name'=>'评论机构',
+
 	],
 
 	'commentcourse' => [
@@ -568,6 +570,7 @@ return [
 		'content' => '评论内容',
 		'star_counts' => '评分',
 		'award_status' => '打赏状态',
+		'read_status'=>'阅读状态',
 		'status' => '状态',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',

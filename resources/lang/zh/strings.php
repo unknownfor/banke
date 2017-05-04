@@ -128,6 +128,10 @@ return [
 		'audit' => ['fa fa-paw','未打赏'],
 		'active' => ['fa fa-navicon','已打赏']
 	],
+	'read_status'=> [
+		'audit' => ['fa fa-paw','未读'],
+		'active' => ['fa fa-navicon','已读']
+	],
 
 	'commentorg' => [
 		'audit' => ['fa fa-paw','未审核'],

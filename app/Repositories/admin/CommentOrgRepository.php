@@ -29,12 +29,18 @@ class CommentOrgRepository
 		
 		$oid = request('oid' ,'');
 		$award_status = request('award_status' ,'');
+		$read_status = request('read_status' ,'');
 		$comment = new BankeCommentOrg();
 		$comment = $comment->where('org_id', $oid);
 
 		/*奖励状态搜索*/
 		if ($award_status!=null) {
 			$comment = $comment->where('award_status', $award_status);
+		}
+
+		/*阅读状态搜索*/
+		if ($read_status!=null) {
+			$comment = $comment->where('read_status', $read_status);
 		}
 
 		$count = $comment->count();
@@ -213,4 +219,18 @@ class CommentOrgRepository
 		return false;
 	}
 
+	/**
+	 * 修改阅读状态
+	 * @author jimmy
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public static function updateReadStatus($id)
+	{
+		$commentOrg = BankeCommentOrg::find($id);
+		$commentOrg->read_status=1;
+		$commentOrg->save();
+	}
 }
