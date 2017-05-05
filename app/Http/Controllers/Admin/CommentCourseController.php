@@ -17,7 +17,8 @@ class CommentCourseController extends Controller
 {
 
     public function index(){
-        return view('admin.commentcourse.all');
+        $allCourse=BankeCourse::where('status',1)->get(['id','name']);
+        return view('admin.commentcourse.all')->with(compact('allCourse'));
     }
 
 	/**
@@ -68,7 +69,7 @@ class CommentCourseController extends Controller
      */
     public function update(CommentCourseRequest $request,$id)
     {
-        $oid = CommentCourseRepository::updateComment($request,$id);
-        return redirect('admin/commentcourse/'.$oid);
+        CommentCourseRepository::updateComment($request, $id);
+        return redirect('admin/commentcourse');
     }
 }

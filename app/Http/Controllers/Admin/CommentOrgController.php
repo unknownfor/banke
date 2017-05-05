@@ -20,7 +20,8 @@ class CommentOrgController extends Controller
 
 
     public function index(){
-        return view('admin.commentorg.all');
+        $allOrg=BankeOrg::where('status',1)->get(['id','name']);
+        return view('admin.commentorg.all')->with(compact('allOrg'));
     }
 
 	/**
@@ -29,12 +30,12 @@ class CommentOrgController extends Controller
      * @date   2016-12-27
      * @return [type]                   [description]
      */
-    public function show($id)
-    {
-        $oid=$id;
-        $name=BankeOrg::find($id)['name'];
-        return view('admin.commentorg.list')->with(compact('oid','name'));
-    }
+//    public function show($id)
+//    {
+//        $oid=$id;
+//        $name=BankeOrg::find($id)['name'];
+//        return view('admin.commentorg.list')->with(compact('oid','name'));
+//    }
 
     /**
      * datatable 获取数据
@@ -71,8 +72,8 @@ class CommentOrgController extends Controller
      */
     public function update(CommentOrgRequest $request,$id)
     {
-        $oid = CommentOrgRepository::updateComment($request,$id);
-        return redirect('admin/commentorg/'.$oid);
+        CommentOrgRepository::updateComment($request,$id);
+        return redirect('admin/commentorg');
     }
 
     /**

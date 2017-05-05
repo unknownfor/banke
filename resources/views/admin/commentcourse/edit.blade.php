@@ -137,7 +137,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
-                                    <a href="javascript:void(0)" onclick="self.location=document.referrer;" class="btn default">{{trans('crud.cancel')}}</a>
+                                    <a href="{{url('admin/commentcourse')}}" class="btn default">{{trans('crud.cancel')}}</a>
                                     <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>

@@ -9,7 +9,7 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/commentorg/ajaxIndex',
         "data": function ( d ) {
-          d.oid =$('.filter input[name="id"]').val().replace(/(^\s*)|(\s*$)/g, "");
+          d.oid = $('.filter select[name="org_id"] option:selected').val();
           d.award_status = $('.filter select[name="award_status"] option:selected').val();
           d.read_status = $('.filter select[name="read_status"] option:selected').val();
         }

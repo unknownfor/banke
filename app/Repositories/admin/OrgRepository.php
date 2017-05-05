@@ -64,11 +64,6 @@ class OrgRepository
 		if ($orgs) {
 			foreach ($orgs as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
-				$v['comment_list']=0;
-				$comments=$v->comments;
-				if($comments) {
-					$v['comment_list'] = $comments->count();
-				}
 			}
 		}
 		return [

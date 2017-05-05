@@ -9,7 +9,7 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/commentcourse/ajaxIndex',
         "data": function ( d ) {
-          d.cid =$('.filter input[name="id"]').val().replace(/(^\s*)|(\s*$)/g, "");
+          d.cid =$('.filter select[name="course_id"] option:selected').val();
           d.award_status = $('.filter select[name="award_status"] option:selected').val();
           d.read_status = $('.filter select[name="read_status"] option:selected').val();
         }

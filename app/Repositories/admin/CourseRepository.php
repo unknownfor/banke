@@ -78,11 +78,6 @@ class CourseRepository
 			foreach ($courses as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
 				$v['org_name'] = $v->org['name'];
-				$v['comment_list']=0;
-				$comments=$v->commnents;
-				if($comments) {
-					$v['comment_list'] = $comments->count();
-				}
 				$v['category_name']='';
 				$category=$v->category;
 				if($category) {

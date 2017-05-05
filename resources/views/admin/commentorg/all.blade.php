@@ -39,7 +39,6 @@
             </div>
           </div>
             <div class="search-box filter">
-                <input type="hidden" class="form-control form-filter" name="id" value="0">
                 <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="award_status">
@@ -61,6 +60,17 @@
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group form-md-line-input">
+                        <select class="bs-select form-control form-filter show-tick" data-show-subtext="true" name="org_id" data-live-search="true">
+                            <option value="" data-icon="fa-glass icon-success">机构</option>
+                            @foreach($allOrg as $v)
+                                <option value="{{$v['id']}}"> {{$v['name']}}</option>
+                            @endforeach
+
                         </select>
                     </div>
                 </div>

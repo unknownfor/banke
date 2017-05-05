@@ -101,7 +101,6 @@
                           <th width="25%"> {{ trans('labels.org.address') }} </th>
                           <th width="10%"> {{ trans('labels.org.sort') }} </th>
                           <th width="8%"> {{ trans('labels.org.status') }} </th>
-                          <th width="10%"> {{ trans('labels.org.comment_list') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>

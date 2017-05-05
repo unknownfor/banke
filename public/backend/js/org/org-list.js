@@ -61,25 +61,6 @@ var TableDatatablesAjax = function() {
             }
           }
         },
-        {
-          "data": "comment_list",
-          "name": "comment_list",
-          "orderable" : true,
-          render:function(data,type,full){
-            var str='';
-            if(data>0){
-              str='<a href="/admin/commentorg/'+full.id+'">'+data+'条评论</a>';
-            }
-            return str;
-          }
-        },
-        //{
-        //  "data": "id",
-        //  "name": "id",
-        //  render:function(res){
-        //      return '<a href="/admin/course/orgid/'+res+'">课程列表</a>';
-        //  }
-        //},
         { 
           "data": "actionButton",
           "name": "actionButton",
