@@ -31,7 +31,10 @@ class CommentOrgRepository
 		$award_status = request('award_status' ,'');
 		$read_status = request('read_status' ,'');
 		$comment = new BankeCommentOrg();
-		$comment = $comment->where('org_id', $oid);
+
+		if($oid!=null && $oid!='0') {
+			$comment = $comment->where('org_id', $oid);
+		}
 
 		/*奖励状态搜索*/
 		if ($award_status!=null) {
@@ -53,6 +56,7 @@ class CommentOrgRepository
 			foreach ($comments as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
 				$v['user_name']=$v->authenUser['real_name'];
+				$v['org_name']=$v->org['name'];
 				if(!$v['user_name']){
 					$v['user_name']=$v->user['name'];
 				}

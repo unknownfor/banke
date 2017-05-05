@@ -36,11 +36,10 @@
             <div class="caption">
               <i class="icon-settings font-dark"></i>
               <span class="caption-subject font-dark sbold uppercase">{{trans('labels.commentorg.list')}}</span>
-              <span class="label label-warning">{{$name}}</span>
             </div>
           </div>
             <div class="search-box filter">
-                <input type="hidden" class="form-control form-filter" name="id" value="{{$oid}}">
+                <input type="hidden" class="form-control form-filter" name="id" value="0">
                 <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="award_status">
@@ -79,12 +78,13 @@
                         <tr role="row" class="heading">
                           <th>id</th>
                           <th width="8%"> {{ trans('labels.commentorg.user_name') }} </th>
-                          <th width="35%"> {{ trans('labels.commentorg.content') }} </th>
+                          <th width="20%"> {{ trans('labels.commentorg.content') }} </th>
                           <th width="8%"> {{ trans('labels.commentorg.star_counts') }} </th>
                           <th width="10%"> {{ trans('labels.commentorg.award_status') }} </th>
                           <th width="10%"> {{ trans('labels.commentorg.read_status') }} </th>
-                          <th width="8%"> {{ trans('labels.commentorg.created_at') }} </th>
                           <th width="8%"> {{ trans('labels.commentorg.status') }} </th>
+                          <th width="20%"> {{ trans('labels.commentorg.org_name') }} </th>
+                          <th width="8%"> {{ trans('labels.commentorg.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
@@ -105,9 +105,9 @@
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {
-      window.pageType='single';
-      TableDatatablesAjax.init();
-      $(document).on('click','#destory',function() {
+      window.pageType='all';
+    TableDatatablesAjax.init();
+    $(document).on('click','#destory',function() {
       layer.msg('{{trans('alerts.deleteTitle')}}', {
         time: 0, //不自动关闭
         btn: ['{{trans('crud.destory')}}', '{{trans('crud.cancel')}}'],

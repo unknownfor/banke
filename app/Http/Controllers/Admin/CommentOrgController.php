@@ -17,6 +17,12 @@ use App\Models\Banke\BankeOrg;
 
 class CommentOrgController extends Controller
 {
+
+
+    public function index(){
+        return view('admin.commentorg.all');
+    }
+
 	/**
      * 机构评论列表
      * @author jimmy

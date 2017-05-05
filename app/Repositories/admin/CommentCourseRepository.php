@@ -31,7 +31,10 @@ class CommentCourseRepository
 		$award_status = request('award_status' ,'');
 		$read_status = request('read_status' ,'');
 		$comment = new BankeCommentCourse();
-		$comment = $comment->where('course_id', $cid);
+
+		if($cid!=null && $cid!='0') {
+			$comment = $comment->where('course_id', $cid);
+		}
 
 		/*奖励状态搜索*/
 		if ($award_status!=null) {
@@ -54,6 +57,7 @@ class CommentCourseRepository
 			foreach ($comments as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
 				$v['user_name']=$v->authenUser['real_name'];
+				$v['course_name']=$v->course['name'];
 				if(!$v['user_name']){
 					$v['user_name']=$v->user['name'];
 				}

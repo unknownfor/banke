@@ -122,16 +122,16 @@ class DashboardRepository
 		$registerUser=new UserRepository();
 		$list1=$registerUser->getUserInLimitTimeByGroup($yesterdate,$today);
 
-		//预约
-		$enrol=new EnrolRepository();
-		$list2=$enrol->getUserInLimitTimeByGroup($yesterdate,$today);
+		//报名
+		$order=new OrderRepository();
+		$list2=$order->getUserInLimitTimeByGroup($yesterdate,$today);
 
 		//打卡
-		$enrol=new CheckinRepository();
-		$list3=$enrol->getUserInLimitTimeByGroup($yesterdate,$today);
+		$checkin=new CheckinRepository();
+		$list3=$checkin->getUserInLimitTimeByGroup($yesterdate,$today);
 
-		//报名
-		$enrol=new OrderRepository();
+		//预约
+		$enrol=new EnrolRepository();
 		$list4=$enrol->getUserInLimitTimeByGroup($yesterdate,$today);
 
 		return array($list1,$list2,$list3,$list4);

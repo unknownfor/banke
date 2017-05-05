@@ -15,6 +15,11 @@ use App\Models\Banke\BankeCourse;
 
 class CommentCourseController extends Controller
 {
+
+    public function index(){
+        return view('admin.commentcourse.all');
+    }
+
 	/**
      * 课程评论列表
      * @author jimmy
