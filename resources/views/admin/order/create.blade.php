@@ -95,24 +95,6 @@
                                 </div>
                             </div>
 
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="sort">{{trans('labels.order.payback')}}</label>--}}
-                                {{--<div class="col-md-7">--}}
-                                    {{--<input type="text" class="form-control" disabled id="payback" name="payback" placeholder="{{trans('labels.order.payback')}}">--}}
-                                    {{--<div class="form-control-focus"> </div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="end_date">{{trans('labels.order.end_date')}}</label>--}}
-                                {{--<div class="col-md-4">--}}
-                                    {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
-                                        {{--<input type="text" class="form-control form-filter input-sm" placeholder="{{trans('labels.order.end_date')}}" name="end_date">--}}
-                                        {{--<span class="input-group-addon">--}}
-                                        {{--<i class="fa fa-calendar"></i>--}}
-                                        {{--</span>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.order.check_in_days')}}</label>
                                 <div class="col-md-4">
@@ -134,26 +116,12 @@
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.order.status')}}</label>
                                 <div class="col-md-7">
                                     <div class="md-radio-inline">
-                                        {{--<div class="md-radio">--}}
-                                            {{--<input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn">--}}
-                                            {{--<label for="status1">--}}
-                                                {{--<span></span>--}}
-                                                {{--<span class="check"></span>--}}
-                                                {{--<span class="box"></span> {{trans('strings.order.active.1')}} </label>--}}
-                                        {{--</div>--}}
                                         <div class="md-radio">
                                             <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" checked class="md-radiobtn">
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> {{trans('strings.order.audit.1')}} </label>
-                                        </div>
-                                        <div class="md-radio">
-                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn">
-                                            <label for="status3">
-                                                <span></span>
-                                                <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.order.trash.1')}} </label>
                                         </div>
                                     </div>
                                 </div>

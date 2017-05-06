@@ -115,6 +115,8 @@ return [
         'created_error'     => '创建报名失败.',
         'soft_deleted_success' => '删除报名成功',
         'soft_deleted_error' => '删除报名失败',
+        'authen_success'   => '审核报名成功.',
+        'authen_error'     => '审核报名失败.',
         'already_active'    => '该订单已经通过审核，不能重复审核'
     ],
     'withdraw' => [
