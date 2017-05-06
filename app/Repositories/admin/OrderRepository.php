@@ -474,5 +474,23 @@ class OrderRepository
 	}
 
 
+	/**添加订单
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function store($request)
+	{
+//		$course = new BankeCourse;
+//		if ($course->fill($request->all())->save()) {
+//			Flash::success(trans('alerts.course.created_success'));
+//			return $course->id;
+//		}
+//		Flash::error(trans('alerts.course.created_error'));
+//		return false;
+	}
+
+
 
 }

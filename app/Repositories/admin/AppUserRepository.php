@@ -655,5 +655,4 @@ class AppUserRepository
 		//记录余额变动日志
 		BankeBalanceLog::create($balance_log);
 	}
-
 }

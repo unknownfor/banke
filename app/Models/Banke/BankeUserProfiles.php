@@ -40,4 +40,8 @@ class BankeUserProfiles extends Model
     {
         return $this->hasMany('App\Models\Banke\BankeWithDraw','uid','uid');
     }
+    public function authentication()
+    {
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','uid');
+    }
 }

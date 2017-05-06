@@ -327,6 +327,24 @@ class UserRepository
 		return $user_info->get(['uid', 'name', 'mobile','org_id']);
 	}
 
+	/*
+	 * 获得用户的姓名
+	 * 如果是已经认证，则返回真实姓名，
+	 * 否则返回昵称
+	 * */
+	public  static  function getUserNameById($uid){
+		$user_info =new BankeUserProfiles;
+		$user_info = $user_info::find($uid);
+		$name='';
+		if($user_info) {
+			$name = $user_info::find($uid)->authentication['real_name'];
+			if (!$name) {
+				$name = $user_info['name'];
+			}
+		}
+		return $name;
+	}
+
 	/**
 	 * 注册半课APP用户
 	 * @author shaolei

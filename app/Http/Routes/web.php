@@ -25,6 +25,15 @@ Route::group(['prefix'=>"v1.2/share",'namespace'=>'Web'],function(){
 
 });
 
+//1.3
+Route::group(['prefix'=>"v1.3/share",'namespace'=>'Web'],function(){
+
+    //微信预约
+    Route::get('/enrol/{uid}/{cid}', 'InvitationController@enrol_v1_3');
+
+
+});
+
 Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
 
     //v1.2 以及之后的
@@ -37,7 +46,6 @@ Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
     Route::get('/rule', 'RuleController@rule_v1_2');
 
 });
-
 
 
 

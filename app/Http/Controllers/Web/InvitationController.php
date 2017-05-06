@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use App\Repositories\admin\InvitationRepository;
+use App\Repositories\admin;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -13,6 +15,7 @@ use GuzzleHttp\Exception\ClientException;
 use Validator;
 use Illuminate\Http\Request;
 use UserRepository;
+use CourseRepository;
 
 class InvitationController extends Controller
 {
@@ -75,6 +78,17 @@ class InvitationController extends Controller
         else {
             return ApiResponseService::showError(Code::REGISTER_ERROR);
         }
+    }
+
+    /**
+     * 分享预约
+     */
+    public function enrol_v1_3($uid,$cid)
+    {
+        $userName=UserRepository::getUserNameById($uid);
+        $course=CourseRepository::show($cid);
+        $org=$course->org;
+        return view('web.invite.enrol-v1_3')->with(compact(['userName','course','org']));
     }
 
 }
