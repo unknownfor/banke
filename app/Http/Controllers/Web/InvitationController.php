@@ -16,6 +16,7 @@ use Validator;
 use Illuminate\Http\Request;
 use UserRepository;
 use CourseRepository;
+use EnrolRepository;
 
 class InvitationController extends Controller
 {
@@ -78,6 +79,25 @@ class InvitationController extends Controller
         else {
             return ApiResponseService::showError(Code::REGISTER_ERROR);
         }
+    }
+
+    public function doEnrol_v1_3(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'mobile' => 'required|mobile',
+            'org_id'=>'required',
+            'course_id' => 'required',
+            'invitation_uid' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return ApiResponseService::showError(Code::REGISTER_MOBILE_ERROR);
+        }
+        $result = EnrolRepository::store($request);
+        if ($result) {
+            return ApiResponseService::success('', Code::SUCCESS, '预约成功');
+        }
+        return ApiResponseService::showError(Code::REGISTER_ERROR);
     }
 
     /**

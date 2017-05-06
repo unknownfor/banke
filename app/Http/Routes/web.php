@@ -31,6 +31,8 @@ Route::group(['prefix'=>"v1.3/share",'namespace'=>'Web'],function(){
     //微信预约
     Route::get('/enrol/{uid}/{cid}', 'InvitationController@enrol_v1_3');
 
+    Route::post('/doenrol', 'InvitationController@doEnrol_v1_3');
+
 
 });
 
