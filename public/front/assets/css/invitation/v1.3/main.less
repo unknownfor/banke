@@ -12,11 +12,13 @@ body {
   background-color: #f2f2f2;
   font-size: 14px;
   overflow-x: hidden;
+  @mfc: #FBC02D;
+  @mdc: #FFEB3B;
   .box {
     background-color: #ffffff;
     padding: 15px;
     //临时底部间距
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     &.user {
       display: flex;
       .user-left {
@@ -64,6 +66,7 @@ body {
         }
         .class-middle {
           width: 37%;
+          margin-left: 15px;
           padding-top: 10px;
           .name {
             color: #383D43;
@@ -111,6 +114,161 @@ body {
         }
       }
 
+    }
+    &.join {
+      text-align: center;
+      .slogen {
+        margin: 10px auto;
+        color: @mfc;
+        font-size: 18px;
+      }
+      .btn {
+        margin-top: 10px;
+        display: inline-block;
+        .size(90%,35px);
+        border-radius: 10px;
+        background-color: @mdc;
+        line-height: 35px;
+        > a {
+          color: #000000;
+        }
+      }
+    }
+    &.rule {
+      border-left: 3px solid @mdc;
+      display: flex;
+      height: 50px;
+      padding: 0 !important;
+      line-height: 50px;
+      .txt {
+        flex: 1;
+        > span {
+          margin-left: 15px;
+        }
+      }
+      .link {
+        flex: 0 0 55px;
+        color: @mfc;
+        > a {
+          display: inline-block;
+          .size(100%,100%);
+          color: @mfc;
+          > i {
+            vertical-align: -2px;
+          }
+        }
+
+      }
+    }
+    &.hide {
+      display: none;
+    }
+  }
+  .box1 {
+    background-color: #ffffff;
+    padding: 30px;
+    &.process {
+      @sw:20px;
+      margin-bottom: 15px;
+      > h3 {
+        font-weight: normal;
+        color: #383d43;
+        margin-bottom: 15px;
+      }
+      .rules {
+        display: flex;
+        color: #9b9b9b;
+        .num {
+          flex: 0 0 @sw;
+          margin-right: 10px;
+          //图形阴影
+          box-shadow: 0px 2px 6px #fbc02d;
+          font-size: 10px;
+          display: inline-block;
+          .size(@sw,@sw);
+          border-radius: @sw;
+          background-color: @mfc;
+          line-height: @sw;
+          text-align: center;
+          color: #fff;
+          vertical-align: 1px;
+        }
+        .txt {
+          display: flex;
+        }
+        &.first {
+          color: #383d43;
+        }
+      }
+      .dotted {
+        color: #E5E5E5;
+        margin-top: 5px;
+        margin-left: 3px;
+      }
+
+
+    }
+    &.register {
+      @rbh: 45px;
+      @rbr:10px;
+      text-align: center;
+      .phone {
+        border-radius: @rbr;
+        display: flex;
+        background-color: #F2F2F2;
+        margin: 20px 0;
+        .register-img {
+          width:  @rbh;
+          height: @rbh;
+          font-size: 20px;
+          display: flex;
+          justify-items: center;
+          align-items: center;
+          justify-content: center;
+        }
+        .register-code {
+          flex: 3;
+          border-radius: @rbr;
+          height: @rbh;
+          padding: 0px;
+          border: none;
+          background-color: #F2F2F2;
+          &:active {
+            outline: none;
+          }
+        }
+        &.active {
+          > i {
+            color: #FFEB3B;
+          }
+          background-color: #FFFBD8;
+          .register-code {
+            background-color: #FFFBD8;
+          }
+        }
+      }
+      .btn {
+        font-size: 14px;
+        .size(100%,@rbh);
+        line-height: @rbh;
+        color: #ffffff;
+        border-radius: @rbr;
+        background-color: rgba(250,192,46,0.5);
+        border: none;
+        &.active {
+          background-color: #FAC02E;
+        }
+        &.nouse {
+          pointer-events:none;
+        }
+      }
+      > p {
+        padding: 15px 0;
+        color: #a5a5a5;
+        &.active {
+          color: #FBC02D;
+        }
+      }
     }
   }
 }

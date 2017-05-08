@@ -189,7 +189,7 @@ body {
 #invitation .box {
   background-color: #ffffff;
   padding: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 #invitation .box.user {
   display: -webkit-box;
@@ -254,6 +254,7 @@ body {
 }
 #invitation .box.info .class .class-middle {
   width: 37%;
+  margin-left: 15px;
   padding-top: 10px;
 }
 #invitation .box.info .class .class-middle .name {
@@ -303,4 +304,190 @@ body {
 }
 #invitation .box.info .class .class-right #price-real-num {
   color: #FA4535;
+}
+#invitation .box.join {
+  text-align: center;
+}
+#invitation .box.join .slogen {
+  margin: 10px auto;
+  color: #fbc02d;
+  font-size: 18px;
+}
+#invitation .box.join .btn {
+  margin-top: 10px;
+  display: inline-block;
+  width: 90%;
+  height: 35px;
+  border-radius: 10px;
+  background-color: #ffeb3b;
+  line-height: 35px;
+}
+#invitation .box.join .btn > a {
+  color: #000000;
+}
+#invitation .box.rule {
+  border-left: 3px solid #ffeb3b;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  padding: 0 !important;
+  line-height: 50px;
+}
+#invitation .box.rule .txt {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+#invitation .box.rule .txt > span {
+  margin-left: 15px;
+}
+#invitation .box.rule .link {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 55px;
+  -ms-flex: 0 0 55px;
+  flex: 0 0 55px;
+  color: #fbc02d;
+}
+#invitation .box.rule .link > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  color: #fbc02d;
+}
+#invitation .box.rule .link > a > i {
+  vertical-align: -2px;
+}
+#invitation .box.hide {
+  display: none;
+}
+#invitation .box1 {
+  background-color: #ffffff;
+  padding: 30px;
+}
+#invitation .box1.process {
+  margin-bottom: 15px;
+}
+#invitation .box1.process > h3 {
+  font-weight: normal;
+  color: #383d43;
+  margin-bottom: 15px;
+}
+#invitation .box1.process .rules {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #9b9b9b;
+}
+#invitation .box1.process .rules .num {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 20px;
+  -ms-flex: 0 0 20px;
+  flex: 0 0 20px;
+  margin-right: 10px;
+  -webkit-box-shadow: 0px 2px 6px #fbc02d;
+  box-shadow: 0px 2px 6px #fbc02d;
+  font-size: 10px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: #fbc02d;
+  line-height: 20px;
+  text-align: center;
+  color: #fff;
+  vertical-align: 1px;
+}
+#invitation .box1.process .rules .txt {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+#invitation .box1.process .rules.first {
+  color: #383d43;
+}
+#invitation .box1.process .dotted {
+  color: #E5E5E5;
+  margin-top: 5px;
+  margin-left: 3px;
+}
+#invitation .box1.register {
+  text-align: center;
+}
+#invitation .box1.register .phone {
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #F2F2F2;
+  margin: 20px 0;
+}
+#invitation .box1.register .phone .register-img {
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-items: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+#invitation .box1.register .phone .register-code {
+  -webkit-box-flex: 3;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  border-radius: 10px;
+  height: 45px;
+  padding: 0px;
+  border: none;
+  background-color: #F2F2F2;
+}
+#invitation .box1.register .phone .register-code:active {
+  outline: none;
+}
+#invitation .box1.register .phone.active {
+  background-color: #FFFBD8;
+}
+#invitation .box1.register .phone.active > i {
+  color: #FFEB3B;
+}
+#invitation .box1.register .phone.active .register-code {
+  background-color: #FFFBD8;
+}
+#invitation .box1.register .btn {
+  font-size: 14px;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  color: #ffffff;
+  border-radius: 10px;
+  background-color: rgba(250, 192, 46, 0.5);
+  border: none;
+}
+#invitation .box1.register .btn.active {
+  background-color: #FAC02E;
+}
+#invitation .box1.register .btn.nouse {
+  pointer-events: none;
+}
+#invitation .box1.register > p {
+  padding: 15px 0;
+  color: #a5a5a5;
+}
+#invitation .box1.register > p.active {
+  color: #FBC02D;
 }
