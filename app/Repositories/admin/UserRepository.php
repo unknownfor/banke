@@ -338,12 +338,13 @@ class UserRepository
 		$user_info =new BankeUserProfiles;
 		$user_info = $user_info::find($uid);
 		if($user_info) {
-			$name = $user_info::find($uid)->authentication['real_name'];
+			$name = $user_info->authentication['real_name'];
 			if ($name) {
 				$user_info['name']=$name;
 			}
 		}
-		return $user_info->get(['name','avatar','mobile']);
+//		return $user_info->get(['name','avatar','mobile']);
+		return $user_info;
 	}
 
 	/**
