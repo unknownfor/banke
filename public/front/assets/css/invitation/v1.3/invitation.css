@@ -254,7 +254,7 @@ body {
 }
 #invitation .box.info .class .class-middle {
   width: 37%;
-  padding-top: 14px;
+  padding-top: 10px;
 }
 #invitation .box.info .class .class-middle .name {
   color: #383D43;
@@ -284,16 +284,8 @@ body {
 }
 #invitation .box.info .class .class-right {
   position: absolute;
+  top: -12px;
   right: 0px;
-  display: inline-table;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
   text-align: right;
   font-size: 12px;
 }
