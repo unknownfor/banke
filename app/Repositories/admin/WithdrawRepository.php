@@ -196,8 +196,8 @@ class WithdrawRepository
 						$message1 = [
 							'uid'=>$withDraw['uid'],
 							'title'=>'提现失败',
-							'content'=>'您于'.$withDraw['created_at'].'发起的'.$withDraw['withdraw_amount'].'元提现失败！
-							'.$input['processing_result'],
+							'content'=>'您于'.$withDraw['created_at'].'发起的'.$withDraw['withdraw_amount'].'元提现失败！'
+							.$input['processing_result'],
 							'type'=>'WITHDRAW_FAIL'
 						];
 						//记录消息

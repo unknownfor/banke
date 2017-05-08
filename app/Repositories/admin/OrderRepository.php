@@ -4,6 +4,7 @@ use App\Models\Banke\BankeBalanceLog;
 use App\Models\Banke\BankeCashBackUser;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
+use App\Models\Banke\BankeEnrol;
 use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserAuthentication;
@@ -232,13 +233,12 @@ class OrderRepository
 	public function update($request,$id)
 	{
 		$order = BankeCashBackUser::find($id);
-                
-                
 		$input = $request->only(['comment', 'status']);
-  
 		if ($order) {
- 
-			if($order['status'] == config('admin.global.status.active')){
+			//重复订单
+			$isRepeat=BankeCashBackUser::where(['course_id'=>$order->course_id,'uid'=>$order->uid,'status'=>1])->count()>0;
+
+			if($order['status'] == config('admin.global.status.active') || $isRepeat){
 				Flash::error(trans('alerts.order.already_active'));
 				return false;
 			}
@@ -253,7 +253,7 @@ class OrderRepository
 
 						$this->execUpadateUserInfo($order,$userProfile); //更新用户信息
 
-						$this->execUpadateInvitorInfo($order,$userProfile,$operator_id);//更新推荐用户信息，并发送短信
+						$this->execUpadateInvitorInfo($order,$operator_id);//更新推荐用户信息，并发送app内消息
 
 						$this->sendMsgToUser($order);  //给用户发送短信
 
@@ -302,19 +302,21 @@ class OrderRepository
 		$userProfile->save();
 	}
 
-	//更新推荐人的用户的信息，包括推荐报名获得奖励，//订单状态为已审核
-	private  function  execUpadateInvitorInfo($order,$userProfile,$operator_id){
-		//获取用户报名课程 的次数
-		$courseCout= BankeCashBackUser::where(['uid'=>$order['uid']])->count();
-
-		//如果有邀请人(添加一个条件：且该用户是第一次报课程)
-		if($userProfile->invitation_uid > 0 && $courseCout==1) {
-			$invitation_user = BankeUserProfiles::where('uid', $userProfile->invitation_uid)->lockForUpdate()->first();
+	/*
+	 * 更新推荐人的用户的信息，推荐人获得奖励
+	 * 是否有推荐人 从 预约表中查找  课程id，手机号一致才算，如果有多条，取最早的
+	 */
+	private  function  execUpadateInvitorInfo($order,$operator_id){
+		$course_id=$order->course_id;
+		$enrol=BankeEnrol::where(['course_id'=>$course_id,'mobile'=>$order->mobile]);
+		if($enrol && $enrol->count()>0){
+			$invitation_uid=$enrol->first()->invitation_uid;
+			$invitation_user = BankeUserProfiles::where('uid', $invitation_uid)->lockForUpdate()->first();
 			if ($invitation_user) {
 				//剩余任务金额小于奖励金额，则返回剩余全部
 				//邀请成功报名缴费
 				// 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
-				$invite_enrol_course = BankeCourse::find($order->course_id);
+				$invite_enrol_course = BankeCourse::find($course_id);
 
 				$percent = $invite_enrol_course['z_award_amount'];
 				if ($percent == '') {
@@ -330,10 +332,9 @@ class OrderRepository
 				//更新邀请人信息
 				$invitation_user->save();
 				$message1 = [
-					'uid' => $userProfile->invitation_uid,
+					'uid' => $invitation_uid,
 					'title' => '您的好友报名成功',
-					'content' => '您邀请的好友' . $order->mobile . '报名了课程！
-								平台已帮您领取了' . $invitation_award
+					'content' => '您邀请的好友' . $order->mobile . '报名了课程！平台已帮您领取了' . $invitation_award
 						. '元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
 					'type' => 'FRIEND_ENROL_SUCCESS'
 				];
@@ -341,7 +342,7 @@ class OrderRepository
 				BankeMessage::create($message1);
 
 				$balance_log = [
-					'uid' => $userProfile->invitation_uid,
+					'uid' => $invitation_uid,
 					'change_amount' => $invitation_award,
 					'change_type' => '+',
 					'business_type' => 'INVITE_FRIEND_ENROL_SUCCESS',
@@ -353,7 +354,7 @@ class OrderRepository
 		}
 	}
 
-	//给用户发送短信
+	//给用户发送app消息
 	private  function sendMsgToUser($order){
 		$org = $order->org;
 		$cash_back_percent = BankeDict::whereIn('id', [3, 4])->sum('value');
