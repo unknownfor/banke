@@ -21,10 +21,10 @@
 <div id="invitation">
     <div class="box user hide">
         <div class="user-left">
-            <img src="{{$user['avatar']}}@70h_70w_2e">
+            <img src="{{$user->avatar}}@70h_70w_2e">
         </div>
         <div class="user-right">
-            <p>您的好友<span class="user-friend">{{$user['name']}}</span>已经报名<br />他帮您免去了<span class="color">一半学费</p>
+            <p>您的好友<span class="user-friend">{{$user['name']}}</span>已经报名<br />他帮您免去了<span class="color">一半学费</span></p>
         </div>
     </div>
     <div class="box info hide">
