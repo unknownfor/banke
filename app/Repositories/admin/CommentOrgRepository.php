@@ -150,8 +150,7 @@ class CommentOrgRepository
 			$org=$comment->org;
 			$comment_award=$org['comment_award'];  //当前机构的奖励金额
 			if($comment_award) {
-				$userRepository = new AppUserRepository;
-				$userRepository->execUpdateUserAccountInfo($comment['uid'], $comment_award, 1, 4);  //更新用户账户金额信息以及添加变动记录
+				AppUserRepository::execUpdateUserAccountInfo($comment['uid'], $comment_award, 1, 4);  //更新用户账户金额信息以及添加变动记录
 
 				//消息记录
 				$message = [

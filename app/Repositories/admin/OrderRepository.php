@@ -253,9 +253,9 @@ class OrderRepository
 
 						$this->execUpadateUserInfo($order,$userProfile); //更新用户信息
 
-						$this->execUpadateInvitorInfo($order,$operator_id);//更新推荐用户信息，并发送app内消息
+						$this->execUpadateInvitorInfo($order);//更新推荐用户信息，并发送app内消息
 
-						$this->sendMsgToUser($order);  //给用户发送短信
+						$this->sendMsgToUser($order);  //给用户发送app内消息
 
 						//更新机构的学习人数
 						$org = $order->org;
@@ -306,31 +306,25 @@ class OrderRepository
 	 * 更新推荐人的用户的信息，推荐人获得奖励
 	 * 是否有推荐人 从 预约表中查找  课程id，手机号一致才算，如果有多条，取最早的
 	 */
-	private  function  execUpadateInvitorInfo($order,$operator_id){
+	private  function  execUpadateInvitorInfo($order){
 		$course_id=$order->course_id;
 		$enrol=BankeEnrol::where(['course_id'=>$course_id,'mobile'=>$order->mobile]);
 		if($enrol && $enrol->count()>0){
 			$invitation_uid=$enrol->first()->invitation_uid;
 			$invitation_user = BankeUserProfiles::where('uid', $invitation_uid)->lockForUpdate()->first();
 			if ($invitation_user) {
-				//剩余任务金额小于奖励金额，则返回剩余全部
-				//邀请成功报名缴费
+
 				// 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
 				$invite_enrol_course = BankeCourse::find($course_id);
-
 				$percent = $invite_enrol_course['z_award_amount'];
 				if ($percent == '') {
 					$percent = BankeDict::find(7)['value'];
 				}
-
 				$invitation_award = moneyFormat(($order['tuition_amount'] * $percent / 100));
-//
-				$invitation_user->account_balance += $invitation_award;
-				//将给邀请人的奖励累加到邀请人做任务已领的奖励中
-				$invitation_user->get_do_task_amount += $invitation_award;
 
-				//更新邀请人信息
-				$invitation_user->save();
+				//更新用户账户金额信息以及添加变动记录
+				AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
+
 				$message1 = [
 					'uid' => $invitation_uid,
 					'title' => '您的好友报名成功',
@@ -340,16 +334,6 @@ class OrderRepository
 				];
 				//记录消息
 				BankeMessage::create($message1);
-
-				$balance_log = [
-					'uid' => $invitation_uid,
-					'change_amount' => $invitation_award,
-					'change_type' => '+',
-					'business_type' => 'INVITE_FRIEND_ENROL_SUCCESS',
-					'operator_uid' => $operator_id
-				];
-				//记录余额变动日志
-				BankeBalanceLog::create($balance_log);
 			}
 		}
 	}
