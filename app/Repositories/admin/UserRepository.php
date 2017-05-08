@@ -342,7 +342,11 @@ class UserRepository
 			if ($name) {
 				$user_info['name']=$name;
 			}
+			if(!$user_info['avatar']){
+				$user_info['avatar']='http://pic.hisihi.com/2016-10-22/1477107042521143.png';
+			}
 		}
+
 //		return $user_info->get(['name','avatar','mobile']);
 		return $user_info;
 	}
