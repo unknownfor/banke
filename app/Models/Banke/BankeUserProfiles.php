@@ -26,6 +26,7 @@ class BankeUserProfiles extends Model
         'enddated_at',
         'total_withdraw_amount',
         'get_do_task_amount',
+        'invitation_order_uid'
         ];
 
     private $action;

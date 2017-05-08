@@ -8,7 +8,10 @@ class BankeEnrol extends Model
 {
     //ԤԼ
     use ActionAttributeTrait;
-    protected $fillable = [ 'status', 'operator_uid', 'processing_result',
+    protected $fillable = [
+        'status',
+        'operator_uid',
+        'processing_result',
         'uid','mobile',
         'org_id',
         'org_name',

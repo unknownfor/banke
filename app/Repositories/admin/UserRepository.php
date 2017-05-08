@@ -330,21 +330,20 @@ class UserRepository
 	}
 
 	/*
-	 * 获得用户的姓名
-	 * 如果是已经认证，则返回真实姓名，
+	 * 通过uid获得用户的姓名、头、手机号
+	 * 如果是已经认证，则返回真实姓名，真实
 	 * 否则返回昵称
 	 * */
-	public  static  function getUserNameById($uid){
+	public  static  function getUserSimpleInfoById($uid){
 		$user_info =new BankeUserProfiles;
 		$user_info = $user_info::find($uid);
-		$name='';
 		if($user_info) {
 			$name = $user_info::find($uid)->authentication['real_name'];
-			if (!$name) {
-				$name = $user_info['name'];
+			if ($name) {
+				$user_info['name']=$name;
 			}
 		}
-		return $name;
+		return $user_info->get(['name','avatar','mobile']);
 	}
 
 	/**

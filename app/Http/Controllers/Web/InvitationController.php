@@ -105,10 +105,10 @@ class InvitationController extends Controller
      */
     public function enrol_v1_3($uid,$cid)
     {
-        $userName=UserRepository::getUserNameById($uid);
+        $user=UserRepository::getUserSimpleInfoById($uid);
         $course=CourseRepository::show($cid);
         $org=$course->org;
-        return view('web.invite.enrol-v1_3')->with(compact(['userName','course','org']));
+        return view('web.invite.enrol-v1_3')->with(compact(['user','course','org']));
     }
 
 }
