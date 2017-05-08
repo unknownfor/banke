@@ -1,0 +1,118 @@
+body {
+  margin:0;
+  padding:0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+#invitation {
+  margin: 0 auto;
+  max-width: 700px;
+  height: 100%;
+  background-color: #f2f2f2;
+  font-size: 14px;
+  overflow-x: hidden;
+  .box {
+    background-color: #ffffff;
+    padding: 15px;
+    //临时底部间距
+    margin-bottom: 25px;
+    &.user {
+      display: flex;
+      .user-left {
+        @userH: 70px;
+        flex: 0 0 @userH;
+        > img {
+          .size(@userH,@userH);
+          border-radius: @userH;
+        }
+      }
+      .user-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15px;
+        > p {
+          .user-friend {
+             color: #383D43;
+             font-weight: bold;
+           }
+          .color {
+            color: #FA4535;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    &.info {
+      .org-name {
+        text-align: left;
+        margin-bottom: 10px;
+      }
+      .class {
+        display: flex;
+        position: relative;
+        .class-left {
+          box-flex:1;
+          -moz-box-flex:1;
+          -webkit-box-flex:1;
+          margin-right: 7px;
+          > img {
+            max-width: 80px;
+            border-radius: 7px;
+          }
+        }
+        .class-middle {
+          width: 37%;
+          padding-top: 14px;
+          .name {
+            color: #383D43;
+            margin-bottom: 10px;
+            display: inline-block;
+            .txt-ellipsis-p(1);
+          }
+          .save {
+            display: inline-block;
+            .save-img {
+              display: inline-block;
+              height: 21px;
+              width: 21px;
+              background: url("../../../img/course/v1.3/sprite.png") no-repeat;
+              background-size: 158px*0.4 66px *0.4;
+              background-position: -26px 0px;
+            }
+            .save-num {
+              color: #FA4535;
+              vertical-align: 7px;
+            }
+          }
+        }
+        .class-right {
+          position: absolute;
+          right: 0px;
+          display: inline-table;
+          justify-content: center;
+          align-items: center;
+          text-align: right;
+          font-size: 12px;
+          .price {
+            margin-bottom:10px;
+            display: inline-block;
+            vertical-align: -22px;
+          }
+          .price-info {
+            color: #9B9B9B;
+            padding-right: 5px;
+          }
+          #price-num {
+            color: #383D43;
+          }
+          #price-real-num {
+            color: #FA4535;
+          }
+        }
+      }
+
+    }
+  }
+}
