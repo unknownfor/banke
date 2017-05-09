@@ -24,7 +24,8 @@
          data-course-id="{{$course['id']}}"
          data-org-id="{{$org['id']}}"
          data-org-name="{{$org['name']}}"
-         data-course-name="{{$course['name']}}">
+         data-course-name="{{$course['name']}}"
+    >
         <div class="user-left">
             <img src="{{$user['avatar']}}@70h_70w_2e">
         </div>
@@ -57,7 +58,7 @@
     </div>
     <div class="box rule">
         <div class="txt"><span>如何只花一半学费上好课</span></div>
-        <div class="link"><a href="javascript:void 0;">更多<i class="iconfont">&#xe600;</i></a></div>
+        <div class="link"><a href="{{$ruleLinkUrl}}">更多<i class="iconfont">&#xe600;</i></a></div>
     </div>
     <div class="box1 process hide">
         <h3>报名流程</h3>
