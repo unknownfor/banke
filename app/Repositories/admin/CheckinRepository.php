@@ -92,17 +92,17 @@ class CheckinRepository
 		if ($checkins) {
 			foreach ($checkins as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
-				$user = BankeUserProfiles::find($v['uid']);
-				$authen = new BankeUserAuthentication;
-				$authen = $authen->find($v['uid']);
-				if ($authen && $authen->count() > 0 && $authen['certification_status']==2) {
-					$v['name'] = $authen['real_name'];
+				$user = $v->user;
+				$authen = $v->authenUser;
+
+				$v['name'] = $authen['real_name'];
+				if(!$v['name']){
+					$v['name']=$user['name'];
 				}
-				$v['mobile'] = $user['mobile'];
-				$org = BankeOrg::find($v['org_id']);
-				$v['org_name'] = $org['name'];
-				$course = BankeCourse::find($v['course_id']);
-				$v['course_name'] = $course['name'];
+
+				$v['mobile'] = $authen['mobile'];
+				$v['org_name'] = $v->org['name'];
+				$v['course_name'] = $v->course['name'];
 			}
 		}
 		return [

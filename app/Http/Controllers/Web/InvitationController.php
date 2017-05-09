@@ -107,8 +107,12 @@ class InvitationController extends Controller
     {
         $user=UserRepository::getUserSimpleInfoById($uid);
         $course=CourseRepository::show($cid);
+
+        $baseUrl=env('ADMIN_DOMAIN');
+        $course['link_url']=$baseUrl.'/v1.2/share/course/'.$cid;
+        $ruleLinkUrl=$baseUrl.'/v1.2/share/rule';
         $org=$course->org;
-        return view('web.invite.enrol-v1_3')->with(compact(['user','course','org']));
+        return view('web.invite.enrol-v1_3')->with(compact(['user','course','org','ruleLinkUrl']));
     }
 
 }
