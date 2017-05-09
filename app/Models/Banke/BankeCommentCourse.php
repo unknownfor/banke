@@ -31,8 +31,14 @@ class BankeCommentCourse extends Model
         return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid');
     }
 
-    //评论人 未实名
+    //课程
     public  function course(){
         return $this->hasOne('App\Models\Banke\BankeCourse','id','course_id');
     }
+
+//    //课程
+//    public  function course(){
+//        return $this->belongsTo('App\Models\Banke\BankeCourse','id','course_id');
+//    }
+
 }
