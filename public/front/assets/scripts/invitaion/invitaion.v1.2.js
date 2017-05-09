@@ -162,14 +162,11 @@ $(function () {
         });
     }
 
-
     /**
      * 显示报名成功页面
      */
     function showSuccessPage() {
         $('.register-new').show().parent().show().siblings().hide();
     }
-
-
 
 });

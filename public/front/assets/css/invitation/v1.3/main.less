@@ -1,8 +1,7 @@
-body {
+html,body {
   margin:0;
   padding:0;
-  overflow: hidden;
-  width: 100%;
+  overflow-x: hidden;
   height: 100%;
 }
 #invitation {
@@ -48,6 +47,7 @@ body {
     }
     &.info {
       .org-name {
+        .txt-ellipsis-p(1);
         text-align: left;
         margin-bottom: 10px;
       }
@@ -65,7 +65,8 @@ body {
           }
         }
         .class-middle {
-          width: 37%;
+          width: 34%;
+          font-size: 12px;
           margin-left: 15px;
           padding-top: 10px;
           .name {
@@ -165,6 +166,8 @@ body {
     }
   }
   .box1 {
+    opacity: 0;
+    -webkit-animation: slideToTop .8s 0.2s ease both;
     background-color: #ffffff;
     padding: 30px;
     &.process {
@@ -270,5 +273,75 @@ body {
         }
       }
     }
+    &.hide {
+      display: none;
+    }
   }
+  .container {
+    opacity: 0;
+    -webkit-animation: slideToTop .8s 0.2s ease both;
+    position: relative;
+    background-color: #ffffff;
+    height:100%;
+    overflow-x: hidden;
+    text-align: center;
+    @rbh: 35px;
+    @rbr:10px;
+    .bg {
+      max-height: 220px;
+      margin-bottom: 10px;
+      &.second {
+        margin-top: 34%;
+      }
+    }
+    .txt {
+      letter-spacing: 1px;
+      &.txt-one {
+        margin: 30px 0 10px 0;
+        font-size: 14px;
+      }
+      &.txt-two {
+        font-size: 18px;
+        font-weight: 500;
+        color: #000;
+        > span {
+          color: #FA4535;
+        }
+      }
+    }
+    .btn {
+      margin: 0 20px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 35px;
+      font-size: 14px;
+      .size(auto,@rbh);
+      line-height: @rbh;
+      color: #ffffff;
+      border-radius: @rbr;
+      background-color: rgba(250,192,46,0.5);
+      border: none;
+      > a {
+        color: #fff;
+      }
+      &.active {
+        background-color: #FAC02E;
+      }
+    }
+    &.hide {
+      display: none;
+    }
+  }
+  @-webkit-keyframes slideToTop {
+    0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100px, 0);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+    }
+  }
+
 }

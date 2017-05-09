@@ -19,7 +19,7 @@
 <body>
 {!! csrf_field() !!}
 <div id="invitation">
-    <div class="box user hide">
+    <div class="box user">
         <div class="user-left">
             <img src="{{$user->avatar}}@70h_70w_2e">
         </div>
@@ -27,7 +27,7 @@
             <p>您的好友<span class="user-friend">{{$user['name']}}</span>已经报名<br />他帮您免去了<span class="color">一半学费</span></p>
         </div>
     </div>
-    <div class="box info hide">
+    <div class="box info">
         <div class="org-name">{{$org['name']}}</div>
         <div class="class">
             <div class="class-left">
@@ -46,15 +46,15 @@
             </div>
         </div>
     </div>
-    <div class="box join hide">
+    <div class="box join">
         <p class="slogen">用一半学费上好课！</p>
-        <div class="btn">和好友一起学习</div>
+        <div class="btn" id="register">和好友一起学习</div>
     </div>
-    <div class="box rule hide">
+    <div class="box rule">
         <div class="txt"><span>如何只花一半学费上好课</span></div>
         <div class="link"><a href="javascript:void 0;">更多<i class="iconfont">&#xe600;</i></a></div>
     </div>
-    <div class="box1 process">
+    <div class="box1 process hide">
         <h3>报名流程</h3>
         <div class="rules first"><div class="num">1</div><div class="txt">留下您的联系方式</div></div>
         <i class="iconfont dotted">&#xe603;</i>
@@ -64,15 +64,20 @@
         <i class="iconfont dotted">&#xe603;</i>
         <div class="rules"><div class="num">4</div><div class="txt">平台核实后，在首页每日打卡领取学费</div></div>
     </div>
-    <div class="box1 register">
+    <div class="box1 register hide">
         <div class="phone">
             <i class="iconfont register-img">&#xe659;</i>
             <input class="register-code" id="phone-num" placeholder="输入手机号"/>
         </div>
-        <button class="btn nouse"><span>确定</span></button>
+        <button class="btn nouse" id="register-btn"><span>确定</span></button>
         <p>客服将会马上联系你</p>
     </div>
-
+    <div class="container hide">
+        <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163041837846.png" />
+        <div class="txt txt-one">早点报名，早点免学费哟！</div>
+        <div class="txt txt-two">最高可领取<span>50%</span>学费返现</div>
+        <div class="btn active"><a href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></div>
+    </div>
 </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
