@@ -19,9 +19,14 @@
 <body>
 {!! csrf_field() !!}
 <div id="invitation">
-    <div class="box user">
+    <div class="box user"
+         data-uid="{{$user['uid']}}"
+         data-course-id="{{$course['id']}}"
+         data-org-id="{{$org['id']}}"
+         data-org-name="{{$org['name']}}"
+         data-course-name="{{$course['name']}}">
         <div class="user-left">
-            <img src="{{$user->avatar}}@70h_70w_2e">
+            <img src="{{$user['avatar']}}@70h_70w_2e">
         </div>
         <div class="user-right">
             <p>您的好友<span class="user-friend">{{$user['name']}}</span>已经报名<br />他帮您免去了<span class="color">一半学费</span></p>

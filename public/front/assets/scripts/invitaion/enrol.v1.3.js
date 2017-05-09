@@ -16,11 +16,11 @@ $(function (){
     * 填写手机号
     * 输入框变色，按钮变色*/
     $(document).on('input', '#phone-num', function(){
-        var number=$(this).val();
-            // reg = /^1(3|4|5|7|8)\d{9}$/;
+        var number=$(this).val(),
+            reg = /^1(3|4|5|7|8)\d{9}$/;
         var $btn=$('.btn');
         if(number!=''){
-            // if(reg.test(number)) {
+            if(reg.test(number)) {
                 $('.phone').addClass('active');
                 $btn.removeClass('nouse');
                 $btn.addClass('active');
@@ -29,19 +29,25 @@ $(function (){
                 $btn.addClass('nouse');
                 $btn.removeClass('active');
             }
-        // }
+        }
     });
 
     $(document).on(window.eventName,'#register-btn.active', function () {
         window.controlLoadingBox(true);
         var url='/v1.3/share/doenrol',
+            uid=$('.user').attr('data-uid'),
+            cid=$('.user').attr('data-course-id'),
+            oid=$('.user').attr('data-org-id'),
+            mobile = $('#phone-num').val(),
+            oname=$('.user').attr('data-org-name'),
+            cname=$('.user').attr('data-course-name'),
             data={
-            org_id:12,
-            course_id:30,
-            invitation_uid:210,
-            mobile:'13554154325',
-            org_name:'武汉卓意设计职业培训学校',
-            course_name:'网页设计全科班'
+            org_id:oid,
+            course_id:cid,
+            invitation_uid:uid,
+            mobile:mobile,
+            org_name:oname,
+            course_name:cname
         };
         $(this).removeClass('active');
         window.getDataAsync(url,data,function(res) {
