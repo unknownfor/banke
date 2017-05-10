@@ -26,6 +26,7 @@
          data-org-name="{{$org['name']}}"
          data-course-name="{{$course['name']}}"
     >
+        {{--机构banner图片--}}
             @if($org['cover'])
                 <?php
                 $imgs=explode(',',$org['cover']);
@@ -34,6 +35,7 @@
             @else
                 <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
             @endif
+
                 @if($user['avatar'])
                     <?php
                     $imgs=explode(',',$user['avatar']);

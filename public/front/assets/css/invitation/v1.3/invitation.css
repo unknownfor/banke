@@ -194,7 +194,6 @@ body {
   padding: 0px;
   margin: 0px;
   text-align: center;
-  font-size: 16px;
 }
 #invitation .box.user .head-bg {
   max-height: 180px;
@@ -318,7 +317,7 @@ body {
 #invitation .box.join .slogen {
   margin: 10px auto;
   color: #fbc02d;
-  font-size: 21px;
+  font-size: 18px;
 }
 #invitation .box.join .btn {
   margin-top: 10px;
