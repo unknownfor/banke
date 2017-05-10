@@ -25,7 +25,7 @@ class EnrolRequest extends Request
     {
         return [
             'id' => 'numeric',
-            'name' => 'required',
+//            'name' => 'required',
             'org_id' => 'required',
             'course_id' => 'required',
             'status' => 'required',
@@ -47,7 +47,7 @@ class EnrolRequest extends Request
             'id'            => trans('labels.id'),
             'name'          => trans('labels.enrol.name'),
             'org_id'          => trans('labels.enrol.org'),
-            'course_id'          => trans('labels.enrol.course'),
+            'course_id'          => trans('labels.enrol.course_id'),
             'status'        => trans('labels.enrol.status'),
         ];
     }

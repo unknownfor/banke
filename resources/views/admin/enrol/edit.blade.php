@@ -64,17 +64,8 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="description">{{trans('labels.enrol.org_id')}}</label>
                           <div class="col-md-4">
-                              <input type="hidden" name="org_id" value="$enrol['org_id']">
-                              <select disabled name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
-                                  @if($orgs)
-                                      @foreach($orgs as $org)
-                                          @if($org->id == $enrol['org_id'])
-                                              <option value="{{$org->id}}" selected> {{$org->name}}</option>
-                                          @else
-                                              <option value="{{$org->id}}" > {{$org->name}}</option>
-                                          @endif
-                                      @endforeach
-                                  @endif
+                              <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
+                                <option value="{{$enrol['org_id']}}" selected> {{$enrol['org_name']}}</option>
                               </select>
                           </div>
                       </div>
@@ -82,11 +73,8 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="description">{{trans('labels.enrol.course_id')}}</label>
                           <div class="col-md-4">
-                              <input type="hidden" name="course_id" value="$enrol['course_id']">
-                              <select disabled name="course_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
-                                  @if($courseInfo)
-                                      <option value="{{$courseInfo->id}}" selected> {{$courseInfo->name}}</option>
-                                  @endif
+                              <select name="course_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
+                                  <option value="{{$enrol['course_id']}}" selected> {{$enrol['course_name']}}</option>
                               </select>
                           </div>
                       </div>
