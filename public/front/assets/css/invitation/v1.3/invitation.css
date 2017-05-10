@@ -218,7 +218,7 @@ body {
 }
 #invitation .box.user .info-box .txt-one {
   color: #383D43;
-  margin: 19px 0px 5px 0px;
+  margin: 30px 0px 5px 0px;
 }
 #invitation .box.user .info-box .txt-one > span {
   font-weight: bold;
@@ -226,6 +226,7 @@ body {
   padding-right: 5px;
 }
 #invitation .box.user .info-box .txt-two {
+  font-weight: bold;
   color: #fa4535;
   padding-bottom: 25px;
 }
@@ -279,7 +280,7 @@ body {
   display: inline-block;
   width: 19.2px;
   height: 19.8px;
-  background: url("../../../img/invitation/v1.3/save.png") no-repeat 0 0;
+  background: url("../../img/invitation/v1.3/save.png") no-repeat 0 0;
   -webkit-background-size: 19.2px 19.8px;
   background-size: 19.2px 19.8px;
 }
@@ -329,6 +330,9 @@ body {
   background-color: #fbc02d;
   line-height: 40px;
   color: #ffffff;
+}
+#invitation .box.join .txt {
+  margin-bottom: 46px;
 }
 #invitation .box.join .txt > a {
   color: #9b9b9b;
