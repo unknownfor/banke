@@ -108,7 +108,7 @@ class InvitationController extends Controller
         $user=UserRepository::getUserSimpleInfoById($uid);
         $course=CourseRepository::show($cid);
 
-        $baseUrl=env('ADMIN_DOMAIN');
+        $baseUrl='http://'.env('ADMIN_DOMAIN');
         $course['link_url']=$baseUrl.'/v1.2/share/course/'.$cid;
         $ruleLinkUrl=$baseUrl.'/v1.2/share/rule';
         $org=$course->org;
