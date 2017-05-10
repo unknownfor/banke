@@ -26,39 +26,54 @@
          data-org-name="{{$org['name']}}"
          data-course-name="{{$course['name']}}"
     >
-        <div class="user-left">
-            <img src="{{$user['avatar']}}@70h_70w_2e">
-        </div>
-        <div class="user-right">
-            <p>您的好友<span class="user-friend">{{$user['name']}}</span>已经报名<br />他帮您免去了<span class="color">一半学费</span></p>
-        </div>
-    </div>
-    <div class="box info">
-        <div class="org-name">{{$org['name']}}</div>
-        <div class="class">
-            <div class="class-left">
-                <img src="{{$course['cover']}}@70h_70w_2e">
-            </div>
-            <div class="class-middle">
-                <div class="name">{{$course['name']}}</div>
-                <div class="save">
-                    <span class="save-img"></span>
-                    <span class="save-num">{{$course['checkin_award']}}%</span>
+            @if($org['cover'])
+                <?php
+                $imgs=explode(',',$org['cover']);
+                ?>
+                <img class="head-bg" src="{{$imgs[0]}}" />
+            @else
+                <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
+            @endif
+                @if($user['avatar'])
+                    <?php
+                    $imgs=explode(',',$user['avatar']);
+                    ?>
+                    <div class="head-img">
+                        <img src="{{$imgs[0]}}@70h_70w_2e"/>
+                    </div>
+                @else
+                    <div class="head-img">
+                        <img src="{{asset('http://pic.hisihi.com/2016-10-22/1477107042521143.png@70h_70w_2e')}}" />
+                    </div>
+                @endif
+                <div class="info-box">
+                    <p class="txt-one">您的好友<span class="user-friend">{{$user['name']}}</span>已经报名</p>
+                    <p class="txt-two">他帮您免去了一半学费</p>
+                    <div class="org-name">{{$org['name']}}</div>
+                    <div class="class">
+                        <div class="class-left">
+                            <a href="{{$course['link_url']}}">
+                                <img src="{{$course['cover']}}@60h_60w_2e">
+                            </a>
+                        </div>
+                        <div class="class-middle">
+                            <div class="name">{{$course['name']}}</div>
+                            <div class="save">
+                                <span class="save-img"></span>
+                                <span class="save-num">{{$course['checkin_award']}}%</span>
+                            </div>
+                        </div>
+                        <div class="class-right">
+                            <div class="price"><span class="price-info">参考价</span><span id="price-num">￥{{$course['price']}}</span></div>
+                            <div class="real-price"><span class="price-info">最高奖励金额</span><span id="price-real-num">￥{!! $course['price'] * $course['checkin_award']/100!!}</span></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="class-right">
-                <div class="price"><span class="price-info">参考价</span><span id="price-num">￥{{$course['price']}}</span></div>
-                <div class="real-price"><span class="price-info">最高奖励金额</span><span id="price-real-num">￥{!! $course['price'] * $course['checkin_award']/100!!}</span></div>
-            </div>
-        </div>
     </div>
     <div class="box join">
         <p class="slogen">用一半学费上好课！</p>
         <div class="btn" id="register">和好友一起学习</div>
-    </div>
-    <div class="box rule">
-        <div class="txt"><span>如何只花一半学费上好课</span></div>
-        <div class="link"><a href="{{$ruleLinkUrl}}">更多<i class="iconfont">&#xe600;</i></a></div>
+        <div class="txt"><a href="{{$ruleLinkUrl}}">如何只花一半学费上好课<i class="iconfont">&#xe600;</i></a></div>
     </div>
     <div class="box1 process hide">
         <h3>报名流程</h3>

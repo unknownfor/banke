@@ -188,50 +188,49 @@ body {
 }
 #invitation .box {
   background-color: #ffffff;
-  padding: 15px;
-  margin-bottom: 15px;
 }
 #invitation .box.user {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+  font-size: 16px;
 }
-#invitation .box.user .user-left {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 70px;
-  -ms-flex: 0 0 70px;
-  flex: 0 0 70px;
+#invitation .box.user .head-bg {
+  max-height: 180px;
+  width: 100%;
+  position: relative;
 }
-#invitation .box.user .user-left > img {
+#invitation .box.user .head-img {
+  position: absolute;
+  top: 140px;
+  margin: 0 auto;
+  width: 100%;
+}
+#invitation .box.user .head-img > img {
+  display: inline-block;
   width: 70px;
   height: 70px;
   border-radius: 70px;
+  border: 3px solid #ffffff;
 }
-#invitation .box.user .user-right {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-left: 15px;
+#invitation .box.user .info-box {
+  padding: 15px;
 }
-#invitation .box.user .user-right > p .user-friend {
+#invitation .box.user .info-box .txt-one {
   color: #383D43;
-  font-weight: bold;
+  margin: 19px 0px 5px 0px;
 }
-#invitation .box.user .user-right > p .color {
-  color: #FA4535;
+#invitation .box.user .info-box .txt-one > span {
   font-weight: bold;
+  padding-left: 5px;
+  padding-right: 5px;
 }
-#invitation .box.info .org-name {
+#invitation .box.user .info-box .txt-two {
+  color: #fa4535;
+  padding-bottom: 25px;
+}
+#invitation .box.user .info-box .org-name {
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
@@ -240,32 +239,36 @@ body {
   text-align: left;
   margin-bottom: 10px;
 }
-#invitation .box.info .class {
+#invitation .box.user .info-box .class {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   position: relative;
 }
-#invitation .box.info .class .class-left {
+#invitation .box.user .info-box .class .class-left {
   box-flex: 1;
   -moz-box-flex: 1;
   -webkit-box-flex: 1;
   margin-right: 7px;
 }
-#invitation .box.info .class .class-left > img {
-  max-width: 80px;
+#invitation .box.user .info-box .class .class-left > a {
+  display: inline-block;
+}
+#invitation .box.user .info-box .class .class-left > a > img {
+  max-width: 60px;
   border-radius: 7px;
 }
-#invitation .box.info .class .class-middle {
+#invitation .box.user .info-box .class .class-middle {
   width: 34%;
-  font-size: 12px;
-  margin-left: 15px;
+  font-size: 14px;
+  margin-left: 8px;
   padding-top: 10px;
+  text-align: left;
 }
-#invitation .box.info .class .class-middle .name {
+#invitation .box.user .info-box .class .class-middle .name {
   color: #383D43;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -273,98 +276,66 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-#invitation .box.info .class .class-middle .save {
+#invitation .box.user .info-box .class .class-middle .save .save-img {
   display: inline-block;
+  width: 19.2px;
+  height: 19.8px;
+  background: url("../../../img/invitation/v1.3/save.png") no-repeat 0 0;
+  -webkit-background-size: 19.2px 19.8px;
+  background-size: 19.2px 19.8px;
 }
-#invitation .box.info .class .class-middle .save .save-img {
-  display: inline-block;
-  height: 21px;
-  width: 21px;
-  background: url("../../../img/course/v1.3/sprite.png") no-repeat;
-  -webkit-background-size: 63.2px 26.4px;
-  background-size: 63.2px 26.4px;
-  background-position: -26px 0px;
-}
-#invitation .box.info .class .class-middle .save .save-num {
+#invitation .box.user .info-box .class .class-middle .save .save-num {
   color: #FA4535;
-  vertical-align: 7px;
+  vertical-align: 5px;
 }
-#invitation .box.info .class .class-right {
+#invitation .box.user .info-box .class .class-right {
   position: absolute;
   top: -12px;
   right: 0px;
   text-align: right;
   font-size: 12px;
 }
-#invitation .box.info .class .class-right .price {
+#invitation .box.user .info-box .class .class-right .price {
   margin-bottom: 10px;
   display: inline-block;
   vertical-align: -22px;
 }
-#invitation .box.info .class .class-right .price-info {
+#invitation .box.user .info-box .class .class-right .price-info {
   color: #9B9B9B;
   padding-right: 5px;
 }
-#invitation .box.info .class .class-right #price-num {
+#invitation .box.user .info-box .class .class-right #price-num {
   color: #383D43;
 }
-#invitation .box.info .class .class-right #price-real-num {
+#invitation .box.user .info-box .class .class-right #price-real-num {
   color: #FA4535;
 }
 #invitation .box.join {
+  margin-top: 15px;
+  padding: 15px;
   text-align: center;
 }
 #invitation .box.join .slogen {
   margin: 10px auto;
   color: #fbc02d;
-  font-size: 18px;
+  font-size: 21px;
 }
 #invitation .box.join .btn {
   margin-top: 10px;
+  margin-bottom: 69px;
   display: inline-block;
   width: 90%;
-  height: 35px;
+  height: 40px;
   border-radius: 10px;
-  background-color: #ffeb3b;
-  line-height: 35px;
+  background-color: #fbc02d;
+  line-height: 40px;
+  color: #ffffff;
 }
-#invitation .box.join .btn > a {
-  color: #000000;
+#invitation .box.join .txt > a {
+  color: #9b9b9b;
 }
-#invitation .box.rule {
-  border-left: 3px solid #ffeb3b;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  height: 50px;
-  padding: 0 !important;
-  line-height: 50px;
-}
-#invitation .box.rule .txt {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-}
-#invitation .box.rule .txt > span {
-  margin-left: 15px;
-}
-#invitation .box.rule .link {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 55px;
-  -ms-flex: 0 0 55px;
-  flex: 0 0 55px;
-  color: #fbc02d;
-}
-#invitation .box.rule .link > a {
-  display: inline-block;
-  width: 100%;
-  height: 100%;
-  color: #fbc02d;
-}
-#invitation .box.rule .link > a > i {
-  vertical-align: -2px;
+#invitation .box.join .txt > a > i {
+  vertical-align: -1px;
 }
 #invitation .box.hide {
   display: none;
