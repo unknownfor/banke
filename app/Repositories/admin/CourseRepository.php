@@ -202,6 +202,9 @@ class CourseRepository
 	public function show($id)
 	{
 		$course = BankeCourse::find($id);
+		if(!$course['cover']){
+			$course['cover']='http://pic.hisihi.com/2017-05-10/1494404142666471.png';
+		}
 		return $course;
 	}
 
