@@ -59,7 +59,7 @@
 
         //搜索
         $(document).on('click','.search-btn',function(){
-            var number=$('#phone-search-input').val();
+            var number=$('#phone-search-input').val().trim();
             if(!/^1[3|4|5|7|8]\d{9}$/.test(number)){
                 alert('请正确输入手机号');
                 return;
