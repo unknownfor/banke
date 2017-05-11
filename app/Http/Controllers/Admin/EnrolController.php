@@ -68,10 +68,6 @@ class EnrolController extends Controller {
     public function edit($id)
     {
         $enrol = EnrolRepository::edit($id);
-        $org = new BankeOrg;
-        $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
-        $course = new BankeCourse;
-        $courseInfo = $course::find($enrol['course_id']);
         return view('admin.enrol.edit')->with(compact(['enrol','courseInfo','orgs']));
     }
     /**
