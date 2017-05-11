@@ -51,9 +51,9 @@ var TableDatatablesAjax = function() {
               for(var i = 0;i<data.top.length;i++){
                 str+='<span class="category-block top">'+data.top[i]+'</span>'
               }
-              for(var i = 0;i<data.sub.length;i++){
-                str+='<span class="category-block sub">'+data.sub[i]+'</span>'
-              }
+              //for(var i = 0;i<data.sub.length;i++){
+              //  str+='<span class="category-block sub">'+data.sub[i]+'</span>'
+              //}
             }
             return str;
           }
