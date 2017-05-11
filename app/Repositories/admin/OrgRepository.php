@@ -7,6 +7,7 @@ use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeOrgCategory;
 use Illuminate\Support\Facades\Log;
 use PhpParser\Node\Expr\Array_;
+use TrainCategoryRepository;
 
 /**
 * 机构仓库
@@ -61,12 +62,18 @@ class OrgRepository
 		$org = $org->offset($start)->limit($length);
 		$orgs = $org->orderBy("id", "desc")->get();
 
+		//所有的二级分类
+		$trainCategpry=new TrainCategoryRepository();
+		$allSecondCategory=$trainCategpry::getAllTCategory();
+
+
 		if ($orgs) {
 			foreach ($orgs as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
-//				$categories=$v->categories;
-//				if($categories)
-//				$v['category'] = $categories;
+				$categories=$v->categories->toArray();
+				if($categories) {
+					$v['category'] = $this->getCategoryNamesByIds($categories,$allSecondCategory);
+				}
 			}
 		}
 		return [
@@ -75,6 +82,18 @@ class OrgRepository
 			'recordsFiltered' => $count,
 			'data' => $orgs,
 		];
+	}
+
+	public function getCategoryNamesByIds($categories,$all){
+		$arr=[];
+		foreach($all as &$v){
+			foreach($categories as &$v1){
+				if($v['id']==$v1['cid']){
+					return $v['name'];
+				}
+			}
+		}
+		return '';
 	}
 
 	/**添加机构

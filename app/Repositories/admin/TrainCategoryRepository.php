@@ -182,7 +182,7 @@ class TrainCategoryRepository
 
 	//得到全部的分类
 	public function  getAllTCategory(){
-		return BankeTrainCategory::get(['id','name']);
+		return BankeTrainCategory::get(['id','pid','name']);
 	}
 
 	//根据一级分类得到全部的二级分类
