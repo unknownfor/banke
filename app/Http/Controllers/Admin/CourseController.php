@@ -28,7 +28,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('admin.course.list');
+        $orgs = BankeOrg::where('status', 1)->get(['id', 'name']);
+        return view('admin.course.list')->with(compact('orgs'));
     }
 
     /**

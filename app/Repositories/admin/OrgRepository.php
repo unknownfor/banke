@@ -64,6 +64,9 @@ class OrgRepository
 		if ($orgs) {
 			foreach ($orgs as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
+//				$categories=$v->categories;
+//				if($categories)
+//				$v['category'] = $categories;
 			}
 		}
 		return [
