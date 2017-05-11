@@ -72,6 +72,7 @@
                     </div>
                 </div>
     </div>
+    <div class="box line"></div>
     <div class="box join">
         <p class="slogen">用一半学费上好课！</p>
         <div class="btn" id="register-area">和好友一起学习</div>
@@ -87,6 +88,7 @@
         <i class="iconfont dotted">&#xe603;</i>
         <div class="rules"><div class="num">4</div><div class="txt">平台核实后，在首页每日打卡领取学费</div></div>
     </div>
+    <div class="box1 line hide"></div>
     <div class="box1 register hide">
         <div class="phone">
             <i class="iconfont register-img">&#xe659;</i>
