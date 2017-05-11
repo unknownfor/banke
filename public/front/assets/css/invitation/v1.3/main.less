@@ -2,16 +2,22 @@ html,body {
   margin:0;
   padding:0;
   height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  overflow-x: hidden;
 }
 #invitation {
-  overflow-scrolling: touch;
-  -webkit-overflow-scrolling: touch;
   margin: 0 auto;
   max-width: 700px;
   height: 100%;
-  background-color: #f2f2f2;
+  overflow-x: hidden;
+  //background-color: #f2f2f2;
   font-size: 14px;
   @mfc: #FBC02D;
+  .line {
+    height: 15px;
+    background-color: #F2F2F2;
+  }
   .box {
     background-color: #ffffff;
     &.user {
@@ -22,7 +28,7 @@ html,body {
       @headH:278px;
       @headBg:180px;
       .head-bg{
-        max-height: @headBg;
+        height: @headBg;
         width: 100%;
         position: relative;
       }
@@ -131,7 +137,6 @@ html,body {
       }
     }
     &.join {
-      margin-top: 15px;
       padding: 15px;
       text-align: center;
       .slogen {
@@ -141,7 +146,7 @@ html,body {
       }
       .btn {
         margin-top: 10px;
-        margin-bottom: 69px;
+        margin-bottom: 30px;
         display: inline-block;
         .size(90%,40px);
         border-radius: 10px;
@@ -150,7 +155,7 @@ html,body {
         color: #ffffff;
       }
       .txt {
-        margin-bottom: 46px;
+        margin-bottom: 30px;
         > a {
           color: #9b9b9b;
           > i {
@@ -162,15 +167,18 @@ html,body {
     &.hide {
       display: none;
     }
+    &.line {
+      height: 15px;
+      background-color: #F2F2F2;
+    }
   }
   .box1 {
     opacity: 0;
-    -webkit-animation: slideToTop .8s 0.2s ease both;
+    -webkit-animation: slideToTop .5s ease both;
     background-color: #ffffff;
     padding: 30px;
     &.process {
       @sw:20px;
-      margin-bottom: 15px;
       > h3 {
         font-weight: normal;
         color: #383d43;
@@ -273,6 +281,11 @@ html,body {
     }
     &.hide {
       display: none;
+    }
+    &.line {
+      padding: 0;
+      height: 15px;
+      background-color: #F2F2F2;
     }
   }
   .container {

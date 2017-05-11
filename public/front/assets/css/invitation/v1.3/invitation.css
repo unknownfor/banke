@@ -179,15 +179,20 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  overflow-x: hidden;
 }
 #invitation {
-  overflow-scrolling: touch;
-  -webkit-overflow-scrolling: touch;
   margin: 0 auto;
   max-width: 700px;
   height: 100%;
-  background-color: #f2f2f2;
+  overflow-x: hidden;
   font-size: 14px;
+}
+#invitation .line {
+  height: 15px;
+  background-color: #F2F2F2;
 }
 #invitation .box {
   background-color: #ffffff;
@@ -199,7 +204,7 @@ body {
   text-align: center;
 }
 #invitation .box.user .head-bg {
-  max-height: 180px;
+  height: 180px;
   width: 100%;
   position: relative;
 }
@@ -314,7 +319,6 @@ body {
   color: #FA4535;
 }
 #invitation .box.join {
-  margin-top: 15px;
   padding: 15px;
   text-align: center;
 }
@@ -325,7 +329,7 @@ body {
 }
 #invitation .box.join .btn {
   margin-top: 10px;
-  margin-bottom: 69px;
+  margin-bottom: 30px;
   display: inline-block;
   width: 90%;
   height: 40px;
@@ -335,7 +339,7 @@ body {
   color: #ffffff;
 }
 #invitation .box.join .txt {
-  margin-bottom: 46px;
+  margin-bottom: 30px;
 }
 #invitation .box.join .txt > a {
   color: #9b9b9b;
@@ -346,14 +350,15 @@ body {
 #invitation .box.hide {
   display: none;
 }
+#invitation .box.line {
+  height: 15px;
+  background-color: #F2F2F2;
+}
 #invitation .box1 {
   opacity: 0;
-  -webkit-animation: slideToTop .8s 0.2s ease both;
+  -webkit-animation: slideToTop .5s ease both;
   background-color: #ffffff;
   padding: 30px;
-}
-#invitation .box1.process {
-  margin-bottom: 15px;
 }
 #invitation .box1.process > h3 {
   font-weight: normal;
@@ -478,6 +483,11 @@ body {
 }
 #invitation .box1.hide {
   display: none;
+}
+#invitation .box1.line {
+  padding: 0;
+  height: 15px;
+  background-color: #F2F2F2;
 }
 #invitation .container {
   opacity: 0;
