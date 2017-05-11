@@ -241,6 +241,7 @@ return [
 		'sort'=>'排序',
 		'list' => '机构列表',
 		'courseList' => '课程列表',
+		'category' => '所属分类',
 		'category1' => '一级分类',
 		'category2' => '二级分类',
 		'tags' => '标签',
