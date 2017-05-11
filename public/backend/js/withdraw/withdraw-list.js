@@ -107,12 +107,7 @@ var TableDatatablesAjax = function() {
     });
 
     //设置查询时间
-    var $date=$('.input-group.date'),
-        $input=$date.find('.input-sm'),
-        date=new Date(),
-        date1=date.getTime()-30*24*60*60*1000;
-    $input.eq(0).val(new Date(date1).format('yyyy-MM-dd'));
-    $input.eq(1).val(date.format('yyyy-MM-dd'));
+    var $date=$('.input-group.date');
     $date.datepicker({
       autoclose: true,
       todayHighlight:true
