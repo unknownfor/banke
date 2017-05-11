@@ -11,7 +11,6 @@ html,body {
   max-width: 700px;
   height: 100%;
   overflow-x: hidden;
-  //background-color: #f2f2f2;
   font-size: 14px;
   @mfc: #FBC02D;
   .line {
@@ -302,19 +301,20 @@ html,body {
       max-height: 220px;
       margin-bottom: 10px;
       &.second {
-        margin-top: 34%;
+        margin-top: 80px;
       }
     }
     .txt {
       letter-spacing: 1px;
       &.txt-one {
-        margin: 30px 0 10px 0;
+        margin: 25px 0 10px 0;
         font-size: 14px;
       }
       &.txt-two {
         font-size: 18px;
         font-weight: 500;
         color: #000;
+        margin-bottom: 5px;
         > span {
           color: #FA4535;
         }
@@ -352,6 +352,18 @@ html,body {
     100% {
       opacity: 1;
       -webkit-transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    .container {
+      .bg {
+        max-height: 180px;
+        margin-bottom: 10px;
+        &.second {
+          margin-top: 70px;
+        }
+      }
     }
   }
 

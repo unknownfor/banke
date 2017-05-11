@@ -503,19 +503,20 @@ body {
   margin-bottom: 10px;
 }
 #invitation .container .bg.second {
-  margin-top: 34%;
+  margin-top: 80px;
 }
 #invitation .container .txt {
   letter-spacing: 1px;
 }
 #invitation .container .txt.txt-one {
-  margin: 30px 0 10px 0;
+  margin: 25px 0 10px 0;
   font-size: 14px;
 }
 #invitation .container .txt.txt-two {
   font-size: 18px;
   font-weight: 500;
   color: #000;
+  margin-bottom: 5px;
 }
 #invitation .container .txt.txt-two > span {
   color: #FA4535;
@@ -552,5 +553,14 @@ body {
   100% {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+@media screen and (max-width: 320px) {
+  #invitation .container .bg {
+    max-height: 180px;
+    margin-bottom: 10px;
+  }
+  #invitation .container .bg.second {
+    margin-top: 70px;
   }
 }
