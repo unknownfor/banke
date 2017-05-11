@@ -50,6 +50,13 @@ var TableDatatablesAjax = function() {
           "data": "category_name",
           "name": "category_name",
           "orderable" : false,
+          render:function(data){
+            var str='';
+            if(data) {
+              str='<span class="category-block top" >'+data+'</span>';
+            }
+            return str;
+          }
         },
         { 
           "data": "status",

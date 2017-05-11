@@ -4,6 +4,20 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <style>
+        .category-block{
+            border-radius: 3px;
+            padding: 2px 5px;
+            font-size: 12px;
+            color: #fff;
+            margin: 3px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .category-block.top{
+            background-color:#1ABC9C;
+        }
+    </style>
 @endsection
 @section('content')
 <div class="page-bar">
