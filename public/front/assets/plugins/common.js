@@ -1,6 +1,6 @@
 
 $(function () {
-    //FastClick.attach(document.body);
+    FastClick.attach(document.body);
     var href = window.location.href,
         reg = /(\d+)\.(\d+)\.(\d+)\.(\d+)/;
     // 匹配ip地址  http://91.16.0.1/hisihi-cms/api.php?s=/public/topContentV2_9/id/1263  参考嘿设汇
