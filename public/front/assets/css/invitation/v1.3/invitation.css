@@ -22,15 +22,13 @@ a {
   /*webkit浏览器*/
   -khtml-user-select: none;
   /*早期浏览器*/
-  -moz-user-select: none;
   /*火狐*/
   -ms-user-select: none;
   /*IE10*/
   user-select: none;
-}
-html,
-body {
-  overflow-scrolling: touch;
+  /*禁用手机浏览器的用户选择功能 */
+  -moz-user-select: none;
+  font-family: "Microsoft Yahei", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   -webkit-overflow-scrolling: touch;
 }
 ul {
