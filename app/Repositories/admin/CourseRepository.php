@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeCourse;
 use Illuminate\Support\Facades\Log;
+use TrainCategoryRepository;
 /**
 * 课程仓库
 */
@@ -31,7 +32,6 @@ class CourseRepository
 		$status = request('status' ,'');
 
 		$course = new BankeCourse;
-		$org = new BankeOrg;
 		/*课程名称搜索*/
 		if($course_name){
 			if($search_pattern){
@@ -70,6 +70,10 @@ class CourseRepository
 		$course = $course->offset($start)->limit($length);
 		$courses = $course->orderBy("id", "desc")->get();
 
+		//所有的二级分类
+		$trainCategpry=new TrainCategoryRepository();
+		$allSecondCategory=$trainCategpry::getAllSecondCategory();
+
 		if ($courses) {
 			foreach ($courses as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
@@ -77,8 +81,7 @@ class CourseRepository
 				$v['category_name']='';
 				$category=$v->category;
 				if($category) {
-					$trainCategpry=new BankeTrainCategory();
-					$v['category_name'] = $trainCategpry::find($category['cid'])['name'];
+					$v['category_name'] = $this->getCategoryNameById($category->cid,$allSecondCategory);
 				}
 			}
 		}
@@ -89,6 +92,15 @@ class CourseRepository
 			'recordsFiltered' => $count,
 			'data' => $courses,
 		];
+	}
+
+	public function getCategoryNameById($id,$all){
+		foreach($all as &$v){
+			if($v->id==$id){
+				return $v['name'];
+			}
+		}
+		return '';
 	}
 
 
