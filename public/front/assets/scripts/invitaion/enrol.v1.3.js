@@ -4,6 +4,7 @@
 $(function (){
     window.addLoadingImg();
     window.addTip();
+    alert(window.eventName);
 
     /*
     * 弹出注册窗口*/
