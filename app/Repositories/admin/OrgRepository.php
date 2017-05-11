@@ -85,15 +85,20 @@ class OrgRepository
 	}
 
 	public function getCategoryNamesByIds($categories,$all){
-		$arr=[];
+		$arr1=[];
+		$arr2=[];
 		foreach($all as &$v){
 			foreach($categories as &$v1){
 				if($v['id']==$v1['cid']){
-					return $v['name'];
+					if($v['pid']==0) {
+						array_push($arr1, $v['name']);
+					}else{
+						array_push($arr2, $v['name']);
+					}
 				}
 			}
 		}
-		return '';
+		return Array('top'=>$arr1,'sub'=>$arr2);
 	}
 
 	/**添加机构

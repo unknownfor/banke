@@ -2,7 +2,7 @@ var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
     ajax_datatable = dt.DataTable({
-      "lengthMenu": [[ 50,100], [ 50, 100]],
+      "lengthMenu": [[ 10,20], [ 10, 20]],
       "processing": true,
       "serverSide": true,
       "searching" : false,
@@ -45,6 +45,18 @@ var TableDatatablesAjax = function() {
           "data": "category",
           "name": "category",
           "orderable" : false,
+          render:function(data){
+            var str='';
+            if(data){
+              for(var i = 0;i<data.top.length;i++){
+                str+='<span class="category-block top">'+data.top[i]+'</span>'
+              }
+              for(var i = 0;i<data.sub.length;i++){
+                str+='<span class="category-block sub">'+data.sub[i]+'</span>'
+              }
+            }
+            return str;
+          }
         },
         {
           "data": "sort",

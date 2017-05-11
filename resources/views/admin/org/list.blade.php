@@ -12,6 +12,21 @@
         border:1px solid #ccc;
         margin-right: 15px;
     }
+    .category-block{
+        border-radius: 3px;
+        padding: 2px 5px;
+        font-size: 12px;
+        color: #fff;
+        margin: 3px;
+        display: inline-block;
+        white-space: nowrap;
+    }
+    .category-block.top{
+        background-color:#1ABC9C;
+    }
+    .category-block.sub{
+        background-color:#3399CC;
+    }
 </style>
 @endsection
 @section('content')
@@ -98,8 +113,8 @@
                           <th>id</th>
                           <th width="25%"> {{ trans('labels.org.name') }} </th>
                           <th width="10%"> {{ trans('labels.org.city') }} </th>
-                          <th width="25%"> {{ trans('labels.org.address') }} </th>
-                          <th width="10%"> {{ trans('labels.org.category') }} </th>
+                          <th width="20%"> {{ trans('labels.org.address') }} </th>
+                          <th width="15%"> {{ trans('labels.org.category') }} </th>
                           <th width="10%"> {{ trans('labels.org.sort') }} </th>
                           <th width="8%"> {{ trans('labels.org.status') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
