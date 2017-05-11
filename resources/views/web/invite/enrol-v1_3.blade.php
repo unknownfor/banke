@@ -74,7 +74,7 @@
     </div>
     <div class="box join">
         <p class="slogen">用一半学费上好课！</p>
-        <div class="btn" id="register">和好友一起学习</div>
+        <div class="btn" id="register-area">和好友一起学习</div>
         <div class="txt"><a href="{{$ruleLinkUrl}}">如何只花一半学费上好课<i class="iconfont">&#xe600;</i></a></div>
     </div>
     <div class="box1 process hide">

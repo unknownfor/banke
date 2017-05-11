@@ -7,7 +7,7 @@ $(function (){
 
     /*
     * 弹出注册窗口*/
-    $(document).on(window.eventName,'#register',function(){
+    $(document).on(window.eventName,'#register-area',function(){
         $('.box1').removeClass('hide');
         $('.box').addClass('hide');
     });
