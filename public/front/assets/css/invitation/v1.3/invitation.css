@@ -22,12 +22,12 @@ a {
   /*webkit浏览器*/
   -khtml-user-select: none;
   /*早期浏览器*/
+  -moz-user-select: none;
   /*火狐*/
   -ms-user-select: none;
   /*IE10*/
   user-select: none;
-  /*禁用手机浏览器的用户选择功能 */
-  -moz-user-select: none;
+  /*页面流畅顺滑*/
   font-family: "Microsoft Yahei", "Microsoft YaHei", "黑体", "宋体", sans-serif;
   -webkit-overflow-scrolling: touch;
 }
@@ -181,6 +181,7 @@ body {
   height: 100%;
 }
 #invitation {
+  overflow-scrolling: touch;
   -webkit-overflow-scrolling: touch;
   margin: 0 auto;
   max-width: 700px;
@@ -514,7 +515,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 35px;
+  bottom: 55px;
   font-size: 14px;
   width: auto;
   height: 45px;

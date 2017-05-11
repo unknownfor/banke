@@ -10,9 +10,9 @@ $(function () {
         window.isLocal=true;
     }
     window.eventName = 'click';
-    if (this.isLocal) {
-       window.eventName = 'touchend';
-    }
+    // if (this.isLocal) {
+    //    window.eventName = 'touchend';
+    // }
     //downloadBar();
     setFootStyle();
 
