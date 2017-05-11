@@ -4,12 +4,10 @@
 $(function (){
     window.addLoadingImg();
     window.addTip();
-    alert(window.eventName);
 
     /*
     * 弹出注册窗口*/
     $(document).on(window.eventName,'#register-area',function(){
-        alert('test');
         $('.box1').removeClass('hide');
         $('.box').addClass('hide');
     });
