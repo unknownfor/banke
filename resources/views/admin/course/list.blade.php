@@ -53,13 +53,14 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
-                        <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-book"></i>
-                                    </span>
-                            <input type="text" class="form-control form-filter" name="org_name" placeholder="{{ trans('labels.course.org_id') }}">
-                            <div class="form-control-focus"> </div>
-                        </div>
+                        <select name="org_id" class="bs-select show-tick form-control" data-live-search="true">
+                            <option value="" data-icon="fa fa-glass icon-success">机构……</option>
+                            @if($orgs)
+                                @foreach($orgs as $org)
+                                    <option value="{{$org->id}}" > {{$org->name}}</option>
+                                @endforeach
+                            @endif
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-3">

@@ -26,7 +26,7 @@ class CourseRepository
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 
 		$course_name = request('name' ,'');
-		$org_name = request('org_name' ,'');
+		$org_id = request('org_id' ,'');
 		$orders = request('order', []);
 		$status = request('status' ,'');
 
@@ -46,22 +46,18 @@ class CourseRepository
 		}
 
 		/*机构搜索*/
-		if($org_name){
-			$tempOrg = $org->where('name', $org_name);
-			if($tempOrg && $tempOrg->count()>0) {
-				$tempOrg = $tempOrg->first();
-				$course = $course->where('org_id', $tempOrg['id']);
-			}else{
-				$courses=$course->where('id','-1')->get();
-				return [
-					'draw' => $draw,
-					'recordsTotal' => 0,
-					'recordsFiltered' => 0,
-					'data' => $courses
-				];
-			}
+		if($org_id){
+			$course = $course->where('org_id',$org_id);
 		}
-
+//		else{
+//				$courses=$course->where('id','-1')->get();
+//				return [
+//					'draw' => $draw,
+//					'recordsTotal' => 0,
+//					'recordsFiltered' => 0,
+//					'data' => $courses
+//				];
+//			}
 		$count = $course->count();
 
 
