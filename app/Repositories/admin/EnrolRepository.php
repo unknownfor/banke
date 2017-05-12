@@ -209,11 +209,14 @@ class EnrolRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function getUserInLimitTime($startTime,$endTime)
+	public static function getEnrolInLimitTime($startTime,$endTime=null)
 	{
 		$user = new BankeEnrol();
 		$user = $user->where('created_at','>=',getTime($startTime));
-		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','created_at']);
+		if($endTime) {
+			$user = $user->where('created_at', '<', getTime($endTime));
+		}
+		$user = $user->get();
 		return $user;
 	}
 
@@ -224,7 +227,7 @@ class EnrolRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function getUserInLimitTimeByGroup($startTime,$endTime)
+	public static function getEnrolInLimitTimeByGroup($startTime,$endTime)
 	{
 		$user = new BankeEnrol();
 		$user = $user::where('created_at','>=',getTime($startTime));

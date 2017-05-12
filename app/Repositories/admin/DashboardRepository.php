@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Log;
 use League\Flysystem\Exception;
 use DB;
 use Auth;
+use AppUserRepository;
+use OrderRepository;
+use EnroRepository;
+use CheckinRepository;
+use WithdrawRepository;
 
 /**
 * 仪表盘仓库
@@ -45,67 +50,54 @@ class DashboardRepository
 		$time = time();
 		$today = date("Y-m-d",$time); //2010-08-29
 		$yesterdate=date("Y-m-d",strtotime("-1 day"));
-		$tomorowdate=date("Y-m-d",strtotime("1 day"));
 
-		//注册
-		$registerUser=new BankeUserProfiles;
+//		注册
 		if($type=='today') {
-			$registerUser = $registerUser->where('created_at', '>=', getTime($today));
+			$registerUser = AppUserRepository::getUserInLimitTime($today,null);
 		}else{
-			$registerUser = $registerUser->where('created_at', '>=', getTime($yesterdate));
-			$registerUser = $registerUser->where('created_at', '<', getTime($today));
+			$registerUser = AppUserRepository::getUserInLimitTime($yesterdate,$today);
 		}
 		$count1 = $registerUser->count();//注册
 
 		//认证
-		$authenUser=new BankeUserAuthentication();
 		if($type=='today') {
-			$authenUser = $authenUser->where('created_at', '>=', getTime($today));
+			$authenUser =AppUserRepository::getUserInLimitTime($today,null,true);
 		}else{
-			$authenUser = $authenUser->where('created_at', '>=', getTime($yesterdate));
-			$authenUser = $authenUser->where('created_at', '<', getTime($today));
+			$authenUser =AppUserRepository::getUserInLimitTime($yesterdate,$today,true);
 		}
-		$count2 = $authenUser->where('certification_status',2)->count();//认证
+		$count2 = $authenUser->count();//认证
 
 		//预约
-		$enrol=new BankeEnrol;
 		if($type=='today') {
-			$enrol = $enrol->where('created_at', '>=', getTime($today));
+			$enrol = EnrolRepository::getEnrolInLimitTime($today);
 		}else{
-			$enrol = $enrol->where('created_at', '>=', getTime($yesterdate));
-			$enrol = $enrol->where('created_at', '<', getTime($today));
+			$enrol = EnrolRepository::getEnrolInLimitTime($yesterdate,$today);
 		}
 		$count3 = $enrol->count();//预约
 
 		//报名
-		$cashUserUser=new BankeCashBackUser;
 		if($type=='today') {
-			$cashUserUser = $cashUserUser->where('created_at', '>=', getTime($today));
+			$cashUserUser=OrderRepository::getOrderInLimitTime($today);
 		}else{
-			$cashUserUser = $cashUserUser->where('created_at', '>=', getTime($yesterdate));
-			$cashUserUser = $cashUserUser->where('created_at', '<', getTime($today));
+			$cashUserUser=OrderRepository::getOrderInLimitTime($yesterdate,$today);
 		}
-		$count4 = $cashUserUser->where('status',1)->count();//报名
+		$count4 = $cashUserUser->count();//报名
 
 		//打卡
-		$checkin=new BankeCheckIn;
 		if($type=='today') {
-			$checkin = $checkin->where('created_at', '>=', getTime($today));
+			$checkin = CheckinRepository::getCheckinInLimitTime($today);
 		}else{
-			$checkin = $checkin->where('created_at', '>=', getTime($yesterdate));
-			$checkin = $checkin->where('created_at', '<', getTime($today));
+			$checkin = CheckinRepository::getCheckinInLimitTime($yesterdate,$today);
 		}
 		$count5 = $checkin->count();//打卡
 
 		//提现
-		$withDraw=new BankeWithdraw();
 		if($type=='today') {
-			$withDraw = $withDraw->where('created_at', '>=', getTime($today));
+			$withDraw = WithdrawRepository::getWithdrawInLimitTime($today);
 		}else{
-			$withDraw = $withDraw->where('created_at', '>=', getTime($yesterdate));
-			$withDraw = $withDraw->where('created_at', '<', getTime($today));
+			$withDraw = WithdrawRepository::getWithdrawInLimitTime($yesterdate,$today);
 		}
-		$count6 = $withDraw->where('status',1)->count();//提现
+		$count6 = $withDraw->count();//提现
 
 		return array($count1,$count2,$count3,$count4,$count5,$count6);
 	}
@@ -119,20 +111,16 @@ class DashboardRepository
 		$today=date("Y-m-d",strtotime("1 day"));
 
 		//注册
-		$registerUser=new UserRepository();
-		$list1=$registerUser->getUserInLimitTimeByGroup($yesterdate,$today);
+		$list1=AppUserRepository::getUserInLimitTimeByGroup($yesterdate,$today);
 
 		//报名
-		$order=new OrderRepository();
-		$list2=$order->getUserInLimitTimeByGroup($yesterdate,$today);
+		$list2=OrderRepository::getOrderInLimitTimeByGroup($yesterdate,$today);
 
 		//打卡
-		$checkin=new CheckinRepository();
-		$list3=$checkin->getUserInLimitTimeByGroup($yesterdate,$today);
+		$list3=CheckinRepository::getCheckinInLimitTimeByGroup($yesterdate,$today);
 
 		//预约
-		$enrol=new EnrolRepository();
-		$list4=$enrol->getUserInLimitTimeByGroup($yesterdate,$today);
+		$list4=EnrolRepository::getEnrolInLimitTimeByGroup($yesterdate,$today);
 
 		return array($list1,$list2,$list3,$list4);
 

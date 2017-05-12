@@ -12,7 +12,7 @@ use PermissionRepository;
 use RoleRepository;
 use TrainCategoryRepository;
 use App\Repositories\admin\OrgCategoryRepository;
-use App\Repositories\admin\OrgTagsReporsitory;
+use App\Repositories\admin\OrgTagsRepository;
 use App\Models\Banke\BankeOrg;
 use Illuminate\Support\Facades\Log;
 
@@ -79,7 +79,7 @@ class OrgController extends Controller
         $OrgCategory->batchStore( array_merge($category1, $category2),$id);
 
         $tags= $request->tags;  //标签
-        $OrgTags=new OrgTagsReporsitory();
+        $OrgTags=new OrgTagsRepository();
         $OrgTags->batchStore($tags,$id);
 
         return redirect('admin/org');
@@ -130,7 +130,7 @@ class OrgController extends Controller
         $OrgCategory->batchStore( array_merge($category1, $category2),$id);
 
         $tags= $request->tags;  //标签
-        $OrgTags=new OrgTagsReporsitory();
+        $OrgTags=new OrgTagsRepository();
         $OrgTags->batchStore($tags,$id);
         return redirect('admin/org');
     }

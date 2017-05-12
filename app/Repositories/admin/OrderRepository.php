@@ -394,11 +394,14 @@ class OrderRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function getUserInLimitTime($startTime,$endTime)
+	public static function getOrderInLimitTime($startTime,$endTime=null)
 	{
 		$user = new BankeCashBackUser;
 		$user = $user->where('created_at','>=',getTime($startTime));
-		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
+		if($endTime) {
+			$user = $user->where('created_at', '<', getTime($endTime));
+		}
+		$user=$user->where('status',1)->get(['uid', 'name', 'created_at']);
 		return $user;
 	}
 
@@ -409,7 +412,7 @@ class OrderRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function getUserInLimitTimeByGroup($startTime,$endTime)
+	public static function getOrderInLimitTimeByGroup($startTime,$endTime)
 	{
 		$user = new BankeCashBackUser();
 		$user = $user::where('created_at','>=',getTime($startTime));
