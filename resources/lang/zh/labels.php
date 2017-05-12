@@ -305,7 +305,8 @@ return [
 		'audit' => '<span class="label label-warning"> 审核中 </span>',
 		'trash' => '<span class="label label-warning"> 未通过 </span>',
 		'no_apply' => '<span class="label label-warning"> 未申请 </span>',
-		'org_name' => '机构'
+		'org_name' => '机构',
+		'alldetailinfo' => '详细信息',
 	],
 	'news' => [
 		'id' => '序号',

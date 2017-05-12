@@ -11,6 +11,9 @@ $router->group(['prefix' => 'app_user'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
+
+	$router->get('alldetailinfo/{id}','AppUserController@alldetailinfo');  //详细信息
+
 	//认证申请
 	$router->get('certification','AppUserController@certification');
 	$router->get('ajaxCertification', 'AppUserController@ajaxCertification');

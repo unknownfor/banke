@@ -39,6 +39,56 @@
               </div>
             </div>
           </div>
+
+
+            <div class="search-box filter">
+                {!! csrf_field() !!}
+                <div class="col-md-2 form-group form-md-line-input">
+                    <div class="input-group has-success">
+                        <span class="input-group-addon">
+                            <i class="fa fa-mobile-phone"></i>
+                        </span>
+                        <input type="text" class="form-control form-filter" name="mobile" placeholder="{{ trans('labels.checkin.mobile') }}">
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>
+                <div class="col-md-2 form-group form-md-line-input">
+                    <select class="bs-select form-control form-filter" data-show-subtext="true" name="certification_status">
+                        <option value="" data-icon="fa-glass icon-success">认证状态</option>
+                        @if(trans('strings.app_user'))
+                            @foreach(trans('strings.app_user') as $status_key => $status_value)
+                                @if($status_value[1]=='已认证' || $status_value[1]=='未申请')
+                                    <option value="{{config('admin.global.certification_status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
+                                @endif
+                            @endforeach
+                        @endif
+                    </select>
+                </div>
+                <div class="col-md-2 form-group form-md-line-input">
+                    <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="created_at_from">
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2 form-group form-md-line-input">
+                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">
+                        <span class="input-group-addon">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group form-group form-md-line-input">
+                    <div class="margin-bottom-5">
+                        <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
+                            <i class="fa fa-search"></i> Search</button>
+                    </div>
+                </div>
+
+            </div>
+
             <div class="portlet-body">
               <div class="table-container">
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
@@ -53,87 +103,8 @@
                             <th width="10%"> {{ trans('labels.app_user.total_cashback_amount') }} </th>
                             <th width="10%"> {{ trans('labels.app_user.withdraw_amount') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
-                          {{--<th width="15%"> {{ trans('labels.app_user.updated_at') }} </th>--}}
+                          <th width="10%"> {{ trans('labels.app_user.alldetailinfo') }} </th>
                           <th width="10%"> {{ trans('labels.action') }} </th>
-                        </tr>
-                        <tr role="row" class="filter">
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <div class="form-group form-md-line-input">
-                                <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.app_user.name') }}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                              </div>
-                            <td> 
-                              <div class="form-group form-md-line-input">
-                                <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-envelope"></i>
-                                    </span>
-                                    <input type="text" class="form-control form-filter" name="mobile" placeholder="{{ trans('labels.app_user.mobile') }}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td>
-                                <div class="form-group form-md-line-input">
-                                    <select class="bs-select form-control form-filter" data-show-subtext="true" name="certification_status">
-                                        <option value="" data-icon="fa-glass icon-success">认证状态</option>
-                                        @if(trans('strings.app_user'))
-                                            @foreach(trans('strings.app_user') as $status_key => $status_value)
-                                                @if($status_value[1]=='已认证' || $status_value[1]=='未申请')
-                                                    <option value="{{config('admin.global.certification_status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                              <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </span>
-                              </div>
-
-                              <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </span>
-                              </div>
-                            </td>
-                                {{--<div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">--}}
-                                  {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">--}}
-                                  {{--<span class="input-group-addon">--}}
-                                    {{--<i class="fa fa-calendar"></i>--}}
-                                  {{--</span>--}}
-                                {{--</div>--}}
-
-                                {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
-                                  {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">--}}
-                                  {{--<span class="input-group-addon">--}}
-                                    {{--<i class="fa fa-calendar"></i>--}}
-                                  {{--</span>--}}
-                                {{--</div>--}}
-                            {{--</td>--}}
-                            <td>
-                                <div class="margin-bottom-5">
-                                    <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
-                                        <i class="fa fa-search"></i> Search</button>
-                                </div>
-                                <button class="btn btn-sm red btn-outline filter-cancel">
-                                    <i class="fa fa-times"></i> Reset</button>
-                            </td>
                         </tr>
                     </thead>
                     <tbody> </tbody>

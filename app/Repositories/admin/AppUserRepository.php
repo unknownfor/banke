@@ -118,6 +118,25 @@ class AppUserRepository
 		];
 	}
 
+
+	/*得到单个用户的详细信息*/
+	public static  function  getUserAllDetailInfo($id){
+		$user = new BankeUserProfiles;
+		$user=$user::find('uid',$id);
+		if($user){
+			$authen =$user->authenticatio;
+			if($authen['real_name']){
+				$user['name']=$authen['real_name'];
+				$user['zhifubao_account']=$authen['zhifubao_account'];
+				$user['school']=$authen['school'];
+				$user['major']=$authen['major'];
+			}
+		}
+		else{
+			abort(404);
+		}
+	}
+
 	/**
 	 * datatable获取数据
 	 * @author shaolei
