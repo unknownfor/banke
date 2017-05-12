@@ -35,7 +35,7 @@ class AppUserController extends Controller
      * @date   2016-04-13T21:12:18+0800
      * @return [type]                   [description]
      */
-    public function alldetailinfo($id)
+    public function alldetailinfo($id=0)
     {
         $user=AppUserRepository::getUserAllDetailInfo($id);
         return view('admin.app_user.userdetail')->with(compact(['user']));

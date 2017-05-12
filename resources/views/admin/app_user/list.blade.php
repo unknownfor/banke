@@ -64,15 +64,13 @@
                         @endif
                     </select>
                 </div>
-                <div class="col-md-2 form-group form-md-line-input">
+                <div class="col-md-2">
                     <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
                         <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" value="" name="created_at_from">
                         <span class="input-group-addon">
                           <i class="fa fa-calendar"></i>
                         </span>
                     </div>
-                </div>
-                <div class="col-md-2 form-group form-md-line-input">
                     <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
                         <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">
                         <span class="input-group-addon">
@@ -84,6 +82,8 @@
                     <div class="margin-bottom-5">
                         <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
                             <i class="fa fa-search"></i> Search</button>
+                        <button class="btn btn-sm red btn-outline filter-cancel">
+                            <i class="fa fa-times"></i> Reset</button>
                     </div>
                 </div>
 
@@ -104,7 +104,7 @@
                             <th width="10%"> {{ trans('labels.app_user.withdraw_amount') }} </th>
                           <th width="15%"> {{ trans('labels.app_user.created_at') }} </th>
                           <th width="10%"> {{ trans('labels.app_user.alldetailinfo') }} </th>
-                          <th width="10%"> {{ trans('labels.action') }} </th>
+                          {{--<th width="10%"> {{ trans('labels.action') }} </th>--}}
                         </tr>
                     </thead>
                     <tbody> </tbody>

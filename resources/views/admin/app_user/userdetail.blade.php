@@ -24,78 +24,64 @@
                 <i class="iconfont icon-itotal"></i>
                 <span>基本信息</span>
             </div>
-            <form role="form" class="form-horizontal">
+            <div class="table-box-main">
                 <div class="form-group form-md-line-input">
-                    <div class="form-body">
-                        <div class="form-group form-md-line-input">
-                            <label class="col-md-1 control-label" for="name">姓名</label>
-                            <div class="col-md-9">
-                                <div class="form-control form-control-static"> {{$user['name']}} </div>
-                            </div>
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-1 control-label form-control-static" for="name">姓名</label>
+                        <div class="col-md-9">
+                            <div class="form-control form-control-static"> {{$user['name']}} </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-md-line-input">
-                    <div class="form-body">
-                        <div class="form-group form-md-line-input">
-                            <label class="col-md-1 control-label" for="name">手机号码</label>
-                            <div class="col-md-9">
-                                <div class="form-control form-control-static"> {{$user['mobile']}} </div>
-                            </div>
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-1 control-label form-control-static">手机号码</label>
+                        <div class="col-md-9">
+                            <div class="form-control form-control-static"> {{$user['mobile']}} </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-md-line-input">
-                    <div class="form-body">
-                        <div class="form-group form-md-line-input">
-                            <label class="col-md-1 control-label" for="name">学校</label>
-                            <div class="col-md-9">
-                                <div class="form-control form-control-static"> {{$user['school']}} </div>
-                            </div>
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-1 control-label form-control-static">学校</label>
+                        <div class="col-md-9">
+                            <div class="form-control form-control-static"> {{$user['school']}} </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-md-line-input">
-                    <div class="form-body">
-                        <div class="form-group form-md-line-input">
-                            <label class="col-md-1 control-label" for="name">专业</label>
-                            <div class="col-md-9">
-                                <div class="form-control form-control-static"> {{$user['major']}} </div>
-                            </div>
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-1 control-label form-control-static">专业</label>
+                        <div class="col-md-9">
+                            <div class="form-control form-control-static"> {{$user['major']}} </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-md-line-input">
-                    <div class="form-body">
-                        <div class="form-group form-md-line-input">
-                            <label class="col-md-1 control-label" for="name">支付宝号码</label>
-                            <div class="col-md-9">
-                                <div class="form-control form-control-static"> {{$user['zhifubao_account']}} </div>
-                            </div>
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-1 control-label form-control-static">支付宝号码</label>
+                        <div class="col-md-9">
+                            <div class="form-control form-control-static"> {{$user['zhifubao_account']}} </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-md-line-input">
-                    <div class="form-body">
-                        <div class="form-group form-md-line-input">
-                            <label class="col-md-1 control-label" for="name">账号余额</label>
-                            <div class="col-md-9">
-                                <div class="form-control form-control-static"> {{$user['account_balance']}} </div>
-                            </div>
+                    <div class="form-group form-md-line-input">
+                        <label class="col-md-1 control-label form-control-static">账号余额</label>
+                        <div class="col-md-9">
+                            <div class="form-control form-control-static"> {{$user['account_balance']}} </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group form-md-line-input">
-                    <div class="form-body">
                         <div class="form-group form-md-line-input">
-                            <label class="col-md-1 control-label" for="name">待返余额</label>
+                            <label class="col-md-1 control-label form-control-static">打卡待返余额</label>
                             <div class="col-md-9">
-                                <div class="form-control form-control-static"> {{$user['zhifubao']}} </div>
+                                <div class="form-control form-control-static"> {{$user['check_in_amount']}} </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+            </div>
         </div>
 
 

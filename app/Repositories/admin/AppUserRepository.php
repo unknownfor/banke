@@ -122,15 +122,16 @@ class AppUserRepository
 	/*得到单个用户的详细信息*/
 	public static  function  getUserAllDetailInfo($id){
 		$user = new BankeUserProfiles;
-		$user=$user::find('uid',$id);
+		$user=$user::find($id);
 		if($user){
-			$authen =$user->authenticatio;
+			$authen =$user->authentication;
 			if($authen['real_name']){
 				$user['name']=$authen['real_name'];
 				$user['zhifubao_account']=$authen['zhifubao_account'];
 				$user['school']=$authen['school'];
 				$user['major']=$authen['major'];
 			}
+			return $user;
 		}
 		else{
 			abort(404);

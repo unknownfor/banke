@@ -87,16 +87,16 @@ var TableDatatablesAjax = function() {
           "data": "alldetailinfo",
           "name": "alldetailinfo",
           "orderable" : false,
-          render:function(data){
-            return '<a target="_blank" href="/app_user/alldetailinfo/'+data+'">详细信息</a>';
+          render:function(res,type,full){
+            return '<a target="_blank" href="/admin/app_user/alldetailinfo/'+full.uid+'">详细信息</a>';
           },
         },
-        { 
-          "data": "actionButton",
-          "name": "actionButton",
-          "type": "html",
-          "orderable" : false,
-        },
+        //{
+        //  "data": "actionButton",
+        //  "name": "actionButton",
+        //  "type": "html",
+        //  "orderable" : false,
+        //},
       ],
       "drawCallback": function( settings ) {
         ajax_datatable.$('.tooltips').tooltip( {
@@ -111,6 +111,22 @@ var TableDatatablesAjax = function() {
 
     $(document).on('click', '.filter-submit', function(){
       ajax_datatable.ajax.reload(); 
+    });
+
+    $(document).on('click', '.filter-cancel', function(){
+      $('textarea.form-filter, select.form-filter, input.form-filter', dt).each(function() {
+        $(this).val("");
+      });
+
+      $('select.form-filter').selectpicker('refresh');
+
+      $('input.form-filter[type="checkbox"]', dt).each(function() {
+        $(this).attr("checked", false);
+      });
+
+      $('.input-group.date input').val('');
+
+      ajax_datatable.ajax.reload();
     });
 
     $('.input-group.date').datepicker({

@@ -3,6 +3,9 @@
   border: 1px solid #E0E0E0;
   border-radius: 2px;
 }
+.table-box .table-box-main {
+  padding: 10px 10px 80px 10px;
+}
 .table-box:nth-of-type(1) .head-title {
   border-left: 4px solid #2f4554;
 }
