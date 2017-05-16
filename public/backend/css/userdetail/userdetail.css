@@ -2,6 +2,7 @@
   margin: 10px auto;
   border: 1px solid #E0E0E0;
   border-radius: 2px;
+  position: relative;
 }
 .table-box .table-box-main {
   padding: 10px 10px 80px 10px;
@@ -116,4 +117,10 @@
 }
 .echart-box .echart-main-box:nth-of-type(2n) {
   margin-right: 0;
+}
+#certificated {
+  position: absolute;
+  left: 40%;
+  top: 32px;
+  opacity: 0.6;
 }

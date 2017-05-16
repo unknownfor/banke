@@ -36,6 +36,14 @@ Route::group(['prefix'=>"v1.3/share",'namespace'=>'Web'],function(){
 
 });
 
+//v1.5
+Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
+
+    //机构详情分享
+    Route::get('/groupbuying/{id}', 'GroupbuyingController@detailPage_v1_5');
+
+});
+
 Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
 
     //v1.2 以及之后的

@@ -20,6 +20,9 @@
         <!-- END PAGE BAR -->
 
         <div class="table-box">
+            @if($user['certification_status']==2)
+                <img src="http://pic.hisihi.com/2017-05-15/1494834465557478.png" id="certificated">
+            @endif
             <div class="head-title">
                 <i class="iconfont icon-itotal"></i>
                 <span>基本信息</span>
@@ -90,40 +93,23 @@
                     <i class="iconfont icon-register"></i>
                     <span>打卡信息</span>
                 </div>
-                <div class="table-main">
-                    <table class="table table-striped table-hover table-checkable dataTable no-footer">
-                        <thead>
-                        <th class="col-md-1"></th>
-                        <th class="col-md-1">新增注册人数</th>
-                        <th class="col-md-1">认证人数</th>
-                        <th class="col-md-1">预约人数</th>
-                        <th class="col-md-1">报名人数</th>
-                        <th class="col-md-1">打卡次数</th>
-                        <th class="col-md-1">提现次数</th>
-                        </thead>
-                        <tbody>
-                        <tr class="today-tr">
-                            <td>今日</td>
-                            <td>******</td>
-                            <td>*****</td>
-                            <td>****</td>
-                            <td>***</td>
-                            <td>**</td>
-                            <td>*</td>
-                        </tr>
-                        <tr class="yesterday-tr">
-                            <td>昨日</td>
-                            <td>******</td>
-                            <td>*****</td>
-                            <td>****</td>
-                            <td>***</td>
-                            <td>**</td>
-                            <td>*</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="table-box-main">
+                <ol>
+                @foreach($course as $v)
+                    <li>
+                        <div class="form-group form-md-line-input">
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label form-control-static" for="name">{{$v['name']}}</label>
+                                <div class="col-md-9">
+                                    <div class="form-control form-control-static"> {{$user['name']}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                @endforeach
+                </ol>
             </div>
+        </div>
 
 @endsection
 
