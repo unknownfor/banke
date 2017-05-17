@@ -18,8 +18,24 @@
 <body>
 {!! csrf_field() !!}
 开团
+
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script>
+    $(function(){
+       var data={
+           'city': '武汉',
+           'name':'相信机构123',
+           'contact':'李某栽',
+           'tel_phone':'198987666',
+            'address':'南湖大道123',
+            'introduce':'123132123',
+       }
+        window.getDataAsync('http://b.cn/bankehome/addorgapplyfor',data,function(result){
+            alert(result.msg);
+        },function(){},'post');
+    });
+</script>
 </html>

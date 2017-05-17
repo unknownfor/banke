@@ -82,7 +82,6 @@ Route::group(['prefix'=>"invitation"],function(){
     //Create a test user, you don't need this if you already have.
     Route::post('register','ShareController@register');
 
-    Route::post('re','ShareController@re');
 
     Route::get('/{welcome}', 'ShareController@invitation');
 });
@@ -121,19 +120,22 @@ Route::group(['prefix'=>"web"],function(){
 
 
 //半课官网调用
-Route::group(['prefix'=>"bankehome"],function(){
+Route::group(['prefix'=>"bankehome",'namespace'=>'Web'],function(){
 
     //媒体报道
-    Route::get('reports', 'ShareController@getMediaReport');
+    Route::get('reports', 'ReportController@getMediaReport');
+
+    //token
+    Route::get('token', 'CommonController@getToken');
 
     //精选机构
-    Route::get('orgs', 'ShareController@getChoicenessOrgs');
+    Route::get('orgs', 'OrgController@getChoicenessOrgs');
 
     //机构详情
-    Route::get('org/{id}', 'ShareController@getOrgDetail');
+    Route::get('org/{id}', 'OrgController@getOrgDetail');
 
     //申请机构
-    Route::post('addorgapplyfor', 'ShareController@addOrgApplyFor');
+    Route::post('addorgapplyfor', 'OrgController@addOrgApplyFor');
 
 });
 
