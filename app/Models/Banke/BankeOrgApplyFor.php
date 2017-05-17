@@ -15,7 +15,7 @@ class BankeOrgApplyFor extends Model
      */
     protected $table = 'banke_org_apply_for';
 
-    protected $fillable = ['updated_at', 'status'];
+    protected $fillable = ['name','city','tel_phone','contact','introduce','address','updated_at', 'status'];
 
     private $action;
 

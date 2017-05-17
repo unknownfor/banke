@@ -144,9 +144,12 @@ class OrgApplyForRepository
 	 */
 	public function addOrgApplyFor($request)
 	{
-		$org = BankeOrgApplyFor::where('name',$request['name']);
-		if ($org->count()>0) {
-			if ($org->fill($request->all())->save()) {
+		$org=new BankeOrgApplyFor();
+		$org = $org::where('name',$request['name']);
+		if ($org->count()==0) {
+			$request['status']=0;
+			$org1=new BankeOrgApplyFor;
+			if ($org1->fill($request->all())->save()) {
 				Flash::success(trans('alerts.orgapplyfor.updated_success'));
 				return array("status"=>true,"msg"=>"机构申请添加成功");
 			}

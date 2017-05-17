@@ -39,7 +39,6 @@ class OrgController extends Controller
     /**添加入驻机构**/
     public function addOrgApplyFor(Request $request)
     {
-        Log::info('---------in----------');
         $validator = Validator::make($request->all(), [
             'city' => 'required',
             'name'=>'required',
@@ -52,14 +51,65 @@ class OrgController extends Controller
         if ($validator->fails()) {
             return response()->json(['msg' => '字段信息不能为空', 'status' => false]);
         }
-        $request = $request->all();
-        Log::info('---------'+$request['name']+'----------');
         $repository = new  OrgApplyForRepository();
         $result = $repository->addOrgApplyFor($request);
         if(!$result['status']){
             return response()->json($result);
         }else{
             return response()->json(['msg' => '机构申请添加成功', 'status' => true]);
+        }
+    }
+
+    /**获得入驻机构**/
+    public function getChoicenessOrgs()
+    {
+        try {
+            $repository = new OrgRepository();
+            $org = $repository->getTop(10);
+            $param = [
+                'data' => $org,
+                'template' => '获取精选机构成功',
+                'status' => true
+            ];
+            return ApiResponseService::success('', Code::SUCCESS, $param);
+        }
+        catch (ClientException $e) {
+            $param = [
+                'template' => '获取精选机构失败',
+                'status' => false
+            ];
+            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
+        }
+    }
+
+    /**获得入驻机构的具体信息**/
+    public function getOrgDetail($id)
+    {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['msg' => '机构id不能为空', 'status' => false]);
+        }
+        $request = $request->all();
+        $id = $request['mobile'];
+        try {
+            $repository = new OrgRepository();
+            $org = $repository->getDetail($id);
+            $param = [
+                'data' => $org,
+                'template' => '获取机构信息成功',
+                'status' => true
+            ];
+            return ApiResponseService::success('', Code::SUCCESS, $param);
+        }
+        catch (ClientException $e) {
+            $param = [
+                'template' => '获选机构信息失败',
+                'status' => false
+            ];
+            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
         }
     }
 }
