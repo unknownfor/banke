@@ -14,9 +14,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Validator;
 use Illuminate\Http\Request;
-use UserRepository;
-use CourseRepository;
-use EnrolRepository;
+use ReportRepository;
 
 class ReportController extends Controller
 {
