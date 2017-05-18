@@ -23,7 +23,7 @@ class CommonController extends Controller
     }
 
     /*更新相关记录的浏览量*/
-    public function updateViewCounts($ype,$id){
+    public function updateViewCounts($type,$id){
 
     }
 }
