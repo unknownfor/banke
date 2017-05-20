@@ -17,8 +17,8 @@ use Illuminate\Http\Request;
 class CourseController extends Controller
 {
     /**
-     * 课程详情
-     */
+ * 课程详情
+ */
     public function course_v1_2($id)
     {
         $course = BankeCourse::find($id);
@@ -35,6 +35,27 @@ class CourseController extends Controller
         $course = BankeCourse::find($id);
         $org = $course->org;
         return view('web.course.share_course-v1_2')->with(compact(['course','org']));
+    }
+
+    /**
+     * 课程详情
+     */
+    public function course_v1_5($id)
+    {
+        $course = BankeCourse::find($id);
+        $org = $course->org;
+        return view('web.course.course-v1_5')->with(compact(['course','org']));
+    }
+
+
+    /**
+     * 分享机构详情
+     */
+    public function share_course_v1_5($id)
+    {
+        $course = BankeCourse::find($id);
+        $org = $course->org;
+        return view('web.course.share_course-v1_5')->with(compact(['course','org']));
     }
 
 }

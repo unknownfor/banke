@@ -36,12 +36,28 @@ Route::group(['prefix'=>"v1.3/share",'namespace'=>'Web'],function(){
 
 });
 
+
 //v1.5
 Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
 
-    //机构详情分享
+    //团购详情分享
     Route::get('/groupbuying/{id}', 'GroupbuyingController@detailPage_v1_5');
     Route::get('/updateviewcounts/{type}/{id}', 'CommonController@updateViewCounts_v1_5');
+
+    //课程分享页面
+    Route::get('/course/{id}', 'CourseController@share_course_v1_5');
+
+    //合作入驻申请
+    Route::get('/cooperation/{id}','CooperationController@detailPage_v1_5');
+
+});
+
+//1.5
+Route::group(['prefix'=>"v1.5/web",'namespace'=>'Web'],function() {
+
+
+    //v1.5课程分享
+    Route::get('/course/{id}', 'CourseController@course_v1_5');
 
 });
 
