@@ -24,18 +24,33 @@
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 <script>
-//    $(function(){
-//       var data={
-//           'city': '武汉',
-//           'name':'相信机构123',
-//           'contact':'李某栽',
-//           'tel_phone':'198987666',
-//            'address':'南湖大道123',
-//            'introduce':'123132123',
-//       }
-//        window.getDataAsync('http://admin.laadmin.dev/bankehome/addorgapplyfor',data,function(result){
-//            alert(result.msg);
-//        },function(){},'post');
-//    });
+    $(function() {
+
+        $.get('http://b.cn/bankehome/token', null, function (result) {
+            result;
+            var data = {
+                '_token': result,
+                'city': '武汉',
+                'name': '相信机构123',
+                'contact': '李某栽',
+                'tel_phone': '198987666',
+                'address': '南湖大道123',
+                'introduce': '123132123',
+            }
+            $.ajax({
+                type: 'post',
+                url: 'http://b.cn/bankehome/addorgapplyfor',
+                data: data,
+                success: function (res) {
+                   res;
+                },
+                error: function () {
+                    //请求出错处理
+                    window.controlLoadingBox(false),
+                            window.showTips('操作失败');
+                }
+            });
+        });
+    });
 </script>
 </html>

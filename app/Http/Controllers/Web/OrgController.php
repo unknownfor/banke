@@ -39,6 +39,7 @@ class OrgController extends Controller
     /**添加入驻机构**/
     public function addOrgApplyFor(Request $request)
     {
+        Log::info('----------------------------1231313132123--------------------');
         $validator = Validator::make($request->all(), [
             'city' => 'required',
             'name'=>'required',

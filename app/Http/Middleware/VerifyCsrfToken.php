@@ -15,7 +15,8 @@ class VerifyCsrfToken extends BaseVerifier
         'wechat/*',
         'admin/image/upload_image',
         'wechat/callback',
-        'v1/*'
+        'v1/*',
+        'bankehome/*'
     ];
 
    
