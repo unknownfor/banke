@@ -1,7 +1,6 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Banke\BankeCashBackUser;
-use App\Models\Banke\BankeCommentCourse;
+use App\Models\Banke\BankeCommentOrg;
 use Carbon\Carbon;
 use Flash;
 use DB;
@@ -10,9 +9,9 @@ use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
 
 /**
-* 课程评论
+* 团购列表
 */
-class CommentCourseRepository
+class GroupbuyingRepository
 {
 	/**
 	 * datatable获取数据
@@ -28,13 +27,13 @@ class CommentCourseRepository
 
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 		
-		$cid = request('cid' ,'');
+		$oid = request('oid' ,'');
 		$award_status = request('award_status' ,'');
 		$read_status = request('read_status' ,'');
-		$comment = new BankeCommentCourse();
+		$comment = new BankeCommentOrg();
 
-		if($cid!=null && $cid!='0') {
-			$comment = $comment->where('course_id', $cid);
+		if($oid!=null && $oid!='0') {
+			$comment = $comment->where('org_id', $oid);
 		}
 
 		/*奖励状态搜索*/
@@ -47,7 +46,6 @@ class CommentCourseRepository
 			$comment = $comment->where('read_status', $read_status);
 		}
 
-
 		$count = $comment->count();
 
 		$comment = $comment->offset($start)->limit($length);
@@ -58,7 +56,7 @@ class CommentCourseRepository
 			foreach ($comments as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
 				$v['user_name']=$v->authenUser['real_name'];
-				$v['course_name']=$v->course['name'];
+				$v['org_name']=$v->org['name'];
 				if(!$v['user_name']){
 					$v['user_name']=$v->user['name'];
 				}
@@ -74,6 +72,23 @@ class CommentCourseRepository
 	}
 
 	/**
+	 * 添加配置
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:22+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function store($request)
+	{   
+		$comment = new BankeNews;
+		if ($comment->fill($request->all())->save()) {
+			Flash::success(trans('alerts.news.created_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.news.created_error'));
+		return false;
+	}
+	/**
 	 * 修改配置视图
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:34+0800
@@ -82,16 +97,16 @@ class CommentCourseRepository
 	 */
 	public function edit($id)
 	{
-		$comment = BankeCommentCourse::find($id);
+		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
 			$comment['user_name']=$comment->authenUser['real_name'];
 			if(!$comment['user_name']){
 				$comment['user_name']=$comment->user['name'];
 			}
-			$comment['course_name']=$comment->course['name'];
-			$comment['comment_award']=$comment->course['comment_award'];
-			$orgArray = $comment->toArray();
-			return $orgArray;
+			$comment['org_name']=$comment->org['name'];
+			$comment['comment_award']=$comment->org['comment_award'];
+			$commentArray = $comment->toArray();
+			return $commentArray;
 		}
 		abort(404);
 	}
@@ -105,37 +120,35 @@ class CommentCourseRepository
 	 */
 	public function updateComment($request,$id)
 	{
-		$commentCourse = BankeCommentCourse::find($id);
-		if ($commentCourse) {
-			DB::transaction(function () use ($commentCourse,$request) {
+		$comment = BankeCommentOrg::find($id);
+		if ($comment) {
+			DB::transaction(function () use ($comment,$request) {
 				try {
-					$oldAwardStatus=$commentCourse['award_status'];
-					$commentCourse=$commentCourse->fill($request->all());
+					$oldAwardStatus=$comment['award_status'];
+					$comment=$comment->fill($request->all());
 					//TODO 审核通过加钱
-					$this->awardUser($oldAwardStatus,$commentCourse, $request);
-					if ($commentCourse->save()) {
-						Flash::success(trans('alerts.course.updated_success'));
-						return $commentCourse['course_id'];
+					$this->awardUser($oldAwardStatus,$comment, $request);
+					if ($comment->save()) {
+						Flash::success(trans('alerts.org.updated_success'));
+						return $comment['org_id'];
 					}
 				}catch (Exception $e){
-					Flash::error(trans('alerts.course.updated_error'));
+					Flash::error(trans('alerts.app_user.certificate_error'));
 					var_dump($e);
 					return false;
 				}
 			});
-			return $commentCourse['course_id'];
+			return $comment['org_id'];
 		}else {
 			abort(404);
 		}
 	}
 
 	/*奖励用户*/
-	private function awardUser($oldAwardStatus,$comment,$request,$comment_award){
-		if($this->isAward($oldAwardStatus,$request)){
-			$course=$comment->course;
-			if(!$comment_award) {
-				$comment_award = $course['comment_award'];  //当前课程的奖励金额,v1.5 不是固定的，而是动态计算得到
-			}
+	private function awardUser($oldAwardStatus,$comment,$request){
+		if($this->isAward($oldAwardStatus,$comment,$request)){
+			$org=$comment->org;
+			$comment_award=$org['comment_award'];  //当前机构的奖励金额
 			if($comment_award) {
 				AppUserRepository::execUpdateUserAccountInfo($comment['uid'], $comment_award, 1, 4);  //更新用户账户金额信息以及添加变动记录
 
@@ -144,7 +157,7 @@ class CommentCourseRepository
 					'status' => 0,
 					'uid' => $comment['uid'],
 					'title' => '评论奖励',
-					'content' => '感谢您对课程"' . $course['name'] . '" 的精彩评论,平台已奖励您' . $comment_award . '元现金，快去现金钱包里查看吧！',
+					'content' => '感谢您对机构"' . $org['name'] . '" 的精彩评论,平台已奖励您' . $comment_award . '元现金，快去现金钱包里查看吧！',
 					'type' => 'COMMENT'
 				];
 				//记录消息
@@ -154,12 +167,60 @@ class CommentCourseRepository
 		return true;
 	}
 
-	//一个课程可以多次打赏
-	private function isAward($oldAwardStatus,$request){
+	//是否可以奖励 同一个人，同个机构只能打赏一次
+	private function isAward($oldAwardStatus,$comment,$request){
 		$flag1=$oldAwardStatus==0 && $request['award_status']==1;  //更新状态为奖励
-		return $flag1;
+
+		$org_id=$comment['org_id'];
+		$uid=$comment['uid'];
+		//同一个人，同个机构之前没有打赏过
+		$flag2=BankeCommentOrg::where('uid',$uid)
+				->where('org_id',$org_id)
+				->where('award_status',1)->count()==0;
+
+		return $flag1 && $flag2;
 	}
 
+	/**
+	 * 修改配置状态
+	 * @author shaolei
+	 * @date   2016-04-13T11:51:02+0800
+	 * @param  [type]                   $id     [description]
+	 * @param  [type]                   $status [description]
+	 * @return [type]                           [description]
+	 */
+	public function mark($id,$status)
+	{
+		$comment = BankeNews::find($id);
+		if ($comment) {
+			$comment->status = $status;
+			if ($comment->save()) {
+				Flash::success(trans('alerts.news.updated_success'));
+				return true;
+			}
+			Flash::error(trans('alerts.news.updated_error'));
+			return false;
+		}
+		abort(404);
+	}
+
+	/**
+	 * 删除配置
+	 * @author shaolei
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function destroy($id)
+	{
+		$isDelete = BankeNews::destroy($id);
+		if ($isDelete) {
+			Flash::success(trans('alerts.news.deleted_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.news.deleted_error'));
+		return false;
+	}
 
 	/**
 	 * 修改阅读状态
@@ -171,14 +232,13 @@ class CommentCourseRepository
 	 */
 	public static function updateReadStatus($id)
 	{
-		$commentCourse = BankeCommentCourse::find($id);
-		$commentCourse->read_status=1;
-		$commentCourse->save();
+		$commentOrg = BankeCommentOrg::find($id);
+		$commentOrg->read_status=1;
+		$commentOrg->save();
 	}
 
 	/**
-	 * 修改浏览量
-	 * 如果浏览量  等于要求量，则息自动 进行奖励
+	 * 修改阅读量
 	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]
@@ -187,45 +247,15 @@ class CommentCourseRepository
 	 */
 	public static function updateViewCounts($id)
 	{
-		$commentCourse = BankeCommentCourse::find($id);
-		if(!$commentCourse->view_counts_flag){  //未完成 浏览量
-			DB::transaction(function () use ($commentCourse) {
-				try {
-					$commentCourse->view_counts++;
-
-					//达到浏览量
-					if ($commentCourse->view_counts == $commentCourse->min_view_counts) {
-						$commentCourse->view_counts_flag = true;  //标志已经达到浏览量
-
-						//奖励
-						$oldAwardStatus = $commentCourse['award_status'];
-						$request = array('award_status' => 1);
-
-						$comment_award=self::getCommentAwardFromOrder($commentCourse['course_id'],$commentCourse['uid']);
-						self::awardUser($oldAwardStatus, $commentCourse, $request,$comment_award);  //奖励相应
-					}
-					$commentCourse->save();
-				}
-				catch(Exception $e){
-					Flash::error(trans('alerts.course.updated_error'));
-					var_dump($e);
-					return false;
-				}
-			});
+		$commentOrg = BankeCommentOrg::find($id);
+		if(!$commentOrg->view_counts_flag){
+			$commentOrg->view_counts++;
+			if($commentOrg->view_counts>=$commentOrg->min_view_counts){
+				$commentOrg->view_counts_flag=true;
+			}
+			$commentOrg->save();
 			return true;
 		}
 		return false;
-	}
-
-	private function getCommentAwardFromOrder($cid,$uid){
-		$order = BankeCashBackUser::where(['course_id'=>$cid,'uid'=>$uid]);
-		if($order->count()>0){
-			$order=$order->first();
-			$allAward = $order->share_comment_course_amount * $order->tuition_amount;
-			$award = $allAward / share_comment_course_counts;
-			$award =round($award ,2);
-			return $award;
-		}
-		return 0;
 	}
 }

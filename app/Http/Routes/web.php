@@ -41,6 +41,7 @@ Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
 
     //机构详情分享
     Route::get('/groupbuying/{id}', 'GroupbuyingController@detailPage_v1_5');
+    Route::get('/updateviewcounts/{type}/{id}', 'CommonController@updateViewCounts_v1_5');
 
 });
 

@@ -12,6 +12,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Validator;
 use Illuminate\Http\Request;
+use App\Repositories\admin\CommentCourseRepository;
+use App\Repositories\admin\CommentOrgRepository;
 
 class CommonController extends Controller
 {
@@ -23,7 +25,19 @@ class CommonController extends Controller
     }
 
     /*更新相关记录的浏览量*/
-    public function updateViewCounts($type,$id){
-
+    public function updateViewCounts_v1_5($type,$id){
+        switch($type){
+            case 1://课程评论
+                CommentCourseRepository::updateViewCounts($id);
+                break;
+            case 2://机构评论
+                CommentOrgRepository::updateViewCounts($id);
+                break;
+            case 3://开团分享
+                GroupbuyingRepository::updateViewCounts($id);
+                break;
+            default:
+                break;
+        }
     }
 }

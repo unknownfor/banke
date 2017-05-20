@@ -236,4 +236,26 @@ class CommentOrgRepository
 		$commentOrg->read_status=1;
 		$commentOrg->save();
 	}
+
+	/**
+	 * 修改阅读量
+	 * @author jimmy
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public static function updateViewCounts($id)
+	{
+		$commentOrg = BankeCommentOrg::find($id);
+		if(!$commentOrg->view_counts_flag){
+			$commentOrg->view_counts++;
+			if($commentOrg->view_counts>=$commentOrg->min_view_counts){
+				$commentOrg->view_counts_flag=true;
+			}
+			$commentOrg->save();
+			return true;
+		}
+		return false;
+	}
 }
