@@ -145,10 +145,12 @@ class CommentOrgRepository
 	}
 
 	/*奖励用户*/
-	private function awardUser($oldAwardStatus,$comment,$request){
+	private function awardUser($oldAwardStatus,$comment,$request,$comment_award){
 		if($this->isAward($oldAwardStatus,$comment,$request)){
 			$org=$comment->org;
-			$comment_award=$org['comment_award'];  //当前机构的奖励金额
+			if(!$comment_award) {
+				$comment_award = $org['comment_award'];  //当前机构的奖励金额
+			}
 			if($comment_award) {
 				AppUserRepository::execUpdateUserAccountInfo($comment['uid'], $comment_award, 1, 4);  //更新用户账户金额信息以及添加变动记录
 
@@ -238,7 +240,8 @@ class CommentOrgRepository
 	}
 
 	/**
-	 * 修改阅读量
+	 * 修改浏览量
+	 * 如果浏览量  等于要求量，则息自动 进行奖励
 	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]
@@ -248,12 +251,32 @@ class CommentOrgRepository
 	public static function updateViewCounts($id)
 	{
 		$commentOrg = BankeCommentOrg::find($id);
-		if(!$commentOrg->view_counts_flag){
-			$commentOrg->view_counts++;
-			if($commentOrg->view_counts>=$commentOrg->min_view_counts){
-				$commentOrg->view_counts_flag=true;
-			}
-			$commentOrg->save();
+		if(!$commentOrg->view_counts_flag){  //未完成 浏览量
+			DB::transaction(function () use ($commentOrg) {
+				try {
+					$commentOrg->view_counts++;
+
+					//达到浏览量
+					if ($commentOrg->view_counts == $commentOrg->min_view_counts) {
+						$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
+
+						//奖励
+						$oldAwardStatus = $commentOrg['award_status'];
+						$request = array('award_status' => 1);
+
+						$comment_award=$commentOrg->min_view_counts;  //奖励金额和要求次数 1:1
+						$that=new CommentOrgRepository();
+						$that->awardUser($oldAwardStatus, $commentOrg, $request,$comment_award);  //奖励相应
+						$commentOrg->award_status=1;
+					}
+					$commentOrg->save();
+				}
+				catch(Exception $e){
+					Flash::error(trans('alerts.course.updated_error'));
+					var_dump($e);
+					return false;
+				}
+			});
 			return true;
 		}
 		return false;

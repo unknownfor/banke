@@ -42,13 +42,13 @@ Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
 
     //团购详情分享
     Route::get('/groupbuying/{id}', 'GroupbuyingController@detailPage_v1_5');
+
+    //type 1:心得分享，  2：机构评论分享  ，3：开团分享      id：记录id
     Route::get('/updateviewcounts/{type}/{id}', 'CommonController@updateViewCounts_v1_5');
 
     //课程分享页面
     Route::get('/course/{id}', 'CourseController@share_course_v1_5');
 
-    //合作入驻申请
-    Route::get('/cooperation/{id}','CooperationController@detailPage_v1_5');
 
 });
 

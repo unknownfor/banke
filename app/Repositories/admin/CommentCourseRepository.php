@@ -201,8 +201,10 @@ class CommentCourseRepository
 						$oldAwardStatus = $commentCourse['award_status'];
 						$request = array('award_status' => 1);
 
-						$comment_award=self::getCommentAwardFromOrder($commentCourse['course_id'],$commentCourse['uid']);
-						self::awardUser($oldAwardStatus, $commentCourse, $request,$comment_award);  //奖励相应
+						$comment_award=$commentCourse->min_view_counts;  //奖励金额和要求次数 1:1
+						$that=new CommentCourseRepository();
+						$that->awardUser($oldAwardStatus, $commentCourse, $request,$comment_award);  //奖励相应
+						$commentCourse->award_status=1;
 					}
 					$commentCourse->save();
 				}
@@ -215,15 +217,5 @@ class CommentCourseRepository
 			return true;
 		}
 		return false;
-	}
-
-	private function getCommentAwardFromOrder($cid,$uid){
-		$order = BankeCashBackUser::where(['course_id'=>$cid,'uid'=>$uid]);
-		if($order->count()>0){
-			$order=$order->first();
-			$award = $order->share_comment_course_view_counts;  //浏览一次1元
-			return $award;
-		}
-		return 0;
 	}
 }
