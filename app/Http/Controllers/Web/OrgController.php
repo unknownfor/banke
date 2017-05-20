@@ -35,11 +35,16 @@ class OrgController extends Controller
         return view('web.org.share_org-v1_2')->with(compact(['org']));
     }
 
+    /**申请入驻机构页面**/
+    public function org_applyfor_v1_5()
+    {
+        return view('web.orgapplyfor.orgapplyfor-v1_5');
+    }
+
 
     /**添加入驻机构**/
     public function addOrgApplyFor(Request $request)
     {
-        Log::info('----------------------------1231313132123--------------------');
         $validator = Validator::make($request->all(), [
             'city' => 'required',
             'name'=>'required',
@@ -113,4 +118,6 @@ class OrgController extends Controller
             return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
         }
     }
+
+
 }

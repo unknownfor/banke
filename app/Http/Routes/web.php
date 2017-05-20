@@ -55,9 +55,10 @@ Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
 //1.5
 Route::group(['prefix'=>"v1.5/web",'namespace'=>'Web'],function() {
 
-
-    //v1.5课程分享
+    //v1.5课程
     Route::get('/course/{id}', 'CourseController@course_v1_5');
+
+    Route::get('/orgapplyfor', 'OrgController@org_applyfor_v1_5');
 
 });
 

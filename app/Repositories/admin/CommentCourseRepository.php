@@ -221,9 +221,7 @@ class CommentCourseRepository
 		$order = BankeCashBackUser::where(['course_id'=>$cid,'uid'=>$uid]);
 		if($order->count()>0){
 			$order=$order->first();
-			$allAward = $order->share_comment_course_amount * $order->tuition_amount;
-			$award = $allAward / share_comment_course_counts;
-			$award =round($award ,2);
+			$award = $order->share_comment_course_view_counts;  //浏览一次1元
 			return $award;
 		}
 		return 0;
