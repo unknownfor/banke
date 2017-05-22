@@ -14,6 +14,7 @@ use Validator;
 use Illuminate\Http\Request;
 use App\Repositories\admin\CommentCourseRepository;
 use App\Repositories\admin\CommentOrgRepository;
+use App\Repositories\admin\GroupbuyingRepository;
 
 class CommonController extends Controller
 {

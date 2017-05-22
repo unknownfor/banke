@@ -250,7 +250,7 @@ class CommentOrgRepository
 	 */
 	public static function updateViewCounts($id)
 	{
-		$commentOrg = BankeCommentOrg::find($id);
+		$commentOrg = BankeCommentOrg::lockForUpdate()->find($id);
 		if(!$commentOrg->view_counts_flag){  //未完成 浏览量
 			DB::transaction(function () use ($commentOrg) {
 				try {

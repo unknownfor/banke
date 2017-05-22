@@ -61,6 +61,7 @@ return[
 		['key'=>'REFUND','desc' => '退款'],
 		['key'=>'WITHDRAW_FAIL','desc' => '提现失败退回'],
 		['key'=>'COMMENT','desc' => '评论奖励'],
+		['key'=>'SHARE_GROUP_BUYING','desc' => '开团分享'],
 	],
 	//角色
 	'role' => [

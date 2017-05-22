@@ -187,7 +187,7 @@ class CommentCourseRepository
 	 */
 	public static function updateViewCounts($id)
 	{
-		$commentCourse = BankeCommentCourse::find($id);
+		$commentCourse = BankeCommentCourse::lockForUpdate()->find($id);
 		if(!$commentCourse->view_counts_flag){  //未完成 浏览量
 			DB::transaction(function () use ($commentCourse) {
 				try {
