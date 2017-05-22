@@ -25,4 +25,15 @@ class BankeGroupbuying extends Model
     public  function course(){
         return $this->hasOne('App\Models\Banke\BankeCourse','id','course_id');
     }
+
+
+    //评论人 实名后
+    public  function authenUser(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','organizer_id');
+    }
+
+    //评论人 未实名
+    public  function user(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','organizer_id');
+    }
 }

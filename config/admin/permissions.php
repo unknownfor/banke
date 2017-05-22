@@ -207,4 +207,9 @@ return[
 		'destroy' 	=> 'admin.commentcourse.delete',
 	],
 
+	'groupbuying' => [
+		'show' 		=> 'admin.groupbuying.show',
+		'destroy' 	=> 'admin.groupbuying.delete',
+	],
+
 ];

@@ -260,4 +260,11 @@ return[
 		'show' => false,
 		'action' => 'commentcourse',
 	],
+
+	//开团
+	'groupbuying' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'groupbuying',
+	],
 ];

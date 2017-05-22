@@ -115,4 +115,23 @@ class InvitationController extends Controller
         return view('web.invite.enrol-v1_3')->with(compact(['user','course','org','ruleLinkUrl']));
     }
 
+    /**
+     * 分享预约
+     */
+    public function enrol_v1_5($uid,$cid,$typeid=1,$id)
+    {
+        $user=UserRepository::getUserSimpleInfoById($uid);
+        $course=CourseRepository::show($cid);
+
+        $baseUrl='http://'.env('ADMIN_DOMAIN');
+        $course['link_url']=$baseUrl.'/v1.2/share/course/'.$cid;
+        $ruleLinkUrl=$baseUrl.'/v1.2/share/rule';
+        $org=$course->org;
+
+        //随机图
+        $word=GroupBuyingWordsRepository::getRandomInfo();
+
+        return view('web.invite.enrol-v1_5')->with(compact(['user','course','org','ruleLinkUrl']));
+    }
+
 }

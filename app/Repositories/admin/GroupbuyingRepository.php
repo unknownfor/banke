@@ -24,26 +24,18 @@ class GroupbuyingRepository
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
-		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
-		
-		$oid = request('oid' ,'');
-		$award_status = request('award_status' ,'');
-		$read_status = request('read_status' ,'');
+		$course_id = request('course_id' ,'');
+		$mobile = request('mobile' ,'');
 		$groupbuying = new BankeGroupbuying();
 
-		if($oid!=null && $oid!='0') {
-			$groupbuying = $groupbuying->where('org_id', $oid);
+		if($course_id!=null && $course_id!='0') {
+			$groupbuying = $groupbuying->where('course_id', $course_id);
 		}
 
-		/*奖励状态搜索*/
-		if ($award_status!=null) {
-			$groupbuying = $groupbuying->where('award_status', $award_status);
+		if($mobile!=null) {
+			$groupbuying = $groupbuying->where('organizer_mobile', $mobile);
 		}
 
-		/*阅读状态搜索*/
-		if ($read_status!=null) {
-			$groupbuying = $groupbuying->where('read_status', $read_status);
-		}
 
 		$count = $groupbuying->count();
 
@@ -54,10 +46,10 @@ class GroupbuyingRepository
 		if ($groupbuyings) {
 			foreach ($groupbuyings as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
-				$v['user_name']=$v->authenUser['real_name'];
-				$v['org_name']=$v->org['name'];
-				if(!$v['user_name']){
-					$v['user_name']=$v->user['name'];
+				$v['organizer_name']=$v->authenUser['real_name'];
+				$v['course_name']=$v->course['name'];
+				if(!$v['organizer_name']){
+					$v['organizer_name']=$v->user['name'];
 				}
 			}
 		}
