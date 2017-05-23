@@ -602,7 +602,8 @@ class AppUserRepository
 	 * 1：认证奖励，注册奖励金额+20，账户总额 + 20；
 	 * 2：邀请好友注册并认证，邀请人有奖励 +5 元
 	 * 3: 邀请好友报名课程
-	 * 3：评论机构、课程给予奖励
+	 * 4：评论机构、课程给予奖励
+	 * 5：开团邀请好友阅读量达标奖励
 	 *
 		 * 'balance_log' => [
 				'WITHDRAW' => '提现',
@@ -614,7 +615,8 @@ class AppUserRepository
 				'PUNISHMENT' => '惩罚',
 				'REFUND' => '退款',
 				'WITHDRAW_FAIL' => '提现失败退回',
-				'COMMENT'=>'评论奖励'
+				'COMMENT'=>'评论奖励'，
+				'SHARE_GROUP_BUYING'=>'开团分享'
 			],
 		 *
 	 */
@@ -643,6 +645,10 @@ class AppUserRepository
 				case 4:  //评论机构、课程
 					$user_profile->get_do_task_amount += $award;
 					$businessTypeIndex=9;
+					break;
+				case 5:  //开团分享
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=10;
 					break;
 				default:
 					break;

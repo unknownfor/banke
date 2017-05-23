@@ -206,6 +206,9 @@ return [
 		'commentcourseList' => '<i class="fa fa-comments"></i>课程评论列表',
 		'commentcourseShow' => '<i class="fa fa-search"></i> 课程评论详情',
 		'commentcourseEdit' => '<i class="fa fa-check"></i> 审核课程评论',
+
+
+		'groupbuyingList' => '<i class="fa fa-list"></i> 开团列表',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -579,5 +582,21 @@ return [
 		'list' => '评论列表',
 		'show'=>'查看详情',
 		'course_name'=>'评论课程',
+	],
+
+	'groupbuying' => [
+		'id' => '序号',
+		'organizer_name' => '发起人',
+		'organizer_mobile' => '手机号',
+		'course_name' => '课程',
+		'org_id' => '所属机构',
+		'view_counts' => '浏览量',
+		'member_counts' => '参与人数',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'show'=>'查看详情',
+		'view_counts_flag'=>'完成状态',
+		'list' => '开团列表',
 	],
 ];
