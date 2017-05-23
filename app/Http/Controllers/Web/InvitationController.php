@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
-use App\Repositories\admin\InvitationRepository;
+use App\Repositories\admin\GroupBuyingWordsRepository;
 use App\Repositories\admin;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
@@ -118,7 +118,7 @@ class InvitationController extends Controller
     /**
      * 分享预约
      */
-    public function enrol_v1_5($uid,$cid,$typeid=1,$id)
+    public function enrol_v1_5($uid,$cid,$typeId=1,$recordId)
     {
         $user=UserRepository::getUserSimpleInfoById($uid);
         $course=CourseRepository::show($cid);
@@ -131,7 +131,15 @@ class InvitationController extends Controller
         //随机图
         $word=GroupBuyingWordsRepository::getRandomInfo();
 
-        return view('web.invite.enrol-v1_5')->with(compact(['user','course','org','ruleLinkUrl']));
+        return view('web.invite.enrol-v1_5')->with(compact([
+            'user',
+            'course',
+            'org',
+            'ruleLinkUrl',
+            'word',
+            'typeId',
+            'recordId'
+            ]));
     }
 
 }

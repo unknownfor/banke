@@ -192,9 +192,14 @@ class GroupBuyingWordsRepository
 	 * @param  [type]                   $id [description]
 	 * @return [type]                       [description]
 	 */
-	public  function  getRandomInfo()
+	public static  function  getRandomInfo()
 	{
 		$counts = BankeGroupBuyingWords::all()->count();
-		//TODO 产生随机一条记录
+		if($counts>0) {
+			$id = rand(1, $counts);
+			$words = BankeGroupBuyingWords::find($id);
+			return $words;
+		}
+		return null;
 	}
 }
