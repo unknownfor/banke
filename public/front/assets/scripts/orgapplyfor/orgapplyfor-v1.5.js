@@ -5,6 +5,13 @@ $(function () {
     window.addLoadingImg();
     window.addTip();
 
+    //弹出申请页
+    $(document).on(window.eventName,'.join-btn',function(){
+        $('.cooperation').removeClass('hide');
+        $('body').addClass('bg-color');
+        $('.join').addClass('hide');
+    });
+
     //填充手机号信息，按钮变色
     $(document).on('input', '#telphone', function(){
         var number=$(this).val(),
@@ -53,14 +60,15 @@ $(function () {
     //注册
     $(document).on(window.eventName,'.btn.active', function () {
         window.controlLoadingBox(true);
-        var phone = $('#phone-num').val(),
-            code = $('#user-code').val(),
-            password = $('#password-num').val();
+        var
+        // phone = $('#phone-num').val(),
+            // code = $('#user-code').val(),
+            password = $('#telphone').val();
         var url='/v1.2/share/register',
             data={
                 welcome:$('input[name="welcome"]').val(),
-                mobile:phone,
-                smsId:code,
+                // mobile:phone,
+                // smsId:code,
                 password:password,
             };
         $(this).removeClass('active');
@@ -98,6 +106,8 @@ $(function () {
             }
         });
     }
+
+    //调用客户端跳转我的页面方法
 
 
 });

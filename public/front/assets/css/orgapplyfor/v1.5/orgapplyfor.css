@@ -180,16 +180,89 @@ body {
   max-width: 700px;
   overflow-x: hidden;
   word-wrap: break-word;
-  background-color: #f2f2f2;
 }
 #orgapplyfor {
-  position: relative;
-  color: #9b9b9b;
+  height: 100%;
   font-size: 14px;
-  margin: 30px 20px auto 20px;
+}
+#orgapplyfor .join {
+  text-align: center;
+  background-color: #fff;
+}
+#orgapplyfor .join .join-img {
+  padding: 30px;
+}
+#orgapplyfor .join .join-img > img {
+  display: inline-block;
+  max-width: 85%;
+}
+#orgapplyfor .join .join-txt .title {
+  color: #383D43;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+#orgapplyfor .join .join-txt .join-txt-box {
+  width: 180px;
+  display: inline-block;
+}
+#orgapplyfor .join .join-txt .join-txt-box .txt-box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+#orgapplyfor .join .join-txt .join-txt-box .txt-box .num {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 15px;
+  -ms-flex: 0 0 15px;
+  flex: 0 0 15px;
+  margin-right: 10px;
+  -webkit-box-shadow: 0px 2px 4px #fbc02d;
+  box-shadow: 0px 2px 4px #fbc02d;
+  font-size: 10px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  background-color: #fbc02d;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+  vertical-align: 1px;
+}
+#orgapplyfor .join .join-txt .join-txt-box .txt-box .txt {
+  color: #3c4147;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+#orgapplyfor .join .join-txt .join-txt-box .dotted {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  color: #E5E5E5;
+}
+#orgapplyfor .join .join-btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 55px;
+  height: 45px;
+  line-height: 45px;
+  background-color: #ffeb3b;
+  border-radius: 5px;
+  margin: 0 20px;
+}
+#orgapplyfor .join.hide {
+  display: none;
 }
 #orgapplyfor .cooperation {
-  width: 100%;
+  color: #9b9b9b;
+  margin: 30px 20px auto 20px;
 }
 #orgapplyfor .cooperation .regbox {
   display: -webkit-box;
@@ -226,4 +299,10 @@ body {
 }
 #orgapplyfor .cooperation .submit-box.disabled {
   pointer-events: none;
+}
+#orgapplyfor .cooperation.hide {
+  display: none;
+}
+.bg-color {
+  background-color: #f2f2f2;
 }

@@ -13,11 +13,39 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link href="/front/assets/css/orgapplyfor/v1.5/orgapplyfor.css" rel="stylesheet" type="text/css"/>
+    <!--图标字体-->
+    <link href="/front/assets/css/orgapplyfor/v1.5/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>合作入驻</title>
 </head>
 <body>
     <div id="orgapplyfor">
-        <form class="cooperation">
+        <div class="join hide">
+            <div class="join-img">
+                <img  src="/front/assets/img/orgapplyfor/img.png" />
+            </div>
+            <div class="join-txt">
+                <p class="title">三步轻松入驻半课</p>
+                <div class="join-txt-box">
+                    <div class="txt-box">
+                        <div class="num">1</div>
+                        <div class="txt">填写机构名称及联系方式</div>
+                    </div>
+                    <i class="iconfont dotted">&#xe603;</i>
+                    <div class="txt-box">
+                        <div class="num">2</div>
+                        <div class="txt">商务合作人员电话联系</div>
+                    </div>
+                    <i class="iconfont dotted">&#xe603;</i>
+                    <div class="txt-box">
+                        <div class="num">3</div>
+                        <div class="txt">机构课程上架</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="join-btn"><span>立即入驻</span></div>
+        </div>
+        <form class="cooperation hide">
             <div class="regbox info">
                 <input type="text" placeholder="请输入机构名称" id="name" />
             </div>
@@ -38,6 +66,18 @@
                 <input type="submit" class="registered-btn" name="提交信息">
             </div>
         </form>
+        <div class="welcome">
+            <div class="welcome-img">
+                <img  src="/front/assets/img/orgapplyfor/cat.png" />
+            </div>
+            <div class="welcome-txt">
+                <p class="title">三步轻松入驻半课</p>
+                <div class="welcome-txt-box">
+                    <div class="txt-box">
+                        <div class="txt">填写机构名称及联系方式</div>
+                    </div>
+                </div>
+            </div>
     </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
