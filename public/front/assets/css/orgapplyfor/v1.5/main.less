@@ -1,0 +1,123 @@
+body {
+  margin:0 auto;
+  padding:0;
+  max-width: 700px;
+  overflow-x: hidden;
+  word-wrap:break-word;
+}
+#orgapplyfor {
+  height: 100%;
+  font-size: 14px;
+  .join {
+    text-align: center;
+    background-color: #fff;
+    .join-img {
+      padding: 30px;
+      > img {
+        display: inline-block;
+        max-width: 85%;
+      }
+    }
+    .join-txt {
+      .title {
+        color: #383D43;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+      .join-txt-box {
+        width: 180px;
+        display: inline-block;
+        .txt-box {
+          display: flex;
+          .num {
+            @w: 15px;
+            flex: 0 0 @w;
+            margin-right: 10px;
+            -webkit-box-shadow: 0px 2px 4px #fbc02d;
+            box-shadow: 0px 2px 4px #fbc02d;
+            font-size: 10px;
+            display: inline-block;
+            .size(@w,@w);
+            border-radius: @w;
+            background-color: #fbc02d;
+            line-height: @w;
+            text-align: center;
+            color: #fff;
+            vertical-align: 1px;
+          }
+          .txt {
+            color: #3c4147;
+            display: flex;
+          }
+        }
+        .dotted {
+          display: flex;
+          text-align: left;
+          color: #E5E5E5;
+        }
+      }
+
+    }
+    .join-btn {
+      @h: 45px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 55px;
+      height: @h;
+      line-height: @h;
+      background-color: #ffeb3b;
+      border-radius: 5px;
+      margin: 0 20px;
+    }
+    &.hide {
+      display: none;
+    }
+  }
+  .cooperation {
+    color: #9b9b9b;
+    margin: 30px 20px auto 20px;
+    @height: 45px;
+    .regbox {
+      display: flex;
+      width: 100%;
+      > input {
+        .size(100%, 45px);
+        padding-left: 15px;
+        flex: 1;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+    }
+    .submit-box {
+      .registered-btn {
+        color: #ACA23D;
+        letter-spacing: 2px;
+        text-align: center;
+        .size(100%, @height);
+        background-color: rgba(255, 235, 59, 0.58);
+        border: none;
+        border-radius: 4px;
+      }
+      &.active {
+        color: #000;
+        background-color: #FFEB3B;
+      }
+      &.disabled {
+        pointer-events: none;
+      }
+    }
+    &.hide {
+      display: none;
+    }
+  }
+  .welcome {
+
+  }
+}
+
+.bg-color {
+  background-color: #f2f2f2;
+}
