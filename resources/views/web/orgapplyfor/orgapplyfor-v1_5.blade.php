@@ -12,15 +12,36 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    {{--<link href="/front/assets/css/invitation/v1.3/invitation.css" rel="stylesheet" type="text/css"/>--}}
-    {{--<link href="/front/assets/css/invitation/v1.3/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>--}}
+    <link href="/front/assets/css/orgapplyfor/v1.5/orgapplyfor.css" rel="stylesheet" type="text/css"/>
     <title>合作入驻</title>
 </head>
 <body>
-合作入驻
+    <div id="orgapplyfor">
+        <form class="cooperation">
+            <div class="regbox info">
+                <input type="text" placeholder="请输入机构名称" id="name" />
+            </div>
+
+            <div class="regbox info">
+                <input type="text" placeholder="请输入机构地址" id="address" />
+            </div>
+
+            <div class="regbox info">
+                <input type="text" placeholder="联系人姓名" id="contact" />
+            </div>
+
+            <div class="regbox">
+                <input type="text" placeholder="手机号" id="telphone" />
+            </div>
+
+            <div class="submit-box disabled">
+                <input type="submit" class="registered-btn" name="提交信息">
+            </div>
+        </form>
+    </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-{{--<script src="/front/assets/scripts/invitaion/enrol.v1.3.js" type="text/javascript"></script>--}}
+<script src="/front/assets/scripts/orgapplyfor/orgapplyfor-v1.5.js" type="text/javascript"></script>
 </html>
