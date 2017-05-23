@@ -212,4 +212,10 @@ return[
 		'destroy' 	=> 'admin.groupbuying.delete',
 	],
 
+	'groupbuyingwords' => [
+		'create' 	=> 'admin.groupbuyingwords.create',
+		'edit' 		=> 'admin.groupbuyingwords.edit',
+		'destroy' 	=> 'admin.groupbuyingwords.delete',
+	],
+
 ];

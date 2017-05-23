@@ -1,12 +1,12 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Banke\BankeGroupBuyingWords;
+use App\Models\Banke\BankeGroupbuyingWords;
 use Carbon\Carbon;
 use Flash;
 /**
 * 新闻仓库
 */
-class GroupBuyingWordsRepository
+class GroupbuyingWordsRepository
 {
 	/**
 	 * datatable获取数据
@@ -98,12 +98,12 @@ class GroupBuyingWordsRepository
 	 */
 	public function store($request)
 	{   
-		$role = new BankeGroupBuyingWords;
+		$role = new BankeGroupbuyingWords;
 		if ($role->fill($request->all())->save()) {
-			Flash::success(trans('alerts.news.created_success'));
+			Flash::success(trans('alerts.groupbuyingwords.created_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.news.created_error'));
+		Flash::error(trans('alerts.groupbuyingwords.created_error'));
 		return false;
 	}
 	/**
@@ -115,7 +115,7 @@ class GroupBuyingWordsRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeGroupBuyingWords::find($id);
+		$role = BankeGroupbuyingWords::find($id);
 		if ($role) {
 			$roleArray = $role->toArray();
 			return $roleArray;
@@ -132,13 +132,13 @@ class GroupBuyingWordsRepository
 	 */
 	public function update($request,$id)
 	{
-		$role = BankeGroupBuyingWords::find($id);
+		$role = BankeGroupbuyingWords::find($id);
 		if ($role) {
 			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.news.updated_success'));
+				Flash::success(trans('alerts.groupbuyingwords.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.news.updated_error'));
+			Flash::error(trans('alerts.groupbuyingwords.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -154,14 +154,14 @@ class GroupBuyingWordsRepository
 	 */
 	public function mark($id,$status)
 	{
-		$role = BankeGroupBuyingWords::find($id);
+		$role = BankeGroupbuyingWords::find($id);
 		if ($role) {
 			$role->status = $status;
 			if ($role->save()) {
-				Flash::success(trans('alerts.news.updated_success'));
+				Flash::success(trans('alerts.groupbuyingwords.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.news.updated_error'));
+			Flash::error(trans('alerts.groupbuyingwords.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -176,12 +176,12 @@ class GroupBuyingWordsRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeGroupBuyingWords::destroy($id);
+		$isDelete = BankeGroupbuyingWords::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.news.deleted_success'));
+			Flash::success(trans('alerts.groupbuyingwords.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.news.deleted_error'));
+		Flash::error(trans('alerts.groupbuyingwords.deleted_error'));
 		return false;
 	}
 
@@ -194,10 +194,10 @@ class GroupBuyingWordsRepository
 	 */
 	public static  function  getRandomInfo()
 	{
-		$counts = BankeGroupBuyingWords::all()->count();
+		$counts = BankeGroupbuyingWords::all()->count();
 		if($counts>0) {
 			$id = rand(1, $counts);
-			$words = BankeGroupBuyingWords::find($id);
+			$words = BankeGroupbuyingWords::find($id);
 			return $words;
 		}
 		return null;

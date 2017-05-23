@@ -128,6 +128,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //分享开团
         require(__DIR__ . '/Routes/GroupbuyingRoute.php');
 
+        //开团标语
+        require(__DIR__ . '/Routes/GroupbuyingwordsRoute.php');
+
     });
 });
 

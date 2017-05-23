@@ -267,4 +267,11 @@ return[
 		'show' => false,
 		'action' => 'groupbuying',
 	],
+
+	//开团标语
+	'groupbuyingwords' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'groupbuyingwords',
+	],
 ];

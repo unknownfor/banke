@@ -209,6 +209,10 @@ return [
 
 
 		'groupbuyingList' => '<i class="fa fa-list"></i> 开团列表',
+
+		'groupbuyingwordsList' => '<i class="fa fa-list"></i> 开团标语列表',
+		'groupbuyingwordsCreate' => '<i class="fa fa-list"></i> 添加开团标语',
+		'groupbuyingwordsEdit' => '<i class="fa fa-list"></i> 编辑开团标语',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -598,5 +602,16 @@ return [
 		'show'=>'查看详情',
 		'view_counts_flag'=>'完成状态',
 		'list' => '开团列表',
+	],
+
+	'groupbuyingwords' => [
+		'id' => '序号',
+		'img_url_app' => '图片(app)',
+		'img_url_web' => '图片(web)',
+		'desc'=>'描述',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '开团标语列表',
 	],
 ];

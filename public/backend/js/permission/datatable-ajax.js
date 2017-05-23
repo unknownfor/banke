@@ -2,7 +2,7 @@ var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
 		ajax_datatable = dt.DataTable({
-          "lengthMenu": [[ 100,200], [ 100, 200]],
+          "lengthMenu": [[ 30,50], [ 30, 50]],
 			"processing": true,
       "serverSide": true,
       "searching" : false,
