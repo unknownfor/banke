@@ -77,7 +77,7 @@ $(function () {
         getDataAsync(url,data,function(res) {
             //成功返回之后调用的函数
             window.controlLoadingBox(false);
-            if (res.status_code == 0) {
+            if (res.status == true) {
                 window.showTips('<p>恭喜您，申请已提交!</p>',2000);
                 $('.welcome').removeClass('hide');
                 $('.cooperation').addClass('hide');
