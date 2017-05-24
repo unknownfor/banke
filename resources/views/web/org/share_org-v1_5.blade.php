@@ -12,11 +12,11 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/org/v1.2/org.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/org/v1.5/org.css" rel="stylesheet">
+    <link href="/front/assets/css/org/v1.5/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>机构详情</title>
 </head>
 <body>
-    v1.5
     <div class="head container">
         @if($org['cover'])
             <?php
@@ -30,38 +30,47 @@
             <img src="{{$org['logo']}}"/>
         </div>
         <div class="head-name">{{$org['name']}}</div>
-        {{--机构简介--}}
-        {{--<div class="head-title">{{$org['intro']}}</div>--}}
         <div class="head-tips">
             @foreach($org->tags as $val)
                 <span>{{$val['name']}}</span>
             @endforeach
         </div>
     </div>
-    <div class="address container">
-        <div class="container-head">
-            <span>机构地址</span>
-        </div>
-        <div class="address-box container-box">
-            <div class="address-info">
-                <div class="address-img"></div>
-                <div class="address-detail">{{$org['address']}}</div>
+
+    <div class="org-information hide">
+        <!--课程介绍-->
+        @if($org['details'])
+            <div class="class-info container">
+                <div class="container-head">
+                    <span>机构详情</span>
+                </div>
+                <div class="class-info-box container-box">
+                    {!!$org['details']!!}
+                </div>
             </div>
-            <div class="address-call">
-                <div id="address-call-box">
-                    <div class="img"></div>
+        @endif
+
+        <div class="address container">
+            <div class="container-head">
+                <span>机构地址</span>
+            </div>
+            <div class="address-box container-box">
+                <div class="address-info">
+                    <div class="address-img"></div>
+                    <div class="address-detail">{{$org['address']}}</div>
+                </div>
+                <div class="address-call">
+                    <div id="address-call-box">
+                        <div class="img"></div>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
-    <!--课程介绍-->
-    @if($org['details'])
-        <div class="class-info container">
-            <div class="class-info-box container-box">
-                {!!$org['details']!!}
-            </div>
-        </div>
-    @endif
+
+    <div class="more-btn"><i class="iconfont icon-xialajiantou"></i></div>
+
     <div class="call-mask hide">
         <div class="call-container">
             @if($org['tel_phone'])
@@ -74,10 +83,11 @@
             <p class="quite">取消</p>
         </div>
     </div>
+
 @include('web.layout.downloadbar')
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/org/org-v1.2.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/org/org-v1.5.js" type="text/javascript"></script>
 </html>
