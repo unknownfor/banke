@@ -35,6 +35,15 @@ class OrgController extends Controller
         return view('web.org.share_org-v1_2')->with(compact(['org']));
     }
 
+    /**
+     * 分享机构详情
+     */
+    public function share_org_v1_5($id)
+    {
+        $org = BankeOrg::find($id);
+        return view('web.org.share_org-v1_5')->with(compact(['org']));
+    }
+
     /**申请入驻机构页面**/
     public function org_applyfor_v1_5()
     {
