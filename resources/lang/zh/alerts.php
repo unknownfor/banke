@@ -214,11 +214,13 @@ return [
         'soft_deleted_error' => '删除评论失败',
     ],
 
-    'commentcourse' => [
-        'updated_success'   => '审核评论成功.',
-        'updated_error'     => '审核评论失败.',
-        'soft_deleted_success' => '删除评论成功',
-        'soft_deleted_error' => '删除评论失败',
+    'groupbuyingwords' => [
+        'created_success'   => '创建开团标语成功.',
+        'created_error'     => '创建开团标语失败.',
+        'updated_success'   => '编辑开团标语成功.',
+        'updated_error'     => '编辑开团标语失败.',
+        'soft_deleted_success' => '删除开团标语成功',
+        'soft_deleted_error' => '删除开团标语失败',
     ],
 
 ];

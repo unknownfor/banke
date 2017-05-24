@@ -186,14 +186,15 @@ class GroupbuyingRepository
 	public static function updateViewCounts($id)
 	{
 		$groupbuying = BankeGroupbuying::lockForUpdate()->find($id);
-		if(!$groupbuying['view_counts_flag']){  //未完成 浏览量
+		$max_finished_share_counts=$groupbuying->max_finished_share_counts;
+		if($groupbuying['finished_share_counts']<$max_finished_share_counts){  //未完成 浏览量
 			DB::transaction(function () use ($groupbuying) {
 				try {
 					$groupbuying->view_counts++;
 
 					//达到浏览量
-					if ($groupbuying->view_counts == $groupbuying->min_view_counts) {
-						$groupbuying->view_counts_flag = true;  //标志已经达到浏览量
+					if (($groupbuying->view_counts)%$groupbuying->min_view_counts==0) {
+						$groupbuying->finished_share_counts ++ ;  //完成次数 + 1
 
 						$award=$groupbuying->min_view_counts;  //奖励金额和要求次数 1:1
 						$that=new GroupbuyingRepository();

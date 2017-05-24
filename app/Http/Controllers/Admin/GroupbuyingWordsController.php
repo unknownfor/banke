@@ -7,11 +7,11 @@ use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
 use PermissionRepository;
 use RoleRepository;
-use GroupbuyingRepository;
 use Illuminate\Support\Facades\Log;
-use App\Models\Banke\BankeCourse;
+use GroupbuyingWordsRepository;
+use App\Http\Requests\GroupbuyingWordsRequest;
 
-class GroupbuyingController extends Controller
+class GroupbuyingWordsController extends Controller
 {
 	/**
      * 团购列表
@@ -21,8 +21,7 @@ class GroupbuyingController extends Controller
      */
     public function index()
     {
-        $allCourse=BankeCourse::where('status',1)->get(['id','name']);
-        return view('admin.groupbuying.list')->with(compact(['allCourse']));
+        return view('admin.groupbuying.words');
     }
 
     /**
@@ -33,9 +32,10 @@ class GroupbuyingController extends Controller
      */
     public function ajaxIndex()
     {
-        $data = GroupbuyingRepository::ajaxIndex();
+        $data = GroupbuyingWordsRepository::ajaxIndex();
         return response()->json($data);
     }
+
 
     /**
      * 添加机构视图
@@ -45,7 +45,7 @@ class GroupbuyingController extends Controller
      */
     public function create()
     {
-//        return view('admin.org.create')->with(compact(['permissions','roles']));
+        return view('admin.groupbuying.words_create');
     }
 
     /**
@@ -55,10 +55,10 @@ class GroupbuyingController extends Controller
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(Request $request)
+    public function store(GroupbuyingWordsRequest $request)
     {
-        GroupbuyingRepository::store($request);
-        return redirect('admin/withdraw');
+        GroupbuyingWordsRepository::store($request);
+        return redirect('admin/groupbuyingwords');
     }
 
     /**
@@ -70,8 +70,8 @@ class GroupbuyingController extends Controller
      */
     public function edit($id)
     {
-        $groupbuying = GroupbuyingRepository::edit($id);
-        return view('admin.groupbuying.edit')->with(compact('groupbuying'));
+        $words = GroupbuyingWordsRepository::edit($id);
+        return view('admin.groupbuyingwords.edit')->with(compact('words'));
     }
     /**
      * 修改机构资料
@@ -81,10 +81,10 @@ class GroupbuyingController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(Request $request,$id)
+    public function update(GroupbuyingWordsRequest $request,$id)
     {
-        GroupbuyingRepository::update($request,$id);
-        return redirect('admin/groupbuying');
+        GroupbuyingWordsRepository::update($request,$id);
+        return redirect('admin/groupbuyingwords');
     }
 
     /**
@@ -96,20 +96,22 @@ class GroupbuyingController extends Controller
      */
     public function destroy($id)
     {
-        GroupbuyingRepository::destroy($id);
-        return redirect('admin/groupbuying');
+        GroupbuyingWordsRepository::destroy($id);
+        return redirect('admin/groupbuyingwords');
     }
 
+
     /**
-     * 查看机构信息
+     * 修改状态
      * @author 晚黎
-     * @date   2016-04-14T13:49:32+0800
-     * @param  [type]                   $id [description]
-     * @return [type]                       [description]
+     * @date   2016-04-14T11:50:04+0800
+     * @param  [type]                   $id     [description]
+     * @param  [type]                   $status [description]
+     * @return [type]                           [description]
      */
-    public function show($id)
+    public function mark($id,$status)
     {
-        $groupbuying = GroupbuyingRepository::show($id);
-        return view('admin.groupbuying.show')->with(compact('groupbuying'));
+        GroupbuyingWordsRepository::mark($id,$status);
+        return redirect('admin/groupbuyingwords');
     }
 }

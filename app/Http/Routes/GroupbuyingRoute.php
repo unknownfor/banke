@@ -1,6 +1,6 @@
 <?php
 /**
- * 提现路由
+ * 开团路由
  */
 $router->group(['prefix' => 'groupbuying'], function($router){
 	$router->get('ajaxIndex', 'GroupbuyingController@ajaxIndex');
