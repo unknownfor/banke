@@ -66,8 +66,8 @@ $(function () {
             telphone = $('#telphone').val();
         var url='/bankehome/addorgapplyfor',
             data={
-                city:'武汉',
-                introduce:'哈哈哈哈',
+                //city:'武汉',
+                //introduce:'哈哈哈哈',
                 name:name,
                 address:address,
                 contact:contact,

@@ -55,16 +55,21 @@ class OrgController extends Controller
     public function addOrgApplyFor(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'city' => 'required',
+//            'city' => 'required',
             'name'=>'required',
             'contact'=>'required',
             'tel_phone'=>'required',
             'address'=>'required',
-            'introduce'=>'required'
+//            'introduce'=>'required'
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['msg' => '字段信息不能为空', 'status' => false]);
+            $errors = $validator->errors();
+            $sss='';
+            foreach ($errors->all() as $message) {
+                $sss.=$message;
+            }
+            return response()->json(['msg' => $sss, 'status' => false]);
         }
         $repository = new  OrgApplyForRepository();
         $result = $repository->addOrgApplyFor($request);
