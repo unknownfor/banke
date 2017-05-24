@@ -66,8 +66,6 @@ $(function () {
             telphone = $('#telphone').val();
         var url='/bankehome/addorgapplyfor',
             data={
-                city:'武汉',
-                introduce:'哈哈哈哈',
                 name:name,
                 address:address,
                 contact:contact,
@@ -78,11 +76,14 @@ $(function () {
             //成功返回之后调用的函数
             window.controlLoadingBox(false);
             if (res.status == true) {
+                $('body').removeClass('bg-color');
                 window.showTips('<p>恭喜您，申请已提交!</p>',2000);
                 $('.welcome').removeClass('hide');
                 $('.cooperation').addClass('hide');
-                //弹出成功提示页
-                showMyhomePage();
+                window.setTimeout(function() {
+                    //弹出成功提示页
+                    showMyhomePage();
+                },2000);
             }
             else{
                 window.showTips(res.message);
