@@ -18,8 +18,19 @@
     <title>合作入驻</title>
 </head>
 <body>
+{!! csrf_field() !!}
     <div id="orgapplyfor">
-        <div class="join hide">
+        <div class="welcome hide">
+            <div class="welcome-img">
+                <img  src="/front/assets/img/orgapplyfor/cat.png" />
+            </div>
+            <div class="welcome-txt">
+                <div class="welcome">欢迎您的加入</div>
+                <div class="txt">商务人员会马上联系您，喵~</div>
+            </div>
+            <div class="welcome-btn">好的</div>
+        </div>
+        <div class="join">
             <div class="join-img">
                 <img  src="/front/assets/img/orgapplyfor/img.png" />
             </div>
@@ -47,34 +58,25 @@
         </div>
         <form class="cooperation hide">
             <div class="regbox info">
-                <input type="text" placeholder="请输入机构名称" id="name" />
+                <input type="text" placeholder="请输入机构名称" id="name" value="武汉天美意测试机构" />
             </div>
 
             <div class="regbox info">
-                <input type="text" placeholder="请输入机构地址" id="address" />
+                <input type="text" placeholder="请输入机构地址" id="address"  value="武汉市武昌区中南路89号"/>
             </div>
 
             <div class="regbox info">
-                <input type="text" placeholder="联系人姓名" id="contact" />
+                <input type="text" placeholder="联系人姓名" id="contact" value="蒋建明"/>
             </div>
 
             <div class="regbox">
-                <input type="text" placeholder="手机号" id="telphone" />
+                <input type="text" placeholder="手机号" id="telphone" value="181406622821"/>
             </div>
 
             <div class="submit-box disabled">
-                <input type="submit" class="registered-btn" name="提交信息">
+                <div type="submit" class="registered-btn" name="提交信息">提交信息</div>
             </div>
         </form>
-        <div class="welcome">
-            <div class="welcome-img">
-                <img  src="/front/assets/img/orgapplyfor/cat.png" />
-            </div>
-            <div class="welcome-txt">
-                <div class="welcome">欢迎您的加入</div>
-                <div class="txt">商务人员会马上联系您，喵~</div>
-            </div>
-            <div class="welcome-btn">好的</div>
     </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>

@@ -93,6 +93,7 @@ body {
     }
     .submit-box {
       .registered-btn {
+        line-height: @height;
         color: #ACA23D;
         letter-spacing: 2px;
         text-align: center;
@@ -134,13 +135,20 @@ body {
       }
     }
     .welcome-btn {
-      color: #ACA23D;
-      letter-spacing: 2px;
+      color: #383d43;
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 55px;
       text-align: center;
-      .size(100%, @height);
-      background-color: rgba(255, 235, 59, 0.58);
+      height: @height;
+      line-height: @height;
+      background-color: #FFEB3B;
       border: none;
       border-radius: 4px;
+    }
+    &.hide {
+      display: none;
     }
   }
 }

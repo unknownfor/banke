@@ -12,6 +12,7 @@ $(function () {
         $('.join').addClass('hide');
     });
 
+
     //填充手机号信息，按钮变色
     $(document).on('input', '#telphone', function(){
         var number=$(this).val(),
@@ -20,7 +21,7 @@ $(function () {
             code=$('#telphone').val();
         if(reg.test(number)) {
             //调用此方法, 可以在别的方法中调用它
-            if( checkInput > 0 ) {
+            // if (checkInput > 0 ) {
                 if (code != '') {
                     $btn.removeClass('disabled');
                     $btn.addClass('active');
@@ -28,7 +29,10 @@ $(function () {
                     $btn.addClass('disabled');
                     $btn.removeClass('active');
                 }
-            }
+            // }
+            // else {
+            //     return;
+            // }
         }else{
             $btn.removeClass('active');
             $btn.addClass('disabled');
@@ -40,14 +44,10 @@ $(function () {
         var $tr = $(".info").find("tr"),
             flag = 0,
             antiqueTypes = [];
-
         $tr.each( function( index, item ){
             var type = $(item).find("input[type='text']").val();
-
             antiqueTypes.push(type);
-
         });
-
         $.each(antiqueTypes, function(index, item){
             if( item.length == 0 ){
                 flag += 1;
@@ -58,18 +58,20 @@ $(function () {
     }
 
     //注册
-    $(document).on(window.eventName,'.btn.active', function () {
+    $(document).on(window.eventName,'.submit-box.active', function () {
         window.controlLoadingBox(true);
-        var
-        // phone = $('#phone-num').val(),
-            // code = $('#user-code').val(),
-            password = $('#telphone').val();
-        var url='/v1.2/share/register',
+        var name = $('#name').val(),
+            address = $('#address').val(),
+            contact = $('#contact').val(),
+            telphone = $('#telphone').val();
+        var url='/bankehome/addorgapplyfor',
             data={
-                welcome:$('input[name="welcome"]').val(),
-                // mobile:phone,
-                // smsId:code,
-                password:password,
+                city:'武汉',
+                introduce:'哈哈哈哈',
+                name:name,
+                address:address,
+                contact:contact,
+                tel_phone:telphone
             };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res) {
@@ -77,13 +79,17 @@ $(function () {
             window.controlLoadingBox(false);
             if (res.status_code == 0) {
                 window.showTips('<p>恭喜您，申请已提交!</p>',2000);
+                $('.welcome').removeClass('hide');
+                $('.cooperation').addClass('hide');
+                //弹出成功提示页
+                showMyhomePage();
             }
             else{
                 window.showTips(res.message);
             }
             },function(){
                 window.controlLoadingBox(false);
-                $(this).addClass('active');
+                // $(this).addClass('active');
             },'post');
     });
 
@@ -108,6 +114,21 @@ $(function () {
     }
 
     //调用客户端跳转我的页面方法
-
+    function showMyhomePage(){
+        if (window.deviceType.mobile) {
+            if (this.deviceType.android) {
+                //如果方法存在
+                if (typeof AppFunction != "undefined"&&  typeof AppFunction.callServicePhone !='undefined') {
+                    AppFunction.callServicePhone(); //调用app的方法，得到用户的基体信息
+                }
+            }
+            else {
+                //如果方法存在
+                if (typeof callServicePhone != "undefined") {
+                    callServicePhone();//调用app的方法，得到电话
+                }
+            }
+        }
+    };
 
 });
