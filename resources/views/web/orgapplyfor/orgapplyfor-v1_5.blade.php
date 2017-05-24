@@ -71,13 +71,10 @@
                 <img  src="/front/assets/img/orgapplyfor/cat.png" />
             </div>
             <div class="welcome-txt">
-                <p class="title">三步轻松入驻半课</p>
-                <div class="welcome-txt-box">
-                    <div class="txt-box">
-                        <div class="txt">填写机构名称及联系方式</div>
-                    </div>
-                </div>
+                <div class="welcome">欢迎您的加入</div>
+                <div class="txt">商务人员会马上联系您，喵~</div>
             </div>
+            <div class="welcome-btn">好的</div>
     </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
