@@ -162,13 +162,12 @@ return [
     ],
 
     'orgapplyfor' => [
-        'updated_success'   => '审核申请机构成功.',
-        'updated_error'     => '审核申请机构失败.',
-        'created_success'   => '创建机构成功.',
-        'created_error'     => '创建机构失败.',
-        'deleted_success'   => '删除机构成功.',
-        'deleted_error'     => '删除机构失败.',
-        'soft_deleted_success' => '删除机构成功',
+        'updated_success'   => '审核机构申请成功.',
+        'updated_error'     => '审核机构申请失败.',
+        'created_success'   => '创建机构申请成功.',
+        'created_error'     => '创建机构申请失败.',
+        'deleted_success'   => '删除机构申请成功.',
+        'deleted_error'     => '删除机构申请失败.',
     ],
 
     'orgrebates' => [
@@ -219,8 +218,8 @@ return [
         'created_error'     => '创建开团标语失败.',
         'updated_success'   => '编辑开团标语成功.',
         'updated_error'     => '编辑开团标语失败.',
-        'soft_deleted_success' => '删除开团标语成功',
-        'soft_deleted_error' => '删除开团标语失败',
+        'deleted_success' => '删除开团标语成功',
+        'deleted_error' => '删除开团标语失败',
     ],
 
 ];

@@ -161,6 +161,7 @@ return[
 	'orgapplyfor' => [
 		'show' 	=> 'admin.orgapplyfor.show',
 		'edit' 	=> 'admin.orgapplyfor.edit',
+		'destroy' 	=> 'admin.orgrebates.delete',
 	],
 	//机构返款
 	'orgrebates' => [

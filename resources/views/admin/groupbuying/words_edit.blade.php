@@ -45,13 +45,15 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/groupbuyingwords')}}">
-                        {!! csrf_field() !!}
+                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/groupbuyingwords/'.$words['id'])}}">
+                            {!! csrf_field() !!}
+                            <input type="hidden" name="_method" value="PATCH">
+                            <input type="hidden" name="id" value="{{$words['id']}}">
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="desc">{{trans('labels.groupbuyingwords.desc')}}</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="desc" placeholder="{{trans('labels.groupbuyingwords.desc')}}" value="{{old('desc')}}">
+                                    <input type="text" class="form-control" name="desc" placeholder="{{trans('labels.groupbuyingwords.desc')}}" value="{{$words['desc']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -68,6 +70,13 @@
                             </div>
                             <div class="col-md-offset-1">
                                     <ul class="imgs-list-box">
+                                        @if($words['img_url_app'])
+                                            <li>
+                                                <a href="{{$words['img_url_app']}}" data-size="435x263"></a>
+                                                <img src="{{$words['img_url_app']}}@142w_80h_1e">
+                                                <span class="remove-img">×</span>
+                                            </li>
+                                        @endif
                                     </ul>
                                     <input type="hidden" value="" name="img_url_app" id="img_url_app">
                             </div>
@@ -83,6 +92,13 @@
                             </div>
                             <div class="col-md-offset-1">
                                 <ul class="imgs-list-box">
+                                    @if($words['img_url_web'])
+                                        <li>
+                                            <a href="{{$words['img_url_web']}}" data-size="435x263"></a>
+                                            <img src="{{$words['img_url_web']}}@142w_80h_1e">
+                                            <span class="remove-img">×</span>
+                                        </li>
+                                    @endif
                                 </ul>
                                 <input type="hidden" value="" name="img_url_web" id="img_url_web">
                             </div>
@@ -104,13 +120,6 @@
                                             <span></span>
                                             <span class="check"></span>
                                             <span class="box"></span> {{trans('strings.groupbuyingwords.audit.1')}} </label>
-                                    </div>
-                                    <div class="md-radio">
-                                        <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>
-                                        <label for="status3">
-                                            <span></span>
-                                            <span class="check"></span>
-                                            <span class="box"></span> {{trans('strings.groupbuyingwords.trash.1')}} </label>
                                     </div>
                                 </div>
                             </div>

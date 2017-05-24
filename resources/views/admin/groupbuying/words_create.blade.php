@@ -105,13 +105,6 @@
                                             <span class="check"></span>
                                             <span class="box"></span> {{trans('strings.groupbuyingwords.audit.1')}} </label>
                                     </div>
-                                    <div class="md-radio">
-                                        <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>
-                                        <label for="status3">
-                                            <span></span>
-                                            <span class="check"></span>
-                                            <span class="box"></span> {{trans('strings.groupbuyingwords.trash.1')}} </label>
-                                    </div>
                                 </div>
                             </div>
                         </div>

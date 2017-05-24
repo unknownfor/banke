@@ -71,7 +71,7 @@ class GroupbuyingWordsController extends Controller
     public function edit($id)
     {
         $words = GroupbuyingWordsRepository::edit($id);
-        return view('admin.groupbuyingwords.edit')->with(compact('words'));
+        return view('admin.groupbuying.words_edit')->with(compact('words'));
     }
     /**
      * 修改机构资料

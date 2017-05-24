@@ -135,6 +135,23 @@ class OrgApplyForRepository
 	}
 
 	/**
+	 * 删除机构申请	 * @author shaolei
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function destroy($id)
+	{
+		$isDelete = BankeOrgApplyFor::destroy($id);
+		if ($isDelete) {
+			Flash::success(trans('alerts.orgapplyfor.deleted_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.orgapplyfor.deleted_error'));
+		return false;
+	}
+
+	/**
 	 * 添加申请机构信息
 	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
