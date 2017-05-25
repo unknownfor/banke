@@ -1,0 +1,147 @@
+@mainFontColor:#383d43;
+body {
+  margin:0 auto;
+  padding:0;
+  max-width: 700px;
+  overflow-x: hidden;
+  word-wrap:break-word;
+  position: relative;
+  color: #9b9b9b;
+  font-size: 13px;
+}
+img {
+  width: 100%;
+  border: 0 none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+#rule {
+  .content {
+    padding: 0 15px;
+    .title {
+      background-color: #fff;
+      text-align: left;
+      padding: 15px 0px 15px 15px;
+      .title-img {
+        display: inline-block;
+        background: url("../../../img/rule/v1.2/sprite.png") no-repeat;
+        background-size: 309px*0.8 58px*0.8;
+        margin-right: 5px;
+        &.service-img {
+          .size(26px,26px);
+          background-position: -190px -1px;
+        }
+        &.payback-img {
+          .size(26px,23px);
+          background-position: -223px -3px;
+        }
+      }
+      .title-txt {
+        font-size: 14px;
+        color: @mainFontColor;
+        font-weight: bold;
+        vertical-align: 8px;
+      }
+    }
+    &.service {
+      padding: 0px;
+      background-color: #FFEB3B;
+      .service-box {
+        //�߶�
+        height: 500px;
+        .service-detail {
+          height: 70px;
+          margin: 15px;
+          background-color: #FFFFFF;
+          padding: 20px 15px;
+          border-radius: 12px;
+          box-shadow: 0px 4px 10px 2px #fbc02d;
+          .service-title {
+            text-align: center;
+            .title-img {
+              display: inline-block;
+              background: url("../../../img/rule/v1.2/sprite.png") no-repeat;
+              background-size: 309px*0.5 58px*0.5;
+              margin-right: 5px;
+              &.org {
+                .size(27px,25px);
+                background-position: -29px -5px;
+              }
+              &.price {
+                .size(25px,25px);
+                background-position: -60px -2px;
+              }
+              &.guarantee {
+                .size(25px,25px);
+                background-position: -2px -2px;
+              }
+              &.job{
+                .size(25px,25px);
+                background-position: -90px -1px;
+              }
+            }
+            .title-txt {
+              font-size: 20px;
+              color: #fbc02d;
+              vertical-align: 5px;
+            }
+          }
+          .service-info {
+            > span {
+              border: 1px solid #fbb00a;
+              color: #fbb00a;
+              padding:3px;
+            }
+          }
+        }
+      }
+    }
+    &.payback {
+      .payback-box {
+        .payback-detail {
+          position: relative;
+          margin: 15px 0px 35px 0px;
+          padding: 20px 15px;
+          border-radius: 12px;
+          line-height: 22px;
+          border: 1px solid #fbb00a;
+          border-radius: 12px;
+          .payback-title {
+            position: absolute;
+            top: -13px;
+            left: 15px;
+            text-align: center;
+            @tlh: 26px;
+            .size(70px,@tlh);
+            line-height: @tlh;
+            color: #fff;
+            background-color: #fbb00a;
+            font-size: 14px;
+            border-radius: 8px;
+          }
+          .payback-info{
+            > p {
+              > span {
+                display: inline-block;
+                text-align: center;
+                @dot:20px;
+                .size(@dot,@dot);
+                border-radius: @dot;
+                line-height: @dot;
+                color: #fff;
+                background-color: #FA4535;
+                margin-right: 8px;
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
+  .statement {
+    text-align: center;
+  }
+}

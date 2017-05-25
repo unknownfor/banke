@@ -55,6 +55,9 @@ Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
     //开团分享、心得分享页面 (预约页面)
     Route::get('/enrol/{uid}/{cid}/{typeid}/{id}', 'InvitationController@enrol_v1_5');
 
+    //规则页面
+    Route::get('/rule', 'RuleController@share_rule_v1_5');
+
 
 });
 
@@ -64,7 +67,11 @@ Route::group(['prefix'=>"v1.5/web",'namespace'=>'Web'],function() {
     //v1.5课程
     Route::get('/course/{id}', 'CourseController@course_v1_5');
 
+    //机构入驻申请
     Route::get('/orgapplyfor', 'OrgController@org_applyfor_v1_5');
+
+    //规则页面
+    Route::get('/rule', 'RuleController@rule_v1_5');
 
 });
 

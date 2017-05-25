@@ -72,6 +72,10 @@ input {
   font: 13.3333px Arial;
   outline: none;
 }
+.noscroll {
+  height: 100%;
+  overflow: hidden;
+}
 #downloadCon {
   margin: 0 auto;
   max-width: 700px;
