@@ -131,7 +131,7 @@ class InvitationController extends Controller
         //随机图
         $word=GroupBuyingWordsRepository::getRandomRecord();
 
-        return view('web.groupbuying.groupbuying-v1_5')->with(compact([
+        return view('web.invite.enrol-v1_5')->with(compact([
             'user',
             'course',
             'org',

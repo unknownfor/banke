@@ -197,8 +197,8 @@ class GroupbuyingWordsRepository
 		$groupbuying = new BankeGroupbuyingWords;
 		$counts = $groupbuying::all()->count();
 		if($counts>0) {
-			$start = rand(1, $counts);
-			$words = $groupbuying->offset($start)->limit(1);
+			$start = rand(0, $counts-1);
+			$words = $groupbuying->offset($start)->limit(1)->first();
 			return $words;
 		}
 		return null;
