@@ -183,7 +183,6 @@ body {
   padding: 0;
   height: 100%;
   max-width: 700px;
-  background-color: #f2f2f2;
   overflow-x: hidden;
   word-wrap: break-word;
   font-size: 14px;
@@ -200,8 +199,6 @@ ul {
 }
 .container {
   font-size: 14px;
-  background-color: #fff;
-  margin-bottom: 15px;
 }
 .container .container-head {
   color: #212121;
@@ -220,18 +217,18 @@ ul {
   align-items: center;
 }
 .container .container-box {
-  padding: 15px;
+  padding: 15px 15px 0 15px;
 }
 .head {
   text-align: center;
 }
 .head .head-bg {
-  height: 180px;
+  height: 130px;
   position: relative;
 }
 .head .head-img {
   position: absolute;
-  top: 145px;
+  top: 95px;
   margin: 0 auto;
   width: 100%;
 }
@@ -245,7 +242,7 @@ ul {
 .head .head-name {
   color: #383D43;
   font-size: 14px;
-  margin: 23px 0px 6px 0px;
+  margin: 26px 0px 6px 0px;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
@@ -267,16 +264,8 @@ ul {
   display: inline-block;
 }
 .org-information.hide {
-  height: 70px;
+  height: 108px;
   overflow: hidden;
-}
-.org-information.animate {
-  -webkit-transform: translateY(100px);
-  -ms-transform: translateY(100px);
-  transform: translateY(100px);
-}
-.org-information .address {
-  margin: 15px 0;
 }
 .org-information .address .address-box {
   display: -webkit-box;
@@ -346,12 +335,43 @@ ul {
 }
 .more-btn {
   text-align: center;
-  width: 100%;
-  height: 45px;
 }
 .more-btn > i {
   color: #fbc02d;
   font-size: 20px;
+}
+.more-btn.none {
+  display: none;
+}
+.reservation {
+  margin-bottom: 20px;
+}
+.reservation .res-box {
+  margin: 25px 30px 0 20px;
+}
+.reservation .res-box .res-box-input {
+  padding-left: 10px;
+  width: 100%;
+  height: 35px;
+  background-color: #F2F2F2;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 20px;
+}
+.reservation .res-btn {
+  margin: 0 20px;
+  height: 35px;
+  background-color: rgba(250, 192, 46, 0.5);
+  border-radius: 4px;
+  color: #ffffff;
+  line-height: 35px;
+  text-align: center;
+}
+.reservation .res-btn.nouse {
+  pointer-events: none;
+}
+.reservation .res-btn.active {
+  background-color: #FBC02D;
 }
 .call-mask {
   height: 100%;
@@ -406,6 +426,10 @@ ul {
 .call-mask.hide {
   display: none;
   opacity: 0;
+}
+.box-line {
+  height: 15px;
+  background-color: #F2F2F2;
 }
 #downloadCon {
   margin: 0 auto;

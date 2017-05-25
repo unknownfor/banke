@@ -37,6 +37,8 @@
         </div>
     </div>
 
+    <div class="box-line"></div>
+
     <div class="org-information hide">
         <!--课程介绍-->
         @if($org['details'])
@@ -49,6 +51,8 @@
                 </div>
             </div>
         @endif
+
+        <div class="box-line"></div>
 
         <div class="address container">
             <div class="container-head">
@@ -67,9 +71,22 @@
             </div>
         </div>
 
+
+
     </div>
 
     <div class="more-btn"><i class="iconfont icon-xialajiantou"></i></div>
+
+    <div class="box-line"></div>
+
+    {{--预约--}}
+    <div class="reservation container">
+        <div class="res-box">
+            <input class="res-box-input" placeholder="请输入手机号" />
+        </div>
+
+        <div class="res-btn nouse"><span>领取50%返现名额</span></div>
+    </div>
 
     <div class="call-mask hide">
         <div class="call-container">
