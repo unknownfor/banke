@@ -192,4 +192,13 @@ class OrgController extends Controller
     {
         return view('admin.org.comment-list');
     }
+
+    //根据机构id 获得机构评论分享比例
+    public function getCommentSharePercent()
+    {
+        $org_id = request('org_id', '');
+        $data = OrgRepository::getCommentSharePercent($org_id);
+        return response()->json($data);
+    }
+
 }

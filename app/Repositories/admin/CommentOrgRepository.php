@@ -314,7 +314,7 @@ class CommentOrgRepository
 		else{
 			$award = $comment->min_view_counts; //金额和要求浏览次数1：1
 		}
-		$order->get_share_comment_course_amount+=$award;  //已经获得的分享金额+=$award
+		$order->get_share_comment_org_amount+=$award;  //已经获得的分享金额+=$award
 		$order->save();
 		return $award;
 	}

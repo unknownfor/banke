@@ -44,7 +44,7 @@ Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
     Route::get('/groupbuying/{id}', 'GroupbuyingController@detailPage_v1_5');
 
     //更新页面浏览次数  type 1:心得分享，  2：机构评论分享  ，3：开团分享      id：记录id
-    Route::get('/updateviewcounts/{type}/{id}', 'CommonController@updateViewCounts_v1_5');
+    Route::post('/updateviewcounts', 'CommonController@updateViewCounts_v1_5');
 
     //课程分享页面
     Route::get('/course/{id}', 'CourseController@share_course_v1_5');

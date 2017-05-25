@@ -26,7 +26,10 @@ class CommonController extends Controller
     }
 
     /*更新相关记录的浏览量*/
-    public function updateViewCounts_v1_5($type,$id){
+    public function updateViewCounts_v1_5(Request $request){
+        $request=$request->all();
+        $type=$request['type'];
+        $id=$request['id'];
         switch($type){
             case 1://课程评论
                 CommentCourseRepository::updateViewCounts($id);

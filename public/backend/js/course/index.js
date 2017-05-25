@@ -45,6 +45,7 @@ $(function(){
                 liveSearchPlaceholder:'输入机构名称进行搜索'
             }).on('changed.bs.select', function (e) {
                 that.refressCategorySelect(e.currentTarget.value);
+                that.refressCommentSharePercent(e.currentTarget.value);
             });
 
             //photoswipe   //图片信息查看  相册、视频信息查看
@@ -312,6 +313,19 @@ $(function(){
                 })
             },
 
+
+            //刷新机构评论返钱比例
+            refressCommentSharePercent:function (id){
+                if(id==-1){
+                    $('#orgSharePercent').text('*%');
+                    return;
+                }
+                var url='/admin/org/getCommentSharePercent',
+                    paraData={org_id:id};
+                window.getDataAsync(url,paraData,function(res){
+                    $('#orgSharePercent').text(res+'%');
+                });
+            },
             CLASS_NAME:'MyCourse'
 
         };

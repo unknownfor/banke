@@ -417,4 +417,17 @@ class OrgRepository
 		}
 		return$arr;
 	}
+
+	/**
+	 * 机构的所属分类 ids
+	 * @author jimmy
+	 * @date   2017-02-23T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function  getCommentSharePercent($id)
+	{
+		$percent=BankeOrg::find($id)['share_comment_org_award'];
+		return $percent;
+	}
 }
