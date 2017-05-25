@@ -192,12 +192,13 @@ class GroupbuyingWordsRepository
 	 * @param  [type]                   $id [description]
 	 * @return [type]                       [description]
 	 */
-	public static  function  getRandomInfo()
+	public static function getRandomRecord()
 	{
-		$counts = BankeGroupbuyingWords::all()->count();
+		$groupbuying = new BankeGroupbuyingWords;
+		$counts = $groupbuying::all()->count();
 		if($counts>0) {
-			$id = rand(1, $counts);
-			$words = BankeGroupbuyingWords::find($id);
+			$start = rand(1, $counts);
+			$words = $groupbuying->offset($start)->limit(1);
 			return $words;
 		}
 		return null;

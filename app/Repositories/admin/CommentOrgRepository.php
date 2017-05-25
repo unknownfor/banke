@@ -264,8 +264,10 @@ class CommentOrgRepository
 						$oldAwardStatus = $commentOrg['award_status'];
 						$request = array('award_status' => 1);
 
-						$comment_award=$commentOrg->min_view_counts;  //奖励金额和要求次数 1:1
 						$that=new CommentOrgRepository();
+
+						$comment_award=$that->getAward($commentOrg);  //奖励金额
+
 						$that->awardUser($oldAwardStatus, $commentOrg, $request,$comment_award);  //奖励相应
 						$commentOrg->award_status=1;
 					}
@@ -280,5 +282,40 @@ class CommentOrgRepository
 			return true;
 		}
 		return false;
+	}
+
+	/*
+	 * 获得奖励金额
+	 * 最后一个奖励金额，会把剩余的钱都给用户
+	 * @author jimmy
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	*/
+	private function getAward($comment){
+		$award=0;
+		$course_id=$comment->course_id;
+		$uid= $comment->uid;
+		$order = OrderRepository::getOrderByCouseIdAndUid($course_id, $uid);
+
+//		已经完成几次
+		$finished_times=BankeCommentOrg::where(['course_id'=>$course_id,'uid'=>$uid,'view_counts_flag'=>1])->count();
+
+		if($finished_times==$order->share_comment_org_counts-1) //最后一次
+		{
+			if($order){
+				$award=$order->share_comment_org_amount - $order->get_share_comment_org_amount;  //剩余的钱
+				if($award<0){
+					$award=0;
+				}
+			}
+		}
+		else{
+			$award = $comment->min_view_counts; //金额和要求浏览次数1：1
+		}
+		$order->get_share_comment_course_amount+=$award;  //已经获得的分享金额+=$award
+		$order->save();
+		return $award;
 	}
 }

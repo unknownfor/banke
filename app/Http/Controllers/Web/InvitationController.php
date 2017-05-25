@@ -129,7 +129,7 @@ class InvitationController extends Controller
         $org=$course->org;
 
         //随机图
-        $word=GroupBuyingWordsRepository::getRandomInfo();
+        $word=GroupBuyingWordsRepository::getRandomRecord();
 
         return view('web.groupbuying.groupbuying-v1_5')->with(compact([
             'user',

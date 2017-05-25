@@ -49,8 +49,11 @@ Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
     //课程分享页面
     Route::get('/course/{id}', 'CourseController@share_course_v1_5');
 
-    //课程分享页面
+    //机构分享页面
     Route::get('/org/{id}', 'OrgController@share_org_v1_5');
+
+    //机构评论分享页面
+    Route::get('/commentorg/{course_id}', 'OrgController@share_comment_org_v1_5');
 
     //开团分享、心得分享页面 (预约页面)
     Route::get('/enrol/{uid}/{cid}/{typeid}/{id}', 'InvitationController@enrol_v1_5');
