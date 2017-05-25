@@ -157,19 +157,37 @@
                                 </div>
                             </div>
 
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>--}}
-                                {{--<div class="col-md-3">--}}
-                                    {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
-                                        {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="课程截止" id="enddated_at" name="enddated_at">--}}
-                                        {{--<span class="input-group-addon">--}}
-                                          {{--<i class="fa fa-calendar"></i>--}}
-                                        {{--</span>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="share_group_buying_counts">{{trans('labels.course.share_group_buying_counts')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="share_group_buying_counts" value="10" name="share_group_buying_counts" placeholder="{{trans('labels.course.share_group_buying_counts')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="share_group_buying_award">{{trans('labels.course.share_group_buying_award')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="share_group_buying_award" value="5" name="share_group_buying_award" placeholder="{{trans('labels.course.share_group_buying_award')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="share_commnet_course_counts">{{trans('labels.course.share_commnet_course_counts')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="share_commnet_course_counts" value="3" name="share_commnet_course_counts" placeholder="{{trans('labels.course.share_commnet_course_counts')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="share_commnet_course_award">{{trans('labels.course.share_commnet_course_award')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="share_commnet_course_award" value="1.2" name="share_group_buying_award" placeholder="{{trans('labels.course.share_commnet_course_award')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label">{{trans('labels.course.details')}}</label>

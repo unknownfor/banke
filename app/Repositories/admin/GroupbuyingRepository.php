@@ -195,9 +195,8 @@ class GroupbuyingRepository
 					//达到浏览量
 					if (($groupbuying->view_counts)%$groupbuying->min_view_counts==0) {
 						$groupbuying->finished_share_counts ++ ;  //完成次数 + 1
-
-						$award=$groupbuying->min_view_counts;  //奖励金额和要求次数 1:1
 						$that=new GroupbuyingRepository();
+						$award=$that->getAward($groupbuying);  //获得奖励的钱
 						$that->awardUser($groupbuying,$award);  //奖励相应
 					}
 					$groupbuying->save();
@@ -211,6 +210,35 @@ class GroupbuyingRepository
 			return true;
 		}
 		return false;
+	}
+
+	/*
+	 * 获得奖励金额
+	 * 最后一个奖励金额，会把剩余的钱都给用户
+	 * @author jimmy
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	*/
+	private function getAward($groupbuying){
+		$award=0;
+		$order = OrderRepository::getOrderByCouseIdAndUid($groupbuying->course_id, $groupbuying->organizer_id);
+		if($groupbuying->finished_share_counts==$groupbuying->max_finished_share_counts) //最后一次
+		{
+			if($order){
+				$award=$order->share_group_buying_amount - $order->get_share_group_buying_amount;  //剩余的钱
+				if($award<0){
+					$award=0;
+				}
+			}
+		}
+		else{
+			$award = $groupbuying->min_view_counts; //金额和要求浏览次数1：1
+		}
+		$order->get_share_group_buying_amount+=$award;  //已经获得的分享金额+=$award
+		$order->save();
+		return $award;
 	}
 
 	/*奖励用户*/

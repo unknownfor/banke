@@ -307,9 +307,12 @@ class OrderRepository
 	 */
 	private  function  execUpadateInvitorInfo($order){
 		$course_id=$order->course_id;
-		$enrol=BankeEnrol::where(['course_id'=>$course_id,'mobile'=>$order->mobile]);
+		$enrol=BankeEnrol::where(['course_id'=>$course_id,'mobile'=>$order->mobile]);  //预约表查询
 		if($enrol && $enrol->count()>0){
-			$invitation_uid=$enrol->first()->invitation_uid;
+			$enrol=$enrol->first();
+			$enrol->order_status=1;  //更新预约信息，表示真实报名了
+			$order->save();
+			$invitation_uid=$enrol->invitation_uid;
 			$invitation_user = BankeUserProfiles::where('uid', $invitation_uid)->lockForUpdate()->first();
 			if ($invitation_user) {
 
@@ -511,5 +514,17 @@ class OrderRepository
 	}
 
 
+	/**
+	 * 通过课程id,用户id，得到订单
+	 * @author jimmy
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public static function getOrderByCouseIdAndUid($course_id,$uid)
+	{
+		$order = BankeCashBackUser::where(['course_id'=>$course_id,'uid'=>$uid,'status'=>1])->first();
+		return $order;
+	}
 
 }
