@@ -20,7 +20,7 @@
 {!! csrf_field() !!}
     <div class="head container"
          data-typeId="2"
-         data-id="0211"
+         data-id="33"
          data-uid="12071072" >
         @if($org['cover'])
             <?php

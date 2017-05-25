@@ -164,7 +164,7 @@ $(function() {
             }
             getDataAsync(url,data,function(){
                 window.showTips('<p>恭喜您，预约成功!</p>',2000);
-            },'post');
+            },null,'post');
 
 
     };
