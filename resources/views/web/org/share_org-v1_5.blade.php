@@ -17,7 +17,11 @@
     <title>机构详情</title>
 </head>
 <body>
-    <div class="head container">
+{!! csrf_field() !!}
+    <div class="head container"
+         data-typeId="2"
+         data-id="0211"
+         data-uid="12071072" >
         @if($org['cover'])
             <?php
             $imgs=explode(',',$org['cover']);
@@ -88,6 +92,7 @@
         <div class="res-btn nouse"><span>领取50%返现名额</span></div>
     </div>
 
+    {{--电话弹窗--}}
     <div class="call-mask hide">
         <div class="call-container">
             @if($org['tel_phone'])

@@ -3,6 +3,9 @@
  */
 $(function() {
 
+    //浏览量
+    viewCounts();
+
     //页面禁止滚动
     window.scrollControl(false);
 
@@ -20,20 +23,15 @@ $(function() {
         }
     });
 
-
-
     $(document).on(window.eventName,function(e){
         toHideMask(e);
     });
-
 
     //点击关闭拨打电话弹窗
     $(document).on( window.eventName,'.quite', function() {
         var $target=$('.call-mask');
         $target.removeClass('show').addClass('hide');
     });
-
-
 
     function toHideMask(e){
         var $target=$(e.srcElement);
@@ -44,7 +42,6 @@ $(function() {
             return;
         }
     };
-
 
     //点击加载更多
     $(document).on(window.eventName,'.more-btn',function() {
@@ -85,19 +82,11 @@ $(function() {
     $(document).on(window.eventName,'.res-btn.active', function () {
         window.controlLoadingBox(true);
         var url='/v1.3/share/doenrol',
-            uid=$('.user').attr('data-uid'),
-            cid=$('.user').attr('data-course-id'),
-            oid=$('.user').attr('data-org-id'),
-            mobile = $('#phone-num').val(),
-            oname=$('.user').attr('data-org-name'),
-            cname=$('.user').attr('data-course-name'),
+            input=$('.res-box-input').val(),
+            uid=$('.head').attr('data-uid'),
             data={
-                org_id:oid,
-                course_id:cid,
+                mobile:input,
                 invitation_uid:uid,
-                mobile:mobile,
-                org_name:oname,
-                course_name:cname
             };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res) {
@@ -105,23 +94,19 @@ $(function() {
             window.controlLoadingBox(false);
             if (res.status_code == 0) {
                 window.showTips('<p>恭喜您，预约成功!</p>',2000);
-                // window.setTimeout(function() {
-                //     showSuccessPage();
-                // },2000);
+                window.setTimeout(function() {
+                    //调用客户端返回方法
+                    backToMypage();
+                },2000);
             }
             else{
-                window.showTips(res.message);
+                window.showTips(res.message,2000);
             }
-        },function(){
+        }, function(){
             window.controlLoadingBox(false);
             $(this).addClass('active');
-        },'post');
+        }, 'post');
     });
-
-
-
-
-
 
     //调用客户端方法,显示拨打电话
     function showCallNumber(){
@@ -140,4 +125,50 @@ $(function() {
            }
        }
     };
+
+    //调用客户端方法，跳转回APP“我的”
+    function backToMypage(){
+        if (window.deviceType.mobile) {
+            if (this.deviceType.android) {
+                //如果方法存在
+                if (typeof AppFunction != "undefined"&&  typeof AppFunction.backToPrePage !='undefined') {
+                    AppFunction.backToPrePage(); //调用app的方法，得到用户的基体信息
+                }
+            }
+            else {
+                //如果方法存在
+                if (typeof backToPrePage != "undefined") {
+                    backToPrePage();//调用app的方法，得到电话
+                }
+            }
+        }
+    };
+
+    /*
+    * 调用浏览量接口
+     typeId  表示页面类型
+     1 课程页面
+     2 表示机构页面
+     3 表示团购页面
+     id   表示记录id
+     id   表示记录id
+     * */
+    function viewCounts() {
+        var url='/v1.5/share/updateviewcounts',
+            box=$('.head'),
+            typeId =box.attr('data-typeId'),
+            id =box.attr('data-id'),
+            data = {
+                typeid:typeId,
+                id:id
+            }
+            getDataAsync(url,data,function(){
+                window.showTips('<p>恭喜您，预约成功!</p>',2000);
+            },'post');
+
+
+    };
+
+
+
 });
