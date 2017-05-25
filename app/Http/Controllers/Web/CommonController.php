@@ -10,6 +10,7 @@ use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use Mockery\CountValidator\Exception;
 use Validator;
 use Illuminate\Http\Request;
 use App\Repositories\admin\CommentCourseRepository;
@@ -28,20 +29,35 @@ class CommonController extends Controller
     /*更新相关记录的浏览量*/
     public function updateViewCounts_v1_5(Request $request){
         $request=$request->all();
-        $type=$request['type'];
+        $type=$request['typeid'];
         $id=$request['id'];
-        switch($type){
-            case 1://课程评论
-                CommentCourseRepository::updateViewCounts($id);
-                break;
-            case 2://机构评论
-                CommentOrgRepository::updateViewCounts($id);
-                break;
-            case 3://开团分享
-                GroupbuyingRepository::updateViewCounts($id);
-                break;
-            default:
-                break;
+        try {
+            switch ($type) {
+                case 1://课程评论
+                    CommentCourseRepository::updateViewCounts($id);
+                    break;
+                case 2://机构评论
+                    CommentOrgRepository::updateViewCounts($id);
+                    break;
+                case 3://开团分享
+                    GroupbuyingRepository::updateViewCounts($id);
+                    break;
+                default:
+                    break;
+            }
+            $param = [
+                'data' => null,
+                'template' => '更新页面浏览量信息成功',
+                'status' => true
+            ];
+        }catch (Exception $e){
+            Flash::error('更新页面浏览量信息失败');
+            $param = [
+                'data' => null,
+                'template' => '更新页面浏览量信息失败',
+                'status' => false
+            ];
         }
+        return ApiResponseService::success('', Code::SUCCESS, $param);
     }
 }
