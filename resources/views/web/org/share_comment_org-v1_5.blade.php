@@ -19,9 +19,9 @@
 <body>
 {!! csrf_field() !!}
     <div class="head container"
-         data-typeId="2"
-         data-id="33"
-         data-uid="12071072" >
+         data-typeId="{{$shareInfo['type_id']}}"
+         data-id="{{$shareInfo['comment_id']}}"
+         data-uid="{{$shareInfo['uid']}}" >
         @if($org['cover'])
             <?php
             $imgs=explode(',',$org['cover']);
@@ -109,5 +109,5 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/org/commentOrgv1.5.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/org/commentOrg-v1.5.js" type="text/javascript"></script>
 </html>

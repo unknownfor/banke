@@ -94,9 +94,9 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="comment_award">{{trans('labels.org.comment_award')}}</label>
+                          <label class="col-md-1 control-label" for="share_comment_org_award">{{trans('labels.org.share_comment_org_award')}}%</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$org['comment_award']}} </div>
+                              <div class="form-control form-control-static"> {{$org['share_comment_org_award']}} </div>
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
