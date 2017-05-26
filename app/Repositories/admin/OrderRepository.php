@@ -479,29 +479,52 @@ class OrderRepository
 		DB::transaction(function () use ($request) {
 			try{
 				$input = $request->all();
-				$role = new BankeCashBackUser;
+				$order = new BankeCashBackUser;
 				$input['order_id'] = date("YmdHis").mt_rand(10, 99);
 				$course = BankeCourse::find($input['course_id']);
+
+				$tuition=$input['tuition_amount'];
 				$input['period'] = $course['period'];
-				$check_in_config = BankeDict::find(3);
-				$do_task_config = BankeDict::find(4);
-				if($course->checkin_award){
-					$input['check_in_amount']=moneyFormat(($input['tuition_amount'] * $course->checkin_award / 100));
-				}else{
-					$input['check_in_amount'] = moneyFormat(($input['tuition_amount'] * $check_in_config['value'] / 100));
-				}
-				if($course->task_award){
-					$input['do_task_amount']=moneyFormat(($input['tuition_amount'] * $course->task_award / 100));
-				}else{
-					$input['do_task_amount'] = moneyFormat(($input['tuition_amount'] * $do_task_config['value'] / 100));
-				}
+				$input['check_in_amount']=moneyFormat($tuition * $course->checkin_award / 100);
+				$input['do_task_amount']=moneyFormat($tuition * $course->task_award / 100);
+
+				//获取课程信息，计算任务分享信息
+
+				//course
+				$commentCourseAward=moneyFormat($tuition*$course['share_comment_course_award']/100);
+				$commentCourseCounts=$course['share_comment_course_counts'];//最多可以奖励次数
+				$input['share_comment_course_amount'] = $commentCourseAward;
+				$input['share_comment_course_counts'] = $commentCourseCounts;
+				$input['share_comment_course_view_counts'] = $this->getViewCountsByAward($commentCourseAward,$commentCourseCounts);  //浏览多少次达到要求
+
+				$org=$course->org;
+
+				//org
+				$commentOrgAward=moneyFormat($tuition*$org['share_comment_org_award']/100);
+				$commentOrgCounts=$org['share_comment_org_counts'];//最多可以奖励次数
+				$input['share_comment_org_amount'] =$commentOrgAward;
+				$input['share_comment_org_counts'] = $commentOrgCounts;
+				$input['share_comment_org_view_counts'] = $this->getViewCountsByAward($commentOrgAward,$commentOrgCounts);
+
+				//groupbuying
+				$gbAllAward=moneyFormat($tuition*$course['group_buying_award']/100);
+				$input['group_buying_amount'] = $gbAllAward;
+
+				$gbAward=moneyFormat($tuition*$course['share_group_buying_award']/100);
+				$gbCounts=$course['share_group_buying_counts'];//最多可以奖励次数
+
+				$input['share_group_buying_amount'] = $gbAward;
+				$input['share_group_buying_counts'] = $gbCounts;
+				$input['share_group_buying_view_counts'] = $this->getViewCountsByAward($gbAward,$gbCounts);
+
 
 				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
 
 				$cur_user = Auth::user();
 				$input['operator_uid'] = $cur_user->id;
+
 				//创建新订单
-				$role->fill($input)->save();
+				$order->fill($input)->save();
 
 				Flash::success(trans('alerts.order.created_success'));
 				return true;
@@ -511,6 +534,19 @@ class OrderRepository
 				return false;
 			}
 		});
+	}
+
+
+	/*
+	 * 分享的页面需要浏览几次才能达到奖励标准，和金额1:1对应。向下取整
+	 * @author jimmy
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  $award [number]   奖项
+	 * @return $maxCounts [number]   最多可以获得多少次奖励
+	 * */
+	private static function getViewCountsByAward($award,$maxCounts){
+		$temp =floor ($award/$maxCounts);
+		return $temp;
 	}
 
 

@@ -252,7 +252,7 @@ return [
 		'category1' => '一级分类',
 		'category2' => '二级分类',
 		'tags' => '标签',
-		'comment_award'=>'评论奖励',
+		'share_comment_org_award'=>'评论奖励比例',
 		'comment_list'=>'评论列表',
 		'confirm' => '已验证',
 		'active' => '<span class="label label-success"> 已验证 </span>',

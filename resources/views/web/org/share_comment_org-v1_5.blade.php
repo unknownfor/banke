@@ -19,9 +19,9 @@
 <body>
 {!! csrf_field() !!}
     <div class="head container"
-         data-typeId="2"
-         data-id="33"
-         data-uid="12071072" >
+         data-typeId="{{$shareInfo['type_id']}}"
+         data-id="{{$shareInfo['comment_id']}}"
+         data-uid="{{$shareInfo['uid']}}" >
         @if($org['cover'])
             <?php
             $imgs=explode(',',$org['cover']);

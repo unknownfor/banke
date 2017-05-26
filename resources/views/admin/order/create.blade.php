@@ -97,7 +97,7 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.order.check_in_days')}}</label>
-                                <div class="col-md-4">
+                                <div class="col-md-7">
                                     <input type="text" class="form-control form-filter input-sm" placeholder="{{trans('labels.order.check_in_days')}}" name="check_in_days">
                                 </div>
                             </div>

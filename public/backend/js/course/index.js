@@ -395,5 +395,6 @@ $(function(){
             $('#target-area').text(val);
             //相册
             $('#cover').val(course.getCoverImg().join(','));
+            course.calcTotalTaskNumber();
         };
 });

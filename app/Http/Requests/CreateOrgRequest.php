@@ -26,6 +26,7 @@ class CreateOrgRequest extends Request
         return [
 //            'id' => 'numeric',
             'name' => 'required',
+            'short_name'=>'required',
             'city' => 'required',
             'tel_phone' => 'required',
             'address' => 'required',
@@ -49,6 +50,7 @@ class CreateOrgRequest extends Request
         return [
             'id' => trans('labels.id'),
             'name' => trans('labels.org.name'),
+            'short_name' => trans('labels.org.short_name'),
             'city' => trans('labels.org.city'),
             'tel_phone' => trans('labels.org.tel_phone'),
             'address' => trans('labels.org.address')
