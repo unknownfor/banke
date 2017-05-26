@@ -98,17 +98,12 @@
                                     <input type="text" class="form-control" id="checkin_award" name="checkin_award" placeholder="{{trans('labels.course.checkin_award')}}" value="3">
                                     <div class="form-control-focus"> </div>
                                 </div>
-                                {{--<label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[0]['value']}}%</span> 作为默认比例</label>--}}
                             </div>
 
                             <div class="line">
 
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-1 control-label" for="task_award">{{trans('labels.course.task_award')}}(%)</label>
-                                    {{--<div class="col-md-3">--}}
-                                        {{--<input type="text" class="form-control" id="task_award" readonly name="task_award" placeholder="{{trans('labels.course.task_award')}}">--}}
-                                        {{--<div class="form-control-focus"> </div>--}}
-                                    {{--</div>--}}
                                     <div class="col-md-9">
                                         <input  type="text" class="form-control" id="task_award" readonly name="task_award" placeholder="{{trans('labels.course.task_award')}}" value="47">
                                         <label class="col-md-6 control-label">任务奖励比例 = 分享开团比例  +分享课程心得比例 + <span id="orgSharePercent">*%(分享机构评论比例)</span> + 开团可获最高奖励比例</label>
@@ -165,7 +160,6 @@
                                     <input type="text" class="form-control" id="z_award_amount" name="z_award_amount" placeholder="{{trans('labels.course.z_award_amount')}}" value="3">
                                     <div class="form-control-focus"> </div>
                                 </div>
-                                <label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[2]['value']}}%</span> 作为默认比例</label>
                             </div>
                             {{--<div class="form-group form-md-line-input">--}}
                                 {{--<label class="col-md-1 control-label" for="comment_award">{{trans('labels.course.comment_award')}}</label>--}}

@@ -97,7 +97,6 @@
                               <input type="text" class="form-control" id="checkin_award" name="checkin_award" placeholder="{{trans('labels.course.checkin_award')}}" value="{{$course['checkin_award'] or $percent[0]['value']}}">
                               <div class="form-control-focus"> </div>
                           </div>
-                          <label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[0]['value'] }}%</span> 作为默认比例</label>
                       </div>
 
 
@@ -107,14 +106,14 @@
                               <label class="col-md-1 control-label" for="task_award">{{trans('labels.course.task_award')}}(%)</label>
                               <div class="col-md-9">
                                   <input  type="text" class="form-control" id="task_award" readonly name="task_award" placeholder="{{trans('labels.course.task_award')}}" value="{{$course['task_award']}}">
-                                  <label class="col-md-6 control-label">任务奖励比例 = 分享开团比例  +分享课程心得比例 + <span id="orgSharePercent">{{$myOrg['share_comment_org_award']}}%(分享机构评论比例)</span> + 开团可获最高奖励比例</label>
+                                  <label class="col-md-6 control-label">任务奖励比例 = 分享开团比例  +分享课程心得比例 + <span id="orgSharePercent" data-percent="{{$myOrg['share_comment_org_award']}}">{{$myOrg['share_comment_org_award']}}%(分享机构评论比例)</span> + 开团可获最高奖励比例</label>
                               </div>
                           </div>
 
                           <div class="form-group form-md-line-input">
                               <label class="col-md-1 control-label" for="group_buying_award">{{trans('labels.course.group_buying_award')}}</label>
                               <div class="col-md-9">
-                                  <input type="number" step="0.01" class="form-control my-task-input" id="group_buying_award" value="{{$course['task_award']}}" name="group_buying_award" placeholder="{{trans('labels.course.group_buying_award')}}">
+                                  <input type="number" step="0.01" class="form-control my-task-input" id="group_buying_award" value="{{$course['group_buying_award']}}" name="group_buying_award" placeholder="{{trans('labels.course.group_buying_award')}}">
                                   <div class="form-control-focus"> </div>
                               </div>
                           </div>
@@ -122,7 +121,7 @@
                           <div class="form-group form-md-line-input">
                               <label class="col-md-1 control-label" for="share_group_buying_counts">{{trans('labels.course.share_group_buying_counts')}}</label>
                               <div class="col-md-9">
-                                  <input type="number" step="1" class="form-control" id="share_group_buying_counts" value="{{$course['task_award']}}" name="share_group_buying_counts" placeholder="{{trans('labels.course.share_group_buying_counts')}}">
+                                  <input type="number" class="form-control" id="share_group_buying_counts" value="{{$course['share_group_buying_counts']}}" name="share_group_buying_counts" placeholder="{{trans('labels.course.share_group_buying_counts')}}">
                                   <div class="form-control-focus"> </div>
                               </div>
                           </div>
@@ -155,6 +154,13 @@
 
                       </div>
 
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.z_award_amount')}}(%)</label>
+                          <div class="col-md-4">
+                              <input type="text" class="form-control" id="z_award_amount" name="z_award_amount" placeholder="{{trans('labels.course.z_award_amount')}}" value="3">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.course.check_in_days')}}</label>

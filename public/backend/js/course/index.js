@@ -28,8 +28,13 @@ $(function(){
         /**MyCourse**/
         var MyCourse=function(){
             this.init();
-            var that=this;
-            that.taskTotalNum=0;  //总的任务值
+            var that=this,
+                orgCommentSharePercent=$('#orgSharePercent').attr('data-percent');
+            if(orgCommentSharePercent) {
+                that.taskTotalNum = Number(orgCommentSharePercent);  //总的任务值
+            }else{
+                that.taskTotalNum = 0;  //总的任务值
+            }
             /*上传文件*/
             $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadImgEditor'));
 
