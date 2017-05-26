@@ -27,27 +27,35 @@
          data-type-id="{{$typeId}}"
          data-course-name="{{$course['name']}}"
     >
-        <img  class="slogen-bg" src="{{$word['img_url_web']}}">
+        @if($word['img_url_web'])
+            <?php
+            $imgs=explode(',',$word['img_url_web']);
+            ?>
+            <img class="slogen-bg" src="{{$word['img_url_web']}}" />
+        @else
+            <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
+        @endif
+
+
 
         <div class="user-info">
             <div class="info-left">
                 <div class="user-img">
                     <img src="{{$user['avatar']}}@40h_40w_2e" />
                 </div>
-                <div class="user-title">
-                    <img src="../../../../public/front/assets/img/invitation/v1.5/title.png " />
-                </div>
+                <div class="user-title"></div>
             </div>
 
             <div class="info-right">
-                <div class="user-say">
-                    <span class="user-name">{{$user['name']}}</span>
-                    <span class="user-slogen">一个人学习太无聊了</span>
-                </div>
+                <div class="user-name"><span>{{$user['name']}}</span>说:</div>
             </div>
         </div>
 
+
+
     </div>
+
+
     <div class="box1 process hide">
         <h3>报名流程</h3>
         <div class="rules first"><div class="num">1</div><div class="txt">留下您的联系方式</div></div>
