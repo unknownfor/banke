@@ -12,14 +12,12 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link href="/front/assets/css/invitation/v1.3/invitation.css" rel="stylesheet" type="text/css"/>
-    <link href="/front/assets/css/invitation/v1.3/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link href="/front/assets/css/invitation/v1.5/enrol.css" rel="stylesheet" type="text/css"/>
     <title>{{$course['name']}}</title>
 </head>
 <body>
 {!! csrf_field() !!}
-<div id="invitation">
-    <img src="{{$word['img_url_web']}}">
+<div id="enrol">
     <div class="box user"
          data-uid="{{$user['uid']}}"
          data-course-id="{{$course['id']}}"
@@ -29,57 +27,26 @@
          data-type-id="{{$typeId}}"
          data-course-name="{{$course['name']}}"
     >
-        {{--机构banner图片--}}
-            @if($org['cover'])
-                <?php
-                $imgs=explode(',',$org['cover']);
-                ?>
-                <img class="head-bg" src="{{$imgs[0]}}" />
-            @else
-                <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
-            @endif
+        <img  class="slogen-bg" src="{{$word['img_url_web']}}">
 
-                @if($user['avatar'])
-                    <?php
-                    $imgs=explode(',',$user['avatar']);
-                    ?>
-                    <div class="head-img">
-                        <img src="{{$imgs[0]}}@70h_70w_2e"/>
-                    </div>
-                @else
-                    <div class="head-img">
-                        <img src="{{asset('http://pic.hisihi.com/2016-10-22/1477107042521143.png@70h_70w_2e')}}" />
-                    </div>
-                @endif
-                <div class="info-box">
-                    <p class="txt-one">您的好友<span class="user-friend">{{$user['name']}}</span>已经报名</p>
-                    <p class="txt-two">他帮您免去了一半学费</p>
-                    <div class="org-name">{{$org['name']}}</div>
-                    <div class="class">
-                        <div class="class-left">
-                            <a href="{{$course['link_url']}}">
-                                <img src="{{$course['cover']}}@60h_60w_2e">
-                            </a>
-                        </div>
-                        <div class="class-middle">
-                            <div class="name">{{$course['name']}}</div>
-                            <div class="save">
-                                <span class="save-img"></span>
-                                <span class="save-num">{{$course['checkin_award']}}%</span>
-                            </div>
-                        </div>
-                        <div class="class-right">
-                            <div class="price"><span class="price-info">参考价</span><span id="price-num">￥{{$course['price']}}</span></div>
-                            <div class="real-price"><span class="price-info">最高奖励金额</span><span id="price-real-num">￥{!! $course['price'] * $course['checkin_award']/100!!}</span></div>
-                        </div>
-                    </div>
+        <div class="user-info">
+            <div class="info-left">
+                <div class="user-img">
+                    <img src="{{$user['avatar']}}@40h_40w_2e" />
                 </div>
-    </div>
-    <div class="box line"></div>
-    <div class="box join">
-        <p class="slogen">用一半学费上好课！</p>
-        <div class="btn" id="register-area">和好友一起学习</div>
-        <div class="txt"><a href="{{$ruleLinkUrl}}">如何只花一半学费上好课<i class="iconfont">&#xe600;</i></a></div>
+                <div class="user-title">
+                    <img src="../../../../public/front/assets/img/invitation/v1.5/title.png " />
+                </div>
+            </div>
+
+            <div class="info-right">
+                <div class="user-say">
+                    <span class="user-name">{{$user['name']}}</span>
+                    <span class="user-slogen">一个人学习太无聊了</span>
+                </div>
+            </div>
+        </div>
+
     </div>
     <div class="box1 process hide">
         <h3>报名流程</h3>
@@ -111,5 +78,5 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/invitaion/enrol.v1.3.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/invitaion/enrol.v1.5.js" type="text/javascript"></script>
 </html>

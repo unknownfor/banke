@@ -13,7 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/org/v1.5/commentOrg.css" rel="stylesheet">
-    <link href="/front/assets/css/org/v1.5/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link href="/front/assets/css/org/v1.5/iconfont/iconfont.css" rel=s"stylesheet" type="text/css"/>
     <title>机构评论</title>
 </head>
 <body>
@@ -76,7 +76,6 @@
         </div>
 
 
-
     </div>
 
     <div class="more-btn"><i class="iconfont icon-xialajiantou"></i></div>
@@ -109,5 +108,5 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/org/commentOrgv1.5.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/org/commentOrg-v1.5.js" type="text/javascript"></script>
 </html>
