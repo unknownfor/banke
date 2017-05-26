@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeCourse;
 use App\Repositories\admin\OrgRepository;
 use App\Repositories\admin\OrgApplyForRepository;
 use App\Services\ApiResponseService;
@@ -48,7 +49,7 @@ class OrgController extends Controller
     public function share_comment_org_v1_5($courseid,$uid,$comment_id)
     {
         $org = BankeCourse::find($courseid)->org;
-        return view('web.comment.share_comment_org-v1_5')->with(compact(['org','uid','$comment_id']));
+        return view('web.org.share_comment_org-v1_5')->with(compact(['org','uid','$comment_id']));
     }
 
     /**申请入驻机构页面**/
