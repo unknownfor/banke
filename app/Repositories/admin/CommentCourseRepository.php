@@ -137,7 +137,7 @@ class CommentCourseRepository
 				$comment_award = $course['comment_award'];  //当前课程的奖励金额,v1.5 不是固定的，而是动态计算得到
 			}
 			if($comment_award) {
-				AppUserRepository::execUpdateUserAccountInfo($comment['uid'], $comment_award, 1, 4);  //更新用户账户金额信息以及添加变动记录
+				AppUserRepository::execUpdateUserAccountInfo($comment['uid'], $comment_award, 1, 5);  //更新用户账户金额信息以及添加变动记录
 
 				//消息记录
 				$message = [

@@ -615,7 +615,9 @@ class AppUserRepository
 				'PUNISHMENT' => '惩罚',
 				'REFUND' => '退款',
 				'WITHDRAW_FAIL' => '提现失败退回',
-				'COMMENT'=>'评论奖励'，
+				'COMMENT'=>'评论奖励'，//v1.5之后区分 COMMENT_ORG COMMENT_COURSE
+				'COMMENT_ORG'=> '机构评论奖励',
+				'COMMENT_COURSE' => '课程心得奖励',
 				'SHARE_GROUP_BUYING'=>'开团分享'
 			],
 		 *
@@ -642,13 +644,17 @@ class AppUserRepository
 					$user_profile->get_do_task_amount += $award;
 					$businessTypeIndex=2;
 					break;
-				case 4:  //评论机构、课程
-					$user_profile->get_do_task_amount += $award;
-					$businessTypeIndex=9;
-					break;
-				case 5:  //开团分享
+				case 4:  //机构评论
 					$user_profile->get_do_task_amount += $award;
 					$businessTypeIndex=10;
+					break;
+				case 5:  //课程心得
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=11;
+					break;
+				case 6:  //开团分享
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=12;
 					break;
 				default:
 					break;

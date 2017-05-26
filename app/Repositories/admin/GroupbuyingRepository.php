@@ -244,7 +244,7 @@ class GroupbuyingRepository
 	/*奖励用户*/
 	private function awardUser($groupbuying,$groupbuying_award){
 		if($groupbuying_award) {
-			AppUserRepository::execUpdateUserAccountInfo($groupbuying['organizer_id'], $groupbuying_award, 1, 5);  //更新用户账户金额信息以及添加变动记录
+			AppUserRepository::execUpdateUserAccountInfo($groupbuying['organizer_id'], $groupbuying_award, 1, 6);  //更新用户账户金额信息以及添加变动记录
 
 			//消息记录
 			$message = [
