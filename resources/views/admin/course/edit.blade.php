@@ -107,7 +107,7 @@
                               <label class="col-md-1 control-label" for="task_award">{{trans('labels.course.task_award')}}(%)</label>
                               <div class="col-md-9">
                                   <input  type="text" class="form-control" id="task_award" readonly name="task_award" placeholder="{{trans('labels.course.task_award')}}" value="{{$course['task_award']}}">
-                                  <label class="col-md-6 control-label">任务奖励比例 = 分享开团比例  +分享课程心得比例 + <span id="orgSharePercent">{{$org['share_comment_org_award']}}%(分享机构评论比例)</span> + 开团可获最高奖励比例</label>
+                                  <label class="col-md-6 control-label">任务奖励比例 = 分享开团比例  +分享课程心得比例 + <span id="orgSharePercent">{{$myOrg['share_comment_org_award']}}%(分享机构评论比例)</span> + 开团可获最高奖励比例</label>
                               </div>
                           </div>
 
