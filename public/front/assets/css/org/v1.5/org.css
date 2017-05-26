@@ -344,7 +344,7 @@ ul {
   display: none;
 }
 .reservation {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 .reservation .res-box {
   margin: 25px 30px 0 20px;
