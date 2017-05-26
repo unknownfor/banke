@@ -95,10 +95,10 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.checkin_award')}}(%)</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="checkin_award" name="checkin_award" placeholder="{{trans('labels.course.checkin_award')}}" value="">
+                                    <input type="text" class="form-control" id="checkin_award" name="checkin_award" placeholder="{{trans('labels.course.checkin_award')}}" value="3">
                                     <div class="form-control-focus"> </div>
                                 </div>
-                                <label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[0]['value']}}%</span> 作为默认比例</label>
+                                {{--<label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[0]['value']}}%</span> 作为默认比例</label>--}}
                             </div>
 
                             <div class="line">
@@ -109,14 +109,24 @@
                                         {{--<input type="text" class="form-control" id="task_award" readonly name="task_award" placeholder="{{trans('labels.course.task_award')}}">--}}
                                         {{--<div class="form-control-focus"> </div>--}}
                                     {{--</div>--}}
-                                    <input type="text" class="form-control" id="task_award" readonly name="task_award" placeholder="{{trans('labels.course.task_award')}}">
-                                    <label class="col-md-6 control-label">任务奖励比例 = 分享开团比例  +分享课程心得比例 + <span id="orgSharePercent">*%(分享机构评论比例)</span> + 介绍费比例</label>
+                                    <div class="col-md-9">
+                                        <input  type="text" class="form-control" id="task_award" readonly name="task_award" placeholder="{{trans('labels.course.task_award')}}" value="47">
+                                        <label class="col-md-6 control-label">任务奖励比例 = 分享开团比例  +分享课程心得比例 + <span id="orgSharePercent">*%(分享机构评论比例)</span> + 开团可获最高奖励比例</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-md-line-input">
+                                    <label class="col-md-1 control-label" for="group_buying_award">{{trans('labels.course.group_buying_award')}}</label>
+                                    <div class="col-md-9">
+                                        <input type="number" step="0.01" class="form-control my-task-input" id="group_buying_award" value="40.25" name="group_buying_award" placeholder="{{trans('labels.course.group_buying_award')}}">
+                                        <div class="form-control-focus"> </div>
+                                    </div>
                                 </div>
 
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-1 control-label" for="share_group_buying_counts">{{trans('labels.course.share_group_buying_counts')}}</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="share_group_buying_counts" value="10" name="share_group_buying_counts" placeholder="{{trans('labels.course.share_group_buying_counts')}}">
+                                        <input type="number" step="1" class="form-control" id="share_group_buying_counts" value="10" name="share_group_buying_counts" placeholder="{{trans('labels.course.share_group_buying_counts')}}">
                                         <div class="form-control-focus"> </div>
                                     </div>
                                 </div>
@@ -124,7 +134,7 @@
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-1 control-label" for="share_group_buying_award">{{trans('labels.course.share_group_buying_award')}}</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="share_group_buying_award" value="5" name="share_group_buying_award" placeholder="{{trans('labels.course.share_group_buying_award')}}">
+                                        <input type="number" step="0.01" class="form-control my-task-input" id="share_group_buying_award" value="5" name="share_group_buying_award" placeholder="{{trans('labels.course.share_group_buying_award')}}">
                                         <div class="form-control-focus"> </div>
                                     </div>
                                 </div>
@@ -132,7 +142,7 @@
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-1 control-label" for="share_comment_course_counts">{{trans('labels.course.share_comment_course_counts')}}</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="share_comment_course_counts" value="3" name="share_comment_course_counts" placeholder="{{trans('labels.course.share_comment_course_counts')}}">
+                                        <input type="number" step="1" class="form-control" id="share_comment_course_counts" value="3" name="share_comment_course_counts" placeholder="{{trans('labels.course.share_comment_course_counts')}}">
                                         <div class="form-control-focus"> </div>
                                     </div>
                                 </div>
@@ -140,12 +150,16 @@
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-1 control-label" for="share_comment_course_award">{{trans('labels.course.share_comment_course_award')}}</label>
                                     <div class="col-md-9">
-                                        <input type="text" class="form-control" id="share_comment_course_award" value="1.2" name="share_group_buying_award" placeholder="{{trans('labels.course.share_comment_course_award')}}">
+                                        <input type="number" step="0.01" class="form-control my-task-input" id="share_comment_course_award" value="1.2" name="share_comment_course_award" placeholder="{{trans('labels.course.share_comment_course_award')}}">
                                         <div class="form-control-focus"> </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group form-md-line-input">
+
+
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.z_award_amount')}}(%)</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="z_award_amount" name="z_award_amount" placeholder="{{trans('labels.course.z_award_amount')}}" value="3">
@@ -153,9 +167,6 @@
                                 </div>
                                 <label class="col-md-3 control-label">不填写将使用 <span class="default-txt">{{$percent[2]['value']}}%</span> 作为默认比例</label>
                             </div>
-
-                            </div>
-
                             {{--<div class="form-group form-md-line-input">--}}
                                 {{--<label class="col-md-1 control-label" for="comment_award">{{trans('labels.course.comment_award')}}</label>--}}
                                 {{--<div class="col-md-9">--}}

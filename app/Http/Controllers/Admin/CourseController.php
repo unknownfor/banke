@@ -98,9 +98,10 @@ class CourseController extends Controller
         $org = new BankeOrg;
         $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
         $course = BankeCourse::find($id);
+        $myOrg=$course->org->get();
         $percent=$this->getDict();
         $allCategories=OrgRepository::getCategory2Info($course['org_id']);
-        return view('admin.course.edit')->with(compact(['course', 'orgs','percent','allCategories']));
+        return view('admin.course.edit')->with(compact(['course', 'orgs','percent','allCategories','myOrg']));
     }
     /**
      * 修改课程资料

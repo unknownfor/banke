@@ -288,6 +288,7 @@ return [
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
+		'group_buying_award'=>'开团可获最高奖励比例(%)',
 		'share_group_buying_counts'=>'可分享开团次数',
 		'share_group_buying_award'=>'分享开团奖励比例(%)',
 		'share_comment_course_counts'=>'可分享心得次数',

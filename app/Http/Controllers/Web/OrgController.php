@@ -45,10 +45,10 @@ class OrgController extends Controller
     }
 
     /**评论分享页面**/
-    public function share_comment_org_v1_5($courseid)
+    public function share_comment_org_v1_5($courseid,$uid,$comment_id)
     {
         $org = BankeCourse::find($courseid)->org;
-        return view('web.comment.share_comment_org-v1_5')->with(compact(['org']));
+        return view('web.comment.share_comment_org-v1_5')->with(compact(['org','uid','$comment_id']));
     }
 
     /**申请入驻机构页面**/
