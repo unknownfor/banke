@@ -129,7 +129,7 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/GroupbuyingRoute.php');
 
         //开团标语
-        require(__DIR__ . '/Routes/GroupbuyingwordsRoute.php');
+        require(__DIR__ . '/Routes/GroupbuyingWordsRoute.php');
 
     });
 });
