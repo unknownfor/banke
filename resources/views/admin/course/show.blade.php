@@ -81,23 +81,66 @@
                               <input type="text" readonly class="form-control" value="{{$course['checkin_award'] or $percent[0]['value']}}">
                           </div>
                       </div>
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="task_award">{{trans('labels.course.task_award')}}(%)</label>
-                          <div class="col-md-4" style="line-height: 60px;">
-                              <input type="text" readonly class="form-control" value="{{$course['task_award'] or $percent[1]['value']}}">
+
+
+                      <div class="line">
+
+                          <div class="form-group form-md-line-input">
+                              <label class="col-md-1 control-label" for="task_award">{{trans('labels.course.task_award')}}(%)</label>
+                              <div class="col-md-9">
+                                  <input  type="text" class="form-control" id="task_award" readonly name="task_award" placeholder="{{trans('labels.course.task_award')}}" value="{{$course['task_award']}}">
+                                  <label class="col-md-6 control-label">任务奖励比例 = 分享开团比例  +分享课程心得比例 + 分享机构评论比例 + 开团可获最高奖励比例</label>
+                              </div>
                           </div>
-                      </div>
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="z_award_amount">{{trans('labels.course.z_award_amount')}}(%)</label>
-                          <div class="col-md-4" style="line-height: 60px;">
-                              <input type="text" readonly class="form-control" value="{{$course['z_award_amount'] or $percent[2]['value']}}">
+
+                          <div class="form-group form-md-line-input">
+                              <label class="col-md-1 control-label" for="group_buying_award">{{trans('labels.course.group_buying_award')}}</label>
+                              <div class="col-md-9">
+                                  <input type="number" step="0.01" readonly class="form-control my-task-input" id="group_buying_award" value="{{$course['group_buying_award']}}" name="group_buying_award" placeholder="{{trans('labels.course.group_buying_award')}}">
+                                  <div class="form-control-focus"> </div>
+                              </div>
                           </div>
+
+                          <div class="form-group form-md-line-input">
+                              <label class="col-md-1 control-label" for="share_group_buying_counts">{{trans('labels.course.share_group_buying_counts')}}</label>
+                              <div class="col-md-9">
+                                  <input type="number" class="form-control" readonly id="share_group_buying_counts" value="{{$course['share_group_buying_counts']}}" name="share_group_buying_counts" placeholder="{{trans('labels.course.share_group_buying_counts')}}">
+                                  <div class="form-control-focus"> </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group form-md-line-input">
+                              <label class="col-md-1 control-label" for="share_group_buying_award">{{trans('labels.course.share_group_buying_award')}}</label>
+                              <div class="col-md-9">
+                                  <input type="number" step="0.01" readonly class="form-control my-task-input" id="share_group_buying_award" value="{{$course['share_group_buying_award']}}" name="share_group_buying_award" placeholder="{{trans('labels.course.share_group_buying_award')}}">
+                                  <div class="form-control-focus"> </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group form-md-line-input">
+                              <label class="col-md-1 control-label" for="share_comment_course_counts">{{trans('labels.course.share_comment_course_counts')}}</label>
+                              <div class="col-md-9">
+                                  <input type="number" step="1" readonly class="form-control" id="share_comment_course_counts" value="{{$course['share_comment_course_counts']}}" name="share_comment_course_counts" placeholder="{{trans('labels.course.share_comment_course_counts')}}">
+                                  <div class="form-control-focus"> </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group form-md-line-input">
+                              <label class="col-md-1 control-label" for="share_comment_course_award">{{trans('labels.course.share_comment_course_award')}}</label>
+                              <div class="col-md-9">
+                                  <input type="number" step="0.01" readonly class="form-control my-task-input" id="share_comment_course_award" value="{{$course['share_comment_course_award']}}" name="share_comment_course_award" placeholder="{{trans('labels.course.share_comment_course_award')}}">
+                                  <div class="form-control-focus"> </div>
+                              </div>
+                          </div>
+
+
+
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="comment_award">{{trans('labels.course.comment_award')}}</label>
-                          <div class="col-md-9">
-                              <input type="text" readonly class="form-control" value="{{$course['comment_award']}}">
+                          <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.z_award_amount')}}(%)</label>
+                          <div class="col-md-4">
+                              <input type="text" class="form-control" readonly id="z_award_amount" name="z_award_amount" placeholder="{{trans('labels.course.z_award_amount')}}" value="{{$course['z_award_amount']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
