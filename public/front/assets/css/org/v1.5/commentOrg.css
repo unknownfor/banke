@@ -326,6 +326,10 @@ ul {
   background-size: 79px 33px;
   background-position: 1px 0px;
 }
+.org-information .address.none {
+  display: none;
+  opacity: 0;
+}
 .org-information .class-info {
   color: #383D43;
   line-height: 24px;

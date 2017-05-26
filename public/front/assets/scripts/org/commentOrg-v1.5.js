@@ -53,8 +53,10 @@ $(function() {
     //展示机构信息
     function showOrgInfo () {
         var box=$('.org-information'),
+            add=$('.address'),
             btn=$('.more-btn');
         box.removeClass('hide');
+        add.removeClass('none');
         btn.addClass('none');
     }
 
