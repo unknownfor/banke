@@ -86,23 +86,22 @@
                 <div class="user-title"></div>
             </div>
 
-            @if($user['avatar'])
-                <?php
-                $imgs=explode(',',$user['avatar']);
-                ?>
+            @if($members)
+                @foreach($members as $v)
                     <div class="follower">
                         {{--@foreach($user->avatar as $val)--}}
-                            {{--<img src="{{$val['name']}}" />--}}
-                            <img src="{{$user['avatar']}}" />
+                            <label>{{$v['name']}}</label>
+                            <img src="{{$v['avatar']}}" />
                         {{--@endforeach--}}
                     </div>
+                @endforeach
             @else
                 <div class="follower" style="display: none"></div>
             @endif
 
-            <div class="follower">
-                <img src="{{$user['avatar']}}" />
-            </div>
+            {{--<div class="follower">--}}
+                {{--<img src="{{$user['avatar']}}" />--}}
+            {{--</div>--}}
 
             <div id="more">
                 <img src="/front/assets/img/invitation/v1.5/head.png" />

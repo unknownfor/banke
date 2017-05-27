@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeGroupbuying;
+use App\Models\Banke\BankeGroupbuyingUsers;
 use Carbon\Carbon;
 use Flash;
 use DB;
@@ -258,5 +259,27 @@ class GroupbuyingRepository
 			BankeMessage::create($message);
 		}
 		return true;
+	}
+
+	/*根据团id得到用户信息*/
+	public static function getAllMembersByGroupbuyingId($id)
+	{
+		$users = BankeGroupbuyingUsers::where('group_buying_id',$id)->get();
+		if ($users) {
+			foreach ($users as &$v) {
+				$user=$v->authenUser;
+				$name=$user['real_name'];
+				$avatar=$name['avatar'];
+				if(!$name){
+					$name=$v->user['name'];
+				}
+				$v['name']=$name;
+				if(!$avatar){
+					$avatar='http://pic.hisihi.com/2016-10-22/1477107042521143.png';
+				}
+				$v['avatar']=$avatar;
+			}
+		}
+		return $users;
 	}
 }
