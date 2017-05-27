@@ -13,11 +13,14 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/org/v1.5/org.css" rel="stylesheet">
-    <link href="/front/assets/css/org/v1.5/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link type="text/css" href="/front/assets/css/org/v1.5/iconfont/iconfont.css">
     <title>机构详情</title>
 </head>
 <body>
-    <div class="head container">
+    <div class="head container"
+         data-typeId="{{$shareInfo['type_id']}}"
+         data-id="{{$shareInfo['comment_id']}}"
+         data-uid="{{$shareInfo['uid']}}" >
         @if($org['cover'])
             <?php
             $imgs=explode(',',$org['cover']);
@@ -82,7 +85,7 @@
     {{--预约--}}
     <div class="reservation container">
         <div class="res-box">
-            <input class="res-box-input" placeholder="请输入手机号" />
+            <input class="res-box-input" placeholder="请输入手机号" value="13554154325"/>
         </div>
 
         <div class="res-btn nouse"><span>领取50%返现名额</span></div>
@@ -93,7 +96,7 @@
             @if($org['tel_phone'])
                 <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
             @endif
-            {{--假设机构只有一个电话--}}
+            <!--假设机构只有一个电话-->
             @if($org['tel_phone2'])
                 <div class="call-box"><a class="" href="tel:{{$org['tel_phone2']}}">{{$org['tel_phone2']}}</a></div>
             @endif
@@ -106,5 +109,5 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/org/org-v1.5.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/org/commentOrg-v1.5.js" type="text/javascript"></script>
 </html>

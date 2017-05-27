@@ -13,7 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/org/v1.5/commentOrg.css" rel="stylesheet">
-    <link href="/front/assets/css/org/v1.5/iconfont/iconfont.css" rel=s"stylesheet" type="text/css"/>
+    <link href="/front/assets/css/org/v1.5/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>机构评论</title>
 </head>
 <body>
@@ -84,7 +84,7 @@
 
     <div class="reservation container">
         <div class="res-box">
-            <input class="res-box-input" placeholder="请输入手机号" />
+            <input class="res-box-input" placeholder="请输入手机号" value="13554154325"/>
         </div>
 
         <div class="res-btn nouse"><span>领取50%返现名额</span></div>

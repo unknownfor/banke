@@ -5,6 +5,10 @@ $(function (){
     window.addLoadingImg();
     window.addTip();
 
+    //浏览量
+    viewCounts();
+
+
     /*
     * 弹出注册窗口*/
     $(document).on(window.eventName,'.join-btn',function(){
@@ -45,18 +49,18 @@ $(function (){
         window.controlLoadingBox(true);
         var url='/v1.3/share/doenrol',
             uid=$('.user').attr('data-uid'),
-            cid=$('.user').attr('data-course-id'),
-            oid=$('.user').attr('data-org-id'),
+            // cid=$('.user').attr('data-course-id'),
+            // oid=$('.user').attr('data-org-id'),
             mobile = $('#phone-num').val(),
-            oname=$('.user').attr('data-org-name'),
-            cname=$('.user').attr('data-course-name'),
+            // oname=$('.user').attr('data-org-name'),
+            // cname=$('.user').attr('data-course-name'),
             data={
-            org_id:oid,
-            course_id:cid,
+            // org_id:oid,
+            // course_id:cid,
             invitation_uid:uid,
             mobile:mobile,
-            org_name:oname,
-            course_name:cname
+            // org_name:oname,
+            // course_name:cname
         };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res) {
@@ -105,6 +109,29 @@ $(function (){
         $('.box1').addClass('hide');
         $('.container').removeClass('hide');
     }
+
+
+    /*
+     * 调用浏览量接口
+     typeId  表示页面类型
+     1 课程页面
+     2 表示机构页面
+     3 表示团购页面
+     id   表示记录id
+     * */
+    function viewCounts() {
+        var  box=$('.user'),
+            typeId =box.attr('data-typeId'),
+            id =box.attr('data-id'),
+            url='/v1.5/share/updateviewcounts',
+            data = {
+                typeid:typeId,
+                id:id
+            }
+        getDataAsync(url,data,function(){
+            
+        },null,'post');
+    };
 
 
 });

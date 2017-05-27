@@ -5,6 +5,7 @@ $(function () {
     window.addLoadingImg();
     window.addTip();
 
+
     //弹出申请页
     $(document).on(window.eventName,'.join-btn',function(){
         $('.cooperation').removeClass('hide');
@@ -21,7 +22,7 @@ $(function () {
             code=$('#telphone').val();
         if(reg.test(number)) {
             //调用此方法, 可以在别的方法中调用它
-            // if (checkInput > 0 ) {
+            // if (checkInput = 1 ) {
                 if (code != '') {
                     $btn.removeClass('disabled');
                     $btn.addClass('active');
@@ -31,7 +32,8 @@ $(function () {
                 }
             // }
             // else {
-            //     return;
+            //      $btn.removeClass('active');
+            //      $btn.addClass('disabled');
             // }
         }else{
             $btn.removeClass('active');
@@ -39,22 +41,25 @@ $(function () {
         }
     });
 
-    //检查input输入框是否有内容
+    /*
+    * 检查input输入框是否有内容
+    * flag = 0 合格,有输入值
+    * flag = 1 不合格
+    * */
     function checkInput() {
-        var $tr = $(".info").find("tr"),
-            flag = 0,
-            antiqueTypes = [];
-        $tr.each( function( index, item ){
-            var type = $(item).find("input[type='text']").val();
-            antiqueTypes.push(type);
-        });
-        $.each(antiqueTypes, function(index, item){
-            if( item.length == 0 ){
-                flag += 1;
-                $("order-tips").find("span").text("请输入商品物流单号");
+        var flag,
+            name=$('#name').val().length,
+            address=$('#address').val().length,
+            contact=$('#contact').val().length;
+        if (name > 0 || address >0) {
+            if (contact > 0) {
+                return  flag = 0;
+            }else {
+               return flag = 1;
             }
-        });
-        return flag;
+        }else {
+            return flag = 0;
+        }
     }
 
     //注册

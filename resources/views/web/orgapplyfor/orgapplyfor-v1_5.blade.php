@@ -58,19 +58,19 @@
         </div>
         <form class="cooperation hide">
             <div class="regbox info">
-                <input type="text" placeholder="请输入机构名称" id="name" value="武汉天美意测试机构" />
+                <input type="text" placeholder="请输入机构名称" id="name"/>
             </div>
 
             <div class="regbox info">
-                <input type="text" placeholder="请输入机构地址" id="address"  value="武汉市武昌区中南路89号"/>
+                <input type="text" placeholder="请输入机构地址" id="address" />
             </div>
 
             <div class="regbox info">
-                <input type="text" placeholder="联系人姓名" id="contact" value="蒋建明"/>
+                <input type="text" placeholder="联系人姓名" id="contact"/>
             </div>
 
             <div class="regbox">
-                <input type="text" placeholder="手机号" id="telphone" value="181406622821"/>
+                <input type="text" placeholder="手机号" id="telphone"/>
             </div>
 
             <div class="submit-box disabled">
