@@ -90,9 +90,11 @@ html,body {
           -moz-box-flex:1;
           -webkit-box-flex:1;
           margin-right: 10px;
-          > img {
-            max-width: 80px;
-            border-radius: 7px;
+          > a {
+            > img {
+              max-width: 80px;
+              border-radius: 7px;
+            }
           }
         }
         .head-middle {
@@ -190,7 +192,6 @@ html,body {
         #more {
           flex: 0 0 @imgW;
           display: inline-block;
-          margin-right: 15px;
           .size (@imgW, @imgW);
           > img {
             .size (@imgW, @imgW);

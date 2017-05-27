@@ -59,7 +59,9 @@
         <div class="box org-name">{{$org['name']}}</div>
         <div class="head">
             <div class="head-left">
+                <a href="{{$course['link_url']}}">
                 <img src="{{$course['cover']}}" />
+                </a>
             </div>
             <div class="head-middle">
                 <div class="name">{{$course['name']}}</div>

@@ -13,6 +13,15 @@ $(function (){
     });
 
     /*
+     * 弹出注册窗口*/
+    $(document).on(window.eventName,'#more',function(){
+        $('.box1').removeClass('hide');
+        $('.box').addClass('hide');
+    });
+
+
+
+    /*
     * 填写手机号
     * 输入框变色，按钮变色*/
     $(document).on('input', '#phone-num', function(){

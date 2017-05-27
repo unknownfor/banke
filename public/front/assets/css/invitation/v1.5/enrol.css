@@ -289,7 +289,7 @@ body {
   -webkit-box-flex: 1;
   margin-right: 10px;
 }
-#enrol .box.information .head .head-left > img {
+#enrol .box.information .head .head-left > a > img {
   max-width: 80px;
   border-radius: 7px;
 }
@@ -417,7 +417,6 @@ body {
   -ms-flex: 0 0 40px;
   flex: 0 0 40px;
   display: inline-block;
-  margin-right: 15px;
   width: 40px;
   height: 40px;
 }
