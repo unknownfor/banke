@@ -44,6 +44,7 @@ class CourseController extends Controller
     {
         $course = BankeCourse::find($id);
         $org = $course->org;
+        $course['share_award']=$course['share_group_buying_award']+$course['share_comment_course_award']+$org['share_comment_org_award'];
         return view('web.course.course-v1_5')->with(compact(['course','org']));
     }
 
@@ -55,6 +56,7 @@ class CourseController extends Controller
     {
         $course = BankeCourse::find($id);
         $org = $course->org;
+        $course['share_award']=$course['share_group_buying_award']+$course['share_comment_course_award']+$org['share_comment_org_award'];
         return view('web.course.share_course-v1_5')->with(compact(['course','org']));
     }
 

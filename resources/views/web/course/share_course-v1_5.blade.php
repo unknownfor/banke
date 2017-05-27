@@ -41,8 +41,8 @@
         </div>
         <div class="pay-rule-box container-box">
             <div class="tips"><span>每日打卡领取当日奖励，学习结束时共返现学费{{$course['checkin_award']}}%</span></div>
-            <div class="tips"><span>分享任务返现学费{{$course['task_award']}}%</span></div>
-            <div class="tips"><span>开团完成任务返现学费{{$course['task_award']}}%</span></div>
+            <div class="tips"><span>分享任务返现学费{{$course['share_award']}}%</span></div>
+            <div class="tips"><span>开团完成任务返现学费{{$course['group_buying_award']}}%</span></div>
         </div>
     </div>
     {{--机构简介--}}

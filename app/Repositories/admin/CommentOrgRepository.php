@@ -160,7 +160,7 @@ class CommentOrgRepository
 					'uid' => $comment['uid'],
 					'title' => '评论奖励',
 					'content' => '感谢您对机构"' . $org['name'] . '" 的精彩评论,平台已奖励您' . $comment_award . '元现金，快去现金钱包里查看吧！',
-					'type' => 'COMMENT'
+					'type' => config('admin.global.balance_log')[10]['key']
 				];
 				//记录消息
 				BankeMessage::create($message);
