@@ -7,10 +7,19 @@ $(function (){
 
     /*
     * 弹出注册窗口*/
-    $(document).on(window.eventName,'#register-area',function(){
+    $(document).on(window.eventName,'.join-btn',function(){
         $('.box1').removeClass('hide');
         $('.box').addClass('hide');
     });
+
+    /*
+     * 弹出注册窗口*/
+    $(document).on(window.eventName,'#more',function(){
+        $('.box1').removeClass('hide');
+        $('.box').addClass('hide');
+    });
+
+
 
     /*
     * 填写手机号

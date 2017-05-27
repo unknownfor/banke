@@ -13,6 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link href="/front/assets/css/invitation/v1.5/enrol.css" rel="stylesheet" type="text/css"/>
+    <link href="/front/assets/css/invitation/v1.3/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>{{$course['name']}}</title>
 </head>
 <body>
@@ -54,7 +55,71 @@
 
 
     </div>
+    <div class="box information">
+        <div class="box org-name">{{$org['name']}}</div>
+        <div class="head">
+            <div class="head-left">
+                <a href="{{$course['link_url']}}">
+                <img src="{{$course['cover']}}" />
+                </a>
+            </div>
+            <div class="head-middle">
+                <div class="name">{{$course['name']}}</div>
+                <div class="save">
+                    <span class="save-img"></span>
+                    <span class="save-num">{{$course['checkin_award']}}%</span>
+                </div>
+            </div>
+            <div class="head-right">
+                <div class="price"><span class="price-info">参考价</span><span id="price-num">￥{{$course['price']}}</span></div>
+                <div class="real-price"><span class="price-info">最高奖励金额</span><span id="price-real-num">￥{!! $course['price'] * $course['checkin_award']/100!!}</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="box line"></div>
+    <div class="box join">
+        <div class="join-people">
+            <div class="leader">
+                <div class="user-img">
+                    <img src="{{$user['avatar']}}@40h_40w_2e" />
+                </div>
+                <div class="user-title"></div>
+            </div>
 
+            @if($user['avatar'])
+                <?php
+                $imgs=explode(',',$user['avatar']);
+                ?>
+                    <div class="follower">
+                        {{--@foreach($user->avatar as $val)--}}
+                            {{--<img src="{{$val['name']}}" />--}}
+                            <img src="{{$user['avatar']}}" />
+                        {{--@endforeach--}}
+                    </div>
+            @else
+                <div class="follower" style="display: none"></div>
+            @endif
+
+            <div class="follower">
+                <img src="{{$user['avatar']}}" />
+            </div>
+
+            <div id="more">
+                <img src="/front/assets/img/invitation/v1.5/head.png" />
+            </div>
+
+        </div>
+        <div class="join-slogen">已有<span>2人</span>参团，赶快参团吧</div>
+        <div class="join-btn">立即参团</div>
+        <div class="join-description">
+            <div class="title">参团须知</div>
+            <div class="detail">团长：每参团成功一人，团长获得<span>300元返现</span>；</div>
+            <div class="detail">团员：参团成功后，最高可获得<span>300元返现</span>&nbsp。</div>
+        </div>
+        <div class="join-rule">
+            <a href="{{$ruleLinkUrl}}">了解返现规则</a>
+        </div>
+    </div>
 
     <div class="box1 process hide">
         <h3>报名流程</h3>
