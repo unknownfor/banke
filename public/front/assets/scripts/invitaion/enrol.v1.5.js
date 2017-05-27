@@ -5,6 +5,10 @@ $(function (){
     window.addLoadingImg();
     window.addTip();
 
+    //浏览量
+    viewCounts();
+
+
     /*
     * 弹出注册窗口*/
     $(document).on(window.eventName,'.join-btn',function(){
@@ -105,6 +109,29 @@ $(function (){
         $('.box1').addClass('hide');
         $('.container').removeClass('hide');
     }
+
+
+    /*
+     * 调用浏览量接口
+     typeId  表示页面类型
+     1 课程页面
+     2 表示机构页面
+     3 表示团购页面
+     id   表示记录id
+     * */
+    function viewCounts() {
+        var  box=$('.user'),
+            typeId =box.attr('data-typeId'),
+            id =box.attr('data-id'),
+            url='/v1.5/share/updateviewcounts',
+            data = {
+                typeid:typeId,
+                id:id
+            }
+        getDataAsync(url,data,function(){
+            
+        },null,'post');
+    };
 
 
 });

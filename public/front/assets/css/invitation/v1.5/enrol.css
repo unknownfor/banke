@@ -262,8 +262,8 @@ body {
   display: inline-block;
   vertical-align: -4px;
 }
-#enrol .box.user .user-info .info-right .user-name > spam {
-  margin-right: 5px;
+#enrol .box.user .user-info .info-right .user-name > span {
+  margin-right: 8px;
 }
 #enrol .box.information {
   padding: 15px;

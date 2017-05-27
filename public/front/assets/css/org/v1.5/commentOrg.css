@@ -217,7 +217,7 @@ ul {
   align-items: center;
 }
 .container .container-box {
-  padding: 15px 15px 0 15px;
+  padding: 15px;
 }
 .head {
   text-align: center;
@@ -343,8 +343,10 @@ ul {
 .more-btn > i {
   color: #fbc02d;
   font-size: 20px;
+  display: inline-block;
 }
 .more-btn.none {
+  opacity: 0;
   display: none;
 }
 .reservation {

@@ -13,7 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/org/v1.5/commentOrg.css" rel="stylesheet">
-    <link href="/front/assets/css/org/v1.5/iconfont/iconfont.css" rel=s"stylesheet" type="text/css"/>
+    <link href="/front/assets/css/org/v1.5/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>机构评论</title>
 </head>
 <body>
