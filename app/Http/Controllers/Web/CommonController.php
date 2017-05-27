@@ -31,6 +31,15 @@ class CommonController extends Controller
         $request=$request->all();
         $type=$request['typeid'];
         $id=$request['id'];
+        $param = [
+            'data' => null,
+            'template' => '更新页面浏览量信息成功',
+            'status' => true
+        ];
+        if(id==0){
+            return ApiResponseService::success('', Code::SUCCESS, $param);
+        }
+
         try {
             switch ($type) {
                 case 1://课程评论
@@ -45,11 +54,7 @@ class CommonController extends Controller
                 default:
                     break;
             }
-            $param = [
-                'data' => null,
-                'template' => '更新页面浏览量信息成功',
-                'status' => true
-            ];
+
         }catch (Exception $e){
             Flash::error('更新页面浏览量信息失败');
             $param = [

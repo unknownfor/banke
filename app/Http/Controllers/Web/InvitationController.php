@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banke\BankeCashBackUser;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeGroupbuying;
@@ -19,6 +20,7 @@ use UserRepository;
 use CourseRepository;
 use EnrolRepository;
 use GroupbuyingRepository;
+use OrderRepository;
 
 class InvitationController extends Controller
 {
@@ -124,16 +126,34 @@ class InvitationController extends Controller
     {
         $user=UserRepository::getUserSimpleInfoById($uid);
         $course=CourseRepository::show($cid);
+        if(!$course){
+            abort(404);
+        }
 
         $baseUrl='http://'.env('ADMIN_DOMAIN');
         $course['link_url']=$baseUrl.'/v1.5/share/course/'.$cid;
+
+        $course['max_award']=moneyFormat($course['price']*($course['task_award']+$course['checkin_award'])/100);
+
         $ruleLinkUrl=$baseUrl.'/v1.5/share/rule';  //返现规则
         $org=$course->org;
 
         //随机图
         $word=GroupbuyingWordsRepository::getRandomRecord();
 
-        $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($recordId);
+        //参团人员
+        $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($recordId,2);
+
+        //参团优惠
+        $order=OrderRepository::getOrderByCouseIdAndUid($cid,$uid);
+        if(!$order){
+            abort(404);
+        }
+        $tulation=$order['tuition_amount'];
+
+        $organizer_award=moneyFormat($tulation*$course['z_award_amount']/100);
+
+        $award=Array('organizer_award'=>$organizer_award,'member_award'=>$course['max_award']);
 
         return view('web.invite.enrol-v1_5')->with(compact([
             'user',
@@ -144,6 +164,7 @@ class InvitationController extends Controller
             'typeId',
             'recordId',
             'members',
+            'award'
             ]));
     }
 
