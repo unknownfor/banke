@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use UserRepository;
 use CourseRepository;
 use EnrolRepository;
+use GroupbuyingRepository;
 
 class InvitationController extends Controller
 {
@@ -130,8 +131,9 @@ class InvitationController extends Controller
         $org=$course->org;
 
         //随机图
-        $word=GroupBuyingWordsRepository::getRandomRecord();
+        $word=GroupbuyingWordsRepository::getRandomRecord();
 
+        $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($recordId);
 
         return view('web.invite.enrol-v1_5')->with(compact([
             'user',
@@ -140,7 +142,8 @@ class InvitationController extends Controller
             'ruleLinkUrl',
             'word',
             'typeId',
-            'recordId'
+            'recordId',
+            'members',
             ]));
     }
 
