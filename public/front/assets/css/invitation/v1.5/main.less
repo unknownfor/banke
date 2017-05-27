@@ -21,48 +21,50 @@ html,body {
   .box {
     background-color: #ffffff;
     @slh: 140px;
-    .slogen-bg {
-      height: @slh;
-      width: 100%;
+    &.user {
       position: relative;
-    }
-    .user-info {
-      display: flex;
-      position: absolute;
-      left: 40px;
-      right: 0;
-      top: @slh/3;
-      width: 100%;
-      text-align: left;
-      .info-left {
-        @imgW: 40px;
-        flex: 0 0 @imgW + 5px;
-        display: inline-block;
-        margin-right: 15px;
-        .user-img {
-          .size (@imgW,@imgW);
-          > img {
+      .slogen-bg {
+        height: @slh;
+        width: 100%;
+        position: relative;
+      }
+      .user-info {
+        display: flex;
+        position: absolute;
+        left: 40px;
+        right: 0;
+        top: @slh/3;
+        width: 100%;
+        text-align: left;
+        .info-left {
+          @imgW: 40px;
+          flex: 0 0 @imgW + 5px;
+          display: inline-block;
+          margin-right: 15px;
+          .user-img {
             .size (@imgW,@imgW);
-            border-radius: @imgW;
-            border: 1px solid #c7c7c7;
+            > img {
+              .size (@imgW,@imgW);
+              border-radius: @imgW;
+              border: 1px solid #c7c7c7;
+            }
+          }
+          .user-title {
+            position: absolute;
+            top: 34px;
+            left: -9px;
+            bottom: 0px;
+            .size(150px*0.4,50px*0.4);
+            background: url('http://pic.hisihi.com/2017-05-26/1495800448688650.png') no-repeat;
+            background-size: 150px*0.4 50px*0.4;
           }
         }
-        .user-title {
-          position: absolute;
-          top: 34px;
-          left: -9px;
-          bottom: 0px;
-          .size(150px*0.4,50px*0.4);
-          background: url('http://pic.hisihi.com/2017-05-26/1495800448688650.png') no-repeat;
-          background-size: 150px*0.4 50px*0.4;
-        }
-      }
-      .info-right {
-        flex: 2;
-        font-weight: bold;
+        .info-right {
+          flex: 2;
+          font-weight: bold;
           .user-name {
             display: inline-block;
-            vertical-align: -12px;
+            vertical-align: -4px;
             > spam {
               margin-right: 5px;
             }
@@ -71,6 +73,175 @@ html,body {
 
           }
 
+        }
+      }
+    }
+    &.information {
+      padding: 15px;
+      .org-name {
+        .txt-ellipsis-p(1);
+      }
+      .head {
+        padding-top: 15px;
+        display: flex;
+        position: relative;
+        .head-left {
+          box-flex:1;
+          -moz-box-flex:1;
+          -webkit-box-flex:1;
+          margin-right: 10px;
+          > img {
+            max-width: 80px;
+            border-radius: 7px;
+          }
+        }
+        .head-middle {
+          width: 40%;
+          padding-top: 10px;
+          .name {
+            color: #383D43;
+            margin-bottom: 10px;
+            display: inline-block;
+            .txt-ellipsis-p(1);
+          }
+          .save {
+            display: inline-block;
+            .save-img {
+              display: inline-block;
+              height: 21px;
+              width: 21px;
+              background: url("../../../img/course/sprite.png") no-repeat -26px 0px;
+              background-size: 158px*0.4 66px *0.4;
+            }
+            .save-num {
+              color: #FA4535;
+              vertical-align: 7px;
+            }
+          }
+        }
+        .head-right {
+          position: absolute;
+          right: 15px;
+          display: inline-table;
+          justify-content: center;
+          align-items: center;
+          text-align: right;
+          font-size: 12px;
+          .price {
+            margin-bottom:10px;
+            display: inline-block;
+            vertical-align: -12px;
+          }
+          .price-info {
+            color: #9B9B9B;
+            padding-right: 5px;
+          }
+          #price-num {
+            color: #383D43;
+          }
+          #price-real-num {
+            color: #FA4535;
+          }
+        }
+      }
+    }
+    &.join {
+      @imgW: 40px;
+      .join-people {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        margin: 20px;
+        .leader {
+          flex: 0 0 @imgW;
+          display: inline-block;
+          margin-right: 15px;
+          position: relative;
+          .user-img {
+            .size (@imgW, @imgW);
+            > img {
+              .size (@imgW, @imgW);
+              border-radius: @imgW;
+              border: 1px solid #c7c7c7;
+            }
+          }
+          .user-title {
+            position: absolute;
+            top: 35px;
+            left: -9px;
+            bottom: 0px;
+            .size(150px*0.4,50px*0.4);
+            background: url('http://pic.hisihi.com/2017-05-26/1495800448688650.png') no-repeat;
+            background-size: 150px*0.4 50px*0.4;
+          }
+        }
+        .follower {
+          flex: 0 0 @imgW;
+          display: inline-block;
+          margin-right: 15px;
+          .size (@imgW, @imgW);
+          > img {
+            .size (@imgW, @imgW);
+            border-radius: @imgW;
+            border: 1px solid #c7c7c7;
+          }
+        }
+        #more {
+          flex: 0 0 @imgW;
+          display: inline-block;
+          margin-right: 15px;
+          .size (@imgW, @imgW);
+          > img {
+            .size (@imgW, @imgW);
+            border-radius: @imgW;
+            border: 1px solid #c7c7c7;
+          }
+        }
+      }
+      .join-slogen {
+        font-weight: bold;
+        margin: 15px 0;
+        text-align: center;
+        > span {
+          color: #FA4535;
+          padding: 0 5px ;
+        }
+
+      }
+      .join-btn {
+        margin: 0 20px 25px 20px;
+        height: @imgW;
+        background-color: #FFEB3B;
+        text-align: center;
+        line-height: @imgW;
+        border-radius: 4px;
+        letter-spacing: 1px;
+      }
+      .join-description {
+        .title {
+          padding-left: 5px;
+          margin-bottom: 10px;
+          font-weight: bold;
+          border-left: 3px solid #FFEB3B;
+        }
+        .detail {
+          margin: 0px 20px;
+          line-height: 22px;
+          color: #9b9b9b;
+          > span {
+            color: #fa4535;
+          }
+        }
+
+      }
+      .join-rule {
+        margin: 30px 0 25px 0;
+        text-align: center;
+        > a {
+            color: #FBC02D;
+            text-decoration: underline
+        }
       }
     }
     &.hide {
