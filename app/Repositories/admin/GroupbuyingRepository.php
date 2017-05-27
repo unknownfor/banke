@@ -259,4 +259,9 @@ class GroupbuyingRepository
 		}
 		return true;
 	}
+
+	public static function getAllMembersByGroupbuyingId($id)
+	{
+
+	}
 }

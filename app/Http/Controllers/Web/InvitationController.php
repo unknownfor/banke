@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
+use App\Models\Banke\BankeGroupbuying;
 use App\Repositories\admin\GroupBuyingWordsRepository;
 use App\Repositories\admin;
 use App\Services\ApiResponseService;
@@ -124,12 +125,13 @@ class InvitationController extends Controller
         $course=CourseRepository::show($cid);
 
         $baseUrl='http://'.env('ADMIN_DOMAIN');
-        $course['link_url']=$baseUrl.'/v1.2/share/course/'.$cid;
-        $ruleLinkUrl=$baseUrl.'/v1.2/share/rule';
+        $course['link_url']=$baseUrl.'/v1.5/share/course/'.$cid;
+        $ruleLinkUrl=$baseUrl.'/v1.5/share/rule';  //返现规则
         $org=$course->org;
 
         //随机图
         $word=GroupBuyingWordsRepository::getRandomRecord();
+
 
         return view('web.invite.enrol-v1_5')->with(compact([
             'user',
