@@ -252,7 +252,7 @@ class GroupbuyingRepository
 				'uid' => $groupbuying['organizer_id'],
 				'title' => '评论奖励',
 				'content' => '您分享的"' . $groupbuying->course['name'] . '" 浏览次数已经达到奖励标准,平台已奖励您' . $groupbuying_award . '元现金，快去现金钱包里查看吧！',
-				'type' => 'COMMENT'
+				'type' => config('admin.global.balance_log')[12]['key']
 			];
 			//记录消息
 			BankeMessage::create($message);
