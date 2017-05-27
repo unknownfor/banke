@@ -48,6 +48,7 @@ class OrgController extends Controller
     /**评论分享页面**/
     public function share_comment_org_v1_5($courseid,$uid,$comment_id)
     {
+        Log::info('------------2342134------------');
         $org = BankeCourse::find($courseid)->org;
         $shareInfo=Array('type_id'=>2,'comment_id'=>$comment_id,'uid'=>$uid);
         return view('web.org.share_comment_org-v1_5')->with(compact(['org','uid','shareInfo']));
