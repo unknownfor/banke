@@ -100,14 +100,14 @@ $(function() {
                     //调用客户端返回方法
                     backToMypage();
                 },2000);
-            }
-            else{
-                window.showTips(res.message,2000);
+                // alert('成功');
+            } else{
+                window.showTips(res.message);
             }
         }, function(){
             window.controlLoadingBox(false);
-            $(this).addClass('active');
-        }, 'post');
+            // alert('失败');
+        },'post');
     });
 
     //调用客户端方法,显示拨打电话

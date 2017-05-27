@@ -49,18 +49,18 @@ $(function (){
         window.controlLoadingBox(true);
         var url='/v1.3/share/doenrol',
             uid=$('.user').attr('data-uid'),
-            cid=$('.user').attr('data-course-id'),
-            oid=$('.user').attr('data-org-id'),
+            // cid=$('.user').attr('data-course-id'),
+            // oid=$('.user').attr('data-org-id'),
             mobile = $('#phone-num').val(),
-            oname=$('.user').attr('data-org-name'),
-            cname=$('.user').attr('data-course-name'),
+            // oname=$('.user').attr('data-org-name'),
+            // cname=$('.user').attr('data-course-name'),
             data={
-            org_id:oid,
-            course_id:cid,
+            // org_id:oid,
+            // course_id:cid,
             invitation_uid:uid,
             mobile:mobile,
-            org_name:oname,
-            course_name:cname
+            // org_name:oname,
+            // course_name:cname
         };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res) {

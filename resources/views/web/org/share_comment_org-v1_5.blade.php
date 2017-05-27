@@ -84,7 +84,7 @@
 
     <div class="reservation container">
         <div class="res-box">
-            <input class="res-box-input" placeholder="请输入手机号" />
+            <input class="res-box-input" placeholder="请输入手机号" value="13554154325"/>
         </div>
 
         <div class="res-btn nouse"><span>领取50%返现名额</span></div>
