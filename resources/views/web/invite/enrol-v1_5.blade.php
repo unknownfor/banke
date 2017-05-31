@@ -26,9 +26,8 @@
          data-org-name="{{$org['name']}}"
          data-record-id="{{$recordId}}"
          data-type-id="{{$typeId}}"
-         {{--data-course-name="{{$course['name']}}"--}}
-         {{--data-typeId="{{$shareInfo['type_id']}}"--}}
-         {{--data-id="{{$shareInfo['comment_id']}}"--}}
+         data-record-id="{{$shareInfo['record_id']}}"
+         data-type-id="{{$shareInfo['type_id']}}"
     >
         @if($word['img_url_web'])
             <?php

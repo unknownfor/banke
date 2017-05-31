@@ -28,8 +28,7 @@ class EnrolRepository
 		$name = request('name' ,'');
 		$mobile = request('mobile' ,'');
 		$status = request('status' ,'');
-		$created_at_from = request('created_at_from' ,'');
-		$created_at_to = request('created_at_to' ,'');
+		$org_id = request('org_id' ,'');
 		$updated_at_from = request('updated_at_from' ,'');
 		$updated_at_to = request('updated_at_to' ,'');
 		$orders = request('order', []);
@@ -59,18 +58,14 @@ class EnrolRepository
 			$role = $role->where('status', $status);
 		}
 
-		/*配置创建时间搜索*/
-		if($created_at_from){
-			$role = $role->where('created_at', '>=', getTime($created_at_from));	
-		}
-		if($created_at_to){
-			$role = $role->where('created_at', '<=', getTime($created_at_to, false));	
+		/*机构搜索*/
+		if ($org_id!=0) {
+			$role = $role->where('org_id', $org_id);
 		}
 
 		/*配置修改时间搜索*/
 		if($updated_at_from){
-			$uafc = new Carbon($updated_at_from);
-			$role = $role->where('created_at', '>=', getTime($updated_at_from));	
+			$role = $role->where('created_at', '>=', getTime($updated_at_from));
 		}
 		if($updated_at_to){
 			$role = $role->where('created_at', '<=', getTime($updated_at_to, false));	
@@ -91,6 +86,11 @@ class EnrolRepository
 		if ($enrols) {
 			foreach ($enrols as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
+				$v['org_name']=$v->org['name'];
+				$course=$v->course;
+				if($course){
+					$v['course_name']=$course['name'];
+				}
 			}
 		}
 //		$resultEnrols=array_reverse($enrols);
