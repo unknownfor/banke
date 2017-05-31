@@ -27,6 +27,8 @@
          data-record-id="{{$recordId}}"
          data-type-id="{{$typeId}}"
          data-course-name="{{$course['name']}}"
+         {{--data-typeId="{{$shareInfo['type_id']}}"--}}
+         {{--data-id="{{$shareInfo['comment_id']}}"--}}
     >
         @if($word['img_url_web'])
             <?php
@@ -105,8 +107,8 @@
         <div class="join-btn">立即参团</div>
         <div class="join-description">
             <div class="title">参团须知</div>
-            <div class="detail">团长：每参团成功一人，团长获得<span> {{$award['organizer_award']}}元返现 </span>；</div>
-            <div class="detail">团员：参团成功后，最高可获得<span> {{$course['max_award']}}元返现 </span>&nbsp。</div>
+            <div class="detail">团长：每参团成功一人，团长获得<span> {{$award['organizer_award']}}元返现</span></div>
+            <div class="detail">团员：参团成功后，最高可获得<span> {{$course['max_award']}}元返现</span></div>
         </div>
         <div class="join-rule">
             <a href="{{$ruleLinkUrl}}">了解返现规则</a>
