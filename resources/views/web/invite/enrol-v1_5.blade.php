@@ -26,7 +26,7 @@
          data-org-name="{{$org['name']}}"
          data-record-id="{{$recordId}}"
          data-type-id="{{$typeId}}"
-         data-course-name="{{$course['name']}}"
+         {{--data-course-name="{{$course['name']}}"--}}
          {{--data-typeId="{{$shareInfo['type_id']}}"--}}
          {{--data-id="{{$shareInfo['comment_id']}}"--}}
     >

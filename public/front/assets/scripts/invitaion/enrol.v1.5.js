@@ -7,10 +7,10 @@ $(function (){
 
     //浏览量
     var oldUser=$('.user').attr('data-record-id');
-    if( oldUser = 0){
-        return ;
-    }else{
+    if( oldUser != 0){
         viewCounts();
+    }else{
+        return;
     }
 
 
