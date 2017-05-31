@@ -330,7 +330,7 @@ class OrderRepository
 				$message1 = [
 					'uid' => $invitation_uid,
 					'title' => '您的好友报名成功',
-					'content' => '您邀请的好友' . $order->mobile . '报名了课程！平台已帮您领取了' . $invitation_award
+					'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程！平台已帮您领取了' . $invitation_award
 						. '元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
 					'type' => 'FRIEND_ENROL_SUCCESS'
 				];
@@ -347,11 +347,18 @@ class OrderRepository
 		$message = [
 			'uid'=>$order['uid'],
 			'title'=>'您已报名成功',
-			'content'=>'尊敬的'.$order->name.'用户，您已'.$order->pay_tuition_time.'于'.$org->name.'报名了'
-				.$order->course_name.'培训课程，学费为'.$order->tuition_amount.'元，平台奖励学费'
-				.$cash_back_percent.'%，您的待返金额为'
-				.($order->check_in_amount + $order->do_task_amount)
-				.'元，每次上课打卡和做任务即可领取',
+			'content'=>'报名课程：'.$order->course_name .'。'.
+				'\r\n报名时间： ' .$order->pay_tuition_time.'。'.
+				'\r\n学费：' .$order->tuition_amount.'元。'.
+				'\r\n平台奖励：' .$cash_back_percent.'%，待返金额为 ' .($order->check_in_amount + $order->do_task_amount) .'元。'.
+				'\r\n每次上课打卡和做任务即可领取',
+
+//			'content'=>'尊敬的 '.$order->name.' 用户，您已 '.$order->pay_tuition_time.'于'.$org->name.'报名了'
+//				.$order->course_name.'培训课程，学费为'.$order->tuition_amount.'元，平台奖励学费'
+//				.$cash_back_percent.'%，您的待返金额为'
+//				.($order->check_in_amount + $order->do_task_amount)
+//				.'元，每次上课打卡和做任务即可领取',
+
 			'type'=>'USER_ENROL_SUCCESS'
 		];
 		//记录消息
