@@ -161,14 +161,15 @@ class InvitationController extends Controller
 
         $award=Array('organizer_award'=>$organizer_award,'member_award'=>$course['max_award']);
 
+        $shareInfo=Array('type_id'=>$typeId,'record_id'=>$recordId);
+
         return view('web.invite.enrol-v1_5')->with(compact([
             'user',
             'course',
             'org',
             'ruleLinkUrl',
             'word',
-            'typeId',
-            'recordId',
+            'shareInfo',
             'members',
             'award'
             ]));
