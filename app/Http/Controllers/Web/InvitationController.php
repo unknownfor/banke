@@ -95,8 +95,14 @@ class InvitationController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return ApiResponseService::showError(Code::REGISTER_MOBILE_ERROR);
+            $errors = $validator->errors();
+            $sss='';
+            foreach ($errors->all() as $message) {
+                $sss.=$message;
+            }
+            return response()->json(['msg' => $sss, 'status' => false]);
         }
+
         $result = EnrolRepository::store($request);
         if ($result) {
             return ApiResponseService::success('', Code::SUCCESS, '预约成功');
