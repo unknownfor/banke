@@ -72,7 +72,7 @@
             </div>
             <div class="head-right">
                 <div class="price"><span class="price-info">参考价</span><span id="price-num">￥{{$course['price']}}</span></div>
-                <div class="real-price"><span class="price-info">最高奖励金额</span><span id="price-real-num">￥{!! $course['price'] * $course['checkin_award']/100!!}</span></div>
+                <div class="real-price"><span class="price-info">最高奖励金额</span><span id="price-real-num">￥{{$course['max_award']}}</span></div>
             </div>
         </div>
     </div>
@@ -87,33 +87,26 @@
             </div>
 
             @if($members)
-                @foreach($members as $v)
+                @foreach($members['data'] as $v)
                     <div class="follower">
-                        {{--@foreach($user->avatar as $val)--}}
-                            <label>{{$v['name']}}</label>
                             <img src="{{$v['avatar']}}" />
-                        {{--@endforeach--}}
                     </div>
                 @endforeach
             @else
                 <div class="follower" style="display: none"></div>
             @endif
 
-            {{--<div class="follower">--}}
-                {{--<img src="{{$user['avatar']}}" />--}}
-            {{--</div>--}}
-
             <div id="more">
                 <img src="/front/assets/img/invitation/v1.5/head.png" />
             </div>
 
         </div>
-        <div class="join-slogen">已有<span>2人</span>参团，赶快参团吧</div>
+        <div class="join-slogen">已有<span>{{$members['counts']}}人</span>参团，赶快参团吧</div>
         <div class="join-btn">立即参团</div>
         <div class="join-description">
             <div class="title">参团须知</div>
-            <div class="detail">团长：每参团成功一人，团长获得<span>300元返现</span>；</div>
-            <div class="detail">团员：参团成功后，最高可获得<span>300元返现</span>&nbsp。</div>
+            <div class="detail">团长：每参团成功一人，团长获得<span> {{$award['organizer_award']}}元返现 </span>；</div>
+            <div class="detail">团员：参团成功后，最高可获得<span> {{$course['max_award']}}元返现 </span>&nbsp。</div>
         </div>
         <div class="join-rule">
             <a href="{{$ruleLinkUrl}}">了解返现规则</a>

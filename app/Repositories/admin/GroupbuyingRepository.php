@@ -262,16 +262,19 @@ class GroupbuyingRepository
 	}
 
 	/*根据团id得到用户信息*/
-	public static function getAllMembersByGroupbuyingId($id)
+	public static function getAllMembersByGroupbuyingId($id,$limit=2)
 	{
-		$users = BankeGroupbuyingUsers::where('group_buying_id',$id)->get();
+		$user = BankeGroupbuyingUsers::where('group_buying_id',$id);
+		$counts = $user->count();
+		$users = $user->offset(0)->limit($limit)->orderBy("id", "desc")->get();
 		if ($users) {
 			foreach ($users as &$v) {
-				$user=$v->authenUser;
-				$name=$user['real_name'];
-				$avatar=$name['avatar'];
+				$aUser=$v->authenUser;
+				$name=$aUser['real_name'];
+				$user=$v->user;
+				$avatar=$user['avatar'];
 				if(!$name){
-					$name=$v->user['name'];
+					$name=$user['name'];
 				}
 				$v['name']=$name;
 				if(!$avatar){
@@ -280,6 +283,6 @@ class GroupbuyingRepository
 				$v['avatar']=$avatar;
 			}
 		}
-		return $users;
+		return Array('counts'=>$counts,'data'=>$users);
 	}
 }
