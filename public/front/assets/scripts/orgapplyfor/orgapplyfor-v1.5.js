@@ -19,7 +19,6 @@ $(function () {
     });
 
 
-
     $(document).on('input', '#telphone', function(){
         var number=$(this).val(),
             reg = /^1(3|4|5|7|8)\d{9}$/,
