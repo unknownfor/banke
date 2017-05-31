@@ -285,7 +285,6 @@ body {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  border: 1px solid #e5e5e5;
   border-radius: 4px;
   margin-bottom: 20px;
 }
