@@ -139,7 +139,10 @@ class InvitationController extends Controller
         $baseUrl='http://'.env('ADMIN_DOMAIN');
         $course['link_url']=$baseUrl.'/v1.5/share/course/'.$cid;
 
-        $course['max_award']=moneyFormat($course['price']*($course['task_award']+$course['checkin_award'])/100);
+        $maxAwardPercent=$course['task_award']+$course['checkin_award'];
+
+        $course['max_award'] = moneyFormat($course['price']*$maxAwardPercent/100);
+        $course['max_award_percent'] = $maxAwardPercent;
 
         $ruleLinkUrl=$baseUrl.'/v1.5/share/rule';  //返现规则
         $org=$course->org;

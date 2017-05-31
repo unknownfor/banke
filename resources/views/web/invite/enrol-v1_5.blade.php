@@ -65,7 +65,7 @@
                 <div class="name">{{$course['name']}}</div>
                 <div class="save">
                     <span class="save-img"></span>
-                    <span class="save-num">{{$course['checkin_award']}}%</span>
+                    <span class="save-num">{{$course['max_award_percent']}}%</span>
                 </div>
             </div>
             <div class="head-right">
