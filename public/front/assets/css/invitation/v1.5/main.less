@@ -24,6 +24,11 @@ html,body {
     &.user {
       position: relative;
       .slogen-bg {
+        //height: @slh;
+        width: 100%;
+        position: relative;
+      }
+      .head-bg{
         height: @slh;
         width: 100%;
         position: relative;
@@ -33,14 +38,14 @@ html,body {
         position: absolute;
         left: 40px;
         right: 0;
-        top: @slh/3;
+        top: @slh/3.5;
         width: 100%;
         text-align: left;
         .info-left {
           @imgW: 40px;
           flex: 0 0 @imgW + 5px;
           display: inline-block;
-          margin-right: 15px;
+          margin-right: 10px;
           .user-img {
             .size (@imgW,@imgW);
             > img {

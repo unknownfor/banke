@@ -185,13 +185,13 @@ body {
   height: 100%;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 #enrol {
   margin: 0 auto;
   max-width: 700px;
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   font-size: 14px;
   color: #383D43;
 }
@@ -206,6 +206,10 @@ body {
   position: relative;
 }
 #enrol .box.user .slogen-bg {
+  width: 100%;
+  position: relative;
+}
+#enrol .box.user .head-bg {
   height: 140px;
   width: 100%;
   position: relative;
@@ -218,7 +222,7 @@ body {
   position: absolute;
   left: 40px;
   right: 0;
-  top: 46.66666667px;
+  top: 40px;
   width: 100%;
   text-align: left;
 }
@@ -228,7 +232,7 @@ body {
   -ms-flex: 0 0 45px;
   flex: 0 0 45px;
   display: inline-block;
-  margin-right: 15px;
+  margin-right: 10px;
 }
 #enrol .box.user .user-info .info-left .user-img {
   width: 40px;
@@ -290,6 +294,8 @@ body {
   margin-right: 10px;
 }
 #enrol .box.information .head .head-left > a > img {
+  width: 80px;
+  height: 80px;
   max-width: 80px;
   border-radius: 7px;
 }
