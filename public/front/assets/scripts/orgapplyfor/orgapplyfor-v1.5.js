@@ -25,22 +25,23 @@ $(function () {
         reg = /^1(3|4|5|7|8)\d{9}$/;
         var $btn=$('.submit-box'),
             code=$('#telphone').val();
-        if(reg.test(number)) {
-            //调用此方法, 可以在别的方法中调用它
-            if (checkInput = 0 ) {
-                if (code != '') {
-                    $btn.removeClass('disabled');
-                    $btn.addClass('active');
-                } else {
-                    $btn.addClass('disabled');
+        //调用此方法, 可以在别的方法中调用它
+        checkInput(flag);
+        if (checkInput) {
+            if(reg.test(number)) {
+                    if (code != '') {
+                        $btn.removeClass('disabled');
+                        $btn.addClass('active');
+                    } else {
+                        $btn.addClass('disabled');
+                        $btn.removeClass('active');
+                    }
+                }else{
                     $btn.removeClass('active');
+                    $btn.addClass('disabled');
                 }
-            }
-            else {
-                 $btn.removeClass('active');
-                 $btn.addClass('disabled');
-            }
-        }else{
+            } else {
+            window.showTips('<p>信息不能为空!</p>',2000);
             $btn.removeClass('active');
             $btn.addClass('disabled');
         }
@@ -48,19 +49,19 @@ $(function () {
 
     /*
     * 检查input输入框是否有内容
-    * flag = 0 合格,有输入值
-    * flag = 1 不合格
+    * flag = 1 合格,有输入值
+    * flag = 0 不合格
     * */
-    function checkInput() {
+    function checkInput(flag) {
         var flag,
             name=$('#name').val().length,
             address=$('#address').val().length,
             contact=$('#contact').val().length;
-        if (name > 0 || address >0) {
+        if (name > 0 && address > 0) {
             if (contact > 0) {
-                return  flag = 0;
+                return  flag = 1;
             }else {
-               return flag = 1;
+               return flag = 0;
             }
         }else {
             return flag = 0;

@@ -57,8 +57,9 @@
             <div class="join-btn"><span>立即入驻</span></div>
         </div>
         <form class="cooperation hide">
+
             <div class="regbox info">
-                <input type="text" placeholder="请输入机构名称" id="name"/>
+                <input type="text" placeholder="请输入机构名称"  id="name" />
             </div>
 
             <div class="regbox info">
