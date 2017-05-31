@@ -195,7 +195,8 @@ class GroupbuyingWordsRepository
 	public static function getRandomRecord()
 	{
 		$groupbuying = new BankeGroupbuyingWords;
-		$counts = $groupbuying::all()->count();
+		$groupbuying = $groupbuying::where('status',1);
+		$counts = $groupbuying->count();
 		if($counts>0) {
 			$start = rand(0, $counts-1);
 			$words = $groupbuying->offset($start)->limit(1)->first();
