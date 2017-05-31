@@ -53,12 +53,8 @@ $(function () {
             name=$('#name').val().length,
             address=$('#address').val().length,
             contact=$('#contact').val().length;
-        if (name > 0 && address > 0) {
-            if (contact > 0) {
-                 flag = 1;
-            }else {
-                flag = 0;
-            }
+        if (name > 0 && address > 0 && contact>0) {
+            flag = 1;
         }else {
             flag = 0;
         }
