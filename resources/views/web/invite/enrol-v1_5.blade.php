@@ -69,8 +69,8 @@
                 </div>
             </div>
             <div class="head-right">
-                <div class="price"><span class="price-info">参考价</span><span id="price-num">￥{{$course['price']}}</span></div>
-                <div class="real-price"><span class="price-info">最高奖励金额</span><span id="price-real-num">￥{{$course['max_award']}}</span></div>
+                <div class="price"><span class="price-info">课程价</span><span id="price-num">￥{{$course['price']}}</span></div>
+                <div class="real-price"><span class="price-info">最高返现金额</span><span id="price-real-num">￥{{$course['max_award']}}</span></div>
             </div>
         </div>
     </div>
@@ -103,8 +103,8 @@
         <div class="join-btn">立即参团</div>
         <div class="join-description">
             <div class="title">参团须知</div>
-            <div class="detail">团长：每参团成功一人，团长获得<span> {{$award['organizer_award']}}元返现</span></div>
-            <div class="detail">团员：参团成功后，最高可获得<span> {{$course['max_award']}}元返现</span></div>
+            <div class="detail">团长，每参团成功一人，团长获得<span> {{$award['organizer_award']}}元返现</span></div>
+            <div class="detail">团员，参团成功后，最高可获得<span> {{$course['max_award']}}元返现</span></div>
         </div>
         <div class="join-rule">
             <a href="{{$ruleLinkUrl}}">了解返现规则</a>
