@@ -6,7 +6,13 @@ $(function (){
     window.addTip();
 
     //浏览量
-    viewCounts();
+    var oldUser=$('.user').attr('data-record-id');
+    if( oldUser = 0){
+        return ;
+    }else{
+        viewCounts();
+    }
+
 
 
     /*
@@ -49,14 +55,14 @@ $(function (){
         window.controlLoadingBox(true);
         var url='/v1.3/share/doenrol',
             uid=$('.user').attr('data-uid'),
-            // cid=$('.user').attr('data-course-id'),
-            // oid=$('.user').attr('data-org-id'),
+            cid=$('.user').attr('data-course-id'),
+            oid=$('.user').attr('data-org-id'),
             mobile = $('#phone-num').val(),
             // oname=$('.user').attr('data-org-name'),
             // cname=$('.user').attr('data-course-name'),
             data={
-            // org_id:oid,
-            // course_id:cid,
+            org_id:oid,
+            course_id:cid,
             invitation_uid:uid,
             mobile:mobile,
             // org_name:oname,
@@ -80,26 +86,6 @@ $(function (){
             $(this).addClass('active');
         },'post');
     });
-
-    //请求数据
-    function getDataAsync(url,data,callback,eCallback,type){
-        type = type ||'get';
-        data._token=$('input[name="_token"]').val();
-        $.ajax({
-            type: type,
-            url: url,
-            data: data,
-            success: function (res) {
-                callback(res);
-            },
-            error: function () {
-                //请求出错处理
-                window.controlLoadingBox(false),
-                    window.showTips('操作失败');
-                eCallback && eCallback();
-            }
-        });
-    }
 
 
     /**

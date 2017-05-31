@@ -86,6 +86,7 @@ $(function() {
         var url='/v1.3/share/doenrol',
             input=$('.res-box-input').val(),
             uid=$('.head').attr('data-uid'),
+            // org=$('.head').attr(''),
             data={
                 mobile:input,
                 invitation_uid:uid,
@@ -100,13 +101,11 @@ $(function() {
                     //调用客户端返回方法
                     backToMypage();
                 },2000);
-                // alert('成功');
             } else{
                 window.showTips(res.message);
             }
         }, function(){
             window.controlLoadingBox(false);
-            // alert('失败');
         },'post');
     });
 
@@ -166,7 +165,6 @@ $(function() {
             getDataAsync(url,data,function(){
                 window.showTips('<p>恭喜您，预约成功!</p>',2000);
             },null,'post');
-
 
     };
 

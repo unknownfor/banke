@@ -1,9 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .txt-ellipsis {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
+a {
+  display: block;
+  text-decoration: none;
+  out-line: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+* {
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  -moz-user-select: none;
+  /*火狐*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none;
+  /*页面流畅顺滑*/
+  font-family: "Microsoft Yahei", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: #fff;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+a:hover {
+  -webkit-tap-highlight-color: transparent;
+}
 input {
+  -webkit-user-select: auto;
+  /*webkit浏览器*/
   -webkit-appearance: textfield;
   background-color: white;
   -webkit-rtl-ordering: logical;
@@ -28,6 +71,10 @@ input {
   margin: 0em 0em 0em 0em;
   font: 13.3333px Arial;
   outline: none;
+}
+.noscroll {
+  height: 100%;
+  overflow: hidden;
 }
 #downloadCon {
   margin: 0 auto;
@@ -231,9 +278,11 @@ ul {
   color: #fbc02d;
   vertical-align: 5px;
 }
-#rule .content.service .service-box .service-detail .service-info > span {
+#rule .content.service .service-box .service-detail .service-info .seven {
+  font-size: 12px;
   border: 1px solid #fbb00a;
   color: #fbb00a;
+  margin: 5px;
   padding: 3px;
 }
 #rule .content.payback .payback-box .payback-detail {

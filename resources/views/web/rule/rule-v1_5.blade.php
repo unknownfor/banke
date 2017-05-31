@@ -48,7 +48,7 @@
 					<span class="title-txt">七天担保</span>
 				</div>
 				<P class="service-info">
-					在带有<span>七天担保</span>的机构报名学习，7天不满意可以退款。
+					在带有<span class="seven">七天担保</span>的机构报名学习，7天不满意可以退款。
 				</P>
 			</div>
 			<div class="service-detail">
