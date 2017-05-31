@@ -27,7 +27,7 @@ $(function () {
             code=$('#telphone').val();
         if(reg.test(number)) {
             //调用此方法, 可以在别的方法中调用它
-            // if (checkInput = 0 ) {
+            if (checkInput = 0 ) {
                 if (code != '') {
                     $btn.removeClass('disabled');
                     $btn.addClass('active');
@@ -35,11 +35,11 @@ $(function () {
                     $btn.addClass('disabled');
                     $btn.removeClass('active');
                 }
-            // }
-            // else {
-            //      $btn.removeClass('active');
-            //      $btn.addClass('disabled');
-            // }
+            }
+            else {
+                 $btn.removeClass('active');
+                 $btn.addClass('disabled');
+            }
         }else{
             $btn.removeClass('active');
             $btn.addClass('disabled');
