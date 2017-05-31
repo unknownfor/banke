@@ -42,6 +42,64 @@
               </div>
             </div>--}}
           </div>
+            <div class="search-box filter">
+                <div class="col-md-2">
+                    <div class="form-group form-md-line-input">
+                        <div class="input-group has-success">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                            <input type="text" class="form-control form-filter" name="mobile" placeholder="{{ trans('labels.enrol.mobile') }}">
+                            <div class="form-control-focus"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                        <div class="form-group form-md-line-input">
+                            <select name="org_id" class="bs-select show-tick form-control" data-live-search="true">
+                                <option value="" data-icon="fa fa-glass icon-success">机构……</option>
+                                @if($orgs)
+                                    @foreach($orgs as $org)
+                                        <option value="{{$org->id}}" > {{$org->name}}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group form-md-line-input">
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
+                            <option value="" data-icon="fa-glass icon-success">状态....</option>
+                            @if(trans('strings.enrol'))
+                                @foreach(trans('strings.enrol') as $status_key => $status_value)
+                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">
+                                  <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </span>
+                    </div>
+
+                    <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
+                        <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">
+                                  <span class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                  </span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="margin-bottom-5" style="padding-top: 20px;">
+                            <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
+                                <i class="fa fa-search"></i> Search</button>
+                    </div>
+                </div>
+            </div>
             <div class="portlet-body">
               <div class="table-container">
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
@@ -53,102 +111,8 @@
                             <th width="17%"> {{ trans('labels.enrol.org_id') }} </th>
                             <th width="17%"> {{ trans('labels.enrol.course_id') }} </th>
                           <th> {{ trans('labels.enrol.status') }} </th>
-                          <th width="15%"> {{ trans('labels.enrol.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.enrol.updated_at') }} </th>
                           <th width="10%"> {{ trans('labels.action') }} </th>
-                        </tr>
-                        <tr role="row" class="filter">
-                            <td></td>
-                            <td>
-                              <div class="form-group form-md-line-input">
-                                <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                    <input type="text" class="form-control form-filter" name="title" placeholder="{{ trans('labels.enrol.name') }}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                              </div>
-                            <td>
-                                <div class="form-group form-md-line-input">
-                                    <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                        <input type="text" class="form-control form-filter" name="mobile" placeholder="{{ trans('labels.enrol.mobile') }}">
-                                        <div class="form-control-focus"> </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="form-group form-md-line-input">
-                                    <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                        <input type="text" class="form-control form-filter" name="org_id" placeholder="{{ trans('labels.enrol.org_id') }}">
-                                        <div class="form-control-focus"> </div>
-                                    </div>
-                                </div>
-                            <td>
-                                <div class="form-group form-md-line-input">
-                                    <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-user"></i>
-                                    </span>
-                                        <input type="text" class="form-control form-filter" name="course_id" placeholder="{{ trans('labels.enrol.course_id') }}">
-                                        <div class="form-control-focus"> </div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                              <div class="form-group form-md-line-input">
-                                <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
-                                  <option value="" data-icon="fa-glass icon-success">状态....</option>
-                                    @if(trans('strings.enrol'))
-                                      @foreach(trans('strings.enrol') as $status_key => $status_value)
-                                        <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
-                                      @endforeach
-                                    @endif
-                                </select>
-                              </div>
-                            <td>
-                              <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="created_at_from">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </span>
-                              </div>
-
-                              <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                                <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="created_at_to">
-                                <span class="input-group-addon">
-                                  <i class="fa fa-calendar"></i>
-                                </span>
-                              </div>
-                            <td>
-                                <div class="input-group date date-picker margin-bottom-5" data-date-format="yyyy-mm-dd">
-                                  <input type="text" class="form-control form-filter input-sm" readonly placeholder="From" name="updated_at_from">
-                                  <span class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                  </span>
-                                </div>
-
-                                <div class="input-group date date-picker" data-date-format="yyyy-mm-dd">
-                                  <input type="text" class="form-control form-filter input-sm" readonly placeholder="To" name="updated_at_to">
-                                  <span class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                  </span>
-                                </div>
-                            </td>
-                            <td>
-                                <div class="margin-bottom-5">
-                                    <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
-                                        <i class="fa fa-search"></i> Search</button>
-                                </div>
-                                <button class="btn btn-sm red btn-outline filter-cancel">
-                                    <i class="fa fa-times"></i> Reset</button>
-                            </td>
                         </tr>
                     </thead>
                     <tbody> </tbody>

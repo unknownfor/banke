@@ -15,11 +15,13 @@ use Illuminate\Support\Facades\Log;
 class EnrolController extends Controller {
 
     /**
-     * 配置列表
+     * 预约列表
      */
     public function index()
     {
-        return view("admin.enrol.list");
+        $org = new BankeOrg;
+        $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
+        return view("admin.enrol.list")->with(compact(['orgs']));
     }
 
     /**

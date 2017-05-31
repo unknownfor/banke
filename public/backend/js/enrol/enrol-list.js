@@ -8,11 +8,9 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/enrol/ajaxIndex',
         "data": function ( d ) {
-          d.name = $('.filter input[name="name"]').val();
-            d.mobile = $('.filter input[name="mobile"]').val();
+          d.mobile = $('.filter input[name="mobile"]').val();
+          d.org_id = $('.filter select[name="org_id"] option:selected').val();
           d.status = $('.filter select[name="status"] option:selected').val();
-          d.created_at_from = $('.filter input[name="created_at_from"]').val();
-          d.created_at_to = $('.filter input[name="created_at_to"]').val();
           d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
           d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
         }
@@ -62,11 +60,6 @@ var TableDatatablesAjax = function() {
           }
         },
         { 
-        	"data": "created_at",
-        	"name": "created_at",
-        	"orderable" : true,
-        },
-        { 
         	"data": "updated_at",
         	"name": "updated_at",
         	"orderable" : true,
@@ -89,22 +82,10 @@ var TableDatatablesAjax = function() {
       }
     });
 
-    dt.on('click', '.filter-submit', function(){
+    $(document).on('click', '.filter-submit', function(){
       ajax_datatable.ajax.reload(); 
     });
 
-    dt.on('click', '.filter-cancel', function(){
-      $('textarea.form-filter, select.form-filter, input.form-filter', dt).each(function() {
-          $(this).val("");
-      });
-
-      $('select.form-filter').selectpicker('refresh');
-
-      $('input.form-filter[type="checkbox"]', dt).each(function() {
-          $(this).attr("checked", false);
-      });
-      ajax_datatable.ajax.reload();
-    });
 
     $('.input-group.date').datepicker({
       autoclose: true
