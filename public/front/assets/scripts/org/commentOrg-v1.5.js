@@ -3,6 +3,9 @@
  */
 $(function() {
 
+    window.addLoadingImg();
+    window.addTip();
+
     //浏览量
     viewCounts();
 
@@ -86,8 +89,11 @@ $(function() {
         var url='/v1.3/share/doenrol',
             input=$('.res-box-input').val(),
             uid=$('.head').attr('data-uid'),
-            // org=$('.head').attr(''),
+            cid=$('.head').attr('data-course-id'),
+            oid=$('.head').attr('data-org-id'),
             data={
+                org_id:oid,
+                course_id:cid,
                 mobile:input,
                 invitation_uid:uid,
             };
@@ -97,10 +103,6 @@ $(function() {
             window.controlLoadingBox(false);
             if (res.status_code == 0) {
                 window.showTips('<p>恭喜您，预约成功!</p>',2000);
-                window.setTimeout(function() {
-                    //调用客户端返回方法
-                    backToMypage();
-                },2000);
             } else{
                 window.showTips(res.message);
             }
@@ -163,7 +165,7 @@ $(function() {
                 id:id
             }
             getDataAsync(url,data,function(){
-                window.showTips('<p>恭喜您，预约成功!</p>',2000);
+                
             },null,'post');
 
     };

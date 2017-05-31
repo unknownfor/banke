@@ -19,6 +19,8 @@
 <body>
 {!! csrf_field() !!}
     <div class="head container"
+         data-course-id="0"
+         data-org-id="{{$org['id']}}"
          data-typeId="{{$shareInfo['type_id']}}"
          data-id="{{$shareInfo['comment_id']}}"
          data-uid="{{$shareInfo['uid']}}" >
