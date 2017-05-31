@@ -23,9 +23,6 @@
          data-uid="{{$user['uid']}}"
          data-course-id="{{$course['id']}}"
          data-org-id="{{$org['id']}}"
-         data-org-name="{{$org['name']}}"
-         data-record-id="{{$recordId}}"
-         data-type-id="{{$typeId}}"
          data-record-id="{{$shareInfo['record_id']}}"
          data-type-id="{{$shareInfo['type_id']}}"
     >

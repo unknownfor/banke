@@ -9,11 +9,7 @@ $(function (){
     var oldUser=$('.user').attr('data-record-id');
     if( oldUser != 0){
         viewCounts();
-    }else{
-        return;
     }
-
-
 
     /*
     * 弹出注册窗口*/
