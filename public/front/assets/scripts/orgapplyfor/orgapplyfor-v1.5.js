@@ -13,6 +13,11 @@ $(function () {
         $('.join').addClass('hide');
     });
 
+    //跳转“我的”tab页
+    $(document).on(window.eventName,'.welcome-btn',function(){
+        showMyhomePage();
+    });
+
 
     //填充手机号信息，按钮变色
     $(document).on('input', '#telphone', function(){
@@ -82,12 +87,11 @@ $(function () {
             window.controlLoadingBox(false);
             if (res.status == true) {
                 $('body').removeClass('bg-color');
-                window.showTips('<p>恭喜您，申请已提交!</p>',2000);
-                $('.welcome').removeClass('hide');
-                $('.cooperation').addClass('hide');
+                window.showTips('<p>恭喜您，申请已提交!</p>',4000);
                 window.setTimeout(function() {
                     //弹出成功提示页
-                    showMyhomePage();
+                    $('.welcome').removeClass('hide');
+                    $('.cooperation').addClass('hide');
                 },2000);
             }
             else{
@@ -95,7 +99,7 @@ $(function () {
             }
             },function(){
                 window.controlLoadingBox(false);
-                // $(this).addClass('active');
+                $(this).addClass('active');
             },'post');
     });
 
