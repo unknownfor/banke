@@ -104,7 +104,7 @@ $(function (){
     function viewCounts() {
         var  box=$('.user'),
             typeId =box.attr('data-typeId'),
-            id =box.attr('data-id'),
+            id =box.attr('data-record-id'),
             url='/v1.5/share/updateviewcounts',
             data = {
                 typeid:typeId,
