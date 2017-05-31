@@ -36,8 +36,15 @@ class CommonController extends Controller
             'template' => '更新页面浏览量信息成功',
             'status' => true
         ];
-        if(id==0){
-            return ApiResponseService::success('', Code::SUCCESS, $param);
+        $code=Code::SUCCESS;
+        if($id==0){
+            Flash::error('更新页面浏览量信息失败');
+            $param = [
+                'data' => null,
+                'template' => '更新页面浏览量信息失败',
+                'status' => false
+            ];
+            $code=Code::UPDATE_VIEW_COUNTS_ERROR;
         }
 
         try {
@@ -62,7 +69,8 @@ class CommonController extends Controller
                 'template' => '更新页面浏览量信息失败',
                 'status' => false
             ];
+            $code=Code::UPDATE_VIEW_COUNTS_ERROR;
         }
-        return ApiResponseService::success('', Code::SUCCESS, $param);
+        return ApiResponseService::success('', $code, $param);
     }
 }

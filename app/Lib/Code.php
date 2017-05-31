@@ -34,6 +34,8 @@ class Code {
 	const MIDDLEWARE_NOT_ORG_ACCOUNT		= 60003;		//中间件，非机构账户
 	const MIDDLEWARE_NOT_PAY_COURSE			= 60004;		//中间件，没有付费课程，未获得奖励资格
 
+	const UPDATE_VIEW_COUNTS_ERROR			= 60005;		//更新浏览量失败,没有对应的订单
+
 	const PAY_ALI = 1;    // 支付方式 支付宝
 	const PAY_WEIXIN = 7;    // 支付方式 微信支付
 
@@ -69,7 +71,8 @@ class Code {
 			self::MIDDLEWARE_HAS_BEEN_CERTIFIED		=>	'用户已认证',
 			self::MIDDLEWARE_NOT_BEEN_CERTIFIED		=>	'用户未认证',
 			self::MIDDLEWARE_NOT_ORG_ACCOUNT		=>	'非机构账户无法访问',
-			self::MIDDLEWARE_NOT_PAY_COURSE			=>	'您还未获得打卡奖励资格，先去机构报名学习吧'
+			self::MIDDLEWARE_NOT_PAY_COURSE			=>	'您还未获得打卡奖励资格，先去机构报名学习吧',
+			self::UPDATE_VIEW_COUNTS_ERROR			=>  '更新浏览量失败,没有对应的订单',
 		);
 	}
 
