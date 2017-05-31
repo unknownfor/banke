@@ -37,11 +37,10 @@ class CommonController extends Controller
             'status' => true
         ];
         $code=Code::SUCCESS;
-        if($id==0){
-            Flash::error('更新页面浏览量信息失败');
+        if($id==0 || !$id){
             $param = [
                 'data' => null,
-                'template' => '更新页面浏览量信息失败',
+                'template' => '更新页面浏览量信息失败,旧订单不提供开团功能',
                 'status' => false
             ];
             $code=Code::UPDATE_VIEW_COUNTS_ERROR;
