@@ -2,7 +2,6 @@
  * Created by hisihi on 2017/4/13.
  */
 $(function() {
-
     window.addLoadingImg();
     window.addTip();
 
@@ -129,23 +128,6 @@ $(function() {
        }
     };
 
-    //调用客户端方法，跳转回APP“我的”
-    function backToMypage(){
-        if (window.deviceType.mobile) {
-            if (this.deviceType.android) {
-                //如果方法存在
-                if (typeof AppFunction != "undefined"&&  typeof AppFunction.backToPrePage !='undefined') {
-                    AppFunction.backToPrePage(); //调用app的方法，得到用户的基体信息
-                }
-            }
-            else {
-                //如果方法存在
-                if (typeof backToPrePage != "undefined") {
-                    backToPrePage();//调用app的方法，得到电话
-                }
-            }
-        }
-    };
 
     /*
     * 调用浏览量接口

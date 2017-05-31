@@ -58,19 +58,19 @@
         </div>
         <form class="cooperation hide">
             <div class="regbox info">
-                <input type="text" placeholder="请输入机构名称" id="name"/>
+                <input type="text" placeholder="请输入机构名称" id="name" value="中建三局武昌第二分局"/>
             </div>
 
             <div class="regbox info">
-                <input type="text" placeholder="请输入机构地址" id="address" />
+                <input type="text" placeholder="请输入机构地址" id="address" value="中建三局武昌第二分局"/>
             </div>
 
             <div class="regbox info">
-                <input type="text" placeholder="联系人姓名" id="contact"/>
+                <input type="text" placeholder="联系人姓名" id="contact" value="中建三局武昌第二分局"/>
             </div>
 
             <div class="regbox">
-                <input type="text" placeholder="手机号" id="telphone"/>
+                <input type="text" placeholder="手机号" id="telphone" value="135541543222"/>
             </div>
 
             <div class="submit-box disabled">

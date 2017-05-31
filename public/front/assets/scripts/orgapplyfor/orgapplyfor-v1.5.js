@@ -15,7 +15,7 @@ $(function () {
 
     //跳转“我的”tab页
     $(document).on(window.eventName,'.welcome-btn',function(){
-        showMyhomePage();
+        backToMypage();
     });
 
 
@@ -27,7 +27,7 @@ $(function () {
             code=$('#telphone').val();
         if(reg.test(number)) {
             //调用此方法, 可以在别的方法中调用它
-            // if (checkInput = 1 ) {
+            // if (checkInput = 0 ) {
                 if (code != '') {
                     $btn.removeClass('disabled');
                     $btn.addClass('active');
@@ -95,7 +95,7 @@ $(function () {
                 },2000);
             }
             else{
-                window.showTips(res.message);
+                window.showTips(res.msg);
             }
             },function(){
                 window.controlLoadingBox(false);
@@ -103,39 +103,20 @@ $(function () {
             },'post');
     });
 
-    //请求数据
-    function getDataAsync(url,data,callback,eCallback,type){
-        type = type ||'get';
-        data._token=$('input[name="_token"]').val();
-        $.ajax({
-            type: type,
-            url: url,
-            data: data,
-            success: function (res) {
-                callback(res);
-            },
-            error: function () {
-                //请求出错处理
-                window.controlLoadingBox(false),
-                window.showTips('操作失败');
-                eCallback && eCallback();
-            }
-        });
-    }
 
-    //调用客户端跳转我的页面方法
-    function showMyhomePage(){
+    //调用客户端方法，跳转回APP“我的”
+    function backToMypage(){
         if (window.deviceType.mobile) {
             if (this.deviceType.android) {
                 //如果方法存在
-                if (typeof AppFunction != "undefined"&&  typeof AppFunction.callServicePhone !='undefined') {
-                    AppFunction.callServicePhone(); //调用app的方法，得到用户的基体信息
+                if (typeof AppFunction != "undefined"&&  typeof AppFunction.backToPrePage !='undefined') {
+                    AppFunction.backToPrePage(); //调用app的方法，得到用户的基体信息
                 }
             }
             else {
                 //如果方法存在
-                if (typeof callServicePhone != "undefined") {
-                    callServicePhone();//调用app的方法，得到电话
+                if (typeof backToPrePage != "undefined") {
+                    backToPrePage();//调用app的方法，得到电话
                 }
             }
         }
