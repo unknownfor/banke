@@ -24,8 +24,8 @@
         <div class="head-middle">
             <div class="name">{{$course['name']}}</div>
             <div class="save">
-                <span class="save-num">-{!! $course['price'] * $course['max_award_percent']/100!!}</span>
-                <span class="save-precent">报名后返{{$course['max_award_percent']}}%</span>
+                <span class="save-num">-{!! $course['price'] * $course['max_award']/100!!}</span>
+                <span class="save-precent">报名后返{{$course['max_award']}}%</span>
             </div>
         </div>
         <div class="head-right">
