@@ -9,6 +9,7 @@ use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeUserProfiles;
+use App\Models\Banke\BankeGroupbuyingUsers;
 use App\Models\Banke\BankeWithdraw;
 use Carbon\Carbon;
 use Flash;
@@ -313,7 +314,7 @@ class OrderRepository
 		if($enrol && $enrol->count()>0){
 			$enrol=$enrol->first();
 			$enrol->order_status=1;  //更新预约信息，表示真实报名了
-			$order->save();
+			$enrol->save();
 			$invitation_uid=$enrol->invitation_uid;
 			$invitation_user = BankeUserProfiles::where('uid', $invitation_uid)->lockForUpdate()->first();
 			if ($invitation_user) {
@@ -321,10 +322,12 @@ class OrderRepository
 				// 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
 				$invite_enrol_course = BankeCourse::find($course_id);
 				$percent = $invite_enrol_course['z_award_amount'];
-				if ($percent == '') {
-					$percent = BankeDict::find(7)['value'];
-				}
 				$invitation_award = moneyFormat(($order['tuition_amount'] * $percent / 100));
+
+				//更新邀请人的订单信息，已获邀请金额 + award
+				$order_invitor = BankeCashBackUser::where(['course_id'=>$order->course_id,'uid'=>$invitation_uid,'status'=>1])->first();
+				$order_invitor->get_group_buying_amount += $invitation_award;  //已经获得的开团金额金额 += $award
+				$order_invitor->save();
 
 				//更新用户账户金额信息以及添加变动记录
 				AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
@@ -339,6 +342,7 @@ class OrderRepository
 				//记录消息
 				BankeMessage::create($message1);
 			}
+
 		}
 	}
 
@@ -350,17 +354,10 @@ class OrderRepository
 			'uid'=>$order['uid'],
 			'title'=>'您已报名成功',
 			'content'=>'报名课程：'.$order->course_name .'。'.
-				'\r\n报名时间： ' .$order->pay_tuition_time.'。'.
-				'\r\n学费：' .$order->tuition_amount.'元。'.
-				'\r\n平台奖励：' .$cash_back_percent.'%，待返金额为 ' .($order->check_in_amount + $order->do_task_amount) .'元。'.
-				'\r\n每次上课打卡和做任务即可领取',
-
-//			'content'=>'尊敬的 '.$order->name.' 用户，您已 '.$order->pay_tuition_time.'于'.$org->name.'报名了'
-//				.$order->course_name.'培训课程，学费为'.$order->tuition_amount.'元，平台奖励学费'
-//				.$cash_back_percent.'%，您的待返金额为'
-//				.($order->check_in_amount + $order->do_task_amount)
-//				.'元，每次上课打卡和做任务即可领取',
-
+				' 报名时间： ' .$order->pay_tuition_time.'。'.
+				' 学费：' .$order->tuition_amount.'元。'.
+				' 平台奖励：' .$cash_back_percent.'%，待返金额为 ' .($order->check_in_amount + $order->do_task_amount) .'元，'.
+				' 每次上课打卡和做任务即可领取。',
 			'type'=>'USER_ENROL_SUCCESS'
 		];
 		//记录消息
@@ -375,21 +372,25 @@ class OrderRepository
 	 * @param  [type] $order [订单]
 	 * */
 	private function  execUpadateGroupbuyingUsersInfo($order){
-		$user =new BankeGroupbuyingUsers();
-		$enrol=new EnrolRepository();
-		$uid=$order->uid;
-		$enrol=$enrol::where(['uid'=>$uid,'course_id'=>$order->course_id]);
-		$enrol=$enrol->first();
-		$gid=$enrol->group_buying_id;
-		if(!$gid){
-			$gid=0;
+		$user = new BankeGroupbuyingUsers();
+		$enrol= new BankeEnrol();
+		$mobile=$order->mobile;
+		$enrol=$enrol::where(['mobile'=>$mobile,'course_id'=>$order->course_id]);
+		if($enrol->count()>0) {
+			$enrol=$enrol->first();
+			$gid = $enrol->group_buying_id;
+			if ($gid==0) {
+				return true;
+			}else {
+				$user['group_buying_id'] = $gid;
+				$user['uid'] = $order->uid;
+				if ($user->save()) {
+					return true;
+				}
+				return false;
+			}
 		}
-		$user['group_buying_id'] = $gid;
-		$user['uid'] = $uid;
-		if($user->save()){
-			return true;
-		}
-		return false;
+		return true;
 	}
 
 	/**
