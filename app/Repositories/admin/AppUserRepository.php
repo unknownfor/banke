@@ -679,8 +679,10 @@ class AppUserRepository
 
 		//记录余额变动日志
 		$cur_user = Auth::user();
-		$operator_uid = $cur_user->id;
-
+		$operator_uid=0;//系统自动更新数据
+		if($cur_user) {
+			$operator_uid = $cur_user->id;
+		}
 		//事务类型
 		$business_type=config('admin.global.balance_log')[$businessTypeIndex]['key'];
 		$balance_log = [
