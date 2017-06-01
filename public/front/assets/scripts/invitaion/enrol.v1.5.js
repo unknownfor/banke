@@ -16,7 +16,6 @@ $(function (){
     $(document).on(window.eventName,'.join-btn',function(){
         $('.box1').removeClass('hide');
         $('.box').addClass('hide');
-        $('body').addClass('scroll-fbd');
     });
 
 
@@ -49,7 +48,7 @@ $(function (){
                 $('.phone').removeClass('active');
                 $btn.addClass('nouse');
                 $btn.removeClass('active');
-                window.scrollControl(true);
+                // window.scrollControl(true);
             }
         }
     });

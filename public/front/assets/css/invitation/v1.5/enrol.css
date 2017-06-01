@@ -183,7 +183,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-x: hidden;
 }
 img {
   border: none;
@@ -192,7 +191,6 @@ img {
   margin: 0 auto;
   max-width: 700px;
   height: 100%;
-  overflow-x: hidden;
   font-size: 14px;
   color: #383D43;
 }
@@ -324,6 +322,7 @@ img {
   background: url("../../../img/course/sprite.png") no-repeat -26px 0px;
   -webkit-background-size: 63.2px 26.4px;
   background-size: 63.2px 26.4px;
+  vertical-align: 1px;
 }
 #enrol .box.information .head .head-middle .save .save-num {
   color: #FA4535;
@@ -331,7 +330,7 @@ img {
 }
 #enrol .box.information .head .head-right {
   position: absolute;
-  right: 15px;
+  right: 0px;
   display: inline-table;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
@@ -688,6 +687,10 @@ img {
   }
 }
 @media screen and (max-width: 320px) {
+  #enrol .box.user .user-info {
+    top: 21px;
+    left: 15px;
+  }
   #enrol .container .bg {
     max-height: 180px;
     margin-bottom: 10px;
@@ -696,6 +699,9 @@ img {
     margin-top: 70px;
   }
 }
-.scroll-fbd {
-  overflow: hidden;
+@media screen and (max-width: 375px) {
+  #enrol .box.user .user-info {
+    top: 28px;
+    left: 24px;
+  }
 }

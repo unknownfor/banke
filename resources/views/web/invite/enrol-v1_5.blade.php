@@ -30,7 +30,8 @@
             <?php
             $imgs=explode(',',$word['img_url_web']);
             ?>
-            <img class="slogen-bg" src="{{$word['img_url_web']}}" />
+            {{--<img class="slogen-bg" src="{{$word['img_url_web']}}" />--}}
+            <img class="slogen-bg" src="http://pic.hisihi.com/2017-05-31/1496211559475752.png" />
         @else
             <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
         @endif
@@ -129,6 +130,7 @@
         <i class="iconfont dotted">&#xe603;</i>
         <div class="rules"><div class="num">4</div><div class="txt">平台核实后，在首页每日打卡领取学费</div></div>
     </div>
+
     <div class="box1 line hide"></div>
     <div class="box1 register hide">
         <div class="phone">
