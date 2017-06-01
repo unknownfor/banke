@@ -346,7 +346,7 @@ body {
 }
 @media screen and (max-width: 320px) {
   #orgapplyfor .join .join-img > img {
-    max-width: 80%;
+    max-width: 78%;
   }
 }
 .bg-color {

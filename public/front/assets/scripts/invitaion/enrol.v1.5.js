@@ -21,7 +21,7 @@ $(function (){
 
     /*
      * 点击头像，弹出注册窗口*/
-    $(document).on(window.eventName,function(){
+    $(document).on(window.eventName,"#more",function(){
         $('body').removeClass('scroll-fbd');
         $('.box1').removeClass('hide');
         $('.box').addClass('hide');
