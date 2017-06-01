@@ -10,7 +10,7 @@ class BankeGroupbuyingUsers extends Model
     protected $table = 'banke_group_buying_users';
     use ActionAttributeTrait;
     protected $fillable = [
-        'uid','group_buying_id','created_at'
+        'uid','group_buying_id','created_at','updated_at'
     ];
 
     private $action;
