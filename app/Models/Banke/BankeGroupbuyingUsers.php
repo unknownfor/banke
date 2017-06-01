@@ -9,9 +9,9 @@ class BankeGroupbuyingUsers extends Model
     //
     protected $table = 'banke_group_buying_users';
     use ActionAttributeTrait;
-//    protected $fillable = [
-//        'status','view_counts','member_counts','view_counts_flag'
-//    ];
+    protected $fillable = [
+        'uid','group_buying_id','created_at'
+    ];
 
     private $action;
 

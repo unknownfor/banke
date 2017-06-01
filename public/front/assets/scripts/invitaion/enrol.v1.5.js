@@ -54,12 +54,14 @@ $(function (){
             cid=$('.user').attr('data-course-id'),
             oid=$('.user').attr('data-org-id'),
             mobile = $('#phone-num').val(),
+            groupBuyingId=$('.user').attr('data-record-id'),
 
             data={
-            org_id:oid,
-            course_id:cid,
-            invitation_uid:uid,
-            mobile:mobile,
+                org_id:oid,
+                course_id:cid,
+                invitation_uid:uid,
+                mobile:mobile,
+                group_buying_id:groupBuyingId,
         };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res) {

@@ -252,6 +252,8 @@ class OrderRepository
 
 						$this->execUpadateUserInfo($order,$userProfile); //更新用户信息
 
+						$this->execUpadateGroupbuyingUsersInfo($order);//更新参团信息
+
 						$this->execUpadateInvitorInfo($order);//更新推荐用户信息，并发送app内消息
 
 						$this->sendMsgToUser($order);  //给用户发送app内消息
@@ -364,6 +366,30 @@ class OrderRepository
 		//记录消息
 		BankeMessage::create($message);
 
+	}
+
+	/*
+	 * *更新参团信息
+	 * @author jimmy
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  [type] $order [订单]
+	 * */
+	private function  execUpadateGroupbuyingUsersInfo($order){
+		$user =new BankeGroupbuyingUsers();
+		$enrol=new EnrolRepository();
+		$uid=$order->uid;
+		$enrol=$enrol::where(['uid'=>$uid,'course_id'=>$order->course_id]);
+		$enrol=$enrol->first();
+		$gid=$enrol->group_buying_id;
+		if(!$gid){
+			$gid=0;
+		}
+		$user['group_buying_id'] = $gid;
+		$user['uid'] = $uid;
+		if($user->save()){
+			return true;
+		}
+		return false;
 	}
 
 	/**
