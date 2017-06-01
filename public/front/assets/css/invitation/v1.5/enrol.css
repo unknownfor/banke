@@ -222,7 +222,6 @@ img {
   left: 34px;
   right: 0;
   top: 35px;
-  width: 100%;
   text-align: left;
 }
 #enrol .box.user .user-info .info-left {
@@ -469,7 +468,7 @@ img {
   margin-bottom: 20px;
 }
 #enrol .box.join .join-rule {
-  margin: 30px 0 25px 0;
+  margin: 30px 0 60px 0;
   text-align: center;
 }
 #enrol .box.join .join-rule > a {
