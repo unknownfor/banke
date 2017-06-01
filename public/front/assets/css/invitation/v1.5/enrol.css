@@ -699,7 +699,7 @@ img {
     margin-top: 70px;
   }
 }
-@media screen and (max-width: 375px) {
+@media screen and (min-width: 350px) and (max-width: 375px) {
   #enrol .box.user .user-info {
     top: 28px;
     left: 24px;
