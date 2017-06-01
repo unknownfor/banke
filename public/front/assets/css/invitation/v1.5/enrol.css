@@ -183,15 +183,16 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
-  overflow: hidden;
+  overflow-x: hidden;
+}
+img {
+  border: none;
 }
 #enrol {
   margin: 0 auto;
   max-width: 700px;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   font-size: 14px;
   color: #383D43;
 }
@@ -442,7 +443,7 @@ body {
   padding: 0 5px ;
 }
 #enrol .box.join .join-btn {
-  margin: 0 20px 25px 20px;
+  margin: 0 20px;
   height: 40px;
   background-color: #FFEB3B;
   text-align: center;
@@ -452,6 +453,7 @@ body {
 }
 #enrol .box.join .join-description .title {
   padding-left: 5px;
+  margin-top: 25px;
   margin-bottom: 10px;
   font-weight: bold;
   border-left: 3px solid #FFEB3B;
@@ -463,6 +465,9 @@ body {
 }
 #enrol .box.join .join-description .detail > span {
   color: #fa4535;
+}
+#enrol .box.join .join-description .detail:last-child {
+  margin-bottom: 20px;
 }
 #enrol .box.join .join-rule {
   margin: 30px 0 25px 0;
@@ -484,7 +489,8 @@ body {
   opacity: 0;
   -webkit-animation: slideToTop .5s ease both;
   background-color: #ffffff;
-  padding: 30px;
+  padding: 25px;
+  overflow: hidden;
 }
 #enrol .box1.process > h3 {
   font-weight: normal;
@@ -541,7 +547,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   background-color: #F2F2F2;
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 #enrol .box1.register .phone .register-img {
   width: 45px;
@@ -689,4 +695,7 @@ body {
   #enrol .container .bg.second {
     margin-top: 70px;
   }
+}
+.scroll-fbd {
+  overflow: hidden;
 }

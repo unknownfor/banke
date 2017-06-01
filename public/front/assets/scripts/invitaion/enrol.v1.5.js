@@ -16,11 +16,14 @@ $(function (){
     $(document).on(window.eventName,'.join-btn',function(){
         $('.box1').removeClass('hide');
         $('.box').addClass('hide');
+        $('body').addClass('scroll-fbd');
     });
 
+
     /*
-     * 弹出注册窗口*/
-    $(document).on(window.eventName,'#more',function(){
+     * 点击头像，弹出注册窗口*/
+    $(document).on(window.eventName,function(){
+        $('body').removeClass('scroll-fbd');
         $('.box1').removeClass('hide');
         $('.box').addClass('hide');
     });
@@ -31,6 +34,8 @@ $(function (){
     * 填写手机号
     * 输入框变色，按钮变色*/
     $(document).on('input', '#phone-num', function(){
+        //页面禁止滚动
+        window.scrollControl(false);
         var number=$(this).val(),
             reg = /^1(3|4|5|7|8)\d{9}$/;
         var $btn=$('.btn');
@@ -39,13 +44,16 @@ $(function (){
                 $('.phone').addClass('active');
                 $btn.removeClass('nouse');
                 $btn.addClass('active');
+                window.scrollControl(true);
             }else{
                 $('.phone').removeClass('active');
                 $btn.addClass('nouse');
                 $btn.removeClass('active');
+                window.scrollControl(true);
             }
         }
     });
+
 
     $(document).on(window.eventName,'#register-btn.active', function () {
         window.controlLoadingBox(true);

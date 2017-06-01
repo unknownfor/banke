@@ -2,15 +2,16 @@ html,body {
   margin:0;
   padding:0;
   height: 100%;
-  -webkit-overflow-scrolling: touch;
-  overflow-scrolling: touch;
-  overflow: hidden;
+  overflow-x: hidden;
+}
+img{
+  border: none;
 }
 #enrol {
   margin: 0 auto;
   max-width: 700px;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   font-size: 14px;
   color: #383D43;
   @mfc: #FBC02D;
@@ -217,7 +218,7 @@ html,body {
 
       }
       .join-btn {
-        margin: 0 20px 25px 20px;
+        margin: 0 20px;
         height: @imgW;
         background-color: #FFEB3B;
         text-align: center;
@@ -228,6 +229,7 @@ html,body {
       .join-description {
         .title {
           padding-left: 5px;
+          margin-top: 25px;
           margin-bottom: 10px;
           font-weight: bold;
           border-left: 3px solid #FFEB3B;
@@ -238,6 +240,9 @@ html,body {
           color: #9b9b9b;
           > span {
             color: #fa4535;
+          }
+          &:last-child {
+            margin-bottom: 20px;
           }
         }
 
@@ -264,7 +269,9 @@ html,body {
     opacity: 0;
     -webkit-animation: slideToTop .5s ease both;
     background-color: #ffffff;
-    padding: 30px;
+    padding: 25px;
+    //输入禁止
+    overflow: hidden;
     &.process {
       @sw:20px;
       > h3 {
@@ -313,7 +320,7 @@ html,body {
         border-radius: @rbr;
         display: flex;
         background-color: #F2F2F2;
-        margin: 20px 0;
+        margin-bottom: 20px;
         .register-img {
           width:  @rbh;
           height: @rbh;
@@ -443,7 +450,6 @@ html,body {
       -webkit-transform: translate3d(0, 0, 0);
     }
   }
-
   @media screen and (max-width: 320px) {
     .container {
       .bg {
@@ -455,5 +461,7 @@ html,body {
       }
     }
   }
-
+}
+.scroll-fbd {
+  overflow: hidden;
 }
