@@ -31,7 +31,6 @@
             $imgs=explode(',',$word['img_url_web']);
             ?>
             <img class="slogen-bg" src="{{$word['img_url_web']}}" />
-            {{--<img class="slogen-bg" src="http://pic.hisihi.com/2017-05-31/1496211559475752.png" />--}}
         @else
             <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
         @endif
