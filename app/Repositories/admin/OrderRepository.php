@@ -324,8 +324,10 @@ class OrderRepository
 				$percent = $invite_enrol_course['z_award_amount'];
 				$invitation_award = moneyFormat(($order['tuition_amount'] * $percent / 100));
 
-				$order->get_share_group_buying_amount += $invitation_award;  //已经获得的分享金额 += $award
-				$order->save();
+				//更新邀请人的订单信息，已获邀请金额 + award
+				$order_invitor = BankeCashBackUser::where(['course_id'=>$order->course_id,'uid'=>$invitation_uid,'status'=>1])->first();
+				$order_invitor->get_group_buying_amount += $invitation_award;  //已经获得的开团金额金额 += $award
+				$order_invitor->save();
 
 				//更新用户账户金额信息以及添加变动记录
 				AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
@@ -354,8 +356,8 @@ class OrderRepository
 			'content'=>'报名课程：'.$order->course_name .'。'.
 				' 报名时间： ' .$order->pay_tuition_time.'。'.
 				' 学费：' .$order->tuition_amount.'元。'.
-				' 平台奖励：' .$cash_back_percent.'%，待返金额为 ' .($order->check_in_amount + $order->do_task_amount) .'元。'.
-				' 每次上课打卡和做任务即可领取',
+				' 平台奖励：' .$cash_back_percent.'%，待返金额为 ' .($order->check_in_amount + $order->do_task_amount) .'元，'.
+				' 每次上课打卡和做任务即可领取。',
 			'type'=>'USER_ENROL_SUCCESS'
 		];
 		//记录消息
