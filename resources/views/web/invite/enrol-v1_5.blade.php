@@ -30,7 +30,8 @@
             <?php
             $imgs=explode(',',$word['img_url_web']);
             ?>
-            <img class="slogen-bg" src="{{$word['img_url_web']}}" />
+            {{--<img class="slogen-bg" src="{{$word['img_url_web']}}" />--}}
+            <img class="slogen-bg" src="http://pic.hisihi.com/2017-05-31/1496211559475752.png" />
         @else
             <img class="head-bg" src="{{asset('front/assets/img/org/banke-org.png')}}" />
         @endif
@@ -58,7 +59,7 @@
         <div class="head">
             <div class="head-left">
                 <a href="{{$course['link_url']}}">
-                <img src="{{$course['cover']}}" />
+                <img src="{{$course['cover']}}@80h_80w_2e" />
                 </a>
             </div>
             <div class="head-middle">
@@ -106,6 +107,14 @@
             <div class="detail">团长，每参团成功一人，团长获得<span> {{$award['organizer_award']}}元返现</span></div>
             <div class="detail">团员，参团成功后，最高可获得<span> {{$course['max_award']}}元返现</span></div>
         </div>
+    </div>
+    <div class="box line"></div>
+    <div class="box join">
+        <div class="join-description">
+            <div class="title">什么是半课</div>
+            <div class="detail">一半学费上好课，为学生提供7天担保服务，学生通过打卡获得返现，开团享受优惠，
+                最高获得50%的返现帮助学生筛选出更具性价比的课程及机构，为学生提供终生学习的服务。</div>
+        </div>
         <div class="join-rule">
             <a href="{{$ruleLinkUrl}}">了解返现规则</a>
         </div>
@@ -121,6 +130,7 @@
         <i class="iconfont dotted">&#xe603;</i>
         <div class="rules"><div class="num">4</div><div class="txt">平台核实后，在首页每日打卡领取学费</div></div>
     </div>
+
     <div class="box1 line hide"></div>
     <div class="box1 register hide">
         <div class="phone">
