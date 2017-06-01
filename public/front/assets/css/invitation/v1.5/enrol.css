@@ -220,9 +220,9 @@ body {
   display: -ms-flexbox;
   display: flex;
   position: absolute;
-  left: 40px;
+  left: 34px;
   right: 0;
-  top: 40px;
+  top: 35px;
   width: 100%;
   text-align: left;
 }
