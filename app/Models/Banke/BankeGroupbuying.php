@@ -10,7 +10,7 @@ class BankeGroupbuying extends Model
     protected $table = 'banke_group_buying';
     use ActionAttributeTrait;
     protected $fillable = [
-        'status','view_counts','member_counts','view_counts_flag'
+        'status','view_counts','view_counts_flag'
     ];
 
     private $action;
@@ -35,5 +35,10 @@ class BankeGroupbuying extends Model
     //评论人 未实名
     public  function user(){
         return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','organizer_id');
+    }
+
+    //参团人数
+    public  function members(){
+        return $this->hasMany('App\Models\Banke\BankeGroupbuyingUsers','group_buying_id','id');
     }
 }

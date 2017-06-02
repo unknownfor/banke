@@ -603,7 +603,7 @@ return [
 		'member_counts' => '参与人数',
 		'status' => '状态',
 		'created_at' => '创建时间',
-		'updated_at' => '修改时间',
+		'updated_at' => '发起时间',
 		'show'=>'查看详情',
 		'view_counts_flag'=>'完成状态',
 		'list' => '开团列表',

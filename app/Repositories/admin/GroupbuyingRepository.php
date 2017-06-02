@@ -42,13 +42,17 @@ class GroupbuyingRepository
 
 		$groupbuying = $groupbuying->offset($start)->limit($length);
 		$groupbuyings = $groupbuying->orderBy("id", "desc")->get();
-               
 
 		if ($groupbuyings) {
 			foreach ($groupbuyings as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
 				$v['organizer_name']=$v->authenUser['real_name'];
 				$v['course_name']=$v->course['name'];
+				$v['member_counts']=0;
+				$members=$v->members;
+				if($members) {
+					$v['member_counts'] = $members->count();
+				}
 				if(!$v['organizer_name']){
 					$v['organizer_name']=$v->user['name'];
 				}
@@ -191,16 +195,7 @@ class GroupbuyingRepository
 		if($groupbuying['finished_share_counts']<$max_finished_share_counts){  //未完成 浏览量
 			DB::transaction(function () use ($groupbuying) {
 				try {
-					//TODO 一天只能完成一次
-//					$time = time();
-//					$today = date("Y-m-d",$time);
-//					$record=BankeGroupbuying::where(['organizer_id'=>$groupbuying->organizer_id]);
-//					$record=$record->where('created_at','>=',getTime($today));
-//					if()
 					$groupbuying->view_counts++;
-
-
-
 					//达到浏览量
 					if (($groupbuying->view_counts)%$groupbuying->min_view_counts==0) {
 						$groupbuying->finished_share_counts ++ ;  //完成次数 + 1
