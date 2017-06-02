@@ -457,8 +457,11 @@ return [
 		'updated_at' => '修改时间',
 		'sort'=>'排序',
 		'status'=>'状态',
+		'type'=>'问题类型',
 		'list' => '问题列表',
-		'show'=>'查看详情'
+		'show'=>'查看详情',
+		'normal_question'=>'普通问题',
+		'list_question'=>'咨询问题',
 	],
 	'appUpdate' => [
 		'version_code' => '序号',
