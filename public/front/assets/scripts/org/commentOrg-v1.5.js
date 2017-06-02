@@ -6,7 +6,10 @@ $(function() {
     window.addTip();
 
     //浏览量
-    viewCounts();
+    var oldUser=$('.user').attr('data-record-id');
+    if( oldUser != 0){
+        viewCounts();
+    }
 
     //页面禁止滚动
     window.scrollControl(false);
