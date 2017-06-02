@@ -278,7 +278,7 @@ class GroupbuyingRepository
 		$user = BankeGroupbuyingUsers::where('group_buying_id',$id);
 		$counts = $user->count();
 		$users = $user->offset(0)->limit($limit)->orderBy("id", "desc")->get();
-		if ($users) {
+		if ($counts>0) {
 			foreach ($users as &$v) {
 				$aUser=$v->authenUser;
 				$name=$aUser['real_name'];
