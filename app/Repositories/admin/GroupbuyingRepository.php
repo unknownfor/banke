@@ -272,6 +272,17 @@ class GroupbuyingRepository
 		return true;
 	}
 
+	/*通过课程id和用户id,获得团id*/
+	public static function getGroupbuyingByCidAndUid($uid,$cid){
+		$groupbuying = BankeGroupbuying::where(['organizer_id'=>$uid,'course_id'=>$cid]);
+		$groupbuying=$groupbuying->where('min_view_counts','>',0);
+		$counts = $groupbuying->count();
+		if ($counts>0) {
+			return $groupbuying->first()['id'];
+		}
+		return 0;
+	}
+
 	/*根据团id得到用户信息*/
 	public static function getAllMembersByGroupbuyingId($id,$limit=2)
 	{

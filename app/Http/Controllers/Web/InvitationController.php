@@ -151,7 +151,8 @@ class InvitationController extends Controller
         $word=GroupbuyingWordsRepository::getRandomRecord();
 
         //参团人员
-        $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($recordId,2);
+        $groupbuyingId=GroupbuyingRepository::getGroupbuyingByCidAndUid($uid,$cid);
+        $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($groupbuyingId,2);
 
         //参团优惠
         $order=OrderRepository::getOrderByCouseIdAndUid($cid,$uid);
