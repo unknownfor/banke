@@ -10,7 +10,7 @@ class BankeGroupbuying extends Model
     protected $table = 'banke_group_buying';
     use ActionAttributeTrait;
     protected $fillable = [
-        'status','view_counts','view_counts_flag'
+        'status','view_counts','view_counts_flag','lastly_finished_at'
     ];
 
     private $action;

@@ -192,13 +192,21 @@ class GroupbuyingRepository
 	{
 		$groupbuying = BankeGroupbuying::lockForUpdate()->find($id);
 		$max_finished_share_counts=$groupbuying->max_finished_share_counts;
+
+		$time = time();
+		$today = date("Y-m-d",$time); //2010-08-29
+		$flag = strtotime($groupbuying->lastly_finished_at)>=strtotime($today); //今天已经完成，不能再更新信息
+		if($flag){
+			return false;
+		}
 		if($groupbuying['finished_share_counts']<$max_finished_share_counts){  //未完成 浏览量
-			DB::transaction(function () use ($groupbuying) {
+			DB::transaction(function () use ($groupbuying,$time) {
 				try {
 					$groupbuying->view_counts++;
 					//达到浏览量
 					if (($groupbuying->view_counts)%$groupbuying->min_view_counts==0) {
 						$groupbuying->finished_share_counts ++ ;  //完成次数 + 1
+						$groupbuying->lastly_finished_at= date("Y-m-d H:i:s",$time);
 						$that=new GroupbuyingRepository();
 						$award=$that->getAward($groupbuying);  //获得奖励的钱
 						$that->awardUser($groupbuying,$award);  //奖励相应
