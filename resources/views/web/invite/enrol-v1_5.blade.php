@@ -139,7 +139,8 @@
         <button class="btn nouse" id="register-btn"><span>确定</span></button>
         <p>客服将会马上联系你</p>
     </div>
-    <div class="container hide">
+
+    <div class="container hide" >
         <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163041837846.png" />
         <div class="txt txt-one">早点报名，早点免学费哟！</div>
         <div class="txt txt-two">最高可领取<span>50%</span>学费返现</div>
