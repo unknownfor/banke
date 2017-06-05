@@ -141,8 +141,9 @@ class InvitationController extends Controller
 
         $maxAwardPercent=$course['task_award']+$course['checkin_award'];
 
-        $course['max_award'] = moneyFormat($course['price']*$maxAwardPercent/100);
+        $course['max_award'] = moneyFormatFloor($course['price']*$maxAwardPercent/100);
         $course['max_award_percent'] = $maxAwardPercent;
+        $course['price'] = moneyFormatFloor($course['price']);
 
         $ruleLinkUrl=$baseUrl.'/v1.5/share/rule';  //返现规则
         $org=$course->org;
@@ -161,9 +162,9 @@ class InvitationController extends Controller
         }
         $tulation=$order['tuition_amount'];
 
-        $organizer_award=moneyFormat($tulation*$course['z_award_amount']/100);
+        $organizer_award=moneyFormatFloor($tulation*$course['z_award_amount']/100);
 
-        $award=Array('organizer_award'=>$organizer_award,'member_award'=>$course['max_award']);
+        $award=Array('organizer_award'=>$organizer_award,'member_award'=>moneyFormatFloor($course['max_award']));
 
         $shareInfo=Array('type_id'=>$typeId,'record_id'=>$recordId);
 

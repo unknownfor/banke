@@ -103,6 +103,16 @@ if(!function_exists('moneyFormat')){
 }
 
 /**
+ *	金额都保留0位小数，向下取整
+ */
+if(!function_exists('moneyFormatFloor')){
+	function moneyFormatFloor($num=null){
+		$new_input = floor($num);
+		return $new_input;
+	}
+}
+
+/**
  *	//随机产生六位数密码Begin
  */
 if(!function_exists('randCode')){
