@@ -14,7 +14,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/org/v1.5/org.css" rel="stylesheet">
     <link type="text/css" href="/front/assets/css/org/v1.5/iconfont/iconfont.css">
-    <title>机构详情</title>
+    <title>半课</title>
 </head>
 <body>
     <div class="head container"

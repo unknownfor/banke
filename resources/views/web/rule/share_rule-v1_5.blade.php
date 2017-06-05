@@ -12,7 +12,7 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Cache-control" content="no-cache">
 	<meta http-equiv="Cache" content="no-cache">
-	<link type="text/css" href="/front/assets/css/rule/v1.2/rule.css" rel="stylesheet">
+	<link type="text/css" href="/front/assets/css/rule/v1.5/rule.css" rel="stylesheet">
 	<title>首页规则</title>
 </head>
 <body>
@@ -30,7 +30,7 @@
 					<span class="title-txt">精选机构</span>
 				</div>
 				<P class="service-info">
-					严选职业培训行业优质机构，保证机构教学质量。
+					严选教育培训行业优质机构，保证机构教学质量。
 				</P>
 			</div>
 			<div class="service-detail">
@@ -39,7 +39,7 @@
 					<span class="title-txt">学费减半</span>
 				</div>
 				<P class="service-info">
-					每日打卡和完成指定任务最高可领取50%学费返现。
+					打卡签到和完成指定任务最高可领取50%学费返现。
 				</P>
 			</div>
 			<div class="service-detail">
@@ -48,7 +48,7 @@
 					<span class="title-txt">七天担保</span>
 				</div>
 				<P class="service-info">
-					在带有<span>七天担保</span>的机构报名学习，7天不满意可以退款。
+					在带有<span class="seven">七天担保</span>的机构报名学习，7天不满意可以退款。
 				</P>
 			</div>
 			<div class="service-detail">
@@ -80,10 +80,9 @@
 					<p><span>1</span>注册认证</p>
 					<p><span>2</span>报名学费直减</p>
 					<p><span>3</span>邀请好友注册认证</p>
-					<p><span>4</span>邀请好友成功报名</p>
-					<p><span>5</span>完成连续打卡签到任务</p>
-					<p><span>6</span>成功报名后写评论</p>
-					<p><span>7</span>学习过程中写课程心得</p>
+					<p><span>4</span>分享学习心得及机构评价获得关注</p>
+					<p><span>5</span>成功报名后写评论</p>
+					<p><span>6</span>成为团长并邀请好友成功</p>
 					<div>(更多奖励持续开发中...)</div>
 				</div>
 			</div>

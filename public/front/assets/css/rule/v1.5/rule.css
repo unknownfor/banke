@@ -279,7 +279,6 @@ ul {
   vertical-align: 5px;
 }
 #rule .content.service .service-box .service-detail .service-info .seven {
-  font-size: 12px;
   border: 1px solid #fbb00a;
   color: #fbb00a;
   margin: 5px;
@@ -305,6 +304,9 @@ ul {
   background-color: #fbb00a;
   font-size: 14px;
   border-radius: 8px;
+}
+#rule .content.payback .payback-box .payback-detail .payback-info > p {
+  margin: 13px 0;
 }
 #rule .content.payback .payback-box .payback-detail .payback-info > p > span {
   display: inline-block;

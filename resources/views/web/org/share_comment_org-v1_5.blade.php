@@ -14,7 +14,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/org/v1.5/commentOrg.css" rel="stylesheet">
     <link href="/front/assets/css/org/v1.5/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
-    <title>机构评论</title>
+    <title>半课</title>
 </head>
 <body>
 {!! csrf_field() !!}
