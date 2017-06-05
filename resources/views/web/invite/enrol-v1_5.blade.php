@@ -69,8 +69,8 @@
                 </div>
             </div>
             <div class="head-right">
-                <div class="price"><span class="price-info">课程价</span><span id="price-num">￥{{$course['price']}}</span></div>
-                <div class="real-price"><span class="price-info">最高返现金额</span><span id="price-real-num">￥{{$course['max_award']}}</span></div>
+                <div class="price"><span class="price-info">原价</span><span id="price-num">￥{{$course['price']}}</span></div>
+                <div class="real-price"><span class="price-info">报名后最高返</span><span id="price-real-num">￥{{$course['max_award']}}</span></div>
             </div>
         </div>
     </div>
