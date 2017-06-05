@@ -2,7 +2,7 @@ var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
     ajax_datatable = dt.DataTable({
-      "lengthMenu": [[ 50,100], [ 50, 100]],
+      "lengthMenu": [[ 20,30], [ 20, 30]],
       "processing": true,
       "serverSide": true,
       "searching" : false,
@@ -53,15 +53,11 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "view_counts_flag",
-          "name": "view_counts_flag",
+          "data": "finished_share_counts",
+          "name": "finished_share_counts",
           "orderable" : false,
-          render:function(data){
-              if (data == 1) {
-                return '<span class="label label-success"> 完成 </span>';
-              }else {
-                return '<span class="label label-warning"> 待完成 </span>';
-              }
+          render:function(data,type,full){
+              return data+'/'+full.max_finished_share_counts;
           }
         },
         {

@@ -343,7 +343,9 @@ class UserRepository
 				$user_info['name']=$name;
 			}
 			if(!$user_info['avatar']){
-				$user_info['avatar']='http://pic.hisihi.com/2016-10-22/1477107042521143.png';
+
+//				$user_info['avatar']='http://pic.hisihi.com/2016-10-22/1477107042521143.png';
+				$user_info['avatar']='http://pic.hisihi.com/2017-06-02/1496387348811111.png';
 			}
 		}
 		return $user_info;

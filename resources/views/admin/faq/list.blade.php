@@ -77,7 +77,8 @@
                         <tr role="row" class="heading">
                           <th>#</th>
                           <th width="15%"> {{ trans('labels.faq.title') }} </th>
-                          <th width="35%"> {{ trans('labels.faq.content') }} </th>
+                          <th width="25%"> {{ trans('labels.faq.content') }} </th>
+                          <th width="10%"> {{ trans('labels.faq.type') }} </th>
                           <th width="10%"> {{ trans('labels.faq.sort') }} </th>
                           <th width="10%"> {{ trans('labels.faq.status') }} </th>
                           <th width="15%"> {{ trans('labels.faq.created_at') }} </th>

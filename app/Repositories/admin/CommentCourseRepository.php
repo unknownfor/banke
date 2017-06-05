@@ -111,7 +111,8 @@ class CommentCourseRepository
 				try {
 					$oldAwardStatus=$commentCourse['award_status'];
 					$commentCourse=$commentCourse->fill($request->all());
-					//TODO 审核通过加钱
+
+					// 审核通过加钱
 					$this->awardUser($oldAwardStatus,$commentCourse, $request);
 					if ($commentCourse->save()) {
 						Flash::success(trans('alerts.course.updated_success'));

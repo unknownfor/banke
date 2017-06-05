@@ -15,7 +15,7 @@ class BankeFaq extends Model
      */
     protected $table = 'banke_faq';
 
-    protected $fillable = ['title', 'status', 'sort', 'content'];
+    protected $fillable = ['title', 'status', 'sort', 'content','type'];
 
     private $action;
 
