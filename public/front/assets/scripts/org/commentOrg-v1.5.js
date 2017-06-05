@@ -6,7 +6,7 @@ $(function() {
     window.addTip();
 
     //浏览量
-    var oldUser=$('.user').attr('data-record-id');
+    var oldUser=$('.user').attr('data-id');
     if( oldUser != 0){
         viewCounts();
     }
