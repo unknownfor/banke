@@ -12,7 +12,7 @@
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta http-equiv="Cache-control" content="no-cache">
 	<meta http-equiv="Cache" content="no-cache">
-	<link type="text/css" href="/front/assets/css/rule/v1.2/rule.css" rel="stylesheet">
+	<link type="text/css" href="/front/assets/css/rule/v1.5/rule.css" rel="stylesheet">
 	<title>首页规则</title>
 </head>
 <body>
