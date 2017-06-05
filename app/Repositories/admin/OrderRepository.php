@@ -316,9 +316,7 @@ class OrderRepository
 			$enrol->order_status=1;  //更新预约信息，表示真实报名了
 			$enrol->save();
 			$invitation_uid=$enrol->invitation_uid;
-			$invitation_user = BankeUserProfiles::where('uid', $invitation_uid)->lockForUpdate()->first();
-			if ($invitation_user) {
-
+			if ($invitation_uid!=0) {
 				// 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
 				$invite_enrol_course = BankeCourse::find($course_id);
 				$percent = $invite_enrol_course['z_award_amount'];
@@ -335,7 +333,7 @@ class OrderRepository
 				$message1 = [
 					'uid' => $invitation_uid,
 					'title' => '您的好友报名成功',
-					'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程！平台已帮您领取了' . $invitation_award
+					'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程——'.$order['course_name'].'。平台已帮您领取了' . $invitation_award
 						. '元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
 					'type' => 'FRIEND_ENROL_SUCCESS'
 				];
