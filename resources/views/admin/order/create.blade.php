@@ -85,6 +85,9 @@
                                     <div class="form-control-focus"> </div>
                                     <input type="hidden" name="course_name">
                                 </div>
+                                <div class="col-md-4">
+                                   <span class="label label-success" id="price"></span>
+                                </div>
                             </div>
 
                             <div class="form-group form-md-line-input">

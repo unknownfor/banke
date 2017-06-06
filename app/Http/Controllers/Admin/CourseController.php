@@ -196,4 +196,13 @@ class CourseController extends Controller
         return response()->json($data);
     }
 
+
+    //根据课程id 获得课程
+    public function getCourseById()
+    {
+        $id = request('id', '');
+        $data = CourseRepository::show($id);
+        return response()->json($data);
+    }
+
 }

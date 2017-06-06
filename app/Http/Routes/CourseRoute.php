@@ -17,6 +17,9 @@ $router->group(['prefix' => 'course'], function($router){
 
 	//根据机构搜索课程
 	$router->get('getSecondCategoryByOrg', 'CourseController@getSecondCategoryByOrg');
+
+	//根据id搜索课程
+	$router->get('getCourseById', 'CourseController@getCourseById');
 });
 
 $router->resource('course', 'CourseController');

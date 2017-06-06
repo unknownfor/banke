@@ -39,6 +39,8 @@
         this.$courseSelect.selectpicker({
             liveSearchNormalize:true,
             liveSearchPlaceholder:'输入名称进行搜索'
+        }).on('changed.bs.select', function (e) {
+            that.refressPrice(e.currentTarget.value);
         });
 
         //$(document).on('blur','#tuition_amount',function(){
@@ -115,8 +117,24 @@
                     str+='<option value="'+res[i].id+'">'+res[i].name+'</option>';
                 }
                 that.$courseSelect.html(str).selectpicker('refresh');
+                if(res.length>0) {
+                    that.refressPrice(res[0].id);
+                }
             })
         },
+
+        //刷新课程价格
+        refressPrice:function (id){
+            var url='/admin/course/getCourseById',
+                paraData={id:id},
+                that=this;
+            this.getDataAsync(url,paraData,function(res){
+                res='￥'+ res.price;
+                $('#price').text(res);
+            })
+        },
+
+
 
         //控制搜索结果模态窗
          controlSearchModal:function(flag){
