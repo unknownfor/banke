@@ -272,7 +272,7 @@ return [
 		'details'=>'课程介绍',
 		'period'=>'课时',
 		'checkin_award'=>'打卡奖励比例',
-		'check_in_days' => '学习天数',
+		'check_in_days' => '打卡天数',
 		'task_award'=>'任务奖励比例',
 //		'comment_award'=>'心得奖励',
 		'comment_list'=>'评论列表',

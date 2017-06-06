@@ -37,8 +37,8 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
         },
         {
-          "data": "period",
-          "name": "period",
+          "data": "check_in_days",
+          "name": "check_in_days",
           "orderable" : false,
         },
         {

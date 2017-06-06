@@ -104,7 +104,7 @@
                           <th>#</th>
                           <th width="20%"> {{ trans('labels.course.name') }} </th>
                           <th width="20%"> {{ trans('labels.course.org_id') }} </th>
-                          <th width="10%"> {{ trans('labels.course.period') }} </th>
+                          <th width="10%"> {{ trans('labels.course.check_in_days') }} </th>
                           <th width="10%"> {{ trans('labels.course.price') }} </th>
                           <th width="10%"> {{ trans('labels.course.category') }} </th>
                           <th width="10%"> {{ trans('labels.course.status') }} </th>

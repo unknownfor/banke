@@ -84,18 +84,26 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="50">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
+                            {{--<div class="form-group form-md-line-input">--}}
+                                {{--<label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>--}}
+                                {{--<div class="col-md-9">--}}
+                                    {{--<input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="50">--}}
+                                    {{--<div class="form-control-focus"> </div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.checkin_award')}}(%)</label>
                                 <div class="col-md-4">
                                     <input type="text" class="form-control" id="checkin_award" name="checkin_award" placeholder="{{trans('labels.course.checkin_award')}}" value="3">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.course.check_in_days')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="check_in_days" name="check_in_days" placeholder="{{trans('labels.course.check_in_days')}}" value="10">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -170,13 +178,7 @@
                             {{--</div>--}}
 
 
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.course.check_in_days')}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" id="check_in_days" name="check_in_days" placeholder="{{trans('labels.course.check_in_days')}}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
+
 
 
 

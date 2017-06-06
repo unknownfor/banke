@@ -83,18 +83,26 @@
                           </div>
                       </div>
 
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>
-                          <div class="col-md-9">
-                              <input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="{{$course['period']}}">
-                              <div class="form-control-focus"> </div>
-                          </div>
-                      </div>
+                      {{--<div class="form-group form-md-line-input">--}}
+                          {{--<label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>--}}
+                          {{--<div class="col-md-9">--}}
+                              {{--<input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="{{$course['period']}}">--}}
+                              {{--<div class="form-control-focus"> </div>--}}
+                          {{--</div>--}}
+                      {{--</div>--}}
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.checkin_award')}}(%)</label>
                           <div class="col-md-4">
                               <input type="text" class="form-control" id="checkin_award" name="checkin_award" placeholder="{{trans('labels.course.checkin_award')}}" value="{{$course['checkin_award'] or $percent[0]['value']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.course.check_in_days')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" class="form-control" id="check_in_days" name="check_in_days" placeholder="{{trans('labels.course.check_in_days')}}" value="{{$course['check_in_days']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -155,20 +163,14 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.z_award_amount')}}(%)</label>
+                          <label class="col-md-1 control-label" for="z_award_amount">{{trans('labels.course.z_award_amount')}}(%)</label>
                           <div class="col-md-4">
                               <input type="text" class="form-control" id="z_award_amount" name="z_award_amount" placeholder="{{trans('labels.course.z_award_amount')}}" value="{{$course['z_award_amount']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="check_in_days">{{trans('labels.course.check_in_days')}}</label>
-                          <div class="col-md-9">
-                              <input type="text" class="form-control" id="check_in_days" name="check_in_days" placeholder="{{trans('labels.course.check_in_days')}}" value="{{$course['check_in_days']}}">
-                              <div class="form-control-focus"> </div>
-                          </div>
-                      </div>
+
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}} </label>

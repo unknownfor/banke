@@ -108,7 +108,6 @@ class FaqController extends Controller
      */
     public function show($id)
     {
-        Log::info('-------------------------show faq---------------');
         $faq = FaqRepository::show($id);
         return view('admin.faq.show')->with(compact('faq'));
     }
