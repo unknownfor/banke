@@ -317,7 +317,7 @@ class OrderRepository
 			$enrol->save();
 			$invitation_uid=$enrol->invitation_uid;
 			if ($invitation_uid!=0) {
-				// 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
+				// 奖励金额比例使用实时课程的数值，金额底数，使用被邀请者的成交价
 				$invite_enrol_course = BankeCourse::find($course_id);
 				$percent = $invite_enrol_course['z_award_amount'];
 				$invitation_award = moneyFormat(($order['tuition_amount'] * $percent / 100));
