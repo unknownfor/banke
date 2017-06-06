@@ -129,8 +129,12 @@
                 paraData={id:id},
                 that=this;
             this.getDataAsync(url,paraData,function(res){
-                res='￥'+ res.price;
-                $('#price').text(res);
+                var price =0;
+                if(res) {
+                    price = '￥' + res.price;
+                }
+                $('#price').text(price);
+
             })
         },
 
