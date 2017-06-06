@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeCashBackUser;
 use App\Models\Banke\BankeCommentCourse;
 use Carbon\Carbon;
 use Flash;
@@ -110,7 +111,8 @@ class CommentCourseRepository
 				try {
 					$oldAwardStatus=$commentCourse['award_status'];
 					$commentCourse=$commentCourse->fill($request->all());
-					//TODO 审核通过加钱
+
+					// 审核通过加钱
 					$this->awardUser($oldAwardStatus,$commentCourse, $request);
 					if ($commentCourse->save()) {
 						Flash::success(trans('alerts.course.updated_success'));
@@ -129,12 +131,14 @@ class CommentCourseRepository
 	}
 
 	/*奖励用户*/
-	private function awardUser($oldAwardStatus,$comment,$request){
+	private function awardUser($oldAwardStatus,$comment,$request,$comment_award){
 		if($this->isAward($oldAwardStatus,$request)){
 			$course=$comment->course;
-			$comment_award=$course['comment_award'];  //当前机构的奖励金额
+			if(!$comment_award) {
+				$comment_award = $course['comment_award'];  //当前课程的奖励金额,v1.5 不是固定的，而是动态计算得到
+			}
 			if($comment_award) {
-				AppUserRepository::execUpdateUserAccountInfo($comment['uid'], $comment_award, 1, 4);  //更新用户账户金额信息以及添加变动记录
+				AppUserRepository::execUpdateUserAccountInfo($comment['uid'], $comment_award, 1, 5);  //更新用户账户金额信息以及添加变动记录
 
 				//消息记录
 				$message = [
@@ -142,7 +146,7 @@ class CommentCourseRepository
 					'uid' => $comment['uid'],
 					'title' => '评论奖励',
 					'content' => '感谢您对课程"' . $course['name'] . '" 的精彩评论,平台已奖励您' . $comment_award . '元现金，快去现金钱包里查看吧！',
-					'type' => 'COMMENT'
+					'type' => config('admin.global.balance_log')[11]['key']
 				];
 				//记录消息
 				BankeMessage::create($message);
@@ -171,6 +175,86 @@ class CommentCourseRepository
 		$commentCourse = BankeCommentCourse::find($id);
 		$commentCourse->read_status=1;
 		$commentCourse->save();
+	}
+
+	/**
+	 * 修改浏览量
+	 * 如果浏览量  等于要求量，则息自动 进行奖励
+	 * @author jimmy
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public static function updateViewCounts($id)
+	{
+		$commentCourse = BankeCommentCourse::lockForUpdate()->find($id);
+		if(!$commentCourse->view_counts_flag){  //未完成 浏览量
+			DB::transaction(function () use ($commentCourse) {
+				try {
+					$commentCourse->view_counts++;
+
+					//达到浏览量
+					if ($commentCourse->view_counts == $commentCourse->min_view_counts) {
+						$commentCourse->view_counts_flag = true;  //标志已经达到浏览量
+
+						//奖励
+						$oldAwardStatus = $commentCourse['award_status'];
+						$request = array('award_status' => 1);
+
+						$that=new CommentCourseRepository();
+
+						$comment_award=$that->getAward($commentCourse);  //奖励金额
+						$that->awardUser($oldAwardStatus, $commentCourse, $request,$comment_award);  //奖励相应
+						$commentCourse->award_status=1;
+					}
+					$commentCourse->save();
+				}
+				catch(Exception $e){
+					Flash::error(trans('alerts.course.updated_error'));
+					var_dump($e);
+					return false;
+				}
+			});
+			return true;
+		}
+		return false;
+	}
+
+
+	/*
+	 * 获得奖励金额
+	 * 最后一个奖励金额，会把剩余的钱都给用户
+	 * @author jimmy
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	*/
+	private function getAward($comment){
+		$award=0;
+		$course_id=$comment->course_id;
+		$uid= $comment->uid;
+		$order = OrderRepository::getOrderByCouseIdAndUid($course_id, $uid);
+
+//		已经完成几次
+		$finished_times=BankeCommentCourse::where(['course_id'=>$course_id,'uid'=>$uid,'view_counts_flag'=>1])->count();
+
+		if($finished_times==$order->share_comment_course_counts-1) //最后一次
+		{
+			if($order){
+				$award=$order->share_comment_course_amount - $order->get_share_comment_course_amount;  //剩余的钱
+				if($award<0){
+					$award=0;
+				}
+			}
+		}
+		else{
+			$award = $comment->min_view_counts; //金额和要求浏览次数1：1
+		}
+		$order->get_share_comment_course_amount+=$award;  //已经获得的分享金额+=$award
+		$order->save();
+		return $award;
 	}
 
 }

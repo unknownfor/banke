@@ -17,7 +17,8 @@ class BankeEnrol extends Model
         'org_name',
         'course_id',
         'course_name',
-        'invitation_uid'
+        'invitation_uid',
+        'group_buying_id'
     ];
 
     protected $table = 'banke_enrol';
@@ -28,5 +29,15 @@ class BankeEnrol extends Model
     {
         parent::__construct($attributes);
         $this->action = config('admin.global.enrol.action');
+    }
+
+    public function org()
+    {
+        return $this->hasOne('App\Models\Banke\BankeOrg','id','org_id');
+    }
+
+    public function course()
+    {
+        return $this->hasOne('App\Models\Banke\BankeCourse','id','course_id');
     }
 }

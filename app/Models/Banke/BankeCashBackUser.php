@@ -13,7 +13,23 @@ class BankeCashBackUser extends Model
 
     protected $fillable = ['order_id', 'uid','name', 'course_name', 'org_id', 'course_id', 'org_account', 'mobile', 'tuition_amount',
         'check_in_amount', 'do_task_amount', 'period', 'comment', 'pay_tuition_time',
-        'operator_uid', 'status','check_in_days'];
+        'operator_uid', 'status','check_in_days',
+        'share_comment_course_amount',
+        'get_share_comment_course_amount',
+        'share_comment_org_amount',
+        'get_share_comment_org_amount',
+        'share_group_buying_amount',
+        'get_share_group_buying_amount',
+        'share_group_buying_view_counts',
+        'share_comment_course_view_counts',
+        'share_comment_org_view_counts',
+        'share_group_buying_counts',
+        'share_comment_course_counts',
+        'share_comment_org_counts',
+        'group_buying_amount',
+        'get_group_buying_amount'
+
+    ];
 
     private $action;
 

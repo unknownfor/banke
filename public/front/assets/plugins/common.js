@@ -187,7 +187,7 @@ window.getDataAsync=function(url,data,callback,eCallback,type){
         error: function () {
             //请求出错处理
             window.controlLoadingBox(false),
-                window.showTips('操作失败');
+            window.showTips('操作失败');
             eCallback && eCallback();
         }
     });

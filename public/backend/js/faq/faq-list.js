@@ -37,6 +37,17 @@ var TableDatatablesAjax = function() {
           },
         },
         {
+          "data": "type",
+          "name": "type",
+          render:function(val){
+            var str='<span class="label label-success"> 普通问题 </span>';
+            if(val==1){
+              str='<span class="label label-warning"> 咨询问题 </span>';
+            }
+            return str;
+          },
+        },
+        {
           "data": "sort",
           "name": "sort",
         },

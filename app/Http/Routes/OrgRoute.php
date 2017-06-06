@@ -12,6 +12,9 @@ $router->group(['prefix' => 'org'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
+
+	//根据机构搜索分享机构评论奖励比例
+	$router->get('getCommentSharePercent', 'OrgController@getCommentSharePercent');
 });
 
 $router->resource('org', 'OrgController');

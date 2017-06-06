@@ -206,6 +206,13 @@ return [
 		'commentcourseList' => '<i class="fa fa-comments"></i>课程评论列表',
 		'commentcourseShow' => '<i class="fa fa-search"></i> 课程评论详情',
 		'commentcourseEdit' => '<i class="fa fa-check"></i> 审核课程评论',
+
+
+		'groupbuyingList' => '<i class="fa fa-list"></i> 开团列表',
+
+		'groupbuyingwordsList' => '<i class="fa fa-list"></i> 开团标语列表',
+		'groupbuyingwordsCreate' => '<i class="fa fa-list"></i> 添加开团标语',
+		'groupbuyingwordsEdit' => '<i class="fa fa-list"></i> 编辑开团标语',
 	],
 	'dict' => [
 		'id' => '序号',
@@ -245,7 +252,7 @@ return [
 		'category1' => '一级分类',
 		'category2' => '二级分类',
 		'tags' => '标签',
-		'comment_award'=>'评论奖励',
+		'share_comment_org_award'=>'评论奖励比例',
 		'comment_list'=>'评论列表',
 		'confirm' => '已验证',
 		'active' => '<span class="label label-success"> 已验证 </span>',
@@ -267,7 +274,7 @@ return [
 		'checkin_award'=>'打卡奖励比例',
 		'check_in_days' => '学习天数',
 		'task_award'=>'任务奖励比例',
-		'comment_award'=>'心得奖励',
+//		'comment_award'=>'心得奖励',
 		'comment_list'=>'评论列表',
 		'category' => '所属分类',
 		'sort'=>'排序',
@@ -281,6 +288,11 @@ return [
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
+		'group_buying_award'=>'开团可获最高奖励比例(%)',
+		'share_group_buying_counts'=>'可分享开团次数',
+		'share_group_buying_award'=>'分享开团奖励比例(%)',
+		'share_comment_course_counts'=>'可分享心得次数',
+		'share_comment_course_award'=>'分享心得奖励比例(%)'
 	],
 
 	'app_user' => [
@@ -305,7 +317,8 @@ return [
 		'audit' => '<span class="label label-warning"> 审核中 </span>',
 		'trash' => '<span class="label label-warning"> 未通过 </span>',
 		'no_apply' => '<span class="label label-warning"> 未申请 </span>',
-		'org_name' => '机构'
+		'org_name' => '机构',
+		'alldetailinfo' => '详细信息',
 	],
 	'news' => [
 		'id' => '序号',
@@ -444,8 +457,11 @@ return [
 		'updated_at' => '修改时间',
 		'sort'=>'排序',
 		'status'=>'状态',
+		'type'=>'问题类型',
 		'list' => '问题列表',
-		'show'=>'查看详情'
+		'show'=>'查看详情',
+		'normal_question'=>'普通问题',
+		'list_question'=>'咨询问题',
 	],
 	'appUpdate' => [
 		'version_code' => '序号',
@@ -578,5 +594,32 @@ return [
 		'list' => '评论列表',
 		'show'=>'查看详情',
 		'course_name'=>'评论课程',
+	],
+
+	'groupbuying' => [
+		'id' => '序号',
+		'organizer_name' => '发起人',
+		'organizer_mobile' => '手机号',
+		'course_name' => '课程',
+		'org_id' => '所属机构',
+		'view_counts' => '浏览量',
+		'member_counts' => '参与人数',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '发起时间',
+		'show'=>'查看详情',
+		'view_counts_flag'=>'完成状态',
+		'list' => '开团列表',
+	],
+
+	'groupbuyingwords' => [
+		'id' => '序号',
+		'img_url_app' => '图片(app)',
+		'img_url_web' => '图片(web)',
+		'desc'=>'描述',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '开团标语列表',
 	],
 ];

@@ -118,6 +118,26 @@ class AppUserRepository
 		];
 	}
 
+
+	/*得到单个用户的详细信息*/
+	public static  function  getUserAllDetailInfo($id){
+		$user = new BankeUserProfiles;
+		$user=$user::find($id);
+		if($user){
+			$authen =$user->authentication;
+			if($authen['real_name']){
+				$user['name']=$authen['real_name'];
+				$user['zhifubao_account']=$authen['zhifubao_account'];
+				$user['school']=$authen['school'];
+				$user['major']=$authen['major'];
+			}
+			return $user;
+		}
+		else{
+			abort(404);
+		}
+	}
+
 	/**
 	 * datatable获取数据
 	 * @author shaolei
@@ -560,11 +580,17 @@ class AppUserRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function getUserInLimitTime($startTime,$endTime)
+	public static function getUserInLimitTime($startTime,$endTime=null,$authen=false)
 	{
 		$user = new BankeUserProfiles();
 		$user = $user->where('created_at','>=',getTime($startTime));
-		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
+		if($endTime){
+			$user = $user->where('created_at','<',getTime($endTime));
+		}
+		if($authen){
+			$user=$user->where('certification_status',2);
+		}
+		$user = $user ->get(['uid','name','created_at']);
 		return $user;
 	}
 
@@ -576,7 +602,8 @@ class AppUserRepository
 	 * 1：认证奖励，注册奖励金额+20，账户总额 + 20；
 	 * 2：邀请好友注册并认证，邀请人有奖励 +5 元
 	 * 3: 邀请好友报名课程
-	 * 3：评论机构、课程给予奖励
+	 * 4：评论机构、课程给予奖励
+	 * 5：开团邀请好友阅读量达标奖励
 	 *
 		 * 'balance_log' => [
 				'WITHDRAW' => '提现',
@@ -588,7 +615,10 @@ class AppUserRepository
 				'PUNISHMENT' => '惩罚',
 				'REFUND' => '退款',
 				'WITHDRAW_FAIL' => '提现失败退回',
-				'COMMENT'=>'评论奖励'
+				'COMMENT'=>'评论奖励'，//v1.5之后区分 COMMENT_ORG COMMENT_COURSE
+				'COMMENT_ORG'=> '机构评论奖励',
+				'COMMENT_COURSE' => '课程心得奖励',
+				'SHARE_GROUP_BUYING'=>'开团分享'
 			],
 		 *
 	 */
@@ -614,9 +644,17 @@ class AppUserRepository
 					$user_profile->get_do_task_amount += $award;
 					$businessTypeIndex=2;
 					break;
-				case 4:  //评论机构、课程
+				case 4:  //机构评论
 					$user_profile->get_do_task_amount += $award;
-					$businessTypeIndex=9;
+					$businessTypeIndex=10;
+					break;
+				case 5:  //课程心得
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=11;
+					break;
+				case 6:  //开团分享
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=12;
 					break;
 				default:
 					break;
@@ -641,8 +679,10 @@ class AppUserRepository
 
 		//记录余额变动日志
 		$cur_user = Auth::user();
-		$operator_uid = $cur_user->id;
-
+		$operator_uid=0;//系统自动更新数据
+		if($cur_user) {
+			$operator_uid = $cur_user->id;
+		}
 		//事务类型
 		$business_type=config('admin.global.balance_log')[$businessTypeIndex]['key'];
 		$balance_log = [
@@ -655,4 +695,30 @@ class AppUserRepository
 		//记录余额变动日志
 		BankeBalanceLog::create($balance_log);
 	}
+
+
+
+	/**
+	 * 根据创建时间，得到 注册半课APP用户 分组，每天多少人
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getUserInLimitTimeByGroup($startTime,$endTime)
+	{
+		$user = new User;
+		$user = $user::where('created_at','>=',getTime($startTime));
+		$user = $user->where('created_at','<',getTime($endTime));
+		$user = $user->groupBy('date')
+			->orderBy('date','DESC')
+			->get([
+				DB::raw('Date(created_at) as date'),
+				DB::raw('COUNT(*) as value')
+			])
+			->toJSON();
+		return $user;
+	}
+
+
 }

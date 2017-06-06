@@ -135,6 +135,23 @@ class OrgApplyForRepository
 	}
 
 	/**
+	 * 删除机构申请	 * @author shaolei
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function destroy($id)
+	{
+		$isDelete = BankeOrgApplyFor::destroy($id);
+		if ($isDelete) {
+			Flash::success(trans('alerts.orgapplyfor.deleted_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.orgapplyfor.deleted_error'));
+		return false;
+	}
+
+	/**
 	 * 添加申请机构信息
 	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
@@ -144,9 +161,12 @@ class OrgApplyForRepository
 	 */
 	public function addOrgApplyFor($request)
 	{
-		$org = BankeOrgApplyFor::where('name',$request['name']);
-		if ($org->count()>0) {
-			if ($org->fill($request->all())->save()) {
+		$org=new BankeOrgApplyFor();
+		$org = $org::where('name',$request['name']);
+		if ($org->count()==0) {
+			$request['status']=0;
+			$org1=new BankeOrgApplyFor;
+			if ($org1->fill($request->all())->save()) {
 				Flash::success(trans('alerts.orgapplyfor.updated_success'));
 				return array("status"=>true,"msg"=>"机构申请添加成功");
 			}

@@ -9,13 +9,10 @@ var TableDatatablesAjax = function() {
       "ajax": {
         'url' : '/admin/app_user/ajaxIndex',
         "data": function ( d ) {
-          d.name = $('.filter input[name="name"]').val().replace(/(^\s+)|(\s+$)/g,"");
           d.mobile = $('.filter input[name="mobile"]').val().replace(/(^\s+)|(\s+$)/g,"");
           d.certification_status = $('.filter select[name="certification_status"] option:selected').val();
           d.created_at_from = $('.filter input[name="created_at_from"]').val();
           d.created_at_to = $('.filter input[name="created_at_to"]').val();
-          //d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
-          //d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -86,17 +83,20 @@ var TableDatatablesAjax = function() {
           "name": "created_at",
           "orderable" : true,
         },
-        //{
-        //  "data": "updated_at",
-        //  "name": "updated_at",
-        //  "orderable" : true,
-        //},
-        { 
-          "data": "actionButton",
-          "name": "actionButton",
-          "type": "html",
+        {
+          "data": "alldetailinfo",
+          "name": "alldetailinfo",
           "orderable" : false,
+          render:function(res,type,full){
+            return '<a target="_blank" href="/admin/app_user/alldetailinfo/'+full.uid+'">详细信息</a>';
+          },
         },
+        //{
+        //  "data": "actionButton",
+        //  "name": "actionButton",
+        //  "type": "html",
+        //  "orderable" : false,
+        //},
       ],
       "drawCallback": function( settings ) {
         ajax_datatable.$('.tooltips').tooltip( {
@@ -109,20 +109,23 @@ var TableDatatablesAjax = function() {
       }
     });
 
-    dt.on('click', '.filter-submit', function(){
+    $(document).on('click', '.filter-submit', function(){
       ajax_datatable.ajax.reload(); 
     });
 
-    dt.on('click', '.filter-cancel', function(){
+    $(document).on('click', '.filter-cancel', function(){
       $('textarea.form-filter, select.form-filter, input.form-filter', dt).each(function() {
-          $(this).val("");
+        $(this).val("");
       });
 
       $('select.form-filter').selectpicker('refresh');
 
       $('input.form-filter[type="checkbox"]', dt).each(function() {
-          $(this).attr("checked", false);
+        $(this).attr("checked", false);
       });
+
+      $('.input-group.date input').val('');
+
       ajax_datatable.ajax.reload();
     });
 

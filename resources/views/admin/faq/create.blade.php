@@ -69,6 +69,28 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="type">{{trans('labels.faq.type')}}</label>
+                          <div class="col-md-10">
+                              <div class="md-radio-inline">
+                                  <div class="md-radio">
+                                      <input type="radio" id="status4" name="type" value="0" class="md-radiobtn" checked>
+                                      <label for="status4">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('labels.faq.normal_question')}} </label>
+                                  </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="status5" name="type" value="1" class="md-radiobtn">
+                                      <label for="status5">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('labels.faq.list_question')}} </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="sort">{{trans('labels.faq.sort')}}</label>
                           <div class="col-md-8">
                               <input type="text" class="form-control" name="sort" placeholder="{{trans('labels.faq.sort')}}" value="{{old('sort')}}">

@@ -36,6 +36,45 @@ Route::group(['prefix'=>"v1.3/share",'namespace'=>'Web'],function(){
 
 });
 
+
+//v1.5
+Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
+
+    //更新页面浏览次数  type 1:心得分享，  2：机构评论分享  ，3：开团分享      id：记录id
+    Route::post('/updateviewcounts', 'CommonController@updateViewCounts_v1_5');
+
+    //课程分享页面
+    Route::get('/course/{id}', 'CourseController@share_course_v1_5');
+
+    //机构分享页面
+    Route::get('/org/{id}', 'OrgController@share_org_v1_5');
+
+    //机构评论分享页面
+    Route::get('/commentorg/{course_id}/{uid}/{comment_id}', 'OrgController@share_comment_org_v1_5');
+
+    //开团分享、心得分享页面 (预约页面)
+    Route::get('/enrol/{uid}/{cid}/{typeid}/{id}', 'InvitationController@enrol_v1_5');
+
+    //规则页面
+    Route::get('/rule', 'RuleController@share_rule_v1_5');
+
+
+});
+
+//1.5
+Route::group(['prefix'=>"v1.5/web",'namespace'=>'Web'],function() {
+
+    //v1.5课程
+    Route::get('/course/{id}', 'CourseController@course_v1_5');
+
+    //机构入驻申请
+    Route::get('/orgapplyfor', 'OrgController@org_applyfor_v1_5');
+
+    //规则页面
+    Route::get('/rule', 'RuleController@rule_v1_5');
+
+});
+
 Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
 
     //v1.2 以及之后的
@@ -61,7 +100,6 @@ Route::group(['prefix'=>"invitation"],function(){
     //Create a test user, you don't need this if you already have.
     Route::post('register','ShareController@register');
 
-    Route::post('re','ShareController@re');
 
     Route::get('/{welcome}', 'ShareController@invitation');
 });
@@ -100,19 +138,22 @@ Route::group(['prefix'=>"web"],function(){
 
 
 //半课官网调用
-Route::group(['prefix'=>"bankehome"],function(){
+Route::group(['prefix'=>"bankehome",'namespace'=>'Web'],function(){
 
     //媒体报道
-    Route::get('reports', 'ShareController@getMediaReport');
+    Route::get('reports', 'ReportController@getMediaReport');
+
+    //token
+    Route::get('token', 'CommonController@getToken');
 
     //精选机构
-    Route::get('orgs', 'ShareController@getChoicenessOrgs');
+    Route::get('orgs', 'OrgController@getChoicenessOrgs');
 
     //机构详情
-    Route::get('org/{id}', 'ShareController@getOrgDetail');
+    Route::get('org/{id}', 'OrgController@getOrgDetail');
 
     //申请机构
-    Route::post('addorgapplyfor', 'ShareController@addOrgApplyFor');
+    Route::post('addorgapplyfor', 'OrgController@addOrgApplyFor');
 
 });
 

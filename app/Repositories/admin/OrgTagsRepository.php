@@ -8,7 +8,7 @@ use DB;
 /**
 * 机构标签
 */
-class OrgTagsReporsitory
+class OrgTagsRepository
 {
 
 	/**批量更新机构标签

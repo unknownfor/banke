@@ -112,7 +112,8 @@ var TableDatatablesAjax = function() {
     //});
     $(".bs-select").selectpicker({
       iconBase: "fa",
-      tickIcon: "fa-check"
+      tickIcon: "fa-check",
+      size:20
     });
   };
 

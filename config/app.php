@@ -262,6 +262,8 @@ return [
         'TrainCategoryRepository' => App\Facades\TrainCategoryFacade::class,
         'CommentOrgRepository' => App\Facades\CommentOrgFacade::class,
         'CommentCourseRepository' => App\Facades\CommentCourseFacade::class,
+        'GroupbuyingRepository' => App\Facades\GroupbuyingFacade::class,
+        'GroupbuyingWordsRepository' => App\Facades\GroupbuyingWordsFacade::class,
     ],
 
 ];

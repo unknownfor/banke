@@ -12,7 +12,13 @@ class BankeCourse extends Model
     protected $table = 'banke_course';
 
     protected $fillable = ['name', 'org_id', 'cover', 'price','period',
-        'intro', 'sort', 'details', 'status','checkin_award','task_award','z_award_amount','check_in_days','comment_award'];
+        'intro', 'sort', 'details', 'status','checkin_award','task_award',
+        'group_buying_award',
+        'share_group_buying_award',
+        'share_comment_course_award',
+        'share_group_buying_counts',
+        'share_comment_course_counts',
+        'z_award_amount','check_in_days','comment_award'];
 
     private $action;
 

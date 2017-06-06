@@ -259,11 +259,14 @@ class CheckinRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function getUserInLimitTime($startTime,$endTime)
+	public static function getCheckinInLimitTime($startTime,$endTime=null)
 	{
 		$user = new BankeCheckIn();
 		$user = $user->where('created_at','>=',getTime($startTime));
-		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','created_at']);
+		if($endTime){
+			$user = $user->where('created_at','<',getTime($endTime));
+		}
+		$user =$user->get(['uid','created_at']);
 		return $user;
 	}
 
@@ -273,7 +276,7 @@ class CheckinRepository
 		$mobile='';
 	}
 
-	public static  function  getHadCheckinDaysByUIdAndCid($uid,$cid){
+	public static function getHadCheckinDaysByUIdAndCid($uid,$cid){
 		$checkin=new BankeCheckIn();
 		$count=$checkin::where(['uid'=>$uid,'course_id'=>$cid]);
 		if($count){
@@ -291,7 +294,7 @@ class CheckinRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function getUserInLimitTimeByGroup($startTime,$endTime)
+	public static function getCheckinInLimitTimeByGroup($startTime,$endTime)
 	{
 		$user = new BankeCheckIn();
 		$user = $user::where('created_at','>=',getTime($startTime));

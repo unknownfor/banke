@@ -11,7 +11,7 @@ use PermissionRepository;
 use RoleRepository;
 use TrainCategoryRepository;
 use App\Repositories\admin\OrgCategoryRepository;
-use App\Repositories\admin\OrgTagsReporsitory;
+use App\Repositories\admin\OrgTagsRepository;
 use Illuminate\Support\Facades\Log;
 use App\Models\Banke\BankeOrg;
 

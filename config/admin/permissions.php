@@ -161,6 +161,7 @@ return[
 	'orgapplyfor' => [
 		'show' 	=> 'admin.orgapplyfor.show',
 		'edit' 	=> 'admin.orgapplyfor.edit',
+		'destroy' 	=> 'admin.orgrebates.delete',
 	],
 	//机构返款
 	'orgrebates' => [
@@ -205,6 +206,17 @@ return[
 		'create' 	=> 'admin.commentcourse.create',
 		'edit' 		=> 'admin.commentcourse.edit',
 		'destroy' 	=> 'admin.commentcourse.delete',
+	],
+
+	'groupbuying' => [
+		'show' 		=> 'admin.groupbuying.show',
+		'destroy' 	=> 'admin.groupbuying.delete',
+	],
+
+	'groupbuyingwords' => [
+		'create' 	=> 'admin.groupbuyingwords.create',
+		'edit' 		=> 'admin.groupbuyingwords.edit',
+		'destroy' 	=> 'admin.groupbuyingwords.delete',
 	],
 
 ];

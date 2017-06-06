@@ -60,7 +60,10 @@ return[
 		['key'=>'PUNISHMENT','desc' => '惩罚'],
 		['key'=>'REFUND','desc' => '退款'],
 		['key'=>'WITHDRAW_FAIL','desc' => '提现失败退回'],
-		['key'=>'COMMENT','desc' => '评论奖励'],
+		['key'=>'COMMENT','desc' => '评论奖励'], //v1.5之后区分 COMMENT_ORG COMMENT_COURSE
+		['key'=>'COMMENT_ORG','desc' => '机构评论奖励'],
+		['key'=>'COMMENT_COURSE','desc' => '课程心得奖励'],
+		['key'=>'SHARE_GROUP_BUYING','desc' => '开团分享'],
 	],
 	//角色
 	'role' => [
@@ -258,5 +261,19 @@ return[
 		// 控制是否显示查看按钮
 		'show' => false,
 		'action' => 'commentcourse',
+	],
+
+	//开团
+	'groupbuying' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'groupbuying',
+	],
+
+	//开团标语
+	'groupbuyingwords' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'groupbuyingwords',
 	],
 ];

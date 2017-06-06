@@ -9,6 +9,7 @@ use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeUserProfiles;
+use App\Models\Banke\BankeGroupbuyingUsers;
 use App\Models\Banke\BankeWithdraw;
 use Carbon\Carbon;
 use Flash;
@@ -252,6 +253,8 @@ class OrderRepository
 
 						$this->execUpadateUserInfo($order,$userProfile); //更新用户信息
 
+						$this->execUpadateGroupbuyingUsersInfo($order);//更新参团信息
+
 						$this->execUpadateInvitorInfo($order);//更新推荐用户信息，并发送app内消息
 
 						$this->sendMsgToUser($order);  //给用户发送app内消息
@@ -307,19 +310,22 @@ class OrderRepository
 	 */
 	private  function  execUpadateInvitorInfo($order){
 		$course_id=$order->course_id;
-		$enrol=BankeEnrol::where(['course_id'=>$course_id,'mobile'=>$order->mobile]);
+		$enrol=BankeEnrol::where(['course_id'=>$course_id,'mobile'=>$order->mobile]);  //预约表查询
 		if($enrol && $enrol->count()>0){
-			$invitation_uid=$enrol->first()->invitation_uid;
-			$invitation_user = BankeUserProfiles::where('uid', $invitation_uid)->lockForUpdate()->first();
-			if ($invitation_user) {
-
+			$enrol=$enrol->first();
+			$enrol->order_status=1;  //更新预约信息，表示真实报名了
+			$enrol->save();
+			$invitation_uid=$enrol->invitation_uid;
+			if ($invitation_uid!=0) {
 				// 判断订单中的课程中的转奖励金额是否为空 如果为空则调用系统自动分配 否则取转奖励金额
 				$invite_enrol_course = BankeCourse::find($course_id);
 				$percent = $invite_enrol_course['z_award_amount'];
-				if ($percent == '') {
-					$percent = BankeDict::find(7)['value'];
-				}
 				$invitation_award = moneyFormat(($order['tuition_amount'] * $percent / 100));
+
+				//更新邀请人的订单信息，已获邀请金额 + award
+				$order_invitor = BankeCashBackUser::where(['course_id'=>$order->course_id,'uid'=>$invitation_uid,'status'=>1])->first();
+				$order_invitor->get_group_buying_amount += $invitation_award;  //已经获得的开团金额金额 += $award
+				$order_invitor->save();
 
 				//更新用户账户金额信息以及添加变动记录
 				AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
@@ -327,13 +333,14 @@ class OrderRepository
 				$message1 = [
 					'uid' => $invitation_uid,
 					'title' => '您的好友报名成功',
-					'content' => '您邀请的好友' . $order->mobile . '报名了课程！平台已帮您领取了' . $invitation_award
+					'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程——'.$order['course_name'].'。平台已帮您领取了' . $invitation_award
 						. '元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
 					'type' => 'FRIEND_ENROL_SUCCESS'
 				];
 				//记录消息
 				BankeMessage::create($message1);
 			}
+
 		}
 	}
 
@@ -344,16 +351,44 @@ class OrderRepository
 		$message = [
 			'uid'=>$order['uid'],
 			'title'=>'您已报名成功',
-			'content'=>'尊敬的'.$order->name.'用户，您已'.$order->pay_tuition_time.'于'.$org->name.'报名了'
-				.$order->course_name.'培训课程，学费为'.$order->tuition_amount.'元，平台奖励学费'
-				.$cash_back_percent.'%，您的待返金额为'
-				.($order->check_in_amount + $order->do_task_amount)
-				.'元，每次上课打卡和做任务即可领取',
+			'content'=>'报名课程：'.$order->course_name .'。'.
+				' 报名时间： ' .$order->pay_tuition_time.'。'.
+				' 学费：' .$order->tuition_amount.'元。'.
+				' 平台奖励：' .$cash_back_percent.'%，待返金额为 ' .($order->check_in_amount + $order->do_task_amount) .'元，'.
+				' 每次上课打卡和做任务即可领取。',
 			'type'=>'USER_ENROL_SUCCESS'
 		];
 		//记录消息
 		BankeMessage::create($message);
 
+	}
+
+	/*
+	 * *更新参团信息
+	 * @author jimmy
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  [type] $order [订单]
+	 * */
+	private function  execUpadateGroupbuyingUsersInfo($order){
+		$user = new BankeGroupbuyingUsers();
+		$enrol= new BankeEnrol();
+		$mobile=$order->mobile;
+		$enrol=$enrol::where(['mobile'=>$mobile,'course_id'=>$order->course_id]);
+		if($enrol->count()>0) {
+			$enrol=$enrol->first();
+			$gid = $enrol->group_buying_id;
+			if ($gid==0) {
+				return true;
+			}else {
+				$user['group_buying_id'] = $gid;
+				$user['uid'] = $order->uid;
+				if ($user->save()) {
+					return true;
+				}
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -394,11 +429,14 @@ class OrderRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function getUserInLimitTime($startTime,$endTime)
+	public static function getOrderInLimitTime($startTime,$endTime=null)
 	{
 		$user = new BankeCashBackUser;
 		$user = $user->where('created_at','>=',getTime($startTime));
-		$user = $user->where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
+		if($endTime) {
+			$user = $user->where('created_at', '<', getTime($endTime));
+		}
+		$user=$user->where('status',1)->get(['uid', 'name', 'created_at']);
 		return $user;
 	}
 
@@ -409,7 +447,7 @@ class OrderRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function getUserInLimitTimeByGroup($startTime,$endTime)
+	public static function getOrderInLimitTimeByGroup($startTime,$endTime)
 	{
 		$user = new BankeCashBackUser();
 		$user = $user::where('created_at','>=',getTime($startTime));
@@ -473,29 +511,52 @@ class OrderRepository
 		DB::transaction(function () use ($request) {
 			try{
 				$input = $request->all();
-				$role = new BankeCashBackUser;
+				$order = new BankeCashBackUser;
 				$input['order_id'] = date("YmdHis").mt_rand(10, 99);
 				$course = BankeCourse::find($input['course_id']);
+
+				$tuition=$input['tuition_amount'];
 				$input['period'] = $course['period'];
-				$check_in_config = BankeDict::find(3);
-				$do_task_config = BankeDict::find(4);
-				if($course->checkin_award){
-					$input['check_in_amount']=moneyFormat(($input['tuition_amount'] * $course->checkin_award / 100));
-				}else{
-					$input['check_in_amount'] = moneyFormat(($input['tuition_amount'] * $check_in_config['value'] / 100));
-				}
-				if($course->task_award){
-					$input['do_task_amount']=moneyFormat(($input['tuition_amount'] * $course->task_award / 100));
-				}else{
-					$input['do_task_amount'] = moneyFormat(($input['tuition_amount'] * $do_task_config['value'] / 100));
-				}
+				$input['check_in_amount']=moneyFormat($tuition * $course->checkin_award / 100);
+				$input['do_task_amount']=moneyFormat($tuition * $course->task_award / 100);
+
+				//获取课程信息，计算任务分享信息
+
+				//course
+				$commentCourseAward=moneyFormat($tuition*$course['share_comment_course_award']/100);
+				$commentCourseCounts=$course['share_comment_course_counts'];//最多可以奖励次数
+				$input['share_comment_course_amount'] = $commentCourseAward;
+				$input['share_comment_course_counts'] = $commentCourseCounts;
+				$input['share_comment_course_view_counts'] = $this->getViewCountsByAward($commentCourseAward,$commentCourseCounts);  //浏览多少次达到要求
+
+				$org=$course->org;
+
+				//org
+				$commentOrgAward=moneyFormat($tuition*$org['share_comment_org_award']/100);
+				$commentOrgCounts=$org['share_comment_org_counts'];//最多可以奖励次数
+				$input['share_comment_org_amount'] =$commentOrgAward;
+				$input['share_comment_org_counts'] = $commentOrgCounts;
+				$input['share_comment_org_view_counts'] = $this->getViewCountsByAward($commentOrgAward,$commentOrgCounts);
+
+				//groupbuying
+				$gbAllAward=moneyFormat($tuition*$course['group_buying_award']/100);
+				$input['group_buying_amount'] = $gbAllAward;
+
+				$gbAward=moneyFormat($tuition*$course['share_group_buying_award']/100);
+				$gbCounts=$course['share_group_buying_counts'];//最多可以奖励次数
+
+				$input['share_group_buying_amount'] = $gbAward;
+				$input['share_group_buying_counts'] = $gbCounts;
+				$input['share_group_buying_view_counts'] = $this->getViewCountsByAward($gbAward,$gbCounts);
+
 
 				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
 
 				$cur_user = Auth::user();
 				$input['operator_uid'] = $cur_user->id;
+
 				//创建新订单
-				$role->fill($input)->save();
+				$order->fill($input)->save();
 
 				Flash::success(trans('alerts.order.created_success'));
 				return true;
@@ -508,5 +569,30 @@ class OrderRepository
 	}
 
 
+	/*
+	 * 分享的页面需要浏览几次才能达到奖励标准，和金额1:1对应。向下取整
+	 * @author jimmy
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  $award [number]   奖项
+	 * @return $maxCounts [number]   最多可以获得多少次奖励
+	 * */
+	private static function getViewCountsByAward($award,$maxCounts){
+		$temp =floor ($award/$maxCounts);
+		return $temp;
+	}
+
+
+	/**
+	 * 通过课程id,用户id，得到订单
+	 * @author jimmy
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public static function getOrderByCouseIdAndUid($course_id,$uid)
+	{
+		$order = BankeCashBackUser::where(['course_id'=>$course_id,'uid'=>$uid,'status'=>1])->first();
+		return $order;
+	}
 
 }

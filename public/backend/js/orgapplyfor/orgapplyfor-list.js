@@ -37,7 +37,10 @@ var TableDatatablesAjax = function() {
           "name": "introduce",
           "orderable" : false,
           render:function(val){
-            return '<p class="txt-ellipsis-single" title="'+val+'">'+val+'</p>';
+            if(val) {
+              return '<p class="txt-ellipsis-single" title="' + val + '">' + val + '</p>';
+            }
+            return '';
           },
         },
         { 

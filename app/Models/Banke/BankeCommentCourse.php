@@ -10,7 +10,8 @@ class BankeCommentCourse extends Model
     protected $table = 'banke_comment_course';
     use ActionAttributeTrait;
     protected $fillable = [
-        'status','award_status','operator_id','read_status'
+        'status','award_status','operator_id','read_status',
+        'view_counts','view_counts_flag'
     ];
 
     private $action;

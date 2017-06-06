@@ -343,7 +343,9 @@ class UserRepository
 				$user_info['name']=$name;
 			}
 			if(!$user_info['avatar']){
-				$user_info['avatar']='http://pic.hisihi.com/2016-10-22/1477107042521143.png';
+
+//				$user_info['avatar']='http://pic.hisihi.com/2016-10-22/1477107042521143.png';
+				$user_info['avatar']='http://pic.hisihi.com/2017-06-02/1496387348811111.png';
 			}
 		}
 		return $user_info;
@@ -422,44 +424,4 @@ class UserRepository
 		$uuid .= substr($str,20,12);
 		return $prefix . $uuid;
 	}
-
-
-	/**
-	 * 根据创建时间，得到 注册半课APP用户
-	 * @author shaolei
-	 * @date   2016-04-14T11:32:04+0800
-	 * @param  [type]                   $request [description]
-	 * @return [type]                            [description]
-	 */
-	public function getUserInLimitTime($startTime,$endTime)
-	{
-		$user = new User;
-		$user = $user::where('created_at','>=',getTime($startTime));
-		$user = $user::where('created_at','<',getTime($endTime))->get(['uid','name','created_at']);
-		return $user;
-	}
-
-
-	/**
-	 * 根据创建时间，得到 注册半课APP用户 分组，每天多少人
-	 * @author shaolei
-	 * @date   2016-04-14T11:32:04+0800
-	 * @param  [type]                   $request [description]
-	 * @return [type]                            [description]
-	 */
-	public function getUserInLimitTimeByGroup($startTime,$endTime)
-	{
-		$user = new User;
-		$user = $user::where('created_at','>=',getTime($startTime));
-		$user = $user->where('created_at','<',getTime($endTime));
-		$user = $user->groupBy('date')
-			->orderBy('date','DESC')
-			->get([
-				DB::raw('Date(created_at) as date'),
-				DB::raw('COUNT(*) as value')
-			])
-		->toJSON();
-		return $user;
-	}
-
 }

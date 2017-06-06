@@ -28,7 +28,13 @@ $(function(){
         /**MyCourse**/
         var MyCourse=function(){
             this.init();
-            var that=this;
+            var that=this,
+                orgCommentSharePercent=$('#orgSharePercent').attr('data-percent');
+            if(orgCommentSharePercent) {
+                that.taskTotalNum = Number(orgCommentSharePercent);  //总的任务值
+            }else{
+                that.taskTotalNum = 0;  //总的任务值
+            }
             /*上传文件*/
             $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadImgEditor'));
 
@@ -45,6 +51,13 @@ $(function(){
                 liveSearchPlaceholder:'输入机构名称进行搜索'
             }).on('changed.bs.select', function (e) {
                 that.refressCategorySelect(e.currentTarget.value);
+                that.refressCommentSharePercent(e.currentTarget.value);
+            });
+
+
+            /*重新计算任务总比例*/
+            $('.my-task-input').focusout(function(){
+                that.calcTotalTaskNumber.call(that);
             });
 
             //photoswipe   //图片信息查看  相册、视频信息查看
@@ -312,6 +325,37 @@ $(function(){
                 })
             },
 
+
+            //刷新机构评论返钱比例
+            refressCommentSharePercent:function (id){
+                var that=this;
+                if(id==-1){
+                    $('#orgSharePercent').text('*%');
+                    return;
+                }
+                var url='/admin/org/getCommentSharePercent',
+                    paraData={org_id:id};
+                window.getDataAsync(url,paraData,function(res){
+                    $('#orgSharePercent').text(res+'%');
+                    that.taskTotalNum=Number(res);
+                    that.calcTotalTaskNumber.call(that);
+                });
+            },
+
+            /*重新计算总任务比例*/
+            calcTotalTaskNumber:function(){
+                var val,total=0;
+                $('.my-task-input').each(function(){
+                    val = Number(this.value);
+                    if(this.value){
+                        total += val;
+                    } else{
+                        total += 0;
+                    }
+                });
+                $('#task_award').val(total+this.taskTotalNum);
+            },
+
             CLASS_NAME:'MyCourse'
 
         };
@@ -351,5 +395,6 @@ $(function(){
             $('#target-area').text(val);
             //相册
             $('#cover').val(course.getCoverImg().join(','));
+            course.calcTotalTaskNumber();
         };
 });
