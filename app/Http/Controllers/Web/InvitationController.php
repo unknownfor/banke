@@ -155,14 +155,8 @@ class InvitationController extends Controller
         $groupbuyingId=GroupbuyingRepository::getGroupbuyingByCidAndUid($uid,$cid);
         $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($groupbuyingId,2);
 
-        //参团优惠
-        $order=OrderRepository::getOrderByCouseIdAndUid($cid,$uid);
-        if(!$order){
-            abort(404);
-        }
-        $tulation=$order['tuition_amount'];
 
-        $organizer_award=moneyFormatFloor($tulation*$course['z_award_amount']/100);
+        $organizer_award=moneyFormatFloor($course['price']*$course['z_award_amount']/100);
 
         $award=Array('organizer_award'=>$organizer_award,'member_award'=>moneyFormatFloor($course['max_award']));
 
