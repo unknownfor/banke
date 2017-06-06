@@ -42,24 +42,14 @@
             <div class="search-box filter">
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
-                        <div class="input-group has-success">
-                            <span class="input-group-addon">
-                                <i class="fa fa-user"></i>
-                            </span>
-                            <input type="text" class="form-control form-filter" name="name" placeholder="{{ trans('labels.orgapplyfor.name') }}">
-                            <div class="form-control-focus"> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-group form-md-line-input">
-                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
-                            <option value="" data-icon="fa-glass icon-success">状态....</option>
-                            @if(trans('strings.orgapplyfor'))
-                                @foreach(trans('strings.orgapplyfor') as $status_key => $status_value)
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="read_status">
+                            <option value="" data-icon="fa-glass icon-success">阅读状态....</option>
+                            @if(trans('strings.read_status'))
+                                @foreach(trans('strings.read_status') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif
+
                         </select>
                     </div>
                 </div>

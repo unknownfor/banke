@@ -22,7 +22,7 @@
           <div class="portlet-title">
               <div class="caption font-green-haze">
                   <i class="icon-settings font-green-haze"></i>
-                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.faqShow') !!}</span>
+                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.orgapplyforShow') !!}</span>
               </div>
               <div class="actions">
                   <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -32,55 +32,45 @@
               <form role="form" class="form-horizontal">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="name">{{trans('labels.faq.title')}}</label>
+                          <label class="col-md-1 control-label" for="name">{{trans('labels.orgapplyfor.name')}}</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$faq['title']}} </div>
+                              <div class="form-control form-control-static"> {{$orgapplyfor['name']}} </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="intro">{{trans('labels.faq.content')}}</label>
+                          <label class="col-md-1 control-label" for="intro">{{trans('labels.orgapplyfor.city')}}</label>
                           <div class="col-md-9">
-                              <input type="hidden" class="content-origin" value="{{$faq['content']}}"></input>
-                              <div class="form-control form-control-static content" style="line-height: 30px;"></div>
+                              <div class="form-control form-control-static"> {{$orgapplyfor['city']}} </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="intro">{{trans('labels.orgapplyfor.address')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static"> {{$orgapplyfor['address']}} </div>
                           </div>
                       </div>
 
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="address">{{trans('labels.faq.sort')}}</label>
+                          <label class="col-md-1 control-label" for="contact">{{trans('labels.orgapplyfor.contacter')}}</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$faq['sort']}} </div>
+                              <div class="form-control form-control-static"> {{$orgapplyfor['contact']}} </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.faq.created_at')}}</label>
+                          <label class="col-md-1 control-label" for="address">{{trans('labels.orgapplyfor.introduce')}}</label>
                           <div class="col-md-9">
-                              <div class="form-control form-control-static"> {{$faq['created_at']}} </div>
-                          </div>
-                      </div>
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.faq.status')}}</label>
-                          <div class="col-md-9">
-                              <div class="md-radio-inline">
-                                  @if($faq['status'] == config('admin.global.status.active'))
-                                      <span class="label label-success"> 正常 </span>
-                                  @endif
-                                  @if($faq['status'] == config('admin.global.status.audit'))
-                                      <span class="label label-warning"> 待审核 </span>
-                                  @endif
-                                  @if($faq['status'] == config('admin.global.status.trash'))
-                                      <span class="label label-danger"> 未通过 </span>
-                                  @endif
-                              </div>
+                              <p> {{$orgapplyfor['introduce']}} </p>
                           </div>
                       </div>
                   </div>
                   <div class="form-actions">
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
-                              <a href="{{url('admin/faq')}}" class="btn default">{{trans('crud.back')}}</a>
+                              <a href="{{url('admin/orgapplyfor')}}" class="btn default">{{trans('crud.back')}}</a>
                           </div>
                       </div>
                   </div>

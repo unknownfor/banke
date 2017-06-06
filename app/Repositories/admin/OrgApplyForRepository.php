@@ -26,51 +26,21 @@ class OrgApplyForRepository
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
-//		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
-		$search_pattern = true;
+		$read_status = request('read_status' ,'');
 
-		$name = request('name' ,'');
-		$created_at_from = request('created_at_from' ,'');
-		$created_at_to = request('created_at_to' ,'');
-		$updated_at_from = request('updated_at_from' ,'');
-		$updated_at_to = request('updated_at_to' ,'');
-		$orders = request('order', []);
+		$orgApplyFor = new BankeOrgApplyFor();
 
-		$feedback = new BankeOrgApplyFor();
-
-		/*配置名称搜索*/
-		if($name){
-			if($search_pattern){
-				$feedback = $feedback->where('name', 'like', $name);
-			}else{
-				$feedback = $feedback->where('name', $name);
-			}
+		if ($read_status!=null) {
+			$orgApplyFor = $orgApplyFor->where('read_status', $read_status);
 		}
 
+		$count = $orgApplyFor->count();
 
-		/*配置创建时间搜索*/
-		if($created_at_from){
-			$feedback = $feedback->where('created_at', '>=', getTime($created_at_from));
-		}
-		if($created_at_to){
-			$feedback = $feedback->where('created_at', '<=', getTime($created_at_to, false));
-		}
+		$orgApplyFor = $orgApplyFor->offset($start)->limit($length);
+		$orgApplyFors = $orgApplyFor->orderBy("id", "desc")->get();
 
-
-		$count = $feedback->count();
-
-
-		if($orders){
-			$orderName = request('columns.' . request('order.0.column') . '.name');
-			$orderDir = request('order.0.dir');
-			$feedback = $feedback->orderBy($orderName, $orderDir);
-		}
-
-		$feedback = $feedback->offset($start)->limit($length);
-		$feedbacks = $feedback->orderBy("id", "desc")->get();
-
-		if ($feedbacks) {
-			foreach ($feedbacks as &$v) {
+		if ($orgApplyFors) {
+			foreach ($orgApplyFors as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
 			}
 		}
@@ -78,7 +48,7 @@ class OrgApplyForRepository
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $feedbacks,
+			'data' => $orgApplyFors,
 		];
 	}
 
@@ -91,8 +61,8 @@ class OrgApplyForRepository
 	 */
 	public function show($id)
 	{
-		$feedback = BankeOrgApplyFor::find($id)->toArray();
-		return $feedback;
+		$orgApplyFor = BankeOrgApplyFor::find($id)->toArray();
+		return $orgApplyFor;
 	}
 
 	/**
@@ -104,9 +74,9 @@ class OrgApplyForRepository
 	 */
 	public function edit($id)
 	{
-		$feedback = BankeOrgApplyFor::find($id);
-		if ($feedback) {
-			$roleArray = $feedback->toArray();
+		$orgApplyFor = BankeOrgApplyFor::find($id);
+		if ($orgApplyFor) {
+			$roleArray = $orgApplyFor->toArray();
 			return $roleArray;
 		}
 		abort(404);
@@ -176,7 +146,15 @@ class OrgApplyForRepository
 		}
 	}
 
-
-
-
+	/*更新阅读状态*/
+	public static function updateReadStatus($id)
+	{
+		$record =BankeOrgApplyFor::find($id);
+		$record['read_status']=1;
+		if ($record->save()) {
+			return true;
+		}else{
+			return false;
+		}
+	}
 }

@@ -2,15 +2,14 @@ var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
     ajax_datatable = dt.DataTable({
-      "lengthMenu": [[ 50,100], [ 50, 100]],
+      "lengthMenu": [[ 10,20], [ 10, 20]],
       "processing": true,
       "serverSide": true,
       "searching" : false,
       "ajax": {
         'url' : '/admin/orgapplyfor/ajaxIndex',
         "data": function ( d ) {
-          d.title =$('.filter input[name="name"]').val().replace(/(^\s*)|(\s*$)/g, "");
-          d.status = $('.filter select[name="status"] option:selected').val();
+          d.read_status = $('.filter select[name="read_status"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -44,17 +43,15 @@ var TableDatatablesAjax = function() {
           },
         },
         { 
-          "data": "status",
-          "name": "status",
+          "data": "read_status",
+          "name": "read_status",
           "orderable" : true,
           render:function(data){
-            if (data == 1) {
-              return '<span class="label label-success"> 正常 </span>';
-            }else if(data == 0){
-              return '<span class="label label-warning"> 待审核 </span>';
-            }else{
-              return '<span class="label label-danger"> 未通过 </span>';
+            var str='';
+            if(data==0) {
+              str = '<div style="height:10px;width:10px;background-color:#d81e06;border-radius: 5px;margin: 10px;"></div>';
             }
+            return str;
           }
         },
         {

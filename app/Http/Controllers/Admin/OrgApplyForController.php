@@ -87,7 +87,8 @@ class OrgApplyForController extends Controller
      */
     public function show($id)
     {
-        $org = OrgApplyForRepository::show($id);
-        return view('admin.orgapplyfor.show')->with(compact('org'));
+        $orgapplyfor = OrgApplyForRepository::show($id);
+        OrgApplyForRepository::updateReadStatus($id);
+        return view('admin.orgapplyfor.show')->with(compact('orgapplyfor'));
     }
 }

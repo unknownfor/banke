@@ -36,7 +36,6 @@ class CreateCourseRequest extends Request
             'share_comment_course_award'=>'required|numeric',
             'share_group_buying_counts'=>'required|numeric',
             'share_comment_course_counts'=>'required|numeric',
-            'period' => 'required|numeric|min:1',
             'sort' => 'numeric',
         ];
     }
@@ -65,7 +64,6 @@ class CreateCourseRequest extends Request
             'share_comment_course_award' => trans('labels.course.share_comment_course_award'),
             'share_group_buying_counts' => trans('labels.course.share_group_buying_counts'),
             'share_comment_course_counts' => trans('labels.course.share_comment_course_counts'),
-            'period' => trans('labels.course.period'),
             'sort' => trans('labels.course.sort'),
             'checkin_award' => trans('labels.course.checkin_award'),
             'task_award' => trans('labels.course.task_award'),
