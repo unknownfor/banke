@@ -32,6 +32,7 @@ class FaqRepository
 
 		$title = request('title' ,'');
 		$status = request('status' ,'');
+		$type = request('type' ,'');
 
 		$faq = new BankeFaq;
 
@@ -46,6 +47,11 @@ class FaqRepository
 		/*状态搜索*/
 		if ($status!=null) {
 			$faq = $faq->where('status', $status);
+		}
+
+		/*分类搜索*/
+		if ($type!=null) {
+			$faq = $faq->where('type', $type);
 		}
 
 		$count = $faq->count();

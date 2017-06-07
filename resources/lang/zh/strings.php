@@ -82,6 +82,12 @@ return [
 		'active' => ['fa fa-navicon','审核通过'],
 		'trash' => ['fa fa-trash','未通过'],
 	],
+
+	'faqtype' => [
+		'audit' => ['fa fa-paw','普通问题'],
+		'active' => ['fa fa-navicon','咨询问题'],
+	],
+
 	'appUpdate' => [
 		'audit' => ['fa fa-paw','未审核'],
 		'active' => ['fa fa-navicon','审核通过'],

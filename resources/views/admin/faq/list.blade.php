@@ -53,6 +53,18 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="type">
+                            <option value="" data-icon="fa-glass icon-success">类型....</option>
+                            @if(trans('strings.faqtype'))
+                                @foreach(trans('strings.faqtype') as $status_key => $status_value)
+                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
                             <option value="" data-icon="fa-glass icon-success">状态....</option>
                             @if(trans('strings.faq'))

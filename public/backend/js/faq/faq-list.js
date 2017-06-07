@@ -11,6 +11,7 @@ var TableDatatablesAjax = function() {
         "data": function ( d ) {
           d.title =$('.filter input[name="title"]').val();
           d.status = $('.filter select[name="status"] option:selected').val();
+          d.type = $('.filter select[name="type"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",
