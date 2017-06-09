@@ -47,7 +47,8 @@
                     {{--<p>{{$v->name}}</p>--}}
                     <div class="coo-org">
                         <a href="javascript:void(0)">
-                            <img src="{{$v->logo}}"/>
+                            <img class="org-img" src="{{$v->logo}}"/>
+                            <span class="org-name">{{$v->name}}</span>
                         </a>
                     </div>
                 @endforeach

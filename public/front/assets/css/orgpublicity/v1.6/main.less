@@ -74,10 +74,17 @@ body {
         padding: 15px;
         .coo-org {
           flex: 1;
+          margin-left: 15px;
+          border: 1px solid #c7c7c7;
           > a {
             display: inline-block;
-            > img {
+            .org-img {
               .size (@h,@h);
+            }
+            .org-name {
+              border-top: 1px solid #c7c7c7;
+              .txt-ellipsis-p(1);
+              color: #383d43;
             }
           }
         }
