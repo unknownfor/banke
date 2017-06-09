@@ -60,6 +60,17 @@ class OrgController extends Controller
     }
 
 
+    /**
+     * 机构宣传页面详情
+     */
+    public function org_publicity_v1_6($id)
+    {
+        $org = BankeOrg::find($id);
+        return view('web.orgpublicity.orgpublicity-v1_6')->with(compact(['org']));
+    }
+
+
+
     /**添加入驻机构**/
     public function addOrgApplyFor(Request $request)
     {

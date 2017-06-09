@@ -75,6 +75,19 @@ Route::group(['prefix'=>"v1.5/web",'namespace'=>'Web'],function() {
 
 });
 
+
+
+
+
+//v1.6
+Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
+
+    //机构分享页面
+    Route::get('/orgpublicity/{id}', 'OrgController@org_publicity_v1_6');
+
+});
+
+
 Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
 
     //v1.2 以及之后的
