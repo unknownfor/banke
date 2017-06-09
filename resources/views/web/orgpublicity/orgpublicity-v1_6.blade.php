@@ -17,6 +17,7 @@
 </head>
 <body>
 {!! csrf_field() !!}
+<<<<<<< HEAD
 <div id="publicity">
     <div class="box head">
         @if($org['cover'])
@@ -47,4 +48,5 @@
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 <script src="/front/assets/scripts/orgpublicity/orgpublicity-v1.6.js" type="text/javascript"></script>
+</body>
 </html>

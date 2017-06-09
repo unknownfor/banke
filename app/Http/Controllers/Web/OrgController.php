@@ -7,6 +7,7 @@ use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeCourse;
 use App\Repositories\admin\OrgRepository;
 use App\Repositories\admin\OrgApplyForRepository;
+use App\Repositories\admin\OrgSummaryRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -66,7 +67,8 @@ class OrgController extends Controller
     public function org_publicity_v1_6($id)
     {
         $org = BankeOrg::find($id);
-        return view('web.orgpublicity.orgpublicity-v1_6')->with(compact(['org']));
+        $superiororg=OrgSummaryRepository::getSuperiorOrgs(8);
+        return view('web.orgpublicity.orgpublicity-v1_6')->with(compact(['org','superiororg']));
     }
 
 
@@ -75,7 +77,8 @@ class OrgController extends Controller
      */
     public function banke_publicity_v1_6()
     {
-        return view('web.orgpublicity.bankepublicity-v1_6');
+        $superiororg=OrgSummaryRepository::getSuperiorOrgs(4);
+        return view('web.orgpublicity.bankepublicity-v1_6')->with(compact(['superiororg']));
     }
 
 

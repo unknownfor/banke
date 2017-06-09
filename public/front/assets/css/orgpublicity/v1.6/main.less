@@ -67,6 +67,7 @@ body {
 
     }
     &.cooperation {
+      @h: 68px;
       .coo-container {
         display: flex;
         text-align: center;
@@ -76,7 +77,7 @@ body {
           > a {
             display: inline-block;
             > img {
-              height: 68px;
+              .size (@h,@h);
             }
           }
         }

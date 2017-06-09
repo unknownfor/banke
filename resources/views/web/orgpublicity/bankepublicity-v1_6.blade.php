@@ -40,29 +40,18 @@
     <div class="box cooperation">
         <div class="title">优质合作机构</div>
         <div class="coo-container">
-            {{--@foreach($org->tags as $val)--}}
-                {{--<span>{{$val['name']}}</span>--}}
-            {{--@endforeach--}}
-            <div class="coo-org">
-                <a href="javascript:void(0)">
-                    <img src="http://pic.hisihi.com/2016-12-13/1481622145181808.png"/>
-                </a>
-            </div>
-            <div class="coo-org">
-                <a href="javascript:void(0)">
-                    <img src="http://pic.hisihi.com/2016-12-13/1481622145181808.png"/>
-                </a>
-            </div>
-            <div class="coo-org">
-                <a href="javascript:void(0)">
-                    <img src="http://pic.hisihi.com/2016-12-13/1481622145181808.png"/>
-                </a>
-            </div>
-            <div class="coo-org">
-                <a href="javascript:void(0)">
-                    <img src="http://pic.hisihi.com/2016-12-13/1481622145181808.png"/>
-                </a>
-            </div>
+            @if($superiororg)
+                @foreach($superiororg as $v)
+                    {{--<p>{{$v->logo}}</p>--}}
+                    {{--<p>{{$v->category}}</p>--}}
+                    {{--<p>{{$v->name}}</p>--}}
+                    <div class="coo-org">
+                        <a href="javascript:void(0)">
+                            <img src="{{$v->logo}}"/>
+                        </a>
+                    </div>
+                @endforeach
+            @endif
         </div>
     </div>
     <div class="line"></div>
@@ -88,4 +77,5 @@
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 <script src="/front/assets/scripts/orgpublicity/orgpublicity-v1.6.js" type="text/javascript"></script>
+</body>
 </html>

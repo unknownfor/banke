@@ -241,6 +241,7 @@ return [
         'ImageRepository' => App\Facades\ImageFacade::class,
         'ActionLogRepository' => App\Facades\ActionLogFacade::class,
         'OrgRepository' => App\Facades\OrgFacade::class,
+        'OrgSummeryRepository' => App\Facades\OrgSummaryFacade::class,
         'CourseRepository' => App\Facades\CourseFacade::class,
         'AppUserRepository' => App\Facades\AppUserFacade::class,
         'NewsRepository' => App\Facades\NewsFacade::class,
