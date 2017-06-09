@@ -12,7 +12,7 @@ class BankeOrg extends Model
     protected $table = 'banke_org';
 
     protected $fillable = ['name', 'logo','city', 'cover','album', 'intro', 'sort', 'address', 'tel_phone','tel_phone2',
-        'details', 'status','short_name','student_counts','cash_back_desc','comment_award'];
+        'details', 'status','short_name','student_counts','cash_back_desc','share_comment_org_award'];
 
     private $action;
 
