@@ -119,7 +119,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="share_comment_org_award">{{trans('labels.org.share_comment_org_award')}}</label>
                                 <div class="col-md-9">
-                                    <input type="number" min="0" max="100" step="0.1" class="form-control" id="share_comment_org_award" name="share_comment_org_award" placeholder="{{trans('labels.org.share_comment_org_award')}}" value="{{$org['share_comment_org_award']}}">
+                                    <input type="number" min="0" max="100" step="0.01" class="form-control" id="share_comment_org_award" name="share_comment_org_award" placeholder="{{trans('labels.org.share_comment_org_award')}}" value="{{$org['share_comment_org_award']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
