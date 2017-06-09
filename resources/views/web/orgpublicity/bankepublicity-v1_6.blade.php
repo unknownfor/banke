@@ -20,6 +20,13 @@
 <body>
 {!! csrf_field() !!}
     半课宣传
+    @if($surperiorOrg)
+        @foreach($surperiorOrg as $v)
+            <p>{{$v['logo']}}</p>
+            <p>{{$v['category']}}</p>
+            <p>{{$v['name']}}</p>
+        @endforeach
+    @endif
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
