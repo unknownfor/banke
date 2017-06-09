@@ -119,10 +119,14 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="address">{{trans('labels.org.lonlat')}}</label>
                                 <div class="col-md-9">
-                                    <label>点击重新选择</label>
+                                    <label id="location">点击重新选择</label>
                                     <input type="text" class="form-control" id="lon" name="lon"  value="{{$org['lon']}}">
                                     <input type="text" class="form-control" id="lat" name="lat"  value="{{$org['lat']}}">
                                     <div class="form-control-focus"> </div>
+                                    <div class="map-box">
+                                        <div class="close-map"></div>
+                                        <iframe src="/admin/org/map"></iframe>
+                                    </div>
                                 </div>
                             </div>
 

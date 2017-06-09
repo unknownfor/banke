@@ -201,4 +201,10 @@ class OrgController extends Controller
         return response()->json($data);
     }
 
+    /*地图页面*/
+    public function mapPage()
+    {
+        return view('admin.org.map');
+    }
+
 }
