@@ -70,6 +70,15 @@ class OrgController extends Controller
     }
 
 
+    /**
+     * 半课宣传页面详情
+     */
+    public function banke_publicity_v1_6()
+    {
+        return view('web.orgpublicity.bankepublicity-v1_6');
+    }
+
+
 
     /**添加入驻机构**/
     public function addOrgApplyFor(Request $request)
