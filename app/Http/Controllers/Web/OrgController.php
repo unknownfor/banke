@@ -67,8 +67,8 @@ class OrgController extends Controller
     public function org_publicity_v1_6($id)
     {
         $org = BankeOrg::find($id);
-        $superiorOrg=OrgSummaryRepository::getSuperiorOrgs(8)->get();
-        return view('web.orgpublicity.orgpublicity-v1_6')->with(compact(['org','surperiorOrg']));
+        $superiororg=OrgSummaryRepository::getSuperiorOrgs(8);
+        return view('web.orgpublicity.orgpublicity-v1_6')->with(compact(['org','superiororg']));
     }
 
 
@@ -77,8 +77,8 @@ class OrgController extends Controller
      */
     public function banke_publicity_v1_6()
     {
-        $superiorOrg=OrgSummaryRepository::getSuperiorOrgs(4);
-        return view('web.orgpublicity.bankepublicity-v1_6')->with(compact(['superiorOrg']));
+        $superiororg=OrgSummaryRepository::getSuperiorOrgs(4);
+        return view('web.orgpublicity.bankepublicity-v1_6')->with(compact(['superiororg']));
     }
 
 

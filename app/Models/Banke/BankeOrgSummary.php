@@ -28,12 +28,6 @@ class BankeOrgSummary extends Model
         return $this->hasMany('App\Models\Banke\BankeOrg','pid','id');
     }
 
-    //1对多个标签
-    public function tags()
-    {
-        return $this->hasMany('App\Models\Banke\BankeOrgTags','oid','id');
-    }
-
     //1对多个分类
     public function category()
     {

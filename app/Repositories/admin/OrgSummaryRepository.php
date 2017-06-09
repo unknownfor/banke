@@ -16,12 +16,11 @@ class OrgSummaryRepository
 	/*得到全部的优质机构*/
 	public static function getSuperiorOrgs($counts=4)
 	{
-		$org=new BankeOrgSummary;
-		$org=$org::where('surperior',1);
+		$org = BankeOrgSummary::where('surperior',1);
 		$org = $org->offset(0)->limit($counts);
 		$org = $org->orderBy("id", "sort")->get();
 		if ($org) {
-			foreach ($org as &$v) {
+			foreach ($org as $v) {
 				$category=$v->category;
 				if($category) {
 					$v['category'] = $category['desc'];
