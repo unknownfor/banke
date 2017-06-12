@@ -110,6 +110,29 @@ class InvitationController extends Controller
         return ApiResponseService::showError(Code::REGISTER_ERROR);
     }
 
+    public function doEnrol_v1_6(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'mobile' => 'required|mobile',
+            'comment'=>'required'
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            $sss='';
+            foreach ($errors->all() as $message) {
+                $sss.=$message;
+            }
+            return response()->json(['msg' => $sss, 'status' => false]);
+        }
+
+        $result = EnrolRepository::store($request);
+        if ($result) {
+            return ApiResponseService::success('', Code::SUCCESS, '预约成功');
+        }
+        return ApiResponseService::showError(Code::REGISTER_ERROR);
+    }
+
     /**
      * 分享预约
      */

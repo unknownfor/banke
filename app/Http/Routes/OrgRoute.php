@@ -15,6 +15,9 @@ $router->group(['prefix' => 'org'], function($router){
 
 	//根据机构搜索分享机构评论奖励比例
 	$router->get('getCommentSharePercent', 'OrgController@getCommentSharePercent');
+
+
+	$router->get('map', 'OrgController@mapPage');
 });
 
 $router->resource('org', 'OrgController');

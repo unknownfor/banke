@@ -119,10 +119,15 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="address">{{trans('labels.org.lonlat')}}</label>
                                 <div class="col-md-9">
-                                    <label>点击重新选择</label>
-                                    <input type="text" class="form-control" id="lon" name="lon"  value="{{$org['lon']}}">
-                                    <input type="text" class="form-control" id="lat" name="lat"  value="{{$org['lat']}}">
+                                    <label id="location">点击重新选择</label>
+                                    <input type="text" class="form-control" id="lon" name="lon" readonly  value="{{$org['lon']}}">
+                                    <input type="text" class="form-control" id="lat" name="lat" readonly  value="{{$org['lat']}}">
                                     <div class="form-control-focus"> </div>
+                                    <div class="map-box">
+                                        <div class="lonlat-info-box"><p>点击地图即可获取坐标，然后关闭地图</p></div>
+                                        <div class="close-map"></div>
+                                        <iframe src="/admin/org/map"></iframe>
+                                    </div>
                                 </div>
                             </div>
 

@@ -46,6 +46,13 @@
                 that.refressCategorySelect($('.orgCategorySelectpicker').val());
             });
 
+            $(document).on('click','#location',function(){
+                $('.map-box').addClass('show').removeClass('hide');
+            });
+            $(document).on('click','.close-map',function(){
+                $('.map-box').removeClass('show').addClass('hide');
+            });
+
             //photoswipe   //图片信息查看  相册、视频信息查看
             new MyPhotoSwipe('.img-list-box');
         };
@@ -439,5 +446,12 @@
             $('#logo-input').val($('#logo').attr('src'));
 
             $('#tags').val(editor.getTags());
+        };
+
+
+        window.setLonLatInfo=function(lonlatInfo){
+            $('.lonlat-info-box p').text("lon:"+lonlatInfo.lon+' lat:'+lonlatInfo.lat);
+            $('#lon').val(lonlatInfo.lon);
+            $('#lat').val(lonlatInfo.lat);
         };
 });

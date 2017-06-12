@@ -113,3 +113,69 @@
     background-color: rgba(250,80,58,1);
 }
 
+
+
+.map-box {
+    position: fixed;
+    z-index: 8889;
+    top: 60px;
+    left:60px;
+    bottom:60px;
+    right: 60px;
+    /*height: 100%;*/
+    /*width: 100%;*/
+    display: none;
+    opacity: 0;
+    background-color: rgba(33, 33, 33, 0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,1);
+}
+.map-box.show {
+    animation: showmap 200ms linear;
+    animation-fill-mode: forwards;
+    display: block;
+}
+.map-box.hide {
+    display: none;
+}
+@keyframes showmap {
+    0% {
+        opacity: 1;
+        transform: scale(0.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.map-box iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+.map-box .close-map {
+    width: 32px;
+    height: 32px;
+    padding: 15px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 100;
+    background: url(http://pic.hisihi.com/2016-07-21/1469098248282877.png) 50% 50% no-repeat;
+    background-size: 32px 32px;
+}
+
+.lonlat-info-box{
+    width: 300px;
+    height: 32px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+}
+.lonlat-info-box p{
+    font-size: 12px;
+    line-height: 32px;
+    text-align: center;
+}
