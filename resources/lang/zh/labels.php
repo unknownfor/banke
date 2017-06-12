@@ -253,13 +253,15 @@ return [
 		'category2' => '二级分类',
 		'tags' => '标签',
 		'share_comment_org_award'=>'评论奖励比例',
+		'share_comment_org_counts'=>'可以奖励评论分享次数',
 		'comment_list'=>'评论列表',
 		'confirm' => '已验证',
 		'active' => '<span class="label label-success"> 已验证 </span>',
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
-		'lonlat'=>'经纬度'
+		'lonlat'=>'经纬度',
+		'branch_scholl'=>'分校名称'
 	],
 	'course' => [
 		'id' => '序号',

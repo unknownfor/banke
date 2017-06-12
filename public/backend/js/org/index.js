@@ -447,4 +447,11 @@
 
             $('#tags').val(editor.getTags());
         };
+
+
+        window.setLonLatInfo=function(lonlatInfo){
+            $('.lonlat-info-box p').text("lon:"+lonlatInfo.lon+' lat:'+lonlatInfo.lat);
+            $('#lon').val(lonlatInfo.lon);
+            $('#lat').val(lonlatInfo.lat);
+        };
 });

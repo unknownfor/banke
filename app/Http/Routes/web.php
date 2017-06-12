@@ -86,6 +86,7 @@ Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
     //半课宣传页面
     Route::get('/bankepublicity', 'OrgController@banke_publicity_v1_6');
 
+    Route::post('/doenrol', 'InvitationController@doEnrol_v1_6');
 });
 
 

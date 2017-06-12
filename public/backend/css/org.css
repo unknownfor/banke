@@ -163,3 +163,19 @@
     background: url(http://pic.hisihi.com/2016-07-21/1469098248282877.png) 50% 50% no-repeat;
     background-size: 32px 32px;
 }
+
+.lonlat-info-box{
+    width: 300px;
+    height: 32px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 100;
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+}
+.lonlat-info-box p{
+    font-size: 12px;
+    line-height: 32px;
+    text-align: center;
+}
