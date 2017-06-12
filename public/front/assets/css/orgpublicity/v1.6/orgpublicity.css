@@ -182,9 +182,13 @@ input {
     -webkit-transform: rotate(360deg);
   }
 }
+html {
+  height: 100%;
+}
 body {
   margin: 0 auto;
   padding: 0;
+  height: 100%;
   max-width: 700px;
   overflow-x: hidden;
   word-wrap: break-word;
@@ -193,6 +197,7 @@ body {
   height: 100%;
   font-size: 14px;
   color: #383D43;
+  position: relative;
 }
 #publicity .line {
   height: 15px;
@@ -249,23 +254,19 @@ body {
 #publicity .box.head .head-txt .txt.color {
   color: #fa4535;
 }
-#publicity .box.cooperation {
-  display: inline-block;
-}
 #publicity .box.cooperation .coo-container {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  text-align: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   margin: 15px;
 }
 #publicity .box.cooperation .coo-container .coo-org {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  margin-left: 10px;
+  width: 22%;
   border: 1px solid #c7c7c7;
 }
 #publicity .box.cooperation .coo-container .coo-org > a {
@@ -284,14 +285,12 @@ body {
   -webkit-line-clamp: 1;
   color: #383d43;
 }
-#publicity .box.cooperation .coo-container .coo-org:first-child {
-  margin-left: 0;
-}
 #publicity .box.appointment {
-  margin: 15px;
+  margin: 15px 15px 85px 15px;
   text-align: center;
 }
 #publicity .box.appointment > p {
+  font-weight: bold;
   margin: 45px 0 25px 0;
 }
 #publicity .box.appointment .input-box {

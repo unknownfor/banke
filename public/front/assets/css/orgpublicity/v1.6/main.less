@@ -1,6 +1,10 @@
+html {
+  height: 100%;
+}
 body {
   margin:0 auto;
   padding:0;
+  height: 100%;
   max-width: 700px;
   overflow-x: hidden;
   word-wrap:break-word;
@@ -9,6 +13,7 @@ body {
   height: 100%;
   font-size: 14px;
   color: #383D43;
+  position: relative;
   .line {
     height: 15px;
     background-color: #F2F2F2;
@@ -70,15 +75,13 @@ body {
 
     }
     &.cooperation {
-      display: inline-block;
       @h: 68px;
       .coo-container {
         display: flex;
-        text-align: center;
+        justify-content: space-between;
         margin: 15px;
         .coo-org {
-          flex: 1;
-          margin-left: 10px;
+          width: 22%;
           border: 1px solid #c7c7c7;
           > a {
             display: inline-block;
@@ -89,20 +92,19 @@ body {
               border-top: 1px solid #c7c7c7;
               .txt-ellipsis-p(1);
               color: #383d43;
+              //transform: rotate(45deg);
             }
-          }
-          &:first-child {
-            margin-left: 0;
           }
         }
       }
     }
     &.appointment {
-      margin: 15px;
+      margin: 15px 15px 85px 15px;
       @rbh: 45px;
       @rbr:10px;
       text-align: center;
       > p {
+        font-weight: bold;
         margin:45px 0 25px 0;
       }
       .input-box {

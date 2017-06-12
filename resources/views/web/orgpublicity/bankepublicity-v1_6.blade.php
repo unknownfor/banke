@@ -18,10 +18,7 @@
 </head>
 <body>
 {!! csrf_field() !!}
-<div id="publicity"
-     {{--data-uid="{{$user['uid']}}"--}}
-     {{--data-org-id="{{$org['id']}}"--}}
->
+<div id="publicity">
     <div class="box head">
         <img class="head-bg" src="http://pic.hisihi.com/2016-05-19/1463654426358971.png" />
         <div class="head-img">
