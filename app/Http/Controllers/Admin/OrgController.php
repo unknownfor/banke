@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Repositories\admin\OrgSummaryRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -103,7 +104,10 @@ class OrgController extends Controller
         $org['tags']=$tags;
         $org['category1']=$category1;
         $org['category2']=$category2;
-        return view('admin.org.edit')->with(compact('org'));
+
+        $summary_orgs=OrgSummaryRepository::getSuperiorOrgs(100000000);  //所有顶级分类
+
+        return view('admin.org.edit')->with(compact('org','summary_orgs'));
     }
     /**
      * 修改机构资料
