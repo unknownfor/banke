@@ -43,7 +43,7 @@ $(function () {
 
     $(document).on(window.eventName,'#register-btn.active', function () {
         window.controlLoadingBox(true);
-        var url='/v1.3/share/doenrol',
+        var url='/v1.6/share/doenrol',
             // uid=$('.user').attr('data-uid'),
             // oid=$('.user').attr('data-org-id'),
             orgname=$('#org-name').val(),
