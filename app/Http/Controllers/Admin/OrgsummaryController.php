@@ -17,7 +17,7 @@ use App\Repositories\admin\OrgTagsRepository;
 use App\Models\Banke\BankeOrg;
 use Illuminate\Support\Facades\Log;
 
-class OrgController extends Controller
+class OrgsummaryController extends Controller
 {
 	/**
      * 机构列表
@@ -27,7 +27,7 @@ class OrgController extends Controller
      */
     public function index()
     {
-        return view('admin.org.list');
+        return view('admin.orgsummary.list');
     }
 
     /**
@@ -83,7 +83,7 @@ class OrgController extends Controller
         $OrgTags=new OrgTagsRepository();
         $OrgTags->batchStore($tags,$id);
 
-        return redirect('admin/org');
+        return redirect('admin/orgsummary');
     }
 
     /**
@@ -95,19 +95,10 @@ class OrgController extends Controller
      */
     public function edit($id)
     {
-        $org = OrgRepository::edit($id);
-        $category1=OrgRepository::getCategory1Info($id);  //所有顶级分类
-//        $categoryIds=OrgRepository::getTrainCategoryIds($id);  //我的顶级分类
-        $category2=OrgRepository::getCategory2Info($id); //我的二级分类
-//        $currentCategory=OrgRepository::getCategory2Info($id);
-        $tags=OrgRepository::getTags($id);
-        $org['tags']=$tags;
-        $org['category1']=$category1;
-        $org['category2']=$category2;
-
-        $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
-
-        return view('admin.org.edit')->with(compact('org','summary_orgs'));
+        $orgsummary = OrgSummaryRepository::edit($id);
+        $trainCategory=new TrainCategoryRepository();
+        $categories=$trainCategory->getAllTopCategory();  //所有顶级分类
+        return view('admin.orgsummary.edit')->with(compact('orgsummary','categories'));
     }
     /**
      * 修改机构资料
@@ -136,7 +127,7 @@ class OrgController extends Controller
         $tags= $request->tags;  //标签
         $OrgTags=new OrgTagsRepository();
         $OrgTags->batchStore($tags,$id);
-        return redirect('admin/org');
+        return redirect('admin/orgsummary');
     }
 
     /**
@@ -150,7 +141,7 @@ class OrgController extends Controller
     public function mark($id,$status)
     {
         UserRepository::mark($id,$status);
-        return redirect('admin/org');
+        return redirect('admin/orgsummary');
     }
 
     /**
@@ -163,52 +154,7 @@ class OrgController extends Controller
     public function destroy($id)
     {
         OrgRepository::destroy($id);
-        return redirect('admin/org');
-    }
-
-    /**
-     * 查看机构信息
-     * @author 晚黎
-     * @date   2016-04-14T13:49:32+0800
-     * @param  [type]                   $id [description]
-     * @return [type]                       [description]
-     */
-    public function show($id)
-    {
-        $org = BankeOrg::find($id);
-        $category1=OrgRepository::getCategory1InfoRead($id);
-        $category2=OrgRepository::getCategory2InfoRead($id);
-        return view('admin.org.show')->with(compact('org','category1','category2'));
-    }
-
-    public function share_org_v1_2($id){
-        $org = BankeOrg::find($id);
-        return view('web.org.org')->with(compact(['org']));
-    }
-
-    /**
-     * 机构评论列表
-     * @author jimmy
-     * @date   2016-12-27
-     * @return [type]                   [description]
-     */
-    public function comments()
-    {
-        return view('admin.org.comment-list');
-    }
-
-    //根据机构id 获得机构评论分享比例
-    public function getCommentSharePercent()
-    {
-        $org_id = request('org_id', '');
-        $data = OrgRepository::getCommentSharePercent($org_id);
-        return response()->json($data);
-    }
-
-    /*地图页面*/
-    public function mapPage()
-    {
-        return view('admin.org.map');
+        return redirect('admin/orgsummary');
     }
 
 }

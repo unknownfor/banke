@@ -75,6 +75,21 @@ Route::group(['prefix'=>"v1.5/web",'namespace'=>'Web'],function() {
 
 });
 
+
+
+//v1.6
+Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
+
+    //机构宣传页面
+    Route::get('/orgpublicity/{id}', 'OrgController@org_publicity_v1_6');
+
+    //半课宣传页面
+    Route::get('/bankepublicity', 'OrgController@banke_publicity_v1_6');
+
+    Route::post('/doenrol', 'InvitationController@doEnrol_v1_6');
+});
+
+
 Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
 
     //v1.2 以及之后的

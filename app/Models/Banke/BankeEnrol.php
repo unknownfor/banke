@@ -18,7 +18,8 @@ class BankeEnrol extends Model
         'course_id',
         'course_name',
         'invitation_uid',
-        'group_buying_id'
+        'group_buying_id',
+        'comment'
     ];
 
     protected $table = 'banke_enrol';

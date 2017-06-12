@@ -7,6 +7,7 @@ use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeCourse;
 use App\Repositories\admin\OrgRepository;
 use App\Repositories\admin\OrgApplyForRepository;
+use App\Repositories\admin\OrgSummaryRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -58,6 +59,28 @@ class OrgController extends Controller
     {
         return view('web.orgapplyfor.orgapplyfor-v1_5');
     }
+
+
+    /**
+     * 机构宣传页面详情
+     */
+    public function org_publicity_v1_6($id)
+    {
+        $org = BankeOrg::find($id);
+        $superiororg=OrgSummaryRepository::getSuperiorOrgs(8);
+        return view('web.orgpublicity.orgpublicity-v1_6')->with(compact(['org','superiororg']));
+    }
+
+
+    /**
+     * 半课宣传页面详情
+     */
+    public function banke_publicity_v1_6()
+    {
+        $superiororg=OrgSummaryRepository::getSuperiorOrgs(4);
+        return view('web.orgpublicity.bankepublicity-v1_6')->with(compact(['superiororg']));
+    }
+
 
 
     /**添加入驻机构**/
