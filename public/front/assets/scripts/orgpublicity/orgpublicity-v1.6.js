@@ -44,14 +44,11 @@ $(function () {
     $(document).on(window.eventName,'#register-btn.active', function () {
         window.controlLoadingBox(true);
         var url='/v1.6/share/doenrol',
-            // uid=$('.user').attr('data-uid'),
-            // oid=$('.user').attr('data-org-id'),
-            orgname=$('#org-name').val(),
+            comment=$('#org-name').val(),
             mobile = $('#phone-num').val(),
             data={
-                // org_id:oid,
                 mobile:mobile,
-                name:orgname,
+                comment:comment,
             };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res) {
