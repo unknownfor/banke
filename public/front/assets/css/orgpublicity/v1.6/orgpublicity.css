@@ -268,22 +268,58 @@ body {
 #publicity .box.cooperation .coo-container .coo-org {
   width: 22%;
   border: 1px solid #c7c7c7;
+  position: relative;
 }
 #publicity .box.cooperation .coo-container .coo-org > a {
+  text-align: center;
   display: inline-block;
+  color: #383d43;
 }
-#publicity .box.cooperation .coo-container .coo-org > a .org-img {
-  width: 68px;
-  height: 68px;
+#publicity .box.cooperation .coo-container .coo-org > a .tip-box {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
-#publicity .box.cooperation .coo-container .coo-org > a .org-name {
+#publicity .box.cooperation .coo-container .coo-org > a .tip-box .tip-img {
+  position: relative;
+  display: inline-block;
+  width: 37px;
+  height: 37px;
+  background: url("/front/assets/img/orgpublicity/jiaobiao.png");
+  -webkit-background-size: 37px, 37px;
+  background-size: 37px, 37px;
+}
+#publicity .box.cooperation .coo-container .coo-org > a .tip-box .tip-txt {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  width: 30px;
+  color: #fff;
+  text-align: center;
+  line-height: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  padding-left: 3px;
+  position: relative;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  font-size: 8px;
+}
+#publicity .box.cooperation .coo-container .coo-org > a .org-box .org-img {
+  width: 62px;
+  height: 62px;
+}
+#publicity .box.cooperation .coo-container .coo-org > a .org-box .org-name {
   border-top: 1px solid #c7c7c7;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-  color: #383d43;
 }
 #publicity .box.appointment {
   margin: 15px 15px 85px 15px;

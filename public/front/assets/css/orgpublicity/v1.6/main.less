@@ -75,7 +75,7 @@ body {
 
     }
     &.cooperation {
-      @h: 68px;
+      @h: 62px;
       .coo-container {
         display: flex;
         justify-content: space-between;
@@ -83,17 +83,48 @@ body {
         .coo-org {
           width: 22%;
           border: 1px solid #c7c7c7;
+          position: relative;
           > a {
+            text-align: center;
             display: inline-block;
-            .org-img {
-              .size (@h,@h);
+            color: #383d43;
+            .tip-box {
+              position: absolute;
+              top:0;
+              right: 0;
+              .tip-img {
+                position: relative;
+                @w:74px * 0.5;
+                display: inline-block;
+                .size(@w,@w);
+                background: url("/front/assets/img/orgpublicity/jiaobiao.png");
+                background-size: @w,@w;
+              }
+              .tip-txt {
+                position: absolute !important;
+                top:0;
+                right: 0;
+                width: 30px;
+                color: #fff;
+                text-align: center;
+                line-height: 22px;
+                .txt-ellipsis-p(1);
+                padding-left: 3px;
+                position: relative;
+                transform: rotate(45deg);
+                font-size: 8px;
+              }
             }
-            .org-name {
-              border-top: 1px solid #c7c7c7;
-              .txt-ellipsis-p(1);
-              color: #383d43;
-              //transform: rotate(45deg);
+            .org-box {
+              .org-img {
+                .size (@h,@h);
+              }
+              .org-name {
+                border-top: 1px solid #c7c7c7;
+                .txt-ellipsis-p(1);
+              }
             }
+
           }
         }
       }

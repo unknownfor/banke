@@ -42,13 +42,16 @@
         <div class="coo-container">
             @if($superiororg)
                 @foreach($superiororg as $v)
-                    {{--<p>{{$v->logo}}</p>--}}
-                    {{--<p>{{$v->category}}</p>--}}
-                    {{--<p>{{$v->name}}</p>--}}
                     <div class="coo-org">
                         <a href="javascript:void(0)">
-                            <img class="org-img" src="{{$v->logo}}"/>
-                            <span class="org-name">{{$v->name}}</span>
+                            <div class="tip-box">
+                                <div class="tip-img"></div>
+                                <div class="tip-txt">{{$v->category}}</div>
+                            </div>
+                            <div class="org-box">
+                                <img class="org-img" src="{{$v->logo}}"/>
+                                <span class="org-name">{{$v->name}}</span>
+                            </div>
                         </a>
                     </div>
                 @endforeach
@@ -77,8 +80,6 @@
         <div class="txt txt-two">获得<span>50%</span>返现机会</div>
         <div class="btn active"><a href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></div>
     </div>
-
-
 </div>
 
 @include('web.layout.downloadbar')
