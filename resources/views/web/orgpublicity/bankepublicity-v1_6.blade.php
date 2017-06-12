@@ -50,7 +50,7 @@
                             </div>
                             <div class="org-box">
                                 <img class="org-img" src="{{$v->logo}}"/>
-                                <span class="org-name">{{$v->name}}</span>
+                                <div class="org-name">{{$v->name}}</div>
                             </div>
                         </a>
                     </div>
@@ -82,7 +82,6 @@
     </div>
 </div>
 
-@include('web.layout.downloadbar')
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
