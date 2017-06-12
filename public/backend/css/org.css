@@ -153,6 +153,7 @@
     height: 100%;
 }
 .map-box .close-map {
+    padding: 5px;
     width: 32px;
     height: 32px;
     padding: 15px;
@@ -162,6 +163,7 @@
     z-index: 100;
     background: url(http://pic.hisihi.com/2016-07-21/1469098248282877.png) 50% 50% no-repeat;
     background-size: 32px 32px;
+    cursor: pointer;
 }
 
 .lonlat-info-box{

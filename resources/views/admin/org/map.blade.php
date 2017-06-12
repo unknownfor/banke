@@ -16,18 +16,36 @@
     var map = new BMap.Map("allmap");
 
     // 创建标注
-    var point = new BMap.Point(114.328926,30.477427);
-    var marker = new BMap.Marker(point);
-    map.addOverlay(marker);              // 将标注添加到地图中
-    map.centerAndZoom(new BMap.Point(114.313332,30.503007), 15);  //114.328639,30.477551
+    // 将标注添加到地图中
+    //    map.centerAndZoom(new BMap.Point(114.313332,30.503007), 15);  //114.328639,30.477551
 
     map.setCurrentCity("武汉");          // 设置地图显示的城市 此项是必须设置的
     map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 
     //单击获取点击的经纬度
     map.addEventListener("click",function(e){
-        top.window.setLonLatInfo({lon: e.point.lng,lat:e.point.lat});
+        var lon=e.point.lng;
+            lat=e.point.lat;
+        top.window.setLonLatInfo({lon:lon,lat:lat});
+
+        map.clearOverlays();
+        var point = new BMap.Point(lon, lat);
+        var marker = new BMap.Marker(point);
+        map.addOverlay(marker);
     });
+
+    window.resetLocation=function(lon,lat){
+        // 将标注添加到地图中
+//        var point = new BMap.Point(114.328926,30.477427);
+        if(lon!=0 && lat!=0) {
+            var point = new BMap.Point(lon, lat);
+            var marker = new BMap.Marker(point);
+            map.addOverlay(marker);
+            map.centerAndZoom(new BMap.Point(lon, lat), 17);  //114.328639,30.477551
+        }else{
+            map.centerAndZoom(new BMap.Point(114.337348,30.539705), 15);  //114.328639,30.477551
+        }
+    };
 
 </script>
 </html>
