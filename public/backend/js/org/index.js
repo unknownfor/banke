@@ -48,6 +48,9 @@
 
             $(document).on('click','#location',function(){
                 $('.map-box').addClass('show').removeClass('hide');
+                //$('#map').load(function(){
+                map.resetLocation($('#lon').val(),$('#lat').val());
+                //});
             });
             $(document).on('click','.close-map',function(){
                 $('.map-box').removeClass('show').addClass('hide');

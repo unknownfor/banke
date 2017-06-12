@@ -105,7 +105,7 @@ class OrgController extends Controller
         $org['category1']=$category1;
         $org['category2']=$category2;
 
-        $summary_orgs=OrgSummaryRepository::getSuperiorOrgs(100000000);  //所有顶级分类
+        $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
 
         return view('admin.org.edit')->with(compact('org','summary_orgs'));
     }

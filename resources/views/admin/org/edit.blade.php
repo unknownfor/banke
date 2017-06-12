@@ -78,7 +78,7 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="pid">{{trans('labels.org.pid')}}</label>
-                                <div class="col-md-9">
+                                <div class="col-md-4">
                                     <select id="pid" name="pid" class="citySelectpicker show-tick form-control" data-live-search="true">
                                         @if($summary_orgs)
                                             @foreach($summary_orgs as $v)
@@ -95,9 +95,9 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="pid">{{trans('labels.org.master_school')}}</label>
+                                <label class="col-md-1 control-label" for="branch_school">{{trans('labels.org.branch_school')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="pid" name="pid" placeholder="{{trans('labels.org.master_school')}}" value="{{$org['branch_school']}}">
+                                    <input type="text" class="form-control" id="branch_school" name="branch_school" placeholder="{{trans('labels.org.branch_school')}}" value="{{$org['branch_school']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -152,7 +152,7 @@
                                     <div class="map-box">
                                         <div class="lonlat-info-box"><p>点击地图即可获取坐标，然后关闭地图</p></div>
                                         <div class="close-map"></div>
-                                        <iframe src="/admin/org/map"></iframe>
+                                        <iframe id="map" name="map" src="/admin/org/map"></iframe>
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="share_comment_org_award">{{trans('labels.org.share_comment_org_award')}}</label>
                                 <div class="col-md-9">
-                                    <input type="number" min="0" max="100" step="0.1" class="form-control" id="share_comment_org_award" name="share_comment_org_award" placeholder="{{trans('labels.org.share_comment_org_award')}}" value="{{$org['share_comment_org_award']}}">
+                                    <input type="number" min="0" max="100" step="0.01" class="form-control" id="share_comment_org_award" name="share_comment_org_award" placeholder="{{trans('labels.org.share_comment_org_award')}}" value="{{$org['share_comment_org_award']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>

@@ -30,6 +30,23 @@ class OrgSummaryRepository
 		return $org;
 	}
 
+	/*得到全部的机构*/
+	public static function getOrgs($counts=10)
+	{
+//		$org = BankeOrgSummary::all();
+		$org = BankeOrgSummary::offset(0)->limit($counts);
+		$org = $org->orderBy("id", "sort")->get();
+		if ($org) {
+			foreach ($org as $v) {
+				$category=$v->category;
+				if($category) {
+					$v['category'] = $category['desc'];
+				}
+			}
+		}
+		return $org;
+	}
+
 
 	/**添加机构
 	 * @author shaolei
