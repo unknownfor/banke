@@ -18,7 +18,10 @@
 </head>
 <body>
 {!! csrf_field() !!}
-<div id="publicity">
+<div id="publicity"
+     {{--data-uid="{{$user['uid']}}"--}}
+     {{--data-org-id="{{$org['id']}}"--}}
+>
     <div class="box head">
         <img class="head-bg" src="http://pic.hisihi.com/2016-05-19/1463654426358971.png" />
         <div class="head-img">
@@ -36,7 +39,7 @@
             帮助学生筛选出更具性价比的课程及机构，为学生提供终生学习的服务。
         </div>
     </div>
-    <div class="line"></div>
+    <div class="box line"></div>
     <div class="box cooperation">
         <div class="title">优质合作机构</div>
         <div class="coo-container">
@@ -55,14 +58,14 @@
             @endif
         </div>
     </div>
-    <div class="line"></div>
+    <div class="box line"></div>
     <div class="box appointment">
         <p>客服半半将会第一时间联系您</p>
-        <div class="input-box active">
+        <div class="input-box org-box">
             <i class="iconfont register-img">&#xe76b;</i>
-            <input class="register-code" id="org-name" placeholder="输入意向机构"/>
+            <input class="register-code" id="org-name" placeholder="输入意向机构" />
         </div>
-        <div class="input-box">
+        <div class="input-box num-box">
             <i class="iconfont register-img">&#xe61f;</i>
             <input class="register-code" id="phone-num" placeholder="输入手机号"/>
         </div>
@@ -70,7 +73,16 @@
 
         <div class="statement">本服务由半课提供，最终解释权归半课所有</div>
     </div>
+
+    <div class="container hide" >
+        <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163041837846.png" />
+        <div class="txt txt-one">领取成功</div>
+        <div class="txt txt-two">获得<span>50%</span>返现机会</div>
+        <div class="btn active"><a href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></div>
     </div>
+
+
+</div>
 
 @include('web.layout.downloadbar')
 </body>
