@@ -114,8 +114,6 @@
                                 </div>
                             </div>
 
-
-
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
                                 <div class="col-md-9">
