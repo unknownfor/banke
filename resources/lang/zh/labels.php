@@ -127,6 +127,11 @@ return [
 		'articleEdit' => '<i class="fa fa-cog"></i> 文章编辑',
 		'articleCategoryList' => '<i class="fa fa-cog"></i> 文章分类列表',
 		'articleCategoryCreate' => '<i class="fa fa-cog"></i> 文章分类添加',
+
+		'orgsummaryList' => '<i class="fa fa-th-list"></i> 机构汇总列表',
+		'orgsummaryCreate' => '<i class="fa fa-user-plus"></i> 创建汇总机构',
+		'orgsummaryEdit' => '<i class="fa fa-pencil"></i> 修改汇总机构',
+
 		'orgList' => '<i class="fa fa-th-list"></i> 机构列表',
 		'orgCreate' => '<i class="fa fa-user-plus"></i> 创建机构',
 		'orgEdit' => '<i class="fa fa-pencil"></i> 修改机构',
@@ -226,6 +231,21 @@ return [
 		'permission' => '权限',
 		'module' => '模块',
 		'show' => '查看角色权限',
+	],
+	'orgsummary' => [
+		'id' => '序号',
+		'name' => '名称',
+		'surperior'=>'优质机构',
+		'short_name' => '简称',
+		'logo'=>'Logo',
+		'intro'=>'一句话简介',
+		'details'=>'详情',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'sort'=>'排序',
+		'list' => '分校列表',
+		'category' => '所属分类',
 	],
 	'org' => [
 		'id' => '序号',
