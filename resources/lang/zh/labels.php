@@ -261,7 +261,8 @@ return [
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
 		'lonlat'=>'经纬度',
-		'branch_scholl'=>'分校名称'
+		'branch_school'=>'分校名称',
+		'pid'=>'所属机构'
 	],
 	'course' => [
 		'id' => '序号',

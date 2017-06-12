@@ -77,6 +77,32 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="pid">{{trans('labels.org.pid')}}</label>
+                                <div class="col-md-9">
+                                    <select id="pid" name="pid" class="citySelectpicker show-tick form-control" data-live-search="true">
+                                        @if($summary_orgs)
+                                            @foreach($summary_orgs as $v)
+                                                @if($org['pid']==$v['id'])
+                                                    <option value="{{$v['id']}}" selected>{{$v['name']}}</option>
+                                                @else
+                                                    <option value="{{$v['id']}}">{{$v['name']}}</option>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="pid">{{trans('labels.org.master_school')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="pid" name="pid" placeholder="{{trans('labels.org.master_school')}}" value="{{$org['branch_school']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="intro">{{trans('labels.org.intro')}}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="intro" name="intro" placeholder="{{trans('labels.org.intro')}}" value="{{$org['intro']}}">
