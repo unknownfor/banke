@@ -44,7 +44,7 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/OrgRoute.php');
 
         // 机构
-        require(__DIR__ . '/Routes/OrgsummaryRoute.php');
+        require(__DIR__ . '/Routes/OrgSummaryRoute.php');
 
         // 课程
         require(__DIR__ . '/Routes/CourseRoute.php');
@@ -143,3 +143,9 @@ Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web','bankehome'] 
 
     require(__DIR__ . '/Routes/web.php');
 });
+
+//关于页面路由
+//Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['about','bankehome'] ],function($router){
+//
+//    require(__DIR__ . '/Routes/web.php');
+//});

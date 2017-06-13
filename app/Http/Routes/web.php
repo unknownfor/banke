@@ -4,6 +4,12 @@
 Route::get('/', 'HomeController@index');
 
 
+Route::group(['prefix'=>"about",'namespace'=>'Web'],function(){
+
+    //规则页面
+    Route::get('/', 'AboutController@about');
+
+});
 
 //1.2
 Route::group(['prefix'=>"v1.2/share",'namespace'=>'Web'],function(){

@@ -50,6 +50,10 @@ return [
 		'active' => ['fa fa-navicon','正常'],
 		'trash' => ['fa fa-trash','未通过']
 	],
+	'orgsurperior' => [
+		'active' => ['fa fa-paw','是'],
+		'audio' => ['fa fa-navicon','否']
+	],
 	'course' => [
 		'audit' => ['fa fa-paw','待审核'],
 		'active' => ['fa fa-navicon','正常'],

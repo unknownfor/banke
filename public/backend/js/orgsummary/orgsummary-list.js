@@ -7,11 +7,10 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/org/ajaxIndex',
+        'url' : '/admin/orgsummary/ajaxIndex',
         "data": function ( d ) {
-          d.name =$('.filter input[name="name"]').val().replace(/(^\s*)|(\s*$)/g, "");
-          d.city =$('.filter input[name="city"]').val().replace(/(^\s*)|(\s*$)/g, "");
-          d.status = $('.filter select[name="status"] option:selected').val();
+          d.surperior =$('.filter select[name="surperior"] option:selected').val().replace();
+          d.category_id = $('.filter select[name="category_id"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -50,7 +49,7 @@ var TableDatatablesAjax = function() {
           render:function(data){
             var str='';
             if(data){
-                str='<span class="category-block top">'+data+'</span>';
+                str='<span class="category-block top">'+data.name+'</span>';
             }
             return str;
           }
