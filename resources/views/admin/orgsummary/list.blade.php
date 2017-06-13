@@ -77,14 +77,15 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
-                            <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-envelope"></i>
-                                    </span>
-                                <input type="text" class="form-control form-filter" name="city" placeholder="{{ trans('labels.orgsummary.city') }}">
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
+                            <option value="" data-icon="fa-glass icon-success">优质机构....</option>
+                            @if(trans('strings.orgsummary'))
+                                @foreach(trans('strings.orgsummary') as $status_key => $status_value)
+                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
@@ -112,8 +113,7 @@
                         <tr role="row" class="heading">
                           <th>id</th>
                           <th width="25%"> {{ trans('labels.orgsummary.name') }} </th>
-                          <th width="10%"> {{ trans('labels.orgsummary.city') }} </th>
-                          <th width="20%"> {{ trans('labels.orgsummary.address') }} </th>
+                          <th width="10%"> {{ trans('labels.orgsummary.surperior') }} </th>
                           <th width="15%"> {{ trans('labels.orgsummary.category') }} </th>
                           <th width="10%"> {{ trans('labels.orgsummary.sort') }} </th>
                           <th width="8%"> {{ trans('labels.orgsummary.status') }} </th>

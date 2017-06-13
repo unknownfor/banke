@@ -42,6 +42,10 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/RoleRoute.php');
         // 机构
         require(__DIR__ . '/Routes/OrgRoute.php');
+
+        // 机构
+        require(__DIR__ . '/Routes/OrgsummaryRoute.php');
+
         // 课程
         require(__DIR__ . '/Routes/CourseRoute.php');
         //图片
