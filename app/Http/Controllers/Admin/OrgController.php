@@ -52,7 +52,10 @@ class OrgController extends Controller
         $permissions = PermissionRepository::findPermissionWithArray();
         $roles = RoleRepository::findRoleWithObject();
         $allCategories=TrainCategoryRepository::getAllTopCategory();
-        return view('admin.org.create')->with(compact(['permissions','roles','allCategories']));
+
+        $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
+
+        return view('admin.org.create')->with(compact(['permissions','roles','allCategories','summary_orgs']));
     }
 
     /**
@@ -178,7 +181,8 @@ class OrgController extends Controller
         $org = BankeOrg::find($id);
         $category1=OrgRepository::getCategory1InfoRead($id);
         $category2=OrgRepository::getCategory2InfoRead($id);
-        return view('admin.org.show')->with(compact('org','category1','category2'));
+        $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
+        return view('admin.org.show')->with(compact('org','category1','category2','summary_orgs'));
     }
 
     public function share_org_v1_2($id){
