@@ -203,10 +203,6 @@ body {
   height: 15px;
   background-color: #F2F2F2;
 }
-#publicity .box.hide {
-  opacity: 0;
-  display: none;
-}
 #publicity .box .title {
   margin-top: 15px;
   font-weight: bold;
@@ -221,6 +217,10 @@ body {
 }
 #publicity .box .detail-info.org-detail {
   border-bottom: 1px solid #c7c7c7;
+}
+#publicity .box.hide {
+  opacity: 0;
+  display: none;
 }
 #publicity .box.head {
   text-align: center;
@@ -485,6 +485,9 @@ body {
   font-size: 12px;
   color: #fcc742;
   letter-spacing: 1px;
+}
+#publicity .box.margin {
+  height: 80px;
 }
 #publicity .container {
   opacity: 0;

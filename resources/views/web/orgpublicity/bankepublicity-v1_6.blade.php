@@ -73,6 +73,7 @@
 
         <div class="statement">本服务由半课提供，最终解释权归半课所有</div>
     </div>
+    <div class="box margin"></div>
 
     <div class="container hide" >
         <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163041837846.png" />
@@ -81,6 +82,8 @@
         <div class="btn active"><a href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></div>
     </div>
 </div>
+
+@include('web.layout.downloadbar')
 
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>

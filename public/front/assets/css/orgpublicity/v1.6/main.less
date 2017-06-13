@@ -19,10 +19,6 @@ body {
     background-color: #F2F2F2;
   }
   .box {
-    &.hide {
-      opacity: 0;
-      display: none;
-    }
     .title {
       margin-top: 15px;
       font-weight: bold;
@@ -37,6 +33,10 @@ body {
       &.org-detail {
         border-bottom: 1px solid #c7c7c7;
       }
+    }
+    &.hide {
+      opacity: 0;
+      display: none;
     }
     &.head {
       text-align: center;
@@ -256,6 +256,9 @@ body {
         color: #fcc742;
         letter-spacing: 1px;
       }
+    }
+    &.margin {
+      height: 80px;
     }
   }
   .container {

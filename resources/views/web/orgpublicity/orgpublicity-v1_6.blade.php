@@ -86,6 +86,7 @@
             @endif
         </div>
     </div>
+    <div class="box margin"></div>
     <div class="container hide" >
         <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163041837846.png" />
         <div class="txt txt-one">领取成功</div>
@@ -94,7 +95,7 @@
     </div>
 </div>
 </div>
-{{--@include('web.layout.downloadbar')--}}
+@include('web.layout.downloadbar')
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
