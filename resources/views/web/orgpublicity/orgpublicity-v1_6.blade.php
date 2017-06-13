@@ -17,7 +17,6 @@
 </head>
 <body>
 {!! csrf_field() !!}
-<<<<<<< HEAD
 <div id="publicity">
     <div class="box head">
         @if($org['cover'])
@@ -31,18 +30,71 @@
         <div class="head-img">
             <img src="{{$org['logo']}}"/>
         </div>
-
+            <p class="head-txt first">通过半课App报名<span>{{$org['name']}}</span></p>
+            <p class="head-txt second"><span class="txt">最高获得</span><span class="txt color">50%返现</span></p>
     </div>
     <div class="box detail">
-        <div class="title">武汉天马驾校</div>
+        <div class="title">{{$org['name']}}</div>
+        @if($org['details'])
+            <div class="detail-info org-detail">
+                {!!$org['details']!!}
+            </div>
+        @endif
+        <div class="title">半课</div>
         <div class="detail-info">
-            虚生先生所做的时事短评中，曾有一个这样的题目：《我们应该有正眼看各方面的勇气》（《猛进》十九期　。
-            诚然，必须敢于正视，这才可望敢想，敢说，敢作，敢当。
-            倘使并正视而不敢，此外还能成什么气候。然而，不幸这一种勇气，是我们中国人最所缺乏的。
+            半课是一个学生赚钱省学费的利器
+            <br />
+            <br />
+            一半学费上好课，为学生提供7天担保服务，学生通过打卡获得返现，开团享受优惠，最高可获得50%返现，
+            帮助学生筛选出更具性价比的课程及机构，为学生提供终生学习的服务。
         </div>
     </div>
-</div>
+    <div class="box line"></div>
+    <div class="box appointment">
+        <p>客服半半将会第一时间联系您</p>
+        <div class="input-box org-box">
+            <i class="iconfont register-img">&#xe76b;</i>
+            <input class="register-code" id="org-name" placeholder="输入意向机构" />
+        </div>
+        <div class="input-box num-box">
+            <i class="iconfont register-img">&#xe61f;</i>
+            <input class="register-code" id="phone-num" placeholder="输入手机号"/>
+        </div>
+        <button class="btn nouse" id="register-btn"><span>确定</span></button>
 
+        <div class="statement">本服务由半课提供，最终解释权归半课所有</div>
+    </div>
+    <div class="box line"></div>
+    <div class="box cooperation">
+        <div class="title">优质合作机构推荐</div>
+        <div class="org-container">
+            @if($superiororg)
+                @foreach($superiororg as $v)
+                    <div class="coo-org">
+                        <a href="javascript:void(0)">
+                            <div class="tip-box">
+                                <div class="tip-img"></div>
+                                <div class="tip-txt">{{$v->category}}</div>
+                            </div>
+                            <div class="org-box">
+                                <img class="org-img" src="{{$v->logo}}"/>
+                                <div class="org-name">{{$v->name}}</div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+    </div>
+    <div class="container hide" >
+        <img class="bg second" src="http://pic.hisihi.com/2017-04-14/1492163041837846.png" />
+        <div class="txt txt-one">领取成功</div>
+        <div class="txt txt-two">获得<span>50%</span>返现机会</div>
+        <div class="btn active"><a href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></div>
+    </div>
+</div>
+</div>
+{{--@include('web.layout.downloadbar')--}}
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
