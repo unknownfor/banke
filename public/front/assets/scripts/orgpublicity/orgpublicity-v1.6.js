@@ -81,4 +81,19 @@ $(function () {
     }
 
 
+    //点击加载更多
+    $(document).on(window.eventName,'.more-btn',function() {
+        //页面恢复滚动
+        window.scrollControl(true);
+        showOrgInfo();
+    });
+
+    //展示机构信息
+    function showOrgInfo () {
+        var box=$('#org-info'),
+            btn=$('.more-btn');
+        box.removeClass('noshow');
+        btn.addClass('none');
+    }
+
 });

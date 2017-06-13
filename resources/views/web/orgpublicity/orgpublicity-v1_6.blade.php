@@ -34,13 +34,18 @@
             <p class="head-txt first">通过半课App报名<span>{{$org['name']}}</span></p>
             <p class="head-txt second"><span class="txt">最高获得</span><span class="txt color">50%返现</span></p>
     </div>
-    <div class="box detail">
+    <div class="box detail noshow" id="org-info">
         <div class="title">{{$org['name']}}</div>
         @if($org['details'])
-            <div class="detail-info org-detail">
+            <div class="detail-info">
                 {!!$org['details']!!}
             </div>
         @endif
+    </div>
+        <div class="more-btn">
+            <i class="iconfont">&#xe646;</i>
+        </div>
+    <div class="box detail">
         <div class="title">半课</div>
         <div class="detail-info">
             半课是一个学生赚钱省学费的利器
@@ -55,7 +60,7 @@
         <p>客服半半将会第一时间联系您</p>
         <div class="input-box org-box">
             <i class="iconfont register-img">&#xe76b;</i>
-            <input class="register-code" id="org-name" placeholder="输入意向机构" />
+            <input class="register-code" id="org-name" placeholder="选择课程" />
         </div>
         <div class="input-box num-box">
             <i class="iconfont register-img">&#xe61f;</i>

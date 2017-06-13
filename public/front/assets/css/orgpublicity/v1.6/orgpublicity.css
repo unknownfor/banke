@@ -203,6 +203,21 @@ body {
   height: 15px;
   background-color: #F2F2F2;
 }
+#publicity .more-btn {
+  margin: 0 15px;
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 5px;
+  text-align: center;
+}
+#publicity .more-btn > i {
+  color: #fbc02d;
+  font-size: 20px;
+  display: inline-block;
+}
+#publicity .more-btn.none {
+  display: none;
+  opacity: 0;
+}
 #publicity .box .title {
   margin-top: 15px;
   font-weight: bold;
@@ -214,9 +229,6 @@ body {
   padding: 15px 0;
   color: #9B9B9B;
   line-height: 22px;
-}
-#publicity .box .detail-info.org-detail {
-  border-bottom: 1px solid #c7c7c7;
 }
 #publicity .box.hide {
   opacity: 0;
@@ -265,6 +277,10 @@ body {
 }
 #publicity .box.head .head-txt .txt.color {
   color: #fa4535;
+}
+#publicity .box.detail.noshow {
+  height: 74px;
+  overflow: hidden;
 }
 #publicity .box.cooperation .coo-container {
   display: -webkit-box;
@@ -321,11 +337,15 @@ body {
   transform: rotate(45deg);
   font-size: 8px;
 }
+#publicity .box.cooperation .coo-container .coo-org > a .org-box {
+  height: 82px;
+}
 #publicity .box.cooperation .coo-container .coo-org > a .org-box .org-img {
   width: 62px;
   height: 62px;
 }
 #publicity .box.cooperation .coo-container .coo-org > a .org-box .org-name {
+  width: 62px;
   height: 20px;
   border-top: 1px solid #c7c7c7;
   text-overflow: ellipsis;
@@ -415,7 +435,7 @@ body {
   margin: 45px 0 25px 0;
 }
 #publicity .box.appointment .input-box {
-  border-radius: 10px;
+  border-radius: 4px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -446,7 +466,7 @@ body {
   -webkit-flex: 3;
   -ms-flex: 3;
   flex: 3;
-  border-radius: 10px;
+  border-radius: 4px;
   height: 45px;
   padding: 0px;
   border: none;
@@ -470,7 +490,7 @@ body {
   height: 45px;
   line-height: 45px;
   color: #ffffff;
-  border-radius: 10px;
+  border-radius: 4px;
   background-color: rgba(255, 235, 59, 0.5);
   border: none;
 }
