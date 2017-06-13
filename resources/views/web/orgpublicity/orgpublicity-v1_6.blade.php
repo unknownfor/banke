@@ -13,6 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link href="/front/assets/css/orgpublicity/v1.6/orgpublicity.css" rel="stylesheet" type="text/css"/>
+    <link href="/front/assets/css/orgpublicity/v1.6/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>{{$org['name']}}</title>
 </head>
 <body>
