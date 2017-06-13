@@ -1,23 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Repositories\admin\OrgSummaryRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
-use OrgRepository;
 use App\Http\Requests\CreateOrgRequest;
 use App\Http\Requests\UpdateOrgRequest;
 use PermissionRepository;
 use RoleRepository;
+use OrgSummaryRepository;
 use TrainCategoryRepository;
 use App\Repositories\admin\OrgCategoryRepository;
 use App\Repositories\admin\OrgTagsRepository;
 use App\Models\Banke\BankeOrg;
 use Illuminate\Support\Facades\Log;
 
-class OrgsummaryController extends Controller
+class OrgSummaryController extends Controller
 {
 	/**
      * 机构列表
@@ -27,7 +26,8 @@ class OrgsummaryController extends Controller
      */
     public function index()
     {
-        return view('admin.orgsummary.list');
+        $allTopCategories=TrainCategoryRepository::getAllTopCategory();
+        return view('admin.orgsummary.list')->with(compact(['allTopCategories']));
     }
 
     /**
@@ -38,7 +38,7 @@ class OrgsummaryController extends Controller
      */
     public function ajaxIndex()
     {
-        $data = OrgRepository::ajaxIndex();
+        $data = OrgSummaryRepository::ajaxIndex();
         return response()->json($data);
     }
     /**

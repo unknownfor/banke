@@ -44,7 +44,7 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/OrgRoute.php');
 
         // 机构
-        require(__DIR__ . '/Routes/OrgsummaryRoute.php');
+        require(__DIR__ . '/Routes/OrgSummaryRoute.php');
 
         // 课程
         require(__DIR__ . '/Routes/CourseRoute.php');

@@ -13,6 +13,54 @@ use TrainCategoryRepository;
 class OrgSummaryRepository
 {
 
+
+	/**
+	 * datatable获取数据
+	 * @author shaolei
+	 * @date   2016-04-13T21:14:37+0800
+	 * @return [type]                   [description]
+	 */
+	public function ajaxIndex()
+	{
+		$draw = request('draw', 1);/*获取请求次数*/
+		$start = request('start', config('admin.global.list.start')); /*获取开始*/
+		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
+
+		$surperior = request('surperior' ,'');
+		$category_id = request('category_id' ,'');
+
+		$org = new BankeOrgSummary;
+
+
+		/*状态搜索*/
+		if ($category_id!=null) {
+			$org = $org->where('category_id', $category_id);
+		}
+
+		/*状态搜索*/
+		if ($surperior!=null) {
+			$org = $org->where('surperior', $surperior);
+		}
+
+		$count = $org->count();
+
+		$org = $org->offset($start)->limit($length);
+		$orgs = $org->orderBy("id", "desc")->get();
+
+		if ($orgs) {
+			foreach ($orgs as &$v) {
+				$v['actionButton'] = $v->getActionButtonAttribute();
+				$v['category']= $v->category;
+			}
+		}
+		return [
+			'draw' => $draw,
+			'recordsTotal' => $count,
+			'recordsFiltered' => $count,
+			'data' => $orgs,
+		];
+	}
+
 	/*得到全部的优质机构*/
 	public static function getSuperiorOrgs($counts=4)
 	{

@@ -77,25 +77,21 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
-                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="surperior">
                             <option value="" data-icon="fa-glass icon-success">优质机构....</option>
-                            @if(trans('strings.orgsummary'))
-                                @foreach(trans('strings.orgsummary') as $status_key => $status_value)
-                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
-                                @endforeach
-                            @endif
+                            <option value="1" data-icon="fa fa fa-paw">是</option>
+                            <option value="0" data-icon="fa fa fa-navicon">否</option>
+
                         </select>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
-                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
-                            <option value="" data-icon="fa-glass icon-success">状态....</option>
-                            @if(trans('strings.orgsummary'))
-                                @foreach(trans('strings.orgsummary') as $status_key => $status_value)
-                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
-                                @endforeach
-                            @endif
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="category_id">
+                            <option value="" data-icon="fa-glass icon-success">分类....</option>
+                            @foreach($allTopCategories as $val)
+                                <option value="{{$val['id']}}"> {{$val['name']}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
