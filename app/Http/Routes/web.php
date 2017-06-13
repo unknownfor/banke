@@ -169,6 +169,9 @@ Route::group(['prefix'=>"bankehome",'namespace'=>'Web'],function(){
     //申请机构
     Route::post('addorgapplyfor', 'OrgController@addOrgApplyFor');
 
+    //预约半课
+    Route::post('appoint', 'InvitationController@doEnrol_v1_6');
+
 });
 
 Route::group(['prefix'=>"smstest"],function(){
