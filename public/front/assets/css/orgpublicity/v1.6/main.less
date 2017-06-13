@@ -19,20 +19,24 @@ body {
     background-color: #F2F2F2;
   }
   .box {
-    &.hide {
-      opacity: 0;
-      display: none;
-    }
     .title {
       margin-top: 15px;
       font-weight: bold;
-      border-left: 4px solid #fffb3b;
+      border-left: 7px solid #fffb3b;
       padding-left: 8px;
     }
     .detail-info {
-      padding: 15px;
+      margin: 0 15px;
+      padding: 15px 0;
       color: #9B9B9B;
       line-height: 22px;
+      &.org-detail {
+        border-bottom: 1px solid #c7c7c7;
+      }
+    }
+    &.hide {
+      opacity: 0;
+      display: none;
     }
     &.head {
       text-align: center;
@@ -55,6 +59,8 @@ body {
         }
       }
       .head-txt {
+        padding: 0 15px;
+        .txt-ellipsis-p(1);
         &.first {
           margin: 60px 0 12px 0;
         }
@@ -129,9 +135,64 @@ body {
           }
         }
       }
+      .org-container {
+        display: flex;
+        flex-wrap:wrap;
+        width: 300px;
+        margin: 15px auto;
+        .coo-org {
+          flex: 0 0 @h;
+          border: 1px solid #c7c7c7;
+          position: relative;
+          margin: 0 5px 10px 5px;
+          > a {
+            text-align: center;
+            display: inline-block;
+            color: #383d43;
+            .tip-box {
+              position: absolute;
+              top:0;
+              right: 0;
+              .tip-img {
+                position: relative;
+                @w:74px * 0.5;
+                display: inline-block;
+                .size(@w,@w);
+                background: url("/front/assets/img/orgpublicity/jiaobiao.png");
+                background-size: @w,@w;
+              }
+              .tip-txt {
+                position: absolute !important;
+                top:0;
+                right: 0;
+                width: 30px;
+                color: #fff;
+                text-align: center;
+                line-height: 22px;
+                .txt-ellipsis-p(1);
+                padding-left: 3px;
+                position: relative;
+                transform: rotate(45deg);
+                font-size: 8px;
+              }
+            }
+            .org-box {
+              .org-img {
+                .size (@h,@h);
+              }
+              .org-name {
+                height: 20px;
+                border-top: 1px solid #c7c7c7;
+                .txt-ellipsis-p(1);
+              }
+            }
+
+          }
+        }
+      }
     }
     &.appointment {
-      margin: 15px 15px 85px 15px;
+      margin: 15px;
       @rbh: 45px;
       @rbr:10px;
       text-align: center;
@@ -195,6 +256,9 @@ body {
         color: #fcc742;
         letter-spacing: 1px;
       }
+    }
+    &.margin {
+      height: 80px;
     }
   }
   .container {

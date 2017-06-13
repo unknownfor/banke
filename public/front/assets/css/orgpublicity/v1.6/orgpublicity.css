@@ -203,20 +203,24 @@ body {
   height: 15px;
   background-color: #F2F2F2;
 }
-#publicity .box.hide {
-  opacity: 0;
-  display: none;
-}
 #publicity .box .title {
   margin-top: 15px;
   font-weight: bold;
-  border-left: 4px solid #fffb3b;
+  border-left: 7px solid #fffb3b;
   padding-left: 8px;
 }
 #publicity .box .detail-info {
-  padding: 15px;
+  margin: 0 15px;
+  padding: 15px 0;
   color: #9B9B9B;
   line-height: 22px;
+}
+#publicity .box .detail-info.org-detail {
+  border-bottom: 1px solid #c7c7c7;
+}
+#publicity .box.hide {
+  opacity: 0;
+  display: none;
 }
 #publicity .box.head {
   text-align: center;
@@ -240,6 +244,14 @@ body {
   height: 100px;
   border-radius: 6px;
   border: 1px solid #c7c7c7;
+}
+#publicity .box.head .head-txt {
+  padding: 0 15px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 #publicity .box.head .head-txt.first {
   margin: 60px 0 12px 0;
@@ -322,8 +334,80 @@ body {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
+#publicity .box.cooperation .org-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 300px;
+  margin: 15px auto;
+}
+#publicity .box.cooperation .org-container .coo-org {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 62px;
+  -ms-flex: 0 0 62px;
+  flex: 0 0 62px;
+  border: 1px solid #c7c7c7;
+  position: relative;
+  margin: 0 5px 10px 5px;
+}
+#publicity .box.cooperation .org-container .coo-org > a {
+  text-align: center;
+  display: inline-block;
+  color: #383d43;
+}
+#publicity .box.cooperation .org-container .coo-org > a .tip-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#publicity .box.cooperation .org-container .coo-org > a .tip-box .tip-img {
+  position: relative;
+  display: inline-block;
+  width: 37px;
+  height: 37px;
+  background: url("/front/assets/img/orgpublicity/jiaobiao.png");
+  -webkit-background-size: 37px, 37px;
+  background-size: 37px, 37px;
+}
+#publicity .box.cooperation .org-container .coo-org > a .tip-box .tip-txt {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  width: 30px;
+  color: #fff;
+  text-align: center;
+  line-height: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  padding-left: 3px;
+  position: relative;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  font-size: 8px;
+}
+#publicity .box.cooperation .org-container .coo-org > a .org-box .org-img {
+  width: 62px;
+  height: 62px;
+}
+#publicity .box.cooperation .org-container .coo-org > a .org-box .org-name {
+  height: 20px;
+  border-top: 1px solid #c7c7c7;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
 #publicity .box.appointment {
-  margin: 15px 15px 85px 15px;
+  margin: 15px;
   text-align: center;
 }
 #publicity .box.appointment > p {
@@ -401,6 +485,9 @@ body {
   font-size: 12px;
   color: #fcc742;
   letter-spacing: 1px;
+}
+#publicity .box.margin {
+  height: 80px;
 }
 #publicity .container {
   opacity: 0;
