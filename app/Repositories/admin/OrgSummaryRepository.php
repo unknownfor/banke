@@ -102,12 +102,12 @@ class OrgSummaryRepository
 	 */
 	public function store($request)
 	{
-		$org = new BankeOrg;
+		$org = new BankeOrgSummary;
 		if ($org->fill($request->all())->save()) {
-			Flash::success(trans('alerts.org.created_success'));
+			Flash::success(trans('alerts.orgsummary.created_success'));
 			return $org->id;
 		}
-		Flash::error(trans('alerts.org.created_error'));
+		Flash::error(trans('alerts.orgsummary.created_error'));
 		return false;
 	}
 
@@ -120,7 +120,7 @@ class OrgSummaryRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeOrg::find($id);
+		$role = BankeOrgSummary::find($id);
 		if ($role) {
 			$roleArray = $role->toArray();
 			return $roleArray;

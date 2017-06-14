@@ -11,7 +11,7 @@ class BankeOrgSummary extends Model
 
     protected $table = 'banke_org_summary';
 
-    protected $fillable = ['name', 'category_id','superior', 'short_name','logo', 'intro', 'sort',
+    protected $fillable = ['name', 'category_id','surperior', 'short_name','logo', 'intro', 'sort',
         'details', 'status','created_at','updated_at'];
 
     private $action;
@@ -19,7 +19,7 @@ class BankeOrgSummary extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.org.action');
+        $this->action = config('admin.global.orgsummary.action');
     }
 
     //1对多个课程

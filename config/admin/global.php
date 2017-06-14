@@ -114,6 +114,13 @@ return[
 		// trait 中的 action 参数
 		'action' => 'org',
 	],
+	//机构总表
+	'orgsummary' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'orgsummary',
+	],
 	//课程
 	'course' => [
 		// 控制是否显示查看按钮

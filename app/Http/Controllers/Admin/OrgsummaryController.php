@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
-use App\Http\Requests\CreateOrgRequest;
+use App\Http\Requests\CreateOrgSummaryRequest;
 use App\Http\Requests\UpdateOrgRequest;
 use PermissionRepository;
 use RoleRepository;
@@ -52,7 +52,7 @@ class OrgSummaryController extends Controller
         $permissions = PermissionRepository::findPermissionWithArray();
         $roles = RoleRepository::findRoleWithObject();
         $allCategories=TrainCategoryRepository::getAllTopCategory();
-        return view('admin.org.create')->with(compact(['permissions','roles','allCategories']));
+        return view('admin.orgsummary.create')->with(compact(['permissions','roles','allCategories']));
     }
 
     /**
@@ -62,27 +62,9 @@ class OrgSummaryController extends Controller
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(CreateOrgRequest $request)
+    public function store(CreateOrgSummaryRequest $request)
     {
-        $id = OrgRepository::store($request);
-        $category1 = $request->category1;
-        $category2 = $request->category2;
-
-        $newArr=Array();
-        if(!$category1){
-            $category1=$newArr;
-        }
-        if(!$category2){
-            $category2=$newArr;
-        }
-
-        $OrgCategory=new OrgCategoryRepository();
-        $OrgCategory->batchStore( array_merge($category1, $category2),$id);
-
-        $tags= $request->tags;  //标签
-        $OrgTags=new OrgTagsRepository();
-        $OrgTags->batchStore($tags,$id);
-
+        $id = OrgSummaryRepository::store($request);
         return redirect('admin/orgsummary');
     }
 
@@ -96,8 +78,7 @@ class OrgSummaryController extends Controller
     public function edit($id)
     {
         $orgsummary = OrgSummaryRepository::edit($id);
-        $trainCategory=new TrainCategoryRepository();
-        $categories=$trainCategory->getAllTopCategory();  //所有顶级分类
+        $categories=TrainCategoryRepository::getAllTopCategory();  //所有顶级分类
         return view('admin.orgsummary.edit')->with(compact('orgsummary','categories'));
     }
     /**
