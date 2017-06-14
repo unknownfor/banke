@@ -36,7 +36,7 @@ class BankeOrg extends Model
     //1对多个课程
     public function course()
     {
-        return $this->hasMany('App\Models\Banke\BankeCourse','oid','id');
+        return $this->hasMany('App\Models\Banke\BankeCourse','org_id','id');
     }
 
     //1对多个标签
