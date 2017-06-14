@@ -244,7 +244,8 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'sort'=>'排序',
-		'list' => '分校列表',
+		'list' => '机构列表',
+		'branch_list' => '分校列表',
 		'category' => '所属分类',
 	],
 	'org' => [

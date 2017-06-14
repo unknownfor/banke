@@ -113,6 +113,7 @@
                           <th width="15%"> {{ trans('labels.orgsummary.category') }} </th>
                           <th width="10%"> {{ trans('labels.orgsummary.sort') }} </th>
                           <th width="8%"> {{ trans('labels.orgsummary.status') }} </th>
+                          <th width="8%"> {{ trans('labels.orgsummary.list') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
