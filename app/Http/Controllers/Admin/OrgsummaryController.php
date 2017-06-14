@@ -89,25 +89,9 @@ class OrgSummaryController extends Controller
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(UpdateOrgRequest $request,$id)
+    public function update(CreateOrgSummaryRequest $request,$id)
     {
-        OrgRepository::update($request,$id);
-
-        $category1 = $request->category1;
-        $category2 = $request->category2;
-        $newArr=Array();
-        if(!$category1){
-            $category1=$newArr;
-        }
-        if(!$category2){
-            $category2=$newArr;
-        }
-        $OrgCategory=new OrgCategoryRepository();
-        $OrgCategory->batchStore( array_merge($category1, $category2),$id);
-
-        $tags= $request->tags;  //标签
-        $OrgTags=new OrgTagsRepository();
-        $OrgTags->batchStore($tags,$id);
+        OrgSummaryRepository::update($request,$id);
         return redirect('admin/orgsummary');
     }
 
@@ -134,7 +118,7 @@ class OrgSummaryController extends Controller
      */
     public function destroy($id)
     {
-        OrgRepository::destroy($id);
+        OrgSummaryRepository::destroy($id);
         return redirect('admin/orgsummary');
     }
 

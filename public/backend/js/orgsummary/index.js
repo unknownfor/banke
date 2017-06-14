@@ -27,7 +27,7 @@
 
 
             //机构分类
-            $('.orgCategorySelectpicker').selectpicker({
+            $('.mySelectpicker').selectpicker({
                 liveSearchNormalize:true,
                 liveSearchPlaceholder:'输入名称进行搜索'
             }).on('changed.bs.select', function (e) {
@@ -243,7 +243,9 @@
                 this.initUploadImg($target,$form,function(data){
                     data=JSON.parse(data);
                     if(data) {
-                        var $img = $('#logo').attr('src', data.filedata);
+                        var url=data.filedata,
+                            $img = $('#logo').attr('src',url);
+                        $('#logo-input').val(url);
                         $img[0].onload = function () {
                             $img.show();
                             that.controlLoadingCircleStatus(false);
@@ -423,9 +425,6 @@
 
             //相册
             $('#album').val(editor.getCoverImg('album').join(','));
-
-            //logo
-            $('#logo-input').val($('#logo').attr('src'));
 
             $('#tags').val(editor.getTags());
         };
