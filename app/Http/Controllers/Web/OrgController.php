@@ -68,19 +68,9 @@ class OrgController extends Controller
     {
         $org = BankeOrg::find($id);
         $superiororg=OrgSummaryRepository::getSuperiorOrgs(8);
+        $org['course']=$org->course;
         return view('web.orgpublicity.orgpublicity-v1_6')->with(compact(['org','superiororg']));
     }
-
-
-    /**
-     * 半课宣传页面详情
-     */
-    public function banke_publicity_v1_6()
-    {
-        $superiororg=OrgSummaryRepository::getSuperiorOrgs(4);
-        return view('web.orgpublicity.bankepublicity-v1_6')->with(compact(['superiororg']));
-    }
-
 
 
     /**添加入驻机构**/
