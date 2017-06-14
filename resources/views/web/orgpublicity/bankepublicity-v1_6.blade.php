@@ -20,10 +20,8 @@
 {!! csrf_field() !!}
 <div id="publicity">
     <div class="box head">
-        <img class="head-bg" src="http://pic.hisihi.com/2016-05-19/1463654426358971.png" />
-        <div class="head-img">
-            <img src="http://pic.hisihi.com/2016-11-23/1479894836281466.jpg"/>
-        </div>
+        <img class="head-bg" src="http://pic.hisihi.com/2017-06-13/1497345721075824.png" />
+        <div class="head-banke"></div>
         <p class="head-txt first"><span class="txt">报名后最高获得</span><span class="txt color">50%返现</span></p>
         <p class="head-txt second">用半课返现，学费贷款相当于0利息</p>
     </div>
