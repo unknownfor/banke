@@ -31,16 +31,6 @@
               <i class="icon-settings font-dark"></i>
               <span class="caption-subject font-dark sbold uppercase">{{trans('labels.enrol.list')}}</span>
             </div>
-            {{--<div class="actions">
-              <div class="btn-group">
-                @permission(config('admin.permissions.enrol.create'))
-                <a href="{{url('admin/enrol/create')}}" class="btn btn-success btn-outline btn-circle">
-                  <i class="fa fa-user-plus"></i>
-                  <span class="hidden-xs">{{trans('crud.create')}}</span>
-                </a>
-                @endpermission
-              </div>
-            </div>--}}
           </div>
             <div class="search-box filter">
                 <div class="col-md-2">
@@ -110,6 +100,7 @@
                           <th> {{ trans('labels.enrol.mobile') }} </th>
                             <th width="17%"> {{ trans('labels.enrol.org_id') }} </th>
                             <th width="17%"> {{ trans('labels.enrol.course_id') }} </th>
+                            <th width="17%"> {{ trans('labels.enrol.comment') }} </th>
                           <th> {{ trans('labels.enrol.status') }} </th>
                           <th width="15%"> {{ trans('labels.enrol.updated_at') }} </th>
                           <th width="10%"> {{ trans('labels.action') }} </th>

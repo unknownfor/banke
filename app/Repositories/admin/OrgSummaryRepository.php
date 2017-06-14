@@ -5,7 +5,6 @@ use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeOrgSummary;
 use Illuminate\Support\Facades\Log;
-use TrainCategoryRepository;
 
 /**
 * 机构总表仓库
@@ -81,7 +80,6 @@ class OrgSummaryRepository
 	/*得到全部的机构*/
 	public static function getOrgs($counts=10)
 	{
-//		$org = BankeOrgSummary::all();
 		$org = BankeOrgSummary::offset(0)->limit($counts);
 		$org = $org->orderBy("id", "sort")->get();
 		if ($org) {

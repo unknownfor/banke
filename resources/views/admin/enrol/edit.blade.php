@@ -80,6 +80,13 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-2 control-label" for="comment">{{trans('labels.enrol.comment')}}</label>
+                          <div class="col-md-8">
+                              <p>{{$enrol['comment']}}</p>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-2 control-label" for="description">{{trans('labels.enrol.processing_result')}}</label>
                           <div class="col-md-8">
                               <input type="text" class="form-control" id="description" name="processing_result" placeholder="{{trans('labels.enrol.processing_result')}}" value="{{$enrol['processing_result']}}">

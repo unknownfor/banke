@@ -47,7 +47,19 @@ var TableDatatablesAjax = function() {
               "name": "course_name",
               "orderable" : false,
           },
-        { 
+          {
+              "data": "comment",
+              "name": "comment",
+              "orderable" : false,
+              "render":function(res){
+                var str='';
+                if(res){
+                  str='<p class="txt-ellipsis-single" title="'+res+'">'+res+'</p>';
+                }
+                return str
+              }
+          },
+          {
         	"data": "status",
         	"name": "status",
         	"orderable" : true,

@@ -4,13 +4,6 @@
 Route::get('/', 'HomeController@index');
 
 
-Route::group(['prefix'=>"about",'namespace'=>'Web'],function(){
-
-    //规则页面
-    Route::get('/', 'AboutController@about');
-
-});
-
 //1.2
 Route::group(['prefix'=>"v1.2/share",'namespace'=>'Web'],function(){
 
@@ -175,6 +168,9 @@ Route::group(['prefix'=>"bankehome",'namespace'=>'Web'],function(){
 
     //申请机构
     Route::post('addorgapplyfor', 'OrgController@addOrgApplyFor');
+
+    //预约半课
+    Route::post('appoint', 'InvitationController@doEnrol_v1_6');
 
 });
 

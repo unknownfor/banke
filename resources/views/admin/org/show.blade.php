@@ -58,6 +58,28 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="pid">{{trans('labels.org.pid')}}</label>
+                          <div class="col-md-4">
+                              <select disabled id="pid" name="pid" class="citySelectpicker show-tick form-control" data-live-search="true">
+                                  @if($summary_orgs)
+                                      @foreach($summary_orgs as $v)
+                                          <option value="{{$v['id']}}">{{$v['name']}}</option>
+                                      @endforeach
+                                  @endif
+                              </select>
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="branch_school">{{trans('labels.org.branch_school')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" class="form-control" id="branch_school" name="branch_school" placeholder="{{trans('labels.org.branch_school')}}" value="{{$org['branch_school']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="intro">{{trans('labels.org.intro')}}</label>
                           <div class="col-md-9">
                               <div class="form-control form-control-static"> {{$org['intro']}} </div>
@@ -90,6 +112,21 @@
                           <label class="col-md-1 control-label" for="address">{{trans('labels.org.address')}}</label>
                           <div class="col-md-9">
                               <div class="form-control form-control-static"> {{$org['address']}} </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="address">{{trans('labels.org.lonlat')}}</label>
+                          <div class="col-md-9">
+                              <label id="location">点击重新选择</label>
+                              <input type="text" class="form-control" id="lon" name="lon" readonly  value="{{$org['lon']}}">
+                              <input type="text" class="form-control" id="lat" name="lat" readonly  value="{{$org['lat']}}">
+                              <div class="form-control-focus"> </div>
+                              <div class="map-box">
+                                  <div class="lonlat-info-box"><p>点击地图即可获取坐标，然后关闭地图</p></div>
+                                  <div class="close-map"></div>
+                                  <iframe id="map" name="map" src="/admin/org/map"></iframe>
+                              </div>
                           </div>
                       </div>
 

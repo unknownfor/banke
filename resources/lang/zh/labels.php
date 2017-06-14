@@ -370,6 +370,7 @@ return [
 		'list' => '预约报名列表',
 		'permission' => '权限',
 		'module' => '模块',
+		'comment' => '备注',
 	],
 
 	//提现
