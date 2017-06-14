@@ -61,9 +61,9 @@
         <div class="input-box org-box">
             <i class="iconfont register-img">&#xe76b;</i>
             <select class="register-code" id="org-name" placeholder="选择课程" >
-                @if($superiororg)
-                    @foreach($superiororg as $v)
-                        <option>测试1</option>
+                @if($org['course'])
+                    @foreach($org['course'] as $v)
+                        <option>{{$v->name}}</option>
                     @endforeach
                 @endif
             </select>
