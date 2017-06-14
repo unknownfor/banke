@@ -62,4 +62,29 @@ class CourseController extends Controller
         return view('web.course.share_course-v1_5')->with(compact(['course','org']));
     }
 
+
+    /**
+     * 课程详情
+     */
+    public function course_v1_6($id)
+    {
+        $course = BankeCourse::find($id);
+        $org = $course->org;
+        $course['share_award']=$course['share_group_buying_award']+$course['share_comment_course_award']+$org['share_comment_org_award'];
+        $course['max_award']=$course['share_award']  +$course['checkin_award'] + $course['group_buying_award'];
+        return view('web.course.course-v1_6')->with(compact(['course','org']));
+    }
+
+
+    /**
+     * 分享机构详情
+     */
+    public function share_course_v1_6($id)
+    {
+        $course = BankeCourse::find($id);
+        $org = $course->org;
+        $course['share_award']=$course['share_group_buying_award']+$course['share_comment_course_award']+$org['share_comment_org_award'];
+        $course['max_award']=$course['share_award']+$course['checkin_award']+$course['group_buying_award'];
+        return view('web.course.share_course-v1_6')->with(compact(['course','org']));
+    }
 }

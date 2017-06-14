@@ -74,6 +74,13 @@ Route::group(['prefix'=>"v1.5/web",'namespace'=>'Web'],function() {
 
 });
 
+//1.6
+Route::group(['prefix'=>"v1.6/web",'namespace'=>'Web'],function() {
+
+    //v1.6课程开团
+    Route::get('/course/{id}', 'CourseController@course_v1_6');
+
+});
 
 
 //v1.6
@@ -86,6 +93,10 @@ Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
     Route::get('/bankepublicity', 'OrgController@banke_publicity_v1_6');
 
     Route::post('/doenrol', 'InvitationController@doEnrol_v1_6');
+
+    //v1.6课程开团
+    Route::get('/course/{id}', 'CourseController@course_v1_6');
+
 });
 
 
