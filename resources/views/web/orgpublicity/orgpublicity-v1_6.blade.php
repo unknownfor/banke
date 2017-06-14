@@ -42,9 +42,9 @@
             </div>
         @endif
     </div>
-        <div class="more-btn">
-            <i class="iconfont">&#xe646;</i>
-        </div>
+    <div class="more-btn">
+        <i class="iconfont">&#xe646;</i>
+    </div>
     <div class="box detail">
         <div class="title">半课</div>
         <div class="detail-info">
@@ -60,7 +60,14 @@
         <p>客服半半将会第一时间联系您</p>
         <div class="input-box org-box">
             <i class="iconfont register-img">&#xe76b;</i>
-            <input class="register-code" id="org-name" placeholder="选择课程" />
+            <select class="register-code" id="org-name" placeholder="选择课程" >
+                @if($superiororg)
+                    @foreach($superiororg as $v)
+                        <option>测试1</option>
+                    @endforeach
+                @endif
+            </select>
+            <i class="iconfont register-img section">&#xe658;</i>
         </div>
         <div class="input-box num-box">
             <i class="iconfont register-img">&#xe61f;</i>
@@ -100,9 +107,7 @@
         <div class="btn active"><a href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></div>
     </div>
 </div>
-</div>
 @include('web.layout.downloadbar')
-</body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>

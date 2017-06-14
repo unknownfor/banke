@@ -239,7 +239,7 @@ body {
 }
 #publicity .box.head .head-bg {
   position: relative;
-  max-height: 140px;
+  height: 140px;
   width: 100%;
 }
 #publicity .box.head .head-img {
@@ -257,16 +257,30 @@ body {
   border-radius: 6px;
   border: 1px solid #c7c7c7;
 }
+#publicity .box.head .head-banke {
+  position: absolute;
+  top: 80px;
+  left: 37%;
+  background: url("http://pic.hisihi.com/2017-06-13/1497345957797211.png") no-repeat;
+  -webkit-background-size: 96px 96px;
+  background-size: 96px 96px;
+  -webkit-box-shadow: 4px 4px 10px #c7c7c7;
+  box-shadow: 4px 4px 10px #c7c7c7;
+  width: 95px;
+  height: 94px;
+  border-radius: 13px;
+  border: 1px solid #c7c7c7;
+}
 #publicity .box.head .head-txt {
   padding: 0 15px;
+}
+#publicity .box.head .head-txt.first {
+  margin: 60px 0 12px 0;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
-}
-#publicity .box.head .head-txt.first {
-  margin: 60px 0 12px 0;
 }
 #publicity .box.head .head-txt.second {
   margin-bottom: 15px;
@@ -461,6 +475,11 @@ body {
   -ms-flex-pack: center;
   justify-content: center;
 }
+#publicity .box.appointment .input-box .register-img.section {
+  border-left: 1px solid #c7c7c7;
+  height: 35px;
+  margin-top: 5px;
+}
 #publicity .box.appointment .input-box .register-code {
   -webkit-box-flex: 3;
   -webkit-flex: 3;
@@ -471,12 +490,18 @@ body {
   padding: 0px;
   border: none;
   background-color: #F2F2F2;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
 }
 #publicity .box.appointment .input-box .register-code:active {
   outline: none;
 }
 #publicity .box.appointment .input-box.active {
   background-color: #FFFBD8;
+}
+#publicity .box.appointment .input-box.active .section {
+  border-left: 1px solid #FFEB3B;
 }
 #publicity .box.appointment .input-box.active > i {
   color: #FFEB3B;

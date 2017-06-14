@@ -54,7 +54,7 @@ body {
       text-align: center;
       .head-bg {
         position: relative;
-        max-height: 140px;
+        height: 140px;
         width: 100%;
       }
       .head-img {
@@ -70,11 +70,23 @@ body {
           border: 1px solid #c7c7c7;
         }
       }
+      .head-banke {
+        @w: 96px;
+        position: absolute;
+        top: 80px;
+        left: 37%;
+        background: url("http://pic.hisihi.com/2017-06-13/1497345957797211.png") no-repeat;
+        background-size: @w @w;
+        box-shadow: 4px 4px 10px #c7c7c7;
+        .size(@w - 1px ,@w - 2px);
+        border-radius: 13px;
+        border: 1px solid #c7c7c7;
+      }
       .head-txt {
         padding: 0 15px;
-        .txt-ellipsis-p(1);
         &.first {
           margin: 60px 0 12px 0;
+          .txt-ellipsis-p(1);
         }
         &.second {
           margin-bottom: 15px;
@@ -228,6 +240,11 @@ body {
           justify-items: center;
           align-items: center;
           justify-content: center;
+          &.section {
+            border-left: 1px solid #c7c7c7;
+            height: 35px;
+            margin-top: 5px;
+          }
         }
         .register-code {
           flex: 3;
@@ -236,11 +253,17 @@ body {
           padding: 0px;
           border: none;
           background-color: #F2F2F2;
+          appearance: none;
+          -webkit-appearance: none;
+          outline: none;
           &:active {
             outline: none;
           }
         }
         &.active {
+          .section {
+            border-left: 1px solid #FFEB3B;
+          }
           > i {
             color: #FFEB3B;
           }
