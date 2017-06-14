@@ -107,7 +107,7 @@
                                     <select name="category_id" class="orgsummaryCategorySelectpicker show-tick form-control" data-live-search="true" multiple>
                                         @if($categories)
                                             @foreach($categories as $val)
-                                                <option value="{{$val['id']}}" @if($val['id']==$org['category_id']) selected @endif> {{$val['name']}}</option>
+                                                <option value="{{$val['id']}}" @if($val['id']==$orgsummary['category_id']) selected @endif> {{$val['name']}}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -117,7 +117,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
                                 <div class="col-md-9">
-                                    <textarea style="display: none" name="details" id="target-area">{{$org['details']}}</textarea>
+                                    <textarea style="display: none" name="details" id="target-area">{{$orgsummary['details']}}</textarea>
                                     <textarea id="my-editor"></textarea>
                                 </div>
                             </div>
@@ -128,21 +128,21 @@
                                 <div class="col-md-9">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
-                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($org['status'] == config('admin.global.status.active')) checked @endif>
+                                            <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($orgsummary['status'] == config('admin.global.status.active')) checked @endif>
                                             <label for="status1">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> {{trans('strings.org.active.1')}} </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($org['status'] === config('admin.global.status.audit')) checked @endif>
+                                            <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($orgsummary['status'] === config('admin.global.status.audit')) checked @endif>
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> {{trans('strings.org.audit.1')}} </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($org['status'] == config('admin.global.status.trash')) checked @endif>
+                                            <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($orgsummary['status'] == config('admin.global.status.trash')) checked @endif>
                                             <label for="status3">
                                                 <span></span>
                                                 <span class="check"></span>

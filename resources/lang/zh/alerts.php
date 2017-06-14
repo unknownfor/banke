@@ -62,6 +62,16 @@ return [
     'serviceBusy' => '服务器繁忙，请稍后再试...',
     'deleteTitle' => '确定要彻底删除么?',
 
+    'orgsummary' => [
+        'updated_success'   => '修改机构成功.',
+        'updated_error'     => '修改机构失败.',
+        'created_success'   => '创建机构成功.',
+        'created_error'     => '创建机构失败.',
+        'deleted_success'   => '删除机构成功.',
+        'deleted_error'     => '删除机构失败.',
+        'soft_deleted_success' => '删除机构成功',
+    ],
+
     'org' => [
         'updated_success'   => '修改机构成功.',
         'updated_error'     => '修改机构失败.',

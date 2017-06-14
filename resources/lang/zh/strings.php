@@ -52,7 +52,7 @@ return [
 	],
 	'orgsurperior' => [
 		'active' => ['fa fa-paw','是'],
-		'audio' => ['fa fa-navicon','否']
+		'audit' => ['fa fa-navicon','否']
 	],
 	'course' => [
 		'audit' => ['fa fa-paw','待审核'],

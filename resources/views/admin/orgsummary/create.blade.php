@@ -44,7 +44,7 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal org-info-box" method="POST" action="{{url('admin/org')}}">
+                    <form role="form" class="form-horizontal org-info-box" method="POST" action="{{url('admin/orgsummary')}}">
                         {!! csrf_field() !!}
                         <div class="form-body">
                             <div class="form-group form-md-line-input form-md-line-logo">
@@ -83,59 +83,15 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="city">{{trans('labels.org.city')}}(必填)</label>
+                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.org.category')}}</label>
                                 <div class="col-md-4">
-                                    <select id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
-                                        <option value="武汉" selected>武汉</option>
-                                        <option value="北京">北京</option>
-                                        <option value="上海">上海</option>
-                                        <option value="广州">广州</option>
-                                        <option value="深圳">深圳</option>
-                                    </select>
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="address">{{trans('labels.org.address')}}(必填)</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="{{trans('labels.org.address')}}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.org.category1')}}</label>
-                                <div class="col-md-4">
-                                    <select name="category1[]" class="orgCategorySelectpicker show-tick form-control" data-live-search="true" multiple>
+                                    <select name="category_id" class="orgCategorySelectpicker show-tick form-control" data-live-search="true">
                                         @if($allCategories)
                                             @foreach($allCategories as $val)
                                                 <option value="{{$val->id}}" > {{$val->name}}</option>
                                             @endforeach
                                         @endif
                                     </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="category">{{trans('labels.org.category2')}}</label>
-                                <div class="col-md-9 my-category2"></div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="tags">{{trans('labels.org.tags')}}</label>
-                                <div class="col-md-2" style="color:#32c5d2">输入文字后，回车添加</div>
-                                <div class="col-md-7">
-                                    <div id="medium"></div>
-                                    <input type="hidden" name="tags" id="tags">
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="share_comment_org_award">{{trans('labels.org.share_comment_org_award')}}</label>
-                                <div class="col-md-9">
-                                    <input type="number" min="0" max="100" step="0.01" class="form-control" id="share_comment_org_award" value="0.55" name="share_comment_org_award" placeholder="{{trans('labels.org.share_comment_org_award')}}">
-                                    <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
@@ -147,23 +103,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-1 control-label">{{trans('labels.org.cover')}}</label>
-                                <div class="col-md-9">
-                                    <div class="cover-box">
-                                        <div class="add-img-btn add-cover-img-btn">+
-                                            <div class="cover-size-tips">400*175</div>
-                                        </div>
-                                        <ul class="img-list-box cover-list-box"></ul>
-                                        <input id="cover" name="cover" type="hidden" value="">
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
@@ -173,48 +112,26 @@
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-1 control-label">{{trans('labels.org.album')}}</label>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.orgsummary.surperior')}}</label>
                                 <div class="col-md-9">
-                                    <div class="cover-box">
-                                        <div class="add-img-btn add-album-img-btn">+
-                                            {{--<div class="cover-size-tips">400*175</div>--}}
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="surperior1" name="surperior" value="{{config('admin.global.status.active')}}" class="md-radiobtn" checked>
+                                            <label for="surperior1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.orgsurperior.active.1')}} </label>
                                         </div>
-                                        <ul class="img-list-box album-list-box"></ul>
-                                        <input id="album" name="album" type="hidden" value="">
+                                        <div class="md-radio">
+                                            <input type="radio" id="surperior2" name="surperior" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                            <label for="surperior2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.orgsurperior.audit.1')}} </label>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="tel_phone">{{trans('labels.org.tel_phone')}}(必填)</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" id="tel_phone" name="tel_phone" placeholder="{{trans('labels.org.tel_phone')}}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="tel_phone2">{{trans('labels.org.tel_phone2')}}</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control" id="tel_phone2" name="tel_phone2" placeholder="{{trans('labels.org.tel_phone2')}}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="student_counts">{{trans('labels.org.student_counts')}}</label>
-                                <div class="col-md-9">
-                                    <input type="number"  class="form-control" id="student_counts" name="student_counts" min="0" max="10000000" placeholder="{{trans('labels.org.student_counts')}}">
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="cash_back_desc">{{trans('labels.org.cash_back_desc')}}</label>
-                                <div class="col-md-9">
-                                    <input type="text"  class="form-control" id="cash_back_desc" name="cash_back_desc" placeholder="{{trans('labels.org.cash_back_desc')}}">
-                                    <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
@@ -251,7 +168,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
-                                    <a href="{{url('admin/org')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                                    <a href="{{url('admin/orgsummary')}}" class="btn default">{{trans('crud.cancel')}}</a>
                                     <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
