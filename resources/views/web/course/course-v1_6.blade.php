@@ -13,6 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/course/v1.6/course.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/course/v1.6/iconfont/iconfont.css" rel="stylesheet">
     <title>课程详情</title>
 </head>
 <body>
@@ -35,6 +36,12 @@
     </div>
 </div>
 {{--机构简介--}}
+<div class="school container ">
+    <div class="container-head">
+        <span class="more-section">附近校区选择</span>
+        <span class="more-school">更多校区<i class="iconfont">&#xf0071;</i></span>
+    </div>
+</div>
 <div class="org-detail container">
     <div class="head-left">
         <img src="{{$course['cover']}}@70h_70w_2e" />
@@ -51,9 +58,6 @@
 </div>
 <!--地址详情-->
 <div class="address container">
-    <div class="container-head">
-        <span>机构地址</span>
-    </div>
     <div class="address-box container-box">
         <div class="address-info">
             <div class="address-img"></div>
@@ -93,5 +97,5 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/course/course-v1..js" type="text/javascript"></script>
+<script src="/front/assets/scripts/course/course-v1.6.js" type="text/javascript"></script>
 </html>

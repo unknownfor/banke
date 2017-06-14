@@ -12,18 +12,31 @@ img {
   max-width: 100%;
 }
 .container {
+  @h:28px;
   font-size: 14px;
   background-color: #fff;
   margin-bottom:15px;
   .container-head {
     color: #212121;
-    height: 35px;
-    padding-left: 10px;
-    border-left: 3px solid #ffeb3b;
-    border-bottom: 1px solid #e5e5e5;
+    height: @h;
+    padding-top: 15px;
     color: #383D43;
     display: flex;
     align-items: center;
+    .more-section {
+      width: 70%;
+      line-height: @h;
+      height: @h;
+      border-left: 4px solid #ffeb3b;
+      padding-left: 10px;
+    }
+    .more-school {
+      color: #FBC02D;
+      > i {
+        font-size: 12px;
+        vertical-align: 2px;
+      }
+    }
   }
   .container-box {
     padding: 15px;
@@ -94,6 +107,8 @@ img {
   }
 }
 .org-detail {
+  margin-bottom: 0;
+  border-bottom: 1px solid #f2f2f2;
   padding: 15px  0px 15px 15px;
   display: flex;
   position: relative;
@@ -133,7 +148,6 @@ img {
   }
 }
 .address {
-  margin: 15px 0;
   .address-box {
     display: flex;
     font-size: 12px;
@@ -229,6 +243,9 @@ img {
     display: none;
     opacity: 0;
   }
+}
+.school {
+  margin-bottom: 0;
 }
 
 #downloadCon{

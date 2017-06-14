@@ -202,10 +202,8 @@ img {
 }
 .container .container-head {
   color: #212121;
-  height: 35px;
-  padding-left: 10px;
-  border-left: 3px solid #ffeb3b;
-  border-bottom: 1px solid #e5e5e5;
+  height: 28px;
+  padding-top: 15px;
   color: #383D43;
   display: -webkit-box;
   display: -webkit-flex;
@@ -215,6 +213,20 @@ img {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+}
+.container .container-head .more-section {
+  width: 70%;
+  line-height: 28px;
+  height: 28px;
+  border-left: 4px solid #ffeb3b;
+  padding-left: 10px;
+}
+.container .container-head .more-school {
+  color: #FBC02D;
+}
+.container .container-head .more-school > i {
+  font-size: 12px;
+  vertical-align: 2px;
 }
 .container .container-box {
   padding: 15px;
@@ -297,6 +309,8 @@ img {
   color: #FA4535;
 }
 .org-detail {
+  margin-bottom: 0;
+  border-bottom: 1px solid #f2f2f2;
   padding: 15px  0px 15px 15px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -353,9 +367,6 @@ img {
   margin-left: 5px;
   border: 1px solid #faaf0a;
   padding: 0 3px;
-}
-.address {
-  margin: 15px 0;
 }
 .address .address-box {
   display: -webkit-box;
@@ -484,6 +495,9 @@ img {
 .call-mask.hide {
   display: none;
   opacity: 0;
+}
+.school {
+  margin-bottom: 0;
 }
 #downloadCon {
   margin: 0 auto;
