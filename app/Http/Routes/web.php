@@ -80,6 +80,10 @@ Route::group(['prefix'=>"v1.6/web",'namespace'=>'Web'],function() {
     //v1.6课程开团
     Route::get('/course/{id}', 'CourseController@course_v1_6');
 
+    //机构分享页面
+    Route::get('/org/{id}', 'OrgController@org_v1_6');
+
+
 });
 
 
@@ -96,6 +100,9 @@ Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
 
     //课程分享页面
     Route::get('/course/{id}', 'CourseController@share_course_v1_6');
+
+    //机构分享页面
+    Route::get('/org/{id}', 'OrgController@share_org_v1_6');
 });
 
 

@@ -156,4 +156,24 @@ class OrgController extends Controller
     }
 
 
+    /**
+     * 机构详情
+     */
+    public function org_v1_6($id)
+    {
+        $org = BankeOrg::find($id);
+        return view('web.org.org-v1_6')->with(compact(['org']));
+    }
+
+
+    /**
+     * 分享机构详情
+     */
+    public function share_org_v1_6($id)
+    {
+        $org = BankeOrg::find($id);
+        return view('web.org.share_org-v1_6')->with(compact(['org']));
+    }
+
+
 }
