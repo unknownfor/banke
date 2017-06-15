@@ -35,13 +35,27 @@
         </div>
     </div>
 </div>
-{{--机构简介--}}
+<div class="slogen">以下小伙伴正在发起团购，立即参团享返现</div>
+<div class="join container">
+    <div class="join-left">
+        <img src="http://pic.hisihi.com/2016-11-23/1479894836413730.jpg" />
+    </div>
+    <div class="join-middle">
+        <div class="join-name">测试名称</div>
+        <div class="join-num">已有<span>2人</span>参团</div>
+    </div>
+    <div class="join-right">
+        <div id="join-btn">立即参团</div>
+    </div>
+</div>
+
 <div class="school container ">
     <div class="container-head">
         <span class="more-section">附近校区选择</span>
         <span class="more-school">更多校区<i class="iconfont">&#xf0071;</i></span>
     </div>
 </div>
+
 <div class="org-detail container">
     <div class="head-left">
         <img src="{{$course['cover']}}@70h_70w_2e" />
@@ -49,14 +63,13 @@
     <div class="head-middle">
         <div class="head-name">{{$org['name']}}</div>
         <div class="head-tips">
-            {{--优势标签--}}
             @foreach($org->tags as $val)
                 <span>{{$val['name']}}</span>
             @endforeach
         </div>
     </div>
 </div>
-<!--地址详情-->
+
 <div class="address container">
     <div class="address-box container-box">
         <div class="address-info">
@@ -70,29 +83,30 @@
         </div>
     </div>
 </div>
-<!--课程介绍-->
+
 @if($course['details'])
 <div class="class-info container">
     <div class="container-head">
-        <span>课程介绍</span>
+        <span class="more-section">课程介绍</span>
     </div>
     <div class="class-info-box container-box">
         {!! $course['details'] !!}
     </div>
 </div>
 @endif
+
 <div class="call-mask hide">
     <div class="call-container">
         @if($org['tel_phone'])
         <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
         @endif
-        {{--假设机构只有一个电话--}}
         @if($org['tel_phone2'])
         <div class="call-box"><a class="" href="tel:{{$org['tel_phone2']}}">{{$org['tel_phone2']}}</a></div>
         @endif
         <p class="quite">取消</p>
     </div>
 </div>
+
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>

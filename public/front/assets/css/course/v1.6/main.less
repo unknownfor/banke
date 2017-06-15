@@ -44,6 +44,7 @@ img {
   }
 }
 .head {
+  margin-bottom: 10px !important;
   padding: 15px;
   display: flex;
   position: relative;
@@ -103,6 +104,53 @@ img {
     }
     #price-real-num {
       color: #FA4535;
+    }
+  }
+}
+.slogen {
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #9b9b9b;
+  padding-left: 15px;
+}
+.join {
+  padding: 15px;
+  display: flex;
+  .join-left {
+    @w:50px;
+    flex: 0 0 @w;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    > img {
+      .size(@w,@w);
+      border-radius: @w;
+      border: 1px solid #c7c7c7;
+    }
+  }
+  .join-middle {
+    color: #383D43;
+    flex: 1;
+    .join-name {
+      .txt-ellipsis-p(1);
+      margin-bottom: 10px;
+    }
+    .join-num {
+      > span {
+        color: #fa4535;
+      }
+    }
+  }
+  .join-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fa4535;
+    #join-btn {
+      border-radius: 4px;
+      padding: 5px;
+      border: 1px solid #fa4535;
     }
   }
 }
@@ -246,48 +294,4 @@ img {
 }
 .school {
   margin-bottom: 0;
-}
-
-#downloadCon{
-  margin: 0 auto;
-  max-width: 700px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  opacity: 1;
-  display: inline-block;
-  background-color: #FFEB3B;
-  .downloadBar-img {
-    max-width: 100%;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 9999;
-    opacity: 0;
-    display: inline-block;
-  }
-  a {
-    display:block;
-    text-decoration: none;
-    border: 0;
-    padding: 0;
-    margin: 0;
-  }
-}
-@media screen and (max-width: 420px){
-  #downloadCon {
-    height: 78px;
-  }
-}
-@media screen and (max-width: 380px){
-  #downloadCon {
-    height: 71px;
-  }
-}
-@media screen and (max-width: 320px){
-  #downloadCon {
-    height: 61px;
-  }
 }

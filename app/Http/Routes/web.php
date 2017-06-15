@@ -94,9 +94,8 @@ Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
 
     Route::post('/doenrol', 'InvitationController@doEnrol_v1_6');
 
-    //v1.6课程开团
-    Route::get('/course/{id}', 'CourseController@course_v1_6');
-
+    //课程分享页面
+    Route::get('/course/{id}', 'CourseController@share_course_v1_6');
 });
 
 
