@@ -97,7 +97,7 @@
                             <option value="" data-icon="fa-glass icon-success">所属机构....</option>
                             @if($summary_orgs)
                                 @foreach($summary_orgs as $v)
-                                    <option value="{{$v['id']}}" @if($currentOrgSummaryId!=0) selected @endif> {{$v['name']}}</option>
+                                    <option value="{{$v['id']}}" @if($currentOrgSummaryId==$v['id']) selected @endif> {{$v['name']}}</option>
                                 @endforeach
                             @endif
                         </select>
