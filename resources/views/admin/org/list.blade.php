@@ -27,6 +27,10 @@
     .category-block.sub{
         background-color:#3399CC;
     }
+
+    .magin-top{
+        margin-top: 30px !important;
+    }
 </style>
 @endsection
 @section('content')
@@ -64,7 +68,7 @@
             </div>
           </div>
             <div class="search-box filter">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <div class="input-group has-success">
                             <span class="input-group-addon">
@@ -75,18 +79,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="form-group form-md-line-input">
-                            <div class="input-group has-success">
-                                    <span class="input-group-addon">
-                                        <i class="fa fa-envelope"></i>
-                                    </span>
-                                <input type="text" class="form-control form-filter" name="city" placeholder="{{ trans('labels.org.city') }}">
-                                <div class="form-control-focus"> </div>
-                            </div>
-                        </div>
+                {{--<div class="col-md-2">--}}
+                    {{--<div class="form-group form-md-line-input">--}}
+                            {{--<div class="input-group has-success">--}}
+                                    {{--<span class="input-group-addon">--}}
+                                        {{--<i class="fa fa-envelope"></i>--}}
+                                    {{--</span>--}}
+                                {{--<input type="text" class="form-control form-filter" name="city" placeholder="{{ trans('labels.org.city') }}">--}}
+                                {{--<div class="form-control-focus"> </div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                {{--</div>--}}
+                <div class="col-md-4">
+                    <label class="col-md-3 control-label magin-top">{{trans('labels.org.pid')}}</label>
+                    <div class="col-md-9 form-group form-md-line-input">
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="pid">
+                            <option value="" data-icon="fa-glass icon-success">所属机构....</option>
+                            @if($summary_orgs)
+                                @foreach($summary_orgs as $v)
+                                    <option value="{{$v['id']}}" @if($currentOrgSummaryId!=0) selected @endif> {{$v['name']}}</option>
+                                @endforeach
+                            @endif
+                        </select>
+                    </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
                             <option value="" data-icon="fa-glass icon-success">状态....</option>
@@ -98,7 +115,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <div class="margin-bottom-5" style="padding-top: 20px;">
                         <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
                             <i class="fa fa-search"></i>{{ trans('labels.search') }}</button>
