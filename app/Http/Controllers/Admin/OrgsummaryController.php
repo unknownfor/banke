@@ -122,4 +122,18 @@ class OrgSummaryController extends Controller
         return redirect('admin/orgsummary');
     }
 
+    /**
+     * 添加机构
+     * @author 晚黎
+     * @date   2016-04-14T11:31:29+0800
+     * @param  CreateUserRequest        $request [description]
+     * @return [type]                            [description]
+     */
+    public function branchlist($id)
+    {
+        $currentOrgSummaryId=$id;
+        $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
+        return view('admin.org.list')->with(compact(['currentOrgSummaryId','summary_orgs']));
+    }
+
 }

@@ -79,7 +79,7 @@ var TableDatatablesAjax = function() {
           "name": "id",
           "orderable": true,
           render: function (data) {
-            return '<a href="/'+data+'">校区列表</span>';
+            return '<a href="/admin/orgsummary/'+data+'/branchlist">校区列表</span>';
           }
         },
         { 
