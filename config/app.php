@@ -247,6 +247,7 @@ return [
         'NewsRepository' => App\Facades\NewsFacade::class,
         'EnrolRepository' => App\Facades\EnrolFacade::class,
         'OrderRepository' => App\Facades\OrderFacade::class,
+        'OrderDepositRepository' => App\Facades\OrderDepositFacade::class,
         'CashRepository' => App\Facades\OrderFacade::class,
         'FeedbackRepository' => App\Facades\FeedbackFacade::class,
         'InvitationRepository' => App\Facades\InvitationFacade::class,

@@ -172,6 +172,18 @@ return[
 		'trash' => 99, //不通过
 	],
 
+	//报名订金
+	'orderdeposit' => [
+		// 控制是否显示查看按钮
+		'show' => true,
+		// trait 中的 action 参数
+		'action' => 'orderdeposit',
+		'active' => 1,  //通过 正常
+		'audit' => 0,//待审
+		'ban' => 2,  //退款
+		'trash' => 99, //不通过
+	],
+
 	//反馈
 	'feedback' => [
 		// 控制是否显示查看按钮

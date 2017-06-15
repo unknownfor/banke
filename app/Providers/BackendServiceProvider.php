@@ -85,6 +85,11 @@ class BackendServiceProvider extends ServiceProvider
             return new \App\Repositories\admin\OrderRepository();
         });
 
+        //订金
+        $this->app->singleton('OrderDepositRepository', function($app){
+            return new \App\Repositories\admin\OrderDepositRepository();
+        });
+
         //反馈
         $this->app->singleton('FeedbackRepository', function($app){
             return new \App\Repositories\admin\FeedbackRepository();

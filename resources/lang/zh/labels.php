@@ -154,10 +154,14 @@ return [
 		'checkinList' => '<i class="fa fa-th-list"></i> 签到列表',
 		'checkinEdit' => '<i class="fa fa-th-list"></i> 编辑签到',
 		'invitationList' => '<i class="fa fa-share-alt"></i> 邀请列表',
+
 		'orderList' => '<i class="fa fa-share-alt"></i> 报名列表',
 		'orderCreate' => '<i class="fa fa-user-plus"></i> 添加报名',
 		'orderEdit' => '<i class="fa fa-user-plus"></i> 编辑报名',
 		'orderShow' => '<i class="fa fa-search"></i> 报名详情',
+
+		'orderdepositList' => '<i class="fa fa-list"></i> 订金列表',
+
 		'invitationList' => '<i class="fa fa-th-list"></i> 邀请列表',
 		'orgAccountList' => '<i class="fa fa-bars"></i> 机构账户列表',
 		'orgAccountCreate' => '<i class="fa fa-bars"></i> 创建机构账户',
@@ -218,6 +222,8 @@ return [
 		'groupbuyingwordsList' => '<i class="fa fa-list"></i> 开团标语列表',
 		'groupbuyingwordsCreate' => '<i class="fa fa-list"></i> 添加开团标语',
 		'groupbuyingwordsEdit' => '<i class="fa fa-list"></i> 编辑开团标语',
+
+
 	],
 	'dict' => [
 		'id' => '序号',

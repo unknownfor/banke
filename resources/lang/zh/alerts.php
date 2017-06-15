@@ -129,6 +129,10 @@ return [
         'authen_error'     => '审核报名失败.',
         'already_active'    => '该订单已经通过审核，不能重复审核'
     ],
+    'orderdeposit' => [
+        'updated_success'   => '修改订金成功.',
+        'updated_error'     => '修改订金失败.',
+    ],
     'withdraw' => [
         'updated_success'   => '修改提现成功.',
         'updated_error'     => '修改提现失败.',

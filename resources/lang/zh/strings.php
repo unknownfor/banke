@@ -85,6 +85,10 @@ return [
 		'trash' => ['fa fa-trash','未通过'],
 		'ban' => ['fa fa-trash','已退款']
 	],
+	'orderdeposit' => [
+		'active' => ['fa fa-navicon','正常'],
+		'ban' => ['fa fa-trash','已退款']
+	],
 
 	'faq' => [
 		'audit' => ['fa fa-paw','未审核'],
