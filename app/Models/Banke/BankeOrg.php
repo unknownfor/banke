@@ -13,6 +13,7 @@ class BankeOrg extends Model
 
     protected $fillable = ['name', 'logo','city', 'cover','album', 'intro', 'sort', 'address', 'tel_phone','tel_phone2',
         'details', 'status','short_name','student_counts','cash_back_desc','comment_award',
+        'pid',
         'lon',
         'lat',
         'share_comment_org_counts',

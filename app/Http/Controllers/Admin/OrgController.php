@@ -28,7 +28,8 @@ class OrgController extends Controller
     public function index()
     {
         $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
-        return view('admin.org.list')->with(compact(['summary_orgs']));
+        $currentOrgSummaryId=0;
+        return view('admin.org.list')->with(compact(['summary_orgs','currentOrgSummaryId']));
     }
 
     /**
