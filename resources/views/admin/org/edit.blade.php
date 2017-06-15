@@ -80,6 +80,7 @@
                                 <label class="col-md-1 control-label" for="pid">{{trans('labels.org.pid')}}</label>
                                 <div class="col-md-4">
                                     <select id="pid" name="pid" class="citySelectpicker show-tick form-control" data-live-search="true">
+                                        <option value="0">请选择所属机构……</option>
                                         @if($summary_orgs)
                                             @foreach($summary_orgs as $v)
                                                 @if($org['pid']==$v['id'])
