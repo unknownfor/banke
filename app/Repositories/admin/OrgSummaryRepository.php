@@ -137,7 +137,7 @@ class OrgSummaryRepository
 	 */
 	public function show($id)
 	{
-		$org = BankeOrg::find($id)->toArray();
+		$org = BankeOrgSummary::find($id)->toArray();
 		return $org;
 	}
 
@@ -151,13 +151,13 @@ class OrgSummaryRepository
 	 */
 	public function update($request,$id)
 	{
-		$role = BankeOrg::find($id);
+		$role = BankeOrgSummary::find($id);
 		if ($role) {
 			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.org.updated_success'));
+				Flash::success(trans('alerts.orgsummary.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.org.updated_error'));
+			Flash::error(trans('alerts.orgsummary.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -173,14 +173,14 @@ class OrgSummaryRepository
 	 */
 	public function mark($id,$status)
 	{
-		$org = BankeOrg::find($id);
+		$org = BankeOrgSummary::find($id);
 		if ($org) {
 			$org->status = $status;
 			if ($org->save()) {
-				Flash::success(trans('alerts.org.updated_success'));
+				Flash::success(trans('alerts.orgsummary.updated_success'));
 				return $org->id;
 			}
-			Flash::error(trans('alerts.org.updated_error'));
+			Flash::error(trans('alerts.orgsummary.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -195,12 +195,12 @@ class OrgSummaryRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeOrg::destroy($id);
+		$isDelete = BankeOrgSummary::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.org.deleted_success'));
+			Flash::success(trans('alerts.orgsummary.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.org.deleted_error'));
+		Flash::error(trans('alerts.orgsummary.deleted_error'));
 		return false;
 	}
 

@@ -44,7 +44,7 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal org-info-box" method="POST" action="{{url('admin/org/'.$orgsummary['id'])}}">
+                    <form role="form" class="form-horizontal org-info-box" method="POST" action="{{url('admin/orgsummary/'.$orgsummary['id'])}}">
                         {!! csrf_field() !!}
                         <input type="hidden" name="_method" value="PATCH">
                         <input type="hidden" name="id" value="{{$orgsummary['id']}}">
@@ -58,7 +58,7 @@
                                     <div>{!! trans('labels.breadcrumb.imageUploadTips')!!}</div>
                                     <div>尺寸大小为60*60</div>
                                 </div>
-                                <input type="hidden" value="" name="logo" id="logo-input">
+                                <input type="hidden" value="{{$orgsummary['logo']}}" name="logo" id="logo-input">
                             </div>
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="name">{{trans('labels.orgsummary.name')}}</label>
@@ -79,8 +79,22 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="surperior">{{trans('labels.orgsummary.surperior')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="surperior" name="short_name" placeholder="{{trans('labels.orgsummary.short_name')}}" value="{{$orgsummary['short_name']}}">
-                                    <div class="form-control-focus"> </div>
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="surperior1" name="surperior" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($orgsummary['surperior'] == config('admin.global.status.active')) checked @endif>
+                                            <label for="surperior1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.orgsurperior.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="surperior2" name="surperior" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($orgsummary['surperior'] == config('admin.global.status.audit')) checked @endif>
+                                            <label for="surperior2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.orgsurperior.audit.1')}} </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
@@ -104,7 +118,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="orgsummary_name">{{trans('labels.orgsummary.category')}}</label>
                                 <div class="col-md-4">
-                                    <select name="category_id" class="orgsummaryCategorySelectpicker show-tick form-control" data-live-search="true" multiple>
+                                    <select name="category_id" class="mySelectpicker show-tick form-control" data-live-search="true" multiple>
                                         @if($categories)
                                             @foreach($categories as $val)
                                                 <option value="{{$val['id']}}" @if($val['id']==$orgsummary['category_id']) selected @endif> {{$val['name']}}</option>
@@ -156,7 +170,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
-                                    <a href="{{url('admin/org')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                                    <a href="{{url('admin/orgsummary')}}" class="btn default">{{trans('crud.cancel')}}</a>
                                     <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
@@ -214,5 +228,5 @@
         });
     </script>
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/orgsummary/index.js')}}"></script>
 @endsection

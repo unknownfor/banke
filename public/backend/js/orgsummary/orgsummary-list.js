@@ -60,7 +60,7 @@ var TableDatatablesAjax = function() {
           "orderable" : true,
         },
 
-        { 
+        {
           "data": "status",
           "name": "status",
           "orderable" : true,
@@ -72,6 +72,14 @@ var TableDatatablesAjax = function() {
             }else{
               return '<span class="label label-danger"> 未通过 </span>';
             }
+          }
+        },
+        {
+          "data": "id",
+          "name": "id",
+          "orderable": true,
+          render: function (data) {
+            return '<a href="/'+data+'">校区列表</span>';
           }
         },
         { 
