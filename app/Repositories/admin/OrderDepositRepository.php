@@ -67,6 +67,10 @@ class OrderDepositRepository
 		if ($deposits) {
 			foreach ($deposits as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(true);
+				$v['name']  =$v->authenUser['real_name'];
+				if(!$v['name']){
+					$v['name'] = $v->user['name'];
+				}
 			}
 		}
 		return [
@@ -89,11 +93,55 @@ class OrderDepositRepository
 	{
 		$isDelete = BankeOrderDeposit::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.orderdeposit.soft_deleted_success'));
+			Flash::success(trans('alerts.orderdeposit.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.orderdeposit.soft_deleted_error'));
+		Flash::error(trans('alerts.orderdeposit.deleted_error'));
 		return false;
+	}
+
+
+	/**
+	 * 修改
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:34+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function edit($id)
+	{
+		$order = BankeOrderDeposit::find($id);
+		$order['name']  =$order->authenUser['real_name'];
+		if(!$order['name']){
+			$order['name'] = $order->user['name'];
+		}
+		if ($order) {
+			$orderArray = $order->toArray();
+			return $orderArray;
+		}
+		abort(404);
+	}
+
+	/**
+	 * 更新
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public function update($request,$id)
+	{
+		$role = BankeOrderDeposit::find($id);
+		if ($role) {
+			if ($role->fill($request->all())->save()) {
+				Flash::success(trans('alerts.orderdeposit.updated_success'));
+				return true;
+			}
+			Flash::error(trans('alerts.orderdeposit.updated_error'));
+			return false;
+		}
+		abort(404);
 	}
 
 	/**

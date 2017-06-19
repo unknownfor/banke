@@ -122,6 +122,12 @@ return[
 		'undo' 		=> 'admin.dict.undo',*/
 	],
 
+	//订金
+	'orderdeposit' => [
+		'edit' 		=> 'admin.orderdeposit.edit',
+		'destroy' 	=> 'admin.orderdeposit.delete',
+	],
+
 	//提现
 	'withdraw' => [
 		'show' 		=> 'admin.withdraw.show',

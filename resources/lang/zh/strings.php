@@ -86,7 +86,8 @@ return [
 		'ban' => ['fa fa-trash','已退款']
 	],
 	'orderdeposit' => [
-		'active' => ['fa fa-navicon','正常'],
+		'active' => ['fa fa-navicon','已支付'],
+		'audit' => ['fa fa-paw','未支付'],
 		'ban' => ['fa fa-trash','已退款']
 	],
 

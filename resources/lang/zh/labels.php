@@ -161,6 +161,7 @@ return [
 		'orderShow' => '<i class="fa fa-search"></i> 报名详情',
 
 		'orderdepositList' => '<i class="fa fa-list"></i> 订金列表',
+		'orderdepositEdit' => '<i class="fa fa-list"></i> 审核订金',
 
 		'invitationList' => '<i class="fa fa-th-list"></i> 邀请列表',
 		'orgAccountList' => '<i class="fa fa-bars"></i> 机构账户列表',
@@ -654,4 +655,22 @@ return [
 		'updated_at' => '修改时间',
 		'list' => '开团标语列表',
 	],
+
+	'orderdeposit' => [
+		'id' => '序号',
+		'order_no' => '订单号',
+		'name' => '姓名',
+		'mobile' => '手机号',
+		'course_name' => '课程名称',
+		'org_short_name' => '机构简称',
+		'account' => '金额',
+		'pay_type' => '支付方式',
+		'pay_status' => '支付状态',
+		'transaction_no'=>'交易号',
+		'list' => '报名列表',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'status' => '状态'
+	],
+
 ];

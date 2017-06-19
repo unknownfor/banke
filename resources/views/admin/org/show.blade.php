@@ -63,7 +63,7 @@
                               <select disabled id="pid" name="pid" class="citySelectpicker show-tick form-control" data-live-search="true">
                                   @if($summary_orgs)
                                       @foreach($summary_orgs as $v)
-                                          <option value="{{$v['id']}}">{{$v['name']}}</option>
+                                          <option value="{{$v['id']}}" @if($v['id']==$org['pid']) selected @endif>{{$v['name']}}</option>
                                       @endforeach
                                   @endif
                               </select>

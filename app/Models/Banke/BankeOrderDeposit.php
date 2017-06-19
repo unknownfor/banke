@@ -5,7 +5,7 @@ namespace App\Models\Banke;
 use App\Models\ActionAttributeTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class BankeCashBackUser extends Model
+class BankeOrderDeposit extends Model
 {
     //报名订单表
 
