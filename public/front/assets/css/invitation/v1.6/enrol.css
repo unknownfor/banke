@@ -574,7 +574,7 @@ img {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin: 15px auto;
+  margin: 15px auto 55px auto;
 }
 #enrol .box.cooperation .org-container .coo-org {
   -webkit-box-flex: 0;

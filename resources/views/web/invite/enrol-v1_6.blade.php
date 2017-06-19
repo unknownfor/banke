@@ -171,8 +171,6 @@
     </div>
 
 
-
-
 </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
