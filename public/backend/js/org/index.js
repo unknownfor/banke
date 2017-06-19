@@ -321,7 +321,7 @@
                 this.initUploadImg($target,$form,function(data){
                     data=JSON.parse(data);
                     if(data) {
-                        var str=that.getConverImgStr(data.filedata);
+                        var str=that.getConverImgStr(data.filedata,'435x435');
                         $('.qrcode-list-box').html(str);
                         that.controlLoadingCircleStatus(false);
                         $form[0].reset();
@@ -330,9 +330,12 @@
                 });
             },
 
-            getConverImgStr:function(url){
+            getConverImgStr:function(url,sizeStr){
+                if(!sizeStr){
+                    sizeStr='435x263';
+                }
                 return '<li>'+
-                            '<a href="'+url+'" data-size="435x263"></a>'+
+                            '<a href="'+url+'" data-size="'+sizeStr+'"></a>'+
                             '<img src="'+url+'@142w_80h_1e">'+
                             '<span class="remove-img-btn">×</span>'+
                         '</li>';
