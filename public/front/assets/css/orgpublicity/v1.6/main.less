@@ -108,110 +108,74 @@ body {
       }
     }
     &.cooperation {
-      @h: 62px;
+      @h: 66px;
+      .tip-box {
+        position: absolute;
+        top:-1px;
+        right: -1px;
+        .tip-img {
+          position: relative;
+          @w:74px * 0.5;
+          display: inline-block;
+          .size(@w,@w);
+          background: url("http://pic.hisihi.com/2017-06-14/1497403685615926.png");
+          background-size: @w,@w;
+        }
+        .tip-txt {
+          position: absolute !important;
+          top:0;
+          right: 0;
+          width: 30px;
+          color: #fff;
+          text-align: center;
+          line-height: 22px;
+          .txt-ellipsis-p(1);
+          padding-left: 3px;
+          position: relative;
+          transform: rotate(45deg);
+          font-size: 8px;
+        }
+      }
+      .org-box {
+        .org-img {
+          .size (@h,@h);
+        }
+        .org-name {
+          height: 25px;
+          text-align: center;
+          border-top: 1px solid #c7c7c7;
+          .txt-ellipsis-p(1);
+          line-height: 25px;
+          font-size: 12px;
+        }
+      }
       .coo-container {
         display: flex;
-        justify-content: space-between;
+        flex-wrap:wrap;
         margin: 15px;
+        justify-content: space-between;
         .coo-org {
-          width: 22%;
+          flex: 0 0 @h;
           border: 1px solid #c7c7c7;
           position: relative;
           > a {
-            text-align: center;
-            display: inline-block;
             color: #383d43;
-            .tip-box {
-              position: absolute;
-              top:0;
-              right: 0;
-              .tip-img {
-                position: relative;
-                @w:74px * 0.5;
-                display: inline-block;
-                .size(@w,@w);
-                background: url("/front/assets/img/orgpublicity/jiaobiao.png");
-                background-size: @w,@w;
-              }
-              .tip-txt {
-                position: absolute !important;
-                top:0;
-                right: 0;
-                width: 30px;
-                color: #fff;
-                text-align: center;
-                line-height: 22px;
-                .txt-ellipsis-p(1);
-                padding-left: 3px;
-                position: relative;
-                transform: rotate(45deg);
-                font-size: 8px;
-              }
-            }
-            .org-box {
-              height: @h+ 20px;
-              .org-img {
-                .size (@h,@h);
-              }
-              .org-name {
-                .size(@h,20px);
-                border-top: 1px solid #c7c7c7;
-                .txt-ellipsis-p(1);
-              }
-            }
           }
         }
       }
       .org-container {
+        width: 300px;
         display: flex;
         flex-wrap:wrap;
-        width: 300px;
+        justify-content: space-between;
         margin: 15px auto;
         .coo-org {
           flex: 0 0 @h;
           border: 1px solid #c7c7c7;
           position: relative;
-          margin: 0 5px 10px 5px;
+          margin-bottom: 10px;
           > a {
             color: #383d43;
-            .tip-box {
-              position: absolute;
-              top:0;
-              right: 0;
-              .tip-img {
-                position: relative;
-                @w:74px * 0.5;
-                display: inline-block;
-                .size(@w,@w);
-                background: url("/front/assets/img/orgpublicity/jiaobiao.png");
-                background-size: @w,@w;
-              }
-              .tip-txt {
-                position: absolute !important;
-                top:0;
-                right: 0;
-                width: 30px;
-                color: #fff;
-                text-align: center;
-                line-height: 22px;
-                .txt-ellipsis-p(1);
-                padding-left: 3px;
-                position: relative;
-                transform: rotate(45deg);
-                font-size: 8px;
-              }
-            }
-            .org-box {
-              .org-img {
-                .size (@h,@h);
-              }
-              .org-name {
-                height: 20px;
-                border-top: 1px solid #c7c7c7;
-                .txt-ellipsis-p(1);
-              }
-            }
-
           }
         }
       }

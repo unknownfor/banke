@@ -296,42 +296,21 @@ body {
   height: 74px;
   overflow: hidden;
 }
-#publicity .box.cooperation .coo-container {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 15px;
-}
-#publicity .box.cooperation .coo-container .coo-org {
-  width: 22%;
-  border: 1px solid #c7c7c7;
-  position: relative;
-}
-#publicity .box.cooperation .coo-container .coo-org > a {
-  text-align: center;
-  display: inline-block;
-  color: #383d43;
-}
-#publicity .box.cooperation .coo-container .coo-org > a .tip-box {
+#publicity .box.cooperation .tip-box {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -1px;
+  right: -1px;
 }
-#publicity .box.cooperation .coo-container .coo-org > a .tip-box .tip-img {
+#publicity .box.cooperation .tip-box .tip-img {
   position: relative;
   display: inline-block;
   width: 37px;
   height: 37px;
-  background: url("/front/assets/img/orgpublicity/jiaobiao.png");
+  background: url("http://pic.hisihi.com/2017-06-14/1497403685615926.png");
   -webkit-background-size: 37px, 37px;
   background-size: 37px, 37px;
 }
-#publicity .box.cooperation .coo-container .coo-org > a .tip-box .tip-txt {
+#publicity .box.cooperation .tip-box .tip-txt {
   position: absolute !important;
   top: 0;
   right: 0;
@@ -351,24 +330,23 @@ body {
   transform: rotate(45deg);
   font-size: 8px;
 }
-#publicity .box.cooperation .coo-container .coo-org > a .org-box {
-  height: 82px;
+#publicity .box.cooperation .org-box .org-img {
+  width: 66px;
+  height: 66px;
 }
-#publicity .box.cooperation .coo-container .coo-org > a .org-box .org-img {
-  width: 62px;
-  height: 62px;
-}
-#publicity .box.cooperation .coo-container .coo-org > a .org-box .org-name {
-  width: 62px;
-  height: 20px;
+#publicity .box.cooperation .org-box .org-name {
+  height: 25px;
+  text-align: center;
   border-top: 1px solid #c7c7c7;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
+  line-height: 25px;
+  font-size: 12px;
 }
-#publicity .box.cooperation .org-container {
+#publicity .box.cooperation .coo-container {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -376,67 +354,49 @@ body {
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  margin: 15px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+#publicity .box.cooperation .coo-container .coo-org {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 66px;
+  -ms-flex: 0 0 66px;
+  flex: 0 0 66px;
+  border: 1px solid #c7c7c7;
+  position: relative;
+}
+#publicity .box.cooperation .coo-container .coo-org > a {
+  color: #383d43;
+}
+#publicity .box.cooperation .org-container {
   width: 300px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   margin: 15px auto;
 }
 #publicity .box.cooperation .org-container .coo-org {
   -webkit-box-flex: 0;
-  -webkit-flex: 0 0 62px;
-  -ms-flex: 0 0 62px;
-  flex: 0 0 62px;
+  -webkit-flex: 0 0 66px;
+  -ms-flex: 0 0 66px;
+  flex: 0 0 66px;
   border: 1px solid #c7c7c7;
   position: relative;
-  margin: 0 5px 10px 5px;
+  margin-bottom: 10px;
 }
 #publicity .box.cooperation .org-container .coo-org > a {
   color: #383d43;
-}
-#publicity .box.cooperation .org-container .coo-org > a .tip-box {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-#publicity .box.cooperation .org-container .coo-org > a .tip-box .tip-img {
-  position: relative;
-  display: inline-block;
-  width: 37px;
-  height: 37px;
-  background: url("/front/assets/img/orgpublicity/jiaobiao.png");
-  -webkit-background-size: 37px, 37px;
-  background-size: 37px, 37px;
-}
-#publicity .box.cooperation .org-container .coo-org > a .tip-box .tip-txt {
-  position: absolute !important;
-  top: 0;
-  right: 0;
-  width: 30px;
-  color: #fff;
-  text-align: center;
-  line-height: 22px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  padding-left: 3px;
-  position: relative;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-  font-size: 8px;
-}
-#publicity .box.cooperation .org-container .coo-org > a .org-box .org-img {
-  width: 62px;
-  height: 62px;
-}
-#publicity .box.cooperation .org-container .coo-org > a .org-box .org-name {
-  height: 20px;
-  border-top: 1px solid #c7c7c7;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
 }
 #publicity .box.appointment {
   margin: 15px;
