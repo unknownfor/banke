@@ -479,6 +479,115 @@ img {
   color: #FBC02D;
   text-decoration: underline;
 }
+#enrol .box.cooperation .title {
+  padding-left: 5px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  border-left: 3px solid #FFEB3B;
+}
+#enrol .box.cooperation .tip-box {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+}
+#enrol .box.cooperation .tip-box .tip-img {
+  position: relative;
+  display: inline-block;
+  width: 37px;
+  height: 37px;
+  background: url("http://pic.hisihi.com/2017-06-14/1497403685615926.png");
+  -webkit-background-size: 37px, 37px;
+  background-size: 37px, 37px;
+}
+#enrol .box.cooperation .tip-box .tip-txt {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  width: 30px;
+  color: #fff;
+  text-align: center;
+  line-height: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  padding-left: 3px;
+  position: relative;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  font-size: 8px;
+}
+#enrol .box.cooperation .org-box .org-img {
+  width: 66px;
+  height: 66px;
+}
+#enrol .box.cooperation .org-box .org-name {
+  height: 25px;
+  text-align: center;
+  border-top: 1px solid #c7c7c7;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-height: 25px;
+  font-size: 12px;
+}
+#enrol .box.cooperation .coo-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 15px;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+#enrol .box.cooperation .coo-container .coo-org {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 66px;
+  -ms-flex: 0 0 66px;
+  flex: 0 0 66px;
+  border: 1px solid #c7c7c7;
+  position: relative;
+}
+#enrol .box.cooperation .coo-container .coo-org > a {
+  color: #383d43;
+}
+#enrol .box.cooperation .org-container {
+  width: 300px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 15px auto;
+}
+#enrol .box.cooperation .org-container .coo-org {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 66px;
+  -ms-flex: 0 0 66px;
+  flex: 0 0 66px;
+  border: 1px solid #c7c7c7;
+  position: relative;
+  margin-bottom: 10px;
+}
+#enrol .box.cooperation .org-container .coo-org > a {
+  color: #383d43;
+}
 #enrol .box.hide {
   opacity: 0;
   display: none;
