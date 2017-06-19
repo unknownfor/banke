@@ -35,6 +35,12 @@
                 $('#uploadImgFile3').trigger('click');
             });
 
+            /*上传二级码*/
+            $(document).on('change','#uploadImgFile4', $.proxy(this,'uploadQrcode'));
+            $(document).on('click','.add-qrcode-img-btn', function(){
+                $('#uploadImgFile4').trigger('click');
+            });
+
             $(document).on('click','.remove-img-btn', $.proxy(this,'deletCoverImg'));
 
 
@@ -48,9 +54,7 @@
 
             $(document).on('click','#location',function(){
                 $('.map-box').addClass('show').removeClass('hide');
-                //$('#map').load(function(){
                 map.resetLocation($('#lon').val(),$('#lat').val());
-                //});
             });
             $(document).on('click','.close-map',function(){
                 $('.map-box').removeClass('show').addClass('hide');
@@ -308,6 +312,24 @@
                 });
             },
 
+            //上传二维码
+            uploadQrcode:function(){
+                var $target = $('#uploadImgFile4'),
+                    $form=$('#upImgForm4'),
+                    that=this;
+                that.controlLoadingCircleStatus(true);
+                this.initUploadImg($target,$form,function(data){
+                    data=JSON.parse(data);
+                    if(data) {
+                        var str=that.getConverImgStr(data.filedata);
+                        $('.qrcode-list-box').html(str);
+                        that.controlLoadingCircleStatus(false);
+                        $form[0].reset();
+                        $('#qrcode').val(data.filedata);
+                    }
+                });
+            },
+
             getConverImgStr:function(url){
                 return '<li>'+
                             '<a href="'+url+'" data-size="435x263"></a>'+
@@ -457,4 +479,12 @@
             $('#lon').val(lonlatInfo.lon);
             $('#lat').val(lonlatInfo.lat);
         };
+
+
+        window.copy=function(obj){
+            var target = document.getElementById("qrcode-url");
+            target.select()
+            document.execCommand("Copy");
+            alert("复制成功!");
+        }
 });

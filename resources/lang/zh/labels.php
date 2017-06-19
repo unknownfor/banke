@@ -290,7 +290,9 @@ return [
 		'info' => '暂无额外权限',
 		'lonlat'=>'经纬度',
 		'branch_school'=>'分校名称',
-		'pid'=>'所属机构'
+		'pid'=>'所属机构',
+		'qrcode'=>'二维码',
+		'qrcode_desc'=>'二维码说明'
 	],
 	'course' => [
 		'id' => '序号',

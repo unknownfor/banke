@@ -310,6 +310,50 @@
                                 </div>
                             </div>
 
+
+
+
+                            <div class="form-group form-md-line-input form-md-line-cover">
+                                <label class="col-md-1 control-label">生成二维码</label>
+                                <div class="col-md-9">
+                                    <p>1.<label onclick="copy(this)"> 复制地址</label><input id="qrcode-url" value="{{url('admin/org/v1.6/share/orgpublicity')}}/{{$org['id']}}"/> </p>
+                                    <p>2.点击打开网址<a href="http://cli.im" target="_blank">生成二维码</a>，在页面的输入框中粘贴地址</p>
+                                    <p>3.点击下方生成按钮,下载生成的二维码</p>
+                                    <p>4.在当前的页面上传二维码</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input form-md-line-cover">
+                                <label class="col-md-1 control-label">{{trans('labels.org.qrcode')}}</label>
+                                <div class="col-md-9">
+                                    <div class="cover-box">
+                                        <div class="add-img-btn add-qrcode-img-btn">+
+                                            <div class="cover-size-tips">1:1</div>
+                                        </div>
+                                        <ul class="img-list-box qrcode-list-box">
+                                            @if($org['qrcode'])
+                                                <li>
+                                                    <a href="{{$org['qrcode']}}" data-size="435x435"></a>
+                                                    <img src="{{$org['qrcode']}}@142w_142h_1e">
+                                                    <span class="remove-img-btn">×</span>
+                                                </li>
+                                            @endif
+                                        </ul>
+                                        <input id="qrcode" name="qrcode" type="hidden" value="{{$org['qrcode']}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="qrcode_desc">{{trans('labels.org.qrcode_desc')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text"  class="form-control" id="qrcode_desc" name="qrcode_desc" placeholder="{{trans('labels.org.qrcode_desc')}}" value="{{$org['qrcode_desc']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+
+
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>
                                 <div class="col-md-9">
@@ -372,6 +416,9 @@
     </form>
     <form id="upImgForm3" method="post" class="hiddenForm">
         <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile3" size="28" accept="image/png,image/gif, image/jpeg">
+    </form>
+    <form id="upImgForm4" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile4" size="28" accept="image/png,image/gif, image/jpeg">
     </form>
     <div class="loding-modal">
         <i id="imgLoadingCircle" class="loadingCircle active"></i>
