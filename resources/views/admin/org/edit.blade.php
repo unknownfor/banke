@@ -316,7 +316,7 @@
                             <div class="form-group form-md-line-input form-md-line-cover">
                                 <label class="col-md-1 control-label">生成二维码</label>
                                 <div class="col-md-9">
-                                    <p>1.<label onclick="copy(this)" class="copy-url-btn"> 复制地址</label><input id="qrcode-url" value="{{url('admin/org/v1.6/share/orgpublicity')}}/{{$org['id']}}"/> </p>
+                                    <p>1.<label onclick="copy(this)" class="copy-url-btn"> 复制地址</label><input id="qrcode-url" value="{{url('v1.6/share/orgpublicity')}}/{{$org['id']}}"/> </p>
                                     <p>2.点击打开网址<a href="http://cli.im" target="cli" name="cli">生成二维码</a>，在页面的输入框中粘贴地址</p>
                                     <p>3.点击下方生成按钮,下载生成的二维码</p>
                                     <p>4.在当前的页面上传二维码</p>
