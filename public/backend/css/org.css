@@ -120,6 +120,11 @@
 
 #qrcode-url{
    height: 30px;
+    margin-left: 5px;
+}
+.copy-url-btn{
+    cursor: pointer;
+    color: #0066cc;
 }
 
 
