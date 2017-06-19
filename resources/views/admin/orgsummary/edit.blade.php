@@ -116,6 +116,14 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="url">{{trans('labels.orgsummary.url')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="url" name="url" value="{{$orgsummary['url']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="orgsummary_name">{{trans('labels.orgsummary.category')}}</label>
                                 <div class="col-md-4">
                                     <select name="category_id" class="mySelectpicker show-tick form-control" data-live-search="true" multiple>

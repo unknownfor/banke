@@ -261,6 +261,30 @@
                           </div>
                       </div>
 
+                      <div class="form-group form-md-line-input form-md-line-cover">
+                          <label class="col-md-1 control-label">{{trans('labels.org.qrcode')}}</label>
+                          <div class="col-md-9">
+                              <div class="cover-box">
+                                  <ul class="img-list-box qrcode-list-box">
+                                      @if($org['qrcode'])
+                                          <li>
+                                              <a href="{{$org['qrcode']}}" data-size="435x435"></a>
+                                              <img src="{{$org['qrcode']}}@142w_142h_1e">
+                                          </li>
+                                      @endif
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="qrcode_desc">{{trans('labels.org.qrcode_desc')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" readonly  class="form-control" placeholder="{{trans('labels.org.qrcode_desc')}}" value="{{$org['qrcode_desc']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>
                           <div class="col-md-9">
