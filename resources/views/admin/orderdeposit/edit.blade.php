@@ -94,21 +94,21 @@
                           <div class="col-md-11">
                               <div class="md-radio-inline">
                                   <div class="md-radio">
-                                      <input type="radio" disabled id="status1" name="pay_status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($orderdeposit['status'] == config('admin.global.status.active')) checked @endif>
+                                      <input type="radio" disabled id="status1" name="pay_status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($orderdeposit['pay_status'] == config('admin.global.status.active')) checked @endif>
                                       <label for="status1">
                                           <span></span>
                                           <span class="check"></span>
                                           <span class="box"></span> {{trans('strings.orderdeposit.active.1')}} </label>
                                   </div>
                                   <div class="md-radio">
-                                      <input type="radio" disabled id="status2" name="pay_status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($orderdeposit['status'] == config('admin.global.status.audit')) checked @endif>
+                                      <input type="radio" disabled id="status2" name="pay_status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($orderdeposit['pay_status'] == config('admin.global.status.audit')) checked @endif>
                                       <label for="status2">
                                           <span></span>
                                           <span class="check"></span>
                                           <span class="box"></span> {{trans('strings.orderdeposit.audit.1')}} </label>
                                   </div>
                                   <div class="md-radio">
-                                      <input type="radio" id="status3" name="pay_status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($orderdeposit['status'] == config('admin.global.status.ban')) checked @endif>
+                                      <input type="radio" id="status3" name="pay_status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($orderdeposit['pay_status'] == config('admin.global.status.ban')) checked disabled @elseif($orderdeposit['pay_status']!= config('admin.global.status.active')) disabled  @endif>
                                       <label for="status3">
                                           <span></span>
                                           <span class="check"></span>

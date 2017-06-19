@@ -32,7 +32,7 @@ class OrderDepositRepository
 		$search_pattern = true;
 
 		$mobile = request('mobile' ,'');
-		$status = request('status' ,'');
+		$pay_status = request('pay_status' ,'');
 		$created_at_from = request('created_at_from' ,'');
 		$created_at_to = request('created_at_to' ,'');
 
@@ -47,8 +47,8 @@ class OrderDepositRepository
 			}
 		}
 		/*状态搜索*/
-		if ($status!=null) {
-			$deposit = $deposit->where('status', $status);
+		if ($pay_status!=null) {
+			$deposit = $deposit->where('pay_status', $pay_status);
 		}
 
 		/*配置创建时间搜索*/

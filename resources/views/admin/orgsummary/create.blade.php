@@ -14,7 +14,7 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <a href="{{url('admin/org')}}">{!! trans('labels.breadcrumb.orgList') !!}</a>
+                <a href="{{url('admin/org')}}">{!! trans('labels.breadcrumb.orgsummaryList') !!}</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
@@ -29,7 +29,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="icon-settings font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.orgCreate') !!}</span>
+                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.orgsummaryCreate') !!}</span>
                     </div>
                     <div class="actions">
                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -59,31 +59,31 @@
                                 <input type="hidden" value="" name="logo" id="logo-input">
                             </div>
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="name">{{trans('labels.org.name')}}(必填)</label>
+                                <label class="col-md-1 control-label" for="name">{{trans('labels.orgsummary.name')}}(必填)</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.org.name')}}" value="{{old('name')}}">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{trans('labels.orgsummary.name')}}" value="{{old('name')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="short_name">{{trans('labels.org.short_name')}}</label>
+                                <label class="col-md-1 control-label" for="short_name">{{trans('labels.orgsummary.short_name')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="short_name" name="short_name" placeholder="{{trans('labels.org.short_name')}}" value="{{old('short_name')}}">
+                                    <input type="text" class="form-control" id="short_name" name="short_name" placeholder="{{trans('labels.orgsummary.short_name')}}" value="{{old('short_name')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="intro">{{trans('labels.org.intro')}}</label>
+                                <label class="col-md-1 control-label" for="intro">{{trans('labels.orgsummary.intro')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="intro" name="intro" placeholder="{{trans('labels.org.intro')}}" value="{{old('intro')}}">
+                                    <input type="text" class="form-control" id="intro" name="intro" placeholder="{{trans('labels.orgsummary.intro')}}" value="{{old('intro')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.org.category')}}</label>
+                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.orgsummary.category')}}</label>
                                 <div class="col-md-4">
                                     <select name="category_id" class="orgCategorySelectpicker show-tick form-control" data-live-search="true">
                                         @if($allCategories)
@@ -96,16 +96,24 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="sort">{{trans('labels.org.sort')}}</label>
+                                <label class="col-md-1 control-label" for="sort">{{trans('labels.orgsummary.sort')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.org.sort')}}">
+                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.orgsummary.sort')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="url">{{trans('labels.orgsummary.url')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="url" name="url" placeholder="{{trans('labels.orgsummary.url')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
+                                <label class="col-md-1 control-label" for="details">{{trans('labels.orgsummary.details')}}</label>
                                 <div class="col-md-9">
                                     <textarea style="display: none" name="details" id="target-area"></textarea>
                                     <textarea id="my-editor"></textarea>

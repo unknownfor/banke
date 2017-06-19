@@ -254,6 +254,7 @@ return [
 		'list' => '机构列表',
 		'branch_list' => '分校列表',
 		'category' => '所属分类',
+		'url'=>'官网地址'
 	],
 	'org' => [
 		'id' => '序号',

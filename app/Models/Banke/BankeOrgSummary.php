@@ -11,8 +11,18 @@ class BankeOrgSummary extends Model
 
     protected $table = 'banke_org_summary';
 
-    protected $fillable = ['name', 'category_id','surperior', 'short_name','logo', 'intro', 'sort',
-        'details', 'status','created_at','updated_at'];
+    protected $fillable = ['name',
+        'category_id',
+        'surperior',
+        'short_name',
+        'logo',
+        'intro',
+        'sort',
+        'details',
+        'url',
+        'status',
+        'created_at',
+        'updated_at'];
 
     private $action;
 

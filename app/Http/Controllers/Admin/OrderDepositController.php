@@ -60,7 +60,7 @@ class OrderDepositController extends Controller
      * @return [type]                            [description]
      */
 
-    public function update(OrderRequest $request,$id)
+    public function update(OrderDepositRequest $request,$id)
     {  
         OrderDepositRepository::update($request,$id);
         return redirect('admin/orderdeposit');
