@@ -44,7 +44,7 @@ class OrgSummaryRepository
 		$count = $org->count();
 
 		$org = $org->offset($start)->limit($length);
-		$orgs = $org->orderBy("id", "desc")->get();
+		$orgs = $org->orderBy("sort","desc")->orderBy("id", "desc")->get();
 
 		if ($orgs) {
 			foreach ($orgs as &$v) {
