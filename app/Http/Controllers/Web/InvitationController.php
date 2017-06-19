@@ -7,7 +7,7 @@ use App\Models\Banke\BankeCashBackUser;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeGroupbuying;
-use App\Repositories\admin\GroupbuyingWordsRepository;
+use GroupbuyingWordsRepository;
 use App\Repositories\admin;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
