@@ -147,6 +147,26 @@
         {{--<div class="txt txt-two">最高可领取<span>50%</span>学费返现</div>--}}
         {{--<div class="btn active"><a href="http://www.91banke.com/web/download">下载半课，体验学费返现</a></div>--}}
     {{--</div>--}}
+
+    <div class="org-container">
+        @if($superiororg)
+            @foreach($superiororg as $v)
+                <div class="coo-org">
+                    <a href="javascript:void(0)">
+                        <div class="tip-box">
+                            <div class="tip-img"></div>
+                            <div class="tip-txt">{{$v->category}}</div>
+                        </div>
+                        <div class="org-box">
+                            <img class="org-img" src="{{$v->logo}}"/>
+                            <div class="org-name">{{$v->name}}</div>
+                        </div>
+                    </a>
+                </div>
+            @endforeach
+        @endif
+    </div>
+
 </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>

@@ -21,6 +21,7 @@ use CourseRepository;
 use EnrolRepository;
 use GroupbuyingRepository;
 use OrderRepository;
+use OrgSummaryRepository;
 
 class InvitationController extends Controller
 {
@@ -194,6 +195,58 @@ class InvitationController extends Controller
             'shareInfo',
             'members',
             'award'
+            ]));
+    }
+
+    /**
+     * 分享预约
+     */
+    public function enrol_v1_6($uid,$cid,$typeId=1,$recordId)
+    {
+        $user=UserRepository::getUserSimpleInfoById($uid);
+        $course=CourseRepository::show($cid);
+        if(!$course){
+            abort(404);
+        }
+
+        $baseUrl='http://'.env('ADMIN_DOMAIN');
+        $course['link_url']=$baseUrl.'/v1.5/share/course/'.$cid;
+
+        $maxAwardPercent=$course['task_award']+$course['checkin_award'];
+
+        $course['max_award'] = moneyFormatFloor($course['price']*$maxAwardPercent/100);
+        $course['max_award_percent'] = $maxAwardPercent;
+        $course['price'] = moneyFormatFloor($course['price']);
+
+        $ruleLinkUrl=$baseUrl.'/v1.5/share/rule';  //返现规则
+        $org=$course->org;
+
+        //随机图
+        $word=GroupbuyingWordsRepository::getRandomRecord();
+
+        //参团人员
+        $groupbuyingId=GroupbuyingRepository::getGroupbuyingByCidAndUid($uid,$cid);
+        $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($groupbuyingId,2);
+
+
+        $organizer_award=moneyFormatFloor($course['price']*$course['z_award_amount']/100);
+
+        $award=Array('organizer_award'=>$organizer_award,'member_award'=>moneyFormatFloor($course['max_award']));
+
+        $shareInfo=Array('type_id'=>$typeId,'record_id'=>$recordId);
+
+        $superiororg=OrgSummaryRepository::getSuperiorOrgs(8);
+
+        return view('web.invite.enrol-v1_6')->with(compact([
+            'user',
+            'course',
+            'org',
+            'ruleLinkUrl',
+            'word',
+            'shareInfo',
+            'members',
+            'award',
+            'superiororg'
             ]));
     }
 
