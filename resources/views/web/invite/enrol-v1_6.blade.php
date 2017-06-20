@@ -36,7 +36,6 @@
         @endif
 
 
-
         <div class="user-info">
             <div class="info-left">
                 <div class="user-img">
