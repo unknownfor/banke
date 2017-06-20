@@ -18,6 +18,8 @@
 </head>
 <body>
 <!--课程头部-->
+<p>{{$userInfo['name']}}</p>
+<p>{{$userInfo['img']}}</p>
 <div class="head container">
     <div class="head-left">
         <img src="{{$course['cover']}}@70h_70w_2e" />
