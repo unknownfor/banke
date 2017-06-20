@@ -42,7 +42,7 @@
     </div>
     <div class="join-middle">
         <div class="join-name">{{$userInfo['name']}}</div>
-        <div class="join-num">已有<span>2人</span>参团</div>
+        <div class="join-num">已有<span>{{$number}}人</span>参团</div>
     </div>
     <div class="join-right">
         <div id="join-btn">立即参团</div>
