@@ -18,8 +18,6 @@
 </head>
 <body>
 <!--课程头部-->
-<p>{{$userInfo['name']}}</p>
-<p>{{$userInfo['img']}}</p>
 <div class="head container">
     <div class="head-left">
         <img src="{{$course['cover']}}@70h_70w_2e" />
@@ -40,10 +38,10 @@
 <div class="slogen">以下小伙伴正在发起团购，立即参团享返现</div>
 <div class="join container">
     <div class="join-left">
-        <img src="http://pic.hisihi.com/2016-11-23/1479894836413730.jpg" />
+        <img src="{{$userInfo['img']}}" />
     </div>
     <div class="join-middle">
-        <div class="join-name">测试名称</div>
+        <div class="join-name">{{$userInfo['name']}}</div>
         <div class="join-num">已有<span>2人</span>参团</div>
     </div>
     <div class="join-right">
