@@ -242,4 +242,18 @@ class EnrolRepository
 		return $user;
 	}
 
+	/**
+	 * 根据机构id得到多少人 预约
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getEnrolCountsByOrgId($oid)
+	{
+		$enrol = new BankeEnrol();
+		$enrol = $enrol::where('org_id',$oid)->get();
+		return $enrol->count();
+	}
+
 }

@@ -8,6 +8,7 @@ use DB;
 use App\Repositories\admin\AppUserRepository;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
+use App\Models\Banke\BankeOrg;
 
 /**
 * 课程评论
@@ -257,4 +258,27 @@ class CommentCourseRepository
 		return $award;
 	}
 
+
+	/**
+	 * 根据机构id得到心得的浏览量
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getViewsCountsByOrgId($oid)
+	{
+		$allCourse=BankeOrg::find($oid)->course;
+		$counts=0;
+		foreach($allCourse as $v){
+			$comment=$v->commnents;
+			$tempCounts=0;
+			foreach($comment as $c) {
+				$tempCounts = $c->view_counts;
+				$counts+=$tempCounts;
+			}
+		}
+		return $counts;
+
+	}
 }

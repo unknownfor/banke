@@ -7,6 +7,7 @@ use DB;
 use App\Repositories\admin\AppUserRepository;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
+use App\Models\Banke\BankeOrg;
 
 /**
 * 机构评论
@@ -318,4 +319,24 @@ class CommentOrgRepository
 		$order->save();
 		return $award;
 	}
+
+	/**
+	 * 根据机构id得到评论的浏览量
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getViewsCountsByOrgId($oid)
+	{
+		$comment=BankeOrg::find($oid)->comments;
+		$counts=0;
+		foreach($comment as $c) {
+			$tempCounts = $c->view_counts;
+			$counts+=$tempCounts;
+		}
+		return $counts;
+
+	}
+
 }
