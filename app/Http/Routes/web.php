@@ -190,7 +190,15 @@ Route::group(['prefix'=>"bankehome",'namespace'=>'Web'],function(){
     //预约半课
     Route::post('appoint', 'InvitationController@doEnrol_v1_6');
 
+
+//    Route::post('login', 'UserController@getToken');
+
 });
+
+////半课官网调用
+//Route::group(['prefix'=>"mini",'namespace'=>'Mini'],function(){
+//    Route::post('login','UserController@getToken');
+//});
 
 Route::group(['prefix'=>"smstest"],function(){
     Route::get('test1', 'TestController@test1');

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\MiniPrograms;
+namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\admin;

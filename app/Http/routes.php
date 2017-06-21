@@ -146,5 +146,5 @@ Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web','bankehome','
 
     require(__DIR__ . '/Routes/web.php');
 
-    require(__DIR__ . '/Routes/MiniPrograms.php');
+    require(__DIR__ . '/Routes/Mini.php');
 });

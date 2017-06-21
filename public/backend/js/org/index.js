@@ -71,12 +71,6 @@
                 this.initTags();
                 this.getCategory();
 
-                var url='/mini/login',
-                    paraData={mobile:'18140662282',password:'123456'};
-                this.getDataAsync(url,paraData,function(res) {
-                        res;
-                    },'post');
-
             },
 
             initTags:function(){
