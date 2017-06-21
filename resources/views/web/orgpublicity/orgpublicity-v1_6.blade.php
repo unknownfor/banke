@@ -84,7 +84,7 @@
             @if($superiororg)
                 @foreach($superiororg as $v)
                     <div class="coo-org">
-                        <a href="javascript:void(0)">
+                        <a href="{{$v->url}}">
                             <div class="tip-box">
                                 <div class="tip-img"></div>
                                 <div class="tip-txt">{{$v->category}}</div>
