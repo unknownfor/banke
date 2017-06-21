@@ -42,7 +42,7 @@
             </div>
         @endif
     </div>
-    <div class="more-btn">
+    <div class="box more-btn">
         <i class="iconfont">&#xe646;</i>
     </div>
     <div class="box detail">
@@ -63,7 +63,7 @@
             <select class="register-code" id="org-name" placeholder="选择课程" >
                 @if($org['course'])
                     @foreach($org['course'] as $v)
-                        <option>{{$v->name}}</option>
+                        <option class="course-id" data-course-id="{{$v->id}}">{{$v->name}}</option>
                     @endforeach
                 @endif
             </select>
@@ -84,7 +84,7 @@
             @if($superiororg)
                 @foreach($superiororg as $v)
                     <div class="coo-org">
-                        <a href="javascript:void(0)">
+                        <a href="{{$v->url}}">
                             <div class="tip-box">
                                 <div class="tip-img"></div>
                                 <div class="tip-txt">{{$v->category}}</div>
