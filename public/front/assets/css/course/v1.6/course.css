@@ -215,13 +215,22 @@ img {
   align-items: center;
 }
 .container .container-head .more-section {
-  width: 70%;
+  -webkit-box-flex: 3;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
   line-height: 28px;
   height: 28px;
   border-left: 4px solid #ffeb3b;
   padding-left: 10px;
 }
 .container .container-head .more-school {
+  text-align: right;
+  margin-right: 15px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   color: #FBC02D;
 }
 .container .container-head .more-school > i {

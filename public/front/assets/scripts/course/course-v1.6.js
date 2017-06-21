@@ -21,8 +21,6 @@ $(function() {
         if (!notFromApp) {
             //调用客户端拨打电话方法
             showSignInBox();
-        }else {
-            // $('.call-mask').removeClass('hide').addClass('show');
         }
     });
 
