@@ -141,14 +141,10 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
     });
 });
 
-//前台路由
-Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web','bankehome'] ],function($router){
+//前台路由 包括小程序路由
+Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web','bankehome','mini'] ],function($router){
 
     require(__DIR__ . '/Routes/web.php');
-});
 
-//关于页面路由
-//Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['about','bankehome'] ],function($router){
-//
-//    require(__DIR__ . '/Routes/web.php');
-//});
+    require(__DIR__ . '/Routes/MiniPrograms.php');
+});

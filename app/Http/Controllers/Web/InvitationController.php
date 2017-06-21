@@ -115,7 +115,7 @@ class InvitationController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'mobile' => 'required|mobile',
-            'comment'=>'required'
+//            'comment'=>'required'
         ]);
 
         if ($validator->fails()) {
