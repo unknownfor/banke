@@ -17,10 +17,11 @@
     <title>机构详情</title>
 </head>
 <body>
-<div class="school container ">
+<div class="school container "
+     data-org-id="{{$org['id']}}">
     <div class="container-head">
         <span class="more-section">附近校区选择</span>
-        <span class="more-school">更多校区<i class="iconfont">&#xf0071;</i></span>
+        <span class="more-school">最近校区<i class="iconfont">&#xf0071;</i></span>
     </div>
 </div>
 <div class="address container">
