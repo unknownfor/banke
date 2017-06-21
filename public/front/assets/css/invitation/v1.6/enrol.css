@@ -479,6 +479,9 @@ img {
   color: #FBC02D;
   text-decoration: underline;
 }
+#enrol .box.cooperation {
+  margin-bottom: 55px;
+}
 #enrol .box.cooperation .title {
   padding-left: 5px;
   margin-top: 25px;
@@ -574,7 +577,7 @@ img {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin: 15px auto 55px auto;
+  margin: 15px auto;
 }
 #enrol .box.cooperation .org-container .coo-org {
   -webkit-box-flex: 0;
