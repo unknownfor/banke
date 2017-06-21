@@ -67,17 +67,18 @@ $(function() {
 
     //调用客户端方法，显示更多校区
     function showMoreSchool(){
+        var orgId = $('.school').attr('data-org-id');
         if (window.deviceType.mobile) {
             if (this.deviceType.android) {
                 //如果方法存在
                 if (typeof AppFunction != "undefined"&&  typeof AppFunction.showMoreOrganizationBranch !='undefined') {
-                    AppFunction.showMoreOrganizationBranch(); //调用app的方法，得到用户的基体信息
+                    AppFunction.showMoreOrganizationBranch(orgId); //调用app的方法，得到用户的基体信息
                 }
             }
             else {
                 //如果方法存在
                 if (typeof showMoreOrganizationBranch != "undefined") {
-                    showMoreOrganizationBranch();//调用app的方法，得到电话
+                    showMoreOrganizationBranch(orgId);//调用app的方法，得到电话
                 }
             }
         }
