@@ -18,7 +18,8 @@
 </head>
 <body>
 <!--课程头部-->
-<div class="head container">
+<div class="head container"
+     data-course-id="{{$course['id']}}">
     <div class="head-left">
         <img src="{{$course['cover']}}@70h_70w_2e" />
     </div>

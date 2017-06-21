@@ -57,6 +57,7 @@ $(function() {
 
     //调用客户端方法,显示拨打电话
     function showCallNumber(){
+        var courseId = $('.head').attr('data-course-id');
         if (window.deviceType.mobile) {
             if (this.deviceType.android) {
                 //如果方法存在
