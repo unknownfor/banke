@@ -479,6 +479,12 @@ img {
   color: #FBC02D;
   text-decoration: underline;
 }
+#enrol .box.cooperation {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-bottom: 55px;
+}
 #enrol .box.cooperation .title {
   padding-left: 5px;
   margin-top: 25px;
@@ -490,6 +496,9 @@ img {
   position: absolute;
   top: -1px;
   right: -1px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 #enrol .box.cooperation .tip-box .tip-img {
   position: relative;
@@ -574,7 +583,7 @@ img {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin: 15px auto 55px auto;
+  margin: 15px auto;
 }
 #enrol .box.cooperation .org-container .coo-org {
   -webkit-box-flex: 0;

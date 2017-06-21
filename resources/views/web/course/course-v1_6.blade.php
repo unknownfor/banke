@@ -18,7 +18,8 @@
 </head>
 <body>
 <!--课程头部-->
-<div class="head container">
+<div class="head container"
+     data-course-id="{{$course['id']}}">
     <div class="head-left">
         <img src="{{$course['cover']}}@70h_70w_2e" />
     </div>
@@ -51,8 +52,8 @@
 
 <div class="school container ">
     <div class="container-head">
-        <span class="more-section">附近校区选择</span>
-        <span class="more-school">更多校区<i class="iconfont">&#xf0071;</i></span>
+        <div class="more-section">附近校区选择</div>
+        <div class="more-school">更多校区<i class="iconfont">&#xf0071;</i></div>
     </div>
 </div>
 

@@ -254,6 +254,8 @@ img{
       }
     }
     &.cooperation {
+      box-sizing: border-box;
+      padding-bottom: 55px;
       @h: 66px;
       .title {
         padding-left: 5px;
@@ -266,6 +268,7 @@ img{
         position: absolute;
         top:-1px;
         right: -1px;
+        box-sizing: border-box;
         .tip-img {
           position: relative;
           @w:74px * 0.5;
@@ -321,7 +324,7 @@ img{
         display: flex;
         flex-wrap:wrap;
         justify-content: space-between;
-        margin: 15px auto 55px auto;
+        margin: 15px auto;
         .coo-org {
           flex: 0 0 @h;
           border: 1px solid #c7c7c7;

@@ -21,8 +21,6 @@ $(function() {
         if (!notFromApp) {
             //调用客户端拨打电话方法
             showSignInBox();
-        }else {
-            // $('.call-mask').removeClass('hide').addClass('show');
         }
     });
 
@@ -59,6 +57,7 @@ $(function() {
 
     //调用客户端方法,显示拨打电话
     function showCallNumber(){
+        var courseId = $('.head').attr('data-course-id');
         if (window.deviceType.mobile) {
             if (this.deviceType.android) {
                 //如果方法存在
