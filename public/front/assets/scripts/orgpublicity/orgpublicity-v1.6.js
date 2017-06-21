@@ -44,11 +44,13 @@ $(function () {
     $(document).on(window.eventName,'#register-btn.active', function () {
         window.controlLoadingBox(true);
         var url='/v1.6/share/doenrol',
-            comment=$('#org-name').val(),
+            // comment=$('#org-name').val(),
             mobile = $('#phone-num').val(),
+            courseid = $('.course-id').attr('data-course-id'),
             data={
                 mobile:mobile,
-                comment:comment,
+                // comment:comment,
+                course_id:courseid,
             };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res) {

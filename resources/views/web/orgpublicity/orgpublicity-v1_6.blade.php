@@ -63,7 +63,7 @@
             <select class="register-code" id="org-name" placeholder="选择课程" >
                 @if($org['course'])
                     @foreach($org['course'] as $v)
-                        <option>{{$v->name}}</option>
+                        <option class="course-id" data-course-id="{{$v->id}}">{{$v->name}}</option>
                     @endforeach
                 @endif
             </select>
