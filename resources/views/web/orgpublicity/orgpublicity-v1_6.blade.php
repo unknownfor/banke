@@ -42,7 +42,7 @@
             </div>
         @endif
     </div>
-    <div class="more-btn">
+    <div class="box more-btn">
         <i class="iconfont">&#xe646;</i>
     </div>
     <div class="box detail">
