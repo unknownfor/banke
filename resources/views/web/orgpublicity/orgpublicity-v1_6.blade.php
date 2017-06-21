@@ -19,7 +19,8 @@
 <body>
 {!! csrf_field() !!}
 <div id="publicity">
-    <div class="box head">
+    <div class="box head"
+         data-org-id="{{$org['id']}}">
         @if($org['cover'])
             <?php
             $imgs=explode(',',$org['cover']);

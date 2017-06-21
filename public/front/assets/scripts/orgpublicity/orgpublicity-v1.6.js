@@ -44,12 +44,12 @@ $(function () {
     $(document).on(window.eventName,'#register-btn.active', function () {
         window.controlLoadingBox(true);
         var url='/v1.6/share/doenrol',
-            // comment=$('#org-name').val(),
+            orgid=$('.head').attr('data-org-id'),
             mobile = $('#phone-num').val(),
             courseid = $('.course-id').attr('data-course-id'),
             data={
                 mobile:mobile,
-                // comment:comment,
+                org_id:orgid,
                 course_id:courseid,
             };
         $(this).removeClass('active');
