@@ -53,14 +53,14 @@
 
 <div class="school container ">
     <div class="container-head">
-        <div class="more-section">附近校区选择</div>
-        <div class="more-school">最近校区<i class="iconfont">&#xf0071;</i></div>
+        <div class="more-section">最近校区</div>
+        <div class="more-school">更多校区<i class="iconfont">&#xf0071;</i></div>
     </div>
 </div>
 
 <div class="org-detail container">
     <div class="head-left">
-        <img src="{{$course['cover']}}@70h_70w_2e" />
+        <img src="{{$org['cover']}}@70h_70w_2e" />
     </div>
     <div class="head-middle">
         <div class="head-name">{{$org['name']}}</div>
