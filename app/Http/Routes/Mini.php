@@ -10,8 +10,14 @@ Route::group(['prefix'=>"mini",'namespace'=>'Mini'],function(){
 
 Route::group(['prefix'=>"mini/v1.0",'namespace'=>'Mini'],function(){
 
+    //基本信息
     Route::get('basicinfo/{id}','OrgController@getOrgBasicInfoById');
+
+    //统计信息
     Route::get('statistic/{id}','OrgController@getOrgStatisticInfoById');
+
+    //打卡详情
+    Route::get('checkin/{id}/{pageIndex}/{perCounts}','OrgController@getDetailCheckinInfoByOrgId');
 });
 
 

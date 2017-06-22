@@ -102,7 +102,7 @@ class CourseController extends Controller
             ['name'=>'我是你爸爸UY','img'=>'http://pic.hisihi.com/2017-06-20/1497929101317951.jpeg'],
             ['name'=>'找天使借阳光','img'=>'http://pic.hisihi.com/2017-06-20/1497929101473687.jpeg'],
             ['name'=>'a820417312','img'=>'http://pic.hisihi.com/2017-06-20/1497929101576693.jpeg'],
-            ['name'=>'壊壊易先说','img'=>'http://pic.hisihi.com/2017-06-20/1497929101682964.jpe'],
+            ['name'=>'壊壊易先说','img'=>'http://pic.hisihi.com/2017-06-20/1497929101682964.jpeg'],
             ['name'=>'致DOTA_永哉','img'=>'http://pic.hisihi.com/2017-06-20/1497929101784360.jpeg'],
             ['name'=>'xiacheng30525','img'=>'http://pic.hisihi.com/2017-06-20/1497929101889924.jpeg'],
             ['name'=>'人穷志不短哎','img'=>'http://pic.hisihi.com/2017-06-20/1497929101991328.jpeg'],
