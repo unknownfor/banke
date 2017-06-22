@@ -60,7 +60,7 @@
 
 <div class="org-detail container">
     <div class="head-left">
-        <img src="{{$course['cover']}}@70h_70w_2e" />
+        <img src="{{$org['cover']}}@70h_70w_2e" />
     </div>
     <div class="head-middle">
         <div class="head-name">{{$org['name']}}</div>
