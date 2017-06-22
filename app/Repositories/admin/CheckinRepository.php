@@ -328,7 +328,7 @@ class CheckinRepository
 	* @param  [type]                   $request [description]
 	* @return [type]                            [description]
 	*/
-	public static function getDetailCheckinInfoByOrgId($oid,$pageIndex=0,$perCounts=20)
+	public static function getDetailInfoByOrgId($oid,$pageIndex=0,$perCounts=20)
 	{
 		$allRecord=BankeCheckIn::where(['org_id'=>$oid,'status'=>1]);
 		$count = $allRecord->count();
@@ -337,14 +337,13 @@ class CheckinRepository
 		$allRecord = $allRecord->get();
 		if ($allRecord) {
 			foreach ($allRecord as &$v) {
-				$authen = $v->authenUser;
+				$authen = $v->authenUserSimple;
+				$user = $v->userSimple;
 				$v['name'] = $authen['real_name'];
 				if(!$v['name']){
-					$user = $v->user;
 					$v['name']=$user['name'];
 				}
-				$v['authen_user']=null;
-				$v['user']=null;
+				$v['avatar']=$user['avatar'];
 			}
 		}
 

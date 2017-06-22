@@ -97,9 +97,24 @@ class OrgController extends Controller
     public function getDetailCheckinInfoByOrgId($id,$pageIndex=0,$perCounts=20)
     {
         try {
-            $info=CheckinRepository::getDetailCheckinInfoByOrgId($id,$pageIndex,$perCounts);
-            $result=['chekinInfo'=>$info];
+            $info=CheckinRepository::getDetailInfoByOrgId($id,$pageIndex,$perCounts);
+            $result=['detailInfo'=>$info];
             return ApiResponseService::success($result, Code::SUCCESS, '打卡信息查询成功');
+        }
+        catch (ClientException $e) {
+            return ApiResponseService::showError(Code::ORG_ERROR);
+        }
+    }
+
+    /*
+    * 得到开团详情
+    * */
+    public function getDetailGroupbuyingInfoByOrgId($id,$pageIndex=0,$perCounts=20)
+    {
+        try {
+            $info=GroupbuyingRepository::getDetailInfoByOrgId($id,$pageIndex,$perCounts);
+            $result=['detailInfo'=>$info];
+            return ApiResponseService::success($result, Code::SUCCESS, '开团信息查询成功');
         }
         catch (ClientException $e) {
             return ApiResponseService::showError(Code::ORG_ERROR);

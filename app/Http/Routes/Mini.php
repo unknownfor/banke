@@ -18,6 +18,9 @@ Route::group(['prefix'=>"mini/v1.0",'namespace'=>'Mini'],function(){
 
     //打卡详情
     Route::get('checkin/{id}/{pageIndex}/{perCounts}','OrgController@getDetailCheckinInfoByOrgId');
+
+    //开团详情
+    Route::get('groupbuying/{id}/{pageIndex}/{perCounts}','OrgController@getDetailGroupbuyingInfoByOrgId');
 });
 
 
