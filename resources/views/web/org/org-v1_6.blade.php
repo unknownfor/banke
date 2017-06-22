@@ -20,7 +20,7 @@
 <div class="school container "
      data-org-id="{{$org['id']}}">
     <div class="container-head">
-        <span class="more-section">最近校区选择</span>
+        <span class="more-section">最近校区</span>
         <span class="more-school">更多校区<i class="iconfont">&#xf0071;</i></span>
     </div>
 </div>
