@@ -53,8 +53,8 @@
 
 <div class="school container ">
     <div class="container-head">
-        <div class="more-section">附近校区选择</div>
-        <div class="more-school">最近校区<i class="iconfont">&#xf0071;</i></div>
+        <div class="more-section">最近校区选择</div>
+        <div class="more-school">更多校区<i class="iconfont">&#xf0071;</i></div>
     </div>
 </div>
 

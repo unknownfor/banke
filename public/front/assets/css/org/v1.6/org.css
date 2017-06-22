@@ -234,8 +234,8 @@ ul {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-left: 0;
   border-left: none;
+  padding: 10px 0;
 }
 .container.school .more-section {
   -webkit-box-flex: 3;
