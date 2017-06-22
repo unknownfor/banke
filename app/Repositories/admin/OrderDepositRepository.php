@@ -172,4 +172,20 @@ class OrderDepositRepository
 		return $order;
 	}
 
+	/**
+	 * 根据机构id得到订单的数量
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getOrderInfoByOrgId($oid)
+	{
+		$allOrders=BankeOrderDeposit::where(['org_id'=>$oid,'pay_status'=>1]);
+		$totalAccount=0;
+		foreach($allOrders as $v){
+			$totalAccount +=$v->account;
+		}
+		return ['counts'=>$allOrders->count(),'account'=>$totalAccount];
+	}
 }

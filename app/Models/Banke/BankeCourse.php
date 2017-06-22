@@ -43,4 +43,10 @@ class BankeCourse extends Model
     {
         return $this->hasMany('App\Models\Banke\BankeCommentCourse','course_id','id');
     }
+
+    //1对多个开团
+    public function groupbuying()
+    {
+        return $this->hasMany('App\Models\Banke\BankeGroupbuying','course_id','id');
+    }
 }

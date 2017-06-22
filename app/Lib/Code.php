@@ -28,6 +28,7 @@ class Code {
 	const ALREADY_CHECK_IN_ERROR     		= 50015;			//已经打过卡
 	const REGISTER_MOBILE_ERROR     			= 50016;			//手机号格式错误或已注册
 	const SEND_SMS_ERROR     					= 50017;			//发送短信失败
+	const ORG_ERROR     					= 50018;			//机构信息查询失败
 
 	const MIDDLEWARE_HAS_BEEN_CERTIFIED		= 60001;		//中间件，用户已认证
 	const MIDDLEWARE_NOT_BEEN_CERTIFIED		= 60002;		//中间件，用户未认证
