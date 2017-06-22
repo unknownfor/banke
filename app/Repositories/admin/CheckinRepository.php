@@ -309,4 +309,18 @@ class CheckinRepository
 		return $user;
 	}
 
+	/**
+	 * 根据机构id得到总的打卡数量
+	 * @author jimmy
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getTotalCountsByOrgId($oid)
+	{
+		$allCheckin=BankeCheckIn::where(['org_id'=>$oid,'status'=>1]);
+		return $allCheckin->count();
+
+	}
+
 }

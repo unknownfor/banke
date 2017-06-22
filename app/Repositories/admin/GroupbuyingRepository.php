@@ -317,19 +317,18 @@ class GroupbuyingRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public static function getViewsCountsByOrgId($oid)
+	public static function getCountInfoByOrgId($oid)
 	{
-		$allCourse=BankeOrg::find($oid)->course;
-		$counts=0;
-		foreach($allCourse as $v){
+		$allRecords=BankeOrg::find($oid)->course;
+		$viewCounts=0;
+		foreach($allRecords as $v){
 			$groupbuying=$v->groupbuying;
-			$tempCounts=0;
 			foreach($groupbuying as $c) {
 				$tempCounts = $c->view_counts;
-				$counts+=$tempCounts;
+				$viewCounts+=$tempCounts;
 			}
 		}
-		return $counts;
+		return ['counts'=>$allRecords->count(),'viewCounts'=>$viewCounts];
 
 	}
 

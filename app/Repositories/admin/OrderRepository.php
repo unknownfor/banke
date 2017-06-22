@@ -596,4 +596,22 @@ class OrderRepository
 		return $order;
 	}
 
+	/**
+	 * 根据机构id得到订单的数量
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getOrderInfoByOrgId($oid)
+	{
+		$allOrders=BankeCashBackUser::where(['org_id'=>$oid,'status'=>1])->get();
+		$totalAccount=0;
+		foreach($allOrders as $v){
+			$totalAccount +=$v->tuition_amount;
+		}
+		return ['counts'=>$allOrders->count(),'account'=>$totalAccount];
+
+	}
+
 }

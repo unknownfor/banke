@@ -327,16 +327,15 @@ class CommentOrgRepository
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public static function getViewsCountsByOrgId($oid)
+	public static function getCountInfoByOrgId($oid)
 	{
-		$comment=BankeOrg::find($oid)->comments;
-		$counts=0;
-		foreach($comment as $c) {
+		$allRecords=BankeOrg::find($oid)->comments;
+		$viewCounts=0;
+		foreach($allRecords as $c) {
 			$tempCounts = $c->view_counts;
-			$counts+=$tempCounts;
+			$viewCounts+=$tempCounts;
 		}
-		return $counts;
-
+		return ['counts'=>$allRecords->count(),'viewCounts'=>$viewCounts];
 	}
 
 }
