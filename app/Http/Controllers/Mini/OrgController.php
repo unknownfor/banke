@@ -12,6 +12,7 @@ use GuzzleHttp\Exception\ClientException;
 use Validator;
 use Illuminate\Http\Request;
 use OrgRepository;
+use CourseRepository;
 use EnrolRepository;
 use CommentCourseRepository;
 use CommentOrgRepository;
@@ -115,6 +116,36 @@ class OrgController extends Controller
             $info=GroupbuyingRepository::getDetailInfoByOrgId($id,$pageIndex,$perCounts);
             $result=['detailInfo'=>$info];
             return ApiResponseService::success($result, Code::SUCCESS, '开团信息查询成功');
+        }
+        catch (ClientException $e) {
+            return ApiResponseService::showError(Code::ORG_ERROR);
+        }
+    }
+
+    /*
+    * 得到预约详情
+    * */
+    public function getDetailAppointmentInfoByOrgId($id,$pageIndex=0,$perCounts=20)
+    {
+        try {
+            $info=EnrolRepository::getDetailInfoByOrgId($id,$pageIndex,$perCounts);
+            $result=['detailInfo'=>$info];
+            return ApiResponseService::success($result, Code::SUCCESS, '预约信息查询成功');
+        }
+        catch (ClientException $e) {
+            return ApiResponseService::showError(Code::ORG_ERROR);
+        }
+    }
+
+    /*
+    * 得到所有课程的曝光量详情
+    * */
+    public function getCourseViewsInfoByOrgId($id)
+    {
+        try {
+            $info=CommentCourseRepository::getViewCountsInfoByOrgId($id);
+            $result=['detailInfo'=>$info];
+            return ApiResponseService::success($result, Code::SUCCESS, '课程曝光量信息查询成功');
         }
         catch (ClientException $e) {
             return ApiResponseService::showError(Code::ORG_ERROR);
