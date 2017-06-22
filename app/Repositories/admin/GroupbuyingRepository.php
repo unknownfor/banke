@@ -319,17 +319,42 @@ class GroupbuyingRepository
 	 */
 	public static function getCountInfoByOrgId($oid)
 	{
-		$allRecords=BankeOrg::find($oid)->course;
+		$allRecords=BankeGroupbuying::where(['org_id'=>$oid,'status'=>1]);
 		$viewCounts=0;
 		foreach($allRecords as $v){
-			$groupbuying=$v->groupbuying;
-			foreach($groupbuying as $c) {
-				$tempCounts = $c->view_counts;
-				$viewCounts+=$tempCounts;
-			}
+			$tempCounts = $v->view_counts;
+			$viewCounts+=$tempCounts;
 		}
 		return ['counts'=>$allRecords->count(),'viewCounts'=>$viewCounts];
 
+	}
+
+
+	/* 根据机构id得到总的打卡信息，分页
+	* @author jimmy
+	* @date   2016-04-14T11:32:04+0800
+	* @param  [type]                   $request [description]
+	* @return [type]                            [description]
+	*/
+	public static function getDetailInfoByOrgId($oid,$pageIndex=0,$perCounts=20)
+	{
+		$allRecord=BankeGroupbuying::where(['org_id'=>$oid,'status'=>1]);
+		$count = $allRecord->count();
+		$allRecord = $allRecord->orderBy("id", "desc");
+		$allRecord = $allRecord->offset($pageIndex*$perCounts)->limit($perCounts);
+		$allRecord = $allRecord->get();
+		if ($allRecord) {
+			foreach ($allRecord as &$v) {
+				$authen = $v->authenUserSimple;
+				$user = $v->userSimple;
+				$v['name'] = $authen['real_name'];
+				if(!$v['name']){
+					$v['name']=$user['name'];
+				}
+				$v['avatar']=$user['avatar'];
+			}
+		}
+		return ['record'=>$allRecord,'total'=>$count];
 	}
 
 }
