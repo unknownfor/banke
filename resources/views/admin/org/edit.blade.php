@@ -151,8 +151,16 @@
                                     <input type="text" class="form-control" id="lat" name="lat" readonly  value="{{$org['lat']}}">
                                     <div class="form-control-focus"> </div>
                                     <div class="map-box">
-                                        <div class="lonlat-info-box"><p>点击地图即可获取坐标，然后关闭地图</p></div>
-                                        <div class="close-map"></div>
+                                        <div class="top-bar">
+                                            <div class="lonlat-info-box">
+                                                <p>点击地图即可获取坐标，然后关闭地图</p>
+                                            </div>
+                                            <div class="search-box">
+                                                <input id="key-word" placeholder="输入关键字检索">
+                                                <input class="search-map" type="button" value="搜索">
+                                            </div>
+                                            <div class="close-map"></div>
+                                        </div>
                                         <iframe id="map" name="map" src="/admin/org/map"></iframe>
                                     </div>
                                 </div>

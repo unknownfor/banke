@@ -22,6 +22,11 @@
     map.setCurrentCity("武汉");          // 设置地图显示的城市 此项是必须设置的
     map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
 
+    var local = new BMap.LocalSearch(map, {
+        renderOptions:{map: map}
+    });
+
+
     //单击获取点击的经纬度
     map.addEventListener("click",function(e){
         var lon=e.point.lng;
@@ -46,6 +51,12 @@
             map.centerAndZoom(new BMap.Point(114.337348,30.539705), 15);  //114.328639,30.477551
         }
     };
+
+    window.search=function(val){
+        local.search(val);
+    }
+
+
 
 </script>
 </html>
