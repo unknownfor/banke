@@ -63,6 +63,14 @@
                           </div>
                       </div>
 
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="short_name">{{trans('labels.traincategory.short_name')}}</label>
+                          <div class="col-md-8">
+                              <input type="text" class="form-control" id="short_name" name="short_name" placeholder="{{trans('labels.traincategory.short_name')}}" value="{{$traincategory['short_name']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="pid">{{trans('labels.traincategory.pid')}}</label>
