@@ -72,6 +72,11 @@ return[
 		/*'trash' 	=> 'admin.dict.trash',
 		'undo' 		=> 'admin.dict.undo',*/
 	],
+	'orgsummary' => [
+		'create' 	=> 'admin.orgsummary.create',
+		'edit' 		=> 'admin.orgsummary.edit',
+		'destroy' 	=> 'admin.orgsummary.delete',
+	],
 	'course' => [
 		'create' 	=> 'admin.course.create',
 		'edit' 		=> 'admin.course.edit',
@@ -115,6 +120,12 @@ return[
 		'show' 	=> 'admin.order.show',
 		/*'trash' 	=> 'admin.dict.trash',
 		'undo' 		=> 'admin.dict.undo',*/
+	],
+
+	//订金
+	'orderdeposit' => [
+		'edit' 		=> 'admin.orderdeposit.edit',
+		'destroy' 	=> 'admin.orderdeposit.delete',
 	],
 
 	//提现

@@ -52,6 +52,11 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('OrgRepository', function($app){
             return new \App\Repositories\admin\OrgRepository();
         });
+
+        //机构总表
+        $this->app->singleton('OrgSummaryRepository', function($app){
+            return new \App\Repositories\admin\OrgSummaryRepository();
+        });
         //课程
         $this->app->singleton('CourseRepository', function($app){
             return new \App\Repositories\admin\CourseRepository();
@@ -78,6 +83,11 @@ class BackendServiceProvider extends ServiceProvider
         //报名
         $this->app->singleton('OrderRepository', function($app){
             return new \App\Repositories\admin\OrderRepository();
+        });
+
+        //订金
+        $this->app->singleton('OrderDepositRepository', function($app){
+            return new \App\Repositories\admin\OrderDepositRepository();
         });
 
         //反馈

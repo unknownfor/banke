@@ -4,7 +4,6 @@
 Route::get('/', 'HomeController@index');
 
 
-
 //1.2
 Route::group(['prefix'=>"v1.2/share",'namespace'=>'Web'],function(){
 
@@ -74,6 +73,39 @@ Route::group(['prefix'=>"v1.5/web",'namespace'=>'Web'],function() {
     Route::get('/rule', 'RuleController@rule_v1_5');
 
 });
+
+//1.6
+Route::group(['prefix'=>"v1.6/web",'namespace'=>'Web'],function() {
+
+    //v1.6课程开团
+    Route::get('/course/{id}', 'CourseController@course_v1_6');
+
+    //机构分享页面
+    Route::get('/org/{id}', 'OrgController@org_v1_6');
+
+
+});
+
+
+//v1.6
+Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
+
+    //机构宣传页面
+    Route::get('/orgpublicity/{id}', 'OrgController@org_publicity_v1_6');
+
+    Route::post('/doenrol', 'InvitationController@doEnrol_v1_6');
+
+    //课程分享页面
+    Route::get('/course/{id}', 'CourseController@share_course_v1_6');
+
+    //机构分享页面
+    Route::get('/org/{id}', 'OrgController@share_org_v1_6');
+
+    //开团分享、心得分享页面 (预约页面)
+    Route::get('/enrol/{uid}/{cid}/{typeid}/{id}', 'InvitationController@enrol_v1_6');
+
+});
+
 
 Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
 
@@ -155,7 +187,18 @@ Route::group(['prefix'=>"bankehome",'namespace'=>'Web'],function(){
     //申请机构
     Route::post('addorgapplyfor', 'OrgController@addOrgApplyFor');
 
+    //预约半课
+    Route::post('appoint', 'InvitationController@doEnrol_v1_6');
+
+
+//    Route::post('login', 'UserController@getToken');
+
 });
+
+////半课官网调用
+//Route::group(['prefix'=>"mini",'namespace'=>'Mini'],function(){
+//    Route::post('login','UserController@getToken');
+//});
 
 Route::group(['prefix'=>"smstest"],function(){
     Route::get('test1', 'TestController@test1');

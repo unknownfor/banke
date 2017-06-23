@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Repositories\admin\OrgSummaryRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -26,7 +27,9 @@ class OrgController extends Controller
      */
     public function index()
     {
-        return view('admin.org.list');
+        $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
+        $currentOrgSummaryId=0;
+        return view('admin.org.list')->with(compact(['summary_orgs','currentOrgSummaryId']));
     }
 
     /**
@@ -51,7 +54,10 @@ class OrgController extends Controller
         $permissions = PermissionRepository::findPermissionWithArray();
         $roles = RoleRepository::findRoleWithObject();
         $allCategories=TrainCategoryRepository::getAllTopCategory();
-        return view('admin.org.create')->with(compact(['permissions','roles','allCategories']));
+
+        $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
+
+        return view('admin.org.create')->with(compact(['permissions','roles','allCategories','summary_orgs']));
     }
 
     /**
@@ -103,7 +109,10 @@ class OrgController extends Controller
         $org['tags']=$tags;
         $org['category1']=$category1;
         $org['category2']=$category2;
-        return view('admin.org.edit')->with(compact('org'));
+
+        $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
+
+        return view('admin.org.edit')->with(compact('org','summary_orgs'));
     }
     /**
      * 修改机构资料
@@ -174,7 +183,8 @@ class OrgController extends Controller
         $org = BankeOrg::find($id);
         $category1=OrgRepository::getCategory1InfoRead($id);
         $category2=OrgRepository::getCategory2InfoRead($id);
-        return view('admin.org.show')->with(compact('org','category1','category2'));
+        $summary_orgs=OrgSummaryRepository::getOrgs(100000000);  //所有顶级分类
+        return view('admin.org.show')->with(compact('org','category1','category2','summary_orgs'));
     }
 
     public function share_org_v1_2($id){
@@ -199,6 +209,12 @@ class OrgController extends Controller
         $org_id = request('org_id', '');
         $data = OrgRepository::getCommentSharePercent($org_id);
         return response()->json($data);
+    }
+
+    /*地图页面*/
+    public function mapPage()
+    {
+        return view('admin.org.map');
     }
 
 }

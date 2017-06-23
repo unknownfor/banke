@@ -7,6 +7,7 @@ use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeCourse;
 use App\Repositories\admin\OrgRepository;
 use App\Repositories\admin\OrgApplyForRepository;
+use App\Repositories\admin\OrgSummaryRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -57,6 +58,18 @@ class OrgController extends Controller
     public function org_applyfor_v1_5()
     {
         return view('web.orgapplyfor.orgapplyfor-v1_5');
+    }
+
+
+    /**
+     * 机构宣传页面详情
+     */
+    public function org_publicity_v1_6($id)
+    {
+        $org = BankeOrg::find($id);
+        $superiororg=OrgSummaryRepository::getSuperiorOrgs(8);
+        $org['course']=$org->course;
+        return view('web.orgpublicity.orgpublicity-v1_6')->with(compact(['org','superiororg']));
     }
 
 
@@ -140,6 +153,26 @@ class OrgController extends Controller
             ];
             return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR, $param);
         }
+    }
+
+
+    /**
+     * 机构详情
+     */
+    public function org_v1_6($id)
+    {
+        $org = BankeOrg::find($id);
+        return view('web.org.org-v1_6')->with(compact(['org']));
+    }
+
+
+    /**
+     * 分享机构详情
+     */
+    public function share_org_v1_6($id)
+    {
+        $org = BankeOrg::find($id);
+        return view('web.org.share_org-v1_6')->with(compact(['org']));
     }
 
 

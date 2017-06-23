@@ -42,6 +42,10 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/RoleRoute.php');
         // 机构
         require(__DIR__ . '/Routes/OrgRoute.php');
+
+        // 机构
+        require(__DIR__ . '/Routes/OrgSummaryRoute.php');
+
         // 课程
         require(__DIR__ . '/Routes/CourseRoute.php');
         //图片
@@ -85,6 +89,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         require(__DIR__ . '/Routes/InvitationRoute.php');
         //报名记录
         require(__DIR__ . '/Routes/OrderRoute.php');
+
+        //订金记录
+        require(__DIR__ . '/Routes/OrderDepositRoute.php');
 
         //反馈记录
         require(__DIR__ . '/Routes/FeedbackRoute.php');
@@ -134,8 +141,10 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
     });
 });
 
-//前台路由
-Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web','bankehome'] ],function($router){
+//前台路由 包括小程序路由
+Route::group(['domain'=>env('FRONT_DOMAIN'),'middleware' => ['web','bankehome','mini'] ],function($router){
 
     require(__DIR__ . '/Routes/web.php');
+
+    require(__DIR__ . '/Routes/Mini.php');
 });

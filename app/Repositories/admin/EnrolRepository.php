@@ -242,4 +242,40 @@ class EnrolRepository
 		return $user;
 	}
 
+	/**
+	 * 根据机构id得到多少人 预约
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getEnrolCountsByOrgId($oid)
+	{
+		$enrol = new BankeEnrol();
+		$enrol = $enrol::where('org_id',$oid)->get();
+		return $enrol->count();
+	}
+
+	/* 根据机构id得到总的预约信息，分页
+	* @author jimmy
+	* @date   2016-04-14T11:32:04+0800
+	* @param  [type]                   $request [description]
+	* @return [type]                            [description]
+	*/
+	public static function getDetailInfoByOrgId($oid,$pageIndex=0,$perCounts=20)
+	{
+		$allRecord=BankeEnrol::where(['org_id'=>$oid]);
+		$count = $allRecord->count();
+		$allRecord = $allRecord->orderBy("id", "desc");
+		$allRecord = $allRecord->offset($pageIndex*$perCounts)->limit($perCounts);
+		$allRecord = $allRecord->get(['uid','mobile','org_id','course_id','course_name','created_at']);
+		if ($allRecord) {
+			foreach ($allRecord as &$v) {
+				$mobile = $v['mobile'];
+				$v['mobile']=substr_replace($mobile,'****',3,4);
+			}
+		}
+		return ['record'=>$allRecord,'total'=>$count];
+	}
+
 }

@@ -441,8 +441,8 @@ class OrderRepository
 	}
 
 	/**
-	 * 根据创建时间，得到 注册半课APP用户 分组，每天多少人
-	 * @author shaolei
+	 * 根据创建时间，得到 每天报名多少人
+	 * @author jimmy
 	 * @date   2016-04-14T11:32:04+0800
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
@@ -452,6 +452,7 @@ class OrderRepository
 		$user = new BankeCashBackUser();
 		$user = $user::where('created_at','>=',getTime($startTime));
 		$user = $user->where('created_at','<',getTime($endTime));
+		$user = $user->where('status','1');
 		$user = $user->groupBy('date')
 			->orderBy('date','DESC')
 			->get([
@@ -593,6 +594,24 @@ class OrderRepository
 	{
 		$order = BankeCashBackUser::where(['course_id'=>$course_id,'uid'=>$uid,'status'=>1])->first();
 		return $order;
+	}
+
+	/**
+	 * 根据机构id得到订单的数量
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getOrderInfoByOrgId($oid)
+	{
+		$allOrders=BankeCashBackUser::where(['org_id'=>$oid,'status'=>1])->get();
+		$totalAccount=0;
+		foreach($allOrders as $v){
+			$totalAccount +=$v->tuition_amount;
+		}
+		return ['counts'=>$allOrders->count(),'account'=>$totalAccount];
+
 	}
 
 }

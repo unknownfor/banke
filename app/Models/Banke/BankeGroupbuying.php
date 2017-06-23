@@ -32,9 +32,18 @@ class BankeGroupbuying extends Model
         return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','organizer_id');
     }
 
+    //评论人 实名后
+    public  function authenUserSimple(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','organizer_id')->select('uid','real_name');;
+    }
+
     //评论人 未实名
     public  function user(){
         return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','organizer_id');
+    }
+
+    public  function userSimple(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','organizer_id')->select('uid','name','avatar');
     }
 
     //参团人数

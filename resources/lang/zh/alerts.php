@@ -62,6 +62,16 @@ return [
     'serviceBusy' => '服务器繁忙，请稍后再试...',
     'deleteTitle' => '确定要彻底删除么?',
 
+    'orgsummary' => [
+        'updated_success'   => '修改机构成功.',
+        'updated_error'     => '修改机构失败.',
+        'created_success'   => '创建机构成功.',
+        'created_error'     => '创建机构失败.',
+        'deleted_success'   => '删除机构成功.',
+        'deleted_error'     => '删除机构失败.',
+        'soft_deleted_success' => '删除机构成功',
+    ],
+
     'org' => [
         'updated_success'   => '修改机构成功.',
         'updated_error'     => '修改机构失败.',
@@ -118,6 +128,10 @@ return [
         'authen_success'   => '审核报名成功.',
         'authen_error'     => '审核报名失败.',
         'already_active'    => '该订单已经通过审核，不能重复审核'
+    ],
+    'orderdeposit' => [
+        'updated_success'   => '修改订金成功.',
+        'updated_error'     => '修改订金失败.',
     ],
     'withdraw' => [
         'updated_success'   => '修改提现成功.',

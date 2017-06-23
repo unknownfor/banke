@@ -127,6 +127,11 @@ return [
 		'articleEdit' => '<i class="fa fa-cog"></i> 文章编辑',
 		'articleCategoryList' => '<i class="fa fa-cog"></i> 文章分类列表',
 		'articleCategoryCreate' => '<i class="fa fa-cog"></i> 文章分类添加',
+
+		'orgsummaryList' => '<i class="fa fa-th-list"></i> 机构汇总列表',
+		'orgsummaryCreate' => '<i class="fa fa-user-plus"></i> 创建汇总机构',
+		'orgsummaryEdit' => '<i class="fa fa-pencil"></i> 修改汇总机构',
+
 		'orgList' => '<i class="fa fa-th-list"></i> 机构列表',
 		'orgCreate' => '<i class="fa fa-user-plus"></i> 创建机构',
 		'orgEdit' => '<i class="fa fa-pencil"></i> 修改机构',
@@ -149,10 +154,15 @@ return [
 		'checkinList' => '<i class="fa fa-th-list"></i> 签到列表',
 		'checkinEdit' => '<i class="fa fa-th-list"></i> 编辑签到',
 		'invitationList' => '<i class="fa fa-share-alt"></i> 邀请列表',
+
 		'orderList' => '<i class="fa fa-share-alt"></i> 报名列表',
 		'orderCreate' => '<i class="fa fa-user-plus"></i> 添加报名',
 		'orderEdit' => '<i class="fa fa-user-plus"></i> 编辑报名',
 		'orderShow' => '<i class="fa fa-search"></i> 报名详情',
+
+		'orderdepositList' => '<i class="fa fa-list"></i> 订金列表',
+		'orderdepositEdit' => '<i class="fa fa-list"></i> 审核订金',
+
 		'invitationList' => '<i class="fa fa-th-list"></i> 邀请列表',
 		'orgAccountList' => '<i class="fa fa-bars"></i> 机构账户列表',
 		'orgAccountCreate' => '<i class="fa fa-bars"></i> 创建机构账户',
@@ -213,6 +223,8 @@ return [
 		'groupbuyingwordsList' => '<i class="fa fa-list"></i> 开团标语列表',
 		'groupbuyingwordsCreate' => '<i class="fa fa-list"></i> 添加开团标语',
 		'groupbuyingwordsEdit' => '<i class="fa fa-list"></i> 编辑开团标语',
+
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -226,6 +238,23 @@ return [
 		'permission' => '权限',
 		'module' => '模块',
 		'show' => '查看角色权限',
+	],
+	'orgsummary' => [
+		'id' => '序号',
+		'name' => '名称',
+		'surperior'=>'优质机构',
+		'short_name' => '简称',
+		'logo'=>'Logo',
+		'intro'=>'一句话简介',
+		'details'=>'详情',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'sort'=>'排序',
+		'list' => '机构列表',
+		'branch_list' => '分校列表',
+		'category' => '所属分类',
+		'url'=>'官网地址'
 	],
 	'org' => [
 		'id' => '序号',
@@ -253,12 +282,18 @@ return [
 		'category2' => '二级分类',
 		'tags' => '标签',
 		'share_comment_org_award'=>'评论奖励比例',
+		'share_comment_org_counts'=>'可以奖励评论分享次数',
 		'comment_list'=>'评论列表',
 		'confirm' => '已验证',
 		'active' => '<span class="label label-success"> 已验证 </span>',
 		'audit' => '<span class="label label-warning"> 未验证 </span>',
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
+		'lonlat'=>'经纬度',
+		'branch_school'=>'分校名称',
+		'pid'=>'所属机构',
+		'qrcode'=>'二维码',
+		'qrcode_desc'=>'二维码说明'
 	],
 	'course' => [
 		'id' => '序号',
@@ -346,6 +381,7 @@ return [
 		'list' => '预约报名列表',
 		'permission' => '权限',
 		'module' => '模块',
+		'comment' => '备注',
 	],
 
 	//提现
@@ -622,4 +658,22 @@ return [
 		'updated_at' => '修改时间',
 		'list' => '开团标语列表',
 	],
+
+	'orderdeposit' => [
+		'id' => '序号',
+		'order_no' => '订单号',
+		'name' => '姓名',
+		'mobile' => '手机号',
+		'course_name' => '课程名称',
+		'org_short_name' => '机构简称',
+		'account' => '金额',
+		'pay_type' => '支付方式',
+		'pay_status' => '支付状态',
+		'transaction_no'=>'交易号',
+		'list' => '报名列表',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'status' => '状态'
+	],
+
 ];

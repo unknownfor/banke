@@ -29,8 +29,9 @@ class OrgRepository
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 
 		$name =request('name' ,'');
-		$city =request('city' ,'');
+//		$city =request('city' ,'');
 		$status = request('status' ,'');
+		$pid = request('pid' ,'');
 
 		$org = new BankeOrg;
 
@@ -43,18 +44,23 @@ class OrgRepository
 			}
 		}
 
-		/*城市搜索*/
-		if($city){
-			if($search_pattern){
-				$org = $org->where('city', 'like', $city);
-			}else{
-				$org = $org->where('city', $city);
-			}
-		}
+//		/*城市搜索*/
+//		if($city){
+//			if($search_pattern){
+//				$org = $org->where('city', 'like', $city);
+//			}else{
+//				$org = $org->where('city', $city);
+//			}
+//		}
 
 		/*状态搜索*/
 		if ($status!=null) {
 			$org = $org->where('status', $status);
+		}
+
+		/*主机构搜索*/
+		if ($pid!=null) {
+			$org = $org->where('pid', $pid);
 		}
 
 		$count = $org->count();

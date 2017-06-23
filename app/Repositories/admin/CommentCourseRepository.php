@@ -8,6 +8,7 @@ use DB;
 use App\Repositories\admin\AppUserRepository;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
+use App\Models\Banke\BankeOrg;
 
 /**
 * 课程评论
@@ -255,6 +256,62 @@ class CommentCourseRepository
 		$order->get_share_comment_course_amount+=$award;  //已经获得的分享金额+=$award
 		$order->save();
 		return $award;
+	}
+
+
+	/**
+	 * 根据机构id得到心得的浏览量
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getCountInfoByOrgId($oid)
+	{
+		$allRecords=BankeOrg::find($oid)->course;
+		$viewCounts=0;
+		foreach($allRecords as $v){
+			$comment=$v->commnents;
+			foreach($comment as $c) {
+				$tempCounts = $c->view_counts;
+				$viewCounts+=$tempCounts;
+			}
+		}
+		return ['counts'=>$allRecords->count(),'viewCounts'=>$viewCounts];
+
+	}
+
+	/*
+	 * 课程曝光量
+	 **/
+	public static function getViewCountsInfoByOrgId($oid)
+	{
+		$allRecords = BankeOrg::find($oid)->course;
+		$arr=[];
+		foreach ($allRecords as $v) {
+			$viewCounts=0;
+			$lastTime1=time();
+			$lastTime2=0;
+			$comment = $v->commnents;
+			$groupbuying = $v->groupbuying;
+			foreach ($comment as $c) {
+				$tempCounts = $c->view_counts;
+				$viewCounts+=$tempCounts;
+				$lastTime1 = strtotime($c['updated_at']);
+			}
+			foreach ($groupbuying as $g) {
+				$tempCounts = $g->view_counts;
+				$viewCounts+=$tempCounts;
+				$lastTime2 = strtotime($g['updated_at']);
+			}
+			if($lastTime1<$lastTime2){
+				$lastTime1=$lastTime2;
+			}
+			$lastTime = date("Y-m-d H:i:s",$lastTime1);
+			$tempArr=['id'=>$v['id'],'name'=>$v['name'],'viewCounts'=>$viewCounts,'lastTime'=>$lastTime];
+			array_push($arr,$tempArr);
+		}
+		return $arr;
 	}
 
 }

@@ -7,7 +7,7 @@ use App\Models\Banke\BankeCashBackUser;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeGroupbuying;
-use App\Repositories\admin\GroupbuyingWordsRepository;
+use GroupbuyingWordsRepository;
 use App\Repositories\admin;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
@@ -21,6 +21,7 @@ use CourseRepository;
 use EnrolRepository;
 use GroupbuyingRepository;
 use OrderRepository;
+use OrgSummaryRepository;
 
 class InvitationController extends Controller
 {
@@ -110,6 +111,29 @@ class InvitationController extends Controller
         return ApiResponseService::showError(Code::REGISTER_ERROR);
     }
 
+    public function doEnrol_v1_6(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'mobile' => 'required|mobile',
+//            'comment'=>'required'
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            $sss='';
+            foreach ($errors->all() as $message) {
+                $sss.=$message;
+            }
+            return response()->json(['msg' => $sss, 'status' => false]);
+        }
+
+        $result = EnrolRepository::store($request);
+        if ($result) {
+            return ApiResponseService::success('', Code::SUCCESS, '预约成功');
+        }
+        return ApiResponseService::showError(Code::REGISTER_ERROR);
+    }
+
     /**
      * 分享预约
      */
@@ -171,6 +195,58 @@ class InvitationController extends Controller
             'shareInfo',
             'members',
             'award'
+            ]));
+    }
+
+    /**
+     * 分享预约
+     */
+    public function enrol_v1_6($uid,$cid,$typeId=1,$recordId)
+    {
+        $user=UserRepository::getUserSimpleInfoById($uid);
+        $course=CourseRepository::show($cid);
+        if(!$course){
+            abort(404);
+        }
+
+        $baseUrl='http://'.env('ADMIN_DOMAIN');
+        $course['link_url']=$baseUrl.'/v1.5/share/course/'.$cid;
+
+        $maxAwardPercent=$course['task_award']+$course['checkin_award'];
+
+        $course['max_award'] = moneyFormatFloor($course['price']*$maxAwardPercent/100);
+        $course['max_award_percent'] = $maxAwardPercent;
+        $course['price'] = moneyFormatFloor($course['price']);
+
+        $ruleLinkUrl=$baseUrl.'/v1.5/share/rule';  //返现规则
+        $org=$course->org;
+
+        //随机图
+        $word=GroupbuyingWordsRepository::getRandomRecord();
+
+        //参团人员
+        $groupbuyingId=GroupbuyingRepository::getGroupbuyingByCidAndUid($uid,$cid);
+        $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($groupbuyingId,2);
+
+
+        $organizer_award=moneyFormatFloor($course['price']*$course['z_award_amount']/100);
+
+        $award=Array('organizer_award'=>$organizer_award,'member_award'=>moneyFormatFloor($course['max_award']));
+
+        $shareInfo=Array('type_id'=>$typeId,'record_id'=>$recordId);
+
+        $superiororg=OrgSummaryRepository::getSuperiorOrgs(8);
+
+        return view('web.invite.enrol-v1_6')->with(compact([
+            'user',
+            'course',
+            'org',
+            'ruleLinkUrl',
+            'word',
+            'shareInfo',
+            'members',
+            'award',
+            'superiororg'
             ]));
     }
 

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Flash;
 use Mockery\CountValidator\Exception;
 use DB;
+use Auth;
 
 /**
 * 用户仓库
@@ -423,5 +424,20 @@ class UserRepository
 		$uuid .= substr($str,16,4) . '-';
 		$uuid .= substr($str,20,12);
 		return $prefix . $uuid;
+	}
+
+	/*根据账号密码登录  老师账号*/
+	public static function loginByMobileAndPwdOrg($userData)
+	{
+		$mobile = $userData['mobile'];
+		$pwd = $userData['password'];
+		if (Auth::attempt(['mobile' => $mobile, 'password' => $pwd], 1)) {
+			$userInfo=BankeUserProfiles::where(['mobile'=>$mobile]);
+			if($userInfo->count()>0) {
+				$userInfo=$userInfo->first();
+				return $userInfo['org_id'];
+			}
+		}
+		return 0;
 	}
 }

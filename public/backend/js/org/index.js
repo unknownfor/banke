@@ -35,6 +35,12 @@
                 $('#uploadImgFile3').trigger('click');
             });
 
+            /*上传二级码*/
+            $(document).on('change','#uploadImgFile4', $.proxy(this,'uploadQrcode'));
+            $(document).on('click','.add-qrcode-img-btn', function(){
+                $('#uploadImgFile4').trigger('click');
+            });
+
             $(document).on('click','.remove-img-btn', $.proxy(this,'deletCoverImg'));
 
 
@@ -44,6 +50,14 @@
                 liveSearchPlaceholder:'输入名称进行搜索'
             }).on('changed.bs.select', function (e) {
                 that.refressCategorySelect($('.orgCategorySelectpicker').val());
+            });
+
+            $(document).on('click','#location',function(){
+                $('.map-box').addClass('show').removeClass('hide');
+                map.resetLocation($('#lon').val(),$('#lat').val());
+            });
+            $(document).on('click','.close-map',function(){
+                $('.map-box').removeClass('show').addClass('hide');
             });
 
             //photoswipe   //图片信息查看  相册、视频信息查看
@@ -56,6 +70,7 @@
                 this.initImgsArr();  //定义100个图片id 数组。
                 this.initTags();
                 this.getCategory();
+
             },
 
             initTags:function(){
@@ -298,9 +313,30 @@
                 });
             },
 
-            getConverImgStr:function(url){
+            //上传二维码
+            uploadQrcode:function(){
+                var $target = $('#uploadImgFile4'),
+                    $form=$('#upImgForm4'),
+                    that=this;
+                that.controlLoadingCircleStatus(true);
+                this.initUploadImg($target,$form,function(data){
+                    data=JSON.parse(data);
+                    if(data) {
+                        var str=that.getConverImgStr(data.filedata,'435x435');
+                        $('.qrcode-list-box').html(str);
+                        that.controlLoadingCircleStatus(false);
+                        $form[0].reset();
+                        $('#qrcode').val(data.filedata);
+                    }
+                });
+            },
+
+            getConverImgStr:function(url,sizeStr){
+                if(!sizeStr){
+                    sizeStr='435x263';
+                }
                 return '<li>'+
-                            '<a href="'+url+'" data-size="435x263"></a>'+
+                            '<a href="'+url+'" data-size="'+sizeStr+'"></a>'+
                             '<img src="'+url+'@142w_80h_1e">'+
                             '<span class="remove-img-btn">×</span>'+
                         '</li>';
@@ -440,4 +476,19 @@
 
             $('#tags').val(editor.getTags());
         };
+
+
+        window.setLonLatInfo=function(lonlatInfo){
+            $('.lonlat-info-box p').text("lon:"+lonlatInfo.lon+' lat:'+lonlatInfo.lat);
+            $('#lon').val(lonlatInfo.lon);
+            $('#lat').val(lonlatInfo.lat);
+        };
+
+
+        window.copy=function(obj){
+            var target = document.getElementById("qrcode-url");
+            target.select()
+            document.execCommand("Copy");
+            alert("复制成功!");
+        }
 });
