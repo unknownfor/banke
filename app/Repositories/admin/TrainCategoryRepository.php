@@ -52,8 +52,7 @@ class TrainCategoryRepository
 
 
 		$trainCategory = $trainCategory->offset($start)->limit($length);
-		$trainCategories = $trainCategory->orderBy("sort")->get();
-               
+		$trainCategories = $trainCategory->orderBy("sort","desc")->orderBy("id", "desc")->get();
 
 		if ($trainCategories) {
 			foreach ($trainCategories as &$v) {

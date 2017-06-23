@@ -10,7 +10,7 @@ class BankeTrainCategory extends Model
     protected $table = 'banke_train_category';
     use ActionAttributeTrait;
     protected $fillable = [
-        'pid', 'sort', 'status','logo','name','hot','desc'
+        'pid', 'sort', 'status','logo','name','hot','desc','short_name'
     ];
 
     private $action;
