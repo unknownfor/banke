@@ -70,7 +70,7 @@ class OrgSummaryRepository
 			foreach ($org as $v) {
 				$category=$v->category;
 				if($category) {
-					$v['category'] = $category['desc'];
+					$v['category'] = $category['short_name'];
 				}
 			}
 		}

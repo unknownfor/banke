@@ -591,6 +591,7 @@ return [
 		'id' => '序号',
 		'name' => '名称',
 		'desc' => '描述',
+		'short_name' => '短名称',
 		'sort' => '排序',
 		'status' => '状态',
 		'logo'=>'图片',

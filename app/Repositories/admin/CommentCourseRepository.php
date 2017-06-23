@@ -280,4 +280,38 @@ class CommentCourseRepository
 		return ['counts'=>$allRecords->count(),'viewCounts'=>$viewCounts];
 
 	}
+
+	/*
+	 * 课程曝光量
+	 **/
+	public static function getViewCountsInfoByOrgId($oid)
+	{
+		$allRecords = BankeOrg::find($oid)->course;
+		$arr=[];
+		foreach ($allRecords as $v) {
+			$viewCounts=0;
+			$lastTime1=time();
+			$lastTime2=0;
+			$comment = $v->commnents;
+			$groupbuying = $v->groupbuying;
+			foreach ($comment as $c) {
+				$tempCounts = $c->view_counts;
+				$viewCounts+=$tempCounts;
+				$lastTime1 = strtotime($c['updated_at']);
+			}
+			foreach ($groupbuying as $g) {
+				$tempCounts = $g->view_counts;
+				$viewCounts+=$tempCounts;
+				$lastTime2 = strtotime($g['updated_at']);
+			}
+			if($lastTime1<$lastTime2){
+				$lastTime1=$lastTime2;
+			}
+			$lastTime = date("Y-m-d H:i:s",$lastTime1);
+			$tempArr=['id'=>$v['id'],'name'=>$v['name'],'viewCounts'=>$viewCounts,'lastTime'=>$lastTime];
+			array_push($arr,$tempArr);
+		}
+		return $arr;
+	}
+
 }

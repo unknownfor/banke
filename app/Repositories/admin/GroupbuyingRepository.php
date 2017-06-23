@@ -330,7 +330,7 @@ class GroupbuyingRepository
 	}
 
 
-	/* 根据机构id得到总的打卡信息，分页
+	/* 根据机构id得到总的开团信息，分页
 	* @author jimmy
 	* @date   2016-04-14T11:32:04+0800
 	* @param  [type]                   $request [description]

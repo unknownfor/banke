@@ -62,6 +62,14 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="short_name">{{trans('labels.traincategory.short_name')}}</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" name="short_name" placeholder="{{trans('labels.traincategory.short_name')}}" value="{{old('short_name')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="pid">{{trans('labels.traincategory.pid')}}</label>
                                 <div class="col-md-4">
                                     <select name="pid" class="selectpicker show-tick form-control" data-live-search="true">
