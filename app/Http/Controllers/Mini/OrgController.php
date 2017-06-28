@@ -86,7 +86,7 @@ class OrgController extends Controller
     {
         $count1=CommentCourseRepository::getCountInfoByOrgId($id)['viewCounts'];
         $count2=CommentOrgRepository::getCountInfoByOrgId($id)['viewCounts'];
-        $groupbuying=GroupbuyingRepository::getCountInfoByOrgId($id);
+        $groupbuying=GroupbuyingRepository::getCountInfoByOrgId($id)['viewCounts'];
         $count3=$groupbuying['viewCounts'];
         return $count1+$count2+$count3;
 
