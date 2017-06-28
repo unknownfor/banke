@@ -33,7 +33,7 @@ class OrgController extends Controller
                 $info=[
                     'name'=>$org['name'],
                     'logo'=>$org['logo'],
-                    'appointmentCounts'=>EnrolRepository::getEnrolCountsByOrgId($id) + $org['default_appointment_users_count'],
+                    'appointmentCounts'=>EnrolRepository::getEnrolCountsByOrgId($id),
                     'viewCounts'=>self::getTotalViewCounts($id,$org),
                 ];
                 $result=['orgInfo'=>$info];
