@@ -67,7 +67,8 @@ class OrgController extends Controller
                     'account' => $order['account']+$deposit['account'],
                     'checkinCounts' => $checkin,
                     'groupbuyingCounts' => $groupbuying['counts'],
-                    'shareCounts' =>  $groupbuying['counts'] + $commentCourse['counts'] + $commentOrg['counts'],
+//                    'shareCounts' =>  $groupbuying['counts'] + $commentCourse['counts'] + $commentOrg['counts'],
+                    'shareCounts' =>  $groupbuying['counts'] + $commentCourse['counts'],
                     'appointmentCounts'=>EnrolRepository::getEnrolCountsByOrgId($id)
                 ];
                 $result=['orgInfo'=>$info];
@@ -87,7 +88,8 @@ class OrgController extends Controller
         $count1=CommentCourseRepository::getCountInfoByOrgId($id)['viewCounts'];
         $count2=CommentOrgRepository::getCountInfoByOrgId($id)['viewCounts'];
         $count3=GroupbuyingRepository::getCountInfoByOrgId($id)['viewCounts'];
-        return $count1+$count2+$count3;
+        return $count1+$count2;
+//        return $count1+$count2+$count3;
 
     }
 
