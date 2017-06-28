@@ -68,7 +68,7 @@ class OrgController extends Controller
                     'checkinCounts' => $checkin,
                     'groupbuyingCounts' => $groupbuying['counts'],
                     'shareCounts' =>  $groupbuying['counts'] + $commentCourse['counts'] + $commentOrg['counts'],
-                    'appointmentCounts'=>EnrolRepository::getEnrolCountsByOrgId($id) + $org['default_appointment_users_count']
+                    'appointmentCounts'=>EnrolRepository::getEnrolCountsByOrgId($id)
                 ];
                 $result=['orgInfo'=>$info];
                 return ApiResponseService::success($result, Code::SUCCESS, '机构信息查询成功');
