@@ -270,14 +270,16 @@ class CommentCourseRepository
 	{
 		$allRecords=BankeOrg::find($oid)->course;
 		$viewCounts=0;
+		$recordCounts=0;
 		foreach($allRecords as $v){
 			$comment=$v->commnents;
 			foreach($comment as $c) {
 				$tempCounts = $c->view_counts;
 				$viewCounts+=$tempCounts;
+				$recordCounts++;
 			}
 		}
-		return ['counts'=>$allRecords->count(),'viewCounts'=>$viewCounts];
+		return ['counts'=>$recordCounts,'viewCounts'=>$viewCounts];
 
 	}
 
@@ -332,9 +334,6 @@ class CommentCourseRepository
 				$name = $authen['real_name'];
 				if(!$name){
 					$name = $user['mobile'];
-				}
-				if($name=='李小志'){
-					$name='123';
 				}
 				array_push($arr, ['name' => $name, 'uid' => $c->uid, 'time' => date("Y-m-d H:i:s", $lastTime)]);
 			}
