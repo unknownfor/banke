@@ -29,7 +29,7 @@ Route::group(['prefix'=>"mini/v1.0",'namespace'=>'Mini'],function(){
     Route::get('courseviews/{id}','OrgController@getCourseViewsInfoByOrgId');
 
     //分享详情
-    Route::get('share/{id}','OrgController@getShareInfoByOrgId');
+    Route::get('share/{id}/{pageIndex}/{perCounts}','OrgController@getShareInfoByOrgId');
 });
 
 

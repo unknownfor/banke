@@ -156,13 +156,15 @@ class OrgController extends Controller
     /*
     * 得到分享详情
     * */
-    public function getShareInfoByOrgId($id)
+    public function getShareInfoByOrgId($id,$pageIndex=0,$perCounts=100)
     {
         try {
             $arr1=CommentCourseRepository::getShareInfoByOrgId($id);
             $arr2=CommentOrgRepository::getShareInfoByOrgId($id);
             $info= $this->sortByTimeDesc($arr1,$arr2);
-            $result=['detailInfo'=>$info];
+            $newArr= array_slice($info,$pageIndex*$perCounts,$perCounts);
+            $tempArr=['record'=>$newArr,'total'=>Count($info)];
+            $result=['detailInfo'=>$tempArr];
             return ApiResponseService::success($result, Code::SUCCESS, '分享详情信息查询成功');
         }
         catch (ClientException $e) {
@@ -172,16 +174,6 @@ class OrgController extends Controller
 
     private function sortByTimeDesc($arr1,$arr2)
     {
-        function sortByTime($a, $b) {
-            $time1= strtotime($a);
-            $time2= strtotime($b);
-            if ($time1 == $time2) {
-                return 0;
-            } else {
-                return $time1 >$time2 ? 1 : -1;
-            }
-
-        }
         $arr = array_merge($arr1,$arr2);
         return $this->list_sort_by($arr, 'time', 'desc');
     }
