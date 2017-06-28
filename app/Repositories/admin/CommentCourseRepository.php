@@ -314,4 +314,42 @@ class CommentCourseRepository
 		return $arr;
 	}
 
+
+	/*
+	 * 分享列表,得到分享人，时间
+	 **/
+	public static function getShareInfoByOrgId($oid)
+	{
+		$allRecords = BankeOrg::find($oid)->course;
+		$arr=[];
+		foreach ($allRecords as $v) {
+			$comment = $v->commnents;
+			$groupbuying = $v->groupbuying;
+			foreach ($comment as $c) {
+				$lastTime = strtotime($c['updated_at']);
+				$authen = $c->authenUserSimple;
+				$user = $c->userSimple;
+				$name = $authen['real_name'];
+				if(!$name){
+					$name = $user['mobile'];
+				}
+				if($name=='李小志'){
+					$name='123';
+				}
+				array_push($arr, ['name' => $name, 'uid' => $c->uid, 'time' => date("Y-m-d H:i:s", $lastTime)]);
+			}
+			foreach ($groupbuying as $g) {
+				$lastTime = strtotime($g['updated_at']);
+				$authen = $g->authenUserSimple;
+				$user = $g->userSimple;
+				$name = $authen['real_name'];
+				if(!$name){
+					$name = $user['mobile'];
+				}
+				array_push($arr, ['name' => $name, 'uid' => $g->organizer_id, 'time' => date("Y-m-d H:i:s", $lastTime)]);
+			}
+		}
+		return $arr;
+	}
+
 }

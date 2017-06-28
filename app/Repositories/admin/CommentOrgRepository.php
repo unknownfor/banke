@@ -338,4 +338,25 @@ class CommentOrgRepository
 		return ['counts'=>$allRecords->count(),'viewCounts'=>$viewCounts];
 	}
 
+
+	/**
+	 * 分享列表,得到分享人，时间
+	 */
+	public static function getShareInfoByOrgId($oid)
+	{
+		$allRecords=BankeOrg::find($oid)->comments;
+		$arr=[];
+		foreach($allRecords as $c) {
+			$lastTime = strtotime($c['updated_at']);
+			$authen = $c->authenUserSimple;
+			$user = $c->userSimple;
+			$name = $authen['real_name'];
+			if(!$name){
+				$name = $user['mobile'];
+			}
+			array_push($arr, ['name' => $name, 'uid' => $c->uid, 'time' => date("Y-m-d H:i:s", $lastTime)]);
+		}
+		return $arr;
+	}
+
 }

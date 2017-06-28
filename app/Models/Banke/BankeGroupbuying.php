@@ -43,7 +43,7 @@ class BankeGroupbuying extends Model
     }
 
     public  function userSimple(){
-        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','organizer_id')->select('uid','name','avatar');
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','organizer_id')->select('uid','mobile','name','avatar');
     }
 
     //参团人数

@@ -151,4 +151,79 @@ class OrgController extends Controller
             return ApiResponseService::showError(Code::ORG_ERROR);
         }
     }
+
+
+    /*
+    * 得到分享详情
+    * */
+    public function getShareInfoByOrgId($id)
+    {
+        try {
+            $arr1=CommentCourseRepository::getShareInfoByOrgId($id);
+            $arr2=CommentOrgRepository::getShareInfoByOrgId($id);
+            $info= $this->sortByTimeDesc($arr1,$arr2);
+            $result=['detailInfo'=>$info];
+            return ApiResponseService::success($result, Code::SUCCESS, '分享详情信息查询成功');
+        }
+        catch (ClientException $e) {
+            return ApiResponseService::showError(Code::ORG_ERROR);
+        }
+    }
+
+    private function sortByTimeDesc($arr1,$arr2)
+    {
+        function sortByTime($a, $b) {
+            $time1= strtotime($a);
+            $time2= strtotime($b);
+            if ($time1 == $time2) {
+                return 0;
+            } else {
+                return $time1 >$time2 ? 1 : -1;
+            }
+
+        }
+        $arr = array_merge($arr1,$arr2);
+        return $this->list_sort_by($arr, 'time', 'desc');
+    }
+
+
+    /**
+     * 对查询结果集进行排序
+     * @access public
+     * @param array $list 查询结果
+     * @param string $field 排序的字段名
+     * @param string $sortby 排序类型 （asc正向排序 desc逆向排序 nat自然排序）
+     * @return array
+     */
+
+    private function list_sort_by($list, $field, $sortby = 'desc')
+    {
+        if (is_array($list))
+        {
+            $refer = $resultSet = array();
+            foreach ($list as $i => $data)
+            {
+                $refer[$i] = &$data[$field];
+            }
+            switch ($sortby)
+            {
+                case 'asc': // 正向排序
+                    asort($refer);
+                    break;
+                case 'desc': // 逆向排序
+                    arsort($refer);
+                    break;
+                case 'nat': // 自然排序
+                    natcasesort($refer);
+                    break;
+            }
+            foreach ($refer as $key => $val)
+            {
+                $resultSet[] = &$list[$key];
+            }
+            return $resultSet;
+        }
+        return false;
+    }
+
 }

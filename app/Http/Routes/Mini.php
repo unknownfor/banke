@@ -27,6 +27,9 @@ Route::group(['prefix'=>"mini/v1.0",'namespace'=>'Mini'],function(){
 
     //课程曝光量详情
     Route::get('courseviews/{id}','OrgController@getCourseViewsInfoByOrgId');
+
+    //分享详情
+    Route::get('share/{id}','OrgController@getShareInfoByOrgId');
 });
 
 
