@@ -82,7 +82,7 @@ class OrgController extends Controller
     }
 
     /*曝光量*/
-    private static function getTotalViewCounts($id,$org)
+    private static function getTotalViewCounts($id)
     {
         $count1=CommentCourseRepository::getCountInfoByOrgId($id)['viewCounts'];
         $count2=CommentOrgRepository::getCountInfoByOrgId($id)['viewCounts'];

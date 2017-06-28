@@ -273,13 +273,19 @@ class CommentCourseRepository
 		$recordCounts=0;
 		foreach($allRecords as $v){
 			$comment=$v->commnents;
+			$groupbuying = $v->groupbuying;
 			foreach($comment as $c) {
 				$tempCounts = $c->view_counts;
 				$viewCounts+=$tempCounts;
 				$recordCounts++;
 			}
+			foreach ($groupbuying as $g) {
+				$tempCounts = $g->view_counts;
+				$viewCounts+=$tempCounts;
+				$recordCounts++;
+			}
 		}
-		return ['counts'=>$recordCounts,'viewCounts'=>$viewCounts];
+		return ['counts'=>$allRecords->count(),'viewCounts'=>$viewCounts];
 
 	}
 
