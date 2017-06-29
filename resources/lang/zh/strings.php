@@ -45,6 +45,13 @@ return [
 		'active' => ['fa fa-navicon','正常'],
 		'trash' => ['fa fa-trash','未通过']
 	],
+
+	//定位打卡
+	'location_checkin_status'=> [
+		'audit' => ['fa fa-paw','关闭'],
+		'active' => ['fa fa-navicon','开启']
+	],
+
 	'orgsummary' => [
 		'audit' => ['fa fa-paw','待审核'],
 		'active' => ['fa fa-navicon','正常'],

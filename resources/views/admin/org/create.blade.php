@@ -134,8 +134,16 @@
                                     <input type="text" class="form-control" id="lat" name="lat" readonly  value="">
                                     <div class="form-control-focus"> </div>
                                     <div class="map-box">
-                                        <div class="lonlat-info-box"><p>点击地图即可获取坐标，然后关闭地图</p></div>
-                                        <div class="close-map"></div>
+                                        <div class="top-bar">
+                                            <div class="lonlat-info-box">
+                                                <p>点击地图即可获取坐标，然后关闭地图</p>
+                                            </div>
+                                            <div class="search-box">
+                                                <input id="key-word" placeholder="输入关键字检索">
+                                                <input class="search-map" type="button" value="搜索">
+                                            </div>
+                                            <div class="close-map"></div>
+                                        </div>
                                         <iframe id="map" name="map" src="/admin/org/map"></iframe>
                                     </div>
                                 </div>
@@ -251,6 +259,36 @@
                                 <label class="col-md-1 control-label" for="cash_back_desc">{{trans('labels.org.cash_back_desc')}}</label>
                                 <div class="col-md-9">
                                     <input type="text"  class="form-control" id="cash_back_desc" name="cash_back_desc" placeholder="{{trans('labels.org.cash_back_desc')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="eable_location_checkin">{{trans('labels.org.eable_location_checkin')}}</label>
+                                <div class="col-md-9">
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="eable_location_checkin1" name="eable_location_checkin" value="{{config('admin.global.status.active')}}" class="md-radiobtn">
+                                            <label for="eable_location_checkin1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.location_checkin_status.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="eable_location_checkin2" name="eable_location_checkin" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" checked>
+                                            <label for="eable_location_checkin2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.location_checkin_status.audit.1')}} </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="location_checkin_distance">{{trans('labels.org.location_checkin_distance')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number"  class="form-control" id="location_checkin_distance" name="location_checkin_distance" min="0" max="10000000" placeholder="{{trans('labels.org.location_checkin_distance')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>

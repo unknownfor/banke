@@ -261,6 +261,35 @@
                           </div>
                       </div>
 
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="eable_location_checkin">{{trans('labels.org.eable_location_checkin')}}</label>
+                          <div class="col-md-9">
+                              <div class="md-radio-inline">
+                                  <div class="md-radio">
+                                      <input type="radio" id="eable_location_checkin1" name="eable_location_checkin" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($org['eable_location_checkin'] == config('admin.global.status.active')) checked @endif>
+                                      <label for="eable_location_checkin1">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.location_checkin_status.active.1')}} </label>
+                                  </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="eable_location_checkin2" name="eable_location_checkin" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($org['eable_location_checkin'] == config('admin.global.status.audit')) checked @endif>
+                                      <label for="eable_location_checkin2">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.location_checkin_status.audit.1')}} </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="location_checkin_distance">{{trans('labels.org.location_checkin_distance')}}</label>
+                          <div class="col-md-9">
+                              <div class="form-control form-control-static">{{$org['location_checkin_distance']}}</div>
+                          </div>
+                      </div>
+
                       <div class="form-group form-md-line-input form-md-line-cover">
                           <label class="col-md-1 control-label">{{trans('labels.org.qrcode')}}</label>
                           <div class="col-md-9">

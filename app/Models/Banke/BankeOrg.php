@@ -23,7 +23,9 @@ class BankeOrg extends Model
         'default_appointment_users_count',
         'branch_school',
         'qrcode',
-        'qrcode_desc'
+        'qrcode_desc',
+        'eable_location_checkin',
+        'location_checkin_distance'
     ];
 
     private $action;

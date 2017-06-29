@@ -24,6 +24,21 @@ Route::group(['prefix'=>"v1.2/share",'namespace'=>'Web'],function(){
 
 });
 
+Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
+
+    //v1.2 以及之后的
+    //机构详情分享
+    Route::get('/org/{id}', 'OrgController@org_v1_2');
+    //课程
+    Route::get('/course/{id}', 'CourseController@course_v1_2');
+
+    //规则页面
+    Route::get('/rule', 'RuleController@rule_v1_2');
+
+});
+
+
+
 //1.3
 Route::group(['prefix'=>"v1.3/share",'namespace'=>'Web'],function(){
 
@@ -34,6 +49,8 @@ Route::group(['prefix'=>"v1.3/share",'namespace'=>'Web'],function(){
 
 
 });
+
+
 
 
 //v1.5
@@ -74,6 +91,9 @@ Route::group(['prefix'=>"v1.5/web",'namespace'=>'Web'],function() {
 
 });
 
+
+
+
 //1.6
 Route::group(['prefix'=>"v1.6/web",'namespace'=>'Web'],function() {
 
@@ -107,19 +127,25 @@ Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
 });
 
 
-Route::group(['prefix'=>"v1.2/web",'namespace'=>'Web'],function(){
 
-    //v1.2 以及之后的
-    //机构详情分享
-    Route::get('/org/{id}', 'OrgController@org_v1_2');
-    //课程
-    Route::get('/course/{id}', 'CourseController@course_v1_2');
+//--------------------------------- 1.7 -----------------------------------
 
-    //规则页面
-    Route::get('/rule', 'RuleController@rule_v1_2');
+//1.7
+Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
+
+    //v1.6课程开团
+    Route::get('/course/{id}/{user_type}', 'CourseController@course_v1_7');
 
 });
 
+
+//v1.7
+Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
+
+    //课程分享页面
+    Route::get('/course/{id}/{user_type}', 'CourseController@share_course_v1_6');
+
+});
 
 
 

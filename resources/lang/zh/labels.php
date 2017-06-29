@@ -293,7 +293,9 @@ return [
 		'branch_school'=>'分校名称',
 		'pid'=>'所属机构',
 		'qrcode'=>'二维码',
-		'qrcode_desc'=>'二维码说明'
+		'qrcode_desc'=>'二维码说明',
+		'eable_location_checkin'=>'开启定位打卡',
+		'location_checkin_distance'=>'定位打卡距离(m)'
 	],
 	'course' => [
 		'id' => '序号',

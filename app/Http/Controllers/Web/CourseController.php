@@ -77,6 +77,20 @@ class CourseController extends Controller
         return view('web.course.course-v1_6')->with(compact(['course','org','userInfo','number']));
     }
 
+    /**
+     * 课程详情
+     */
+    public function course_v1_7($id,$user_type=0)
+    {
+        $course = BankeCourse::find($id);
+        $org = $course->org;
+        $course['share_award']=$course['share_group_buying_award']+$course['share_comment_course_award']+$org['share_comment_org_award'];
+        $course['max_award']=$course['share_award']  +$course['checkin_award'] + $course['group_buying_award'];
+        $userInfo=$this->getRandomUserInfo();
+        $number = rand(3, 5);
+        return view('web.course.course-v1_6')->with(compact(['course','org','userInfo','number','user_type']));
+    }
+
     public function getRandomUserInfo()
     {
         $allUserInfo=[

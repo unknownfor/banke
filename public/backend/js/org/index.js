@@ -56,6 +56,7 @@
                 $('.map-box').addClass('show').removeClass('hide');
                 map.resetLocation($('#lon').val(),$('#lat').val());
             });
+
             $(document).on('click','.close-map',function(){
                 $('.map-box').removeClass('show').addClass('hide');
             });
@@ -63,6 +64,14 @@
             $(document).on('click','.search-map',function(){
                 var keyWord= $('#key-word').val();
                 map.search(keyWord);
+            });
+
+            $(document).on('keydown','#key-word',function(){
+                if(event.keyCode==13) {
+                    event.stopPropagation();
+                    $('.search-map').trigger('click');
+                    return false;
+                }
             });
 
             //photoswipe   //图片信息查看  相册、视频信息查看
