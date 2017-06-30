@@ -230,4 +230,9 @@ return[
 		'destroy' 	=> 'admin.groupbuyingwords.delete',
 	],
 
+	'recruiteteacher' => [
+		'edit' 		=> 'admin.recruiteteacher.edit',
+		'destroy' 	=> 'admin.recruiteteacher.delete',
+	],
+
 ];

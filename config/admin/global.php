@@ -295,4 +295,11 @@ return[
 		'show' => false,
 		'action' => 'groupbuyingwords',
 	],
+
+	//招生老师
+	'recruiteteacher' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'recruiteteacher',
+	],
 ];

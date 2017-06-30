@@ -680,4 +680,20 @@ return [
 		'status' => '状态'
 	],
 
+	'recruiteteacher' => [
+		'id' => '序号',
+		'name' => '姓名',
+		'mobile' => '手机号',
+		'org_id'=>'机构id',
+		'org_name_typein' => '机构简称',
+		'org_branch_typein' => '分校区名称',
+		'certification_img' => '认证图片',
+		'operator_id' => '审核人',
+		'comment' => '备注',
+		'list' => '招生老师列表',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'status' => '状态'
+	],
+
 ];

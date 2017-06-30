@@ -266,6 +266,7 @@ return [
         'CommentCourseRepository' => App\Facades\CommentCourseFacade::class,
         'GroupbuyingRepository' => App\Facades\GroupbuyingFacade::class,
         'GroupbuyingWordsRepository' => App\Facades\GroupbuyingWordsFacade::class,
+        'RecruiteTeacherRepository' => App\Facades\RecruiteTeacherFacade::class,
     ],
 
 ];

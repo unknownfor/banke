@@ -174,5 +174,10 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('GroupbuyingWordsRepository', function($app){
             return new \App\Repositories\admin\GroupbuyingWordsRepository();
         });
+
+        //招生好老师
+        $this->app->singleton('RecruiteTeacherRepository', function($app){
+            return new \App\Repositories\admin\RecruiteTeacherRepository();
+        });
     }
 }

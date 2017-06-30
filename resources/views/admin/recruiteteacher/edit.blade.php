@@ -15,11 +15,11 @@
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <a href="{{url('admin/banner')}}">{!! trans('labels.breadcrumb.bannerList') !!}</a>
+	        <a href="{{url('admin/recruiteteacher')}}">{!! trans('labels.breadcrumb.recruiteteacherList') !!}</a>
 	        <i class="fa fa-angle-right"></i>
 	    </li>
 	    <li>
-	        <span>{!! trans('labels.breadcrumb.bannerEdit') !!}</span>
+	        <span>{!! trans('labels.breadcrumb.recruiteteacherEdit') !!}</span>
 	    </li>
 	</ul>
 </div>
@@ -30,7 +30,7 @@
           <div class="portlet-title">
               <div class="caption font-green-haze">
                   <i class="icon-settings font-green-haze"></i>
-                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.bannerEdit') !!}</span>
+                  <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.recruiteteacherEdit') !!}</span>
               </div>
               <div class="actions">
                   <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -45,33 +45,33 @@
 					        @endforeach
 					    </div>
 					    @endif
-              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/banner/'.$banner['id'])}}">
+              <form role="form" class="form-horizontal" method="POST" action="{{url('admin/recruiteteacher/'.$recruiteteacher['id'])}}">
               		{!! csrf_field() !!}
                   <input type="hidden" name="_method" value="PATCH">
-                  <input type="hidden" name="id" value="{{$banner['id']}}">
+                  <input type="hidden" name="id" value="{{$recruiteteacher['id']}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="title">{{trans('labels.banner.title')}}</label>
+                          <label class="col-md-1 control-label" for="title">{{trans('labels.recruiteteacher.title')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.banner.title')}}" value="{{$banner['title']}}">
+                              <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.recruiteteacher.title')}}" value="{{$recruiteteacher['title']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="type">{{trans('labels.banner.type')}}</label>
+                          <label class="col-md-1 control-label" for="type">{{trans('labels.recruiteteacher.type')}}</label>
                           <div class="col-md-3">
                               <div class="md-radio-inline">
                                   <div class="md-radio">
-                                      <input type="radio" id="type1" name="type" value="0" class="md-radiobtn" @if($banner['type'] == 0) checked @endif>
+                                      <input type="radio" id="type1" name="type" value="0" class="md-radiobtn" @if($recruiteteacher['type'] == 0) checked @endif>
                                       <label for="type1">
                                           <span></span>
                                           <span class="check"></span>
                                           <span class="box"></span> 内链 </label>
                                   </div>
                                   <div class="md-radio">
-                                      <input type="radio" id="type2" name="type" value="1" class="md-radiobtn" @if($banner['type'] == 1) checked @endif>
+                                      <input type="radio" id="type2" name="type" value="1" class="md-radiobtn" @if($recruiteteacher['type'] == 1) checked @endif>
                                       <label for="type2">
                                           <span></span>
                                           <span class="check"></span>
@@ -83,23 +83,23 @@
 
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="url">{{trans('labels.banner.url')}}</label>
+                          <label class="col-md-1 control-label" for="url">{{trans('labels.recruiteteacher.url')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="title" name="url" placeholder="{{trans('labels.banner.url')}}" value="{{$banner['url']}}">
+                              <input type="text" class="form-control" id="title" name="url" placeholder="{{trans('labels.recruiteteacher.url')}}" value="{{$recruiteteacher['url']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="sort">{{trans('labels.banner.sort')}}</label>
+                          <label class="col-md-1 control-label" for="sort">{{trans('labels.recruiteteacher.sort')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.banner.sort')}}" value="{{$banner['sort']}}">
+                              <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.recruiteteacher.sort')}}" value="{{$recruiteteacher['sort']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input form-md-line-cover">
-                          <label class="col-md-1 control-label" for="img_url">{{trans('labels.banner.img_url')}}</label>
+                          <label class="col-md-1 control-label" for="img_url">{{trans('labels.recruiteteacher.img_url')}}</label>
                           <div class="col-md-4">
                               <div class="add-img-btn">+
                                   <div class="img-size-tips">16:7的图片</div>
@@ -109,10 +109,10 @@
                       </div>
                       <div class="col-md-offset-1">
                           <ul class="imgs-list-box">
-                              @if($banner['img_url'])
+                              @if($recruiteteacher['img_url'])
                                   <li>
-                                      <a href="{{$banner['img_url']}}" data-size="435x263"></a>
-                                      <img src="{{$banner['img_url']}}@142w_80h_1e">
+                                      <a href="{{$recruiteteacher['img_url']}}" data-size="435x263"></a>
+                                      <img src="{{$recruiteteacher['img_url']}}@142w_80h_1e">
                                       <span class="remove-img">×</span>
                                   </li>
                               @endif
@@ -120,29 +120,29 @@
                           <input type="hidden" value="" name="img_url" id="img_url">
                       </div>
                       <div class="form-group form-md-line-input">
-                        <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.banner.status')}}</label>
+                        <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.recruiteteacher.status')}}</label>
                         <div class="col-md-10">
                             <div class="md-radio-inline">
                                 <div class="md-radio">
-                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($banner['status'] == config('admin.global.status.active')) checked @endif>
+                                    <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($recruiteteacher['status'] == config('admin.global.status.active')) checked @endif>
                                     <label for="status1">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.banner.active.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.recruiteteacher.active.1')}} </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($banner['status'] == config('admin.global.status.audit')) checked @endif>
+                                    <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($recruiteteacher['status'] == config('admin.global.status.audit')) checked @endif>
                                     <label for="status2">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.banner.audit.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.recruiteteacher.audit.1')}} </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($banner['status'] == config('admin.global.status.trash')) checked @endif>
+                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($recruiteteacher['status'] == config('admin.global.status.trash')) checked @endif>
                                     <label for="status3">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.banner.trash.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.recruiteteacher.trash.1')}} </label>
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                   <div class="form-actions">
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
-                              <a href="{{url('admin/banner')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                              <a href="{{url('admin/recruiteteacher')}}" class="btn default">{{trans('crud.cancel')}}</a>
                               <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
@@ -176,5 +176,5 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/banner/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/recruiteteacher/index.js')}}"></script>
 @endsection

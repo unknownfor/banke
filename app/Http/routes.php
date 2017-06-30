@@ -138,6 +138,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //开团标语
         require(__DIR__ . '/Routes/GroupbuyingWordsRoute.php');
 
+        //招生老师
+        require(__DIR__ . '/Routes/RecruiteTeacherRoute.php');
+
     });
 });
 

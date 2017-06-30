@@ -6,6 +6,8 @@ trait ActionAttributeTrait{
 
 	protected $html_build;
 
+	protected $certificationIconArr=Array('order','recruiteteacher','drawback');
+
 	/**
 	 * 查看按钮
 	 * @param bool $type
@@ -33,8 +35,8 @@ trait ActionAttributeTrait{
 	 */
 	public function getEditActionButton()
 	{
-//		if ($this->action == 'order' || $this->action == 'orgapply') {
-		if ($this->action == 'order' || $this->action == 'drawback') {
+//		if ($this->action == 'order' || $this->action == 'drawback') {
+		if (in_array($this->action,$this->certificationIconArr)) {
 			return $this;
 		}
 
@@ -141,13 +143,13 @@ trait ActionAttributeTrait{
 	}
 
 	/**
-	 * 报名认证按钮
+	 * 认证按钮
 	 * @return $this
 	 */
-	public function getOrderActionButton()
+	public function getCheckActionButton()
 	{
-		if (($this->action == 'order')) {
-			if (($this->status == config('admin.global.order.audit'))) {
+		if(in_array($this->action,$this->certificationIconArr)){
+			if (($this->status == config('admin.global.'.$this->action.'.audit'))) {
 				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.edit'))) {
 					$this->html_build .= '<a href="' . url('admin/' . $this->action . '/' . $this->id . '/edit') . '" class="btn btn-xs btn-primary tooltips" data-original-title="' . trans('crud.check') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
 				}
@@ -214,7 +216,7 @@ trait ActionAttributeTrait{
 	{
 		
 		$this->getShowActionButton($showType)
-					->getOrderActionButton()
+					->getCheckActionButton()
 					->getOrderRefuseActionButton()
 					->getResetActionButton()
 					->getEditActionButton()
