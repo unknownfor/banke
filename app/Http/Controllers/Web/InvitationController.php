@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Banke\BankeGroupbuying;
 use App\Repositories\admin;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
@@ -101,12 +100,19 @@ class InvitationController extends Controller
             }
             return response()->json(['msg' => $sss, 'status' => false]);
         }
-
-        $result = EnrolRepository::store($request);
-        if ($result) {
-            return ApiResponseService::success('', Code::SUCCESS, '预约成功');
-        }
-        return ApiResponseService::showError(Code::REGISTER_ERROR);
+        DB::transaction(function () use ($request) {
+            try{
+                $result = EnrolRepository::store($request); //添加预约
+                if($result==1) {
+                    GroupbuyingRepository::execAddGroupbuyingUsersInfo($request); //添加预约
+                }
+                DB::commit();
+                return ApiResponseService::success('', Code::SUCCESS, '预约成功');
+            }catch (Exception $e){
+                return ApiResponseService::showError(Code::REGISTER_ERROR);
+            }
+        });
+        return ApiResponseService::success('', Code::SUCCESS, '预约成功');
     }
 
     public function doEnrol_v1_6(Request $request)
@@ -124,19 +130,11 @@ class InvitationController extends Controller
             }
             return response()->json(['msg' => $sss, 'status' => false]);
         }
-        DB::transaction(function () use ($request) {
-            try{
-                $result = EnrolRepository::store($request); //添加预约
-                if($result==1) {
-                    $result = BankeGroupbuying::execAddGroupbuyingUsersInfo($request); //添加预约
-                }
-
-                DB::commit();
-                return ApiResponseService::success('', Code::SUCCESS, '预约成功');
-            }catch (Exception $e){
-                return ApiResponseService::showError(Code::REGISTER_ERROR);
-            }
-        });
+        $result = EnrolRepository::store($request);
+        if ($result) {
+            return ApiResponseService::success('', Code::SUCCESS, '预约成功');
+        }
+        return ApiResponseService::showError(Code::REGISTER_ERROR);
     }
 
     /**

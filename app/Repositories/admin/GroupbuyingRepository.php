@@ -366,13 +366,12 @@ class GroupbuyingRepository
 	 * */
 	public static function  execAddGroupbuyingUsersInfo($groupbuying){
 		$user = new BankeGroupbuyingUsers();
-		$user['group_buying_id'] =$groupbuying['gid'];
-		$user['uid'] = $groupbuying['uid'];
-		$user['order_status'] = 0;  //未报名交费
+		$user['group_buying_id'] = $groupbuying->group_buying_id;
+		$user['uid'] = $groupbuying->invitation_uid;
 		if ($user->save()) {
 			return true;
 		}
-		return true;
+		return false;
 	}
 
 }
