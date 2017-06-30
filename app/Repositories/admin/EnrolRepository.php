@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeEnrol;
+use App\Models\Banke\BankeUserProfiles;
 use Carbon\Carbon;
 use Flash;
 use Auth;
@@ -103,7 +104,7 @@ class EnrolRepository
 	}
 
 	/**
-	 * 添加配置
+	 * 添加预约。0：预约失败，1：新的预约成功，2：已有预约
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:22+0800
 	 * @param  [type]                   $request [description]
@@ -112,13 +113,30 @@ class EnrolRepository
 	public function store($request)
 	{
 		$role = new BankeEnrol;
-
-		if ($role->fill($request->all())->save()) {
+		$param=$request->all();
+		$mobile=$param['mobile'];
+		if($param['course_id']) {
+			$oldEnrol = BankeEnrol::where(['mobile' =>$mobile, 'course_id' =>$param['course_id']]);
+			if($oldEnrol->count()>0){
+				Flash::success(trans('alerts.enrol.created_success'));
+				return 2;
+			}
+		}
+		$user=BankeUserProfiles::where('mobile',$mobile)->first();
+		if($user->uid){
+			$param['uid']=$user->uid;
+			$name=$user->name;
+			if($user->certification_status==2) {
+				$name=$user->authentication['real_name'];
+			}
+			$param['name']=$name;
+		}
+		if ($role->fill($param)->save()) {
 			Flash::success(trans('alerts.enrol.created_success'));
-			return true;
+			return 1;
 		}
 		Flash::error(trans('alerts.enrol.created_error'));
-		return false;
+		return 0;
 	}
 	/**
 	 * 修改配置视图

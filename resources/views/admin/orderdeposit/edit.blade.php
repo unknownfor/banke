@@ -65,9 +65,9 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" >{{trans('labels.orderdeposit.org_short_name')}}</label>
+                          <label class="col-md-1 control-label" >{{trans('labels.orderdeposit.org_name')}}</label>
                           <div class="col-md-9">
-                              <input type="text" readonly class="form-control" name="org_short_name" value="{{$orderdeposit['org_short_name']}}">
+                              <input type="text" readonly class="form-control" name="org_name" value="{{$orderdeposit['org_name']}}">
                           </div>
                       </div>
 
@@ -81,7 +81,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="pay_type">{{trans('labels.orderdeposit.pay_type')}}</label>
                           <div class="col-md-9">
-                              @if($orderdeposit['pay_type']==0)
+                              @if($orderdeposit['pay_type']==1)
                                   <img src="http://pic.hisihi.com/2017-06-15/1497519494878934.png">
                                   @else
                                   <img src="http://pic.hisihi.com/2017-06-15/1497519494779914.png">

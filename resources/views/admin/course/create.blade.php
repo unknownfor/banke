@@ -169,13 +169,13 @@
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="comment_award">{{trans('labels.course.comment_award')}}</label>--}}
-                                {{--<div class="col-md-9">--}}
-                                    {{--<input type="number" min="0" max="100" step="0.1" class="form-control" id="comment_award" name="comment_award" placeholder="{{trans('labels.course.comment_award')}}">--}}
-                                    {{--<div class="form-control-focus"> </div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="checkin_award_teacher">{{trans('labels.course.z_award_amount_teacher')}}(%)</label>
+                                <div class="col-md-4">
+                                    <input type="text" class="form-control" id="z_award_amount_teacher" name="z_award_amount_teacher" placeholder="{{trans('labels.course.z_award_amount_teacher')}}" value="3">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
 
 
 

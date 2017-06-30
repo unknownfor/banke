@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Banke\BankeCashBackUser;
-use App\Models\Banke\BankeCourse;
-use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeGroupbuying;
-use GroupbuyingWordsRepository;
 use App\Repositories\admin;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
@@ -20,8 +16,10 @@ use UserRepository;
 use CourseRepository;
 use EnrolRepository;
 use GroupbuyingRepository;
+use GroupbuyingWordsRepository;
 use OrderRepository;
 use OrgSummaryRepository;
+use DB;
 
 class InvitationController extends Controller
 {
@@ -126,12 +124,19 @@ class InvitationController extends Controller
             }
             return response()->json(['msg' => $sss, 'status' => false]);
         }
+        DB::transaction(function () use ($request) {
+            try{
+                $result = EnrolRepository::store($request); //添加预约
+                if($result==1) {
+                    $result = BankeGroupbuying::execAddGroupbuyingUsersInfo($request); //添加预约
+                }
 
-        $result = EnrolRepository::store($request);
-        if ($result) {
-            return ApiResponseService::success('', Code::SUCCESS, '预约成功');
-        }
-        return ApiResponseService::showError(Code::REGISTER_ERROR);
+                DB::commit();
+                return ApiResponseService::success('', Code::SUCCESS, '预约成功');
+            }catch (Exception $e){
+                return ApiResponseService::showError(Code::REGISTER_ERROR);
+            }
+        });
     }
 
     /**

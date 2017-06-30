@@ -50,7 +50,7 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
           render:function(data){
             var imgUrl='http://pic.hisihi.com/2017-06-15/1497519494779914.png';
-            if (data == 0) {
+            if (data == 1) {
                imgUrl='http://pic.hisihi.com/2017-06-15/1497519494878934.png';
             }
             return '<img src="'+imgUrl+'" class="pay-type-icon"/>'

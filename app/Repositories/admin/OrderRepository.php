@@ -253,7 +253,7 @@ class OrderRepository
 
 						$this->execUpadateUserInfo($order,$userProfile); //更新用户信息
 
-						$this->execUpadateGroupbuyingUsersInfo($order);//更新参团信息
+//						$this->execUpadateGroupbuyingUsersInfo($order);//更新参团信息 v1.7之后，报名预约就表示参加团
 
 						$this->execUpadateInvitorInfo($order);//更新推荐用户信息，并发送app内消息
 
@@ -369,7 +369,7 @@ class OrderRepository
 	 * @date   2016-04-13T11:51:19+0800
 	 * @param  [type] $order [订单]
 	 * */
-	private function  execUpadateGroupbuyingUsersInfo($order){
+	public function  execUpadateGroupbuyingUsersInfo($order){
 		$user = new BankeGroupbuyingUsers();
 		$enrol= new BankeEnrol();
 		$mobile=$order->mobile;

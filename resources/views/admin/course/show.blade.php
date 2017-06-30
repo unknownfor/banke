@@ -153,6 +153,14 @@
                           </div>
                       </div>
 
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="z_award_amount_teacher">{{trans('labels.course.z_award_amount_teacher')}}(%)</label>
+                          <div class="col-md-4">
+                              <input type="text" class="form-control" readonly id="z_award_amount_teacher" name="z_award_amount_teacher" placeholder="{{trans('labels.course.z_award_amount_teacher')}}" value="{{$course['z_award_amount_teacher']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
 
 
                       <div class="form-group form-md-line-input">

@@ -7,7 +7,7 @@ use Flash;
 use DB;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
-use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeEnrol;
 
 /**
 * 团购列表
@@ -355,6 +355,24 @@ class GroupbuyingRepository
 			}
 		}
 		return ['record'=>$allRecord,'total'=>$count];
+	}
+
+
+	/*
+	 * *添加参团信息
+	 * @author jimmy
+	 * @date   2016-04-13T11:51:19+0800
+	 * @param  [type] $groupbuying [订单]
+	 * */
+	public static function  execAddGroupbuyingUsersInfo($groupbuying){
+		$user = new BankeGroupbuyingUsers();
+		$user['group_buying_id'] =$groupbuying['gid'];
+		$user['uid'] = $groupbuying['uid'];
+		$user['order_status'] = 0;  //未报名交费
+		if ($user->save()) {
+			return true;
+		}
+		return true;
 	}
 
 }

@@ -68,7 +68,7 @@ Route::group(['prefix'=>"v1.5/share",'namespace'=>'Web'],function(){
     //机构评论分享页面
     Route::get('/commentorg/{course_id}/{uid}/{comment_id}', 'OrgController@share_comment_org_v1_5');
 
-    //开团分享、心得分享页面 (预约页面)
+    //开团分享、心得分享页面 (预约页面) type 1:心得分享，  2：机构评论分享  ，3：开团分享      id：记录id
     Route::get('/enrol/{uid}/{cid}/{typeid}/{id}', 'InvitationController@enrol_v1_5');
 
     //规则页面

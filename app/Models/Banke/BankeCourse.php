@@ -18,7 +18,11 @@ class BankeCourse extends Model
         'share_comment_course_award',
         'share_group_buying_counts',
         'share_comment_course_counts',
-        'z_award_amount','check_in_days','comment_award'];
+        'z_award_amount',
+        'z_award_amount_teacher',
+        'check_in_days',
+        'comment_award'
+    ];
 
     private $action;
 

@@ -9,6 +9,7 @@ class BankeEnrol extends Model
     //ԤԼ
     use ActionAttributeTrait;
     protected $fillable = [
+        'name',
         'status',
         'operator_uid',
         'processing_result',
