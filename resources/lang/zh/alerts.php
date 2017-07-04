@@ -236,4 +236,13 @@ return [
         'deleted_error' => '删除开团标语失败',
     ],
 
+    'moneystrategy' => [
+        'created_success'   => '创建赚钱攻略成功.',
+        'created_error'     => '创建赚钱攻略失败.',
+        'updated_success'   => '编辑赚钱攻略成功.',
+        'updated_error'     => '编辑赚钱攻略失败.',
+        'deleted_success' => '删除赚钱攻略成功',
+        'deleted_error' => '删除赚钱攻略失败',
+    ],
+
 ];

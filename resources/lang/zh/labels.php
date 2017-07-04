@@ -224,6 +224,10 @@ return [
 		'groupbuyingwordsCreate' => '<i class="fa fa-list"></i> 添加开团标语',
 		'groupbuyingwordsEdit' => '<i class="fa fa-list"></i> 编辑开团标语',
 
+		'moneystrategyList' => '<i class="fa fa-list"></i> 赚钱攻略列表',
+		'moneystrategyCreate' => '<i class="fa fa-list"></i> 添加赚钱攻略',
+		'moneystrategyEdit' => '<i class="fa fa-list"></i> 编辑赚钱攻略',
+
 
 	],
 	'dict' => [
@@ -691,6 +695,20 @@ return [
 		'operator_id' => '审核人',
 		'comment' => '备注',
 		'list' => '招生老师列表',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'status' => '状态'
+	],
+
+	'moneystrategy' => [
+		'id' => '序号',
+		'title' => '标题',
+		'cover_img' => '封面',
+		'type'=>'目标用户',
+		'content' => '内容',
+		'author' => '作者',
+		'sort' => '排序',
+		'list' => '攻略列表',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'status' => '状态'

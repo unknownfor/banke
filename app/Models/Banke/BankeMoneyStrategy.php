@@ -4,13 +4,22 @@ namespace App\Models\Banke;
 use App\Models\ActionAttributeTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class BankeBanner extends Model
+class BankeMoneyStrategy extends Model
 {
     // ’ı«Æπ•¬‘
     protected $table = 'banke_money_strategy';
     use ActionAttributeTrait;
     protected $fillable = [
-        'title', 'content', 'sort', 'status','img_url','title'
+        'title',
+        'content',
+        'sort',
+        'status',
+        'type',
+        'cover_img',
+        'author',
+        'created_at',
+        'updated_at',
+        'author'
     ];
 
     private $action;

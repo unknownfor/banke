@@ -235,4 +235,9 @@ return[
 		'destroy' 	=> 'admin.recruiteteacher.delete',
 	],
 
+	'moneystrategy' => [
+		'create' 	=> 'admin.moneystrategy.create',
+		'edit' 		=> 'admin.moneystrategy.edit',
+		'destroy' 	=> 'admin.moneystrategy.delete',
+	],
 ];
