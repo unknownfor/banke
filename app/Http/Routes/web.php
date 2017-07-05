@@ -134,7 +134,7 @@ Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
 Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
 
     //v1.6课程开团
-    Route::get('/course/{id}/{user_type}', 'CourseController@course_v1_7');
+    Route::get('/course/{id}', 'CourseController@course_v1_7');
 
 });
 
@@ -143,8 +143,10 @@ Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
 Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
 
     //课程分享页面
-    Route::get('/course/{id}/{user_type}', 'CourseController@share_course_v1_6');
+    Route::get('/course/{id}', 'CourseController@share_course_v1_7');
 
+    //开团分享、心得分享页面 (预约页面) type 1:心得分享，  2：机构评论分享  ，3：开团分享      id：记录id
+    Route::get('/enrol/{uid}/{cid}/{typeid}/{id}', 'InvitationController@enrol_v1_7');
 });
 
 

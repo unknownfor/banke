@@ -18,9 +18,7 @@
 </head>
 <body>
 <!--课程头部-->
-<div class="head container"
-     data-course-id="{{$course['id']}}"
-     data-org-id="{{$org['id']}}">
+<div class="head container">
     <div class="head-left">
         <img src="{{$course['cover']}}@70h_70w_2e" />
     </div>
@@ -37,26 +35,6 @@
         </div>
     </div>
 </div>
-<div class="slogen">以下小伙伴正在发起团购，立即参团享返现</div>
-<div class="join container">
-    <div class="join-left">
-        <img src="{{$userInfo['img']}}" />
-    </div>
-    <div class="join-middle">
-        <div class="join-name">{{$userInfo['name']}}</div>
-        <div class="join-num">已有<span>{{$number}}人</span>预约参团</div>
-    </div>
-    <div class="join-right">
-        <div id="join-btn">立即参团</div>
-    </div>
-</div>
-
-<div class="school container ">
-    <div class="container-head">
-        <div class="more-section">最近校区</div>
-        <div class="more-school">更多校区<i class="iconfont">&#xf0071;</i></div>
-    </div>
-</div>
 
 <div class="org-detail container">
     <div class="head-left">
@@ -65,13 +43,14 @@
     <div class="head-middle">
         <div class="head-name">{{$org['name']}}</div>
         <div class="head-tips">
+            {{--优势标签--}}
             @foreach($org->tags as $val)
                 <span>{{$val['name']}}</span>
             @endforeach
         </div>
     </div>
 </div>
-
+<!--地址详情-->
 <div class="address container">
     <div class="address-box container-box">
         <div class="address-info">
@@ -85,7 +64,7 @@
         </div>
     </div>
 </div>
-
+<!--课程介绍-->
 @if($course['details'])
     <div class="class-info container">
         <div class="container-head">
@@ -96,12 +75,12 @@
         </div>
     </div>
 @endif
-
 <div class="call-mask hide">
     <div class="call-container">
         @if($org['tel_phone'])
             <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
         @endif
+        {{--假设机构只有一个电话--}}
         @if($org['tel_phone2'])
             <div class="call-box"><a class="" href="tel:{{$org['tel_phone2']}}">{{$org['tel_phone2']}}</a></div>
         @endif
@@ -109,6 +88,7 @@
     </div>
 </div>
 
+@include('web.layout.downloadbar')
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>

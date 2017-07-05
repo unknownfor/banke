@@ -80,7 +80,7 @@ class CourseController extends Controller
     /**
      * 课程详情
      */
-    public function course_v1_7($id,$user_type=0)
+    public function course_v1_7($id)
     {
         $course = BankeCourse::find($id);
         $org = $course->org;
@@ -88,7 +88,20 @@ class CourseController extends Controller
         $course['max_award']=$course['share_award']  +$course['checkin_award'] + $course['group_buying_award'];
         $userInfo=$this->getRandomUserInfo();
         $number = rand(3, 5);
-        return view('web.course.course-v1_6')->with(compact(['course','org','userInfo','number','user_type']));
+        return view('web.course.course-v1_7')->with(compact(['course','org','userInfo','number']));
+    }
+
+
+    /**
+     * 分享机构详情
+     */
+    public function share_course_v1_7($id)
+    {
+        $course = BankeCourse::find($id);
+        $org = $course->org;
+        $course['share_award']=$course['share_group_buying_award']+$course['share_comment_course_award']+$org['share_comment_org_award'];
+        $course['max_award']=$course['share_award']+$course['checkin_award']+$course['group_buying_award'];
+        return view('web.course.share_course-v1_7')->with(compact(['course','org']));
     }
 
     public function getRandomUserInfo()
