@@ -19,6 +19,8 @@ return[
 		'destroy' => -1
 	],
 
+	'test'=>'123',
+
 	/*认证状态  此处弄反，和其他的不一样
 	* audit 	正常
 	* active 	待审核
@@ -65,6 +67,15 @@ return[
 		['key'=>'COMMENT_COURSE','desc' => '课程心得奖励'],
 		['key'=>'SHARE_GROUP_BUYING','desc' => '开团分享'],
 	],
+
+	'moneynews_business_type' => [
+		'CHECK_IN_SUCCESS' => '打卡',
+		'ENROL_SUCCESS' => '报名',
+		'INVITE_FRIEND_ENROL_SUCCESS' => '邀请好友报名',
+		'INVITE_STUDENT_ENROL_SUCCESS'=>'邀请学生报名',
+		'SHARE_GROUP_BUYING' => '开团分享',
+	],
+
 	//角色
 	'role' => [
 		// 控制是否显示查看按钮
@@ -315,5 +326,12 @@ return[
 		// 控制是否显示查看按钮
 		'show' => false,
 		'action' => 'alertbox',
+	],
+
+	//赚钱动态
+	'moneynews' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'moneynews',
 	],
 ];

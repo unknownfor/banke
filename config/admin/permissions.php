@@ -246,4 +246,10 @@ return[
 		'edit' 		=> 'admin.alertbox.edit',
 		'destroy' 	=> 'admin.alertbox.delete',
 	],
+
+	'moneynews' => [
+		'create' 	=> 'admin.moneynews.create',
+		'edit' 		=> 'admin.moneynews.edit',
+		'destroy' 	=> 'admin.moneynews.delete',
+	],
 ];

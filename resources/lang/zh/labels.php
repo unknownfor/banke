@@ -232,6 +232,10 @@ return [
 		'alertboxCreate' => '<i class="fa fa-list"></i> 添加app弹窗提示',
 		'alertboxEdit' => '<i class="fa fa-list"></i> 编辑app弹窗提示',
 
+		'moneynewsList' => '<i class="fa fa-list"></i> 赚钱动态列表',
+		'moneynewsCreate' => '<i class="fa fa-list"></i> 添加赚钱动态',
+		'moneynewsEdit' => '<i class="fa fa-list"></i> 编辑赚钱动态',
+
 
 	],
 	'dict' => [
@@ -727,6 +731,22 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'status' => '状态'
+	],
+
+	'moneynews' => [
+		'id' => '序号',
+		'business_type' => '类型',
+		'amount'=>'奖励金额',
+		'cut_amount' => '优惠金额',
+		'user_name' => '用户名',
+		'invited_name' => '被邀请人',
+		'short_name' => '机构',
+		'updated_at' => '修改时间',
+		'created_at' => '创建时间',
+		'sort' => '排序',
+		'status' => '状态',
+		'from' => '来源',
+		'list' => '赚钱动态列表'
 	],
 
 ];
