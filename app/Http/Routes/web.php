@@ -137,7 +137,7 @@ Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
     Route::get('/course/{id}', 'CourseController@course_v1_7');
 
     //赚钱攻略文章
-    Route::get('/moneystratege/{id}', 'MoneyStrategyController@money_stratege_v1_7');
+    Route::get('/moneystrategy/{id}', 'MoneyStrategyController@money_strategy_v1_7');
 
 });
 
@@ -152,7 +152,7 @@ Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
     Route::get('/enrol/{uid}/{cid}/{typeid}/{id}', 'InvitationController@enrol_v1_7');
 
     //赚钱攻略文章
-    Route::get('/moneystratege/{id}', 'MoneyStrategyController@share_money_stratege_v1_7');
+    Route::get('/moneystrategy/{id}', 'MoneyStrategyController@share_money_strategy_v1_7');
 });
 
 
