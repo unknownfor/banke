@@ -133,8 +133,11 @@ Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
 //1.7
 Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
 
-    //v1.6课程开团
+    //课程开团
     Route::get('/course/{id}', 'CourseController@course_v1_7');
+
+    //赚钱攻略文章
+    Route::get('/moneystratege/{id}', 'MoneyStrategyController@money_stratege_v1_7');
 
 });
 
@@ -147,6 +150,9 @@ Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
 
     //开团分享、心得分享页面 (预约页面) type 1:心得分享，  2：机构评论分享  ，3：开团分享      id：记录id
     Route::get('/enrol/{uid}/{cid}/{typeid}/{id}', 'InvitationController@enrol_v1_7');
+
+    //赚钱攻略文章
+    Route::get('/moneystratege/{id}', 'MoneyStrategyController@share_money_stratege_v1_7');
 });
 
 
