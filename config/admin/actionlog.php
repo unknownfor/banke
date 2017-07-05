@@ -6,4 +6,6 @@
 		'\App\Models\Image',
 		'\App\Models\Role',
 		'\App\Models\Permission',
+		'\App\Models\Banke\BankeCashBackUser',
+		'\App\Models\Banke\BankeWithdraw',
 	];

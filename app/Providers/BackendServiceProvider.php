@@ -184,5 +184,10 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('RecruiteTeacherRepository', function($app){
             return new \App\Repositories\admin\RecruiteTeacherRepository();
         });
+
+        //app弹窗提示
+        $this->app->singleton('AlertBoxRepository', function($app){
+            return new \App\Repositories\admin\AlertBoxRepository();
+        });
     }
 }

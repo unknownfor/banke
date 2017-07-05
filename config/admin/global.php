@@ -309,4 +309,11 @@ return[
 		'show' => false,
 		'action' => 'moneystrategy',
 	],
+
+	//app提示
+	'alertbox' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'alertbox',
+	],
 ];

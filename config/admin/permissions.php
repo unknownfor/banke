@@ -240,4 +240,10 @@ return[
 		'edit' 		=> 'admin.moneystrategy.edit',
 		'destroy' 	=> 'admin.moneystrategy.delete',
 	],
+
+	'alertbox' => [
+		'create' 	=> 'admin.alertbox.create',
+		'edit' 		=> 'admin.alertbox.edit',
+		'destroy' 	=> 'admin.alertbox.delete',
+	],
 ];

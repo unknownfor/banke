@@ -704,11 +704,22 @@ return [
 		'id' => '序号',
 		'title' => '标题',
 		'cover_img' => '封面',
-		'type'=>'目标用户',
+		'user_type'=>'目标用户',
 		'content' => '内容',
 		'author' => '作者',
 		'sort' => '排序',
 		'list' => '攻略列表',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'status' => '状态'
+	],
+
+	'alertbox' => [
+		'id' => '序号',
+		'title' => '标题',
+		'user_type'=>'目标用户',
+		'content' => '内容',
+		'list' => '提示列表',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'status' => '状态'

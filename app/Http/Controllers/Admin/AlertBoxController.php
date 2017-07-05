@@ -6,17 +6,17 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use MoneyStrategyRepository;
-use App\Http\Requests\MoneyStrategyRequest;
+use AlertBoxRepository;
+use App\Http\Requests\AlertBoxRequest;
 
-class MoneyStrategyController extends Controller {
+class AlertBoxController extends Controller {
 
     /**
-     * 赚钱攻略列表
+     * app弹窗提示列表
      */
     public function index()
     {
-        return view("admin.moneystrategy.list");
+        return view("admin.alertbox.list");
     }
 
     /**
@@ -27,7 +27,7 @@ class MoneyStrategyController extends Controller {
      */
     public function ajaxIndex()
     { 
-        $data = MoneyStrategyRepository::ajaxIndex();
+        $data = AlertBoxRepository::ajaxIndex();
         return response()->json($data);
     }
 
@@ -39,24 +39,24 @@ class MoneyStrategyController extends Controller {
      */
     public function create()
     {
-        return view('admin.moneystrategy.create');
+        return view('admin.alertbox.create');
     }
 
     /**
-     * 添加赚钱攻略
+     * 添加app弹窗提示
      * @author shaolei
      * @date   2016-04-13T11:26:35+0800
      * @param  DictRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(MoneyStrategyRequest $request)
+    public function store(AlertBoxRequest $request)
     {  
-        MoneyStrategyRepository::store($request);
-        return redirect('admin/moneystrategy');
+        AlertBoxRepository::store($request);
+        return redirect('admin/alertbox');
     }
 
     /**
-     * 修改赚钱攻略视图
+     * 修改app弹窗提示视图
      * @author shaolei
      * @date   2016-04-13T11:26:42+0800
      * @param  [type]                   $id [description]
@@ -64,25 +64,25 @@ class MoneyStrategyController extends Controller {
      */
     public function edit($id)
     {
-        $moneystrategy = MoneyStrategyRepository::edit($id);
-        return view('admin.moneystrategy.edit')->with(compact(['moneystrategy']));
+        $alertbox = AlertBoxRepository::edit($id);
+        return view('admin.alertbox.edit')->with(compact(['alertbox']));
     }
     /**
-     * 修改赚钱攻略
+     * 修改app弹窗提示
      * @author shaolei
      * @date   2016-04-13T11:26:57+0800
      * @param  DictRequest        $request [description]
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(MoneyStrategyRequest $request,$id)
+    public function update(AlertBoxRequest $request,$id)
     {
-        MoneyStrategyRepository::update($request,$id);
-        return redirect('admin/moneystrategy');
+        AlertBoxRepository::update($request,$id);
+        return redirect('admin/alertbox');
     }
 
     /**
-     * 修改赚钱攻略状态
+     * 修改app弹窗提示状态
      * @author shaolei
      * @date   2016-04-13T11:27:23+0800
      * @param  [type]                   $id     [description]
@@ -91,12 +91,12 @@ class MoneyStrategyController extends Controller {
      */
     public function mark($id,$status)
     {
-        MoneyStrategyRepository::mark($id,$status);
-        return redirect('admin/moneystrategy');
+        AlertBoxRepository::mark($id,$status);
+        return redirect('admin/alertbox');
     }
 
     /**
-     * 删除赚钱攻略
+     * 删除app弹窗提示
      * @author shaolei
      * @date   2016-04-13T11:27:34+0800
      * @param  [type]                   $id [description]
@@ -104,7 +104,7 @@ class MoneyStrategyController extends Controller {
      */
     public function destroy($id)
     {
-        MoneyStrategyRepository::destroy($id);
-        return redirect('admin/moneystrategy');
+        AlertBoxRepository::destroy($id);
+        return redirect('admin/alertbox');
     }
 }

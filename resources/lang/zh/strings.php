@@ -184,15 +184,16 @@ return [
 		'trash' => ['fa fa-trash','未通过'],
 	],
 
-	'moneystrategy' => [
-		'audit' => ['fa fa-paw','未审核'],
-		'active' => ['fa fa-navicon','审核通过'],
-		'trash' => ['fa fa-trash','未通过'],
-	],
 
-	'moneystrategy_user_type' => [
+	'user_type' => [
 		'active' => ['fa fa-paw','新学员'],
 		'audit' => ['fa fa-navicon','老学员'],
 		'trash' => ['fa fa-trash','招生老师'],
+	],
+
+	'common_status' => [
+		'audit' => ['fa fa-paw','未审核'],
+		'active' => ['fa fa-navicon','审核通过'],
+		'trash' => ['fa fa-trash','未通过'],
 	],
 ];

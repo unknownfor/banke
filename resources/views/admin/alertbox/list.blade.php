@@ -13,7 +13,7 @@
           <i class="fa fa-angle-right"></i>
       </li>
       <li>
-          <span>{!! trans('labels.breadcrumb.moneystrategyList') !!}</span>
+          <span>{!! trans('labels.breadcrumb.alertboxList') !!}</span>
       </li>
   </ul>
 </div>
@@ -26,12 +26,12 @@
           <div class="portlet-title">
             <div class="caption">
               <i class="icon-settings font-dark"></i>
-              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.moneystrategy.list')}}</span>
+              <span class="caption-subject font-dark sbold uppercase">{{trans('labels.alertbox.list')}}</span>
             </div>
             <div class="actions">
               <div class="btn-group">
-                @permission(config('admin.permissions.moneystrategy.create'))
-                <a href="{{url('admin/moneystrategy/create')}}" class="btn btn-success btn-outline btn-circle">
+                @permission(config('admin.permissions.alertbox.create'))
+                <a href="{{url('admin/alertbox/create')}}" class="btn btn-success btn-outline btn-circle">
                   <i class="fa fa-user-plus"></i>
                   <span class="hidden-xs">{{trans('crud.create')}}</span>
                 </a>
@@ -56,7 +56,7 @@
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="type">
                                 <option value="" data-icon="fa-glass icon-success">用户类型....</option>
-                                @if(trans('strings.moneystrategy_user_type'))
+                                @if(trans('strings.alertbox_user_type'))
                                     @foreach(trans('strings.user_type') as $status_key => $status_value)
                                         <option value="{{config('admin.global.certification_status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                     @endforeach
@@ -77,11 +77,11 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
-                          <th width="15%"> {{ trans('labels.moneystrategy.title') }} </th>
-                          <th> {{ trans('labels.moneystrategy.user_type') }} </th>
-                          <th> {{ trans('labels.moneystrategy.sort') }} </th>
-                          <th> {{ trans('labels.moneystrategy.status') }} </th>
-                          <th width="15%"> {{ trans('labels.moneystrategy.created_at') }} </th>
+                          <th width="15%"> {{ trans('labels.alertbox.title') }} </th>
+                          <th> {{ trans('labels.alertbox.user_type') }} </th>
+                          <th> {{ trans('labels.alertbox.sort') }} </th>
+                          <th> {{ trans('labels.alertbox.status') }} </th>
+                          <th width="15%"> {{ trans('labels.alertbox.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
@@ -105,7 +105,7 @@
 <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/moneystrategy/list.js')}}"></script>
+<script type="text/javascript" src="{{asset('backend/js/alertbox/list.js')}}"></script>
 <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {

@@ -245,4 +245,13 @@ return [
         'deleted_error' => '删除赚钱攻略失败',
     ],
 
+    'alertbox' => [
+        'created_success'   => '创建提示成功.',
+        'created_error'     => '创建提示失败.',
+        'updated_success'   => '编辑提示成功.',
+        'updated_error'     => '编辑提示失败.',
+        'deleted_success' => '删除提示成功',
+        'deleted_error' => '删除提示失败',
+    ],
+
 ];

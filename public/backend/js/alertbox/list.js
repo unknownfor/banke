@@ -7,7 +7,7 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/moneystrategy/ajaxIndex',
+        'url' : '/admin/alertbox/ajaxIndex',
         "data": function ( d ) {
           d.status = $('.filter select[name="status"] option:selected').val();
           d.type = $('.filter select[name="type"] option:selected').val();
