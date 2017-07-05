@@ -20,7 +20,7 @@ class MoneyStrategyRepository
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
-		$type = request('type' ,'');
+		$type = request('user_type' ,'');
 		$status = request('status' ,'');
 		$strategy = new BankeMoneyStrategy;
 
@@ -32,7 +32,7 @@ class MoneyStrategyRepository
 
 		/*用户类型搜索*/
 		if ($type !=null) {
-			$strategy = $strategy->where('type', $type);
+			$strategy = $strategy->where('user_type', $type);
 		}
 
 		$count = $strategy->count();

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class MoneyStrategyRequest extends Request
+class AlertBoxRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,8 +27,6 @@ class MoneyStrategyRequest extends Request
             'id' => 'numeric',
             'title' => 'required',
             'content' => 'required',
-            'cover_img' => 'required',
-            'author' => 'required',
             'user_type' => 'required',
         ];
     }
@@ -48,8 +46,6 @@ class MoneyStrategyRequest extends Request
             'id'            => trans('labels.id'),
             'title'          => trans('labels.moneystrategy.title'),
             'content'        => trans('labels.moneystrategy.content'),
-            'cover_img'        => trans('labels.moneystrategy.cover_img'),
-            'author'        => trans('labels.moneystrategy.author'),
             'user_type'        => trans('labels.moneystrategy.user_type'),
         ];
     }

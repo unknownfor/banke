@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
-                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="type">
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="user_type">
                                 <option value="" data-icon="fa-glass icon-success">用户类型....</option>
                                 @if(trans('strings.alertbox_user_type'))
                                     @foreach(trans('strings.user_type') as $status_key => $status_value)
@@ -77,9 +77,9 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
-                          <th width="15%"> {{ trans('labels.alertbox.title') }} </th>
+                          <th width="18%"> {{ trans('labels.alertbox.title') }} </th>
                           <th> {{ trans('labels.alertbox.user_type') }} </th>
-                          <th> {{ trans('labels.alertbox.sort') }} </th>
+                          <th> {{ trans('labels.alertbox.content') }} </th>
                           <th> {{ trans('labels.alertbox.status') }} </th>
                           <th width="15%"> {{ trans('labels.alertbox.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>

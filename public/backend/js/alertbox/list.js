@@ -10,7 +10,7 @@ var TableDatatablesAjax = function() {
         'url' : '/admin/alertbox/ajaxIndex',
         "data": function ( d ) {
           d.status = $('.filter select[name="status"] option:selected').val();
-          d.type = $('.filter select[name="type"] option:selected').val();
+          d.user_type = $('.filter select[name="user_type"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -41,8 +41,8 @@ var TableDatatablesAjax = function() {
             },
         },
         {
-          "data": "sort",
-          "name" : "sort",
+          "data": "content",
+          "name" : "content",
           "orderable" : false,
         },
         { 
@@ -51,7 +51,7 @@ var TableDatatablesAjax = function() {
         	"orderable" : true,
           render:function(data){
             if (data == 1) {
-              return '<span class="label label-success"> 正常 </span>';
+              return '<span class="label label-success"> 审核通过 </span>';
             }else if(data == 0){
               return '<span class="label label-warning"> 未审核 </span>';
             }else{

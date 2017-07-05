@@ -118,21 +118,21 @@
                                             <label for="status1">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.moneystrategy.active.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.common_status.active.1')}} </label>
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.moneystrategy.audit.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.common_status.audit.1')}} </label>
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" >
                                             <label for="status3">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.moneystrategy.trash.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.common_status.trash.1')}} </label>
                                         </div>
                                     </div>
                                 </div>
