@@ -20,7 +20,7 @@ class AlertBoxRepository
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
-		$type = request('type' ,'');
+		$type = request('user_type' ,'');
 		$status = request('status' ,'');
 		$strategy = new BankeAlertBox;
 
@@ -32,14 +32,14 @@ class AlertBoxRepository
 
 		/*用户类型搜索*/
 		if ($type !=null) {
-			$strategy = $strategy->where('type', $type);
+			$strategy = $strategy->where('user_type', $type);
 		}
 
 		$count = $strategy->count();
 
 
 		$strategy = $strategy->offset($start)->limit($length);
-		$strategy = $strategy->orderBy("sort", "desc")->get();
+		$strategy = $strategy->orderBy("id", "desc")->get();
                
 
 		if ($strategy) {
@@ -67,10 +67,10 @@ class AlertBoxRepository
 	{   
 		$strategy = new BankeAlertBox;
 		if ($strategy->fill($request->all())->save()) {
-			Flash::success(trans('alerts.moneystrategy.created_success'));
+			Flash::success(trans('alerts.alertbox.created_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.moneystrategy.created_error'));
+		Flash::error(trans('alerts.alertbox.created_error'));
 		return false;
 	}
 	/**
@@ -102,10 +102,10 @@ class AlertBoxRepository
 		$strategy = BankeAlertBox::find($id);
 		if ($strategy) {
 			if ($strategy->fill($request->all())->save()) {
-				Flash::success(trans('alerts.moneystrategy.updated_success'));
+				Flash::success(trans('alerts.alertbox.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.moneystrategy.updated_error'));
+			Flash::error(trans('alerts.alertbox.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -125,10 +125,10 @@ class AlertBoxRepository
 		if ($strategy) {
 			$strategy->status = $status;
 			if ($strategy->save()) {
-				Flash::success(trans('alerts.moneystrategy.updated_success'));
+				Flash::success(trans('alerts.alertbox.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.moneystrategy.updated_error'));
+			Flash::error(trans('alerts.alertbox.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -145,10 +145,10 @@ class AlertBoxRepository
 	{
 		$isDelete = BankeAlertBox::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.moneystrategy.deleted_success'));
+			Flash::success(trans('alerts.alertbox.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.moneystrategy.deleted_error'));
+		Flash::error(trans('alerts.alertbox.deleted_error'));
 		return false;
 	}
 

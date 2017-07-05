@@ -228,6 +228,10 @@ return [
 		'moneystrategyCreate' => '<i class="fa fa-list"></i> 添加赚钱攻略',
 		'moneystrategyEdit' => '<i class="fa fa-list"></i> 编辑赚钱攻略',
 
+		'alertboxList' => '<i class="fa fa-list"></i> app弹窗提示列表',
+		'alertboxCreate' => '<i class="fa fa-list"></i> 添加app弹窗提示',
+		'alertboxEdit' => '<i class="fa fa-list"></i> 编辑app弹窗提示',
+
 
 	],
 	'dict' => [
