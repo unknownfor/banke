@@ -141,6 +141,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //招生老师
         require(__DIR__ . '/Routes/RecruiteTeacherRoute.php');
 
+        //赚钱攻略
+        require(__DIR__ . '/Routes/MoneyStrategyRoute.php');
+
     });
 });
 

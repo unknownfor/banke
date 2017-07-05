@@ -302,4 +302,11 @@ return[
 		'show' => false,
 		'action' => 'recruiteteacher',
 	],
+
+	//赚钱攻略
+	'moneystrategy' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'moneystrategy',
+	],
 ];
