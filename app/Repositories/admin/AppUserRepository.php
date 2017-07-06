@@ -14,6 +14,7 @@ use Auth;
 use League\Flysystem\Exception;
 use App\Uuid;
 use Illuminate\Support\Facades\Log;
+use MoneyNewsRepository;
 
 /**
 * app用户仓库
@@ -597,8 +598,8 @@ class AppUserRepository
 
 	/*
 	 * 更新用户的余额信息,更新用户信息以及添加余额变动记录
-	 * 情况分为两大种 ：任务(1) , 打卡(2) cms 中没有,提现（3），惩罚（4）
-	 * 任务奖励包括：
+	 * $type 情况分为4大种 ：任务(1) , 打卡(2) cms 中没有,提现（3），惩罚（4）
+	 * $taskType 任务奖励包括：
 	 * 1：认证奖励，注册奖励金额+20，账户总额 + 20；
 	 * 2：邀请好友注册并认证，邀请人有奖励 +5 元
 	 * 3: 邀请好友报名课程
@@ -695,8 +696,6 @@ class AppUserRepository
 		//记录余额变动日志
 		BankeBalanceLog::create($balance_log);
 	}
-
-
 
 	/**
 	 * 根据创建时间，得到 注册半课APP用户 分组，每天多少人

@@ -741,6 +741,7 @@ return [
 		'user_name' => '用户名',
 		'invited_name' => '被邀请人',
 		'short_name' => '机构',
+		'org_id' => '机构',
 		'updated_at' => '修改时间',
 		'created_at' => '创建时间',
 		'sort' => '排序',

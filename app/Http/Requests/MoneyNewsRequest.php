@@ -28,7 +28,7 @@ class MoneyNewsRequest extends Request
             'business_type' => 'required',
             'amount' => 'required',
             'user_name' => 'required',
-            'short_name' => 'required',
+            'org_id' => 'required',
         ];
     }
 
@@ -48,7 +48,7 @@ class MoneyNewsRequest extends Request
             'business_type'          => trans('labels.moneynews.business_type'),
             'amount'        => trans('labels.moneynews.amount'),
             'user_name'        => trans('labels.moneynews.user_name'),
-            'short_name'        => trans('labels.moneynews.short_name'),
+            'org_id'        => trans('labels.moneynews.org_id'),
         ];
     }
 }

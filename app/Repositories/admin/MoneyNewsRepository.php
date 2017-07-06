@@ -1,8 +1,11 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeMoneyNews;
+use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeUserProfiles;
 use Carbon\Carbon;
 use Flash;
+use UserRepository;
 /**
 * 赚钱动态仓库
 */
@@ -60,7 +63,10 @@ class MoneyNewsRepository
 	public function store($request)
 	{   
 		$news = new BankeMoneyNews;
-		if ($news->fill($request->all())->save()) {
+		$input=$request->all();
+		$org=BankeOrg::find($input['org_id']);
+		$input['short_name']=$org['short_name'];
+		if ($news->fill($input)->save()) {
 			Flash::success(trans('alerts.moneynews.created_success'));
 			return true;
 		}
@@ -94,8 +100,11 @@ class MoneyNewsRepository
 	public function update($request,$id)
 	{
 		$news = BankeMoneyNews::find($id);
+		$input=$request->all();
+		$org=BankeOrg::find($input['org_id']);
+		$input['short_name']=$org['short_name'];
 		if ($news) {
-			if ($news->fill($request->all())->save()) {
+			if ($news->fill($input)->save()) {
 				Flash::success(trans('alerts.moneynews.updated_success'));
 				return true;
 			}
@@ -146,4 +155,48 @@ class MoneyNewsRepository
 		return false;
 	}
 
+	/*将系统自动生成的 赚钱动态添加到表中，目前主要有
+	 * 1：老师邀请学生报名
+	 * 2：学生邀请好友报名
+	 * 3: 学生报名
+	 * 4：打卡（客户端产生）
+	 * 5：开团分享
+	 * [
+			'INVITE_STUDENT_ENROL_SUCCESS' => '老师邀请学生报名',
+			'INVITE_FRIEND_ENROL_SUCCESS' => '学生邀请好友报名',
+			'ENROL_SUCCESS' => '报名',
+			'CHECK_IN_SUCCESS' => '打卡奖励',
+			'SHARE_GROUP_BUYING'=>'开团分享'
+		],
+	 *
+	*/
+	public static function addRecordToMeoneyNewsFromSystem($info){
+		$business_type=$info['business_type'];
+			$news = new BankeMoneyNews;
+			$userInfo=UserRepository::getUserSimpleInfoById($info['uid']);
+			$user_type =0;
+			if($userInfo['user_type']>2){
+				$user_type=1;
+			}
+			$news->user_name =$userInfo['name'];
+			$news->user_type =$user_type;
+			$news->business_type=$info['business_type'];
+			$news->amount=$info['amount'];
+			$news->org_id=$info['org_id'];
+
+			if(strpos($business_type,'INVITE')>=0) {
+				$news->cut_amount = $info['cut_amount'];
+				$news->invited_name = UserRepository::getUserSimpleInfoById($info['invited_uid'])['name'];;
+			}
+
+			$org = BankeOrg::find($news['org_id']);
+			$news->short_name = $org['short_name'];
+
+			if ($news->save()) {
+				Flash::success(trans('alerts.moneynews.created_success'));
+				return true;
+			}
+			Flash::error(trans('alerts.moneynews.created_error'));
+			return false;
+		}
 }

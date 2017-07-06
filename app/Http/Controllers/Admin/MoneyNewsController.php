@@ -40,7 +40,7 @@ class MoneyNewsController extends Controller {
      */
     public function create()
     {
-        $orgs = BankeOrg::where('status', 1)->get(['id', 'name','short_name']);
+        $orgs = BankeOrg::where('status', 1)->get(['id', 'name']);
         return view('admin.moneynews.create')->with(compact(['orgs']));
     }
 
@@ -66,8 +66,9 @@ class MoneyNewsController extends Controller {
      */
     public function edit($id)
     {
+        $orgs = BankeOrg::where('status', 1)->get(['id', 'name']);
         $moneynews = MoneyNewsRepository::edit($id);
-        return view('admin.moneynews.edit')->with(compact(['moneynews']));
+        return view('admin.moneynews.edit')->with(compact(['moneynews','orgs']));
     }
     /**
      * 修改赚钱动态

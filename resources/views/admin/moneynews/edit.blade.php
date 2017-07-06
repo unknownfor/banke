@@ -1,6 +1,11 @@
 @extends('layouts.admin')
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <style type="text/css">
+        .invited_name_box{
+            display: none;
+        }
+    </style>
 @endsection
 @section('content')
 <div class="page-bar">
@@ -44,6 +49,7 @@
               		{!! csrf_field() !!}
                   <input type="hidden" name="_method" value="PATCH">
                   <input type="hidden" name="id" value="{{$moneynews['id']}}">
+                  <input type="hidden" id="business_type_input" value="{{$moneynews['business_type']}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="user_name">{{trans('labels.moneynews.user_name')}}</label>
@@ -53,63 +59,67 @@
                           </div>
                       </div>
 
-                      <div class="form-group form-md-line-input form-md-line-cover">
-                          <label class="col-md-1 control-label" for="img_url">{{trans('labels.moneynews.cover_img')}}</label>
-                          <div class="col-md-4">
-                              <div class="add-img-btn">+
-                                  <div class="img-size-tips">16:7的图片</div>
-                              </div>
-                              <div class="form-control-focus"> </div>
-                          </div>
-                      </div>
-                      <div class="col-md-offset-1">
-                          <ul class="imgs-list-box">
-                              @if($moneynews['cover_img'])
-                                  <li>
-                                      <a href="{{$moneynews['cover_img']}}" data-size="435x263"></a>
-                                      <img src="{{$moneynews['cover_img']}}@142w_80h_1e">
-                                      <span class="remove-img">×</span>
-                                  </li>
-                              @endif
-                          </ul>
-                          <input type="hidden" value="" name="cover_img" id="cover_img">
-                      </div>
-
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="slug">{{trans('labels.moneynews.content')}}</label>
-                          <div class="col-md-8">
-                              <textarea style="display: none" name="content" id="target-area">{{$moneynews['content']}}</textarea>
-                              <textarea id="my-editor"></textarea>
-                          </div>
-                      </div>
-
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="org_name">{{trans('labels.moneynews.user_type')}}</label>
+                          <label class="col-md-1 control-label" for="org_name">{{trans('labels.moneynews.business_type')}}</label>
                           <div class="col-md-4">
-                              <select name="type" class="selectpicker show-tick form-control" data-live-search="true">
-                                  @foreach(trans('strings.user_type') as $status_key => $status_value)
-                                      <option value="{{config('admin.global.certification_status.'.$status_key)}}" @if($moneynews['user_type']==config('admin.global.certification_status.'.$status_key)) selected @endif> {{$status_value[1]}}</option>
+                              <select name="business_type" class="selectpicker show-tick form-control" data-live-search="true">
+                                  <option value="-1">选择类型</option>
+                                  @foreach(config('admin.global.moneynews_business_type') as $status_key => $status_value)
+                                      <option value="{{$status_key}}" @if($moneynews['business_type']=$status_key) selected @endif> {{$status_value}}</option>
                                   @endforeach
                               </select>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="author">{{trans('labels.moneynews.author')}}</label>
+                          <label class="col-md-1 control-label" for="amount">{{trans('labels.moneynews.amount')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="author" name="author" placeholder="{{trans('labels.moneynews.author')}}" value="{{$moneynews['author']}}">
+                              <input type="number"  step="0.01" class="form-control" id="amount" name="amount" placeholder="{{trans('labels.moneynews.amount')}}" value="{{$moneynews['amount']}}">
                               <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input invited_name_box">
+                          <label class="col-md-1 control-label" for="invited_name">{{trans('labels.moneynews.invited_name')}}</label>
+                          <div class="col-md-8">
+                              <input type="text" class="form-control" id="invited_name" name="invited_name" placeholder="{{trans('labels.moneynews.invited_name')}}" value="{{$moneynews['invited_name']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+
+
+                      <div class="form-group form-md-line-input invited_name_box">
+                          <label class="col-md-1 control-label" for="cut_amount">{{trans('labels.moneynews.cut_amount')}}</label>
+                          <div class="col-md-8">
+                              <input type="number" step="0.01" class="form-control" id="cut_amount" name="cut_amount" placeholder="{{trans('labels.moneynews.cut_amount')}}" value="{{$moneynews['cut_amount']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="short_name">{{trans('labels.moneynews.org_id')}}</label>
+                          <div class="col-md-8">
+                              <select name="org_id" class="selectpicker show-tick form-control" data-live-search="true">
+                                  <option value="-1">选择机构</option>
+                                  @if($orgs)
+                                      @foreach($orgs as $org)
+                                          <option value="{{$org->id}}" @if($moneynews['org_id']==$org->id) selected @endif > {{$org->name}}</option>
+                                      @endforeach
+                                  @endif
+                              </select>
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="description">{{trans('labels.moneynews.sort')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.moneynews.sort')}}" value="{{$moneynews['sort']}}">
+                              <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.moneynews.sort')}}" value="{{$moneynews['sort']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
+
                       <div class="form-group form-md-line-input">
                         <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.moneynews.status')}}</label>
                         <div class="col-md-10">

@@ -51,7 +51,7 @@ var TableDatatablesAjax = function() {
           "name" : "from",
           "orderable" : false,
           render:function(data){
-            var arr=[ '<span class="label label-success">系统记录</span>','<span class="label label-warning">人工添加</span>'];
+            var arr=['<span class="label label-success">系统记录</span>','<span class="label label-warning">手动添加</span>'];
             return arr[data];
           },
         },

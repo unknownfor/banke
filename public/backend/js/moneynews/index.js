@@ -4,7 +4,7 @@
 
 $(function(){
 
-    $box=$('.invited_name_box');
+    var $box=$('.invited_name_box');
     $('.selectpicker').selectpicker().on('changed.bs.select', function (e) {
         if(e.currentTarget.value.indexOf('INVITE')==0){
             $box.show();
@@ -12,4 +12,14 @@ $(function(){
             $box.hide();
         }
     });
+
+    var $businessTypeInput=$('#business_type_input');
+    if($businessTypeInput.length>0) {
+        if ($businessTypeInput.val().indexOf('INVITE') == 0) {
+            $box.show();
+        } else {
+            $box.hide();
+        }
+    }
+
 });

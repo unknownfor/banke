@@ -72,7 +72,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="amount">{{trans('labels.moneynews.amount')}}</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="amount" name="amount" placeholder="{{trans('labels.moneynews.amount')}}" value="{{old('amount')}}">
+                                    <input type="number" step="0.01" class="form-control" id="amount" name="amount" placeholder="{{trans('labels.moneynews.amount')}}" value="{{old('amount')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -90,19 +90,19 @@
                             <div class="form-group form-md-line-input invited_name_box">
                                 <label class="col-md-1 control-label" for="cut_amount">{{trans('labels.moneynews.cut_amount')}}</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="cut_amount" name="cut_amount" placeholder="{{trans('labels.moneynews.cut_amount')}}" value="{{old('cut_amount')}}">
+                                    <input type="number" step="0.01" class="form-control" id="cut_amount" name="cut_amount" placeholder="{{trans('labels.moneynews.cut_amount')}}" value="{{old('cut_amount')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="short_name">{{trans('labels.moneynews.short_name')}}</label>
+                                <label class="col-md-1 control-label" for="short_name">{{trans('labels.moneynews.org_id')}}</label>
                                 <div class="col-md-8">
-                                    <select name="short_name" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <select name="org_id" class="selectpicker show-tick form-control" data-live-search="true">
                                         <option value="-1">选择机构</option>
                                         @if($orgs)
                                             @foreach($orgs as $org)
-                                                <option value="{{$org->short_name}}" > {{$org->name}}</option>
+                                                <option value="{{$org->id}}" > {{$org->name}}</option>
                                             @endforeach
                                         @endif
                                     </select>
