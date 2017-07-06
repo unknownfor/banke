@@ -125,6 +125,7 @@ class EnrolRepository
 		}
 		$user=UserRepository::getUserSimpleInfoByMobile($mobile);
 		$param['name']=$user['name'];
+		$param['uid']=$user['uid'];
 		if ($role->fill($param)->save()) {
 			Flash::success(trans('alerts.enrol.created_success'));
 			return 1;
