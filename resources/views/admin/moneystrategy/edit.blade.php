@@ -94,7 +94,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="org_name">{{trans('labels.moneystrategy.user_type')}}</label>
                           <div class="col-md-4">
-                              <select name="type" class="selectpicker show-tick form-control" data-live-search="true">
+                              <select name="user_type" class="selectpicker show-tick form-control" data-live-search="true">
                                   @foreach(trans('strings.user_type') as $status_key => $status_value)
                                       <option value="{{config('admin.global.certification_status.'.$status_key)}}" @if($moneystrategy['user_type']==config('admin.global.certification_status.'.$status_key)) selected @endif> {{$status_value[1]}}</option>
                                   @endforeach

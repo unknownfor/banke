@@ -355,7 +355,8 @@ class OrderRepository
 
 				//将报名赚钱信息添加到赚钱动态表中
 				$info=[
-					'uid'=>$order->uid,
+					'uid'=>$invitation_uid,
+					'invited_uid'=>$order->uid,
 					'cut_amount'=>$order->do_task_amount+$order->check_in_amount,
 					'amount'=>$invitation_award,
 					'business_type'=>'INVITE_FRIEND_ENROL_SUCCESS',

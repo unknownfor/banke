@@ -172,31 +172,37 @@ class MoneyNewsRepository
 	*/
 	public static function addRecordToMeoneyNewsFromSystem($info){
 		$business_type=$info['business_type'];
-			$news = new BankeMoneyNews;
-			$userInfo=UserRepository::getUserSimpleInfoById($info['uid']);
-			$user_type =0;
-			if($userInfo['user_type']>2){
-				$user_type=1;
-			}
-			$news->user_name =$userInfo['name'];
-			$news->user_type =$user_type;
-			$news->business_type=$info['business_type'];
-			$news->amount=$info['amount'];
-			$news->org_id=$info['org_id'];
+		$news = new BankeMoneyNews;
+		$userInfo=UserRepository::getUserSimpleInfoById($info['uid']);
+		$user_type =0;
 
-			if(strpos($business_type,'INVITE')>=0) {
-				$news->cut_amount = $info['cut_amount'];
-				$news->invited_name = UserRepository::getUserSimpleInfoById($info['invited_uid'])['name'];;
-			}
-
-			$org = BankeOrg::find($news['org_id']);
-			$news->short_name = $org['short_name'];
-
-			if ($news->save()) {
-				Flash::success(trans('alerts.moneynews.created_success'));
-				return true;
-			}
-			Flash::error(trans('alerts.moneynews.created_error'));
-			return false;
+		//user_type 3、4为老师，归类为1，
+		if($userInfo['user_type']>2){
+			$user_type=1;
 		}
+		$news->user_name =$userInfo['name'];
+		$news->user_type =$user_type;
+
+		$news->amount=$info['amount'];
+		$news->org_id=$info['org_id'];
+
+		if(strpos($business_type,'INVITE')===0) {
+			$news->cut_amount = $info['cut_amount'];
+			$news->invited_name = UserRepository::getUserSimpleInfoById($info['invited_uid'])['name'];
+			if($user_type==1){
+				$business_type='INVITE_STUDENT_ENROL_SUCCESS';  //招生老师邀请学生报名
+			}
+		}
+		$news->business_type = $business_type;
+
+		$org = BankeOrg::find($news['org_id']);
+		$news->short_name = $org['short_name'];
+
+		if ($news->save()) {
+			Flash::success(trans('alerts.moneynews.created_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.moneynews.created_error'));
+		return false;
+	}
 }
