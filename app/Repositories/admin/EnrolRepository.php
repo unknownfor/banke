@@ -1,5 +1,7 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeCourse;
+use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeEnrol;
 use App\Models\Banke\BankeUserProfiles;
 use Carbon\Carbon;
@@ -8,6 +10,7 @@ use Auth;
 use Illuminate\Support\Facades\Log;
 use DB;
 use UserRepository;
+use App\Services\WechatService;
 /**
 * 预约仓库
 */
@@ -116,12 +119,16 @@ class EnrolRepository
 		$role = new BankeEnrol;
 		$param=$request->all();
 		$mobile=$param['mobile'];
-		if($param['course_id']) {
+		$course_id=$param['course_id'];
+
+		if($course_id) {
 			$oldEnrol = BankeEnrol::where(['mobile' =>$mobile, 'course_id' =>$param['course_id']]);
 			if($oldEnrol->count()>0){
 				Flash::success(trans('alerts.enrol.created_success'));
+				$this->sendWechatMsg($course_id);
 				return 2;
 			}
+			$this->sendWechatMsg($course_id);
 		}
 		$user=UserRepository::getUserSimpleInfoByMobile($mobile);
 		$param['name']=$user['name'];
@@ -133,6 +140,23 @@ class EnrolRepository
 		Flash::error(trans('alerts.enrol.created_error'));
 		return 0;
 	}
+
+	/*预约成功后发送微信消息*/
+	private function sendWechatMsg($course_id)
+	{
+		$course=BankeCourse::find($course_id);
+		if($course['name']) {
+			$org=$course->org;
+			$days=BankeDict::find(13)['value'];
+			$content = '恭喜您成功预约 “'.$org['short_name'].' ” 的 '.$course['name'].'，' .
+				'机构地址是'.$org['address'].'，' .
+				'请尽快在'.$days.'天内到店缴费，' .
+				'有疑问请拨打400-034-0033，或者下载半课app咨询在线客服。';
+			$wechat = new WechatService();
+			$wechat->send_weixn($content);
+		}
+	}
+
 	/**
 	 * 修改配置视图
 	 * @author shaolei
