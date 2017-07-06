@@ -83,6 +83,7 @@ class InvitationController extends Controller
         }
     }
 
+    /*带有课程信息时使用*/
     public function doEnrol_v1_3(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -115,6 +116,8 @@ class InvitationController extends Controller
         return ApiResponseService::success('', Code::SUCCESS, '预约成功');
     }
 
+
+    /*机构预约时使用*/
     public function doEnrol_v1_6(Request $request)
     {
         $validator = Validator::make($request->all(), [

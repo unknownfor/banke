@@ -7,7 +7,7 @@ use Flash;
 use DB;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
-use App\Models\Banke\BankeEnrol;
+use UserRepository;
 
 /**
 * 团购列表
@@ -378,7 +378,9 @@ class GroupbuyingRepository
 	public static function  execAddGroupbuyingUsersInfo($groupbuying){
 		$user = new BankeGroupbuyingUsers();
 		$user['group_buying_id'] = $groupbuying->group_buying_id;
-		$user['uid'] = $groupbuying->invitation_uid;
+
+		$targetUserInfo=UserRepository::getUserSimpleInfoByMobile($groupbuying->mobile);
+		$user['uid'] = $targetUserInfo['uid'];
 		if ($user->save()) {
 			return true;
 		}
