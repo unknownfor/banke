@@ -375,11 +375,16 @@ class GroupbuyingRepository
 	 * @param  [type] $groupbuying [订单]
 	 * */
 	public static function  execAddGroupbuyingUsersInfo($groupbuying){
-		$user = new BankeGroupbuyingUsers();
-		$user['group_buying_id'] = $groupbuying->group_buying_id;
-
 		$targetUserInfo=UserRepository::getUserSimpleInfoByMobile($groupbuying->mobile);
-		$user['uid'] = $targetUserInfo['uid'];
+		$uid= $targetUserInfo->uid;
+		$gid= $groupbuying->group_buying_id;
+		$oldInfo=BankeGroupbuyingUsers::where(['uid'=>$uid,'group_buying_id'=>$gid]);
+		if($oldInfo->count()>0){
+			return false;
+		}
+		$user = new BankeGroupbuyingUsers();
+		$user['group_buying_id'] = $gid;
+		$user['uid'] = $uid;
 		if ($user->save()) {
 			return true;
 		}
