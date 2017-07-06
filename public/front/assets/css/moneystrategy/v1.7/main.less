@@ -1,0 +1,36 @@
+body {
+  margin:0 auto;
+  padding:0;
+  height: 100%;
+  max-width: 700px;
+  overflow-x: hidden;
+  word-wrap:break-word;
+  position: relative;
+}
+img {
+  max-width: 100%;
+}
+#article {
+  margin: 15px;
+  font-size: 14px;
+  .head {
+    text-align: left;
+    border-bottom: 1px solid #D8D8D8;
+    .title {
+      .txt-ellipsis-p(1);
+      font-size: 15px;
+      font-weight: bold;
+      color: #383D43;
+    }
+    .author {
+      color: #999999;
+      margin: 15px 0;
+    }
+  }
+  .content {
+    margin: 15px 0 35px 0;
+    > img {
+      max-width: 100%;
+    }
+  }
+}

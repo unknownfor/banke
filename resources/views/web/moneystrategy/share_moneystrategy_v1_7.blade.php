@@ -12,8 +12,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/article/v1.7/org.css" rel="stylesheet">
-    <link type="text/css" href="/front/assets/css/article/v1.7/iconfont/iconfont.css">
+    <link type="text/css" href="/front/assets/css/moneystrategy/v1.7/moneystrategy.css" rel="stylesheet">
     <title>13</title>
 </head>
 <body>
