@@ -7,7 +7,6 @@ use Flash;
 use DB;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
-use UserRepository;
 
 /**
 * 团购列表
