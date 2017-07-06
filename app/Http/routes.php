@@ -147,6 +147,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //app弹出层
         require(__DIR__ . '/Routes/AlertBoxRoute.php');
 
+        //赚钱动态
+        require(__DIR__ . '/Routes/MoneyNewsRoute.php');
+
     });
 });
 

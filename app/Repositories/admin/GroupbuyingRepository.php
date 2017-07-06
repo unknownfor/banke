@@ -7,7 +7,6 @@ use Flash;
 use DB;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
-use App\Models\Banke\BankeEnrol;
 
 /**
 * 团购列表
@@ -259,16 +258,27 @@ class GroupbuyingRepository
 		if($groupbuying_award) {
 			AppUserRepository::execUpdateUserAccountInfo($groupbuying['organizer_id'], $groupbuying_award, 1, 6);  //更新用户账户金额信息以及添加变动记录
 
+			$uid=$groupbuying['organizer_id'];
 			//消息记录
 			$message = [
 				'status' => 0,
-				'uid' => $groupbuying['organizer_id'],
+				'uid' => $uid,
 				'title' => '评论奖励',
 				'content' => '您分享的"' . $groupbuying->course['name'] . '" 浏览次数已经达到奖励标准,平台已奖励您' . $groupbuying_award . '元现金，快去现金钱包里查看吧！',
 				'type' => config('admin.global.balance_log')[12]['key']
 			];
 			//记录消息
 			BankeMessage::create($message);
+
+			//将报名赚钱信息添加到赚钱动态表中
+			$info=[
+				'uid'=>$uid,
+				'amount'=>$groupbuying_award,
+				'business_type'=>'SHARE_GROUP_BUYING',
+				'org_id'=>$groupbuying->org_id
+			];
+			MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
+
 		}
 		return true;
 	}
@@ -365,9 +375,16 @@ class GroupbuyingRepository
 	 * @param  [type] $groupbuying [订单]
 	 * */
 	public static function  execAddGroupbuyingUsersInfo($groupbuying){
+		$targetUserInfo=UserRepository::getUserSimpleInfoByMobile($groupbuying->mobile);
+		$uid= $targetUserInfo->uid;
+		$gid= $groupbuying->group_buying_id;
+		$oldInfo=BankeGroupbuyingUsers::where(['uid'=>$uid,'group_buying_id'=>$gid]);
+		if($oldInfo->count()>0){
+			return false;
+		}
 		$user = new BankeGroupbuyingUsers();
-		$user['group_buying_id'] = $groupbuying->group_buying_id;
-		$user['uid'] = $groupbuying->invitation_uid;
+		$user['group_buying_id'] = $gid;
+		$user['uid'] = $uid;
 		if ($user->save()) {
 			return true;
 		}

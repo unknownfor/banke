@@ -7,6 +7,7 @@ use Flash;
 use Auth;
 use Illuminate\Support\Facades\Log;
 use DB;
+use UserRepository;
 /**
 * 预约仓库
 */
@@ -122,15 +123,9 @@ class EnrolRepository
 				return 2;
 			}
 		}
-		$user=BankeUserProfiles::where('mobile',$mobile)->first();
-		if($user->uid){
-			$param['uid']=$user->uid;
-			$name=$user->name;
-			if($user->certification_status==2) {
-				$name=$user->authentication['real_name'];
-			}
-			$param['name']=$name;
-		}
+		$user=UserRepository::getUserSimpleInfoByMobile($mobile);
+		$param['name']=$user['name'];
+		$param['uid']=$user['uid'];
 		if ($role->fill($param)->save()) {
 			Flash::success(trans('alerts.enrol.created_success'));
 			return 1;

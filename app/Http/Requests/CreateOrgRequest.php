@@ -24,12 +24,12 @@ class CreateOrgRequest extends Request
     public function rules()
     {
         return [
-//            'id' => 'numeric',
             'name' => 'required',
             'short_name'=>'required',
             'city' => 'required',
             'tel_phone' => 'required',
             'address' => 'required',
+            'short_name'=>'required'
         ];
     }
 
@@ -53,7 +53,8 @@ class CreateOrgRequest extends Request
             'short_name' => trans('labels.org.short_name'),
             'city' => trans('labels.org.city'),
             'tel_phone' => trans('labels.org.tel_phone'),
-            'address' => trans('labels.org.address')
+            'address' => trans('labels.org.address'),
+            'short_name' => trans('labels.org.short_name'),
         ];
     }
 }

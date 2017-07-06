@@ -1,11 +1,9 @@
 @extends('layouts.admin')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}">
     <style type="text/css">
-        .imgs-list-box li{
-            width: 270px;
+        .invited_name_box{
+            display: none;
         }
     </style>
 @endsection
@@ -17,11 +15,11 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <a href="{{url('admin/moneystrategy')}}">{!! trans('labels.breadcrumb.moneystrategyList') !!}</a>
+                <a href="{{url('admin/moneynews')}}">{!! trans('labels.breadcrumb.moneynewsList') !!}</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <span>{!! trans('labels.breadcrumb.moneystrategyCreate') !!}</span>
+                <span>{!! trans('labels.breadcrumb.moneynewsCreate') !!}</span>
             </li>
         </ul>
     </div>
@@ -32,7 +30,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="icon-settings font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.moneystrategyCreate') !!}</span>
+                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.moneynewsCreate') !!}</span>
                     </div>
                     <div class="actions">
                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -47,70 +45,80 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/moneystrategy')}}">
+                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/moneynews')}}">
                         {!! csrf_field() !!}
                         <div class="form-body">
+                            <input type="hidden" name="from" value="1">
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="name">{{trans('labels.moneystrategy.title')}}</label>
+                                <label class="col-md-1 control-label" for="user_name">{{trans('labels.moneynews.user_name')}}</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.moneystrategy.title')}}" value="{{old('title')}}">
+                                    <input type="text" class="form-control" id="user_name" name="user_name" placeholder="{{trans('labels.moneynews.user_name')}}" value="{{old('user_name')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
-                            <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-1 control-label" for="img_url">{{trans('labels.moneystrategy.cover_img')}}</label>
-                                <div class="col-md-4">
-                                    <div class="add-img-btn">+
-                                        <div class="img-size-tips">16:7的图片</div>
-                                    </div>
-                                    <div class="form-control-focus"> </div>
-                                </div>
-                            </div>
-                            <div class="col-md-offset-1">
-                                <ul class="imgs-list-box">
-                                </ul>
-                                <input type="hidden" value="" name="cover_img" id="cover_img">
-                            </div>
-
-
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="slug">{{trans('labels.moneystrategy.content')}}</label>
-                                <div class="col-md-8">
-                                    <textarea style="display: none" name="content" id="target-area"></textarea>
-                                    <textarea id="my-editor"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.moneystrategy.user_type')}}</label>
+                                <label class="col-md-1 control-label" for="org_name">{{trans('labels.moneynews.business_type')}}</label>
                                 <div class="col-md-4">
-                                    <select name="user_type" class="selectpicker show-tick form-control" data-live-search="true">
-                                        @foreach(trans('strings.user_type') as $status_key => $status_value)
-                                            <option value="{{config('admin.global.certification_status.'.$status_key)}}"> {{$status_value[1]}}</option>
-                                        @endforeach
+                                    <select name="business_type" class="selectpicker show-tick form-control" data-live-search="true">
+                                        <option value="-1">选择类型</option>
+                                            @foreach(config('admin.global.moneynews_business_type') as $status_key => $status_value)
+                                                <option value="{{$status_key}}" > {{$status_value}}</option>
+                                            @endforeach
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="author">{{trans('labels.moneystrategy.author')}}</label>
+                                <label class="col-md-1 control-label" for="amount">{{trans('labels.moneynews.amount')}}</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="author" name="author" placeholder="{{trans('labels.moneystrategy.author')}}" value="{{old('author')}}">
+                                    <input type="number" step="0.01" class="form-control" id="amount" name="amount" placeholder="{{trans('labels.moneynews.amount')}}" value="{{old('amount')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input invited_name_box">
+                                <label class="col-md-1 control-label" for="invited_name">{{trans('labels.moneynews.invited_name')}}</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="invited_name" name="invited_name" placeholder="{{trans('labels.moneynews.invited_name')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group form-md-line-input invited_name_box">
+                                <label class="col-md-1 control-label" for="cut_amount">{{trans('labels.moneynews.cut_amount')}}</label>
+                                <div class="col-md-8">
+                                    <input type="number" step="0.01" class="form-control" id="cut_amount" name="cut_amount" placeholder="{{trans('labels.moneynews.cut_amount')}}" value="{{old('cut_amount')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="description">{{trans('labels.moneystrategy.sort')}}</label>
+                                <label class="col-md-1 control-label" for="short_name">{{trans('labels.moneynews.org_id')}}</label>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.moneystrategy.sort')}}" value="{{old('sort')}}">
+                                    <select name="org_id" class="selectpicker show-tick form-control" data-live-search="true">
+                                        <option value="-1">选择机构</option>
+                                        @if($orgs)
+                                            @foreach($orgs as $org)
+                                                <option value="{{$org->id}}" > {{$org->name}}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="description">{{trans('labels.moneynews.sort')}}</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.moneynews.sort')}}" value="{{old('sort')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.moneystrategy.status')}}</label>
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.moneynews.status')}}</label>
                                 <div class="col-md-10">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
@@ -141,7 +149,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
-                                    <a href="{{url('admin/moneystrategy')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                                    <a href="{{url('admin/moneynews')}}" class="btn default">{{trans('crud.cancel')}}</a>
                                     <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
@@ -163,21 +171,7 @@
     </div>
 @endsection
 @section('js')
-    <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
-    {{--编辑器--}}
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
-
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-
-    {{--图片查看--}}
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
-
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/moneystrategy/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/moneynews/index.js')}}"></script>
 @endsection

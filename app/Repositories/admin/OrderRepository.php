@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Log;
 use League\Flysystem\Exception;
 use DB;
 use Auth;
+use MoneyNewsRepository;
 
 /**
 * 订单（报名）仓库
@@ -248,6 +249,12 @@ class OrderRepository
 			if($input['status'] == config('admin.global.status.active')){
 				DB::transaction(function () use ($input, $order,$operator_id) {
 					try{
+
+						//更新机构的学习人数
+						$org = $order->org;
+						$org->student_counts++;
+						$org->save();
+
 						$order->save();
 						$userProfile = BankeUserProfiles::where('uid', $order->uid)->lockForUpdate()->first();
 
@@ -255,14 +262,19 @@ class OrderRepository
 
 //						$this->execUpadateGroupbuyingUsersInfo($order);//更新参团信息 v1.7之后，报名预约就表示参加团
 
-						$this->execUpadateInvitorInfo($order);//更新推荐用户信息，并发送app内消息
+						$this->execUpadateInvitorInfo($order,$org);//更新推荐用户信息，并发送app内消息
 
 						$this->sendMsgToUser($order);  //给用户发送app内消息
 
-						//更新机构的学习人数
-						$org = $order->org;
-						$org->student_counts++;
-						$org->save();
+
+						//将报名赚钱信息添加到赚钱动态表中
+						$info=[
+							'uid'=>$order->uid,
+							'amount'=>$order->do_task_amount+$order->check_in_amount,
+							'business_type'=>'ENROL_SUCCESS',
+							'org_id'=>$org->id
+						];
+						MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
 
 						DB::commit();
 						Flash::success(trans('alerts.order.authen_success'));
@@ -308,7 +320,7 @@ class OrderRepository
 	 * 更新推荐人的用户的信息，推荐人获得奖励
 	 * 是否有推荐人 从 预约表中查找  课程id，手机号一致才算，如果有多条，取最早的
 	 */
-	private  function  execUpadateInvitorInfo($order){
+	private  function  execUpadateInvitorInfo($order,$org){
 		$course_id=$order->course_id;
 		$enrol=BankeEnrol::where(['course_id'=>$course_id,'mobile'=>$order->mobile]);  //预约表查询
 		if($enrol && $enrol->count()>0){
@@ -339,8 +351,19 @@ class OrderRepository
 				];
 				//记录消息
 				BankeMessage::create($message1);
-			}
 
+
+				//将报名赚钱信息添加到赚钱动态表中
+				$info=[
+					'uid'=>$invitation_uid,
+					'invited_uid'=>$order->uid,
+					'cut_amount'=>$order->do_task_amount+$order->check_in_amount,
+					'amount'=>$invitation_award,
+					'business_type'=>'INVITE_FRIEND_ENROL_SUCCESS',
+					'org_id'=>$org->id
+				];
+				MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
+			}
 		}
 	}
 

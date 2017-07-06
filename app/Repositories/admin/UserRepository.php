@@ -352,6 +352,26 @@ class UserRepository
 		return $user_info;
 	}
 
+	/*
+	 * 通过mobile得用户的姓名、头、手机号
+	 * 如果是已经认证，则返回真实姓名，真实
+	 * 否则返回昵称
+	 * */
+	public  static  function getUserSimpleInfoByMobile($mobile){
+		$user_info =new BankeUserProfiles;
+		$user_info = $user_info::where('mobile',$mobile)->first();
+		if($user_info->uid){;
+			$name = $user_info->authentication['real_name'];
+			if ($name) {
+				$user_info['name']=$name;
+			}
+			if(!$user_info['avatar']){
+				$user_info['avatar']='http://pic.hisihi.com/2017-06-02/1496387348811111.png';
+			}
+		}
+		return $user_info;
+	}
+
 	/**
 	 * 注册半课APP用户
 	 * @author shaolei

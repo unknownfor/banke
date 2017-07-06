@@ -39,7 +39,7 @@ class MoneyStrategyRepository
 
 
 		$strategy = $strategy->offset($start)->limit($length);
-		$strategy = $strategy->orderBy("sort", "desc")->get();
+		$strategy = $strategy->orderBy("sort", "desc")->orderBy('id','desc')->get();
                
 
 		if ($strategy) {

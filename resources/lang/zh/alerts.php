@@ -254,4 +254,13 @@ return [
         'deleted_error' => '删除提示失败',
     ],
 
+    'moneynews' => [
+        'created_success'   => '创建赚钱动态成功.',
+        'created_error'     => '创建赚钱动态失败.',
+        'updated_success'   => '编辑赚钱动态成功.',
+        'updated_error'     => '编辑赚钱动态失败.',
+        'deleted_success' => '删除赚钱动态成功',
+        'deleted_error' => '删除赚钱动态失败',
+    ],
+
 ];
