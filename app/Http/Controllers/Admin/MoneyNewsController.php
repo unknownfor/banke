@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use MoneyNewsRepository;
 use App\Http\Requests\MoneyNewsRequest;
-use App\Models\Banke\Bankeorg;
+use App\Models\Banke\BankeOrg;
 
 class MoneyNewsController extends Controller {
 
