@@ -223,7 +223,7 @@ img {
 }
 #enrol .page .head-img.first {
   max-width: 70%;
-  margin: 20px 0;
+  margin: 30px 0;
 }
 #enrol .page .head-txt {
   margin-top: 40px;
@@ -247,7 +247,7 @@ img {
   display: -ms-flexbox;
   display: flex;
   background-color: #F2F2F2;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   border-radius: 15px;
   padding-left: 10px;
 }
@@ -262,7 +262,7 @@ img {
   border: none;
   background-color: #F5F5F5;
 }
-#enrol .page .input-box .input-info .input-area#code-btn {
+#enrol .page .input-box .input-info .input-area#phone-code-btn {
   color: #383d43;
   -webkit-box-flex: 0;
   -webkit-flex: 0 1 90px;
@@ -275,7 +275,7 @@ img {
   text-align: center;
   -webkit-box-flex: 0;
 }
-#enrol .page .input-box .input-info .input-area#code-btn.disabled {
+#enrol .page .input-box .input-info .input-area#phone-code-btn.disabled {
   pointer-events: none;
 }
 #enrol .page .input-box .input-info.active {
@@ -294,14 +294,16 @@ img {
   right: 0;
   font-size: 14px;
   width: 100%;
-  background-color: #ffd751;
   border-radius: 15px;
   height: 35px;
   line-height: 35px;
   border: none;
 }
+#enrol .page .btn.first {
+  background-color: #9b9b9b;
+}
 #enrol .page .btn.active {
-  background-color: #FBC02D;
+  background-color: #ffd751;
 }
 #enrol .page .btn.nouse {
   pointer-events: none;
@@ -311,6 +313,34 @@ img {
   color: #FFFFFF;
   width: 100%;
   font-size: 14px;
+}
+#enrol .page.hide {
+  display: none;
+  opacity: 0;
+}
+#enrol .current .arrow {
+  -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
+}
+#enrol .current .head-img {
+  -webkit-animation: slideToTop .9s 0.6s ease both;
+}
+#enrol .current .input-info.phone {
+  -webkit-animation: slideToTop .9s 0.2s ease both;
+}
+#enrol .current .input-info.code-num {
+  -webkit-animation: slideToTop .9s 0.3s ease both;
+}
+#enrol .current .input-info.password {
+  -webkit-animation: slideToTop .9s 0.4s ease both;
+}
+#enrol .current .btn {
+  -webkit-animation: slideToTop .9s 0.6s ease both;
+}
+#enrol .current .head-txt .txt-one {
+  -webkit-animation: slideToTop .8s ease both;
+}
+#enrol .current .head-txt .txt-two {
+  -webkit-animation: slideToTop .8s 0.3s ease both;
 }
 /*上滑提示*/
 @-webkit-keyframes swipeMoveTop {

@@ -1,5 +1,5 @@
 /**
- * Created by jimmy-hisihi on 2017/5/6.
+ * Created by hisihi on 2017/7/7.
  */
 $(function () {
     window.addLoadingImg();
@@ -9,18 +9,14 @@ $(function () {
     $(document).on('input', '#phone-num', function(){
         var number=$(this).val(),
             reg = /^1(3|4|5|7|8)\d{9}$/;
-        var $code=$('.code-btn'),
-            $btn=$('.btn'),
+        var $code=$('#phone-code-btn'),
+            $box=$('.phone'),
             code=$('#user-code').val();
         if(reg.test(number)) {
             $code.removeClass('disabled');
-            $('.phone').addClass('active');
-            if(code!=''){
-                $btn.addClass('active');
-            }else{
-                $btn.removeClass('active');
-            }
+            $box.addClass('active');
         }else{
+            $box.removeClass('active');
             $code.addClass('disabled');
         }
     });
@@ -30,8 +26,7 @@ $(function () {
         var number=$('#phone-num').val(),
             reg = /^1(3|4|5|7|8)\d{9}$/;
         var $btn=$('.btn'),
-            code=$('#user-code').val(),
-            password=$('#password-num').val();
+            code=$('#user-code').val();
         if(reg.test(number)) {
             if(code!=''){
                 $('.code-num').addClass('active');
@@ -51,6 +46,7 @@ $(function () {
             number=$('#phone-num').val(),
             code=$('#user-code').val(),
             $btn=$('.btn'),
+            $box=$('.phone'),
             password=$(this).val;
         if(reg.test(number)&&code != '') {
             if (password != '') {
@@ -60,6 +56,9 @@ $(function () {
                 $btn.removeClass('active').addClass('nouse');
                 $('.password').removeClass('active');
             }
+        }else {
+            $box.removeClass('active');
+            code.addClass('disabled');
         }
     });
 
@@ -127,8 +126,6 @@ $(function () {
             window.controlLoadingBox(false);
             if (res.status_code == 0) {
                 window.showTips('<p>恭喜您，注册成功!</p>',2000);
-                var mobile = $('#phone-num').val();
-                $('.save-tel').text(mobile);
                 window.setTimeout(function() {
                     showSuccessPage();
                 },2000);
@@ -143,30 +140,31 @@ $(function () {
     });
 
     //请求数据
-    function getDataAsync(url,data,callback,eCallback,type){
-        type = type ||'get';
-        data._token=$('input[name="_token"]').val();
-        $.ajax({
-            type: type,
-            url: url,
-            data: data,
-            success: function (res) {
-                callback(res);
-            },
-            error: function () {
-                //请求出错处理
-                window.controlLoadingBox(false),
-                    window.showTips('操作失败');
-                eCallback && eCallback();
-            }
-        });
-    }
+    // function getDataAsync(url,data,callback,eCallback,type){
+    //     type = type ||'get';
+    //     data._token=$('input[name="_token"]').val();
+    //     $.ajax({
+    //         type: type,
+    //         url: url,
+    //         data: data,
+    //         success: function (res) {
+    //             callback(res);
+    //         },
+    //         error: function () {
+    //             //请求出错处理
+    //             window.controlLoadingBox(false),
+    //                 window.showTips('操作失败');
+    //             eCallback && eCallback();
+    //         }
+    //     });
+    // }
 
     /**
      * 显示报名成功页面
      */
     function showSuccessPage() {
-        $('.register-new').show().parent().show().siblings().hide();
+        $('.register').addClass('hide');
+        $('.register-success').removeClass('hide');
     }
 
 });

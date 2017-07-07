@@ -34,7 +34,7 @@ img{
       margin-top: 120px;
       &.first {
         max-width: 70%;
-        margin: 20px 0;
+        margin: 30px 0;
       }
     }
     .head-txt {
@@ -55,7 +55,7 @@ img{
       .input-info {
         display: flex;
         background-color: #F2F2F2;
-        margin-bottom: 10px;
+        margin-bottom: 14px;
         border-radius: @r;
         padding-left: 10px;
         .input-area {
@@ -64,7 +64,7 @@ img{
           border-radius: @r;
           border: none;
           background-color: #F5F5F5;
-          &#code-btn {
+          &#phone-code-btn {
             color: #383d43;
             flex: 0 1 90px;
             padding: 0;
@@ -97,14 +97,16 @@ img{
       right: 0;
       font-size: 14px;
       width:100%;
-      background-color: #ffd751;
       border-radius: @r;
       height: @h;
       line-height: @h;
       border: none;
       //opacity: 0;
+      &.first {
+        background-color: #9b9b9b;
+      }
       &.active {
-        background-color: #FBC02D;
+        background-color: #ffd751;
       }
       &.nouse {
         pointer-events:none;
@@ -114,6 +116,40 @@ img{
         color: #FFFFFF;
         width: 100%;
         font-size: 14px;
+      }
+    }
+    &.hide {
+      display: none;
+      opacity: 0;
+    }
+  }
+  .current {
+    .arrow {
+      -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
+    }
+    .head-img {
+      -webkit-animation: slideToTop .9s 0.6s ease both;
+    }
+    .input-info {
+      &.phone {
+        -webkit-animation: slideToTop .9s 0.2s ease both;
+      }
+      &.code-num {
+        -webkit-animation: slideToTop .9s 0.3s ease both;
+      }
+      &.password {
+        -webkit-animation: slideToTop .9s 0.4s ease both;
+      }
+    }
+    .btn {
+      -webkit-animation: slideToTop .9s 0.6s ease both;
+    }
+    .head-txt  {
+      .txt-one {
+        -webkit-animation: slideToTop .8s ease both;
+      }
+      .txt-two{
+        -webkit-animation: slideToTop .8s 0.3s ease both;
       }
     }
   }
