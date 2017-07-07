@@ -1,81 +1,134 @@
 /**
  * Created by jimmy-hisihi on 2017/5/6.
  */
-$(function (){
+$(function () {
     window.addLoadingImg();
     window.addTip();
 
-    //浏览量
-    var oldUser=$('.user').attr('data-record-id');
-    if( oldUser != 0){
-        viewCounts();
-    }
-
-    /*
-    * 弹出注册窗口*/
-    $(document).on(window.eventName,'.join-btn',function(){
-        $('.box1').removeClass('hide');
-        $('.box').addClass('hide');
-    });
-
-
-    /*
-     * 点击头像，弹出注册窗口*/
-    $(document).on(window.eventName,"#more",function(){
-        $('body').removeClass('scroll-fbd');
-        $('.box1').removeClass('hide');
-        $('.box').addClass('hide');
-    });
-
-
-
-    /*
-    * 填写手机号
-    * 输入框变色，按钮变色*/
+    //填充手机号信息，按钮变色
     $(document).on('input', '#phone-num', function(){
-        //页面禁止滚动
-        window.scrollControl(false);
         var number=$(this).val(),
             reg = /^1(3|4|5|7|8)\d{9}$/;
-        var $btn=$('.btn');
-        if(number!=''){
-            if(reg.test(number)) {
-                $('.phone').addClass('active');
-                $btn.removeClass('nouse');
+        var $code=$('.code-btn'),
+            $btn=$('.btn'),
+            code=$('#user-code').val();
+        if(reg.test(number)) {
+            $code.removeClass('disabled');
+            $('.phone').addClass('active');
+            if(code!=''){
                 $btn.addClass('active');
-                window.scrollControl(true);
             }else{
-                $('.phone').removeClass('active');
-                $btn.addClass('nouse');
                 $btn.removeClass('active');
-                // window.scrollControl(true);
+            }
+        }else{
+            $code.addClass('disabled');
+        }
+    });
+
+    //填充验证码信息，按钮变色
+    $(document).on('input', '#user-code', function() {
+        var number=$('#phone-num').val(),
+            reg = /^1(3|4|5|7|8)\d{9}$/;
+        var $btn=$('.btn'),
+            code=$('#user-code').val(),
+            password=$('#password-num').val();
+        if(reg.test(number)) {
+            if(code!=''){
+                $('.code-num').addClass('active');
+            }else{
+                $('.code-num').removeClass('active');
+            }
+        }else{
+            $btn.removeClass('active');
+        }
+    });
+
+    //填充信息，按钮变色
+    $(document).on('input','#password-num',function(){
+        //新增登陆密码
+        var password=$('#user-password').val(),
+            reg = /^1(3|4|5|7|8)\d{9}$/,
+            number=$('#phone-num').val(),
+            code=$('#user-code').val(),
+            $btn=$('.btn'),
+            password=$(this).val;
+        if(reg.test(number)&&code != '') {
+            if (password != '') {
+                $btn.addClass('active').removeClass('nouse');
+                $('.password').addClass('active');
+            } else {
+                $btn.removeClass('active').addClass('nouse');
+                $('.password').removeClass('active');
             }
         }
     });
 
+    //倒计时
+    var countdown = 60;
+    var timer;
+    $(document).on( window.eventName,'#phone-code-btn', function() {
+        timer = window.setInterval(function () {
+            setGetCodeBtn();
+        }, 1000);
 
-    $(document).on(window.eventName,'#register-btn.active', function () {
+        //请求验证码
+        if(countdown==60) {
+            var url = '/invitation/requestSmsCode';
+            getDataAsync(url, {mobile: $('#phone-num').val()},
+                function (res) {
+                    if(res.status_code==50016){
+                        $('.register-old').show().parent().show().siblings().hide();
+                        return;
+                    }
+                    window.showTips(res.message);
+                    if(res.status_code!=0) {
+                        countdown = 0;
+                        setGetCodeBtn();
+                    }
+                },function(){
+                    countdown = 0;
+                    setGetCodeBtn();
+                },'post');
+        }
+    });
+
+    //获取验证码倒计时
+    function setGetCodeBtn(){
+        var obj=$('#phone-code-btn')[0];
+        if (countdown == 0) {
+            obj.removeAttribute("disabled");
+            obj.value = "获取验证码";
+            countdown = 60;
+            clearInterval(timer);
+            return;
+        } else {
+            obj.setAttribute("disabled", true);
+            obj.value = " " + countdown + " s";
+            countdown--;
+        }
+    }
+
+    //注册
+    $(document).on(window.eventName,'.btn.active', function () {
         window.controlLoadingBox(true);
-        var url='/v1.3/share/doenrol',
-            uid=$('.user').attr('data-uid'),
-            cid=$('.user').attr('data-course-id'),
-            oid=$('.user').attr('data-org-id'),
-            mobile = $('#phone-num').val(),
-            groupBuyingId=$('.user').attr('data-record-id'),
-
+        var phone = $('#phone-num').val(),
+            code = $('#user-code').val(),
+            password = $('#password-num').val();
+        var url='/v1.2/share/register',
             data={
-                org_id:oid,
-                course_id:cid,
-                invitation_uid:uid,
-                mobile:mobile,
-                group_buying_id:groupBuyingId,
-        };
+                welcome:$('input[name="welcome"]').val(),
+                mobile:phone,
+                smsId:code,
+                password:password,
+            };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res) {
             //成功返回之后调用的函数
             window.controlLoadingBox(false);
             if (res.status_code == 0) {
-                window.showTips('<p>恭喜您，预约成功!</p>',2000);
+                window.showTips('<p>恭喜您，注册成功!</p>',2000);
+                var mobile = $('#phone-num').val();
+                $('.save-tel').text(mobile);
                 window.setTimeout(function() {
                     showSuccessPage();
                 },2000);
@@ -89,37 +142,31 @@ $(function (){
         },'post');
     });
 
+    //请求数据
+    function getDataAsync(url,data,callback,eCallback,type){
+        type = type ||'get';
+        data._token=$('input[name="_token"]').val();
+        $.ajax({
+            type: type,
+            url: url,
+            data: data,
+            success: function (res) {
+                callback(res);
+            },
+            error: function () {
+                //请求出错处理
+                window.controlLoadingBox(false),
+                    window.showTips('操作失败');
+                eCallback && eCallback();
+            }
+        });
+    }
 
     /**
      * 显示报名成功页面
      */
     function showSuccessPage() {
-        $('.box1').addClass('hide');
-        $('.container').removeClass('hide');
+        $('.register-new').show().parent().show().siblings().hide();
     }
-
-
-    /*
-     * 调用浏览量接口
-     typeId  表示页面类型
-     1 课程页面
-     2 表示机构页面
-     3 表示团购页面
-     id   表示记录id
-     * */
-    function viewCounts() {
-        var  box=$('.user'),
-            typeId =box.attr('data-type-id'),
-            id =box.attr('data-record-id'),
-            url='/v1.5/share/updateviewcounts',
-            data = {
-                typeid:typeId,
-                id:id
-            }
-        getDataAsync(url,data,function(){
-            
-        },null,'post');
-    };
-
 
 });

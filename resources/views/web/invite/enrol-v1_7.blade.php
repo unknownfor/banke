@@ -27,17 +27,17 @@
             </div>
             <img class="head-img first" src="/front/assets/img/invitation/v1.7/coo.png" />
             <from class="input-box">
-                <div class="input-info">
-                    <input placeholder="输入手机号" />
+                <div class="input-info phone">
+                    <input class="input-area" id="phone-num" placeholder="输入手机号" />
                 </div>
-                <div class="input-info">
-                    <input placeholder="验证码" />
+                <div class="input-info code-num">
+                    <input class="input-area" id="user-code" placeholder="验证码" />
                     <hr/>
-                    <input class="code-btn" placeholder="获取验证码">
+                    <input class="input-area" id="code-btn" placeholder="获取验证码">
                 </div>
 
-                <div class="input-info">
-                    <input  placeholder="密码" type="password"/>
+                <div class="input-info password">
+                    <input class="input-area" id="password-num" placeholder="密码" type="password"/>
                 </div>
 
                 <button class="btn">
