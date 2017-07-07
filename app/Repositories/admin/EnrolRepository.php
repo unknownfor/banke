@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeEnrol;
+use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserProfiles;
 use Carbon\Carbon;
 use Flash;
@@ -11,9 +12,10 @@ use Illuminate\Support\Facades\Log;
 use DB;
 use UserRepository;
 use App\Services\WechatService;
+use App\Services\MsgService;
 /**
-* 预约仓库
-*/
+ * 预约仓库
+ */
 class EnrolRepository
 {
 	/**
@@ -29,7 +31,7 @@ class EnrolRepository
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
 		$search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
-		
+
 		$name = request('name' ,'');
 		$mobile = request('mobile' ,'');
 		$status = request('status' ,'');
@@ -73,7 +75,7 @@ class EnrolRepository
 			$role = $role->where('created_at', '>=', getTime($updated_at_from));
 		}
 		if($updated_at_to){
-			$role = $role->where('created_at', '<=', getTime($updated_at_to, false));	
+			$role = $role->where('created_at', '<=', getTime($updated_at_to, false));
 		}
 
 		$count = $role->count();
@@ -125,10 +127,10 @@ class EnrolRepository
 			$oldEnrol = BankeEnrol::where(['mobile' =>$mobile, 'course_id' =>$param['course_id']]);
 			if($oldEnrol->count()>0){
 				Flash::success(trans('alerts.enrol.created_success'));
-				$this->sendWechatMsg($course_id);
+				$this->sendWechatMsg($course_id,$mobile);
 				return 2;
 			}
-			$this->sendWechatMsg($course_id);
+			$this->sendWechatMsg($course_id,$mobile);
 		}
 		$user=UserRepository::getUserSimpleInfoByMobile($mobile);
 		$param['name']=$user['name'];
@@ -142,16 +144,12 @@ class EnrolRepository
 	}
 
 	/*预约成功后发送微信消息*/
-	private function sendWechatMsg($course_id)
+	private function sendWechatMsg($course_id,$mobile)
 	{
 		$course=BankeCourse::find($course_id);
 		if($course['name']) {
 			$org=$course->org;
-			$days=BankeDict::find(13)['value'];
-			$content = '恭喜您成功预约 “'.$org['short_name'].' ” 的 '.$course['name'].'，' .
-				'机构地址是'.$org['address'].'，' .
-				'请尽快在'.$days.'天内到店缴费，' .
-				'有疑问请拨打400-034-0033，或者下载半课app咨询在线客服。';
+			$content = '学生'.$mobile.'预约了 “'.$org['name'].$org['branch_school'].'” 的 “'.$course['name'].'”，请在15分钟内联系';
 			$wechat = new WechatService();
 			$wechat->send_weixn($content);
 		}
@@ -313,6 +311,34 @@ class EnrolRepository
 			}
 		}
 		return ['record'=>$allRecord,'total'=>$count];
+	}
+
+	//发送提醒短信
+	public static function sendmsg()
+	{
+		$id = request('id', '');
+		$enrol = BankeEnrol::find($id);
+		$org = $enrol->org;
+		$enrol['org_name']=$org->name;
+		if($enrol['course_id']) {
+			$course_name = $enrol->course['name'];
+			$days=BankeDict::find('13')['value'];
+			$param = [
+				'json' => [
+					'mobilePhoneNumber' => $enrol["mobile"],
+					'organization-short'   =>$org['short_name'],
+					'organization-address'  => $org['address'],
+					'course' => $course_name,
+					'day'=>$days,
+					'template'=>"预约成功提醒"
+			],
+				'verify' => false
+			];
+			$msg = new MsgService();
+			$result = $msg->send($param);
+			return $result;
+		}
+		return 0;
 	}
 
 }

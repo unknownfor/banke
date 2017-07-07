@@ -10,13 +10,14 @@
   margin-top: -40px;
   margin-left: -40px;
   border-radius: 4px;
-  background-color: #a0a0a0;
+  background-color: #7b7b7b;
   text-align: center;
   font-size: 12px;
   color: #fff;
   z-index: 8000;
   display: none;
 }
+
 .loadingCircle {
   margin: 15px auto 10px auto;
   display: inline-block;
@@ -33,6 +34,16 @@
     transform: rotate(360deg);
   }
 }
+
+.ok{
+  margin: 15px auto 10px auto;
+  display: inline-block;
+  background-image: url("../img/ok.png");
+  background-size: contain;
+  height: 2em;
+  width: 2em;
+}
+
 .hiddenForm {
   display: none;
 }
@@ -201,4 +212,9 @@
 
 .remove-img:hover{
   background-color: rgba(250,80,58,1);
+}
+
+
+.disabled{
+  pointer-events: none;
 }

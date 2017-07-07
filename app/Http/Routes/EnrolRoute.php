@@ -11,6 +11,8 @@ $router->group(['prefix' => 'enrol'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
+	//发送短信通知
+	$router->post('sendmsg','EnrolController@sendmsg');
 });
 
 $router->resource('enrol', 'EnrolController');
