@@ -153,6 +153,9 @@ Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
 
     //赚钱攻略文章
     Route::get('/moneystrategy/{id}', 'MoneyStrategyController@share_money_strategy_v1_7');
+
+    //招生老师邀请注册
+    Route::get('/inviteteacher/{welcome}','InvitationController@inviteteacher_v1_7');
 });
 
 

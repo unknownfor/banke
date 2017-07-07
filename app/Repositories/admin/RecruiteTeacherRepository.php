@@ -50,24 +50,24 @@ class RecruiteTeacherRepository
 	}
 
 	/**
-	 * 添加配置
+	 * 添加招生老师申请
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:22+0800
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
-	public function store($request)
-	{   
-		$teacher = new BankeRecruiteTeacher;
-		if ($teacher->fill($request->all())->save()) {
-			Flash::success(trans('alerts.recruiteteacher.created_success'));
+	public function register($userData)
+	{
+		$teacher = new BankeRecruiteTeacherApplyFor;
+		$teacher->mobile=$userData['mobile'];
+		$teacher->invitation_uid=$userData['invitation_uid'];
+		if ($teacher->save()) {
 			return true;
 		}
-		Flash::error(trans('alerts.recruiteteacher.created_error'));
 		return false;
 	}
 	/**
-	 * 修改配置视图
+	 * 修改招生老师视图
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:34+0800
 	 * @param  [type]                   $id [description]
@@ -105,7 +105,7 @@ class RecruiteTeacherRepository
 	}
 
 	/**
-	 * 删除配置
+	 * 删除招生老师
 	 * @author shaolei
 	 * @date   2016-04-13T11:51:19+0800
 	 * @param  [type]                   $id [description]

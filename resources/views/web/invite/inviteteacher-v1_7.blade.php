@@ -14,10 +14,11 @@
     <meta http-equiv="Cache" content="no-cache">
     <link href="/front/assets/css/invitation/v1.7/enrol.css" rel="stylesheet" type="text/css"/>
     <link href="/front/assets/css/invitation/v1.7/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
-    <title>{{$course['name']}}</title>
+    <title>优质机构代言人</title>
 </head>
 <body>
 {!! csrf_field() !!}
+<input type="hidden" name="welcome" value="{{$welcome}}"/>
 <div id="enrol">
     <div class="page register">
         <div class="container">

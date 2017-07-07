@@ -98,7 +98,7 @@
                                 <div class="form-group form-md-line-input">
                                     <label class="col-md-1 control-label" for="description">{{trans('labels.enrol.send_msg')}}</label>
                                     <div class="col-md-5">
-                                        <label class="col-md-12">短信模板： 恭喜您成功预约 “{{$enrol['org_name']}}” 的 “{{$enrol['course_name']}}” 。机构地址是 “{{$enrol['org_address']}}”，请尽快在{{$enrol['days']}}天内到店缴费。有疑问请拨打400-034-0033，或下载半课app咨询在线客服。</label>
+                                        <label class="col-md-12">短信模板： 恭喜您成功预约 “{{$enrol['short_name']}}” 的 “{{$enrol['course_name']}}” 。机构地址是 “{{$enrol['org_address']}}”，请尽快在{{$enrol['days']}}天内到店缴费。有疑问请拨打400-034-0033，或下载半课app咨询在线客服。</label>
                                     </div>
                                     <div class="col-md-3">
                                         <button type="button" id="send-msg" class="btn blue">发送</button>

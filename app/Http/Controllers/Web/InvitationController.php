@@ -308,4 +308,10 @@ class InvitationController extends Controller
             'superiororg'
         ]));
     }
+
+
+    public function inviteteacher_v1_7($welcome)
+    {
+        return view('web.invite.inviteteacher-v1_7')->with(compact(['welcome']));
+    }
 }

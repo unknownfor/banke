@@ -9,6 +9,7 @@ use Flash;
 use Mockery\CountValidator\Exception;
 use DB;
 use Auth;
+use RecruiteTeacherRepository;
 
 /**
 * 用户仓库
@@ -396,12 +397,13 @@ class UserRepository
 				$invitation_user = BankeUserProfiles::where('invitation_code', $userData['welcome'])->first();
 				$invitation_user->invitation_count += 1;
 				$invitation_user->save();
+				$invitation_uid=$invitation_user['uid'];
 				// 自动更新用户资料关系
 				$profiles = [
 					'uid' => $user->id,
 					'name' => $userData['name'],
 					'mobile'=> $userData['mobile'],
-					'invitation_uid'=>$invitation_user['uid'],
+					'invitation_uid'=>$invitation_uid,
 					'invitation_code'=> $this->create_uuid()
 				];
 				$user->profiles()->create($profiles);
@@ -415,12 +417,20 @@ class UserRepository
 
 				//记录邀请信息
 				$invitation_log = [
-					'uid'=>$invitation_user['uid'],
+					'uid'=>$invitation_uid,
 					'name'=>$invitation_user['name'],
 					'mobile'=>$invitation_user['mobile'],
 					'target_mobile'=>$userData['mobile']
 				];
 				BankeInvitation::create($invitation_log);
+
+
+				//v1.7添加招生老师注册
+				if($userData['userType']==4) {
+					$userData['invitation_uid'] = $invitation_uid;
+					RecruiteTeacherRepository::register($userData);
+				}
+
 				DB::commit();
 				Flash::success(trans('alerts.users.created_success'));
 				$result = true;
