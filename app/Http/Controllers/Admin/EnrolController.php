@@ -3,6 +3,7 @@
  * 网站功能设置
  */
 namespace App\Http\Controllers\Admin;
+use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeCourse;
 use Illuminate\Http\Request;
@@ -11,6 +12,8 @@ use App\Http\Controllers\Controller;
 use EnrolRepository;
 use App\Http\Requests\EnrolRequest;
 use Illuminate\Support\Facades\Log;
+use App\Services\ApiResponseService;
+use App\Lib\Code;
 
 class EnrolController extends Controller {
 
@@ -70,7 +73,14 @@ class EnrolController extends Controller {
     public function edit($id)
     {
         $enrol = EnrolRepository::edit($id);
-        return view('admin.enrol.edit')->with(compact(['enrol','courseInfo','orgs']));
+        $org = BankeOrg::find($enrol['org_id']);
+        $enrol['org_name']=$org->name;
+        $enrol['org_address']=$org->address;
+        $enrol['days']=BankeDict::find(13)['value'];
+        if($enrol['course_id']) {
+            $enrol['course_name'] = BankeCourse::find($enrol['course_id'])['name'];
+        }
+        return view('admin.enrol.edit')->with(compact(['enrol']));
     }
     /**
      * 修改配置
@@ -111,5 +121,14 @@ class EnrolController extends Controller {
     {
         EnrolRepository::destroy($id);
         return redirect('admin/enrol');
+    }
+
+    public function sendmsg()
+    {
+        $result = EnrolRepository::sendmsg();
+        if ($result) {
+            return ApiResponseService::success('', Code::SUCCESS, '发送成功');
+        }
+        return ApiResponseService::showError(Code::SEND_SMS_ERROR);
     }
 }

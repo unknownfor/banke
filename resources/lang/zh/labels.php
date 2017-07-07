@@ -397,6 +397,7 @@ return [
 		'permission' => '权限',
 		'module' => '模块',
 		'comment' => '备注',
+		'send_msg' => '发送短信',
 	],
 
 	//提现

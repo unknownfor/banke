@@ -16,8 +16,6 @@ class ApiResponseService {
 		return response()->json($result);
 	}
 
-
-
 	public static function showError($code) {
 
 		$message = Code::getErrorMsg($code);
