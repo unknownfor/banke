@@ -236,6 +236,9 @@ return [
 		'moneynewsCreate' => '<i class="fa fa-list"></i> 添加赚钱动态',
 		'moneynewsEdit' => '<i class="fa fa-list"></i> 编辑赚钱动态',
 
+		'recruiteteacherList' => '<i class="fa fa-list"></i> 招生老师列表',
+		'recruiteteacherEdit' => '<i class="fa fa-list"></i> 审核招生老师',
+
 
 	],
 	'dict' => [
@@ -697,7 +700,7 @@ return [
 		'id' => '序号',
 		'name' => '姓名',
 		'mobile' => '手机号',
-		'org_id'=>'机构id',
+		'org_id'=>'核实机构',
 		'org_name_typein' => '机构简称',
 		'org_branch_typein' => '分校区名称',
 		'certification_img' => '认证图片',

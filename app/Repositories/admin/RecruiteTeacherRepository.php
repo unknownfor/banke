@@ -2,6 +2,8 @@
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeRecruiteTeacher;
 use App\Models\Banke\BankeRecruiteTeacherApplyFor;
+use App\Models\Banke\BankeDict;
+use AppUserRepository;
 use Carbon\Carbon;
 use Flash;
 /**
@@ -94,6 +96,11 @@ class RecruiteTeacherRepository
 	{
 		$teacher = BankeRecruiteTeacher::find($id);
 		if ($teacher) {
+			$input = $request->all();
+			//奖励邀请人
+			if ($input['status'] == 1) {
+				self::awardInvitor($teacher);
+			}
 			if ($teacher->fill($request->all())->save()) {
 				Flash::success(trans('alerts.recruiteteacher.updated_success'));
 				return true;
@@ -102,6 +109,21 @@ class RecruiteTeacherRepository
 			return false;
 		}
 		abort(404);
+	}
+
+	//奖励邀请人
+	private static function awardInvitor($teacher)
+	{
+		$mobile = $teacher->userSimple['mobile'];
+		$applyFor = BankeRecruiteTeacherApplyFor::where('mobile',$mobile);
+		if($applyFor->count()>0){
+			$applyFor = $applyFor->first();
+			$invitation_uid=$applyFor['invitation_uid'];
+
+			//查询系统配置里注册认证的奖金
+			$register_award = BankeDict::where('id', 1)->first();
+			AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $register_award, 1, 2);
+		}
 	}
 
 	/**

@@ -27,7 +27,7 @@ $(function(){
 
         $(document).on('click','.remove-img', $.proxy(this,'deletCoverImg'));
 
-        $('.selectpicker').selectpicker()
+        $('.selectpicker').selectpicker();
 
 
         //photoswipe   //图片信息查看  相册、视频信息查看

@@ -25,4 +25,10 @@ class BankeRecruiteTeacher extends Model
         parent::__construct($attributes);
         $this->action = config('admin.global.recruiteteacher.action');
     }
+
+    public  function userSimple(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid')->select('uid','mobile','avatar');
+    }
+
+
 }
