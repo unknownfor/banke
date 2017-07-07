@@ -322,7 +322,7 @@ img {
   -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
 }
 #enrol .current .head-img {
-  -webkit-animation: slideToTop .9s 0.6s ease both;
+  -webkit-animation: slideToTop .9s ease both;
 }
 #enrol .current .input-info.phone {
   -webkit-animation: slideToTop .9s 0.2s ease both;
@@ -340,7 +340,7 @@ img {
   -webkit-animation: slideToTop .8s ease both;
 }
 #enrol .current .head-txt .txt-two {
-  -webkit-animation: slideToTop .8s 0.3s ease both;
+  -webkit-animation: slideToTop .8s 0.2s ease both;
 }
 /*上滑提示*/
 @-webkit-keyframes swipeMoveTop {
