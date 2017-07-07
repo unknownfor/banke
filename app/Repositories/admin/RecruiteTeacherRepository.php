@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeRecruiteTeacher;
+use App\Models\Banke\BankeRecruiteTeacherApplyFor;
 use Carbon\Carbon;
 use Flash;
 /**
@@ -58,13 +59,12 @@ class RecruiteTeacherRepository
 	 */
 	public function register($userData)
 	{
-		$teacher = new BankeRecruiteTeacherApplyFor;
-		$teacher->mobile=$userData['mobile'];
-		$teacher->invitation_uid=$userData['invitation_uid'];
-		if ($teacher->save()) {
-			return true;
-		}
-		return false;
+		$teacher = [
+			'mobile'=>$userData['mobile'],
+			'invitation_uid'=>$userData['invitation_uid'],
+		];
+		BankeRecruiteTeacherApplyFor::create($teacher);
+		return true;
 	}
 	/**
 	 * 修改招生老师视图

@@ -360,17 +360,23 @@ class UserRepository
 	 * */
 	public  static  function getUserSimpleInfoByMobile($mobile){
 		$user_info =new BankeUserProfiles;
-		$user_info = $user_info::where('mobile',$mobile)->first();
-		if($user_info->uid){;
-			$name = $user_info->authentication['real_name'];
-			if ($name) {
-				$user_info['name']=$name;
+		$user_info = $user_info::where('mobile',$mobile);
+		if($user_info->count()>0) {
+			$user_info=$user_info->first();
+			if ($user_info->uid) {
+				;
+				$name = $user_info->authentication['real_name'];
+				if ($name) {
+					$user_info['name'] = $name;
+				}
+				if (!$user_info['avatar']) {
+					$user_info['avatar'] = 'http://pic.hisihi.com/2017-06-02/1496387348811111.png';
+				}
 			}
-			if(!$user_info['avatar']){
-				$user_info['avatar']='http://pic.hisihi.com/2017-06-02/1496387348811111.png';
-			}
+			return $user_info;
+		}else{
+			return null;
 		}
-		return $user_info;
 	}
 
 	/**
@@ -426,7 +432,7 @@ class UserRepository
 
 
 				//v1.7添加招生老师注册
-				if($userData['userType']==4) {
+				if($userData['userType']==3) {
 					$userData['invitation_uid'] = $invitation_uid;
 					RecruiteTeacherRepository::register($userData);
 				}

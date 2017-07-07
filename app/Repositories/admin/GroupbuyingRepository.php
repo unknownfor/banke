@@ -376,17 +376,21 @@ class GroupbuyingRepository
 	 * */
 	public static function  execAddGroupbuyingUsersInfo($groupbuying){
 		$targetUserInfo=UserRepository::getUserSimpleInfoByMobile($groupbuying->mobile);
-		$uid= $targetUserInfo->uid;
-		$gid= $groupbuying->group_buying_id;
-		$oldInfo=BankeGroupbuyingUsers::where(['uid'=>$uid,'group_buying_id'=>$gid]);
-		if($oldInfo->count()>0){
-			return false;
-		}
-		$user = new BankeGroupbuyingUsers();
-		$user['group_buying_id'] = $gid;
-		$user['uid'] = $uid;
-		if ($user->save()) {
-			return true;
+		if($targetUserInfo) {
+			$uid = $targetUserInfo->uid;
+			$gid = $groupbuying->group_buying_id;
+			$oldInfo = BankeGroupbuyingUsers::where(['uid' => $uid, 'group_buying_id' => $gid]);
+			if ($oldInfo->count() > 0) {
+				return false;
+			}
+			$user = new BankeGroupbuyingUsers();
+			$user['group_buying_id'] = $gid;
+			$user['uid'] = $uid;
+			if ($user->save()) {
+				return true;
+			}else{
+				return false;
+			}
 		}
 		return false;
 	}
