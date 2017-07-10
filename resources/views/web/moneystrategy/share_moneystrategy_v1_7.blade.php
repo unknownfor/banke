@@ -16,8 +16,15 @@
     <title>{{$strategy['title']}}</title>
 </head>
 <body>
-123
-
+<div id="article">
+    <div class="head">
+        <div class="title">{{$strategy['title']}}</div>
+        <div class="author">by: {{$strategy['author']}}</div>
+    </div>
+    @if($strategy['content'])
+        <div class="content">{!! $strategy['content'] !!}</div>
+    @endif
+</div>
 @include('web.layout.downloadbar')
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
