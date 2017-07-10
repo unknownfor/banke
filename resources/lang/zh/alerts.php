@@ -263,4 +263,11 @@ return [
         'deleted_error' => '删除赚钱动态失败',
     ],
 
+    'recruiteteacher' => [
+        'updated_success'   => '审核招生老师成功.',
+        'updated_error'     => '审核招生老师失败.',
+        'deleted_success' => '删除招生老师成功',
+        'deleted_error' => '删除招生老师失败',
+    ],
+
 ];

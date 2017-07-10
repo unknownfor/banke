@@ -96,9 +96,12 @@ class RecruiteTeacherRepository
 	{
 		$teacher = BankeRecruiteTeacher::find($id);
 		if ($teacher) {
+			$cur_user = Auth::user();
+			$operator_id=$cur_user->id;
+			$request['operator_id']=$operator_id;
 			$input = $request->all();
 			//奖励邀请人
-			if ($input['status'] == 1) {
+			if ($input['status'] == 1 && $teacher['status']!=1) {
 				self::awardInvitor($teacher);
 			}
 			if ($teacher->fill($request->all())->save()) {
