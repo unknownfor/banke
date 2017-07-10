@@ -21,6 +21,19 @@ img{
     color: #9b9b9b;
     margin: 8px 0;
   }
+  .arrow{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 45%;
+    right: 45%;
+    bottom: 2px;
+    color: #FFEB3B;
+    background-size: 33px auto;
+    > i {
+      font-size: 26px;
+    }
+  }
   .page {
     height: 100%;
     @h: 35px;
@@ -178,5 +191,15 @@ img{
   100% {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+
+@media screen and (max-width:320px){
+  #invitation .page .arrow {
+    bottom: 0;
+    > i {
+      font-size: 22px;
+    }
   }
 }

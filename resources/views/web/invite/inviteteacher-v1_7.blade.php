@@ -45,7 +45,6 @@
                     <a class="downloadBar" href="http://www.91banke.com/web/download">成为机构代言人</a>
                 </button>
             </from>
-
         </div>
     </div>
     <div class="page register-success hide">
@@ -57,6 +56,9 @@
             </div>
             <div class="btn active">
                 <a class="downloadBar" href="http://www.91banke.com/web/download">下载半课</a>
+            </div>
+            <div class="arrow">
+                <i class="iconfont down-btn">&#xe60e;</i>
             </div>
         </div>
     </div>
@@ -82,7 +84,7 @@
 <script src="/front/assets/scripts/invitaion/enrol.v1.7.js" type="text/javascript"></script>
 <script>
     new PageSlider({
-        pages: $('#enrol .page'),
+        pages: $('#enrol .register-success'),
         gestureFollowing: true
     });
 </script>
