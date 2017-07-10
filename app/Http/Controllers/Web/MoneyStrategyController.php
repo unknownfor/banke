@@ -19,7 +19,7 @@ class MoneyStrategyController extends Controller
     public function money_strategy_v1_7($id)
     {
         $strategy = BankeMoneyStrategy::find($id);
-        return view('web.moneystrategy.moneystrategy_v1_7')->with(compact(['$strategy']));
+        return view('web.moneystrategy.moneystrategy_v1_7')->with(compact(['strategy']));
     }
 
     /**
@@ -28,6 +28,6 @@ class MoneyStrategyController extends Controller
     public function share_money_strategy_v1_7($id)
     {
         $strategy = BankeMoneyStrategy::find($id);
-        return view('web.moneystrategy.share_moneystrategy_v1_7')->with(compact(['$strategy']));
+        return view('web.moneystrategy.share_moneystrategy_v1_7')->with(compact(['strategy']));
     }
 }
