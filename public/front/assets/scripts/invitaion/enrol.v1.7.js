@@ -45,6 +45,7 @@ $(function () {
             reg = /^1(3|4|5|7|8)\d{9}$/,
             number=$('#phone-num').val(),
             code=$('#user-code').val(),
+            $code=$('#phone-code-btn'),
             $btn=$('.btn'),
             $box=$('.phone'),
             password=$(this).val;
@@ -58,7 +59,7 @@ $(function () {
             }
         }else {
             $box.removeClass('active');
-            code.addClass('disabled');
+            $code.addClass('disabled');
         }
     });
 
