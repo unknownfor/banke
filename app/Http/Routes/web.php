@@ -150,6 +150,9 @@ Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
 
     //招生老师邀请注册
     Route::get('/inviteteacher/{welcome}','InvitationController@inviteteacher_v1_7');
+
+    //开团分享、心得分享页面 (预约页面)
+    Route::get('/enrol/{uid}/{cid}/{typeid}/{id}', 'InvitationController@enrol_v1_7');
 });
 
 
