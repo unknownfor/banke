@@ -19,6 +19,7 @@ use League\Flysystem\Exception;
 use DB;
 use Auth;
 use MoneyNewsRepository;
+use GroupbuyingRepository;
 
 /**
 * 订单（报名）仓库
@@ -261,7 +262,7 @@ class OrderRepository
 
 						$this->execUpadateUserInfo($order,$userProfile); //更新用户信息
 
-//						$this->execUpadateGroupbuyingUsersInfo($order);//更新参团信息 v1.7之后，报名预约就表示参加团
+						GroupbuyingRepository::execUpadateGroupbuyingUsersInfo($order);//更新参团信息
 
 						$this->execUpadateInvitorInfo($order,$org);//更新推荐用户信息，并发送app内消息
 
@@ -351,11 +352,16 @@ class OrderRepository
 				$groupbuying_flag=$this->dealwithOrderFromType($course_id,$invitation_uid,$invitation_award);
 				if(!$groupbuying_flag) {
 					//更新邀请人的订单信息，已获邀请金额 + award
-					$order_invitor = BankeCashBackUser::where(['course_id' => $course_id, 'uid' => $invitation_uid, 'status' => 1])->first();
-					$order_invitor->get_group_buying_amount += $invitation_award;  //已经获得的开团金额金额 += $award
-					$order_invitor->save();
+					$order_invitor = BankeCashBackUser::where(['course_id' => $course_id, 'uid' => $invitation_uid, 'status' => 1]);
+					if ($order_invitor->count() > 0) {
+						$order_invitor = $order_invitor->first();
+						$order_invitor->get_group_buying_amount += $invitation_award;  //已经获得的开团金额金额 += $award
+						$order_invitor->save();
+					}
+					else {
+						return false;
+					}
 				}
-
 				//更新用户账户金额信息以及添加变动记录
 				AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
 
@@ -395,7 +401,7 @@ class OrderRepository
 	 */
 	private  function dealwithOrderFromType($course_id,$uid,$award)
 	{
-		$groupbuying = BankeGroupbuying::where(['course_id'=>$course_id,'uid'=>$uid,'status'=>1]);
+		$groupbuying = BankeGroupbuying::where(['course_id'=>$course_id,'organizer_id'=>$uid,'status'=>1]);
 		if($groupbuying->count()>0) {
 			$groupbuying = $groupbuying->first();
 			if($groupbuying['from']==1) {
@@ -426,34 +432,6 @@ class OrderRepository
 		//记录消息
 		BankeMessage::create($message);
 
-	}
-
-	/*
-	 * *更新参团信息
-	 * @author jimmy
-	 * @date   2016-04-13T11:51:19+0800
-	 * @param  [type] $order [订单]
-	 * */
-	public function  execUpadateGroupbuyingUsersInfo($order){
-		$user = new BankeGroupbuyingUsers();
-		$enrol= new BankeEnrol();
-		$mobile=$order->mobile;
-		$enrol=$enrol::where(['mobile'=>$mobile,'course_id'=>$order->course_id]);
-		if($enrol->count()>0) {
-			$enrol=$enrol->first();
-			$gid = $enrol->group_buying_id;
-			if ($gid==0) {
-				return true;
-			}else {
-				$user['group_buying_id'] = $gid;
-				$user['uid'] = $order->uid;
-				if ($user->save()) {
-					return true;
-				}
-				return false;
-			}
-		}
-		return true;
 	}
 
 	/**
