@@ -13,8 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/moneystrategy/v1.7/moneystrategy.css" rel="stylesheet">
-    {{--<title>{{$strategy['title']}}</title>--}}
-    <title>title</title>
+    <title>{{$strategy['title']}}</title>
 </head>
 <body>
     <div id="article">
