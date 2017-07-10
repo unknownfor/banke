@@ -6,6 +6,7 @@ use App\Models\Banke\BankeDict;
 use AppUserRepository;
 use Carbon\Carbon;
 use Flash;
+use Auth;
 /**
 * 招生老师仓库
 */
@@ -124,7 +125,7 @@ class RecruiteTeacherRepository
 			$invitation_uid=$applyFor['invitation_uid'];
 
 			//查询系统配置里注册认证的奖金
-			$register_award = BankeDict::where('id', 1)->first();
+			$register_award = BankeDict::find(2)['value'];
 			AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $register_award, 1, 2);
 		}
 	}

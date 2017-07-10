@@ -303,16 +303,21 @@ class AppUserRepository
 						BankeMessage::create($message1);
 
 						//v1.7将招生都老师的邀请奖励提到 老师审核时，所以此处不奖励
-						if($user_profile->user_type!=3) {
+						if($user_profile->user_type!=3){
+
 							if ($user_profile->invitation_uid > 0) {
 								$invitation_user = BankeUserProfiles::where('uid', $user_profile->invitation_uid)->lockForUpdate()->first();
 								//查询系统配置里邀请人注册认证的奖金
 								$invitation_award = BankeDict::where('id', 2)->first();
 								$invitation_user->invitation_amount += $invitation_award->value;
+
 								$invitation_user->account_balance += $invitation_award->value;
+
 								//将邀请他人注册认证的奖金加大做任务的已领金额中去
 								$invitation_user->get_do_task_amount += $invitation_award->value;
+
 								$invitation_user->save();
+
 								$balance_log1 = [
 									'uid' => $user_profile->invitation_uid,
 									'change_amount' => $invitation_award->value,

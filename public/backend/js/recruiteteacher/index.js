@@ -11,6 +11,7 @@ $(function(){
     window.setDataBeforeCommit=function(){
         if($('input[name="status"]').val()==1){
             if($('select[name="org_id"]').val()==0){
+                $('.loding-modal').show().delay(3000).hide(0);
                 return false;
             }
         }

@@ -74,7 +74,7 @@ class EnrolController extends Controller {
     {
         $enrol = EnrolRepository::edit($id);
         $org = BankeOrg::find($enrol['org_id']);
-        $enrol['org_name']=$org->name;
+        $enrol['short_name']=$org->short_name;
         $enrol['org_address']=$org->address;
         $enrol['days']=BankeDict::find(13)['value'];
         if($enrol['course_id']) {

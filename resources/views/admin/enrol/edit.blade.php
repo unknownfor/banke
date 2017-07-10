@@ -142,7 +142,7 @@
         </div>
     </div>
     <div class="loding-modal">
-        <i id="imgLoadingCircle" class="ok"></i>
+        <i id="imgLoadingCircle" class="modal-icon ok"></i>
         <div>发送成功</div>
     </div>
 @endsection

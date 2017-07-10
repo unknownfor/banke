@@ -144,7 +144,7 @@
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/recruiteteacher')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                              <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
+                              <button type="submit" class="btn blue" onclick="return setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
                   </div>
@@ -157,8 +157,8 @@
     <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif, image/jpeg">
 </form>
 <div class="loding-modal">
-    <i id="imgLoadingCircle" class="loadingCircle active"></i>
-    <div>上传中……</div>
+    <i id="imgLoadingCircle" class="modal-icon error"></i>
+    <div>请选择机构</div>
 </div>
 @endsection
 @section('js')

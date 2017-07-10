@@ -2,6 +2,7 @@
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeGroupbuying;
 use App\Models\Banke\BankeGroupbuyingUsers;
+use App\Models\Banke\BankeEnrol;
 use Carbon\Carbon;
 use Flash;
 use DB;
@@ -369,30 +370,30 @@ class GroupbuyingRepository
 
 
 	/*
-	 * *添加参团信息
+	 * *更新参团信息,审核订单后，确定参团
 	 * @author jimmy
 	 * @date   2016-04-13T11:51:19+0800
-	 * @param  [type] $groupbuying [订单]
+	 * @param  [type] $order [订单]
 	 * */
-	public static function  execAddGroupbuyingUsersInfo($groupbuying){
-		$targetUserInfo=UserRepository::getUserSimpleInfoByMobile($groupbuying->mobile);
-		if($targetUserInfo) {
-			$uid = $targetUserInfo->uid;
-			$gid = $groupbuying->group_buying_id;
-			$oldInfo = BankeGroupbuyingUsers::where(['uid' => $uid, 'group_buying_id' => $gid]);
-			if ($oldInfo->count() > 0) {
-				return false;
-			}
-			$user = new BankeGroupbuyingUsers();
-			$user['group_buying_id'] = $gid;
-			$user['uid'] = $uid;
-			if ($user->save()) {
+	public static function  execUpadateGroupbuyingUsersInfo($order){
+		$user = new BankeGroupbuyingUsers();
+		$enrol= new BankeEnrol();
+		$mobile=$order->mobile;
+		$enrol=$enrol::where(['mobile'=>$mobile,'course_id'=>$order->course_id]);
+		if($enrol->count()>0) {
+			$enrol=$enrol->first();
+			$gid = $enrol->group_buying_id;
+			if ($gid==0) {
 				return true;
-			}else{
+			}else {
+				$user['group_buying_id'] = $gid;
+				$user['uid'] = $order->uid;
+				if ($user->save()) {
+					return true;
+				}
 				return false;
 			}
 		}
-		return false;
+		return true;
 	}
-
 }

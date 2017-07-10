@@ -92,7 +92,6 @@ class InvitationController extends Controller
             'course_id' => 'required',
             'invitation_uid' => 'required'
         ]);
-
         if ($validator->fails()) {
             $errors = $validator->errors();
             $sss='';
@@ -101,19 +100,11 @@ class InvitationController extends Controller
             }
             return response()->json(['msg' => $sss, 'status' => false]);
         }
-        DB::transaction(function () use ($request) {
-            try{
-                $result = EnrolRepository::store($request); //添加预约
-                if($result==1) {
-                    GroupbuyingRepository::execAddGroupbuyingUsersInfo($request); //添加预约
-                }
-                DB::commit();
-                return ApiResponseService::success('', Code::SUCCESS, '预约成功');
-            }catch (Exception $e){
-                return ApiResponseService::showError(Code::REGISTER_ERROR);
-            }
-        });
-        return ApiResponseService::success('', Code::SUCCESS, '预约成功');
+        $result = EnrolRepository::store($request);
+        if ($result) {
+            return ApiResponseService::success('', Code::SUCCESS, '预约成功');
+        }
+        return ApiResponseService::showError(Code::REGISTER_ERROR);
     }
 
 
@@ -230,7 +221,7 @@ class InvitationController extends Controller
         //随机图
         $word=GroupbuyingWordsRepository::getRandomRecord();
 
-        //参团人员
+        //预约参团人员
         $groupbuyingId=GroupbuyingRepository::getGroupbuyingByCidAndUid($uid,$cid);
         $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($groupbuyingId,2);
 

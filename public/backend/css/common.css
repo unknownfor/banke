@@ -34,14 +34,18 @@
     transform: rotate(360deg);
   }
 }
-
-.ok{
+.modal-icon {
   margin: 15px auto 10px auto;
   display: inline-block;
-  background-image: url("../img/ok.png");
   background-size: contain;
   height: 2em;
   width: 2em;
+}
+.modal-icon.ok{
+  background-image: url("../img/ok.png");
+}
+.modal-icon.error{
+  background-image: url("../img/error.png");
 }
 
 .hiddenForm {

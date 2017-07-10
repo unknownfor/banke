@@ -342,5 +342,4 @@ class EnrolRepository
 		}
 		return 0;
 	}
-
 }
