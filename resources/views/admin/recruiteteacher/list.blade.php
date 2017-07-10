@@ -64,9 +64,9 @@
                             <thead>
                             <tr role="row" class="heading">
                                 <th>#</th>
-                                <th width="20%"> {{ trans('labels.recruiteteacher.name') }} </th>
-                                <th> {{ trans('labels.recruiteteacher.org_name_typein') }} </th>
-                                <th> {{ trans('labels.recruiteteacher.org_branch_typein') }} </th>
+                                <th width="10%"> {{ trans('labels.recruiteteacher.name') }} </th>
+                                <th width="20%"> {{ trans('labels.recruiteteacher.org_name_typein') }} </th>
+                                <th width="20%"> {{ trans('labels.recruiteteacher.org_branch_typein') }} </th>
                                 <th> {{ trans('labels.recruiteteacher.certification_img') }} </th>
                                 <th width="8%"> {{ trans('labels.recruiteteacher.status') }} </th>
                                 <th> {{ trans('labels.recruiteteacher.created_at') }} </th>

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class BankeRecruiteTeacherApplyFor extends Model
 {
     //
+    // 招生老师邀请信息副表
+    protected $table = 'banke_recruite_teacher_applyfor';
     use ActionAttributeTrait;
     protected $fillable = ['mobile', 'invitation_uid'];
 

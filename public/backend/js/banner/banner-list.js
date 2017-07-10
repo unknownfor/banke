@@ -10,10 +10,6 @@ var TableDatatablesAjax = function() {
         "data": function ( d ) {
           d.title = $('.filter input[name="title"]').val().replace(/(^\s*)|(\s*$)/g, "");
           d.status = $('.filter select[name="status"] option:selected').val();
-          //d.created_at_from = $('.filter input[name="created_at_from"]').val();
-          //d.created_at_to = $('.filter input[name="created_at_to"]').val();
-          //d.updated_at_from = $('.filter input[name="updated_at_from"]').val();
-          //d.updated_at_to = $('.filter input[name="updated_at_to"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",

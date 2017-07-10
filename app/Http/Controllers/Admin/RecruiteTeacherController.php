@@ -9,6 +9,7 @@ use PermissionRepository;
 use RoleRepository;
 use RecruiteTeacherRepository;
 use Illuminate\Support\Facades\Log;
+use App\Models\Banke\BankeOrg;
 
 class RecruiteteacherController extends Controller
 {
@@ -44,8 +45,9 @@ class RecruiteteacherController extends Controller
      */
     public function edit($id)
     {
+        $orgs = BankeOrg::where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
         $recruiteteacher = RecruiteTeacherRepository::edit($id);
-        return view('admin.recruiteteacher.edit')->with(compact('recruiteteacher'));
+        return view('admin.recruiteteacher.edit')->with(compact(['recruiteteacher','orgs']));
     }
     /**
      * 修改机构资料
