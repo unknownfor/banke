@@ -7,4 +7,12 @@ $(function(){
 
     //photoswipe   //图片信息查看  相册、视频信息查看
     new MyPhotoSwipe('.imgs-list-box');
+
+    window.setDataBeforeCommit=function(){
+        if($('input[name="status"]').val()==1){
+            if($('select[name="org_id"]').val()==0){
+                return false;
+            }
+        }
+    };
 });
