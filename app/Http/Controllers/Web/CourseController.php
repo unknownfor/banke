@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banke\BankeCourse;
+use App\Models\Banke\BankeUserProfiles;
 use App\Repositories\admin\OrgRepository;
 use App\Repositories\admin\OrgApplyForRepository;
 use App\Services\ApiResponseService;
@@ -80,7 +81,7 @@ class CourseController extends Controller
     /**
      * 课程详情
      */
-    public function course_v1_7($id)
+    public function course_v1_7($id,$uid)
     {
         $course = BankeCourse::find($id);
         $org = $course->org;
@@ -88,7 +89,8 @@ class CourseController extends Controller
         $course['max_award']=$course['share_award']  +$course['checkin_award'] + $course['group_buying_award'];
         $userInfo=$this->getRandomUserInfo();
         $number = rand(3, 5);
-        return view('web.course.course-v1_7')->with(compact(['course','org','userInfo','number']));
+        $currentUserType=BankeUserProfiles::find($uid)['user_type'];
+        return view('web.course.course-v1_7')->with(compact(['course','org','userInfo','number','currentUserType']));
     }
 
 
