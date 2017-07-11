@@ -46,12 +46,20 @@
                     <div class="total-val">**</div>
                 </div>
                 <div>
+                    <div>总报名金额</div>
+                    <div class="total-val">*****</div>
+                </div>
+                <div>
                     <div>总打卡次数</div>
                     <div class="total-val">*</div>
                 </div>
                 <div>
                     <div>总提现次数</div>
                     <div class="total-val">**</div>
+                </div>
+                <div>
+                    <div>总提现金额</div>
+                    <div class="total-val">******</div>
                 </div>
             </div>
         </div>
@@ -137,6 +145,10 @@
     </div>
 </div>
 </form>
+<div class="loding-modal">
+    <i id="imgLoadingCircle" class="loadingCircle active"></i>
+    <div>加载中…</div>
+</div>
 
 @endsection
 

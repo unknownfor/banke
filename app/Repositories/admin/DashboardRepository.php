@@ -34,11 +34,20 @@ class DashboardRepository
 		$count1= BankeUserProfiles::all()->toArray();//注册
 		$count2 = BankeUserAuthentication::where('certification_status',2)->get()->toArray();//认证
 		$count3 = BankeEnrol::all()->toArray();//预约
-		$count4 = BankeCashBackUser::where('status',1)->get()->toArray();//报名
-		$count5 = BankeCheckIn::all()->toArray();//打卡
-		$count6 = BankeWithdraw::where('status',1)->get()->toArray();//提现次数
 
-		return array(count($count1),count($count2),count($count3),count($count4),count($count5),count($count6));
+		$order=BankeCashBackUser::where('status',1);
+		$count4 = $order->count();//报名
+		$totalAmount=$order->sum('tuition_amount');
+		$totalAmount = number_format($totalAmount,2);
+
+		$withDraw=BankeWithdraw::where('status',1);
+
+		$count5 = BankeCheckIn::all()->toArray();//打卡
+		$count6 = $withDraw->count();//提现次数
+		$totalWithDrawAmount = $withDraw->sum('withdraw_amount');//提现次数
+		$totalWithDrawAmount = number_format($totalWithDrawAmount,2);
+
+		return array(count($count1),count($count2),count($count3),$count4,$totalAmount,count($count5),$count6,$totalWithDrawAmount);
 	}
 
 	/*
