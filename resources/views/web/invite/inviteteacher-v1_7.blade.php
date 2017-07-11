@@ -41,9 +41,7 @@
                     <input class="input-area" id="password-num" placeholder="密码" type="password"/>
                 </div>
 
-                <button class="btn first active">
-                    <a class="downloadBar" href="http://www.91banke.com/web/download">成为机构代言人</a>
-                </button>
+                <button class="btn first active">成为机构代言人</button>
             </from>
         </div>
     </div>
