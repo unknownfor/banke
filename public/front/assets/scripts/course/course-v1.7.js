@@ -6,6 +6,8 @@ $(function() {
     var href = window.location.href;
     var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
 
+    judgeTheUserType();
+
     //点击弹出拨打电话框，判断来源是否是分享页
     $(document).on( window.eventName,'.address-call', function() {
         if (!notFromApp) {
@@ -37,6 +39,19 @@ $(function() {
     $(document).on(window.eventName,function(e){
         toHideMask(e);
     });
+
+
+    /*
+    * 判断类型是招生老师或者机构账户则不显示立即参团
+    * $currentUserType 为3或者4
+    * */
+    function judgeTheUserType() {
+        var type = $('.head').attr('data-type');
+        var str ='<div id="join-btn">立即参团</div>';
+        if (type!= 3 && type != 4) {
+            $('.join-right').html(str);
+        }
+    };
 
 
     //点击关闭拨打电话弹窗
