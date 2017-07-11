@@ -232,13 +232,13 @@ img {
   margin: 0 20px;
 }
 #enrol .page .head-img {
-  max-width: 85%;
+  max-width: 75%;
   display: inline-block;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 #enrol .page .head-img.first {
   opacity: 1;
-  max-width: 65%;
+  max-width: 62%;
   margin: 25px 0;
 }
 #enrol .page .head-txt {
@@ -314,6 +314,7 @@ img {
   height: 35px;
   line-height: 35px;
   border: none;
+  color: #fff;
 }
 #enrol .page .btn.first {
   background-color: #9b9b9b;
