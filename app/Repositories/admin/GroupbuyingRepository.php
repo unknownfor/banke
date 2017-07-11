@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeGroupbuying;
 use App\Models\Banke\BankeGroupbuyingUsers;
 use App\Models\Banke\BankeEnrol;
+use App\Models\Banke\BankeDic;
 use Carbon\Carbon;
 use Flash;
 use DB;
@@ -312,7 +313,7 @@ class GroupbuyingRepository
 				}
 				$v['name']=$name;
 				if(!$avatar){
-					$avatar='http://pic.hisihi.com/2016-10-22/1477107042521143.png';
+					$avatar=BankeDic::find(14)['value'];
 				}
 				$v['avatar']=$avatar;
 			}
