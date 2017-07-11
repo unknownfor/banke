@@ -20,7 +20,8 @@
 <!--课程头部-->
 <div class="head container"
      data-course-id="{{$course['id']}}"
-     data-org-id="{{$org['id']}}">
+     data-org-id="{{$org['id']}}"
+    data-type="{{$currentUserType}}">
     <div class="head-left">
         <img src="{{$course['cover']}}@70h_70w_2e" />
     </div>
@@ -46,9 +47,11 @@
         <div class="join-name">{{$userInfo['name']}}</div>
         <div class="join-num">已有<span>{{$number}}人</span>预约参团</div>
     </div>
+    @if($currentUserType == 3)
     <div class="join-right">
         <div id="join-btn">立即参团</div>
     </div>
+    @endif
 </div>
 
 <div class="school container ">

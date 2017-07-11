@@ -1,0 +1,218 @@
+html,body {
+  margin:0;
+  padding:0;
+  height: 100%;
+  overflow: hidden;
+}
+img{
+  border: none;
+}
+#enrol {
+  .size(100%,100%);
+  text-align: center;
+  transition: -webkit-transform 0.5s ease;
+  transform: translate(0px, 0px);
+  .container {
+    height: 100%;
+    overflow: hidden;
+  }
+  hr {
+    color: #9b9b9b;
+    margin: 8px 0;
+  }
+  .arrow{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 45%;
+    right: 45%;
+    bottom: 2px;
+    color: #FFEB3B;
+    background-size: 33px auto;
+    > i {
+      font-size: 26px;
+    }
+  }
+  .page {
+    height: 100%;
+    @h: 35px;
+    @r: 15px;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    margin: 0 20px;
+    .head-img {
+      opacity: 0;
+      max-width: 85%;
+      display: inline-block;
+      margin-top: 100px;
+      &.first {
+        opacity: 1;
+        max-width: 70%;
+        margin: 30px 0;
+      }
+    }
+    .head-txt {
+      margin-top: 40px;
+      color: #38230e;
+      .txt-one {
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+      .txt-two {
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    .input-box {
+      display: inline-block;
+      width: 100%;
+      .input-info {
+        display: flex;
+        background-color: #F2F2F2;
+        margin-bottom: 14px;
+        border-radius: @r;
+        padding-left: 10px;
+        .input-area {
+          flex: 1;
+          .size(100%,@h);
+          border-radius: @r;
+          border: none;
+          background-color: #F5F5F5;
+          &#phone-code-btn {
+            color: #383d43;
+            flex: 0 1 90px;
+            padding: 0;
+            margin: 0;
+            border: 0;
+            outline: 0;
+            text-align: center;
+            -webkit-box-flex: 0;
+            &.disabled {
+              pointer-events: none;
+            }
+          }
+        }
+        &.active {
+          background-color: #FFFBD8;
+          //获取验证码短竖杠颜色
+          hr {
+            color: #FFEB3B !important;
+          }
+          .input-area {
+            background-color: #FFFBD8;
+          }
+        }
+      }
+    }
+    .btn {
+      position: absolute;
+      bottom: @h + 10px;
+      left: 0;
+      right: 0;
+      font-size: 14px;
+      width:100%;
+      border-radius: @r;
+      height: @h;
+      line-height: @h;
+      border: none;
+      &.first {
+        background-color: #9b9b9b;
+      }
+      &.active {
+        background-color: #ffd751;
+      }
+      &.nouse {
+        pointer-events:none;
+      }
+      .downloadBar {
+        display: block;
+        color: #FFFFFF;
+        width: 100%;
+        font-size: 14px;
+      }
+    }
+    &.hide {
+      display: none;
+      opacity: 0;
+    }
+  }
+  .current {
+    .arrow {
+      -webkit-animation: swipeMoveTop 1.5s 1s ease infinite;
+    }
+    .head-img {
+      -webkit-animation: slideToTop .9s ease both;
+    }
+    .input-info {
+      &.phone {
+        -webkit-animation: slideToTop .9s 0.2s ease both;
+      }
+      &.code-num {
+        -webkit-animation: slideToTop .9s 0.3s ease both;
+      }
+      &.password {
+        -webkit-animation: slideToTop .9s 0.4s ease both;
+      }
+    }
+    .btn {
+      -webkit-animation: slideToTop .9s 0.6s ease both;
+    }
+    .head-txt  {
+      .txt-one {
+        -webkit-animation: slideToTop .8s ease both;
+      }
+      .txt-two{
+        -webkit-animation: slideToTop .8s 0.2s ease both;
+      }
+    }
+  }
+}
+
+/*上滑提示*/
+@-webkit-keyframes swipeMoveTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10px, 0);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -10px, 0);
+  }
+}
+@-webkit-keyframes slideToTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
+
+
+@media screen and (max-width:320px){
+  #enrol {
+    .page {
+      .container {
+        .head-img {
+          &.first {
+            max-width: 60%;
+            margin: 10px 0;
+          }
+        }
+        .input-box {
+          .input-info {
+            .input-area {
+              height: 30px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -20,7 +20,7 @@
 {!! csrf_field() !!}
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
 <div id="enrol">
-    <div class="page register">
+    <div class="page register" data-lock-next="true">
         <div class="container">
             <div class="head-txt">
                 <div class="txt-one">成为优质机构代言人</div>
@@ -41,7 +41,7 @@
                     <input class="input-area" id="password-num" placeholder="密码" type="password"/>
                 </div>
 
-                <button class="btn first">
+                <button class="btn first active">
                     <a class="downloadBar" href="http://www.91banke.com/web/download">成为机构代言人</a>
                 </button>
             </from>
