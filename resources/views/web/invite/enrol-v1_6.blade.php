@@ -86,7 +86,7 @@
             @if($members)
                 @foreach($members['data'] as $v)
                     <div class="follower">
-                            <img src="{{$v['avatar']}}" />
+                            <img src="{{$v['avatar']}}@40h_40w_2e" />
                     </div>
                 @endforeach
             @else
