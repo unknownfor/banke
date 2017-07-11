@@ -133,7 +133,7 @@ Route::group(['prefix'=>"v1.6/share",'namespace'=>'Web'],function(){
 //1.7
 Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
 
-    //课程开团
+    //课程详情
     Route::get('/course/{id}/{uid}', 'CourseController@course_v1_7');
 
     //赚钱攻略文章
@@ -144,6 +144,9 @@ Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
 
 //v1.7
 Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
+
+    //课程详情分享页
+    Route::get('/course/{id}/{uid}','CourseController@share_course_v1_6');
 
     //赚钱攻略文章
     Route::get('/moneystrategy/{id}', 'MoneyStrategyController@share_money_strategy_v1_7');
