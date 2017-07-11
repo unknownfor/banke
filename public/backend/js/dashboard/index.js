@@ -110,6 +110,10 @@ function initChart(id){
 }
 
 $(function(){
+
+    var $modal=$('.loding-modal');
+    $modal.show();
+
     var days=sevenDaysString();
 
     //刷新课程列表
@@ -119,6 +123,7 @@ $(function(){
             paraData={},
             that=this;
         getDataAsync(url,paraData,function(res){
+            $modal.hide();
             fillInTotalData(res);
             fillInChartData(res);
         });
