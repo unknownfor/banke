@@ -41,7 +41,7 @@
                     <input class="input-area" id="password-num" placeholder="密码" type="password"/>
                 </div>
 
-                <button class="btn first active">成为机构代言人</button>
+                <button class="first-btn active">成为机构代言人</button>
             </from>
         </div>
     </div>

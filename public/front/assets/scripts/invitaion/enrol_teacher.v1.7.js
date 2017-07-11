@@ -8,7 +8,7 @@ $(function () {
     //页面禁止滚动
     window.scrollControl(false);
 
-    //填充手机号信息，按钮变色
+    //填充手机号信息
     $(document).on('input', '#phone-num', function(){
         var number=$(this).val(),
             reg = /^1(3|4|5|7|8)\d{9}$/;
@@ -28,7 +28,7 @@ $(function () {
     $(document).on('input', '#user-code', function() {
         var number=$('#phone-num').val(),
             reg = /^1(3|4|5|7|8)\d{9}$/;
-        var $btn=$('.btn'),
+        var $btn=$('.first-btn'),
             code=$('#user-code').val();
         if(reg.test(number)) {
             if(code!=''){
@@ -38,6 +38,7 @@ $(function () {
             }
         }else{
             $btn.removeClass('active');
+            $btn.addClass('nouse');
         }
     });
 
@@ -49,15 +50,17 @@ $(function () {
             number=$('#phone-num').val(),
             code=$('#user-code').val(),
             $code=$('#phone-code-btn'),
-            $btn=$('.btn'),
+            $btn=$('.first-btn'),
             $box=$('.phone'),
             password=$(this).val;
         if(reg.test(number)&&code != '') {
             if (password != '') {
-                $btn.addClass('active').removeClass('nouse');
+                $btn.addClass('active');
+                $btn.removeClass('nouse');
                 $('.password').addClass('active');
             } else {
-                $btn.removeClass('active').addClass('nouse');
+                $btn.removeClass('active');
+                $btn.addClass('nouse');
                 $('.password').removeClass('active');
             }
         }else {
@@ -112,7 +115,7 @@ $(function () {
     }
 
     //注册
-    $(document).on(window.eventName,'.btn.active', function () {
+    $(document).on(window.eventName,'.first-btn.active', function () {
         // window.controlLoadingBox(true);
         // var phone = $('#phone-num').val(),
         //     code = $('#user-code').val(),

@@ -217,7 +217,7 @@ img {
   height: 30px;
   left: 45%;
   right: 45%;
-  bottom: 2px;
+  bottom: 3px;
   color: #FFEB3B;
   -webkit-background-size: 33px auto;
   background-size: 33px auto;
@@ -303,6 +303,22 @@ img {
 #enrol .page .input-box .input-info.active .input-area {
   background-color: #FFFBD8;
 }
+#enrol .page .first-btn {
+  font-size: 14px;
+  width: 100%;
+  border-radius: 15px;
+  height: 35px;
+  line-height: 35px;
+  border: none;
+  color: #fff;
+  background-color: #9b9b9b;
+}
+#enrol .page .first-btn.active {
+  background-color: #ffd751;
+}
+#enrol .page .first-btn.nouse {
+  pointer-events: none;
+}
 #enrol .page .btn {
   position: absolute;
   bottom: 40px;
@@ -314,16 +330,9 @@ img {
   height: 35px;
   line-height: 35px;
   border: none;
-  color: #fff;
-}
-#enrol .page .btn.first {
-  background-color: #9b9b9b;
 }
 #enrol .page .btn.active {
   background-color: #ffd751;
-}
-#enrol .page .btn.nouse {
-  pointer-events: none;
 }
 #enrol .page .btn .downloadBar {
   display: block;
@@ -350,8 +359,11 @@ img {
 #enrol .current .input-info.password {
   -webkit-animation: slideToTop .9s 0.4s ease both;
 }
+#enrol .current .first-btn {
+  -webkit-animation: slideToTop .9s 0.5s ease both;
+}
 #enrol .current .btn {
-  -webkit-animation: slideToTop .9s 0.6s ease both;
+  -webkit-animation: slideToTop .9s 0.5s ease both;
 }
 #enrol .current .head-txt .txt-one {
   -webkit-animation: slideToTop .8s ease both;
