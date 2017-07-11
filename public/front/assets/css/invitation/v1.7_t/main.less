@@ -27,7 +27,7 @@ img{
     height: 30px;
     left: 45%;
     right: 45%;
-    bottom: 2px;
+    bottom: 3px;
     color: #FFEB3B;
     background-size: 33px auto;
     > i {
@@ -42,14 +42,13 @@ img{
     -webkit-perspective: 1000;
     margin: 0 20px;
     .head-img {
-      opacity: 0;
-      max-width: 85%;
+      max-width: 75%;
       display: inline-block;
-      margin-top: 100px;
+      margin-top: 80px;
       &.first {
         opacity: 1;
-        max-width: 70%;
-        margin: 30px 0;
+        max-width: 62%;
+        margin: 25px 0;
       }
     }
     .head-txt {
@@ -105,9 +104,25 @@ img{
         }
       }
     }
+    .first-btn {
+      font-size: 14px;
+      width:100%;
+      border-radius: @r;
+      height: @h;
+      line-height: @h;
+      border: none;
+      color: #fff;
+      background-color: #9b9b9b;
+      &.active {
+        background-color: #ffd751;
+      }
+      &.nouse {
+        pointer-events:none;
+      }
+    }
     .btn {
       position: absolute;
-      bottom: @h + 10px;
+      bottom: @h + 5px;
       left: 0;
       right: 0;
       font-size: 14px;
@@ -116,14 +131,8 @@ img{
       height: @h;
       line-height: @h;
       border: none;
-      &.first {
-        background-color: #9b9b9b;
-      }
       &.active {
         background-color: #ffd751;
-      }
-      &.nouse {
-        pointer-events:none;
       }
       .downloadBar {
         display: block;
@@ -155,8 +164,11 @@ img{
         -webkit-animation: slideToTop .9s 0.4s ease both;
       }
     }
+    .first-btn {
+      -webkit-animation: slideToTop .9s 0.5s ease both;
+    }
     .btn {
-      -webkit-animation: slideToTop .9s 0.6s ease both;
+      -webkit-animation: slideToTop .9s 0.5s ease both;
     }
     .head-txt  {
       .txt-one {
@@ -200,6 +212,9 @@ img{
   #enrol {
     .page {
       .container {
+        .head-txt {
+          margin-top: 20px;
+        }
         .head-img {
           &.first {
             max-width: 60%;
