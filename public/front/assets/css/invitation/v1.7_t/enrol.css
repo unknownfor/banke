@@ -201,6 +201,7 @@ img {
   -webkit-transform: translate(0px, 0px);
   -ms-transform: translate(0px, 0px);
   transform: translate(0px, 0px);
+  position: relative;
 }
 #enrol .container {
   height: 100%;
@@ -231,15 +232,14 @@ img {
   margin: 0 20px;
 }
 #enrol .page .head-img {
-  opacity: 0;
   max-width: 85%;
   display: inline-block;
   margin-top: 100px;
 }
 #enrol .page .head-img.first {
   opacity: 1;
-  max-width: 70%;
-  margin: 30px 0;
+  max-width: 65%;
+  margin: 25px 0;
 }
 #enrol .page .head-txt {
   margin-top: 40px;
@@ -305,7 +305,7 @@ img {
 }
 #enrol .page .btn {
   position: absolute;
-  bottom: 45px;
+  bottom: 40px;
   left: 0;
   right: 0;
   font-size: 14px;
@@ -384,6 +384,9 @@ img {
   }
 }
 @media screen and (max-width: 320px) {
+  #enrol .page .container .head-txt {
+    margin-top: 20px;
+  }
   #enrol .page .container .head-img.first {
     max-width: 60%;
     margin: 10px 0;

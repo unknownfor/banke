@@ -5,6 +5,9 @@ $(function () {
     window.addLoadingImg();
     window.addTip();
 
+    //页面禁止滚动
+    window.scrollControl(false);
+
     //填充手机号信息，按钮变色
     $(document).on('input', '#phone-num', function(){
         var number=$(this).val(),
@@ -146,7 +149,13 @@ $(function () {
      * 显示报名成功页面
      */
     function showSuccessPage() {
-        $('.register').addClass('hide');
+        //页面开始滚动
+        window.scrollControl(true);
+        var page = $('.register');
+        page.data('lock-next', false);
+        page.addClass('hide');
+        page.removeClass('current');
+        $('.first-page').addClass('current');
         $('.register-success').removeClass('hide');
     }
 

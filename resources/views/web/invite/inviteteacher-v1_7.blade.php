@@ -47,7 +47,7 @@
             </from>
         </div>
     </div>
-    <div class="page register-success hide">
+    <div class="page register-success first-page hide">
         <div class="container">
             <img class="head-img" src="/front/assets/img/invitation/v1.7/coo1.png" />
             <div class="head-txt">
@@ -84,8 +84,7 @@
 <script src="/front/assets/scripts/invitaion/enrol_teacher.v1.7.js" type="text/javascript"></script>
 <script>
     new PageSlider({
-        pages: $('#enrol .register-success'),
-        gestureFollowing: true
+        pages: $('#enrol .page'),
     });
 </script>
 </html>

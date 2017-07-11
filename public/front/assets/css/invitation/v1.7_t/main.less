@@ -42,14 +42,13 @@ img{
     -webkit-perspective: 1000;
     margin: 0 20px;
     .head-img {
-      opacity: 0;
       max-width: 85%;
       display: inline-block;
       margin-top: 100px;
       &.first {
         opacity: 1;
-        max-width: 70%;
-        margin: 30px 0;
+        max-width: 65%;
+        margin: 25px 0;
       }
     }
     .head-txt {
@@ -107,7 +106,7 @@ img{
     }
     .btn {
       position: absolute;
-      bottom: @h + 10px;
+      bottom: @h + 5px;
       left: 0;
       right: 0;
       font-size: 14px;
@@ -200,6 +199,9 @@ img{
   #enrol {
     .page {
       .container {
+        .head-txt {
+          margin-top: 20px;
+        }
         .head-img {
           &.first {
             max-width: 60%;
