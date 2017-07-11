@@ -98,7 +98,7 @@
             </div>
 
         </div>
-        <div class="join-slogen">已有<span>{{$members['counts']}}人</span>参团，赶快参团吧</div>
+        <div class="join-slogen">已有<span>{{$members['counts']}}人</span>预约参团，赶快参团吧</div>
         <div class="join-btn">立即参团</div>
         <div class="join-description">
             <div class="title">参团须知</div>

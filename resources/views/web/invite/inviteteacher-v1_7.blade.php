@@ -12,8 +12,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link href="/front/assets/css/invitation/v1.7/enrol.css" rel="stylesheet" type="text/css"/>
-    <link href="/front/assets/css/invitation/v1.7/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
+    <link href="/front/assets/css/invitation/v1.7_t/enrol.css" rel="stylesheet" type="text/css"/>
+    <link href="/front/assets/css/invitation/v1.7_t/iconfont/iconfont.css" rel="stylesheet" type="text/css"/>
     <title>优质机构代言人</title>
 </head>
 <body>
@@ -81,7 +81,7 @@
 <script src="/front/assets/plugins/PageSlider.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/invitaion/enrol.v1.7.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/invitaion/enrol_teacher.v1.7.js" type="text/javascript"></script>
 <script>
     new PageSlider({
         pages: $('#enrol .register-success'),

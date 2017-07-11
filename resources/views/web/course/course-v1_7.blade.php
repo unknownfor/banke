@@ -47,11 +47,7 @@
         <div class="join-name">{{$userInfo['name']}}</div>
         <div class="join-num">已有<span>{{$number}}人</span>预约参团</div>
     </div>
-    @if($currentUserType == 3)
-    <div class="join-right">
-        <div id="join-btn">立即参团</div>
-    </div>
-    @endif
+    <div class="join-right"></div>
 </div>
 
 <div class="school container ">
