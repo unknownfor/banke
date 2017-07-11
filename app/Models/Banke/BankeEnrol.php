@@ -42,4 +42,48 @@ class BankeEnrol extends Model
     {
         return $this->hasOne('App\Models\Banke\BankeCourse','id','course_id');
     }
+
+
+    //实名后
+    public  function authenUser(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','uid');
+    }
+
+    //实名后
+    public  function authenUserSimple(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','uid')->select('uid','real_name');;
+    }
+
+    //未实名
+    public  function user(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid');
+    }
+
+    //
+    public  function userSimple(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid')->select('uid','name','avatar');
+    }
+
+
+
+    //邀请人 实名后
+    public  function invitorAuthenUser(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','invitation_uid','uid');
+    }
+
+    //邀请人 实名后
+    public  function invitorAuthenUserSimple(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','invitation_uid','uid')->select('uid','real_name');;
+    }
+
+    //邀请人 未实名
+    public  function invitorUser(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','invitation_uid','uid');
+    }
+
+    //邀请人
+    public  function invitorUserSimple(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','invitation_uid','uid')->select('uid','name','avatar');
+    }
+
 }

@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeInvitation;
 use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeUserProfiles;
@@ -346,8 +347,7 @@ class UserRepository
 			}
 			if(!$user_info['avatar']){
 
-//				$user_info['avatar']='http://pic.hisihi.com/2016-10-22/1477107042521143.png';
-				$user_info['avatar']='http://pic.hisihi.com/2017-06-02/1496387348811111.png';
+				$user_info['avatar']=BankeDict::find(14)['value'];
 			}
 		}
 		return $user_info;
@@ -370,7 +370,7 @@ class UserRepository
 					$user_info['name'] = $name;
 				}
 				if (!$user_info['avatar']) {
-					$user_info['avatar'] = 'http://pic.hisihi.com/2017-06-02/1496387348811111.png';
+					$user_info['avatar'] = BankeDict::find(14)['value'];
 				}
 			}
 			return $user_info;
