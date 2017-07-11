@@ -221,9 +221,8 @@ class InvitationController extends Controller
         //随机图
         $word=GroupbuyingWordsRepository::getRandomRecord();
 
-        //预约参团人员
-        $groupbuyingId=GroupbuyingRepository::getGroupbuyingByCidAndUid($uid,$cid);
-        $members=GroupbuyingRepository::getAllMembersByGroupbuyingId($groupbuyingId,2);
+        //参团人员 v1.7查询 预约表，不查询开团表
+        $members = EnrolRepository::getAllMembersByCidAndUid($uid,$cid,2);
 
 
         $organizer_award=moneyFormatFloor($course['price']*$course['z_award_amount']/100);

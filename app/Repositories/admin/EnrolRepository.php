@@ -10,7 +10,6 @@ use Flash;
 use Auth;
 use Illuminate\Support\Facades\Log;
 use DB;
-use UserRepository;
 use App\Services\WechatService;
 use App\Services\MsgService;
 /**
@@ -342,4 +341,30 @@ class EnrolRepository
 		}
 		return 0;
 	}
+
+	/*根据 课程course_id，邀请人id, 得到用户信息*/
+	public static function getAllMembersByCidAndUid($uid,$course_id,$limit=2)
+	{
+		$user = BankeEnrol::where(['course_id'=>$course_id,'invitation_uid'=>$uid]);
+		$counts = $user->count();
+		$users = $user->offset(0)->limit($limit)->orderBy("id", "desc")->get();
+		if ($counts>0) {
+			foreach ($users as &$v) {
+				$aUser=$v->authenUser;
+				$name=$aUser['real_name'];
+				$user=$v->user;
+				$avatar=$user['avatar'];
+				if(!$name){
+					$name=$user['name'];
+				}
+				$v['name']=$name;
+				if(!$avatar){
+					$avatar=BankeDict::find(14)['value'];
+				}
+				$v['avatar']=$avatar;
+			}
+		}
+		return Array('counts'=>$counts,'data'=>$users);
+	}
+
 }
