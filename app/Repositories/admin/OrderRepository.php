@@ -318,8 +318,11 @@ class OrderRepository
 		if($order->end_date>$userProfile->enddated_at){
 			$userProfile->enddated_at= $order->end_date;
 		}
-		//v1.7 只要报名的人都变成新学员
-		$userProfile->user_type=1;
+
+		//v1.7 老学员变成新学员
+		if($userProfile->user_type==2) {
+			$userProfile->user_type = 1;
+		}
 		//更新报名用户的信息
 		$userProfile->save();
 	}

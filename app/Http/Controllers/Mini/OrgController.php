@@ -61,10 +61,13 @@ class OrgController extends Controller
                 $commentCourse=CommentCourseRepository::getCountInfoByOrgId($id);
                 $commentOrg=CommentOrgRepository::getCountInfoByOrgId($id);
 
+                $account=$order['account']+$deposit['account'];
+                $account=number_format($account,2);
+
                 $info=[
                     'viewCounts'=>self::getTotalViewCounts($id,$org),
                     'orderCounts'=>$order['counts'],
-                    'account' => $order['account']+$deposit['account'],
+                    'account' => $account,
                     'checkinCounts' => $checkin,
                     'groupbuyingCounts' => $groupbuying['counts'],
 //                    'shareCounts' =>  $groupbuying['counts'] + $commentCourse['counts'] + $commentOrg['counts'],
@@ -86,9 +89,9 @@ class OrgController extends Controller
     private static function getTotalViewCounts($id)
     {
         $count1=CommentCourseRepository::getCountInfoByOrgId($id)['viewCounts'];
-        $count2=CommentOrgRepository::getCountInfoByOrgId($id)['viewCounts'];
+//        $count2=CommentOrgRepository::getCountInfoByOrgId($id)['viewCounts'];
         $count3=GroupbuyingRepository::getCountInfoByOrgId($id)['viewCounts'];
-        return $count1+$count2;
+        return $count1+$count3;
 //        return $count1+$count2+$count3;
 
     }
@@ -145,7 +148,11 @@ class OrgController extends Controller
     {
         try {
             $info=CommentCourseRepository::getViewCountsInfoByOrgId($id);
-            $result=['detailInfo'=>$info];
+            $total=0;
+            foreach($info as $v){
+                $total+=$v['viewCounts'];
+            }
+            $result=['detailInfo'=>$info,'total'=>$total];
             return ApiResponseService::success($result, Code::SUCCESS, '课程曝光量信息查询成功');
         }
         catch (ClientException $e) {
