@@ -50,7 +50,6 @@
         </div>
 
 
-
     </div>
     <div class="box information">
         <div class="box org-name">{{$org['name']}}</div>
