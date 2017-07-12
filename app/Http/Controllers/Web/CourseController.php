@@ -89,9 +89,7 @@ class CourseController extends Controller
         $course['max_award']=$course['share_award']  +$course['checkin_award'] + $course['group_buying_award'];
         $userInfo=$this->getRandomUserInfo();
         $number = rand(3, 5);
-        Log::info('-----------------------id:'.$uid);
         $currentUserType=BankeUserProfiles::find($uid)['user_type'];
-        Log::info('-----------------------type:'.$currentUserType);
         return view('web.course.course-v1_7')->with(compact(['course','org','userInfo','number','currentUserType']));
     }
 
