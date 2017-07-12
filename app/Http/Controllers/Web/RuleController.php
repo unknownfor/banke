@@ -48,4 +48,19 @@ class RuleController extends Controller
         return view('web.rule.share_rule-v1_5');
     }
 
+    /**
+     * 规则详情
+     */
+    public function rule_v1_7()
+    {
+        return view('web.rule.rule-v1_7');
+    }
+
+    /**
+     * 规则详情
+     */
+    public function share_rule_v1_7()
+    {
+        return view('web.rule.share_rule-v1_7');
+    }
 }

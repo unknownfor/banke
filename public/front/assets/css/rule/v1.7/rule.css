@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.txt-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+a {
+  display: block;
+  text-decoration: none;
+  out-line: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+* {
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  -moz-user-select: none;
+  /*火狐*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none;
+  /*页面流畅顺滑*/
+  font-family: "Microsoft Yahei", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: #fff;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+a:hover {
+  -webkit-tap-highlight-color: transparent;
+}
+input {
+  -webkit-user-select: auto;
+  /*webkit浏览器*/
+  -webkit-appearance: textfield;
+  background-color: white;
+  -webkit-rtl-ordering: logical;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  cursor: auto;
+  padding: 1px;
+  -webkit-border-image: initial;
+  -o-border-image: initial;
+  border-image: initial;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em 0em 0em 0em;
+  font: 13.3333px Arial;
+  outline: none;
+}
+.noscroll {
+  height: 100%;
+  overflow: hidden;
+}
+#downloadCon {
+  margin: 0 auto;
+  max-width: 700px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  opacity: 1;
+  max-height: 113px;
+  display: inline-block;
+  background-color: #FFEB3B;
+}
+#downloadCon .downloadBar-img {
+  max-width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  opacity: 0;
+  display: inline-block;
+}
+#downloadCon a {
+  display: block;
+  text-decoration: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+@media screen and (max-width: 420px) {
+  #downloadCon {
+    height: 78px;
+  }
+}
+@media screen and (max-width: 380px) {
+  #downloadCon {
+    height: 71px;
+  }
+}
+@media screen and (max-width: 320px) {
+  #downloadCon {
+    height: 61px;
+  }
+}
+.result-tips {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  width: 160px;
+  height: auto;
+  z-index: 1001;
+  min-height: 34px;
+  background: rgba(51, 51, 51, 0.85);
+  margin-left: -80px;
+  margin-top: -35px;
+  border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  color: #fff;
+  text-align: center;
+}
+.result-tips p {
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  margin: 10px 0;
+}
+#loading-data {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+  top: 50%;
+  left: 50%;
+  z-index: 55555;
+  text-align: center;
+  display: none;
+}
+#loading-data.active {
+  display: block;
+}
+#loading-data.active .loding-img {
+  -webkit-animation: turning 1s linear infinite;
+  -moz-animation: turning 1s linear infinite;
+}
+#loading-data .loding-img {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+@keyframes turning {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes turning {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+body {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 700px;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  position: relative;
+  color: #9b9b9b;
+  font-size: 13px;
+}
+img {
+  width: 100%;
+  border: 0 none;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+#rule .content {
+  padding: 0 15px;
+}
+#rule .content .title {
+  background-color: #fff;
+  text-align: left;
+  padding: 15px 0px 15px 15px;
+}
+#rule .content .title .title-img {
+  display: inline-block;
+  background: url("../../../img/rule/v1.2/sprite.png") no-repeat;
+  -webkit-background-size: 247.2px 46.4px;
+  background-size: 247.2px 46.4px;
+  margin-right: 5px;
+}
+#rule .content .title .title-img.service-img {
+  width: 26px;
+  height: 26px;
+  background-position: -190px -1px;
+}
+#rule .content .title .title-img.payback-img {
+  width: 26px;
+  height: 23px;
+  background-position: -223px -3px;
+}
+#rule .content .title .title-txt {
+  font-size: 14px;
+  color: #383d43;
+  font-weight: bold;
+  vertical-align: 8px;
+}
+#rule .content.service {
+  padding: 0px;
+  background-color: #FFEB3B;
+}
+#rule .content.service .service-box {
+  height: 500px;
+}
+#rule .content.service .service-box .service-detail {
+  height: 70px;
+  margin: 15px;
+  background-color: #FFFFFF;
+  padding: 20px 15px;
+  border-radius: 12px;
+  -webkit-box-shadow: 0px 4px 10px 2px #fbc02d;
+  box-shadow: 0px 4px 10px 2px #fbc02d;
+}
+#rule .content.service .service-box .service-detail .service-title {
+  text-align: center;
+}
+#rule .content.service .service-box .service-detail .service-title .title-img {
+  display: inline-block;
+  background: url("../../../img/rule/v1.2/sprite.png") no-repeat;
+  -webkit-background-size: 154.5px 29px;
+  background-size: 154.5px 29px;
+  margin-right: 5px;
+}
+#rule .content.service .service-box .service-detail .service-title .title-img.org {
+  width: 27px;
+  height: 25px;
+  background-position: -29px -5px;
+}
+#rule .content.service .service-box .service-detail .service-title .title-img.price {
+  width: 25px;
+  height: 25px;
+  background-position: -60px -2px;
+}
+#rule .content.service .service-box .service-detail .service-title .title-img.guarantee {
+  width: 25px;
+  height: 25px;
+  background-position: -2px -2px;
+}
+#rule .content.service .service-box .service-detail .service-title .title-img.job {
+  width: 25px;
+  height: 25px;
+  background-position: -90px -1px;
+}
+#rule .content.service .service-box .service-detail .service-title .title-txt {
+  font-size: 20px;
+  color: #fbc02d;
+  vertical-align: 5px;
+}
+#rule .content.service .service-box .service-detail .service-info .seven {
+  border: 1px solid #fbb00a;
+  color: #fbb00a;
+  margin: 5px;
+  padding: 3px;
+}
+#rule .content.payback .payback-box .payback-detail {
+  position: relative;
+  margin: 15px 0px 35px 0px;
+  padding: 20px 15px;
+  line-height: 22px;
+  border: 1px solid #fbb00a;
+  border-radius: 12px;
+}
+#rule .content.payback .payback-box .payback-detail .payback-title {
+  position: absolute;
+  top: -13px;
+  left: 15px;
+  text-align: center;
+  width: 70px;
+  height: 26px;
+  line-height: 26px;
+  color: #fff;
+  background-color: #fbb00a;
+  font-size: 14px;
+  border-radius: 8px;
+}
+#rule .content.payback .payback-box .payback-detail .payback-info > p {
+  margin: 13px 0;
+}
+#rule .content.payback .payback-box .payback-detail .payback-info > p > span {
+  display: inline-block;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  line-height: 20px;
+  color: #fff;
+  background-color: #FA4535;
+  margin-right: 8px;
+}
+#rule .statement {
+  text-align: center;
+}

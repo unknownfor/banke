@@ -19,7 +19,7 @@
 <body>
 {!! csrf_field() !!}
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
-<div id="enrol" class="">
+<div id="enrol">
     <div class="page" data-lock-next="true">
         <div class="container register">
             <div class="head-txt">
