@@ -83,7 +83,7 @@ $(function () {
             getDataAsync(url, {mobile: $('#phone-num').val()},
                 function (res) {
                     if(res.status_code==50016){
-                        $('.register-old').show().parent().show().siblings().hide();
+                        window.showTips(res.message);
                         return;
                     }
                     window.showTips(res.message);
