@@ -116,35 +116,35 @@ $(function () {
 
     //注册
     $(document).on(window.eventName,'.first-btn.active', function () {
-        window.controlLoadingBox(true);
-        var phone = $('#phone-num').val(),
-            code = $('#user-code').val(),
-            password = $('#password-num').val();
-        var url='/v1.2/share/register',
-            data={
-                welcome:$('input[name="welcome"]').val(),
-                mobile:phone,
-                smsId:code,
-                password:password,
-                userType:3,
-            };
-        $(this).removeClass('active');
-        getDataAsync(url,data,function(res) {
-            //成功返回之后调用的函数
-            window.controlLoadingBox(false);
-            if (res.status_code == 0) {
+        // window.controlLoadingBox(true);
+        // var phone = $('#phone-num').val(),
+        //     code = $('#user-code').val(),
+        //     password = $('#password-num').val();
+        // var url='/v1.2/share/register',
+        //     data={
+        //         welcome:$('input[name="welcome"]').val(),
+        //         mobile:phone,
+        //         smsId:code,
+        //         password:password,
+        //         userType:3,
+        //     };
+        // $(this).removeClass('active');
+        // getDataAsync(url,data,function(res) {
+        //     //成功返回之后调用的函数
+        //     window.controlLoadingBox(false);
+        //     if (res.status_code == 0) {
                 window.showTips('<p>恭喜您，注册成功!</p>',2000);
                 window.setTimeout(function() {
                     showSuccessPage();
                 },2000);
-            }
-            else{
-                window.showTips(res.message);
-            }
-        },function(){
-            window.controlLoadingBox(false);
-            $(this).addClass('active');
-        },'post');
+        //     }
+        //     else{
+        //         window.showTips(res.message);
+        //     }
+        // },function(){
+        //     window.controlLoadingBox(false);
+        //     $(this).addClass('active');
+        // },'post');
     });
 
 
@@ -154,11 +154,8 @@ $(function () {
     function showSuccessPage() {
         //页面开始滚动
         window.scrollControl(true);
-        var page = $('.register');
-        page.data('lock-next', false);
-        page.addClass('hide');
-        page.removeClass('current');
-        $('.first-page').addClass('current');
+        $('#enrol').addClass('height');
+        $('.register').addClass('hide');
         $('.register-success').removeClass('hide');
     }
 
