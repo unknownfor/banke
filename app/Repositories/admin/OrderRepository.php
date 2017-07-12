@@ -19,7 +19,6 @@ use League\Flysystem\Exception;
 use DB;
 use Auth;
 use MoneyNewsRepository;
-use GroupbuyingRepository;
 
 /**
 * 订单（报名）仓库
