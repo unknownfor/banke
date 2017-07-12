@@ -139,6 +139,9 @@ Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
     //赚钱攻略文章
     Route::get('/moneystrategy/{id}', 'MoneyStrategyController@money_strategy_v1_7');
 
+    //规则页面
+    Route::get('/rule', 'RuleController@rule_v1_7');
+
 });
 
 
@@ -154,6 +157,8 @@ Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
     //招生老师邀请注册
     Route::get('/inviteteacher/{welcome}','InvitationController@inviteteacher_v1_7');
 
+    //规则页面
+    Route::get('/rule', 'RuleController@share_rule_v1_7');
 });
 
 
