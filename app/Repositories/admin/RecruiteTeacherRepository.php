@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeRecruiteTeacher;
 use App\Models\Banke\BankeRecruiteTeacherApplyFor;
 use App\Models\Banke\BankeDict;
+use App\Models\Banke\BankeMessage;
 use AppUserRepository;
 use Carbon\Carbon;
 use Flash;
@@ -127,6 +128,16 @@ class RecruiteTeacherRepository
 			//查询系统配置里注册认证的奖金
 			$register_award = BankeDict::find(2)['value'];
 			AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $register_award, 1, 2);
+
+			$message3 = [
+				'uid' => $invitation_uid,
+				'title' => '好友认证成功',
+				'content' => '您邀请的招生老师 ' . $mobile . ' 已通过审核！平台已奖励您'
+					. $register_award . '元现金，快去现金钱包里查看吧！',
+				'type' => 'FRIEND_CERTIFICATE_SUCCESS'
+			];
+			//记录消息
+			BankeMessage::create($message3);
 		}
 	}
 
