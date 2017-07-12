@@ -60,7 +60,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="org_name">{{trans('labels.moneynews.business_type')}}</label>
                                 <div class="col-md-4">
-                                    <select name="business_type" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <select name="business_type" id="money-select-picker" class="selectpicker show-tick form-control" data-live-search="true">
                                         <option value="-1">选择类型</option>
                                             @foreach(config('admin.global.moneynews_business_type') as $status_key => $status_value)
                                                 <option value="{{$status_key}}" > {{$status_value}}</option>

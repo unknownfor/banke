@@ -5,7 +5,7 @@
 $(function(){
 
     var $box=$('.invited_name_box');
-    $('.selectpicker').selectpicker().on('changed.bs.select', function (e) {
+    $('#money-select-picker').selectpicker().on('changed.bs.select', function (e) {
         if(e.currentTarget.value.indexOf('INVITE')==0){
             $box.show();
         }else{
