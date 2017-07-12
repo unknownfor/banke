@@ -19,9 +19,9 @@
 <body>
 {!! csrf_field() !!}
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
-<div id="enrol">
-    <div class="page register" data-lock-next="true">
-        <div class="container">
+<div id="enrol" class="">
+    <div class="page" data-lock-next="true">
+        <div class="container register">
             <div class="head-txt">
                 <div class="txt-one">成为优质机构代言人</div>
                 <div class="txt-two">一大波福利等着你</div>
@@ -44,9 +44,7 @@
                 <div class="first-btn nouse">成为机构代言人</div>
             </from>
         </div>
-    </div>
-    <div class="page register-success first-page hide">
-        <div class="container">
+        <div class="container register-success hide">
             <img class="head-img" src="/front/assets/img/invitation/v1.7/coo1.png" />
             <div class="head-txt">
                 <div class="txt-one">下载半课</div>
@@ -60,12 +58,12 @@
             </div>
         </div>
     </div>
-    <div class="page register-success hide">
-        <div class="container">
+    <div class="page">
+        <div class="container register-success hide">
             <img class="head-img" src="/front/assets/img/invitation/v1.7/coo2.png" />
             <div class="head-txt">
                 <div class="txt-one">邀请招生老师</div>
-                <div class="txt-two">可获得100元返现</div>
+                <div class="txt-two">可获得5元返现</div>
             </div>
             <div class="btn active">
                 <a class="downloadBar" href="http://www.91banke.com/web/download">下载半课</a>

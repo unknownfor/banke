@@ -193,8 +193,8 @@ img {
   border: none;
 }
 #enrol {
-  width: 100%;
   height: 100%;
+  width: 100%;
   text-align: center;
   -webkit-transition: -webkit-transform 0.5s ease;
   transition: -webkit-transform 0.5s ease;
@@ -231,33 +231,34 @@ img {
   -webkit-perspective: 1000;
   margin: 0 20px;
 }
-#enrol .page .head-img {
+#enrol .page .container .head-img {
+  opacity: 0;
   max-width: 75%;
   display: inline-block;
   margin-top: 80px;
 }
-#enrol .page .head-img.first {
+#enrol .page .container .head-img.first {
   opacity: 1;
   max-width: 62%;
   margin: 25px 0;
 }
-#enrol .page .head-txt {
+#enrol .page .container .head-txt {
   margin-top: 40px;
   color: #38230e;
 }
-#enrol .page .head-txt .txt-one {
+#enrol .page .container .head-txt .txt-one {
   font-size: 14px;
   margin-bottom: 8px;
 }
-#enrol .page .head-txt .txt-two {
+#enrol .page .container .head-txt .txt-two {
   font-size: 16px;
   font-weight: bold;
 }
-#enrol .page .input-box {
+#enrol .page .container .input-box {
   display: inline-block;
   width: 100%;
 }
-#enrol .page .input-box .input-info {
+#enrol .page .container .input-box .input-info {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -267,7 +268,7 @@ img {
   border-radius: 15px;
   padding-left: 10px;
 }
-#enrol .page .input-box .input-info .input-area {
+#enrol .page .container .input-box .input-info .input-area {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -278,7 +279,7 @@ img {
   border: none;
   background-color: #F5F5F5;
 }
-#enrol .page .input-box .input-info .input-area#phone-code-btn {
+#enrol .page .container .input-box .input-info .input-area#phone-code-btn {
   color: #383d43;
   -webkit-box-flex: 0;
   -webkit-flex: 0 1 90px;
@@ -291,19 +292,19 @@ img {
   text-align: center;
   -webkit-box-flex: 0;
 }
-#enrol .page .input-box .input-info .input-area#phone-code-btn.disabled {
+#enrol .page .container .input-box .input-info .input-area#phone-code-btn.disabled {
   pointer-events: none;
 }
-#enrol .page .input-box .input-info.active {
+#enrol .page .container .input-box .input-info.active {
   background-color: #FFFBD8;
 }
-#enrol .page .input-box .input-info.active hr {
+#enrol .page .container .input-box .input-info.active hr {
   color: #FFEB3B !important;
 }
-#enrol .page .input-box .input-info.active .input-area {
+#enrol .page .container .input-box .input-info.active .input-area {
   background-color: #FFFBD8;
 }
-#enrol .page .first-btn {
+#enrol .page .container .first-btn {
   font-size: 14px;
   width: 100%;
   border-radius: 15px;
@@ -313,13 +314,13 @@ img {
   color: #fff;
   background-color: #9b9b9b;
 }
-#enrol .page .first-btn.active {
+#enrol .page .container .first-btn.active {
   background-color: #ffd751;
 }
-#enrol .page .first-btn.nouse {
+#enrol .page .container .first-btn.nouse {
   pointer-events: none;
 }
-#enrol .page .btn {
+#enrol .page .container .btn {
   position: absolute;
   bottom: 40px;
   left: 0;
@@ -331,16 +332,16 @@ img {
   line-height: 35px;
   border: none;
 }
-#enrol .page .btn.active {
+#enrol .page .container .btn.active {
   background-color: #ffd751;
 }
-#enrol .page .btn .downloadBar {
+#enrol .page .container .btn .downloadBar {
   display: block;
   color: #FFFFFF;
   width: 100%;
   font-size: 14px;
 }
-#enrol .page.hide {
+#enrol .page .container.hide {
   display: none;
   opacity: 0;
 }
@@ -369,7 +370,7 @@ img {
   -webkit-animation: slideToTop .8s ease both;
 }
 #enrol .current .head-txt .txt-two {
-  -webkit-animation: slideToTop .8s 0.2s ease both;
+  -webkit-animation: slideToTop .8s 0.1s ease both;
 }
 /*上滑提示*/
 @-webkit-keyframes swipeMoveTop {
@@ -406,5 +407,9 @@ img {
   }
   #enrol .page .container .input-box .input-info .input-area {
     height: 30px;
+  }
+  #enrol .page .container .input-box .first-btn {
+    height: 30px;
+    line-height: 30px;
   }
 }
