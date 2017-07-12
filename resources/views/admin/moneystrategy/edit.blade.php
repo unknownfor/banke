@@ -64,7 +64,7 @@
                           <label class="col-md-1 control-label" for="img_url">{{trans('labels.moneystrategy.cover_img')}}</label>
                           <div class="col-md-4">
                               <div class="add-img-btn">+
-                                  <div class="img-size-tips">16:7的图片</div>
+                                  <div class="img-size-tips">4:3的图片</div>
                               </div>
                               <div class="form-control-focus"> </div>
                           </div>
