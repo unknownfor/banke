@@ -343,9 +343,9 @@ class OrderRepository
 				$invite_enrol_course = BankeCourse::find($course_id);
 
 				if($enrol->invitorUserSimple['user_type']>=3) {
-					$percent = $invite_enrol_course['z_award_amount'];
-				}else{
 					$percent = $invite_enrol_course['z_award_amount_teacher'];
+				}else{
+					$percent = $invite_enrol_course['z_award_amount'];
 				}
 				$invitation_award = moneyFormat(($order['tuition_amount'] * $percent / 100));
 
