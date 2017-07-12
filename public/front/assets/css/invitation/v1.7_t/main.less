@@ -7,10 +7,10 @@ html,body {
 img{
   border: none;
 }
+@h: 35px;
+@r: 15px;
 #enrol {
-  &.height {
-    height: 100%;
-  }
+  height: 100%;
   width: 100%;
   text-align: center;
   transition: -webkit-transform 0.5s ease;
@@ -39,114 +39,115 @@ img{
   }
   .page {
     height: 100%;
-    @h: 35px;
-    @r: 15px;
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
     margin: 0 20px;
-    .head-img {
-      max-width: 75%;
-      display: inline-block;
-      margin-top: 80px;
-      &.first {
-        opacity: 1;
-        max-width: 62%;
-        margin: 25px 0;
+    .container {
+      .head-img {
+        opacity: 0;
+        max-width: 75%;
+        display: inline-block;
+        margin-top: 80px;
+        &.first {
+          opacity: 1;
+          max-width: 62%;
+          margin: 25px 0;
+        }
       }
-    }
-    .head-txt {
-      margin-top: 40px;
-      color: #38230e;
-      .txt-one {
-        font-size: 14px;
-        margin-bottom: 8px;
+      .head-txt {
+        margin-top: 40px;
+        color: #38230e;
+        .txt-one {
+          font-size: 14px;
+          margin-bottom: 8px;
+        }
+        .txt-two {
+          font-size: 16px;
+          font-weight: bold;
+        }
       }
-      .txt-two {
-        font-size: 16px;
-        font-weight: bold;
-      }
-    }
-    .input-box {
-      display: inline-block;
-      width: 100%;
-      .input-info {
-        display: flex;
-        background-color: #F2F2F2;
-        margin-bottom: 14px;
-        border-radius: @r;
-        padding-left: 10px;
-        .input-area {
-          flex: 1;
-          .size(100%,@h);
+      .input-box {
+        display: inline-block;
+        width: 100%;
+        .input-info {
+          display: flex;
+          background-color: #F2F2F2;
+          margin-bottom: 14px;
           border-radius: @r;
-          border: none;
-          background-color: #F5F5F5;
-          &#phone-code-btn {
-            color: #383d43;
-            flex: 0 1 90px;
-            padding: 0;
-            margin: 0;
-            border: 0;
-            outline: 0;
-            text-align: center;
-            -webkit-box-flex: 0;
-            &.disabled {
-              pointer-events: none;
+          padding-left: 10px;
+          .input-area {
+            flex: 1;
+            .size(100%,@h);
+            border-radius: @r;
+            border: none;
+            background-color: #F5F5F5;
+            &#phone-code-btn {
+              color: #383d43;
+              flex: 0 1 90px;
+              padding: 0;
+              margin: 0;
+              border: 0;
+              outline: 0;
+              text-align: center;
+              -webkit-box-flex: 0;
+              &.disabled {
+                pointer-events: none;
+              }
+            }
+          }
+          &.active {
+            background-color: #FFFBD8;
+            //获取验证码短竖杠颜色
+            hr {
+              color: #FFEB3B !important;
+            }
+            .input-area {
+              background-color: #FFFBD8;
             }
           }
         }
+      }
+      .first-btn {
+        font-size: 14px;
+        width:100%;
+        border-radius: @r;
+        height: @h;
+        line-height: @h;
+        border: none;
+        color: #fff;
+        background-color: #9b9b9b;
         &.active {
-          background-color: #FFFBD8;
-          //获取验证码短竖杠颜色
-          hr {
-            color: #FFEB3B !important;
-          }
-          .input-area {
-            background-color: #FFFBD8;
-          }
+          background-color: #ffd751;
+        }
+        &.nouse {
+          pointer-events:none;
         }
       }
-    }
-    .first-btn {
-      font-size: 14px;
-      width:100%;
-      border-radius: @r;
-      height: @h;
-      line-height: @h;
-      border: none;
-      color: #fff;
-      background-color: #9b9b9b;
-      &.active {
-        background-color: #ffd751;
-      }
-      &.nouse {
-        pointer-events:none;
-      }
-    }
-    .btn {
-      position: absolute;
-      bottom: @h + 5px;
-      left: 0;
-      right: 0;
-      font-size: 14px;
-      width:100%;
-      border-radius: @r;
-      height: @h;
-      line-height: @h;
-      border: none;
-      &.active {
-        background-color: #ffd751;
-      }
-      .downloadBar {
-        display: block;
-        color: #FFFFFF;
-        width: 100%;
+      .btn {
+        position: absolute;
+        bottom: @h + 5px;
+        left: 0;
+        right: 0;
         font-size: 14px;
+        width:100%;
+        border-radius: @r;
+        height: @h;
+        line-height: @h;
+        border: none;
+        &.active {
+          background-color: #ffd751;
+        }
+        .downloadBar {
+          display: block;
+          color: #FFFFFF;
+          width: 100%;
+          font-size: 14px;
+        }
       }
-    }
-    &.hide {
-      display: none;
-      opacity: 0;
+      &.hide {
+        display: none;
+        opacity: 0;
+      }
     }
   }
   .current {
@@ -178,7 +179,7 @@ img{
         -webkit-animation: slideToTop .8s ease both;
       }
       .txt-two{
-        -webkit-animation: slideToTop .8s 0.2s ease both;
+        -webkit-animation: slideToTop .8s 0.1s ease both;
       }
     }
   }
@@ -227,8 +228,12 @@ img{
         .input-box {
           .input-info {
             .input-area {
-              height: 30px;
+              height: @h - 5px;
             }
+          }
+          .first-btn {
+            height: @h - 5px;
+            line-height: @h - 5px;
           }
         }
       }

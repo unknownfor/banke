@@ -20,8 +20,8 @@
 {!! csrf_field() !!}
 <input type="hidden" name="welcome" value="{{$welcome}}"/>
 <div id="enrol" class="">
-    <div class="page register" data-lock-next="true">
-        <div class="container">
+    <div class="page" data-lock-next="true">
+        <div class="container register">
             <div class="head-txt">
                 <div class="txt-one">成为优质机构代言人</div>
                 <div class="txt-two">一大波福利等着你</div>
@@ -41,12 +41,10 @@
                     <input class="input-area" id="password-num" placeholder="密码" type="password"/>
                 </div>
 
-                <div class="first-btn active">成为机构代言人</div>
+                <div class="first-btn nouse">成为机构代言人</div>
             </from>
         </div>
-    </div>
-    <div class="page register-success first-page hide">
-        <div class="container">
+        <div class="container register-success hide">
             <img class="head-img" src="/front/assets/img/invitation/v1.7/coo1.png" />
             <div class="head-txt">
                 <div class="txt-one">下载半课</div>
@@ -60,8 +58,8 @@
             </div>
         </div>
     </div>
-    <div class="page register-success hide" data-lock-next="true">
-        <div class="container">
+    <div class="page">
+        <div class="container register-success hide">
             <img class="head-img" src="/front/assets/img/invitation/v1.7/coo2.png" />
             <div class="head-txt">
                 <div class="txt-one">邀请招生老师</div>
@@ -82,7 +80,7 @@
 <script src="/front/assets/scripts/invitaion/enrol_teacher.v1.7.js" type="text/javascript"></script>
 <script>
     new PageSlider({
-        pages: $('#enrol .register-success'),
+        pages: $('#enrol .page'),
     });
 </script>
 </html>
