@@ -83,7 +83,7 @@ class BankeEnrol extends Model
 
     //邀请人
     public  function invitorUserSimple(){
-        return $this->hasOne('App\Models\Banke\BankeUserProfiles','invitation_uid','uid')->select('uid','name','avatar');
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','invitation_uid','uid')->select('uid','name','avatar','user_type');
     }
 
 }
