@@ -105,6 +105,10 @@ input {
   padding: 0;
   margin: 0;
 }
+#downloadBar-img {
+  width: 100%;
+  border: none;
+}
 @media screen and (max-width: 420px) {
   #downloadCon {
     height: 78px;
@@ -261,10 +265,11 @@ ul {
   padding: 0 3px;
 }
 .org-information {
+  width: 100%;
   display: inline-block;
 }
 .org-information.hide {
-  height: 108px;
+  height: 83px;
   overflow: hidden;
 }
 .org-information .address .address-box {
