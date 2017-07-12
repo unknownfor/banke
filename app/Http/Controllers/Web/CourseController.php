@@ -90,6 +90,7 @@ class CourseController extends Controller
         $userInfo=$this->getRandomUserInfo();
         $number = rand(3, 5);
         $currentUserType=BankeUserProfiles::find($uid)['user_type'];
+        Log::info('-----------------------'.$currentUserType);
         return view('web.course.course-v1_7')->with(compact(['course','org','userInfo','number','currentUserType']));
     }
 
