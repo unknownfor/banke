@@ -71,7 +71,7 @@ class OrgController extends Controller
                     'checkinCounts' => $checkin,
                     'groupbuyingCounts' => $groupbuying['counts'],
 //                    'shareCounts' =>  $groupbuying['counts'] + $commentCourse['counts'] + $commentOrg['counts'],
-                    'shareCounts' =>  $groupbuying['counts'] + $commentCourse['counts'],
+                    'shareCounts' => $commentCourse['counts'] + $commentOrg['counts'],
                     'appointmentCounts'=>EnrolRepository::getEnrolCountsByOrgId($id)
                 ];
                 $result=['orgInfo'=>$info];
