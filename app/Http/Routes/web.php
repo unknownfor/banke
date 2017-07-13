@@ -149,7 +149,7 @@ Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
 Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
 
     //课程详情分享页
-    Route::get('/course/{id}/{uid}','CourseController@share_course_v1_6');
+    Route::get('/course/{id}','CourseController@share_course_v1_6');
 
     //赚钱攻略文章
     Route::get('/moneystrategy/{id}', 'MoneyStrategyController@share_money_strategy_v1_7');
