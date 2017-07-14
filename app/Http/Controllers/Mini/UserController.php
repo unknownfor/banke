@@ -46,4 +46,27 @@ class UserController extends Controller
                 return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR);
             }
     }
+
+    /*通过code获取用户的appid,并记录到数据库中*/
+    public function saveUserInfo(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'code' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            $sss='';
+            foreach ($errors->all() as $message) {
+                $sss.=$message;
+            }
+            return response()->json(['msg' => $sss, 'status' => false]);
+        }
+        try {
+
+        }
+        catch (ClientException $e) {
+            return ApiResponseService::showError(Code::VERIFY_SMSID_ERROR);
+        }
+    }
 }
