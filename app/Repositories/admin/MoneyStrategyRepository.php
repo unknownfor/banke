@@ -3,6 +3,7 @@ namespace App\Repositories\admin;
 use App\Models\Banke\BankeMoneyStrategy;
 use Carbon\Carbon;
 use Flash;
+use DB;
 /**
 * 赚钱攻略仓库
 */
@@ -73,6 +74,43 @@ class MoneyStrategyRepository
 		Flash::error(trans('alerts.moneystrategy.created_error'));
 		return false;
 	}
+
+
+	/**
+	 * 添加攻略 批量
+	 * @author shaolei
+	 * @date   2016-04-13T11:50:22+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function storeMultiple($request,$user_type_arr)
+	{
+		$time=date("Y-m-d H:i:s");
+		$arr=[];
+		$input=$request->all();
+		foreach($user_type_arr as $v){
+			$temp_arr = [
+				'title'=>$input['title'],
+				'content'=>$input['content'],
+				'sort'=>$input['sort'],
+				'status'=>$input['status'],
+				'user_type'=>$v,
+				'cover_img'=>$input['cover_img'],
+				'author'=>$input['author'],
+				'created_at'=>$time,
+				'updated_at'=>$time,
+			];
+			array_push($arr,$temp_arr);
+		}
+
+		if(DB::table('banke_money_strategy')->insert($arr)) {
+			Flash::success(trans('alerts.moneystrategy.created_success'));
+			return true;
+		}
+		Flash::error(trans('alerts.moneystrategy.created_error'));
+		return false;
+	}
+
 	/**
 	 * 修改攻略视图
 	 * @author shaolei
