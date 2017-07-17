@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Mini;
 
 use Cache;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use App\Services\ApiResponseService;
+use App\Models\Banke\BankeWechatUser;
 
 class TokenService {
 
@@ -48,30 +50,22 @@ class TokenService {
     /*调用微信服务器获得用户的openid和secretkey*/
     private static function getWxInfo($code)
     {
-        $param = [
-            'body' => [
-                'appid'=>'wxd31c411080b18c74',
-                'secret'=>'5ba59209da79f0f601e661f56b787d96',
-                'js_code'=>$code,
-                'grant_type'=>'authorization_code'
-            ]
-        ];
-        $url = config('web.global.wxPayParams.get_open_id_url').
-            '?appid='.config('web.global.wxPayParams.appid').
-            '&secret='.config('web.global.wxPayParams.secret').
+        $url = 'https://api.weixin.qq.com/sns/jscode2session?'.
+            'appid='.config('mini.global.wxpay.appid').
+            '&secret='.config('mini.global.wxpay.secret').
             '&js_code='.$code.'&grant_type=authorization_code';
-        $result = ApiResponseService::get($url);
-        return $result;
+        $result = ApiResponseService::http_post($url,null);
+        return json_decode($result['content']);
     }
 
 
     /*存储用户信息*/
     private function saveUser($wxInfo){
-        $openid = $wxInfo['openid'];
-        $user = User::where('openid',$openid);
+        $openid = $wxInfo->openid;
+        $user = BankeWechatUser::where('openid',$openid);
         if ($user->count()==0)
         {
-            $newUser=new User;
+            $newUser=new BankeWechatUser;
             $newUser->openid=$openid;
             if($newUser->save()) {
                 return $newUser->id;

@@ -13,7 +13,7 @@ use SuperClosure\Analyzer\Token;
 use Validator;
 use Illuminate\Http\Request;
 use UserRepository;
-use App\Services\TokenService;
+use App\Services\Mini\TokenService;
 
 class UserController extends Controller
 {
@@ -37,7 +37,7 @@ class UserController extends Controller
         }
         try {
             $tokenService = new TokenService();
-            $token = $tokenService::getToken($request->all()['code']);
+            $token = $tokenService->getToken($request->all()['code']);
             $orgId = UserRepository::loginByMobileAndPwdOrg($request->all());
             if ($orgId!=0) {
                 $result=['token'=>$token,'orgId'=>$orgId];
