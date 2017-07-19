@@ -83,13 +83,13 @@
                           </div>
                       </div>
 
-                      {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>--}}
-                          {{--<div class="col-md-9">--}}
-                              {{--<input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="{{$course['period']}}">--}}
-                              {{--<div class="form-control-focus"> </div>--}}
-                          {{--</div>--}}
-                      {{--</div>--}}
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="period_desc">{{trans('labels.course.period_desc')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" class="form-control" id="period_desc" name="period_desc" placeholder="{{trans('labels.course.period_desc')}}" value="{{$course['period_desc']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.checkin_award')}}(%)</label>
@@ -204,6 +204,14 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="fake_enrol_counts">{{trans('labels.course.fake_enrol_counts')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" class="form-control" id="fake_enrol_counts" name="fake_enrol_counts" placeholder="{{trans('labels.course.fake_enrol_counts')}}" value="{{$course['fake_enrol_counts']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="sort">{{trans('labels.course.sort')}}</label>
                           <div class="col-md-9">
                               <input type="text" class="form-control" id="sort" name="sort"
@@ -219,12 +227,12 @@
                                   <div class="add-cover-img-btn">+
                                       <div class="cover-size-tips">60*60</div>
                                   </div>
-                                  <ul class="cover-list-box">
+                                  <ul class="imgs-list-box cover-list-box">
                                       @if($course['cover'])
                                       <li>
                                           <a href="{{$course['cover']}}" data-size="435x263"></a>
                                           <img src="{{$course['cover']}}@142w_80h_1e">
-                                          <span class="remove-cover-img">×</span>
+                                          <span class="remove-img">×</span>
                                       </li>
                                       @endif
                                   </ul>
@@ -250,6 +258,54 @@
                           <div class="col-md-9">
                               <textarea style="display: none" name="details" id="target-area">{{$course['details']}}</textarea>
                               <textarea id="my-editor"></textarea>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input form-md-line-cover">
+                          <label class="col-md-1 control-label">{{trans('labels.course.album')}}</label>
+                          <div class="col-md-9">
+                              <div class="cover-box">
+                                  <div class="add-img-btn add-cover-img-btn">+
+                                      <div class="cover-size-tips">1*1</div>
+                                  </div>
+                                  <ul class="imgs-list-box album-list-box">
+                                      @if($course['album'])
+                                          <?php
+                                          $imgs=explode(',',$course['album']);
+                                          ?>
+                                          @foreach($imgs as $img)
+                                              <li>
+                                                  <a href="{{$img}}" data-size="435x263"></a>
+                                                  <img src="{{$img}}@142w_80h_1e">
+                                                  <span class="remove-img">×</span>
+                                              </li>
+                                          @endforeach
+                                      @endif
+                                  </ul>
+                                  <input id="album" name="album" type="hidden" value="">
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.course.hot')}}</label>
+                          <div class="col-md-9">
+                              <div class="md-radio-inline">
+                                  <div class="md-radio">
+                                      <input type="radio" id="hot1" name="hot" value="{{config('admin.global.status.active')}}" class="md-radiobtn"   @if($course['status'] == config('admin.global.status.active')) checked @endif>
+                                      <label for="hot1">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
+                                  </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="hot2" name="hot" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"  @if($course['status'] == config('admin.global.status.audit')) checked @endif>
+                                      <label for="hot2">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.toggle_status.audit.1')}} </label>
+                                  </div>
+                              </div>
                           </div>
                       </div>
 

@@ -344,8 +344,12 @@ return [
 		'group_buying_award'=>'开团可获最高奖励比例(%)',
 		'share_group_buying_counts'=>'可分享开团次数',
 		'share_group_buying_award'=>'分享开团奖励比例(%)',
+		'share_comment_course_award'=>'分享心得奖励比例(%)',
 		'share_comment_course_counts'=>'可分享心得次数',
-		'share_comment_course_award'=>'分享心得奖励比例(%)'
+		'period_desc'=>'周期描述',
+		'hot'=>'热门',
+		'fake_enrol_counts'=>'预约人数',
+		'album'=>'相册',
 	],
 
 	'app_user' => [
