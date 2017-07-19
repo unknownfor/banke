@@ -318,6 +318,7 @@ return [
 		'org'=>'所属机构',
 		'org_id'=>'所属机构',
 		'price'=>'参考价',
+		'origin_price'=>'原价',
 		'real_price' => '成交价',
 		'z_award_amount' => '介绍费(普通学生)',
 		'z_award_amount_teacher' => '介绍费(招生老师)',

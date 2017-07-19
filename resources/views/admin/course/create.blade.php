@@ -85,6 +85,14 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="origin_price">{{trans('labels.course.origin_price')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="origin_price" name="origin_price" placeholder="{{trans('labels.course.origin_price')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="period_desc">{{trans('labels.course.period_desc')}}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="period_desc" name="period_desc" placeholder="{{trans('labels.course.period_desc')}}" value="{{old('period_desc')}}">
