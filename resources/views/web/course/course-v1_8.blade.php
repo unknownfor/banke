@@ -17,14 +17,34 @@
     <title>课程详情</title>
 </head>
 <body>
-    {{--<div id="course">--}}
-        {{--<div class="head">--}}
-            {{--<div class="head-img">--}}
-                {{--<img src="/front/assets/img/course/v1.8/banner.jpeg" />--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-course 1.8
+    <div id="course">
+        <img class="head-img" src="/front/assets/img/course/v1.8/banner.jpeg" />
+        <div class="head container">
+            <div class="head-info">
+                <div class="course-name">会计从业资格证资格证资格证资格证会计从业资格证资格证资格证资格证</div>
+                <div class="course-price"><span id="new-price">￥400000</span><span id="old-price">￥600</span></div>
+                <div class="course-payback">报名后最高返现<div id="payback">￥25000</div><div class="appoint">预约数：<span><span>4000</span></div></div>
+            </div>
+            <div class="head-link">
+                <div class="link-info">
+                    <div class="link-left">
+                        <img class="link-img" id="support-img" src="/front/assets/img/course/v1.8/icon.png">
+                        <div class="link-name">支持分期</div>
+                    </div>
+                    <hr />
+                    <div class="link-middle">首付200预约金，尾款分期付：<span>￥600*12期</span></div>
+                    <div class="link-right">
+                        <span><img src="/front/assets/img/course/v1.8/icon.png"></span>
+                        如何分期
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
