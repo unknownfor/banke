@@ -162,7 +162,7 @@ Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
 });
 
 //1.8
-Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
+Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
 
     //课程详情
     Route::get('/course/{id}', 'CourseController@course_v1_8');
@@ -170,7 +170,7 @@ Route::group(['prefix'=>"v1.7/web",'namespace'=>'Web'],function() {
 });
 
 //v1.8分享
-Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
+Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
 
     //课程详情分享页
     Route::get('/course/{id}','CourseController@share_course_v1_8');
