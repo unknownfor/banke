@@ -85,9 +85,9 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="origin_price">{{trans('labels.course.origin_price')}}</label>
+                                <label class="col-md-1 control-label" for="original_price">{{trans('labels.course.original_price')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="origin_price" name="origin_price" placeholder="{{trans('labels.course.origin_price')}}">
+                                    <input type="text" class="form-control" id="original_price" name="original_price" placeholder="{{trans('labels.course.original_price')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -201,13 +201,21 @@
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="deposit">{{trans('labels.course.deposit')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="deposit" name="deposit" placeholder="{{trans('labels.course.deposit')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
                             <div class="form-group form-md-line-input form-md-line-cover">
                                 <label class="col-md-1 control-label">{{trans('labels.course.cover')}}</label>
 
                                 <div class="col-md-9">
                                     <div class="cover-box">
-                                        <div class="add-cover-img-btn">+
-                                            <div class="cover-size-tips">60*60</div>
+                                        <div class="add-img-btn add-cover-img-btn">+
+                                            <div class="img-size-tips">60*60</div>
                                         </div>
                                         <ul class="imgs-list-box cover-list-box"></ul>
                                         <input type="hidden" value="" name="cover" id="cover">
@@ -295,7 +303,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <a href="{{url('admin/course')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                    <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
+                                    <button type="submit" onclick="setDataBeforeCommit(e)" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -318,7 +326,7 @@
         <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
     </form>
     <form id="upImgForm2" method="post" class="hiddenForm">
-        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg"  multiple="multiple">
     </form>
     <div class="loding-modal">
         <i id="imgLoadingCircle" class="loadingCircle active"></i>

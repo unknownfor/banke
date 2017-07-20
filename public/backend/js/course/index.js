@@ -248,7 +248,7 @@ $(function(){
                 this.initUploadImg($target,$form,function(data){
                     data=JSON.parse(data);
                     if(data) {
-                        var str=that.getConverImgStr(data.filedata);
+                        var str=that.getImgStr(data.filedata);
                         $('.cover-list-box').html(str);
                         that.controlLoadingCircleStatus(false);
                         $form[0].reset();
@@ -265,7 +265,7 @@ $(function(){
                 this.initUploadImg($target,$form,function(data){
                     data=JSON.parse(data);
                     if(data) {
-                        var str=that.getConverImgStr(data.filedata);
+                        var str=that.getImgStr(data.filedata);
                         $('.album-list-box').prepend(str);
                         that.controlLoadingCircleStatus(false);
                         $form[0].reset();
@@ -273,12 +273,19 @@ $(function(){
                 });
             },
 
-            getConverImgStr:function(url){
-                return '<li>'+
-                    '<a href="'+url+'" data-size="435x263"></a>'+
-                    '<img src="'+url+'@142w_80h_1e">'+
-                    '<span class="remove-img">×</span>'+
-                    '</li>';
+            getImgStr:function(urlInfo){
+                if(!urlInfo instanceof Array){
+                    urlInfo=[urlInfo];
+                }
+                var str='';
+                for(var i=0;i<urlInfo.length;i++) {
+                    str+= '<li>' +
+                        '<a href="' + urlInfo[i] + '" data-size="435x435"></a>' +
+                        '<img src="' + urlInfo[i] + '@80w_80h_1e">' +
+                        '<span class="remove-img">×</span>' +
+                        '</li>';
+                }
+                return str;
             },
 
             /*删除封面*/
@@ -308,13 +315,25 @@ $(function(){
                 }
             },
 
-            getCoverImg:function(){
-                var $imgs=$('.cover-list-box li'),arr=[];
+            /*获得图片地址*/
+            getImgsUrl:function($target){
+                var $imgs=$target,
+                    arr=[];
 
                 $.each($imgs,function(){
                     arr.push($(this).find('a').attr('href'));
                 });
                 return arr;
+            },
+
+            /*封面地址*/
+            getCoverImg:function(){
+                return this.getImgsUrl($('.cover-list-box li'));
+            },
+
+            /*封面地址*/
+            getAlbumImg:function(){
+                return this.getImgsUrl($('.album-list-box li'));
             },
 
 
@@ -413,12 +432,18 @@ $(function(){
 
 
         //提交编辑
-        window.setDataBeforeCommit=function(){
+        window.setDataBeforeCommit=function(e){
+
+            window.getTargetByEvent(e).addClass('disabled');
+
             var val=course.getValue();
             val=val.replace(/\n/g,"<br/>");
             $('#target-area').text(val);
-            //相册
+            //封面
             $('#cover').val(course.getCoverImg().join(','));
+
+            //相册
+            $('#album').val(course.getAlbumImg().join(','));
             course.calcTotalTaskNumber();
         };
 });

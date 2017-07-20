@@ -186,3 +186,9 @@ window.getDataAsync=function(url,data,callback,type){
         }
     });
 };
+/*通过句柄，获得当前事件对象*/
+window.getTargetByEvent=function(e){
+    var event =e || window.event,
+        target = event.srcElement || event.target;
+    return $(target);
+};

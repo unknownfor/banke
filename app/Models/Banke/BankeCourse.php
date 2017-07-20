@@ -11,7 +11,7 @@ class BankeCourse extends Model
 
     protected $table = 'banke_course';
 
-    protected $fillable = ['name', 'org_id', 'cover', 'price','origin_price','period_desc',
+    protected $fillable = ['name', 'org_id', 'cover', 'price','original_price','period_desc',
         'intro', 'sort', 'details', 'status','checkin_award','task_award',
         'group_buying_award',
         'share_group_buying_award',
@@ -25,6 +25,7 @@ class BankeCourse extends Model
         'hot',
         'fake_enrol_counts',
         'album',
+        'deposit'
     ];
 
     private $action;

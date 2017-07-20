@@ -78,7 +78,14 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="price">{{trans('labels.course.price')}}</label>
                           <div class="col-md-9">
-                              <input type="text" class="form-control" id="price" name="price" placeholder="{{trans('labels.course.price')}}" value="{{$course['price']}}">
+                              <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="{{trans('labels.course.price')}}" value="{{$course['price']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="original_price">{{trans('labels.course.original_price')}}</label>
+                          <div class="col-md-9">
+                              <input type="number" step="0.01" class="form-control" id="original_price" name="original_price" placeholder="{{trans('labels.course.original_price')}}" value="{{$course['original_price']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -220,18 +227,27 @@
                           </div>
                       </div>
 
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="deposit">{{trans('labels.course.deposit')}}</label>
+                          <div class="col-md-9">
+                              <input type="number" step="1" class="form-control" id="deposit" name="deposit"
+                                     placeholder="{{trans('labels.course.deposit')}}" value="{{$course['deposit']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
                       <div class="form-group form-md-line-input form-md-line-cover">
                           <label class="col-md-1 control-label">{{trans('labels.course.cover')}}</label>
                           <div class="col-md-9">
                               <div class="cover-box">
-                                  <div class="add-cover-img-btn">+
-                                      <div class="cover-size-tips">60*60</div>
+                                  <div class="add-img-btn add-cover-img-btn">+
+                                      <div class="img-size-tips">60*60</div>
                                   </div>
                                   <ul class="imgs-list-box cover-list-box">
                                       @if($course['cover'])
                                       <li>
-                                          <a href="{{$course['cover']}}" data-size="435x263"></a>
-                                          <img src="{{$course['cover']}}@142w_80h_1e">
+                                          <a href="{{$course['cover']}}" data-size="435x435"></a>
+                                          <img src="{{$course['cover']}}@80w_80h_1e">
                                           <span class="remove-img">×</span>
                                       </li>
                                       @endif
@@ -241,17 +257,7 @@
                           </div>
                       </div>
 
-                      {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>--}}
-                          {{--<div class="col-md-3">--}}
-                              {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
-                                  {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="课程截止" id="enddated_at" name="enddated_at" value="{{$course['enddated_at']}}">--}}
-                                        {{--<span class="input-group-addon">--}}
-                                          {{--<i class="fa fa-calendar"></i>--}}
-                                        {{--</span>--}}
-                              {{--</div>--}}
-                          {{--</div>--}}
-                      {{--</div>--}}
+
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="details">{{trans('labels.course.details')}}</label>
@@ -265,8 +271,8 @@
                           <label class="col-md-1 control-label">{{trans('labels.course.album')}}</label>
                           <div class="col-md-9">
                               <div class="cover-box">
-                                  <div class="add-img-btn add-cover-img-btn">+
-                                      <div class="cover-size-tips">1*1</div>
+                                  <div class="add-img-btn add-album-img-btn">+
+                                      <div class="img-size-tips">1*1</div>
                                   </div>
                                   <ul class="imgs-list-box album-list-box">
                                       @if($course['album'])
@@ -275,8 +281,8 @@
                                           ?>
                                           @foreach($imgs as $img)
                                               <li>
-                                                  <a href="{{$img}}" data-size="435x263"></a>
-                                                  <img src="{{$img}}@142w_80h_1e">
+                                                  <a href="{{$img}}" data-size="435x435"></a>
+                                                  <img src="{{$img}}@80w_80h_1e">
                                                   <span class="remove-img">×</span>
                                               </li>
                                           @endforeach
@@ -292,14 +298,14 @@
                           <div class="col-md-9">
                               <div class="md-radio-inline">
                                   <div class="md-radio">
-                                      <input type="radio" id="hot1" name="hot" value="{{config('admin.global.status.active')}}" class="md-radiobtn"   @if($course['status'] == config('admin.global.status.active')) checked @endif>
+                                      <input type="radio" id="hot1" name="hot" value="{{config('admin.global.status.active')}}" class="md-radiobtn"   @if($course['hot'] == config('admin.global.status.active')) checked @endif>
                                       <label for="hot1">
                                           <span></span>
                                           <span class="check"></span>
                                           <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
                                   </div>
                                   <div class="md-radio">
-                                      <input type="radio" id="hot2" name="hot" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"  @if($course['status'] == config('admin.global.status.audit')) checked @endif>
+                                      <input type="radio" id="hot2" name="hot" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"  @if($course['hot'] == config('admin.global.status.audit')) checked @endif>
                                       <label for="hot2">
                                           <span></span>
                                           <span class="check"></span>
@@ -366,8 +372,13 @@
 </form>
 
 <form id="upImgForm1" method="post" class="hiddenForm">
-    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg" multiple>
 </form>
+
+<form id="upImgForm2" method="post" class="hiddenForm">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg"  multiple="multiple">
+</form>
+
 <div class="loding-modal">
     <i id="imgLoadingCircle" class="loadingCircle active"></i>
     <div>上传中…</div>
