@@ -50,8 +50,15 @@ class MoneyStrategyController extends Controller {
      * @return [type]                            [description]
      */
     public function store(MoneyStrategyRequest $request)
-    {  
-        MoneyStrategyRepository::store($request);
+    {
+        $input = $request->all();
+        $user_types=$input['user_type'];
+        $user_types_arr = explode(",",$user_types);
+        if(Count($user_types_arr)>1){
+            MoneyStrategyRepository::storeMultiple($request,$user_types_arr);
+        }else{
+            MoneyStrategyRepository::store($request);
+        }
         return redirect('admin/moneystrategy');
     }
 

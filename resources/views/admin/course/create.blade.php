@@ -84,13 +84,21 @@
                                 </div>
                             </div>
 
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>--}}
-                                {{--<div class="col-md-9">--}}
-                                    {{--<input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="50">--}}
-                                    {{--<div class="form-control-focus"> </div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="origin_price">{{trans('labels.course.origin_price')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="origin_price" name="origin_price" placeholder="{{trans('labels.course.origin_price')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="period_desc">{{trans('labels.course.period_desc')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="period_desc" name="period_desc" placeholder="{{trans('labels.course.period_desc')}}" value="{{old('period_desc')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.checkin_award')}}(%)</label>
@@ -177,10 +185,13 @@
                                 </div>
                             </div>
 
-
-
-
-
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="fake_enrol_counts">{{trans('labels.course.fake_enrol_counts')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="fake_enrol_counts" name="fake_enrol_counts" placeholder="{{trans('labels.course.fake_enrol_counts')}}" value="{{old('fake_enrol_counts')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="percent">{{trans('labels.course.sort')}}</label>
@@ -198,7 +209,7 @@
                                         <div class="add-cover-img-btn">+
                                             <div class="cover-size-tips">60*60</div>
                                         </div>
-                                        <ul class="cover-list-box"></ul>
+                                        <ul class="imgs-list-box cover-list-box"></ul>
                                         <input type="hidden" value="" name="cover" id="cover">
                                     </div>
                                 </div>
@@ -214,6 +225,41 @@
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input form-md-line-cover">
+                                <label class="col-md-1 control-label">{{trans('labels.course.album')}}</label>
+                                <div class="col-md-9">
+                                    <div class="cover-box">
+                                        <div class="add-img-btn add-album-img-btn">+
+                                            <div class="img-size-tips">60*60</div>
+                                        </div>
+                                        <ul class="imgs-list-box album-list-box">
+                                        </ul>
+                                        <input id="album" name="album" type="hidden" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.course.hot')}}</label>
+                                <div class="col-md-9">
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="hot1" name="hot" value="{{config('admin.global.status.active')}}" class="md-radiobtn"  checked>
+                                            <label for="hot1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="hot2" name="hot" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                            <label for="hot2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.audit.1')}} </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.course.status')}}</label>
@@ -244,8 +290,6 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                         <div class="form-actions">
                             <div class="row">
@@ -272,6 +316,9 @@
 
     <form id="upImgForm1" method="post" class="hiddenForm">
         <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
+    </form>
+    <form id="upImgForm2" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg">
     </form>
     <div class="loding-modal">
         <i id="imgLoadingCircle" class="loadingCircle active"></i>

@@ -40,12 +40,19 @@ $(function(){
 
             $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadCoverImg'));
 
+            $(document).on('change', '#uploadImgFile2', $.proxy(this,'initUploadAlbumImg'));
+
             /*上传封面文件*/
             $(document).on('click','.add-cover-img-btn', function(){
                 $('#uploadImgFile1').trigger('click');
             });
 
-            $(document).on('click','.remove-cover-img', $.proxy(this,'deletCoverImg'));
+            $(document).on('click','.remove-img', $.proxy(this,'deletCoverImg'));
+
+            /*上传相册文件*/
+            $(document).on('click','.add-album-img-btn', function(){
+                $('#uploadImgFile2').trigger('click');
+            });
 
             $('.orgSelectpicker').selectpicker({
                 liveSearchPlaceholder:'输入机构名称进行搜索'
@@ -61,7 +68,7 @@ $(function(){
             });
 
             //photoswipe   //图片信息查看  相册、视频信息查看
-            new MyPhotoSwipe('.cover-list-box');
+            new MyPhotoSwipe('.imgs-list-box');
         };
         MyCourse.prototype={
 
@@ -249,18 +256,35 @@ $(function(){
                 });
             },
 
+            //上传相册图
+            initUploadAlbumImg:function(){
+                var $target = $('#uploadImgFile2'),
+                    $form=$('#upImgForm2'),
+                    that=this;
+                that.controlLoadingCircleStatus(true);
+                this.initUploadImg($target,$form,function(data){
+                    data=JSON.parse(data);
+                    if(data) {
+                        var str=that.getConverImgStr(data.filedata);
+                        $('.album-list-box').prepend(str);
+                        that.controlLoadingCircleStatus(false);
+                        $form[0].reset();
+                    }
+                });
+            },
+
             getConverImgStr:function(url){
                 return '<li>'+
                     '<a href="'+url+'" data-size="435x263"></a>'+
                     '<img src="'+url+'@142w_80h_1e">'+
-                    '<span class="remove-cover-img">×</span>'+
+                    '<span class="remove-img">×</span>'+
                     '</li>';
             },
 
             /*删除封面*/
             deletCoverImg:function(e){
                 e.stopPropagation();
-                if(window.confirm('确定删除该封面么？')) {
+                if(window.confirm('确定删除该图片么？')) {
                     var $target=$(e.currentTarget).closest('li').addClass('deleting');
                     window.setTimeout(function(){
                         $target.remove();

@@ -73,6 +73,8 @@ class TokenService {
         }
         else {
             $user=$user->first();
+            $user->login_times++;
+            $user->save();
             return $user->id;
         }
     }

@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}">
     <style type="text/css">
         .imgs-list-box li{
-            width: 270px;
+            width: 160px;
         }
     </style>
 @endsection

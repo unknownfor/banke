@@ -262,6 +262,15 @@ $(function(){
             return arr;
         },
 
+        getAllUserType:function(){
+            var $userType=$('#user-type-select option:selected'),arr=[];
+
+            $.each($userType,function(){
+                arr.push($(this).val());
+            });
+            return arr;
+        },
+
         CLASS_NAME:'MyStrategy'
 
     };
@@ -301,6 +310,6 @@ $(function(){
         $('#target-area').text(val);
         //相册
         $('#cover_img').val(strategy.getCoverImg().join(','));
-        strategy.calcTotalTaskNumber();
+        $('#user-type').val(strategy.getAllUserType().join(','));
     };
 });
