@@ -17,7 +17,7 @@
     <title>课程详情</title>
 </head>
 <body>
-course
+course1.8
 
 @include('web.layout.downloadbar')
 </body>

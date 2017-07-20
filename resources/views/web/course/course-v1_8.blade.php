@@ -17,13 +17,14 @@
     <title>课程详情</title>
 </head>
 <body>
-    <div id="course">
-        <div class="head">
-            <div class="head-img">
-                <img src="/front/assets/img/course/v1.8/banner.jpeg" />
-            </div>
-        </div>
-    </div>
+    {{--<div id="course">--}}
+        {{--<div class="head">--}}
+            {{--<div class="head-img">--}}
+                {{--<img src="/front/assets/img/course/v1.8/banner.jpeg" />--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+course 1.8
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
