@@ -25,7 +25,13 @@ class BankeOrg extends Model
         'qrcode',
         'qrcode_desc',
         'eable_location_checkin',
-        'location_checkin_distance'
+        'location_checkin_distance',
+        'installment_flag',
+        'installment_title',
+        'installment_content',
+        'refund_flag',
+        'refund_title',
+        'refund_content'
     ];
 
     private $action;

@@ -221,6 +221,65 @@
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="installment_flag">{{trans('labels.orgsummary.installment_flag')}}</label>
+                                <div class="col-md-9">
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="installment_flag1" name="installment_flag" value="{{config('admin.global.status.active')}}" class="md-radiobtn"  checked>
+                                            <label for="installment_flag1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="installment_flag2" name="installment_flag" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                            <label for="installment_flag2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.audit.1')}} </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="installment_title">{{trans('labels.orgsummary.installment_title')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="installment_title" name="installment_title" placeholder="{{trans('labels.orgsummary.installment_title')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="refund_flag">{{trans('labels.orgsummary.refund_flag')}}</label>
+                                <div class="col-md-9">
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="refund_flag1" name="refund_flag" value="{{config('admin.global.status.active')}}" class="md-radiobtn"  checked>
+                                            <label for="refund_flag1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="refund_flag2" name="refund_flag" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                            <label for="refund_flag2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.audit.1')}} </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="refund_title">{{trans('labels.orgsummary.refund_title')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="refund_title" name="refund_title" placeholder="{{trans('labels.orgsummary.refund_title')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>

@@ -271,6 +271,7 @@ return [
 		'category' => '所属分类',
 		'url'=>'官网地址',
 		'city'=>'城市',
+		'album'=>'相册',
 		'fake_enrol_counts'=>'预约人数',
 		'fake_signup_counts'=>'报名人数',
 		'course_avg_price'=>'课程均价',
@@ -280,6 +281,10 @@ return [
 		'grade_service'=>'服务评分',
 		'grade_effect'=>'效果评分',
 		'tags'=>'标签',
+		'installment_flag'=>'支持分期',
+		'installment_title'=>'分期标题',
+		'refund_flag'=>'支持退款',
+		'refund_title'=>'退款标题',
 	],
 	'org' => [
 		'id' => '序号',
