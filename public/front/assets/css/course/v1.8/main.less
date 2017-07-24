@@ -3,6 +3,7 @@ body {
   padding:0;
   height: 100%;
   max-width: 700px;
+  background-color: #F9F9F9;
   overflow-x: hidden;
   word-wrap:break-word;
   position: relative;
@@ -12,8 +13,12 @@ img {
 }
 #course {
   position: relative;
+  font-size: 14px;
+  color: #666666;
   .container {
-    margin: 25px;
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
     &.head {
       .head-img {
         max-height: 340px;
@@ -22,25 +27,25 @@ img {
         text-align: left;
         .course-name {
           .txt-ellipsis-p(1);
-          font-size: 18px;
+          font-size: 16px;
           color: #383D43;
+          font-weight: bold;
         }
         .course-price {
           margin: 10px 0;
           #new-price {
-            font-size: 16px;
+            font-size: 14px;
             color: #fa4225;
           }
           #old-price {
             margin-left: 5px;
-            font-size: 14px;
+            font-size: 12px;
             color: #a6a6a6;
             text-decoration:line-through;
           }
         }
         .course-payback {
-          font-size: 14px;
-          color: #666;
+          font-size: 12px;
           display: flex;
           padding-bottom: 10px;
           border-bottom: 1px solid #dfe0e6;
@@ -58,23 +63,172 @@ img {
         }
       }
       .head-link {
-        margin-top: 10px;
+        @h: 20px;
+        font-size: 10px;
         .link-info {
+          height: @h;
+          line-height: @h;
           display: flex;
-          .link-left {
-            flex: 0 0 45px;
-            .link-img {
-              .size(28px,28px);
-              border-radius: 5px;
-              display: inline-block;
-              #support-img {
-                background: url("../../../img/course/v1.8/icon.png") no-repeat;
-              }
+          margin-top: 10px;
+          .link-img {
+            display: inline-block;
+            .size(@h,@h);
+            display: inline-block;
+            &#support-img {
+              background: url("../../../img/course/v1.8/sprite.png") -2px -1px no-repeat;
+              background-size: 254px*0.4,51px*0.4;
             }
+            &#help-img {
+              .size(15px,15px);
+              display: inline-block;
+              vertical-align: 3px;
+              background: url("../../../img/course/v1.8/sprite.png") -112px -2px no-repeat;
+              background-size: 254px*0.5,51px*0.5;
+            }
+            &#refund-img {
+              background: url("../../../img/course/v1.8/sprite.png") -23px -1px no-repeat;
+              background-size: 254px*0.4,51px*0.4;
+            }
+          }
+          .link-name {
+            margin-right: 3px;
+            vertical-align: 6px;
+          }
+          .link-left {
+            flex: 0 0 75px;
+          }
+          .link-middle {
+            margin-left: 3px;
+            .txt-ellipsis-p(1);
+            > span {
+              color: #ff6455;
+            }
+          }
+          .link-right {
+            flex: 0 0 61px;
+            color: #ff6455;
+            margin-left: 5px;
+            text-align: right;
+            vertical-align: 6px;
           }
         }
       }
 
+    }
+    &.join {
+      @jh:55px;
+      @r: 10px;
+      .join-title {
+        border-left: 3px solid #ffd842;
+        padding-left: 5px;
+        margin-bottom: 20px;
+      }
+      .join-box {
+        .size(100%,@jh - 15px);
+        position: relative;
+        border:1px solid #c7c7c7;
+        display: inline-block;
+        margin-bottom: 10px;
+        border-radius:@r;
+        .join-img {
+          position: absolute;
+          top: -8px;
+          left: -4px;
+          .size(@jh,@jh);
+          border-radius: @jh;
+          border: 1px solid #c7c7c7;
+        }
+        .join-detail {
+          display: flex;
+          padding-left: @jh + 5px;
+          line-height: @jh - 15px;
+          .join-name {
+            flex: 1;
+            .txt-ellipsis-p(1);
+          }
+          .join-num {
+            .txt-ellipsis-p(1);
+            margin-right: 10px;
+            > span {
+              color: #ff6455;
+            }
+          }
+          .join-btn {
+            flex: 0 0 70px;
+            text-align: center;
+            border-radius:0 @r @r 0;
+            background-color: #ffd842;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+    &.org {
+      display: flex;
+      .org-img {
+        flex: 0 0 85px;
+        .size(85px,85px);
+        border: 1px solid #000;
+      }
+      .org-info {
+        margin-left: 10px;
+        flex: 1;
+        .org-name {
+          display: flex;
+          margin-bottom: 28px;
+          .org-left {
+            flex: 1;
+            .name {
+             float: left;
+              font-weight: bold;
+              .txt-ellipsis-p(1);
+              margin-right: 5px;
+            }
+            .tips {
+              float: left;
+              padding-top: 4px;
+              font-size: 10px;
+              color: #ffd842;
+              > span {
+                padding: 3px;
+                border: 1px solid #ffd842;
+                border-radius: 8px;
+              }
+            }
+          }
+          .org-right {
+            flex: 0 0 24;
+            font-size: 12px;
+            text-align: right;
+            margin-left: 15px;
+          }
+        }
+        .org-stars {
+          @h: 16px;
+          display: inline-block;
+          font-size: @h;
+          .star {
+            display: inline-block;
+            padding: 0;
+            margin: 0;
+            .size(@h,@h);
+            color: #d9d9d9;
+            &.colored {
+              color: #ffd842;
+            }
+          }
+        }
+        .org-score {
+          .txt-ellipsis-p(1);
+          font-size: 12px;
+          > span {
+            margin-left: 10px;
+            &:first-child {
+              margin-left: 0px;
+            }
+          }
+        }
+      }
     }
   }
 
