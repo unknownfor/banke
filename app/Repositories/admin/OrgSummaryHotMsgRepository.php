@@ -1,14 +1,14 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Banke\BankeOrgTags;
+use App\Models\Banke\BankeOrgSummaryHotMsg;
 use Carbon\Carbon;
 use Flash;
 use Illuminate\Support\Facades\Log;
 use DB;
 /**
-* 机构标签
+* 机构总表热门消息
 */
-class OrgTagsRepository
+class OrgSummaryHotMsgRepository
 {
 
 	/**批量更新机构标签
@@ -23,7 +23,7 @@ class OrgTagsRepository
 		//事务
 		DB::transaction( function () use ($tags,$oid){
 			try {
-				BankeOrgTags::where('oid', $oid)->delete();  //删除现有的
+				BankeOrgSummaryHotMsg::where('org_id', $oid)->delete();  //删除现有的
 
 				if($tags) {
 					$tags = explode(',', $tags);
@@ -31,15 +31,15 @@ class OrgTagsRepository
 					if (Count($tags) > 0) {
 						$arr = Array();
 						foreach ($tags as $val) {
-							$tempaArr = Array('oid' => $oid, 'name' => $val);
+							$tempaArr = Array('org_id' => $oid, 'name' => $val);
 							Array_push($arr, $tempaArr);
 						}
-						DB::table('banke_org_tags')->insert($arr);
+						DB::table('banke_org_summary_hot_msg')->insert($arr);
 					}
 				}
 				return true;
 			} catch (Exception $e) {
-				Flash::error(trans('alerts.org.created_error'));
+				Flash::error(trans('alerts.org_summary.created_error'));
 				return false;
 			}
 

@@ -23,6 +23,7 @@ class BankeOrgSummary extends Model
         'city',
         'fake_enrol_counts',
         'fake_signup_counts',
+        'fake_consult_ranking',
         'course_avg_price',
         'grade_total',
         'grade_env',
@@ -36,7 +37,8 @@ class BankeOrgSummary extends Model
         'installment_title',
         'refund_flag',
         'refund_title',
-        'album'
+        'album',
+
     ];
 
     private $action;
@@ -57,5 +59,17 @@ class BankeOrgSummary extends Model
     public function category()
     {
         return $this->hasOne('App\Models\Banke\BankeTrainCategory','id','category_id');
+    }
+
+    //1对多个标签
+    public function tags()
+    {
+        return $this->hasMany('App\Models\Banke\BankeOrgSummaryTags','oid','id');
+    }
+
+    //1对多个热门消息
+    public function hotmsg()
+    {
+        return $this->hasMany('App\Models\Banke\BankeOrgSummaryHotMsg','org_id','id');
     }
 }

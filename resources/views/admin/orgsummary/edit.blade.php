@@ -126,7 +126,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="orgsummary_name">{{trans('labels.orgsummary.category')}}</label>
                                 <div class="col-md-4">
-                                    <select name="category_id" class="mySelectpicker show-tick form-control" data-live-search="true" multiple>
+                                    <select name="category_id" class="orgCategorySelectpicker show-tick form-control" data-live-search="true" multiple>
                                         @if($categories)
                                             @foreach($categories as $val)
                                                 <option value="{{$val['id']}}" @if($val['id']==$orgsummary['category_id']) selected @endif> {{$val['name']}}</option>
@@ -169,6 +169,24 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="tags">{{trans('labels.orgsummary.tags')}}</label>
+                                <div class="col-md-2" style="color:#32c5d2">输入文字后，回车添加</div>
+                                <div class="col-md-7">
+                                    <div id="tags-box"></div>
+                                    <input type="hidden" name="tags" id="tags" value="{!!implode(',',$orgsummary['tags']) !!}">
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="tags">{{trans('labels.orgsummary.hot_msg')}}</label>
+                                <div class="col-md-2" style="color:#32c5d2">输入文字后，回车添加</div>
+                                <div class="col-md-7">
+                                    <div id="hot_msg_box"></div>
+                                    <input type="hidden" name="hot_msg" id="hot_msg" value="{!!implode(',',$orgsummary['hotmsg']) !!}">
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="fake_enrol_counts">{{trans('labels.orgsummary.fake_enrol_counts')}}</label>
                                 <div class="col-md-9">
                                     <input type="number" step="1" class="form-control" id="fake_enrol_counts" name="fake_enrol_counts" placeholder="{{trans('labels.orgsummary.fake_enrol_counts')}}" value="{{$orgsummary['fake_enrol_counts']}}">
@@ -180,6 +198,14 @@
                                 <label class="col-md-1 control-label" for="fake_signup_counts">{{trans('labels.orgsummary.fake_signup_counts')}}</label>
                                 <div class="col-md-9">
                                     <input type="number" step="1" class="form-control" id="fake_signup_counts" name="fake_signup_counts" placeholder="{{trans('labels.orgsummary.fake_signup_counts')}}" value="{{$orgsummary['fake_signup_counts']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="fake_consult_ranking">{{trans('labels.orgsummary.fake_consult_ranking')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="fake_consult_ranking" name="fake_consult_ranking" placeholder="{{trans('labels.orgsummary.fake_consult_ranking')}}" value="{{$orgsummary['fake_consult_ranking']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>

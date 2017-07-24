@@ -38,6 +38,7 @@
                 this.initEditor();
                 this.initImgsArr();  //定义100个图片id 数组。
                 this.initTags();
+                this.initHotMsg();
                 this.getCategory();
             },
 
@@ -46,10 +47,25 @@
                     var tags=$('#tags').val(),
                         arr=[];
                     if(tags){
-                        arr=tags.split(';');
+                        arr=tags.split(',');
                     }
-                    this.tagsObj = $("#medium").tags({
-                        readOnly: $('#tag').hasClass('readonly'),
+                    this.tagsObj = $("#tags-box").tags({
+                        readOnly: false,
+                        tagData: arr,
+                        maxNumTags: 5
+                    });
+                }
+            },
+
+            initHotMsg:function(){
+                if(typeof $.tags =='function') {
+                    var tags=$('#hot_msg').val(),
+                        arr=[];
+                    if(tags){
+                        arr=tags.split(',');
+                    }
+                    this.hotMsgObj = $("#hot_msg_box").tags({
+                        readOnly: false,
                         tagData: arr,
                         maxNumTags: 5
                     });
@@ -57,8 +73,13 @@
             },
 
             getTags:function(){
-                var tags = this.tagsObj.getTags().join(';');
+                var tags = this.tagsObj.getTags().join(',');
                 return tags
+            },
+
+            gethotMsg:function(){
+                var msg = this.hotMsgObj.getTags().join(',');
+                return msg
             },
 
             /*保存已经选择的分类 编辑的时候使用*/
@@ -432,5 +453,6 @@
             $('#album').val(editor.getAlbumImg().join(','));
 
             $('#tags').val(editor.getTags());
+            $('#hot_msg').val(editor.gethotMsg());
         };
 });

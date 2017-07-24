@@ -274,6 +274,7 @@ return [
 		'album'=>'相册',
 		'fake_enrol_counts'=>'预约人数',
 		'fake_signup_counts'=>'报名人数',
+		'fake_consult_ranking'=>'咨询排名',
 		'course_avg_price'=>'课程均价',
 		'grade_total'=>'总评分',
 		'grade_env'=>'环境评分',
@@ -285,7 +286,8 @@ return [
 		'installment_title'=>'分期标题',
 		'refund_flag'=>'支持退款',
 		'refund_title'=>'退款标题',
-		'album'=>'相册'
+		'tags'=>'标签',
+		'hot_msg'=>'热门消息',
 	],
 	'org' => [
 		'id' => '序号',
