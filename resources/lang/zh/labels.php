@@ -285,6 +285,7 @@ return [
 		'installment_title'=>'分期标题',
 		'refund_flag'=>'支持退款',
 		'refund_title'=>'退款标题',
+		'album'=>'相册'
 	],
 	'org' => [
 		'id' => '序号',

@@ -16,29 +16,21 @@
             /*上传编辑器的文件*/
             $(document).on('change','#uploadImgFile1', $.proxy(this,'initUploadImgEditor'));
 
-            /*上传封面文件*/
-            $(document).on('change','#uploadImgFile2', $.proxy(this,'uploadCover'));
-            $(document).on('click','.add-cover-img-btn', function(){
+            /*上传相册文件*/
+            $(document).on('change','#uploadImgFile2', $.proxy(this,'uploadAlbum'));
+            $(document).on('click','.add-album-img-btn', function(){
                 $('#uploadImgFile2').trigger('click');
             });
 
 
-            $(document).on('click','.remove-img-btn', $.proxy(this,'deletCoverImg'));
+            $(document).on('click','.remove-img', $.proxy(this,'deletImg'));
 
 
-            //机构分类
-            $('.mySelectpicker').selectpicker({
-                liveSearchNormalize:true,
-                liveSearchPlaceholder:'输入名称进行搜索'
-            }).on('changed.bs.select', function (e) {
-                that.refressCategorySelect($('.orgCategorySelectpicker').val());
-            });
-
-            $('.citySelectpicker').selectpicker();
+            $('.citySelectpicker,.orgCategorySelectpicker').selectpicker();
 
 
             //photoswipe   //图片信息查看  相册、视频信息查看
-            new MyPhotoSwipe('.img-list-box');
+            new MyPhotoSwipe('.imgs-list-box');
         };
         MyEditor.prototype={
 
@@ -257,8 +249,8 @@
                 });
             },
 
-            //上传封面图
-            uploadCover:function(){
+            //上传相册图
+            uploadAlbum:function(){
                 var $target = $('#uploadImgFile2'),
                     $form=$('#upImgForm2'),
                     that=this;
@@ -266,24 +258,7 @@
                 this.initUploadImg($target,$form,function(data){
                     data=JSON.parse(data);
                     if(data) {
-                        var str=that.getConverImgStr(data.filedata);
-                        $('.cover-list-box').prepend(str);
-                        that.controlLoadingCircleStatus(false);
-                        $form[0].reset();
-                    }
-                });
-            },
-
-            //上传相册图
-            uploadAlbum:function(){
-                var $target = $('#uploadImgFile3'),
-                    $form=$('#upImgForm3'),
-                    that=this;
-                that.controlLoadingCircleStatus(true);
-                this.initUploadImg($target,$form,function(data){
-                    data=JSON.parse(data);
-                    if(data) {
-                        var str=that.getConverImgStr(data.filedata);
+                        var str=that.getImgStr(data.filedata);
                         $('.album-list-box').prepend(str);
                         that.controlLoadingCircleStatus(false);
                         $form[0].reset();
@@ -291,16 +266,44 @@
                 });
             },
 
-            getConverImgStr:function(url){
-                return '<li>'+
-                            '<a href="'+url+'" data-size="435x263"></a>'+
-                            '<img src="'+url+'@142w_80h_1e">'+
-                            '<span class="remove-img-btn">×</span>'+
+            getImgStr:function(urlInfo){
+                if(!urlInfo instanceof Array){
+                    urlInfo=[urlInfo];
+                }
+                var str='';
+                for(var i=0;i<urlInfo.length;i++) {
+                    str+= '<li>' +
+                            '<a href="'+ urlInfo[i]+'" data-size="435x263"></a>'+
+                            '<img src="'+ urlInfo[i]+'@142w_80h_1e">'+
+                            '<span class="remove-img">×</span>'+
                         '</li>';
+                }
+                return str;
+            },
+
+            /*获得图片地址*/
+            getImgsUrl:function($target){
+                var $imgs=$target,
+                    arr=[];
+
+                $.each($imgs,function(){
+                    arr.push($(this).find('a').attr('href'));
+                });
+                return arr;
+            },
+
+            /*封面地址*/
+            getCoverImg:function(){
+                return this.getImgsUrl($('.cover-list-box li'));
+            },
+
+            /*封面地址*/
+            getAlbumImg:function(){
+                return this.getImgsUrl($('.album-list-box li'));
             },
 
             /*删除封面*/
-            deletCoverImg:function(e){
+            deletImg:function(e){
                 e.stopPropagation();
                 if(window.confirm('确定删除该图片么？')) {
                     var $target=$(e.currentTarget).closest('li').addClass('deleting');
@@ -426,7 +429,7 @@
             $('#cover').val(editor.getCoverImg('cover').join(','));
 
             //相册
-            $('#album').val(editor.getCoverImg('album').join(','));
+            $('#album').val(editor.getAlbumImg().join(','));
 
             $('#tags').val(editor.getTags());
         };

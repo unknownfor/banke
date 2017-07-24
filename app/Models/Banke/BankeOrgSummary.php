@@ -36,6 +36,7 @@ class BankeOrgSummary extends Model
         'installment_title',
         'refund_flag',
         'refund_title',
+        'album'
     ];
 
     private $action;
