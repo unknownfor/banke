@@ -123,6 +123,32 @@
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input form-md-line-cover">
+                                <label class="col-md-1 control-label">{{trans('labels.orgsummary.album')}}</label>
+                                <div class="col-md-9">
+                                    <div class="cover-box">
+                                        <div class="add-img-btn add-album-img-btn">+
+                                            <div class="img-size-tips">60*60</div>
+                                        </div>
+                                        <ul class="imgs-list-box album-list-box">
+                                            @if($orgsummary['album'])
+                                                <?php
+                                                $imgs=explode(',',$orgsummary['album']);
+                                                ?>
+                                                @foreach($imgs as $img)
+                                                    <li>
+                                                        <a href="{{$img}}" data-size="435x263"></a>
+                                                        <img src="{{$img}}@@142w_80h_1e">
+                                                        <span class="remove-img">×</span>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        </ul>
+                                        <input id="album" name="album" type="hidden" value="">
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="orgsummary_name">{{trans('labels.orgsummary.category')}}</label>
                                 <div class="col-md-4">
