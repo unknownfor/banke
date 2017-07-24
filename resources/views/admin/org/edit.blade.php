@@ -221,7 +221,7 @@
                                 <div class="col-md-2" style="color:#32c5d2">输入文字后，回车添加</div>
                                 <div class="col-md-7">
                                     <div id="medium"></div>
-                                    <input type="hidden" name="tags" id="tags" value="{!!implode(';',$org['tags']) !!}">
+                                    <input type="hidden" name="tags" id="tags" value="{!!implode(',',$org['tags']) !!}">
                                 </div>
                             </div>
 

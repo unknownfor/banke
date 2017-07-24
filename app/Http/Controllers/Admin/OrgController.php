@@ -81,12 +81,12 @@ class OrgController extends Controller
             $category2=$newArr;
         }
 
-        $OrgCategory=new OrgCategoryRepository();
-        $OrgCategory->batchStore( array_merge($category1, $category2),$id);
+        $orgCategory=new OrgCategoryRepository();
+        $orgCategory->batchStore( array_merge($category1, $category2),$id);
 
         $tags= $request->tags;  //标签
-        $OrgTags=new OrgTagsRepository();
-        $OrgTags->batchStore($tags,$id);
+        $orgTags=new OrgTagsRepository();
+        $orgTags->batchStore($tags,$id);
 
         return redirect('admin/org');
     }
@@ -102,9 +102,7 @@ class OrgController extends Controller
     {
         $org = OrgRepository::edit($id);
         $category1=OrgRepository::getCategory1Info($id);  //所有顶级分类
-//        $categoryIds=OrgRepository::getTrainCategoryIds($id);  //我的顶级分类
         $category2=OrgRepository::getCategory2Info($id); //我的二级分类
-//        $currentCategory=OrgRepository::getCategory2Info($id);
         $tags=OrgRepository::getTags($id);
         $org['tags']=$tags;
         $org['category1']=$category1;

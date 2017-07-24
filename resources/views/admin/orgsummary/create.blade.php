@@ -134,6 +134,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input form-md-line-cover">
+                                <label class="col-md-1 control-label">{{trans('labels.orgsummary.album')}}</label>
+                                <div class="col-md-9">
+                                    <div class="cover-box">
+                                        <div class="add-img-btn add-album-img-btn">+
+                                            <div class="img-size-tips">60*60</div>
+                                        </div>
+                                        <ul class="imgs-list-box album-list-box">
+                                        </ul>
+                                        <input id="album" name="album" type="hidden" value="">
+                                    </div>
+                                </div>
+                            </div>
+
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.orgsummary.surperior')}}</label>
@@ -158,6 +172,24 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="tags">{{trans('labels.orgsummary.tags')}}</label>
+                                <div class="col-md-2" style="color:#32c5d2">输入文字后，回车添加</div>
+                                <div class="col-md-7">
+                                    <div id="tags-box"></div>
+                                    <input type="hidden" name="tags" id="tags">
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="hot_msg">{{trans('labels.orgsummary.hot_msg')}}</label>
+                                <div class="col-md-2" style="color:#32c5d2">输入文字后，回车添加</div>
+                                <div class="col-md-7">
+                                    <div id="hot_msg_box"></div>
+                                    <input type="hidden" name="hotmsg" id="hot_msg">
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="fake_enrol_counts">{{trans('labels.orgsummary.fake_enrol_counts')}}</label>
                                 <div class="col-md-9">
                                     <input type="number" step="1" class="form-control" id="fake_enrol_counts" name="fake_enrol_counts" placeholder="{{trans('labels.orgsummary.fake_enrol_counts')}}" value="{{old('fake_enrol_counts')}}">
@@ -169,6 +201,14 @@
                                 <label class="col-md-1 control-label" for="fake_signup_counts">{{trans('labels.orgsummary.fake_signup_counts')}}</label>
                                 <div class="col-md-9">
                                     <input type="number" step="1" class="form-control" id="fake_signup_counts" name="fake_signup_counts" placeholder="{{trans('labels.orgsummary.fake_signup_counts')}}" value="{{old('fake_signup_counts')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="fake_consult_ranking">{{trans('labels.orgsummary.fake_consult_ranking')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="fake_consult_ranking" name="fake_consult_ranking" placeholder="{{trans('labels.orgsummary.fake_consult_ranking')}}" value="{{old('fake_consult_ranking')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -185,14 +225,14 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="grade_total">{{trans('labels.orgsummary.grade_total')}}</label>
                                 <div class="col-md-9">
-                                    <input type="number" step="1" class="form-control" id="grade_total" name="grade_total" placeholder="{{trans('labels.orgsummary.grade_total')}}" value="{{old('grade_total')}}">
+                                    <input type="number" step="0.1" class="form-control" id="grade_total" name="grade_total" placeholder="{{trans('labels.orgsummary.grade_total')}}" value="{{old('grade_total')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="grade_env">{{trans('labels.orgsummary.grade_env')}}</label>
                                 <div class="col-md-9">
-                                    <input type="number" step="1" class="form-control" id="grade_env" name="fakegrade_env_enrol_counts" placeholder="默认4.70" value="{{old('grade_env')}}">
+                                    <input type="number" step="0.1" class="form-control" id="grade_env" name="grade_env" placeholder="{{trans('labels.orgsummary.grade_env')}}" value="{{old('grade_env')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -200,7 +240,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="grade_profession">{{trans('labels.orgsummary.grade_profession')}}</label>
                                 <div class="col-md-9">
-                                    <input type="number" step="1" class="form-control" id="grade_profession" name="grade_profession" placeholder="默认4.70" value="{{old('grade_profession')}}">
+                                    <input type="number" step="0.1" class="form-control" id="grade_profession" name="grade_profession" placeholder="{{trans('labels.orgsummary.grade_profession')}}" value="{{old('grade_profession')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -209,14 +249,14 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="course_avg_price">{{trans('labels.orgsummary.grade_service')}}</label>
                                 <div class="col-md-9">
-                                    <input type="number" step="0.01" class="form-control" id="grade_service" name="grade_service" placeholder="默认4.70" value="{{old('grade_service')}}">
+                                    <input type="number" step="0.1" class="form-control" id="grade_service" name="grade_service" placeholder="{{trans('labels.orgsummary.grade_service')}}" value="{{old('grade_service')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="grade_effect">{{trans('labels.orgsummary.grade_effect')}}</label>
                                 <div class="col-md-9">
-                                    <input type="number" step="0.01" class="form-control" id="grade_effect" name="grade_effect" placeholder="默认4.70" value="{{old('grade_effect')}}">
+                                    <input type="number" step="0.1" class="form-control" id="grade_effect" name="grade_effect" placeholder="{{trans('labels.orgsummary.grade_effect')}}" value="{{old('grade_effect')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -339,10 +379,7 @@
         <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
     </form>
     <form id="upImgForm2" method="post" class="hiddenForm">
-        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg">
-    </form>
-    <form id="upImgForm3" method="post" class="hiddenForm">
-        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile3" size="28" accept="image/png,image/gif, image/jpeg">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg" multiple="multiple">
     </form>
     <div class="loding-modal">
         <i id="imgLoadingCircle" class="loadingCircle active"></i>
@@ -373,5 +410,5 @@
         });
     </script>
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/orgsummary/index.js')}}"></script>
 @endsection
