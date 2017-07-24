@@ -20,9 +20,23 @@ class BankeOrgSummary extends Model
         'sort',
         'details',
         'url',
+        'city',
+        'fake_enrol_counts',
+        'fake_signup_counts',
+        'course_avg_price',
+        'grade_total',
+        'grade_env',
+        'grade_profession',
+        'grade_service',
+        'grade_effect',
         'status',
         'created_at',
-        'updated_at'];
+        'updated_at',
+        'installment_flag',
+        'installment_title',
+        'refund_flag',
+        'refund_title',
+    ];
 
     private $action;
 

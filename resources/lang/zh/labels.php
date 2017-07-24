@@ -269,7 +269,22 @@ return [
 		'list' => '机构列表',
 		'branch_list' => '分校列表',
 		'category' => '所属分类',
-		'url'=>'官网地址'
+		'url'=>'官网地址',
+		'city'=>'城市',
+		'album'=>'相册',
+		'fake_enrol_counts'=>'预约人数',
+		'fake_signup_counts'=>'报名人数',
+		'course_avg_price'=>'课程均价',
+		'grade_total'=>'总评分',
+		'grade_env'=>'环境评分',
+		'grade_profession'=>'专业评分',
+		'grade_service'=>'服务评分',
+		'grade_effect'=>'效果评分',
+		'tags'=>'标签',
+		'installment_flag'=>'支持分期',
+		'installment_title'=>'分期标题',
+		'refund_flag'=>'支持退款',
+		'refund_title'=>'退款标题',
 	],
 	'org' => [
 		'id' => '序号',
@@ -318,7 +333,7 @@ return [
 		'org'=>'所属机构',
 		'org_id'=>'所属机构',
 		'price'=>'参考价',
-		'origin_price'=>'原价',
+		'original_price'=>'原价',
 		'real_price' => '成交价',
 		'z_award_amount' => '介绍费(普通学生)',
 		'z_award_amount_teacher' => '介绍费(招生老师)',
@@ -351,6 +366,7 @@ return [
 		'hot'=>'热门',
 		'fake_enrol_counts'=>'预约人数',
 		'album'=>'相册',
+		'deposit'=>'预约金'
 	],
 
 	'app_user' => [

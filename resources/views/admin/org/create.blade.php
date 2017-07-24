@@ -105,7 +105,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="city">{{trans('labels.org.city')}}(必填)</label>
+                                <label class="col-md-1 control-label" for="city">{{trans('labels.org.city')}}</label>
                                 <div class="col-md-4">
                                     <select id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
                                         <option value="武汉" selected>武汉</option>

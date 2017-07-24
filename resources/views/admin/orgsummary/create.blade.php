@@ -96,6 +96,20 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="city">{{trans('labels.orgsummary.city')}}</label>
+                                <div class="col-md-4">
+                                    <select id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
+                                        <option value="武汉" selected>武汉</option>
+                                        <option value="北京">北京</option>
+                                        <option value="上海">上海</option>
+                                        <option value="广州">广州</option>
+                                        <option value="深圳">深圳</option>
+                                    </select>
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="sort">{{trans('labels.orgsummary.sort')}}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.orgsummary.sort')}}">
@@ -142,6 +156,130 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="fake_enrol_counts">{{trans('labels.orgsummary.fake_enrol_counts')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="fake_enrol_counts" name="fake_enrol_counts" placeholder="{{trans('labels.orgsummary.fake_enrol_counts')}}" value="{{old('fake_enrol_counts')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="fake_signup_counts">{{trans('labels.orgsummary.fake_signup_counts')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="fake_signup_counts" name="fake_signup_counts" placeholder="{{trans('labels.orgsummary.fake_signup_counts')}}" value="{{old('fake_signup_counts')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="course_avg_price">{{trans('labels.orgsummary.course_avg_price')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="course_avg_price" name="course_avg_price" placeholder="{{trans('labels.orgsummary.course_avg_price')}}" value="{{old('course_avg_price')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="grade_total">{{trans('labels.orgsummary.grade_total')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="grade_total" name="grade_total" placeholder="{{trans('labels.orgsummary.grade_total')}}" value="{{old('grade_total')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="grade_env">{{trans('labels.orgsummary.grade_env')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="grade_env" name="fakegrade_env_enrol_counts" placeholder="默认4.70" value="{{old('grade_env')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="grade_profession">{{trans('labels.orgsummary.grade_profession')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="grade_profession" name="grade_profession" placeholder="默认4.70" value="{{old('grade_profession')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="course_avg_price">{{trans('labels.orgsummary.grade_service')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="0.01" class="form-control" id="grade_service" name="grade_service" placeholder="默认4.70" value="{{old('grade_service')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="grade_effect">{{trans('labels.orgsummary.grade_effect')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="0.01" class="form-control" id="grade_effect" name="grade_effect" placeholder="默认4.70" value="{{old('grade_effect')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="installment_flag">{{trans('labels.orgsummary.installment_flag')}}</label>
+                                <div class="col-md-9">
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="installment_flag1" name="installment_flag" value="{{config('admin.global.status.active')}}" class="md-radiobtn"  checked>
+                                            <label for="installment_flag1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="installment_flag2" name="installment_flag" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                            <label for="installment_flag2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.audit.1')}} </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="installment_title">{{trans('labels.orgsummary.installment_title')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="installment_title" name="installment_title" placeholder="{{trans('labels.orgsummary.installment_title')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="refund_flag">{{trans('labels.orgsummary.refund_flag')}}</label>
+                                <div class="col-md-9">
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="refund_flag1" name="refund_flag" value="{{config('admin.global.status.active')}}" class="md-radiobtn"  checked>
+                                            <label for="refund_flag1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="refund_flag2" name="refund_flag" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                            <label for="refund_flag2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.audit.1')}} </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="refund_title">{{trans('labels.orgsummary.refund_title')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="refund_title" name="refund_title" placeholder="{{trans('labels.orgsummary.refund_title')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.org.status')}}</label>
