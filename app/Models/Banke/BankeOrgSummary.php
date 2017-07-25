@@ -23,6 +23,7 @@ class BankeOrgSummary extends Model
         'city',
         'fake_enrol_counts',
         'fake_signup_counts',
+        'fake_comment_count',
         'fake_consult_ranking',
         'course_avg_price',
         'grade_total',

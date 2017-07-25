@@ -229,6 +229,14 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="fake_comment_count">{{trans('labels.orgsummary.fake_comment_count')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="fake_comment_count" name="fake_comment_count" placeholder="{{trans('labels.orgsummary.fake_comment_count')}}" value="{{$orgsummary['fake_comment_count']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="fake_consult_ranking">{{trans('labels.orgsummary.fake_consult_ranking')}}</label>
                                 <div class="col-md-9">
                                     <input type="number" step="1" class="form-control" id="fake_consult_ranking" name="fake_consult_ranking" placeholder="{{trans('labels.orgsummary.fake_consult_ranking')}}" value="{{$orgsummary['fake_consult_ranking']}}">
@@ -259,7 +267,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="grade_env">{{trans('labels.orgsummary.grade_env')}}</label>
                                 <div class="col-md-9">
-                                    <input type="number" step="0.1" class="form-control" id="grade_env" name="fakegrade_env_enrol_counts" placeholder="默认4.70" value="{{$orgsummary['grade_env']}}">
+                                    <input type="number" step="0.1" class="form-control" id="grade_env" name="grade_env" placeholder="默认4.70" value="{{$orgsummary['grade_env']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>

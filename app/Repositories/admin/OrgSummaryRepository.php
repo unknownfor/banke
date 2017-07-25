@@ -254,12 +254,12 @@ class OrgSummaryRepository
 	{
 		$avg=0;
 		$orgs=BankeOrgSummary::find($id)->org;
-		if ($orgs) {
+		if ($orgs->count()>0) {
 			$sum=0;
 			$counts=0;
 			foreach ($orgs as &$v) {
 				$courses=$v->course;
-				if ($courses) {
+				if ($courses->count()>0) {
 					foreach ($courses as &$c) {
 						$counts++;
 						$sum+=$c['price'];

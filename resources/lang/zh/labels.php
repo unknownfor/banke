@@ -239,6 +239,9 @@ return [
 		'recruiteteacherList' => '<i class="fa fa-list"></i> 招生老师列表',
 		'recruiteteacherEdit' => '<i class="fa fa-list"></i> 审核招生老师',
 
+		'activityList' => '<i class="fa fa-list"></i> 活动列表',
+		'activityCreate' => '<i class="fa fa-list"></i> 添加活动',
+		'activityEdit' => '<i class="fa fa-list"></i> 编辑活动',
 
 	],
 	'dict' => [
@@ -274,6 +277,7 @@ return [
 		'album'=>'相册',
 		'fake_enrol_counts'=>'预约人数',
 		'fake_signup_counts'=>'报名人数',
+		'fake_comment_count'=>'评论人数',
 		'fake_consult_ranking'=>'咨询排名',
 		'course_avg_price'=>'课程均价',
 		'grade_total'=>'总评分',
@@ -776,6 +780,21 @@ return [
 		'status' => '状态',
 		'from' => '来源',
 		'list' => '赚钱动态列表'
+	],
+
+	'activity' => [
+		'id' => '序号',
+		'title' => '标题',
+		'cover'=>'封面',
+		'desc' => '描述',
+		'url_type' => '链接类型',
+		'url' => '链接地址',
+		'city' => '针对城市',
+		'sort' => '排序',
+		'updated_at' => '修改时间',
+		'created_at' => '创建时间',
+		'status' => '状态',
+		'list' => '活动列表'
 	],
 
 ];

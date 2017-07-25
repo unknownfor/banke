@@ -270,4 +270,11 @@ return [
         'deleted_error' => '删除招生老师失败',
     ],
 
+    'activity' => [
+        'updated_success'   => '更新活动成功.',
+        'updated_error'     => '更新活动失败.',
+        'deleted_success' => '删除活动成功',
+        'deleted_error' => '删除活动失败',
+    ],
+
 ];

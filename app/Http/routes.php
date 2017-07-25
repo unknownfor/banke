@@ -150,6 +150,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //赚钱动态
         require(__DIR__ . '/Routes/MoneyNewsRoute.php');
 
+        //活动
+        require(__DIR__ . '/Routes/ActivityRoute.php');
+
     });
 });
 
