@@ -79,21 +79,35 @@ img {
       }
       .head-tips {
         border-bottom: 1px solid #dfe0e6;
-        padding: 10px;
+        padding: 10px 0;
         .tips {
           display: flex;
           padding-top: 5px;
           .tips-left {
             flex: 1;
+            font-size: 12px;
+            padding-top: 3px;
             .tips-box {
+              display: inline-block;
               border: 1px solid #666666;
-              border-radius: 5px;
-              padding: 0 3px;
+              border-radius: 4px;
+              padding: 1px 3px;
             }
           }
           .tips-right {
+            display: inline-block;
+            color: #a6a6a6;
             text-align: right;
-            flex: 0 0 105px;
+            flex: 0 0 101px;
+            > span {
+              display: inline-block;
+              -webkit-transform:translate(12px,0px);
+            }
+            #more {
+              display: inline-block;
+              vertical-align: -4px;
+              font-size: 22px;
+            }
           }
         }
       }
@@ -318,7 +332,6 @@ img {
     &.course {
       font-size: 16px;
       color: #383d43;
-      font-weight: bold;
       display: flex;
       flex-direction: row;
       align-items: center;

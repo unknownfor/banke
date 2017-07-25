@@ -277,7 +277,7 @@ img {
 }
 #course .container.head .head-tips {
   border-bottom: 1px solid #dfe0e6;
-  padding: 10px;
+  padding: 10px 0;
 }
 #course .container.head .head-tips .tips {
   display: -webkit-box;
@@ -291,18 +291,32 @@ img {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
+  font-size: 12px;
+  padding-top: 3px;
 }
 #course .container.head .head-tips .tips .tips-left .tips-box {
+  display: inline-block;
   border: 1px solid #666666;
-  border-radius: 5px;
-  padding: 0 3px;
+  border-radius: 4px;
+  padding: 1px 3px;
 }
 #course .container.head .head-tips .tips .tips-right {
+  display: inline-block;
+  color: #a6a6a6;
   text-align: right;
   -webkit-box-flex: 0;
-  -webkit-flex: 0 0 105px;
-  -ms-flex: 0 0 105px;
-  flex: 0 0 105px;
+  -webkit-flex: 0 0 101px;
+  -ms-flex: 0 0 101px;
+  flex: 0 0 101px;
+}
+#course .container.head .head-tips .tips .tips-right > span {
+  display: inline-block;
+  -webkit-transform: translate(12px, 0px);
+}
+#course .container.head .head-tips .tips .tips-right #more {
+  display: inline-block;
+  vertical-align: -4px;
+  font-size: 22px;
 }
 #course .container.head .head-link {
   font-size: 10px;
@@ -591,7 +605,6 @@ img {
 #course .container.course {
   font-size: 16px;
   color: #383d43;
-  font-weight: bold;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
