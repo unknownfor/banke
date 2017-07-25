@@ -94,6 +94,8 @@ class OrgSummaryController extends Controller
         $orgsummary['tags']=$tags;
         $orgsummary['hotmsg']=$hotMsg;
 
+        $orgsummary['real_avg']=OrgSummaryRepository::getCoursePriceAvg($id);;
+
         return view('admin.orgsummary.edit')->with(compact('orgsummary','categories'));
     }
     /**

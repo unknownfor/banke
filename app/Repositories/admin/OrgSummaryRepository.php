@@ -242,4 +242,33 @@ class OrgSummaryRepository
 		}
 		return$arr;
 	}
+
+	/**
+	 * 机构的 课程均价
+	 * @author jimmy
+	 * @date   2017-02-23T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public function  getCoursePriceAvg($id)
+	{
+		$avg=0;
+		$orgs=BankeOrgSummary::find($id)->org;
+		if ($orgs) {
+			$sum=0;
+			$counts=0;
+			foreach ($orgs as &$v) {
+				$courses=$v->course;
+				if ($courses) {
+					foreach ($courses as &$c) {
+						$counts++;
+						$sum+=$c['price'];
+					}
+				}
+			}
+			$avg=$sum/$counts;
+			intval($avg);
+		}
+		return $avg;
+	}
 }

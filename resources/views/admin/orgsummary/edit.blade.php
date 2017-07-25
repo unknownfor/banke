@@ -239,9 +239,13 @@
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="course_avg_price">{{trans('labels.orgsummary.course_avg_price')}}</label>
-                                <div class="col-md-9">
+                                <div class="col-md-3">
                                     <input type="number" step="1" class="form-control" id="course_avg_price" name="course_avg_price" placeholder="{{trans('labels.orgsummary.course_avg_price')}}" value="{{$orgsummary['course_avg_price']}}">
                                     <div class="form-control-focus"> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-4 control-label" for="course_avg_price">真实课单价</label>
+                                    <span class="label label-success custom-label" id="price">{{$orgsummary['real_avg']}}</span>
                                 </div>
                             </div>
 

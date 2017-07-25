@@ -49,7 +49,7 @@ class BankeOrgSummary extends Model
         $this->action = config('admin.global.orgsummary.action');
     }
 
-    //1对多个课程
+    //1对多个多个子机构
     public function org()
     {
         return $this->hasMany('App\Models\Banke\BankeOrg','pid','id');

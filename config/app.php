@@ -270,6 +270,7 @@ return [
         'MoneyStrategyRepository' => App\Facades\MoneyStrategyFacade::class,
         'AlertBoxRepository' => App\Facades\AlertBoxFacade::class,
         'MoneyNewsRepository' => App\Facades\MoneyNewsFacade::class,
+        'ActivityRepository' => App\Facades\ActivityFacade::class,
     ],
 
 ];
