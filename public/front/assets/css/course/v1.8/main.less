@@ -19,10 +19,25 @@ img {
     background-color: #ffffff;
     padding: 15px;
     margin-bottom: 15px;
-    &.head {
-      .head-img {
-        max-height: 340px;
+    .org-stars {
+      @h: 16px;
+      display: inline-block;
+      font-size: @h;
+      .star {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        .size(@h,@h);
+        color: #d9d9d9;
+        &.colored {
+          color: #ffd842;
+        }
       }
+    }
+    .head-img {
+      max-height: 340px;
+    }
+    &.head {
       .head-info {
         text-align: left;
         .course-name {
@@ -59,6 +74,26 @@ img {
             flex:2;
             text-align: right;
             color: #a6a6a6;
+          }
+        }
+      }
+      .head-tips {
+        border-bottom: 1px solid #dfe0e6;
+        padding: 10px;
+        .tips {
+          display: flex;
+          padding-top: 5px;
+          .tips-left {
+            flex: 1;
+            .tips-box {
+              border: 1px solid #666666;
+              border-radius: 5px;
+              padding: 0 3px;
+            }
+          }
+          .tips-right {
+            text-align: right;
+            flex: 0 0 105px;
           }
         }
       }
@@ -105,15 +140,12 @@ img {
             }
           }
           .link-right {
-            flex: 0 0 61px;
             color: #ff6455;
             margin-left: 5px;
-            text-align: right;
-            vertical-align: 6px;
+            .size (30px,30px);
           }
         }
       }
-
     }
     &.join {
       @jh:55px;
@@ -164,69 +196,195 @@ img {
       }
     }
     &.org {
-      display: flex;
-      .org-img {
-        flex: 0 0 85px;
-        .size(85px,85px);
-        border: 1px solid #000;
-      }
-      .org-info {
-        margin-left: 10px;
-        flex: 1;
-        .org-name {
-          display: flex;
-          margin-bottom: 28px;
-          .org-left {
-            flex: 1;
-            .name {
-             float: left;
-              font-weight: bold;
-              .txt-ellipsis-p(1);
-              margin-right: 5px;
+      .org-box {
+        display: flex;
+        border-bottom: 1px solid #dfe0e6;
+        padding-bottom: 10px;
+        .org-img {
+          flex: 0 0 85px;
+          .size(85px,85px);
+          border: 1px solid #000;
+        }
+        .org-info {
+          margin-left: 10px;
+          flex: 1;
+          .org-name {
+            display: flex;
+            margin-bottom: 28px;
+            .org-left {
+              flex: 1;
+              .name {
+                font-size: 16px;
+                float: left;
+                font-weight: bold;
+                .txt-ellipsis-p(1);
+                margin-right: 5px;
+              }
+              .tips {
+                float: left;
+                padding-top: 4px;
+                font-size: 10px;
+                color: #ffd842;
+                > span {
+                  padding: 3px;
+                  border: 1px solid #ffd842;
+                  border-radius: 8px;
+                }
+              }
             }
-            .tips {
-              float: left;
-              padding-top: 4px;
-              font-size: 10px;
-              color: #ffd842;
-              > span {
-                padding: 3px;
-                border: 1px solid #ffd842;
-                border-radius: 8px;
+            .org-right {
+              color: #a6a6a6;
+              flex: 0 0 24;
+              font-size: 12px;
+              text-align: right;
+              margin-left: 15px;
+            }
+          }
+          .org-score {
+            color: #a6a6a6;
+            .txt-ellipsis-p(1);
+            font-size: 12px;
+            > span {
+              margin-left: 10px;
+              &:first-child {
+                margin-left: 0px;
               }
             }
           }
-          .org-right {
-            flex: 0 0 24;
-            font-size: 12px;
-            text-align: right;
-            margin-left: 15px;
-          }
-        }
-        .org-stars {
-          @h: 16px;
-          display: inline-block;
-          font-size: @h;
-          .star {
-            display: inline-block;
-            padding: 0;
-            margin: 0;
-            .size(@h,@h);
-            color: #d9d9d9;
-            &.colored {
-              color: #ffd842;
+          .org-contact {
+            display: flex;
+            text-align: center;
+            color:#ffd842;
+            margin-top: 15px;
+            .contact-btn {
+              flex: 1;
+              border: 1px solid #ffd842;
+              padding: 4px;
+              border-radius: 4px;
+              height: 28px;
+              .contact-img {
+                display: inline-block;
+                .size(20px,20px);
+                background: url("../../../img/course/v1.8/sprite.png") no-repeat;
+                background-size: 254px * 0.5, 51px* 0.5;
+              }
+              .contact {
+                display: inline-block;
+                line-height: 28px;
+              }
+              &#phone {
+                margin-right: 10px;
+                .contact-img {
+                  background-position: -57px 0;
+                  vertical-align: -3px;
+                }
+              }
+              &#online {
+                .contact-img {
+                  background-position: -83px 0;
+                  vertical-align: -4px;
+                }
+              }
             }
           }
         }
-        .org-score {
-          .txt-ellipsis-p(1);
-          font-size: 12px;
+      }
+      .teacher-box {
+        line-height: 24px;
+        margin-top: 10px;
+        .teacher-info {
+          display: flex;
+          > a {
+            color: #666666;
+            .teacher-name {
+              flex: 0 0 65px;
+              font-weight: bold;
+              margin-right: 8px;
+            }
+            .teacher-class {
+              color: #a6a6a6;
+              flex: 1;
+              font-size: 12px;
+              .class-name {
+                margin-right: 8px;
+              }
+            }
+          }
+
+        }
+
+      }
+    }
+    &.course {
+      font-size: 16px;
+      color: #383d43;
+      font-weight: bold;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 25px;
+      text-align: center;
+      .course-btn {
+        flex: 1;
+        > span {
+          .size(22px,25px);
+          padding-bottom: 5px;
+        }
+        &.selected {
+          color: #ffd842;
           > span {
-            margin-left: 10px;
-            &:first-child {
-              margin-left: 0px;
+            border-bottom: 1px solid #ffd842;
+          }
+        }
+      }
+    }
+    &.evaluate-info {
+      .evaluate-box {
+        display: flex;
+        padding: 10px 0;
+        border-top: 1px solid #dfe0e6;
+        .evaluate-img {
+          @w: 45px;
+          flex: 0 0 @w;
+          margin-right: 15px;
+          > img {
+            display: inline-block;
+            .size(@w,@w);
+            border-radius: @w;
+          }
+        }
+        .evaluate-detail {
+          display: inline-block;
+          .name {
+            color: #383d43;
+          }
+          .stars {
+            @h: 16px;
+            display: inline-block;
+            font-size: @h;
+            .star {
+              display: inline-block;
+              padding: 0;
+              margin: 0;
+              .size(@h,@h);
+              color: #d9d9d9;
+              &.colored {
+                color: #ffd842;
+              }
             }
           }
+          .detail {
+            color: #666666;
+          }
+          .time {
+            width: 100%;
+            text-align: right;
+            color: #a6a6a6;
+            padding-top: 5px;
+          }
+        }
+        &:first-child {
+          border-top: 0px;
         }
       }
     }

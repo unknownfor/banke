@@ -2,7 +2,7 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <svg xmlns="http://www.w3.org/2000/svg">
 <metadata>
-Created by FontForge 20120731 at Mon Jul 24 12:09:21 2017
+Created by FontForge 20120731 at Mon Jul 24 18:00:41 2017
  By admin
 </metadata>
 <defs>
@@ -44,5 +44,7 @@ l-147 -141q-9 -9 -14 -24.5t-5 -26.5l32 -199q5 -25 -8 -35t-37 3zM525 122q-19 0 -2
     <glyph glyph-name="star" unicode="&#xe680;" 
 d="M767 -33q-7 0 -12 3l-243 128l-243 -128q-14 -8 -26.5 1.5t-9.5 24.5l46 271l-197 192q-11 11 -6 25.5t20 16.5l272 40l122 246q6 14 22 14t22 -14l122 -246l272 -40q15 -2 20 -17t-6 -25l-197 -192l46 -271q3 -15 -9 -24q-7 -5 -15 -5zM153 459l170 -165q10 -10 7 -23
 l-40 -233l210 110q12 6 24 0l210 -110l-40 233q-3 13 7 23l170 165l-235 34q-13 2 -19 14l-105 213l-105 -213q-6 -12 -19 -14z" />
+    <glyph glyph-name="gengduo" unicode="&#xe600;" 
+d="M488 150l234 234l-234 235q-6 5 -6 13t6 13.5t13.5 6t13.5 -5.5l246 -246q6 -6 5 -16q1 -9 -5 -16l-246 -246q-5 -5 -13.5 -5t-14 5.5t-5.5 13.5t6 14z" />
   </font>
 </defs></svg>
