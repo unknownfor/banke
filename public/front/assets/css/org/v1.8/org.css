@@ -201,3 +201,199 @@ ul {
   margin: 0;
   padding: 0;
 }
+#org {
+  position: relative;
+  font-size: 14px;
+  color: #666666;
+}
+#org .container {
+  background-color: #ffffff;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+#org .container .org-stars {
+  display: inline-block;
+  font-size: 16px;
+}
+#org .container .org-stars .star {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  color: #d9d9d9;
+}
+#org .container .org-stars .star.colored {
+  color: #ffd842;
+}
+#org .container.head .org-head {
+  text-align: center;
+}
+#org .container.head .org-head .org-img {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  border: 1px solid #f2f2f2;
+}
+#org .container.head .org-head .org-name {
+  color: #383D43;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#org .container.head .org-head .org-price {
+  font-size: 12px;
+  color: #FFB556;
+  background-color: #FFF7EE;
+  border: 1px solid #FFB556;
+  padding: 2px;
+  border-radius: 3px;
+}
+#org .container.head .org-head .org-num {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 12px;
+  color: #a6a6a6;
+  border-bottom: 1px solid #dfe0e6;
+}
+#org .container.head .org-head .org-num > hr {
+  margin: 5px 0;
+  color: #dfe0e6;
+}
+#org .container.head .org-head .org-num .num-box {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding-bottom: 10px;
+}
+#org .container.head .org-head .org-num .num-box .num {
+  margin-bottom: 3px;
+}
+#org .container.head .head-tips {
+  border-bottom: 1px solid #dfe0e6;
+  padding: 10px 0;
+}
+#org .container.head .head-tips .tips {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 5px;
+}
+#org .container.head .head-tips .tips .tips-left {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  font-size: 12px;
+}
+#org .container.head .head-tips .tips .tips-left .tips-box {
+  display: inline-block;
+  border: 1px solid #666666;
+  border-radius: 4px;
+  padding: 1px 3px;
+}
+#org .container.head .head-tips .tips .tips-right {
+  display: inline-block;
+  color: #a6a6a6;
+  text-align: right;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 101px;
+  -ms-flex: 0 0 101px;
+  flex: 0 0 101px;
+}
+#org .container.head .head-tips .tips .tips-right > span {
+  display: inline-block;
+  -webkit-transform: translate(12px, 0px);
+}
+#org .container.head .head-tips .tips .tips-right #more {
+  display: inline-block;
+  vertical-align: -4px;
+  font-size: 22px;
+}
+#org .container.head .org-tips {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 5px;
+}
+#org .container.head .org-tips .tips-left {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 56px;
+  -ms-flex: 0 0 56px;
+  flex: 0 0 56px;
+  margin: 5px 8px 0 0;
+}
+#org .container.head .org-tips .tips-right {
+  display: inline-block;
+  font-size: 12px;
+}
+#org .container.head .org-tips .tips-right .tips-box {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  border-radius: 4px;
+  padding: 1px 2px;
+  background-color: #EDEDED;
+}
+#org .container.head .org-tips .tips-right .tips-box .appoint {
+  padding-left: 2px;
+  border-left: 1px solid #666;
+}
+#org .container.head .org-tips .tips-right .tips-box > span {
+  display: inline-block;
+  margin: 2px;
+}
+#org .container.address .address-head {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 10px;
+}
+#org .container.address .address-head .head-left {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: left;
+}
+#org .container.address .address-head .head-right {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: right;
+  color: #a6a6a6;
+}
+#org .container.address .address-head .head-right > span {
+  display: inline-block;
+  vertical-align: 3px;
+}
+#org .container.address .address-head .head-right #more-school {
+  display: inline-block;
+  font-size: 22px;
+  -webkit-transform: translate(-11px, 0px);
+}
+#org .container.address .address-bottom {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+#org .container.address .address-bottom .address-left {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 45px;
+  -ms-flex: 0 0 45px;
+  flex: 0 0 45px;
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  background: url("../../../img/org/v1.8/sprite.png") -31px 2px no-repeat;
+  -webkit-background-size: 116px, 30px;
+  background-size: 116px, 30px;
+}

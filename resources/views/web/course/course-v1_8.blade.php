@@ -34,13 +34,15 @@
                 </div>
                 <div class="tips">
                     <div class="tips-left">
-                        <span class="tips-box">环境好</span>
-                        <span class="tips-box">环境好</span>
-                        <span class="tips-box">环境好</span>
+                        <div class="tips-box">环境好</div>
+                        <div class="tips-box">环境好</div>
+                        <div class="tips-box">环境好</div>
+                        <div class="tips-box">环境好</div>
+                        <div class="tips-box">环境好</div>
                     </div>
                     <div class="tips-right">
                         <span>9999人评价</span>
-                        <i class="iconfont">&#xe600;</i>
+                        <i class="iconfont" id="more">&#xe600;</i>
                     </div>
                 </div>
 
