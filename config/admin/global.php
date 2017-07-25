@@ -334,4 +334,11 @@ return[
 		'show' => false,
 		'action' => 'moneynews',
 	],
+
+	//活动
+	'activity' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'activity',
+	],
 ];
