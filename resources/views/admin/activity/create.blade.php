@@ -63,14 +63,14 @@
                                 <div class="col-md-10">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
-                                            <input type="radio" id="url_type1" name="url_type" value="{{config('admin.global.status.active')}}" class="md-radiobtn" checked >
+                                            <input type="radio" id="url_type1" name="url_type" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"  >
                                             <label for="url_type1">
                                                 <span></span>
                                                 <span class="check"></span>
                                                 <span class="box"></span> 内链 </label>
                                         </div>
                                         <div class="md-radio">
-                                            <input type="radio" id="url_type2" name="url_type" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                            <input type="radio" id="url_type2" name="url_type" value="{{config('admin.global.status.active')}}" class="md-radiobtn" checked>
                                             <label for="url_type2">
                                                 <span></span>
                                                 <span class="check"></span>
@@ -81,7 +81,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="description">{{trans('labels.activity.url')}}</label>
+                                <label class="col-md-1 control-label" for="url">{{trans('labels.activity.url')}}(内链)</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="url" name="url" placeholder="{{trans('labels.activity.url')}}" value="{{old('url')}}">
                                     <div class="form-control-focus"> </div>
@@ -90,9 +90,9 @@
 
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="slug">{{trans('labels.activity.desc')}} (外链)</label>
+                                <label class="col-md-1 control-label" for="slug">{{trans('labels.activity.content')}} (外链)</label>
                                 <div class="col-md-8">
-                                    <textarea style="display: none" name="desc" id="target-area"></textarea>
+                                    <textarea style="display: none" name="content" id="target-area"></textarea>
                                     <textarea id="my-editor"></textarea>
                                 </div>
                             </div>
@@ -106,8 +106,13 @@
                                             <div class="img-size-tips">16:7的图片</div>
                                         </div>
                                         <ul class="imgs-list-box cover-list-box">
+                                            {{--<li>--}}
+                                                {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
+                                                {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
+                                                {{--<span class="remove-img">×</span>--}}
+                                            {{--</li>--}}
                                         </ul>
-                                        <input id="cover_img" name="cover" type="hidden" value="">
+                                        <input id="cover" name="cover" type="hidden" value="">
                                     </div>
                                 </div>
                             </div>
@@ -116,11 +121,9 @@
                                 <label class="col-md-1 control-label" for="city">{{trans('labels.activity.city')}}</label>
                                 <div class="col-md-4">
                                     <select id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
-                                        <option value="武汉" selected>武汉</option>
-                                        <option value="北京">北京</option>
-                                        <option value="上海">上海</option>
-                                        <option value="广州">广州</option>
-                                        <option value="深圳">深圳</option>
+                                        @foreach($cities as  $index => $v)
+                                            <option value="{{$v->name}}" @if($index==0) selected @endif>{{$v->name}}</option>
+                                        @endforeach
                                     </select>
                                     <div class="form-control-focus"> </div>
                                 </div>
@@ -128,7 +131,7 @@
 
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="description">{{trans('labels.activity.sort')}}</label>
+                                <label class="col-md-1 control-label" for="sort">{{trans('labels.activity.sort')}}</label>
                                 <div class="col-md-8">
                                     <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.activity.sort')}}" value="{{old('sort')}}">
                                     <div class="form-control-focus"> </div>

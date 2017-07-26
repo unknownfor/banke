@@ -37,6 +37,7 @@ class CreateCourseRequest extends Request
             'share_group_buying_counts'=>'required|numeric',
             'share_comment_course_counts'=>'required|numeric',
             'sort' => 'numeric',
+            'deposit' => 'required|numeric',
         ];
     }
 
@@ -69,6 +70,7 @@ class CreateCourseRequest extends Request
             'task_award' => trans('labels.course.task_award'),
             'z_award_amount' => trans('labels.course.z_award_amount'),
              'enddated_at' => trans('labels.course.enddated_at'),
+             'deposit' => trans('labels.course.deposit'),
         ];
     }
 }

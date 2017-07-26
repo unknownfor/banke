@@ -4,19 +4,13 @@ namespace App\Models\Banke;
 use App\Models\ActionAttributeTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class BankeActivity extends Model
+class BankeBusinessCity extends Model
 {
     // »î¶¯
-    protected $table = 'banke_activity';
+    protected $table = 'banke_business_city';
     use ActionAttributeTrait;
     protected $fillable = [
-        'title',
-        'cover',
-        'content',
-        'url_type',
-        'url',
-        'cover_img',
-        'city',
+        'name',
         'sort',
         'status',
         'created_at',
