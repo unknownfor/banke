@@ -61,6 +61,10 @@ return [
 		'active' => ['fa fa-paw','是'],
 		'audit' => ['fa fa-navicon','否']
 	],
+	'toggle_status' => [
+		'active' => ['fa fa-paw','是'],
+		'audit' => ['fa fa-navicon','否']
+	],
 	'course' => [
 		'audit' => ['fa fa-paw','待审核'],
 		'active' => ['fa fa-navicon','正常'],

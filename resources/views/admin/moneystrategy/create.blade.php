@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}">
     <style type="text/css">
         .imgs-list-box li{
-            width: 270px;
+            width: 160px;
         }
     </style>
 @endsection
@@ -85,12 +85,14 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="org_name">{{trans('labels.moneystrategy.user_type')}}</label>
                                 <div class="col-md-4">
-                                    <select name="user_type" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <select id="user-type-select" class="selectpicker show-tick form-control" data-live-search="true" multiple>
                                         @foreach(trans('strings.user_type') as $status_key => $status_value)
                                             <option value="{{config('admin.global.certification_status.'.$status_key)}}"> {{$status_value[1]}}</option>
                                         @endforeach
                                     </select>
+                                    <input type="hidden" value="" name="user_type" id="user-type">
                                 </div>
+                                <div class="col-md-1"><span style="line-height: 32px;" class="label label-success">可多选</span></div>
                             </div>
 
                             <div class="form-group form-md-line-input">

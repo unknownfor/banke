@@ -239,6 +239,9 @@ return [
 		'recruiteteacherList' => '<i class="fa fa-list"></i> 招生老师列表',
 		'recruiteteacherEdit' => '<i class="fa fa-list"></i> 审核招生老师',
 
+		'activityList' => '<i class="fa fa-list"></i> 活动列表',
+		'activityCreate' => '<i class="fa fa-list"></i> 添加活动',
+		'activityEdit' => '<i class="fa fa-list"></i> 编辑活动',
 
 	],
 	'dict' => [
@@ -269,7 +272,26 @@ return [
 		'list' => '机构列表',
 		'branch_list' => '分校列表',
 		'category' => '所属分类',
-		'url'=>'官网地址'
+		'url'=>'官网地址',
+		'city'=>'城市',
+		'album'=>'相册',
+		'fake_enrol_counts'=>'预约人数',
+		'fake_signup_counts'=>'报名人数',
+		'fake_comment_count'=>'评论人数',
+		'fake_consult_ranking'=>'咨询排名',
+		'course_avg_price'=>'课程均价',
+		'grade_total'=>'总评分',
+		'grade_env'=>'环境评分',
+		'grade_profession'=>'专业评分',
+		'grade_service'=>'服务评分',
+		'grade_effect'=>'效果评分',
+		'tags'=>'标签',
+		'installment_flag'=>'支持分期',
+		'installment_title'=>'分期标题',
+		'refund_flag'=>'支持退款',
+		'refund_title'=>'退款标题',
+		'tags'=>'标签',
+		'hot_msg'=>'热门消息',
 	],
 	'org' => [
 		'id' => '序号',
@@ -318,6 +340,7 @@ return [
 		'org'=>'所属机构',
 		'org_id'=>'所属机构',
 		'price'=>'参考价',
+		'original_price'=>'原价',
 		'real_price' => '成交价',
 		'z_award_amount' => '介绍费(普通学生)',
 		'z_award_amount_teacher' => '介绍费(招生老师)',
@@ -344,8 +367,13 @@ return [
 		'group_buying_award'=>'开团可获最高奖励比例(%)',
 		'share_group_buying_counts'=>'可分享开团次数',
 		'share_group_buying_award'=>'分享开团奖励比例(%)',
+		'share_comment_course_award'=>'分享心得奖励比例(%)',
 		'share_comment_course_counts'=>'可分享心得次数',
-		'share_comment_course_award'=>'分享心得奖励比例(%)'
+		'period_desc'=>'周期描述',
+		'hot'=>'热门',
+		'fake_enrol_counts'=>'预约人数',
+		'album'=>'相册',
+		'deposit'=>'预约金'
 	],
 
 	'app_user' => [
@@ -752,6 +780,22 @@ return [
 		'status' => '状态',
 		'from' => '来源',
 		'list' => '赚钱动态列表'
+	],
+
+	'activity' => [
+		'id' => '序号',
+		'title' => '标题',
+		'cover'=>'封面',
+		'content' => '内容',
+		'url_type' => '链接类型',
+		'url' => '链接地址',
+		'city' => '针对城市',
+		'sort' => '排序',
+		'updated_at' => '修改时间',
+		'created_at' => '创建时间',
+		'status' => '状态',
+		'course' => '参与课程',
+		'list' => '活动列表'
 	],
 
 ];

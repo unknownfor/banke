@@ -6,14 +6,12 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\CreateOrgSummaryRequest;
-use App\Http\Requests\UpdateOrgRequest;
 use PermissionRepository;
 use RoleRepository;
 use OrgSummaryRepository;
 use TrainCategoryRepository;
-use App\Repositories\admin\OrgCategoryRepository;
-use App\Repositories\admin\OrgTagsRepository;
-use App\Models\Banke\BankeOrg;
+use App\Repositories\admin\OrgSummaryTagsRepository;
+use App\Repositories\admin\OrgSummaryHotMsgRepository;
 use Illuminate\Support\Facades\Log;
 
 class OrgSummaryController extends Controller
@@ -65,6 +63,14 @@ class OrgSummaryController extends Controller
     public function store(CreateOrgSummaryRequest $request)
     {
         $id = OrgSummaryRepository::store($request);
+
+        $tags= $request->tags;  //标签
+        $orgTags=new OrgSummaryTagsRepository();
+        $orgTags->batchStore($tags,$id);
+
+        $hotmsg= $request->hotmsg;  //热门消息
+        $orgHotmsg=new OrgSummaryHotMsgRepository();
+        $orgHotmsg->batchStore($hotmsg,$id);
         return redirect('admin/orgsummary');
     }
 
@@ -78,7 +84,18 @@ class OrgSummaryController extends Controller
     public function edit($id)
     {
         $orgsummary = OrgSummaryRepository::edit($id);
+
         $categories=TrainCategoryRepository::getAllTopCategory();  //所有顶级分类
+
+        $tags=OrgSummaryRepository::getTags($id);
+        $orgsummary['tags']=$tags;
+
+        $hotMsg=OrgSummaryRepository::getHotMsg($id);
+        $orgsummary['tags']=$tags;
+        $orgsummary['hotmsg']=$hotMsg;
+
+        $orgsummary['real_avg']=OrgSummaryRepository::getCoursePriceAvg($id);;
+
         return view('admin.orgsummary.edit')->with(compact('orgsummary','categories'));
     }
     /**
@@ -92,6 +109,15 @@ class OrgSummaryController extends Controller
     public function update(CreateOrgSummaryRequest $request,$id)
     {
         OrgSummaryRepository::update($request,$id);
+
+        $tags= $request->tags;  //标签
+        $OrgTags=new OrgSummaryTagsRepository();
+        $OrgTags->batchStore($tags,$id);
+
+        $hotmsg= $request->hot_msg;  //热门消息
+        $orgHotmsg=new OrgSummaryHotMsgRepository();
+        $orgHotmsg->batchStore($hotmsg,$id);
+
         return redirect('admin/orgsummary');
     }
 

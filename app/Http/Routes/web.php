@@ -100,7 +100,7 @@ Route::group(['prefix'=>"v1.6/web",'namespace'=>'Web'],function() {
     //v1.6课程开团
     Route::get('/course/{id}', 'CourseController@course_v1_6');
 
-    //机构分享页面
+    //机构页面
     Route::get('/org/{id}', 'OrgController@org_v1_6');
 
 
@@ -161,7 +161,33 @@ Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
     Route::get('/rule', 'RuleController@share_rule_v1_7');
 });
 
+//1.8
+Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
 
+    //机构分享页面
+    Route::get('/org/{id}', 'OrgController@org_v1_8');
+
+    //课程详情
+    Route::get('/course/{id}', 'CourseController@course_v1_8');
+
+    //教学老师
+    Route::get('/teachingteacher/{id}', 'CourseController@course_v1_8');
+
+});
+
+//v1.8分享
+Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
+
+    //课程详情分享页
+    Route::get('/course/{id}','CourseController@share_course_v1_8');
+
+    //教学老师
+    Route::get('/teachingteacher/{id}', 'CourseController@course_v1_8');
+
+    //机构详情分享
+    Route::get('/org/{id}', 'OrgController@share_org_v1_8');
+
+});
 
 //邀请
 Route::group(['prefix'=>"invitation"],function(){

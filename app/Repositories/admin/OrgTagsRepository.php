@@ -26,7 +26,7 @@ class OrgTagsRepository
 				BankeOrgTags::where('oid', $oid)->delete();  //删除现有的
 
 				if($tags) {
-					$tags = explode(';', $tags);
+					$tags = explode(',', $tags);
 					//添加新的
 					if (Count($tags) > 0) {
 						$arr = Array();

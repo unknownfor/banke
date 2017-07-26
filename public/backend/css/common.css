@@ -130,7 +130,11 @@
 }
 
 
-
+.form-md-line-cover .cover-box{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
 
 
 .add-img-btn{
@@ -174,7 +178,7 @@
   list-style: none;
   display: inline-block;
   vertical-align: top;
-  height:120px;
+  height:80px;
   margin-right: 20px;
   margin-bottom: 20px;
   position: relative;
@@ -221,4 +225,7 @@
 
 .disabled{
   pointer-events: none;
+}
+.custom-label{
+  line-height: 35px;
 }

@@ -252,4 +252,10 @@ return[
 		'edit' 		=> 'admin.moneynews.edit',
 		'destroy' 	=> 'admin.moneynews.delete',
 	],
+
+	'activity' => [
+		'create' 	=> 'admin.activity.create',
+		'edit' 		=> 'admin.activity.edit',
+		'destroy' 	=> 'admin.activity.delete',
+	],
 ];

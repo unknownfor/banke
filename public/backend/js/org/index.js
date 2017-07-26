@@ -92,7 +92,7 @@
                     var tags=$('#tags').val(),
                         arr=[];
                     if(tags){
-                        arr=tags.split(';');
+                        arr=tags.split(',');
                     }
                     this.tagsObj = $("#medium").tags({
                         readOnly: $('#tag').hasClass('readonly'),
