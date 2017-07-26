@@ -44,6 +44,9 @@ a {
 a:hover {
   -webkit-tap-highlight-color: transparent;
 }
+.clear {
+  clear: both;
+}
 input {
   -webkit-user-select: auto;
   /*webkit浏览器*/
