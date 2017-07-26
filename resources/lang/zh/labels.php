@@ -786,7 +786,7 @@ return [
 		'id' => '序号',
 		'title' => '标题',
 		'cover'=>'封面',
-		'desc' => '描述',
+		'content' => '内容',
 		'url_type' => '链接类型',
 		'url' => '链接地址',
 		'city' => '针对城市',

@@ -130,7 +130,11 @@
 }
 
 
-
+.form-md-line-cover .cover-box{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
 
 
 .add-img-btn{

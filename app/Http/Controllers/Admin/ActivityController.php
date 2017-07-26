@@ -7,7 +7,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use ActivityRepository;
+use Illuminate\Http\Request;
 use App\Http\Requests\ActivityRequest;
+use App\Models\Banke\BankeBusinessCity;
 use Flash;
 
 class ActivityController extends Controller {
@@ -44,7 +46,8 @@ class ActivityController extends Controller {
      */
     public function create()
     {
-        return view('admin.activity.create');
+        $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
+        return view('admin.activity.create')->with(compact('cities'));
     }
 
     /**
@@ -69,8 +72,9 @@ class ActivityController extends Controller {
      */
     public function edit($id)
     {
+        $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
         $activity = ActivityRepository::edit($id);
-        return view('admin.activity.edit')->with(compact('activity'));
+        return view('admin.activity.edit')->with(compact(['activity','cities']));
     }
     /**
      * 修改活动资料
