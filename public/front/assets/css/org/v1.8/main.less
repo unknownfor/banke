@@ -169,12 +169,45 @@ ul {
       .address-bottom {
         display: flex;
         .address-left {
-          flex: 0 0 45px;
+          flex: 0 0 20px;
+          margin-right: 5px;
           display: inline-block;
-          .size( 45px,45px);
-          background: url("../../../img/org/v1.8/sprite.png") -31px 2px no-repeat;
+          .size( 20px,20px);
+          background: url("../../../img/org/v1.8/sprite.png") -32px -4px no-repeat;
           background-size: 290px * 0.4,75px * 0.4;
         }
+        .address-middle {
+          flex: 1;
+          color: #a6a6a6;
+          padding-right: 5px;
+          border-right: 1px solid #dfe0e6;
+        }
+        .address-right {
+          flex:  0 0 60px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .call-img {
+            .size( 33px,33px);
+            background: url("../../../img/org/v1.8/sprite.png") 0 -5px no-repeat;
+            background-size: 290px * 0.5,75px * 0.5;
+          }
+        }
+      }
+    }
+    &.introduction {
+      .org-album {
+        display: flex;
+        .album-li {
+          flex: 1;
+          margin: 0 5px;
+          > img {
+            height: 60px;
+          }
+        }
+      }
+      .intro {
+        font-size: 12px;
       }
     }
   }
