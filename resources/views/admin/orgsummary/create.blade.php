@@ -204,6 +204,13 @@
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="fake_comment_count">{{trans('labels.orgsummary.fake_comment_count')}}</label>
+                                <div class="col-md-9">
+                                    <input type="number" step="1" class="form-control" id="fake_comment_count" name="fake_comment_count" placeholder="{{trans('labels.orgsummary.fake_comment_count')}}" value="{{old('fake_comment_count')}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="fake_consult_ranking">{{trans('labels.orgsummary.fake_consult_ranking')}}</label>
