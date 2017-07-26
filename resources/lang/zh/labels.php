@@ -794,6 +794,7 @@ return [
 		'updated_at' => '修改时间',
 		'created_at' => '创建时间',
 		'status' => '状态',
+		'course' => '参与课程',
 		'list' => '活动列表'
 	],
 
