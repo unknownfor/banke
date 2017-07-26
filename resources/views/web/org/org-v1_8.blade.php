@@ -51,9 +51,6 @@
                 <div class="tips-left">
                     <div class="tips-box">环境好</div>
                     <div class="tips-box">环境好</div>
-                    <div class="tips-box">环境好</div>
-                    <div class="tips-box">环境好</div>
-                    <div class="tips-box">环境好</div>
                 </div>
                 <div class="tips-right">
                     <span>9999人评价</span>
@@ -91,7 +88,23 @@
         <div class="address-bottom">
             <div class="address-left"></div>
             <div class="address-middle">湖北省武汉市洪山区雄楚大道666号中南财经政法大学武汉学院</div>
-            <div class="address-right"></div>
+            <div class="address-right">
+                <div class="call-img"></div>
+            </div>
+        </div>
+    </div>
+    <div class="introduction container">
+        <ul class="org-album">
+            <li class="album-li"><img src="/front/assets/img/course/v1.8/banner.jpeg" /></li>
+            <li class="album-li"><img src="/front/assets/img/course/v1.8/banner.jpeg" /></li>
+            <li class="album-li"><img src="/front/assets/img/course/v1.8/banner.jpeg" /></li>
+            <li class="album-li"><img src="/front/assets/img/course/v1.8/banner.jpeg" /></li>
+        </ul>
+        <div class="intro">机构简介机构简介机构简介机构简介机构简介</div>
+        <div class="read-more">
+            {{--transform: rotate(90deg);--}}
+            <i class="iconfont">&#xe600;</i>
+            <span>查看简介</span>
         </div>
     </div>
 </div>
