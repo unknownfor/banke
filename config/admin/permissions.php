@@ -258,4 +258,10 @@ return[
 		'edit' 		=> 'admin.activity.edit',
 		'destroy' 	=> 'admin.activity.delete',
 	],
+
+	'teachingteacher' => [
+		'create' 	=> 'admin.teachingteacher.create',
+		'edit' 		=> 'admin.teachingteacher.edit',
+		'destroy' 	=> 'admin.teachingteacher.delete',
+	],
 ];

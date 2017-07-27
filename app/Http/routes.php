@@ -153,6 +153,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //活动
         require(__DIR__ . '/Routes/ActivityRoute.php');
 
+        //教学老师
+        require(__DIR__ . '/Routes/TeachingTeacherRoute.php');
+
     });
 });
 
