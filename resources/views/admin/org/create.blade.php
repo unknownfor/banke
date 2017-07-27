@@ -209,8 +209,8 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
                                 <div class="col-md-9">
-                                    <textarea style="display: none" name="details" id="target-area"></textarea>
-                                    <textarea id="my-editor"></textarea>
+                                    <textarea style="display: none" name="details" id="details-content-area"></textarea>
+                                    <textarea id="details-editor"></textarea>
                                 </div>
                             </div>
 
@@ -345,7 +345,7 @@
                                 <label class="col-md-1 control-label" for="installment_content">{{trans('labels.org.installment_content')}}</label>
                                 <div class="col-md-9">
                                     <textarea style="display: none" name="installment_content" id="installment-content-area"></textarea>
-                                    <textarea id="my-installment-editor"></textarea>
+                                    <textarea id="installment-editor"></textarea>
                                 </div>
                             </div>
 
@@ -361,7 +361,7 @@
                                 <label class="col-md-1 control-label" for="refund_content">{{trans('labels.org.refund_content')}}</label>
                                 <div class="col-md-9">
                                     <textarea style="display: none" name="refund_content" id="refund-content-area"></textarea>
-                                    <textarea id="my-refund-editor"></textarea>
+                                    <textarea id="refund-editor"></textarea>
                                 </div>
                             </div>
 
