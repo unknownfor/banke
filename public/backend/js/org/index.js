@@ -5,7 +5,7 @@
 
         $('.citySelectpicker').selectpicker({
             liveSearchNormalize:true,
-            liveSearchPlaceholder:'输入城市名称进行搜索',
+            liveSearchPlaceholder:'输入名称进行搜索',
             //'selectedText': 'cat',
             actionsBox:true
         });
@@ -123,11 +123,10 @@
 
             /*详情编辑器*/
             initDetailEditor:function(){
-                var $editor = $('#installment-editor'),
-                    toolbar =this.baseToolBar;
-                this.detailEditor = this.initEditor($editor,toolbar);
-                this.overWriteImgBtnFn(toolbar);
-                var val=$('#target-area').text();
+                var $editor = $('#details-editor');
+                this.detailEditor = this.initEditor($editor,this.baseToolBar);
+                this.overWriteImgBtnFn(this.baseToolBar);
+                var val=$('#details-content-area').text();
                 if(val){
                     this.detailEditor.setValue(val);
                 }
@@ -135,9 +134,8 @@
 
             /*分期编辑器*/
             initInstallmentEditor:function(){
-                var $editor = $('#installment-editor'),
-                    toolbar =this.baseToolBar.splice(14,1);
-                this.installmentEditor = this.initEditor($editor,toolbar);
+                var $editor = $('#installment-editor');
+                this.installmentEditor = this.initEditor($editor,this.baseToolBar);
 
                 var val=$('#installment-content-area').text();
                 if(val){
@@ -147,9 +145,8 @@
 
             /*退款编辑器*/
             initRefundEditor:function(){
-                var $editor = $('#refund-editor'),
-                    toolbar =this.baseToolBar.splice(14,1);
-                this.refundEditor = this.initEditor($editor,toolbar);
+                var $editor = $('#refund-editor');
+                this.refundEditor = this.initEditor($editor,this.baseToolBar);
 
                 var val=$('#refund-content-area').text();
                 if(val){
@@ -489,7 +486,7 @@
         //提交编辑
         window.setDataBeforeCommit=function(){
             var detailVal= orgObj.getEditorVal(orgObj.detailEditor);
-            $('#details-editor').text(detailVal);
+            $('#details-content-area').text(detailVal);
 
             var installmentVal= orgObj.getEditorVal(orgObj.installmentEditor);
             $('#installment-content-area').text(installmentVal);

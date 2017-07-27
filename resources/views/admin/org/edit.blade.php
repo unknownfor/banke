@@ -405,7 +405,7 @@
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="installment_flag2" name="installment_flag" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"
-                                                   @if($org['installment_flag']==config('admin.global.status.audit')) checked @endif>>
+                                                   @if($org['installment_flag']==config('admin.global.status.audit')) checked @endif>
                                             <label for="installment_flag2">
                                                 <span></span>
                                                 <span class="check"></span>
@@ -418,8 +418,18 @@
                                 <label class="col-md-1 control-label" for="installment_title">{{trans('labels.orgsummary.installment_title')}}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="installment_title" name="installment_title"
-                                           placeholder="{{trans('labels.orgsummary.installment_title')}}" val="{{$org['installment_title']}}">
+                                           placeholder="{{trans('labels.orgsummary.installment_title')}}" value="{{$org['installment_title']}}">
                                     <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="installment_content">{{trans('labels.org.installment_content')}}</label>
+                                <div class="col-md-9">
+                                    <textarea style="display: none" name="installment_content" id="installment-content-area">{{$org['installment_content']}}</textarea>
+                                    <textarea id="installment-editor"></textarea>
                                 </div>
                             </div>
 
@@ -437,7 +447,7 @@
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="refund_flag2" name="refund_flag" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"
-                                                   @if($org['refund_flag']==config('admin.global.status.audit')) checked @endif>>
+                                                   @if($org['refund_flag']==config('admin.global.status.audit')) checked @endif>
                                             <label for="refund_flag2">
                                                 <span></span>
                                                 <span class="check"></span>
@@ -448,18 +458,10 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="installment_content">{{trans('labels.org.installment_content')}}</label>
-                                <div class="col-md-9">
-                                    <textarea style="display: none" name="installment_content" id="installment-content-area" val="{{$org['installment_content']}}"></textarea>
-                                    <textarea id="installment-editor"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="refund_title">{{trans('labels.org.refund_title')}}</label>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" id="refund_title" name="refund_title"
-                                           placeholder="{{trans('labels.org.refund_title')}}" val="{{$org['refund_title']}}">
+                                           placeholder="{{trans('labels.org.refund_title')}}" value="{{$org['refund_title']}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -467,7 +469,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="refund_content">{{trans('labels.org.refund_content')}}</label>
                                 <div class="col-md-9">
-                                    <textarea style="display: none" name="refund_content" id="refund-content-area" val="{{$org['refund_content']}}"></textarea>
+                                    <textarea style="display: none" name="refund_content" id="refund-content-area">{{$org['refund_content']}}</textarea>
                                     <textarea id="refund-editor"></textarea>
                                 </div>
                             </div>
