@@ -196,6 +196,19 @@
             <span>查看全部老师</span>
         </div>
     </div>
+
+
+    <div class="call-mask hide">
+        <div class="call-container">
+            @if($org['tel_phone'])
+                <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
+            @endif
+            @if($org['tel_phone2'])
+                <div class="call-box"><a class="" href="tel:{{$org['tel_phone2']}}">{{$org['tel_phone2']}}</a></div>
+            @endif
+            <p class="quite">取消</p>
+        </div>
+    </div>
 </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>

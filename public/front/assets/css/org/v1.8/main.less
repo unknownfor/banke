@@ -391,4 +391,50 @@ ul {
       }
     }
   }
+  .call-mask {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background-color: rgba(33,33,33,0.8);
+    @w: 240px;
+    @h: 45px;
+    @r:10px;
+    font-size: 14px;
+    display: none;
+    .call-container {
+      text-align: center;
+      background-color: #fff;
+      border-radius: @r;
+      .call-box {
+        .size(@w,@h);
+        line-height: @h;
+        > a {
+          .size(@w,@h);
+          color: #5A5A5A;
+        }
+      }
+      .quite {
+        height: @h;
+        line-height: @h;
+        padding: 0;
+        margin: 0;
+        font-size: 12px;
+        color: #5A5A5A;
+        border-top: 1px solid #F2F2F2;
+      }
+    }
+    &.show{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+    }
+    &.hide{
+      display: none;
+      opacity: 0;
+    }
+  }
 }

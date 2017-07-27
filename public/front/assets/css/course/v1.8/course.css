@@ -463,6 +463,10 @@ img {
   background-color: #ffd842;
   color: #ffffff;
 }
+#course .container.join .join-box .join-detail .join-btn > a {
+  display: inline-block;
+  color: #ffffff;
+}
 #course .container.org .org-box {
   display: -webkit-box;
   display: -webkit-flex;
