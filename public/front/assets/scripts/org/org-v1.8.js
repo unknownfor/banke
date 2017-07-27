@@ -102,9 +102,9 @@ $(function() {
         var box=$('.org-information'),
             add=$('.address'),
             btn=$('.read-more');
-        box.removeClass('hide');
-        add.removeClass('none');
-        btn.addClass('none');
+        box.removeClass('half');
+        add.removeClass('hide');
+        btn.addClass('hide');
     }
 
 });

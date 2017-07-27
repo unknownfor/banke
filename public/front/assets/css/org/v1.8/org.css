@@ -739,3 +739,11 @@ ul {
   display: none;
   opacity: 0;
 }
+#org .half {
+  height: 83px;
+  overflow: hidden;
+}
+#org .hide {
+  opacity: 0;
+  display: none;
+}
