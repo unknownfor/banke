@@ -173,6 +173,12 @@ Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
     //教学老师
     Route::get('/teachingteacher/{id}', 'TeachingTeacherController@teachingteacher_v1_8');
 
+    //分期详情分享
+    Route::get('/installment/{id}', 'InstallmentController@installment_v1_8');
+
+    //退款详情分享
+    Route::get('/refund/{id}', 'RefundController@refund_v1_8');
+
 });
 
 //v1.8分享
@@ -186,6 +192,12 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
 
     //机构详情分享
     Route::get('/org/{id}', 'OrgController@share_org_v1_8');
+
+    //分期详情分享
+    Route::get('/installment/{id}', 'InstallmentController@share_installment_v1_8');
+
+    //退款详情分享
+    Route::get('/refund/{id}', 'RefundController@share_refund_v1_8');
 
 });
 
