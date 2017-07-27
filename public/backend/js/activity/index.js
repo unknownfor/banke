@@ -27,7 +27,7 @@ $(function(){
 
         $(document).on('click','.remove-img', $.proxy(this,'deletCoverImg'));
 
-        $('.citySelectpicker').selectpicker();
+        $('.selectpicker').selectpicker();
 
 
         //photoswipe   //图片信息查看  相册、视频信息查看
@@ -262,10 +262,10 @@ $(function(){
             return arr;
         },
 
-        getAllUserType:function(){
-            var $userType=$('#user-type-select option:selected'),arr=[];
+        getAllCourse:function(){
+            var $course=$('.course-select option:selected'),arr=[];
 
-            $.each($userType,function(){
+            $.each($course,function(){
                 arr.push($(this).val());
             });
             return arr;
@@ -310,5 +310,6 @@ $(function(){
         $('#target-area').text(val);
         //相册
         $('#cover').val(strategy.getCoverImg().join(','));
+        $('#course').val(strategy.getAllCourse().join(','));
     };
 });

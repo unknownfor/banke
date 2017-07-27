@@ -128,12 +128,28 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="city">{{trans('labels.activity.city')}}</label>
                           <div class="col-md-4">
-                              <select id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
+                              <select id="city" name="city" class="selectpicker show-tick form-control" data-live-search="true">
                                   @foreach($cities as  $index => $v)
                                       <option value="{{$v->name}}" @if($v->name==$activity['city']) selected @endif>{{$v->name}}</option>
                                   @endforeach
                               </select>
                               <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="course">{{trans('labels.activity.course')}}</label>
+                          <div class="col-md-8">
+                              <select class="selectpicker course-select show-tick form-control" data-live-search="true" multiple="multiple">
+                                  @if($allcourse)
+                                      @foreach($allcourse as $v)
+                                          <option value="{{$v->id}}" @if(in_array($v->id, $activity['course_arr'])) selected @endif>
+                                              {{$v->name}}({{$v->org['short_name']}} {{$v->org['branch_school']}})
+                                          </option>
+                                      @endforeach
+                                  @endif
+                              </select>
+                              <input type="hidden" name="course" id="course" value="{{$activity['course']}}">
                           </div>
                       </div>
 

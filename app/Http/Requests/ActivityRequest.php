@@ -25,10 +25,9 @@ class ActivityRequest extends Request
     {
         return [
             'title' => 'required',
-            'desc' => 'required',
+            'course' => 'required',
             'city' => 'required',
             'url_type' => 'required',
-            'url' => 'required',
             'cover' => 'required',
             'status' => 'required',
         ];
@@ -47,10 +46,9 @@ class ActivityRequest extends Request
     {
         return [
             'title'          => trans('labels.activity.title'),
-            'desc'          => trans('labels.activity.desc'),
+            'course'          => trans('labels.activity.course'),
             'city'          => trans('labels.activity.city'),
             'url_type'          => trans('activity.banner.type'),
-            'url'          => trans('labels.activity.url'),
             'cover'          => trans('labels.activity.cover'),
             'status'        => trans('labels.activity.status'),
         ];

@@ -7,9 +7,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use ActivityRepository;
+use App\Models\Banke\BankeCourse;
 use Illuminate\Http\Request;
 use App\Http\Requests\ActivityRequest;
 use App\Models\Banke\BankeBusinessCity;
+use App\Repositories\admin\ActivityCourseRepository;
 use Flash;
 
 class ActivityController extends Controller {
@@ -47,7 +49,8 @@ class ActivityController extends Controller {
     public function create()
     {
         $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
-        return view('admin.activity.create')->with(compact('cities'));
+        $allcourse=$this->getAllCourse();
+        return view('admin.activity.create')->with(compact(['cities','allcourse']));
     }
 
     /**
@@ -57,9 +60,10 @@ class ActivityController extends Controller {
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(Request $request)
+    public function store(ActivityRequest $request)
     {
-        ActivityRepository::store($request);
+        $activity_id = ActivityRepository::store($request);
+        $this->updateJoinInCourse($activity_id,$request);
         return redirect('admin/activity');
     }
 
@@ -74,7 +78,12 @@ class ActivityController extends Controller {
     {
         $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
         $activity = ActivityRepository::edit($id);
-        return view('admin.activity.edit')->with(compact(['activity','cities']));
+        $repository=new ActivityCourseRepository();
+        $course_arr=$repository->getAllCouseIdArrByActivityId($id);
+        $activity['course_arr']=$course_arr;
+        $activity['course']=implode(',',$course_arr);
+        $allcourse=$this->getAllCourse();
+        return view('admin.activity.edit')->with(compact(['activity','cities','allcourse']));
     }
     /**
      * 修改活动资料
@@ -84,9 +93,10 @@ class ActivityController extends Controller {
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(Request $request,$id)
+    public function update(ActivityRequest $request,$id)
     {
         ActivityRepository::update($request,$id);
+        $this->updateJoinInCourse($id,$request);
         return redirect('admin/activity');
     }
 
@@ -128,5 +138,25 @@ class ActivityController extends Controller {
     {
         $org = ActivityRepository::show($id);
         return view('admin.activity.show')->with(compact('org'));
+    }
+
+    private function getAllCourse()
+    {
+        $allcourse=BankeCourse::where('status',1)->get();
+        foreach($allcourse as $v){
+            $v['org']=$v->org;
+        }
+        return $allcourse;
+    }
+
+    private function updateJoinInCourse($activity_id,$request)
+    {
+        $input = $request->all();
+        $course=$input['course'];
+        $course_arr = explode(",",$course);
+        if(Count($course_arr)>0){
+            $repository=new ActivityCourseRepository();
+            $repository->storeMultiple($activity_id,$course_arr);
+        }
     }
 }
