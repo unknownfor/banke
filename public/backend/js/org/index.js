@@ -80,7 +80,12 @@
         MyEditor.prototype={
 
             init:function(){
-                this.initEditor();
+                this.baseToolBar = ['title', 'bold', 'italic', 'underline', 'fontScale', 'color', '|',
+                    'ol', 'ul', 'blockquote', 'table', '|',
+                    'code','link', 'image', 'hr', '|',
+                    'indent', 'outdent', 'alignment'
+                ];
+                this.initDetailEditor();
                 this.initImgsArr();  //定义100个图片id 数组。
                 this.initTags();
                 this.getCategory();
@@ -116,14 +121,21 @@
                 this.myCategory2=arr;
             },
 
-            initEditor:function(){
+            initDetailEditor:function(){
+                var $editor = $('#my-editor'),
+                    toolbar =this.baseToolBar;
+                this.editor = this.initEditor($editor,toolbar);
+                this.overWriteImgBtnFn(toolbar);
+            },
+
+            initEditor:function($editor,toolbar,imgFnFlag){
                 var $editor = $('#my-editor'),
                     toolbar = ['title', 'bold', 'italic', 'underline', 'fontScale', 'color', '|',
                         'ol', 'ul', 'blockquote', 'table', '|',
                         'code','link', 'image', 'hr', '|',
                         'indent', 'outdent', 'alignment'
                     ];
-                this.editor = new Simditor({
+                var $editorObj = new Simditor({
                     textarea: $editor,
                     toolbar:toolbar,
                     toolbarFloat: true,
@@ -132,7 +144,7 @@
                 window.setTimeout(function () {
                     $editor.add().css('opacity', '1');
                 }, 200);
-                this.overWriteImgBtnFn(toolbar);
+                return $editorObj;
             },
 
             getTargetByEvent:function(e){

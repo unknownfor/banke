@@ -99,11 +99,9 @@
                                 <label class="col-md-1 control-label" for="city">{{trans('labels.orgsummary.city')}}</label>
                                 <div class="col-md-4">
                                     <select id="city" name="city" class="citySelectpicker show-tick form-control" data-live-search="true">
-                                        <option value="武汉" selected>武汉</option>
-                                        <option value="北京">北京</option>
-                                        <option value="上海">上海</option>
-                                        <option value="广州">广州</option>
-                                        <option value="深圳">深圳</option>
+                                        @foreach($cities as  $index => $v)
+                                            <option value="{{$v->name}}" @if($index==0) selected @endif>{{$v->name}}</option>
+                                        @endforeach
                                     </select>
                                     <div class="form-control-focus"> </div>
                                 </div>

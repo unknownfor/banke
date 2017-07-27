@@ -332,7 +332,13 @@ return [
 		'qrcode'=>'二维码',
 		'qrcode_desc'=>'二维码说明',
 		'eable_location_checkin'=>'开启定位打卡',
-		'location_checkin_distance'=>'定位打卡距离(m)'
+		'location_checkin_distance'=>'定位打卡距离(m)',
+		'installment_flag'=>'支持分期',
+		'installment_title'=>'分期标题',
+		'installment_content'=>'分期说明',
+		'refund_flag'=>'支持退款',
+		'refund_title'=>'退款标题',
+		'refund_content'=>'退款说明',
 	],
 	'course' => [
 		'id' => '序号',
