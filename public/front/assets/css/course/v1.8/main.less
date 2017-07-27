@@ -119,7 +119,7 @@ img {
         @h: 20px;
         font-size: 10px;
         > a {
-          display: inline-block;
+          //display: inline-block;
           color: #666666;
         }
         .link-info {
@@ -154,19 +154,19 @@ img {
           .link-left {
             flex: 0 0 75px;
           }
-          .link-middle {
-            flex: 30;
-            margin-left: 3px;
-            .txt-ellipsis-p(1);
-            > span {
-              color: #ff6455;
-            }
-          }
           .link-right {
             flex: 1;
-            color: #ff6455;
-            margin-left: 5px;
-            .size (30px,30px);
+            margin-left: 3px;
+              .txt-ellipsis-p(1);
+              > span {
+                color: #ff6455;
+              }
+              #help-img {
+                color: #ff6455;
+                margin-left: 5px;
+                .size(16px,16px);
+                vertical-align: -4px;
+              }
           }
         }
       }
@@ -456,6 +456,60 @@ img {
       }
     }
     &.show{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+    }
+    &.hide{
+      display: none;
+      opacity: 0;
+    }
+  }
+  .installment {
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background-color: rgba(33, 33, 33, 0.8);
+    font-size: 14px;
+    display: none;
+    .installment-box {
+      padding: 10px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 10px;
+      font-size: 13px;
+      .size(220px,250px);
+      .title {
+        font-size: 14px;
+        color: #383d43;
+        margin-bottom: 10px;
+      }
+      .txt {
+        line-height: 22px;
+        text-align: left;
+        &.one {
+          color: #666666;
+          margin-bottom: 15px;
+        }
+        &.two {
+          color: #a6a6a6;
+        }
+      }
+      .close-btn {
+        display: inline-block;
+        color: #fff;
+        .size(60px,30px);
+        line-height: 30px;
+        background-color: #ffd842;
+        border-radius: 3px;
+        margin-top: 45px;
+      }
+    }
+    &.show {
       display: flex;
       align-items: center;
       justify-content: center;
