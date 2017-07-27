@@ -171,7 +171,7 @@ Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
     Route::get('/course/{id}', 'CourseController@course_v1_8');
 
     //教学老师
-    Route::get('/teachingteacher/{id}', 'CourseController@course_v1_8');
+    Route::get('/teachingteacher/{id}', 'TeachingTeacherController@teachingteacher_v1_8');
 
 });
 
@@ -182,7 +182,7 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
     Route::get('/course/{id}','CourseController@share_course_v1_8');
 
     //教学老师
-    Route::get('/teachingteacher/{id}', 'CourseController@course_v1_8');
+    Route::get('/teachingteacher/{id}', 'TeachingTeacherController@share_teachingteacher_v1_8');
 
     //机构详情分享
     Route::get('/org/{id}', 'OrgController@share_org_v1_8');
