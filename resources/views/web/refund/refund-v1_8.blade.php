@@ -12,15 +12,23 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/course/v1.8/course.css" rel="stylesheet">
-    <link type="text/css" href="/front/assets/css/course/v1.8/iconfont/iconfont.css" rel="stylesheet">
-    <title>refund1.8</title>
+    <link type="text/css" href="/front/assets/css/refund/v1.8/refund.css" rel="stylesheet">
+    <title>退款说明</title>
 </head>
 <body>
-refund1.8
+    <div id="wrapper">
+        <div class="container">
+            <div class="box">
+                <div class="title">
+                    <span class="title-img" id="how"></span>
+                    <span class="txt">如何退款？</span>
+                </div>
+                <div class="info">点击APP右下角的-【我的】-【我的定单】</div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/course/course-v1.8.js" type="text/javascript"></script>
 </html>

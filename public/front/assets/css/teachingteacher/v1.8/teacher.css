@@ -385,6 +385,7 @@ img {
   vertical-align: 6px;
 }
 #wrapper .container.course .head-link .link-info .link-left {
+  text-align: center;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 75px;
   -ms-flex: 0 0 75px;

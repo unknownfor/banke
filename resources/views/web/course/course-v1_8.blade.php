@@ -55,9 +55,8 @@
                             <span class="link-name">支持分期</span>
                         </div>
                         <hr style="color:#d8d8d8"/>
-                        <div class="link-middle">首付200预约金，尾款分期付：<span>￥600*12期</span></div>
                         <div class="link-right">
-                            <div class="link-img" id="help-img"></div>
+                            首付200预约金，尾款分期付：<span id="installment-btn">￥600*12期<span class="link-img" id="help-img"></span></span>
                         </div>
                 </div>
                 </a>
@@ -199,7 +198,6 @@
             </div>
         </div>
 
-
         <div class="call-mask hide">
             <div class="call-container">
                 @if($org['tel_phone'])
@@ -212,6 +210,15 @@
             </div>
         </div>
 
+        <div class="installment hide">
+            <div class="installment-box">
+                <p class="title">什么是预约金</p>
+                <div class="txt one">预约金石通过半课报名需要支付的课程费用，通过在半课预约并报名成功即可获得课程价50%返现。</div>
+                <div class="txt two">即：预约金+课程尾款=课程价</div>
+                <div class="txt two">注：预约金可以在消费之前退还或者换为其他课程预约金</div>
+                <div class="close-btn">知道了</div>
+            </div>
+        </div>
 
     </div>
 </body>
