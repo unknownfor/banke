@@ -69,6 +69,7 @@ class OrgController extends Controller
      */
     public function store(CreateOrgRequest $request)
     {
+        $all = $request->all();
         $id = OrgRepository::store($request);
         $category1 = $request->category1;
         $category2 = $request->category2;
