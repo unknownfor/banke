@@ -341,4 +341,11 @@ return[
 		'show' => false,
 		'action' => 'activity',
 	],
+
+	//教学老师
+	'teachingteacher' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'teachingteacher',
+	],
 ];

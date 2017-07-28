@@ -279,4 +279,13 @@ return [
         'deleted_error' => '删除活动失败',
     ],
 
+    'teachingteacher' => [
+        'created_success'   => '创建教学老师成功.',
+        'created_error'   => '创建教学老师失败.',
+        'updated_success'   => '更新教学老师成功.',
+        'updated_error'     => '更新教学老师失败.',
+        'deleted_success' => '删除教学老师成功',
+        'deleted_error' => '删除教学老师失败',
+    ],
+
 ];

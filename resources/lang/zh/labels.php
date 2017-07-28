@@ -243,6 +243,10 @@ return [
 		'activityCreate' => '<i class="fa fa-list"></i> 添加活动',
 		'activityEdit' => '<i class="fa fa-list"></i> 编辑活动',
 
+		'teachingteacherList' => '<i class="fa fa-list"></i> 教学老师列表',
+		'teachingteacherCreate' => '<i class="fa fa-list"></i> 添加教学老师',
+		'teachingteacherEdit' => '<i class="fa fa-list"></i> 编辑教学老师',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -802,6 +806,24 @@ return [
 		'status' => '状态',
 		'course' => '参与课程',
 		'list' => '活动列表'
+	],
+
+	'teachingteacher' => [
+		'id' => '序号',
+		'uid' => '用户id',
+		'org'=>'总机构',
+		'sub_org' => '子机构',
+		'name' => '姓名',
+		'avatar' => '头像',
+		'goodat_course' => '擅长课程',
+		'intro' => '简介',
+		'album' => '相册',
+		'tags' => '标签',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'status' => '状态',
+		'sort' => '排序',
+		'list' => '教学老师列表'
 	],
 
 ];
