@@ -4,6 +4,74 @@
 Route::get('/', 'HomeController@index');
 
 
+//邀请
+Route::group(['prefix'=>"invitation"],function(){
+
+    //requestSmsCode
+    Route::post('requestSmsCode', 'ShareController@requestSmsCode');
+
+    //Create a test user, you don't need this if you already have.
+    Route::post('register','ShareController@register');
+
+
+    Route::get('/{welcome}', 'ShareController@invitation');
+});
+
+
+//分享
+Route::group(['prefix'=>"share"],function(){
+    //机构详情分享  v1.1
+    Route::get('org/{id}', 'ShareController@share_org');
+    //课程 v1.1
+    Route::get('course/{id}', 'ShareController@share_course');
+
+    Route::get('rule', 'ShareController@share_rule');
+
+});
+
+
+//app内页面
+Route::group(['prefix'=>"web"],function(){
+    //机构详情 v1.1
+    Route::get('org/{id}', 'ShareController@org');
+    //课程
+    Route::get('course/{id}', 'ShareController@course');
+
+    //动态
+    Route::get('news/{id}', 'ShareController@news');
+
+    Route::get('privacy', 'ShareController@privacy');
+
+    Route::get('rule', 'ShareController@rule');
+
+    Route::get('download', 'ShareController@download');
+
+});
+
+
+
+//半课官网调用
+Route::group(['prefix'=>"bankehome",'namespace'=>'Web'],function(){
+
+    //媒体报道
+    Route::get('reports', 'ReportController@getMediaReport');
+
+    //token
+    Route::get('token', 'CommonController@getToken');
+
+    //精选机构
+    Route::get('orgs', 'OrgController@getChoicenessOrgs');
+
+    //机构详情
+    Route::get('org/{id}', 'OrgController@getOrgDetail');
+
+    //申请机构
+    Route::post('addorgapplyfor', 'OrgController@addOrgApplyFor');
+
+    //预约半课
+    Route::post('appoint', 'InvitationController@doEnrol_v1_6');
+});
+
 //1.2
 Route::group(['prefix'=>"v1.2/share",'namespace'=>'Web'],function(){
 
@@ -161,6 +229,8 @@ Route::group(['prefix'=>"v1.7/share",'namespace'=>'Web'],function(){
     Route::get('/rule', 'RuleController@share_rule_v1_7');
 });
 
+//--------------------------------- 1.8 -----------------------------------
+
 //1.8
 Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
 
@@ -178,6 +248,9 @@ Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
 
     //退款详情分享
     Route::get('/refund/{id}', 'RefundController@refund_v1_8');
+
+    //活动详情分享
+    Route::get('/activity/{id}', 'ActivityController@v1_8');
 
 });
 
@@ -199,90 +272,12 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
     //退款详情分享
     Route::get('/refund/{id}', 'RefundController@share_refund_v1_8');
 
-});
-
-//邀请
-Route::group(['prefix'=>"invitation"],function(){
-
-    //requestSmsCode
-    Route::post('requestSmsCode', 'ShareController@requestSmsCode');
-
-    //Create a test user, you don't need this if you already have.
-    Route::post('register','ShareController@register');
-
-
-    Route::get('/{welcome}', 'ShareController@invitation');
-});
-
-
-//分享
-Route::group(['prefix'=>"share"],function(){
-    //机构详情分享  v1.1
-    Route::get('org/{id}', 'ShareController@share_org');
-    //课程 v1.1
-    Route::get('course/{id}', 'ShareController@share_course');
-
-    Route::get('rule', 'ShareController@share_rule');
+    //活动详情分享
+    Route::get('/activity/{id}', 'ActivityController@share_v1_8');
 
 });
 
 
-//app内页面
-Route::group(['prefix'=>"web"],function(){
-    //机构详情 v1.1
-    Route::get('org/{id}', 'ShareController@org');
-    //课程
-    Route::get('course/{id}', 'ShareController@course');
-
-    //动态
-    Route::get('news/{id}', 'ShareController@news');
-
-    Route::get('privacy', 'ShareController@privacy');
-
-    Route::get('rule', 'ShareController@rule');
-
-    Route::get('download', 'ShareController@download');
-
-});
-
-
-
-//半课官网调用
-Route::group(['prefix'=>"bankehome",'namespace'=>'Web'],function(){
-
-    //媒体报道
-    Route::get('reports', 'ReportController@getMediaReport');
-
-    //token
-    Route::get('token', 'CommonController@getToken');
-
-    //精选机构
-    Route::get('orgs', 'OrgController@getChoicenessOrgs');
-
-    //机构详情
-    Route::get('org/{id}', 'OrgController@getOrgDetail');
-
-    //申请机构
-    Route::post('addorgapplyfor', 'OrgController@addOrgApplyFor');
-
-    //预约半课
-    Route::post('appoint', 'InvitationController@doEnrol_v1_6');
-
-
-//    Route::post('login', 'UserController@getToken');
-
-});
-
-////半课官网调用
-//Route::group(['prefix'=>"mini",'namespace'=>'Mini'],function(){
-//    Route::post('login','UserController@getToken');
-//});
-
-Route::group(['prefix'=>"smstest"],function(){
-    Route::get('test1', 'TestController@test1');
-    Route::get('test2', 'TestController@test2');
-    Route::get('test3', 'TestController@test3');
-});
 
 
 

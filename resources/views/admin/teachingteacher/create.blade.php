@@ -15,11 +15,11 @@
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <a href="{{url('admin/news')}}">{!! trans('labels.breadcrumb.bannerList') !!}</a>
+                <a href="{{url('admin/news')}}">{!! trans('labels.breadcrumb.teahingteacherList') !!}</a>
                 <i class="fa fa-angle-right"></i>
             </li>
             <li>
-                <span>{!! trans('labels.breadcrumb.bannerCreate') !!}</span>
+                <span>{!! trans('labels.breadcrumb.teahingteacherCreate') !!}</span>
             </li>
         </ul>
     </div>
@@ -30,7 +30,7 @@
                 <div class="portlet-title">
                     <div class="caption font-green-haze">
                         <i class="icon-settings font-green-haze"></i>
-                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.bannerCreate') !!}</span>
+                        <span class="caption-subject bold uppercase">{!! trans('labels.breadcrumb.teahingteacherCreate') !!}</span>
                     </div>
                     <div class="actions">
                         <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="javascript:;" data-original-title="" title=""> </a>
@@ -45,13 +45,13 @@
                             @endforeach
                         </div>
                     @endif
-                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/banner')}}">
+                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/teahingteacher')}}">
                         {!! csrf_field() !!}
                         <div class="form-body">
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="title">{{trans('labels.banner.title')}}</label>
+                                <label class="col-md-1 control-label" for="title">{{trans('labels.teahingteacher.title')}}</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="title" placeholder="{{trans('labels.banner.title')}}" value="{{old('title')}}">
+                                    <input type="text" class="form-control" name="title" placeholder="{{trans('labels.teahingteacher.title')}}" value="{{old('title')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
 
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="type">{{trans('labels.banner.type')}}</label>
+                                <label class="col-md-1 control-label" for="type">{{trans('labels.teahingteacher.type')}}</label>
                                 <div class="col-md-3">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
@@ -81,24 +81,24 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="url">{{trans('labels.banner.url')}}</label>
+                                <label class="col-md-1 control-label" for="url">{{trans('labels.teahingteacher.url')}}</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="description" name="url" placeholder="{{trans('labels.banner.url')}}" value="{{old('sort')}}">
+                                    <input type="text" class="form-control" id="description" name="url" placeholder="{{trans('labels.teahingteacher.url')}}" value="{{old('sort')}}">
                                     <div class="form-control-focus"> </div>
 
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="sort">{{trans('labels.banner.sort')}}</label>
+                                <label class="col-md-1 control-label" for="sort">{{trans('labels.teahingteacher.sort')}}</label>
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.banner.sort')}}" value="{{old('sort')}}">
+                                    <input type="text" class="form-control" id="description" name="sort" placeholder="{{trans('labels.teahingteacher.sort')}}" value="{{old('sort')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
 
                             <div class="form-group form-md-line-input form-md-line-cover">
-                                <label class="col-md-1 control-label" for="img_url">{{trans('labels.banner.img_url')}}</label>
+                                <label class="col-md-1 control-label" for="img_url">{{trans('labels.teahingteacher.img_url')}}</label>
                                 <div class="col-md-4">
                                     <div class="add-img-btn">+
                                         <div class="img-size-tips">16:7的图片</div>
@@ -113,7 +113,7 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.banner.status')}}</label>
+                                <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.teahingteacher.status')}}</label>
                                 <div class="col-md-10">
                                     <div class="md-radio-inline">
                                         <div class="md-radio">
@@ -121,21 +121,21 @@
                                             <label for="status1">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.banner.active.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.teahingteacher.active.1')}} </label>
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if(old('status') === config('admin.global.status.audit')) checked @endif>
                                             <label for="status2">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.banner.audit.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.teahingteacher.audit.1')}} </label>
                                         </div>
                                         <div class="md-radio">
                                             <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if(old('status') == config('admin.global.status.trash')) checked @endif>
                                             <label for="status3">
                                                 <span></span>
                                                 <span class="check"></span>
-                                                <span class="box"></span> {{trans('strings.banner.trash.1')}} </label>
+                                                <span class="box"></span> {{trans('strings.teahingteacher.trash.1')}} </label>
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
-                                    <a href="{{url('admin/banner')}}" class="btn default">{{trans('crud.cancel')}}</a>
+                                    <a href="{{url('admin/teahingteacher')}}" class="btn default">{{trans('crud.cancel')}}</a>
                                     <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
@@ -169,5 +169,5 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/banner/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/teahingteacher/index.js')}}"></script>
 @endsection
