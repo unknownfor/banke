@@ -1,14 +1,17 @@
 <?php
 /**
-* 活动控制器
+* 教学控制器
 */
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use TeachingTeacherRepository;
-use App\Models\Banke\BankeOrg;
+use OrgRepository;
+use OrgSummaryRepository;
+use App\Models\Banke\BankeTeachingTeacher;
 use Illuminate\Http\Request;
+use App\Http\Requests\TeachingTeacherRequest;
 use Flash;
 
 class TeachingTeacherController extends Controller {
@@ -22,7 +25,7 @@ class TeachingTeacherController extends Controller {
      */
     public function index()
     {
-        $sub_orgs=$this->getAllOrg();
+        $sub_orgs=OrgRepository::getAllSubOrgs();
         return view('admin.teachingteacher.list')->with(compact(['sub_orgs']));
     }
 
@@ -46,9 +49,8 @@ class TeachingTeacherController extends Controller {
      */
     public function create()
     {
-        $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
-        $allcourse=$this->getAllCourse();
-        return view('admin.teachingteacher.create')->with(compact(['cities','allcourse']));
+        $orgs=OrgSummaryRepository::getAllSubOrgs();
+        return view('admin.teachingteacher.create')->with(compact(['orgs']));
     }
 
     /**
@@ -58,10 +60,9 @@ class TeachingTeacherController extends Controller {
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(ActivityRequest $request)
+    public function store(TeachingTeacherRequest $request)
     {
-        $teachingteacher_id = ActivityRepository::store($request);
-        $this->updateJoinInCourse($teachingteacher_id,$request);
+        $teachingteacher_id = TeachingTeacherRepository::store($request);
         return redirect('admin/teachingteacher');
     }
 
@@ -74,14 +75,10 @@ class TeachingTeacherController extends Controller {
      */
     public function edit($id)
     {
-        $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
-        $teachingteacher = ActivityRepository::edit($id);
-        $repository=new ActivityCourseRepository();
-        $course_arr=$repository->getAllCouseIdArrByActivityId($id);
-        $teachingteacher['course_arr']=$course_arr;
-        $teachingteacher['course']=implode(',',$course_arr);
-        $allcourse=$this->getAllCourse();
-        return view('admin.teachingteacher.edit')->with(compact(['teachingteacher','cities','allcourse']));
+        $teachingteacher = TeachingTeacherRepository::edit($id);
+        $sub_orgs=OrgRepository::getOrgByPid($teachingteacher['org_id']);
+        $orgs=OrgSummaryRepository::getAllSubOrgs();
+        return view('admin.teachingteacher.edit')->with(compact(['teachingteacher','sub_orgs','orgs']));
     }
     /**
      * 修改活动资料
@@ -91,10 +88,9 @@ class TeachingTeacherController extends Controller {
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(ActivityRequest $request,$id)
+    public function update(TeachingTeacherRequest $request,$id)
     {
-        ActivityRepository::update($request,$id);
-        $this->updateJoinInCourse($id,$request);
+        TeachingTeacherRepository::update($request,$id);
         return redirect('admin/teachingteacher');
     }
 
@@ -108,7 +104,7 @@ class TeachingTeacherController extends Controller {
      */
     public function mark($id,$status)
     {
-        ActivityRepository::mark($id,$status);
+        TeachingTeacherRepository::mark($id,$status);
         return redirect('admin/teachingteacher');
     }
 
@@ -121,7 +117,7 @@ class TeachingTeacherController extends Controller {
      */
     public function destroy($id)
     {
-        ActivityRepository::destroy($id);
+        TeachingTeacherRepository::destroy($id);
         return redirect('admin/teachingteacher');
     }
 
@@ -134,11 +130,11 @@ class TeachingTeacherController extends Controller {
      */
     public function show($id)
     {
-        $org = ActivityRepository::show($id);
+        $org = TeachingTeacherRepository::show($id);
         return view('admin.teachingteacher.show')->with(compact('org'));
     }
 
-    private function getAllOrg()
+    private function getAllSubOrg()
     {
         $allOrg=BankeOrg::where('status',1)->get();
         return $allOrg;

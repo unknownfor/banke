@@ -210,6 +210,13 @@ class OrgController extends Controller
         return response()->json($data);
     }
 
+    //根据父机构id 获得机构
+    public function getOrgByPid($pid)
+    {
+        $data = OrgRepository::getOrgByPid($pid);
+        return response()->json($data);
+    }
+
     /*地图页面*/
     public function mapPage()
     {

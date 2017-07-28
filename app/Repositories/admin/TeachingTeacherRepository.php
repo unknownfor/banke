@@ -75,10 +75,10 @@ class TeachingTeacherRepository
 	{
 		$teacher = new BankeTeachingTeacher;
 		if ($teacher->fill($request->all())->save()) {
-			Flash::success(trans('alerts.$teacher.created_success'));
+			Flash::success(trans('alerts.teachingteacher.created_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.$teacher.created_error'));
+		Flash::error(trans('alerts.teachingteacher.created_error'));
 		return false;
 	}
 	/**
@@ -92,19 +92,6 @@ class TeachingTeacherRepository
 	{
 		$teacher = BankeTeachingTeacher::find($id);
 		if ($teacher) {
-			$user = BankeUserProfiles::find($teacher['uid']);
-			$authen = new BankeUserAuthentication;
-			$authen = $authen->find($teacher['uid']);
-			if ($authen && $authen->count() > 0 && $authen['certification_status']==2) {
-				$teacher['name'] = $authen['real_name'];
-			}else{
-				$teacher['name'] = $user['name'];
-			}
-			$teacher['mobile'] = $user['mobile'];
-			$org = BankeOrg::find($teacher['org_id']);
-			$teacher['org_name'] = $org['name'];
-			$course = BankeCourse::find($teacher['course_id']);
-			$teacher['course_name'] = $course['name'];
 			$teacherArray = $teacher->toArray();
 			return $teacherArray;
 		}
@@ -120,46 +107,16 @@ class TeachingTeacherRepository
 	 */
 	public function update($request,$id)
 	{
-		$input = $request->only(['status', 'comment']);
-		$teacher = BankeTeachingTeacher::find($id);
-		if ($teacher) {
-			if ($teacher->fill($input)->save()) {
-				if($input['status'] == config('admin.global.status.ban')){
-					DB::beginTransaction();
-					try {
-						$user_profile = BankeUserProfiles::where('uid', $teacher['uid'])->lockForUpdate()->first();
-						$user_profile->account_balance -= $teacher['award_amount'];
-						$user_profile->save();
-
-						$cur_user = Auth::user();
-						$balance_log = [
-							'uid'=>$teacher['uid'],
-							'change_amount'=>$teacher['award_amount'],
-							'change_type'=>'-',
-							'business_type'=>'PUNISHMENT',
-							'operator_uid'=>$cur_user['id']
-						];
-						//记录余额变动日志
-						BankeBalanceLog::create($balance_log);
-						DB::commit();
-						Flash::success(trans('alerts.teacher.updated_success'));
-						return true;
-					} catch (Exception $e) {
-						DB::rollback();
-						Log::info($e);
-						Flash::error(trans('alerts.teacher.updated_error'));
-						return false;
-					}
-				}
-				Flash::success(trans('alerts.teacher.updated_success'));
+		$role = BankeTeachingTeacher::find($id);
+		if ($role) {
+			if ($role->fill($request->all())->save()) {
+				Flash::success(trans('alerts.teachingteacher.updated_success'));
 				return true;
-			}else{
-				Flash::error(trans('alerts.teacher.updated_error'));
-				return false;
 			}
-		}else{
-			abort(404);
+			Flash::error(trans('alerts.teachingteacher.updated_error'));
+			return false;
 		}
+		abort(404);
 	}
 
 	/**
@@ -176,10 +133,10 @@ class TeachingTeacherRepository
 		if ($teacher) {
 			$teacher->status = $status;
 			if ($teacher->save()) {
-				Flash::success(trans('alerts.teacher.updated_success'));
+				Flash::success(trans('alerts.teachingteacher.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.teacher.updated_error'));
+			Flash::error(trans('alerts.teachingteacher.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -196,10 +153,10 @@ class TeachingTeacherRepository
 	{
 		$isDelete = BankeTeachingTeacher::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.teacher.deleted_success'));
+			Flash::success(trans('alerts.teachingteacher.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.teacher.deleted_error'));
+		Flash::error(trans('alerts.teachingteacher.deleted_error'));
 		return false;
 	}
 }
