@@ -23,7 +23,7 @@ class TeachingTeacherController extends Controller {
     public function index()
     {
         $sub_orgs=$this->getAllOrg();
-        return view('admin.teachingteacher.list')->with(compact(['sub_org']));
+        return view('admin.teachingteacher.list')->with(compact(['sub_orgs']));
     }
 
     /**
@@ -34,7 +34,7 @@ class TeachingTeacherController extends Controller {
      */
     public function ajaxIndex()
     {
-        $data = ActivityRepository::ajaxIndex();
+        $data = TeachingTeacherRepository::ajaxIndex();
         return response()->json($data);
     }
 

@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Banke\BankeTeachingTeahcer;
+use App\Models\Banke\BankeTeachingTeacher;
 use Carbon\Carbon;
 use Flash;
 use DB;
@@ -29,17 +29,17 @@ class TeachingTeacherRepository
 
 		/*名称搜索*/
 		if($name!=null){
-			$teacher = $teacher::where('name','like',$name);
+			$teacher = $teacher->where('name','like','%'.$name.'%');
 		}
 
 		/*子机构id搜索*/
 		if($sub_org_id!=null){
-			$teacher = $teacher::where('sub_org_id',$sub_org_id);
+			$teacher = $teacher->where('sub_org_id',$sub_org_id);
 		}
 
 		/*状态搜索*/
 		if($status!=null){
-			$teacher = $teacher::where('status',$status);
+			$teacher = $teacher->where('status',$status);
 		}
 
 		$count = $teacher->count();
@@ -49,6 +49,10 @@ class TeachingTeacherRepository
 
 		if ($teachers) {
 			foreach ($teachers as &$v) {
+				$org=$v->org;
+				if($org) {
+					$v['sub_org'] = $org->name;
+				}
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 			}
 		}

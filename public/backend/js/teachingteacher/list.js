@@ -42,9 +42,9 @@ var TableDatatablesAjax = function() {
             var arr=data.split(','),
                 str='';
             for(var i=0;i<arr.length;i++) {
-              str+='<span class="label label-success"> '+arr[i]+' </span>';
+              str+='<span class="label label-danger"> '+arr[i]+' </span>';
             }
-            return data;
+            return str;
           }
         },
         {
@@ -55,9 +55,9 @@ var TableDatatablesAjax = function() {
             var arr=data.split(','),
                 str='';
             for(var i=0;i<arr.length;i++) {
-              str+='<span class="label label-success"> '+arr[i]+' </span>';
+              str+='<span class="label label-warning"> '+arr[i]+' </span>';
             }
-            return data;
+            return str;
           }
         },
         { 

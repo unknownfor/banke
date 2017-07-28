@@ -4,6 +4,11 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <style type="text/css">
+        .label{
+            margin: 4px;
+        }
+    </style>
 @endsection
 @section('content')
     <div class="page-bar">
@@ -88,8 +93,8 @@
                             <thead>
                             <tr role="row" class="heading">
                                 <th>#</th>
-                                <th width="20%"> {{ trans('labels.teachingteacher.name') }} </th>
-                                <th> {{ trans('labels.teachingteacher.sub_org') }} </th>
+                                <th> {{ trans('labels.teachingteacher.name') }} </th>
+                                <th width="30%"> {{ trans('labels.teachingteacher.sub_org') }} </th>
                                 <th> {{ trans('labels.teachingteacher.goodat_course') }} </th>
                                 <th> {{ trans('labels.teachingteacher.tags') }} </th>
                                 <th width="8%"> {{ trans('labels.teachingteacher.status') }} </th>

@@ -32,4 +32,13 @@ class BankeTeachingTeacher extends Model
         parent::__construct($attributes);
         $this->action = config('admin.global.teachingteacher.action');
     }
+
+    public function org()
+    {
+        return $this->hasOne('App\Models\Banke\BankeOrg','id','sub_org_id');
+    }
+    public function orgSummary()
+    {
+        return $this->hasOne('App\Models\Banke\BankeSummaryOrg','id','org_id');
+    }
 }
