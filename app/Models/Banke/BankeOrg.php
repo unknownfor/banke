@@ -64,4 +64,10 @@ class BankeOrg extends Model
     {
         return $this->hasMany('App\Models\Banke\BankeCommentOrg','org_id','id');
     }
+
+    //父机构
+    public function orgsummary()
+    {
+        return $this->hasOne('App\Models\Banke\BankeOrgSummary','id','pid');
+    }
 }
