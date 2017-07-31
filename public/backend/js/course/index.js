@@ -4,7 +4,7 @@
 
 $(function(){
 
-
+        $(".img-details-list-box").sortable();
 
         //设置查询时间
         var $inputEndedAt=$('#enddated_at'),
@@ -35,12 +35,17 @@ $(function(){
             }else{
                 that.taskTotalNum = 0;  //总的任务值
             }
+
+            this.subOrgId=$('.sub-org-selectpicker').attr('data-id');
+
             /*上传文件*/
             $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadImgEditor'));
 
             $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadCoverImg'));
 
             $(document).on('change', '#uploadImgFile2', $.proxy(this,'initUploadAlbumImg'));
+
+            $(document).on('change', '#uploadImgFile3', $.proxy(this,'initUploadImgDetails'));
 
             /*上传封面文件*/
             $(document).on('click','.add-cover-img-btn', function(){
@@ -54,12 +59,30 @@ $(function(){
                 $('#uploadImgFile2').trigger('click');
             });
 
-            $('.orgSelectpicker').selectpicker({
+            /*上传商品详情图*/
+            $(document).on('click','.add-img-details-btn', function(){
+                $('#uploadImgFile3').trigger('click');
+            });
+
+
+
+            //机构分类
+            var $orgSelect=$('.org-selectpicker');
+            $orgSelect.selectpicker({
+                liveSearchNormalize:true,
+                liveSearchPlaceholder:'输入名称进行搜索'
+            }).on('changed.bs.select', function (e) {
+                that.refressSubOrgSelect($orgSelect.val());
+            });
+            that.refressSubOrgSelect($orgSelect.val());
+
+            $('.sub-org-selectpicker').selectpicker({
                 liveSearchPlaceholder:'输入机构名称进行搜索'
             }).on('changed.bs.select', function (e) {
                 that.refressCategorySelect(e.currentTarget.value);
                 that.refressCommentSharePercent(e.currentTarget.value);
             });
+
 
 
             /*重新计算任务总比例*/
@@ -273,6 +296,23 @@ $(function(){
                 });
             },
 
+            //上传详情图片，类似商品详情图
+            initUploadImgDetails:function(){
+                var $target = $('#uploadImgFile3'),
+                    $form=$('#upImgForm3'),
+                    that=this;
+                that.controlLoadingCircleStatus(true);
+                this.initUploadImg($target,$form,function(data){
+                    data=JSON.parse(data);
+                    if(data) {
+                        var str=that.getImgStr(data.filedata);
+                        $('.img-details-list-box').prepend(str);
+                        that.controlLoadingCircleStatus(false);
+                        $form[0].reset();
+                    }
+                });
+            },
+
             getImgStr:function(urlInfo){
                 if(!urlInfo instanceof Array){
                     urlInfo=[urlInfo];
@@ -336,6 +376,11 @@ $(function(){
                 return this.getImgsUrl($('.album-list-box li'));
             },
 
+            /*商品地址*/
+            getImgDetails:function(){
+                return this.getImgsUrl($('.img-details-list-box li'));
+            },
+
 
             //刷新分类列表
             refressCategorySelect:function (id){
@@ -365,6 +410,22 @@ $(function(){
                             '</div>';
                     }
                     $('.my-category2').html(str);
+                })
+            },
+
+            //刷新分类列表
+            refressSubOrgSelect:function (pid){
+                var url='/admin/org/getOrgByPid/'+pid,that=this;
+                window.getDataAsync(url,{},function(res){
+                    var str='',len=res.length,selected='';
+                    for(var i=0;i<len;i++){
+                        selected='';
+                        if(that.subOrgId==res[i].id){
+                            selected='selected';
+                        }
+                        str+='<option value="'+res[i].id+'"'+ selected+'>' + res[i].name+'</option>';
+                    }
+                    $('.sub-org-selectpicker').html(str).selectpicker('refresh');
                 })
             },
 
@@ -430,12 +491,8 @@ $(function(){
             }
         }
 
-
         //提交编辑
-        window.setDataBeforeCommit=function(e){
-
-            window.getTargetByEvent(e).addClass('disabled');
-
+        window.setDataBeforeCommit=function(){
             var val=course.getValue();
             val=val.replace(/\n/g,"<br/>");
             $('#target-area').text(val);
@@ -444,6 +501,10 @@ $(function(){
 
             //相册
             $('#album').val(course.getAlbumImg().join(','));
+
+            //商品详情图
+            $('#img-details').val(course.getImgDetails().join(','));
+
             course.calcTotalTaskNumber();
         };
 });

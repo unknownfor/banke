@@ -16,6 +16,7 @@ use RoleRepository;
 use Illuminate\Support\Facades\Log;
 use TrainCategoryRepository;
 use OrgRepository;
+use OrgSummaryRepository;
 use App\Repositories\admin\CourseCategoryRepository;
 
 class CourseController extends Controller
@@ -51,10 +52,8 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $org = new BankeOrg;
-        $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
-        $percent=$this->getDict();
-        return view('admin.course.create')->with(compact(['orgs','percent']));
+        $orgSummary = OrgSummaryRepository::getAllSubOrgs();
+        return view('admin.course.create')->with(compact(['orgSummary']));
     }
 
     /**
@@ -95,13 +94,12 @@ class CourseController extends Controller
      */
     public function edit($id)
     {
-        $org = new BankeOrg;
-        $orgs = $org->where('status', 1)->orderBy('sort', 'desc')->get(['id', 'name']);
         $course = BankeCourse::find($id);
         $myOrg=$course->org;
-        $percent=$this->getDict();
+        $orgSummary = OrgSummaryRepository::getAllSubOrgs();
         $allCategories=OrgRepository::getCategory2Info($course['org_id']);
-        return view('admin.course.edit')->with(compact(['course', 'orgs','percent','allCategories','myOrg']));
+        $course['org_summary_id']=$myOrg->orgsummary['id'];
+        return view('admin.course.edit')->with(compact(['course', 'orgSummary','percent','allCategories','myOrg']));
     }
     /**
      * 修改课程资料

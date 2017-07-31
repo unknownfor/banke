@@ -25,7 +25,8 @@ class BankeCourse extends Model
         'hot',
         'fake_enrol_counts',
         'album',
-        'deposit'
+        'deposit',
+        'img_details'
     ];
 
     private $action;

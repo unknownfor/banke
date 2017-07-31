@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/jquery-ui/jquery-ui.min.css')}}">
 @endsection
 @section('content')
     <div class="page-bar">
@@ -56,19 +57,27 @@
                             </div>
 
                             <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="org_id">{{trans('labels.course.org_id')}}</label>
+                                <label class="col-md-1 control-label" for="org">{{trans('labels.course.org_summary_id')}}</label>
                                 <div class="col-md-4">
-                                    <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
+                                    <select class="org-selectpicker show-tick form-control" data-live-search="true">
                                         <option value="-1">选择机构</option>
-                                        @if($orgs)
-                                            @foreach($orgs as $org)
+                                        @if($orgSummary)
+                                            @foreach($orgSummary as $org)
                                                 <option value="{{$org->id}}" > {{$org->name}}</option>
                                             @endforeach
                                         @endif
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="sub_name">{{trans('labels.course.org_id')}}</label>
+                                <div class="col-md-4">
+                                    <select name="org_id" class="sub-org-selectpicker show-tick form-control" data-live-search="true"></select>
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
+
 
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="category_id">{{trans('labels.course.category')}}</label>
@@ -234,6 +243,21 @@
                             </div>
 
                             <div class="form-group form-md-line-input form-md-line-cover">
+                                <label class="col-md-1 control-label">{{trans('labels.course.img_details')}}</label>
+                                <div class="col-md-9">
+                                    <div class="cover-box">
+                                        <div class="add-img-btn add-img-details-btn">+
+                                            <div class="img-size-tips">图片可拖动排序</div>
+                                        </div>
+                                        <ul class="imgs-list-box img-details-list-box">
+
+                                        </ul>
+                                        <input id="img-details" name="img_details" type="hidden" value="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input form-md-line-cover">
                                 <label class="col-md-1 control-label">{{trans('labels.course.album')}}</label>
                                 <div class="col-md-9">
                                     <div class="cover-box">
@@ -303,7 +327,7 @@
                             <div class="row">
                                 <div class="col-md-offset-1 col-md-10">
                                     <a href="{{url('admin/course')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                    <button type="submit" onclick="setDataBeforeCommit(e)" class="btn blue">{{trans('crud.submit')}}</button>
+                                    <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
                                 </div>
                             </div>
                         </div>
@@ -328,6 +352,9 @@
     <form id="upImgForm2" method="post" class="hiddenForm">
         <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg"  multiple="multiple">
     </form>
+    <form id="upImgForm3" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile3" size="28" accept="image/png,image/gif, image/jpeg"  multiple="multiple">
+    </form>
     <div class="loding-modal">
         <i id="imgLoadingCircle" class="loadingCircle active"></i>
         <div>上传中…</div>
@@ -346,6 +373,8 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
+
+    <script type="text/javascript" src="{{asset('backend/plugins/jquery-ui/jquery-ui.js')}}"></script>
     <script type="text/javascript">
         $(function() {
             /*modal事件监听*/

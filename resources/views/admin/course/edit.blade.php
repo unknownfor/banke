@@ -58,19 +58,24 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="email">{{trans('labels.course.org_id')}}</label>
+                          <label class="col-md-1 control-label" for="org">{{trans('labels.course.org_summary_id')}}</label>
                           <div class="col-md-4">
-                              <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
-                                  @if($orgs)
-                                      @foreach($orgs as $org)
-                                          @if($org->id == $course['org_id'])
-                                              <option value="{{$org->id}}" selected> {{$org->name}}</option>
-                                          @else
-                                              <option value="{{$org->id}}" > {{$org->name}}</option>
-                                          @endif
+                              <select class="org-selectpicker show-tick form-control" data-live-search="true">
+                                  <option value="-1">选择机构</option>
+                                  @if($orgSummary)
+                                      @foreach($orgSummary as $org)
+                                          <option value="{{$org->id}}"
+                                                  @if($course['org_summary_id']==$org->id) selected @endif> {{$org->name}}</option>
                                       @endforeach
                                   @endif
                               </select>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="sub_name">{{trans('labels.course.org_id')}}</label>
+                          <div class="col-md-4">
+                              <select data-id="{{$course['org_id']}}" name="org_id" class="sub-org-selectpicker show-tick form-control" data-live-search="true"></select>
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -268,6 +273,32 @@
                       </div>
 
                       <div class="form-group form-md-line-input form-md-line-cover">
+                          <label class="col-md-1 control-label">{{trans('labels.course.img_details')}}</label>
+                          <div class="col-md-9">
+                              <div class="cover-box">
+                                  <div class="add-img-btn add-img-details-btn">+
+                                      <div class="img-size-tips">图片可拖动排序</div>
+                                  </div>
+                                  <ul class="imgs-list-box img-details-list-box">
+                                      @if($course['img_details'])
+                                          <?php
+                                          $imgs=explode(',',$course['img_details']);
+                                          ?>
+                                          @foreach($imgs as $img)
+                                              <li>
+                                                  <a href="{{$img}}" data-size="435x435"></a>
+                                                  <img src="{{$img}}@80w_80h_1e">
+                                                  <span class="remove-img">×</span>
+                                              </li>
+                                          @endforeach
+                                      @endif
+                                  </ul>
+                                  <input id="img-details" name="img_details" type="hidden" value="">
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input form-md-line-cover">
                           <label class="col-md-1 control-label">{{trans('labels.course.album')}}</label>
                           <div class="col-md-9">
                               <div class="cover-box">
@@ -343,10 +374,6 @@
                               </div>
                           </div>
                       </div>
-
-
-
-
                   </div>
                   <div class="form-actions">
                       <div class="row">
@@ -378,7 +405,9 @@
 <form id="upImgForm2" method="post" class="hiddenForm">
     <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg"  multiple="multiple">
 </form>
-
+<form id="upImgForm3" method="post" class="hiddenForm">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile3" size="28" accept="image/png,image/gif, image/jpeg"  multiple="multiple">
+</form>
 <div class="loding-modal">
     <i id="imgLoadingCircle" class="loadingCircle active"></i>
     <div>上传中…</div>
@@ -397,6 +426,8 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
+
+    <script type="text/javascript" src="{{asset('backend/plugins/jquery-ui/jquery-ui.js')}}"></script>
     <script type="text/javascript">
       $(function() {
         /*modal事件监听*/
