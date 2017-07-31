@@ -9,6 +9,10 @@ body {
   font-size: 14px;
   position: relative;
 }
+> img {
+  max-width: 100%;
+  border: none;
+}
 #wrapper {
   .container {
     margin: 10px 10px auto 10px;
@@ -18,52 +22,8 @@ body {
     line-height: 24px;
     border-radius: 4px;
     border: 1px solid #DFE0E6;
-    .box {
-      margin-bottom: 25px;
-      .title {
-        font-weight: bold;
-        .title-img {
-          .size(20px,20px);
-          display: inline-block;
-          margin-right: 3px;
-          background: url("../../../img/refund/v1.8/sprite.png") no-repeat;
-          background-size: 200px*0.4 50px*0.4;
-          &.how {
-            background-position: 0 0;
-          }
-          &.when {
-            background-position: -40px 0;
-          }
-          &.know {
-            background-position: -20px 0;
-          }
-          &.question {
-            background-position: -60px 0;
-          }
-        }
-        .txt {
-          vertical-align: 5px;
-        }
-      }
-      .underline {
-        margin:3px 0;
-        .size(55px,1px);
-        background-color: #dfe0e6;
-      }
-    }
-    .annotate {
-      padding-top: 15px;
-      border-top: 1px solid #dfe0e6;
-      .tips {
-        color: #f9d14b;
-      }
-      .title {
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-      .info {
+    .info {
 
-      }
     }
   }
 }
