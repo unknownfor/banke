@@ -12,16 +12,15 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/course/v1.8/course.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/org/v1.8/org.css" rel="stylesheet">
     <link type="text/css" href="/front/assets/css/course/v1.8/iconfont/iconfont.css" rel="stylesheet">
-    <title>课程图片详情</title>
+    <title>机构特色</title>
 </head>
 <body>
-课程图片详情
-@include('web.layout.downloadbar')
+feature
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/scripts/course/course-v1.8.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/org/org-v1.8.js" type="text/javascript"></script>
 </html>
