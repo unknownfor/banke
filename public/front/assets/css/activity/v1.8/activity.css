@@ -44,6 +44,9 @@ a {
 a:hover {
   -webkit-tap-highlight-color: transparent;
 }
+.clear {
+  clear: both;
+}
 input {
   -webkit-user-select: auto;
   /*webkit浏览器*/
@@ -194,15 +197,15 @@ body {
 img {
   max-width: 100%;
 }
-#article {
+#activity {
   margin: 15px;
   font-size: 14px;
 }
-#article .head {
+#activity .head {
   text-align: left;
   border-bottom: 1px solid #D8D8D8;
 }
-#article .head .title {
+#activity .head .title {
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
@@ -212,13 +215,13 @@ img {
   font-weight: bold;
   color: #383D43;
 }
-#article .head .author {
+#activity .head .author {
   color: #999999;
   margin: 15px 0;
 }
-#article .content {
+#activity .content {
   margin: 15px 0 35px 0;
 }
-#article .content > img {
+#activity .content > img {
   max-width: 100%;
 }

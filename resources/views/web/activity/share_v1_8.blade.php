@@ -12,12 +12,23 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/teachingteacher/v1.8/teacher.css" rel="stylesheet">
-    <title>activity1.8</title>
+    {{--<link type="text/css" href="/front/assets/css/activity/v1.8/activity.css" rel="stylesheet">--}}
+    <title>活动页面</title>
 </head>
 <body>
-activity1.8 share
-
+<div id="activity">
+    {{--@if($strategy['title'])--}}
+    <div class="head">
+        <div class="title">{{$strategy['title']}}</div>
+        {{--@if($strategy['author'])--}}
+        <div class="author">by: {{$strategy['author']}}</div>
+        {{--@endif--}}
+    </div>
+    {{--@endif--}}
+    {{--    @if($strategy['content'])--}}
+    <div class="content">{!! $strategy['content'] !!}</div>
+    {{--@endif--}}
+</div>
 @include('web.layout.downloadbar')
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
