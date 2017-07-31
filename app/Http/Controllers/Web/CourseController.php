@@ -189,11 +189,8 @@ class CourseController extends Controller
         return view('web.course.share_course-v1_6')->with(compact(['course','org']));
     }
 
-    public function share_imgdetails_course_v1_8(){
-        return view('web.course.share_course_imgdetails-v1_8');
-    }
-
     public function imgdetails_course_v1_8(){
         return view('web.course.course_imgdetails-v1_8');
     }
+
 }
