@@ -191,7 +191,6 @@
         </div>
     </div>
 
-
     <div class="call-mask hide">
         <div class="call-container">
             @if($org['tel_phone'])

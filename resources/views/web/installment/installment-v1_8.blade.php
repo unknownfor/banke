@@ -19,7 +19,7 @@
 <div id="wrapper">
     {{--    @if($strategy['content'])--}}
     <div class="container">
-        {{--<div class="info">{!! $strategy['content'] !!}</div>--}}
+        <div class="info">{!! $strategy['content'] !!}</div>
     </div>
     {{--@endif--}}
 </div>
