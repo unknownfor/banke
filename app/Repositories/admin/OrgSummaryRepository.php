@@ -271,4 +271,16 @@ class OrgSummaryRepository
 		}
 		return $avg;
 	}
+
+	/**
+	 * 得到所有机构
+	 * @author jimmy
+	 * @date   2017-02-23T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public static function getAllSubOrgs()
+	{
+		return BankeOrgSummary::where('status',1)->get(['id','name']);
+	}
 }

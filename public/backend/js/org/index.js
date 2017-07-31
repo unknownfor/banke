@@ -478,10 +478,7 @@
 
 
 
-        var orgObj=initEditor();
-        function initEditor() {
-             return new MyObj();
-        }
+        var orgObj=new MyObj();
 
         //提交编辑
         window.setDataBeforeCommit=function(){

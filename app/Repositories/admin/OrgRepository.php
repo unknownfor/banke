@@ -436,4 +436,28 @@ class OrgRepository
 		$percent=BankeOrg::find($id)['share_comment_org_award'];
 		return $percent;
 	}
+
+	/**
+	 * 通过机构pid 得到机构
+	 * @author jimmy
+	 * @date   2017-02-23T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public static function getOrgByPid($id)
+	{
+		return BankeOrg::where('pid',$id)->get(['id','name']);
+	}
+
+	/**
+	 * 得到所有机构
+	 * @author jimmy
+	 * @date   2017-02-23T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public static function getAllSubOrgs()
+	{
+		return BankeOrg::where('status',1)->get(['id','name']);
+	}
 }

@@ -229,6 +229,7 @@ $(function(){
 
         /*删除封面*/
         deletCoverImg:function(e){
+            e.stopPropagation();
             if(window.confirm('确定删除该图片么？')) {
                 var $target=$(e.currentTarget).closest('li').addClass('deleting');
                 window.setTimeout(function(){
