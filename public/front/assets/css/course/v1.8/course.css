@@ -282,49 +282,6 @@ img {
   text-align: right;
   color: #a6a6a6;
 }
-#course .container.head .head-tips {
-  border-bottom: 1px solid #dfe0e6;
-  padding: 10px 0;
-}
-#course .container.head .head-tips .tips {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding-top: 5px;
-}
-#course .container.head .head-tips .tips .tips-left {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  font-size: 12px;
-  padding-top: 3px;
-}
-#course .container.head .head-tips .tips .tips-left .tips-box {
-  display: inline-block;
-  border: 1px solid #666666;
-  border-radius: 4px;
-  padding: 1px 3px;
-}
-#course .container.head .head-tips .tips .tips-right {
-  display: inline-block;
-  color: #a6a6a6;
-  text-align: right;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 101px;
-  -ms-flex: 0 0 101px;
-  flex: 0 0 101px;
-}
-#course .container.head .head-tips .tips .tips-right > span {
-  display: inline-block;
-  -webkit-transform: translate(12px, 0px);
-}
-#course .container.head .head-tips .tips .tips-right #more {
-  display: inline-block;
-  vertical-align: -4px;
-  font-size: 22px;
-}
 #course .container.head .head-link {
   font-size: 10px;
 }
@@ -360,13 +317,13 @@ img {
   background-size: 127px, 25.5px;
 }
 #course .container.head .head-link .link-info .link-img#refund-img {
-  background: url("../../../img/course/v1.8/sprite.png") -23px -1px no-repeat;
+  background: url("../../../img/course/v1.8/sprite.png") -25px -2px no-repeat;
   -webkit-background-size: 101.6px, 20.4px;
   background-size: 101.6px, 20.4px;
 }
 #course .container.head .head-link .link-info .link-name {
   margin-right: 3px;
-  vertical-align: 6px;
+  vertical-align: 7px;
 }
 #course .container.head .head-link .link-info .link-left {
   -webkit-box-flex: 0;
@@ -471,8 +428,6 @@ img {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border-bottom: 1px solid #dfe0e6;
-  padding-bottom: 10px;
 }
 #course .container.org .org-box .org-url {
   display: inline-block;
@@ -499,7 +454,7 @@ img {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 28px;
+  margin-bottom: 5px;
 }
 #course .container.org .org-box .org-info .org-name .org-left {
   -webkit-box-flex: 1;
@@ -509,7 +464,6 @@ img {
 }
 #course .container.org .org-box .org-info .org-name .org-left .name {
   font-size: 16px;
-  float: left;
   font-weight: bold;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -519,15 +473,15 @@ img {
   margin-right: 5px;
 }
 #course .container.org .org-box .org-info .org-name .org-left .tips {
-  float: left;
   padding-top: 4px;
   font-size: 10px;
   color: #ffd842;
+  margin-top: 5px;
 }
 #course .container.org .org-box .org-info .org-name .org-left .tips > span {
-  padding: 3px;
+  padding: 2px 3px;
   border: 1px solid #ffd842;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 #course .container.org .org-box .org-info .org-name .org-right {
   color: #a6a6a6;
@@ -554,7 +508,7 @@ img {
 #course .container.org .org-box .org-info .org-score > span:first-child {
   margin-left: 0px;
 }
-#course .container.org .org-box .org-info .org-contact {
+#course .container.org .org-contact {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -562,18 +516,21 @@ img {
   text-align: center;
   color: #ffd842;
   margin-top: 15px;
+  border-bottom: 1px solid #dfe0e6;
+  padding-bottom: 10px;
 }
-#course .container.org .org-box .org-info .org-contact .contact-btn {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+#course .container.org .org-contact .contact-btn {
+  margin: 0 auto;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 120px;
+  -ms-flex: 0 0 120px;
+  flex: 0 0 120px;
   border: 1px solid #ffd842;
   padding: 4px;
   border-radius: 4px;
-  height: 28px;
+  height: 20px;
 }
-#course .container.org .org-box .org-info .org-contact .contact-btn .contact-img {
+#course .container.org .org-contact .contact-btn .contact-img {
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -581,18 +538,15 @@ img {
   -webkit-background-size: 127px, 25.5px;
   background-size: 127px, 25.5px;
 }
-#course .container.org .org-box .org-info .org-contact .contact-btn .contact {
+#course .container.org .org-contact .contact-btn .contact {
   display: inline-block;
-  line-height: 28px;
+  line-height: 20px;
 }
-#course .container.org .org-box .org-info .org-contact .contact-btn#phone {
-  margin-right: 10px;
-}
-#course .container.org .org-box .org-info .org-contact .contact-btn#phone .contact-img {
+#course .container.org .org-contact .contact-btn#phone .contact-img {
   background-position: -57px 0;
   vertical-align: -3px;
 }
-#course .container.org .org-box .org-info .org-contact .contact-btn#online .contact-img {
+#course .container.org .org-contact .contact-btn#online .contact-img {
   background-position: -83px 0;
   vertical-align: -4px;
 }
@@ -601,12 +555,14 @@ img {
   margin-top: 10px;
 }
 #course .container.org .teacher-box .teacher-info {
+  width: 100%;
+}
+#course .container.org .teacher-box .teacher-info > a {
+  width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-}
-#course .container.org .teacher-box .teacher-info > a {
   color: #666666;
 }
 #course .container.org .teacher-box .teacher-info > a .teacher-name {

@@ -25,25 +25,6 @@
             <div class="course-price"><span id="new-price">￥{{$course['price']}}</span><span id="old-price">￥{{$course['original_price']}}</span></div>
             <div class="course-payback">报名后最高返现<div id="payback">￥{{$course['max_award']}}</div><div class="appoint">预约数：<span>{{$course['fake_enrol_counts']}}</span></div></div>
         </div>
-        <div class="head-tips">
-            <div class="org-stars">
-                <i class="star colored iconfont">&#xe70e;</i>
-                <i class="star colored iconfont">&#xe70e;</i>
-                <i class="star colored half iconfont">&#xe62f;</i>
-                <i class="star iconfont">&#xe680;</i>
-            </div>
-            <div class="tips">
-                <div class="tips-left">
-                    {{--@foreach($course)--}}
-                    <div class="tips-box">环境好</div>
-                    <div class="tips-box">环境好</div>
-                    <div class="tips-box">环境好</div>
-                    <div class="tips-box">环境好</div>
-                    <div class="tips-box">环境好</div>
-                </div>
-            </div>
-
-        </div>
         <div class="head-link">
             @if($org_summary->installment_flag)
                 <a href="javascript:void(0)">
@@ -68,7 +49,7 @@
                         <div class="link-img" id="refund-img"></div>
                         <span class="link-name">支持7天退</span>
                     </div>
-                    <hr style="color:#d8d8d8"/>
+                    <hr style="color:#dfe0e6"/>
                     <div class="link-middle">{{$org_summary->refund_title}}</div>
                 </div>
             </a>
@@ -113,14 +94,15 @@
                     <span>服务：{{$org_summary->grade_service}}</span>
                     <span>效果：{{$org_summary->grade_effect}}</span>
                 </div>
-                <div class="org-contact">
-                    <div class="contact-btn" id="phone">
-                        <div class="contact-img"></div>
-                        <div class="contact">电话咨询</div>
-                    </div>
-                </div>
             </div>
         </div>
+            <div class="org-contact">
+                <div class="contact-btn" id="phone">
+                    <div class="contact-img"></div>
+                    <div class="contact">电话咨询</div>
+                </div>
+            </div>
+
         <div class="teacher-box">
             @foreach($org_teachers as $v)
                 <div class="teacher-info">
