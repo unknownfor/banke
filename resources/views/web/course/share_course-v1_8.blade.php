@@ -139,7 +139,6 @@
             @endforeach
         @endif
         <div class="description">
-            <img src="/front/assets/img/course/v1.8/banner.jpeg" />
             <div class="des-txt">
                 <div class="txt-box">
                     <div class="title">购买流程</div>
