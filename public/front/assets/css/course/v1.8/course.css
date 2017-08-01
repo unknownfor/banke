@@ -715,6 +715,17 @@ img {
 #course .container.evaluate-info .evaluate-box:first-child {
   border-top: 0px;
 }
+#course .container.description {
+  line-height: 22px;
+}
+#course .container.description .des-txt .txt-box {
+  color: #383D43;
+  margin-bottom: 30px;
+}
+#course .container.description .des-txt .txt-box .title {
+  padding: 10px 0;
+  font-weight: bold;
+}
 #course .call-mask {
   height: 100%;
   position: fixed;
