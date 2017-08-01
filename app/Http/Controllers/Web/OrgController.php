@@ -194,5 +194,13 @@ class OrgController extends Controller
         return view('web.org.share_org-v1_6')->with(compact(['org']));
     }
 
+    /**
+     * 机构特色
+     */
+    public function org_feature_v1_8($id)
+    {
+        return view('web.org.org_feature-v1_8');
+    }
+
 
 }

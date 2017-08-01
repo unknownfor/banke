@@ -12,19 +12,15 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/refund/v1.8/refund.css" rel="stylesheet">
-    <title>分期说明</title>
+    <link type="text/css" href="/front/assets/css/org/v1.8/org.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/course/v1.8/iconfont/iconfont.css" rel="stylesheet">
+    <title>机构特色</title>
 </head>
 <body>
-<div id="wrapper">
-    {{--    @if($strategy['content'])--}}
-    <div class="container">
-        <div class="info">{!! $strategy['content'] !!}</div>
-    </div>
-    {{--@endif--}}
-</div>
+feature
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/org/org-v1.8.js" type="text/javascript"></script>
 </html>

@@ -37,23 +37,6 @@ $(function() {
         showDetailInfo();
     });
 
-    /*点击查看评价-判断来源是否是分享页面*/
-    $(document).on( window.eventName,'.tips-right', function() {
-        if (!notFromApp) {
-            //调用客户端查看机构评价方法
-            showEvaluation();
-        }else {
-            $('.tips-right').addClass('hide');
-        }
-    });
-
-    /*点击参团-判断来源是否是分享页面*/
-    $(document).on( window.eventName,'.join-btn', function() {
-            if (!notFromApp) {
-                //调用客户端参团方法
-                joinGroup();
-            }
-        });
 
     /*电话咨询-判断来源是否是分享页*/
     $(document).on( window.eventName,'#phone', function() {
@@ -65,15 +48,6 @@ $(function() {
         }
     });
 
-    /*在线咨询-判断来源是否是分享页*/
-    $(document).on( window.eventName,'#online', function() {
-        if (!notFromApp) {
-            //调用客户端在线咨询方法
-            onlineAsking();
-        }else {
-            $('.call-mask').removeClass('hide').addClass('show');
-        }
-    });
 
     /*切换机构特色内容*/
     function showSpecialInfo () {
@@ -105,64 +79,9 @@ $(function() {
         $('.evaluate-info').addClass('hide');
     }
 
-    /*
-     * 调用客户端-课程评价*/
-    function showEvaluation(){
-        if (window.deviceType.mobile) {
-            if (this.deviceType.android) {
-                //如果方法存在
-                if (typeof AppFunction != "undefined"&&  typeof AppFunction.方法名 !='undefined') {
-                    AppFunction.方法名(); //调用app的方法，得到用户的基体信息
-                }
-            }
-            else {
-                //如果方法存在
-                if (typeof 方法名 != "undefined") {
-                    方法名();//调用app的方法，得到电话
-                }
-            }
-        }
-    };
-
-    /*
-     * 调用客户端-立即参团*/
-    function joinGroup(){
-        if (window.deviceType.mobile) {
-            if (this.deviceType.android) {
-                //如果方法存在
-                if (typeof AppFunction != "undefined"&&  typeof AppFunction.方法名 !='undefined') {
-                    AppFunction.方法名(); //调用app的方法，得到用户的基体信息
-                }
-            }
-            else {
-                //如果方法存在
-                if (typeof 方法名 != "undefined") {
-                    方法名();//调用app的方法，得到电话
-                }
-            }
-        }
-    };
 
     //调用客户端方法,显示拨打电话
     function showCallNumber(){
-        if (window.deviceType.mobile) {
-            if (this.deviceType.android) {
-                //如果方法存在
-                if (typeof AppFunction != "undefined"&&  typeof AppFunction.callServicePhone !='undefined') {
-                    AppFunction.callServicePhone(); //调用app的方法，得到用户的基体信息
-                }
-            }
-            else {
-                //如果方法存在
-                if (typeof callServicePhone != "undefined") {
-                    callServicePhone();//调用app的方法，得到电话
-                }
-            }
-        }
-    };
-
-    //调用客户端方法,在线咨询客服
-    function onlineAsking(){
         if (window.deviceType.mobile) {
             if (this.deviceType.android) {
                 //如果方法存在

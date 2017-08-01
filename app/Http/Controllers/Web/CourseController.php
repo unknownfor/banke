@@ -7,6 +7,7 @@ use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeUserProfiles;
 use App\Repositories\admin\OrgRepository;
 use App\Repositories\admin\OrgApplyForRepository;
+use TeachingTeacherRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -128,10 +129,15 @@ class CourseController extends Controller
     public function share_course_v1_8($id)
     {
         $course = BankeCourse::find($id);
-        $org = $course->org;
-        $course['share_award']=$course['share_group_buying_award']+$course['share_comment_course_award']+$org['share_comment_org_award'];
+        $subOrg = $course->org;
+        $course['share_award']=$course['share_group_buying_award'] + $course['share_comment_course_award'] + $subOrg['share_comment_org_award'];
         $course['max_award']=$course['share_award']+$course['checkin_award']+$course['group_buying_award'];
-        return view('web.course.share_course-v1_8')->with(compact(['course','org']));
+        $org_summary=$subOrg->orgsummary;
+        $fake_user_info=$this->getRandomUserInfo();
+        $fake_number = rand(3, 5);
+
+        $org_teachers =TeachingTeacherRepository::getTeachersByOrgSummaryId($org_summary['id']);
+        return view('web.course.share_course-v1_8')->with(compact(['course','org_summary','fake_user_info','fake_number','org_teachers']));
     }
 
 
@@ -188,4 +194,9 @@ class CourseController extends Controller
         $course['max_award']=$course['share_award']+$course['checkin_award']+$course['group_buying_award'];
         return view('web.course.share_course-v1_6')->with(compact(['course','org']));
     }
+
+    public function imgdetails_course_v1_8(){
+        return view('web.course.course_imgdetails-v1_8');
+    }
+
 }

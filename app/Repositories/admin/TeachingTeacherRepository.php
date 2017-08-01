@@ -1,5 +1,6 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeOrgSummary;
 use App\Models\Banke\BankeTeachingTeacher;
 use Carbon\Carbon;
 use Flash;
@@ -158,5 +159,11 @@ class TeachingTeacherRepository
 		}
 		Flash::error(trans('alerts.teachingteacher.deleted_error'));
 		return false;
+	}
+
+
+	public static function getTeachersByOrgSummaryId($id)
+	{
+		return BankeTeachingTeacher::where(['status'=>1,'org_id'=>$id])->get();
 	}
 }
