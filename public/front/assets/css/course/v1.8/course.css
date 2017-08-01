@@ -374,6 +374,9 @@ img {
   -ms-flex: 0 0 75px;
   flex: 0 0 75px;
 }
+#course .container.head .head-link .link-info .link-middle {
+  margin-left: 5px;
+}
 #course .container.head .head-link .link-info .link-right {
   -webkit-box-flex: 1;
   -webkit-flex: 1;

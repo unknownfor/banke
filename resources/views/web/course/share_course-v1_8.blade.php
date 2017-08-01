@@ -96,7 +96,7 @@
             <div class="org-info">
                 <div class="org-name">
                     <div class="org-left">
-                        <div class="name">{{$org['name]}}</div>
+                        {{--<div class="name">{{$org['name]}}</div>--}}
                         <div class="tips"><span>职业培训</span></div>
                     </div>
                     <div class="org-right">预约数：4000</div>
