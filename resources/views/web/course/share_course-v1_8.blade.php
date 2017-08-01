@@ -130,8 +130,6 @@
     </ul>
 
     <div class="detail-info container">
-        <img src="/front/assets/img/course/v1.8/logo.jpg" />
-        <img src="/front/assets/img/course/v1.8/head.jpg" />
         <img src="/front/assets/img/course/v1.8/banner.jpeg" />
 
         <div class="description">
