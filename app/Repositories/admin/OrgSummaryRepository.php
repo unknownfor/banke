@@ -258,12 +258,14 @@ class OrgSummaryRepository
 			$sum=0;
 			$counts=0;
 			foreach ($orgs as &$v) {
-				$courses=$v->course;
-				if ($courses->count()>0) {
-					foreach ($courses as &$c) {
-						if ($c['status'] == 1) {
-							$counts++;
-							$sum += $c['price'];
+				if($v['status']==1) {
+					$courses = $v->course;
+					if ($courses->count() > 0) {
+						foreach ($courses as &$c) {
+							if ($c['status'] == 1) {
+								$counts++;
+								$sum += $c['price'];
+							}
 						}
 					}
 				}
