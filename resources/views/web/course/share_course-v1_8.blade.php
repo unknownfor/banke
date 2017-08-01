@@ -72,7 +72,7 @@
     <div class="org container">
         <div class="org-box">
             <a class="org-url" href="javascript:void(0)">
-                <img class="org-img" src="/front/assets/img/course/v1.8/logo.jpg" />
+                <img class="org-img" src="{{$org_summary->logo}}@70h_70w_2e" />
             </a>
             <div class="org-info">
                 <div class="org-name">
@@ -130,9 +130,14 @@
     </ul>
 
     <div class="detail-info container">
-        <img src="/front/assets/img/course/v1.8/logo.jpg" />
-        <img src="/front/assets/img/course/v1.8/head.jpg" />
-        <img src="/front/assets/img/course/v1.8/banner.jpeg" />
+        @if($course['img_details'])
+            <?php
+                $imgs=explode(',',$course['img_details']);
+            ?>
+            @foreach($imgs as $v)
+                <img src="{{$v}}" />
+            @endforeach
+        @endif
     </div>
 
     <div class="special-info container hide">
