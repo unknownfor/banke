@@ -131,7 +131,9 @@ class CourseController extends Controller
         $org = $course->org;
         $course['share_award']=$course['share_group_buying_award']+$course['share_comment_course_award']+$org['share_comment_org_award'];
         $course['max_award']=$course['share_award']+$course['checkin_award']+$course['group_buying_award'];
-        return view('web.course.share_course-v1_8')->with(compact(['course','org']));
+        $fakeUserInfo=$this->getRandomUserInfo();
+        $fakeNumber = rand(3, 5);
+        return view('web.course.share_course-v1_8')->with(compact(['course','org','fakeUserInfo','fakeNumber']));
     }
 
 

@@ -21,9 +21,9 @@
     <img class="head-img" src="/front/assets/img/course/v1.8/banner.jpeg" />
     <div class="head container">
         <div class="head-info">
-            <div class="course-name">会计从业资格证资格证资格证资格证会计从业资格证资格证资格证资格证</div>
-            <div class="course-price"><span id="new-price">￥400000</span><span id="old-price">￥600</span></div>
-            <div class="course-payback">报名后最高返现<div id="payback">￥25000</div><div class="appoint">预约数：<span><span>4000</span></div></div>
+            <div class="course-name">{{$course['name']}}</div>
+            <div class="course-price"><span id="new-price">￥{{$course['price']}}</span><span id="old-price">￥{{$course['original_price']}}</span></div>
+            <div class="course-payback">报名后最高返现<div id="payback">￥{{$course['max_award']}}</div><div class="appoint">预约数：<span>{{$course['fake_enrol_counts']}}</span></div></div>
         </div>
         <div class="head-tips">
             <div class="org-stars">
@@ -34,6 +34,7 @@
             </div>
             <div class="tips">
                 <div class="tips-left">
+                    {{--@foreach($course)--}}
                     <div class="tips-box">环境好</div>
                     <div class="tips-box">环境好</div>
                     <div class="tips-box">环境好</div>
@@ -44,39 +45,44 @@
 
         </div>
         <div class="head-link">
-            <a href="javascript:void(0)">
+            @if($org->installment_flag)
+                <a href="javascript:void(0)">
                 <div class="link-info">
                     <div class="link-left">
                         <div class="link-img" id="support-img"></div>
                         <span class="link-name">支持分期</span>
                     </div>
                     <hr style="color:#d8d8d8"/>
-                    <div class="link-middle">首付200预约金，尾款分期付：<span>￥600*12期</span></div>
+                    {{--<div class="link-middle">首付200预约金，尾款分期付：<span>￥600*12期</span></div>--}}
+                    <div class="link-middle">{{$org->installment_title}}</div>
                     <div class="link-right">
                         <div class="link-img" id="help-img"></div>
                     </div>
                 </div>
             </a>
-            <a href="javascript:void(0)">
+            @endif
+            @if($org->refund_flag)
+                <a href="javascript:void(0)">
                 <div class="link-info">
                     <div class="link-left">
                         <div class="link-img" id="refund-img"></div>
                         <span class="link-name">支持7天退</span>
                     </div>
                     <hr style="color:#d8d8d8"/>
-                    <div class="link-middle">报名7天内，学习不满意可以申请退款</div>
+                    <div class="link-middle">{{$org->refund_title}}</div>
                 </div>
             </a>
+            @endif
         </div>
     </div>
 
     <div class="join container">
         <div class="join-title">以下小伙伴正在发起团购，参团享返现哟</div>
         <div class="join-box">
-            <img class="join-img" src="/front/assets/img/course/v1.8/head.jpg" />
+            <img class="join-img" src="{{$fakeUserInfo['img']}}" />
             <div class="join-detail">
-                <div class="join-name">参团组长</div>
-                <div class="join-num">已有<span>100550人</span>参团</div>
+                <div class="join-name">{{$fakeUserInfo['name']}}"</div>
+                <div class="join-num">已有<span>{{$fakeNumber}}人</span>参团</div>
                 <div class="join-btn"><a href="#">立即参团</a></div>
             </div>
         </div>
@@ -90,7 +96,7 @@
             <div class="org-info">
                 <div class="org-name">
                     <div class="org-left">
-                        <div class="name">武汉仁和</div>
+                        <div class="name">{{$org['name]}}</div>
                         <div class="tips"><span>职业培训</span></div>
                     </div>
                     <div class="org-right">预约数：4000</div>
@@ -141,13 +147,11 @@
         <img src="/front/assets/img/course/v1.8/banner.jpeg" />
     </div>
 
-    {{--@if($org['tel_phone2'])--}}
     <div class="special-info container hide">
         <img src="/front/assets/img/course/v1.8/banner.jpeg" />
         <img src="/front/assets/img/course/v1.8/banner.jpeg" />
         <img src="/front/assets/img/course/v1.8/banner.jpeg" />
     </div>
-    {{--@endif--}}
     <div class="evaluate-info container hide">
         <div class="evaluate-box">
             <div class="evaluate-img">
@@ -193,10 +197,10 @@
 
     <div class="call-mask hide">
         <div class="call-container">
-            @if($org['tel_phone'])
+            @if($org->tel_phone)
                 <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
             @endif
-            @if($org['tel_phone2'])
+            @if($org->tel_phone2)
                 <div class="call-box"><a class="" href="tel:{{$org['tel_phone2']}}">{{$org['tel_phone2']}}</a></div>
             @endif
             <p class="quite">取消</p>
