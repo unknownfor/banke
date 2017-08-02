@@ -540,6 +540,7 @@ class AppUserRepository
 	//添加从新的账号，并设置为机构账号
 	public function store_org_account_new($request){
 		$userData = $request->all();
+		$userData['user_type'] = 4;
 		DB::transaction(function () use ($userData) {
 			try{
 				$uid=$this->insertBasicUserInfo($userData);
@@ -568,11 +569,16 @@ class AppUserRepository
 	/*用户详细信息创建,自动更新用户资料关系*/
 	public function insertDetailUserInfo($uid,$data){
 		$code = Uuid::generate(4);
+		$user_type=0;
+		if($data['user_type']==4){
+			$user_type=4;
+		}
 		$profiles = [
 			'uid' => $uid,
 			'name' => $data['name'],
 			'mobile' => $data['mobile_new'],
 			'org_id' => $data['org_id_new'],
+			'user_type' => $user_type,
 			'invitation_code' => $code
 		];
 		if(BankeUserProfiles::create($profiles)){
