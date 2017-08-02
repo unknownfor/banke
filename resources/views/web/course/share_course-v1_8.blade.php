@@ -171,9 +171,9 @@
     </div>
 
     <div class="special-info container hide">
-        @if($course['album'])
+        @if($org_summary->album)
             <?php
-            $imgs=explode(',',$course['album']);
+            $imgs=explode(',',$org_summary['album']);
             ?>
             @foreach($imgs as $v)
                 <img src="{{$v}}" />

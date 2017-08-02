@@ -195,11 +195,14 @@ class OrgController extends Controller
     }
 
     /**
-     * 机构特色
+     * 机构特色,id指课程id
      */
     public function org_feature_v1_8($id)
     {
-        return view('web.org.org_feature-v1_8');
+        $course = BankeCourse::find($id);
+        $subOrg = $course->org;
+        $org_summary=$subOrg->orgsummary;
+        return view('web.org.org_feature-v1_8')->with(compact(['org_summary']));
     }
 
 
