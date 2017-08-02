@@ -400,6 +400,7 @@ class AppUserRepository
 		$user = BankeUserProfiles::find($id);
 		if ($user) {
 			$user['org_id'] = $userData['org_id_old'];
+			$user['user_type'] = 4;
 			if ($user->save()) {
 				Flash::success(trans('alerts.users.updated_success'));
 				return true;

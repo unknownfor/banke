@@ -272,6 +272,7 @@ return [
         'MoneyNewsRepository' => App\Facades\MoneyNewsFacade::class,
         'ActivityRepository' => App\Facades\ActivityFacade::class,
         'TeachingTeacherRepository' => App\Facades\TeachingTeacherFacade::class,
+        'BusinessCityRepository' => App\Facades\BusinessCityFacade::class,
     ],
 
 ];
