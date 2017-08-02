@@ -18,17 +18,16 @@
 </head>
 <body>
 <div id="course">
-
-    @if($course['album'])
-        <div class="special-info container">
-        <?php
-        $imgs=explode(',',$course['album']);
-        ?>
-        @foreach($imgs as $v)
-            <img src="{{$v}}" />
-        @endforeach
-        </div>
-    @endif
+    <div class="special-info container">
+        @if($org_summary->album)
+            <?php
+            $imgs=explode(',',$org_summary['album']);
+            ?>
+            @foreach($imgs as $v)
+                <img src="{{$v}}" />
+            @endforeach
+        @endif
+    </div>
 
 </div>
 </body>
