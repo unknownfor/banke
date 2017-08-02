@@ -17,11 +17,16 @@ $(function() {
             halfStar = '<i class="star colored half iconfont">&#xe62f;</i>',
             noStar = ' <i class="star iconfont">&#xe680;</i>',
             item,
-            str;
-        if (star <  5) {
-            item = fullStar + fullStar + fullStar + fullStar + fullStar;
+            str,
+            str = fullStar + fullStar + fullStar;
+        if (star%4 > 5) {
+            item = str + fullStar  + fullStar;
         } else {
-            // if ()
+            if (0 < star%4 < 5) {
+                item = str + fullStar + halfStar;
+            }else {
+                item = str + halfStar + noStar ;
+            }
         }
         $(".org-stars").html(item);
     }
