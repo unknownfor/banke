@@ -17,17 +17,7 @@
     <title>课程详情</title>
 </head>
 <body>
-    <div id="course">
 
-        {{--@if($org['tel_phone2'])--}}
-        <div class="special-info container">
-            <img src="/front/assets/img/course/v1.8/banner.jpeg" />
-            <img src="/front/assets/img/course/v1.8/banner.jpeg" />
-            <img src="/front/assets/img/course/v1.8/banner.jpeg" />
-        </div>
-        {{--@endif--}}
-
-    </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>

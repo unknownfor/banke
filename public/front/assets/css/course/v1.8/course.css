@@ -639,6 +639,8 @@ img {
 }
 #course .container.evaluate-info .evaluate-box .evaluate-detail {
   display: inline-block;
+  width: 100%;
+  line-height: 22px;
 }
 #course .container.evaluate-info .evaluate-box .evaluate-detail .name {
   color: #383d43;
@@ -659,6 +661,7 @@ img {
   color: #ffd842;
 }
 #course .container.evaluate-info .evaluate-box .evaluate-detail .detail {
+  width: 100%;
   color: #666666;
 }
 #course .container.evaluate-info .evaluate-box .evaluate-detail .time {
