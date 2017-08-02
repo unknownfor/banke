@@ -270,7 +270,9 @@ class OrgSummaryRepository
 					}
 				}
 			}
-			$avg=$sum/$counts;
+			if($counts>0) {
+				$avg = $sum / $counts;
+			}
 			intval($avg);
 		}
 		return $avg;
