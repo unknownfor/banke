@@ -13,7 +13,16 @@ class BankeUserProfiles extends Model
 
     protected $table = 'banke_user_profiles';
 
-    protected $fillable = ['uid', 'name', 'mobile', 'avatar', 'sex', 'certification_status','org_id','invitation_code','invitation_uid',
+    protected $fillable = ['uid',
+        'name',
+        'mobile',
+        'avatar',
+        'sex',
+        'certification_status',
+        'org_id',
+        'user_type',
+        'invitation_code',
+        'invitation_uid',
         'account_balance',
         'total_cashback_amount',
         'check_in_amount',
