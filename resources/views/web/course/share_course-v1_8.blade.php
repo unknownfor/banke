@@ -83,14 +83,16 @@
                     <div class="org-right">预约数：{{$org_summary->fake_enrol_counts}}</div>
                 </div>
                 <div class="org-stars" data-grade-total="{{$org_summary->grade_total}}">
-                    <i class="star colored iconfont">&#xe70e;</i>
-                    <i class="star colored iconfont">&#xe70e;</i>
-                    <i class="star colored half iconfont">&#xe62f;</i>
-                    <i class="star iconfont">&#xe680;</i>
+                    {{--<i class="star colored iconfont">&#xe70e;</i>--}}
+                    {{--<i class="star colored iconfont">&#xe70e;</i>--}}
+                    {{--<i class="star colored half iconfont">&#xe62f;</i>--}}
+                    {{--<i class="star iconfont">&#xe680;</i>--}}
                 </div>
                 <div class="org-score">
                     <span>环境：{{$org_summary->grade_env}}</span>
                     <span>专业度：{{$org_summary->grade_profession}}</span>
+                </div>
+                <div class="org-score">
                     <span>服务：{{$org_summary->grade_service}}</span>
                     <span>效果：{{$org_summary->grade_effect}}</span>
                 </div>
@@ -214,6 +216,7 @@
         </div>
     </div>
 
+    {{--@if($org_summary->tel_phone)--}}
     <div class="call-mask hide">
         <div class="call-container">
             @if($org_summary->tel_phone)
@@ -225,6 +228,7 @@
             <p class="quite">取消</p>
         </div>
     </div>
+    {{--@endif--}}
 
 
 </div>

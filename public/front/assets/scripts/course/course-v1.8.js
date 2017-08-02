@@ -6,9 +6,30 @@ $(function() {
     var href = window.location.href;
     var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
 
+    showStars();
+
 
     /*
     * 机构评分星星*/
+    function showStars () {
+        var star = $('.org-stars').attr('data-grade-total'),
+            fullStar = '<i class="star colored iconfont">&#xe70e;</i>',
+            halfStar = '<i class="star colored half iconfont">&#xe62f;</i>',
+            noStar = ' <i class="star iconfont">&#xe680;</i>',
+            item,
+            str;
+        if (star <  5) {
+            item = fullStar + fullStar + fullStar + fullStar + fullStar;
+        } else {
+            // if ()
+        }
+        $(".org-stars").html(item);
+    }
+
+
+
+
+
 
     /*
     * 点击查看分期说明*/

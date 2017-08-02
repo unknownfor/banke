@@ -213,7 +213,6 @@ img {
   margin-bottom: 15px;
 }
 #course .container .org-stars {
-  display: inline-block;
   font-size: 16px;
 }
 #course .container .org-stars .star {
@@ -495,12 +494,8 @@ img {
 }
 #course .container.org .org-box .org-info .org-score {
   color: #a6a6a6;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
   font-size: 12px;
+  display: inline-block;
 }
 #course .container.org .org-box .org-info .org-score > span {
   margin-left: 10px;
