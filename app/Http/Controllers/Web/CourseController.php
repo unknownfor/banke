@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Banke\BankeCourse;
 use App\Models\Banke\BankeUserProfiles;
 use App\Repositories\admin\OrgRepository;
-use App\Repositories\admin\OrgApplyForRepository;
+use CommentOrgRepository;
 use TeachingTeacherRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
@@ -133,11 +133,19 @@ class CourseController extends Controller
         $course['share_award']=$course['share_group_buying_award'] + $course['share_comment_course_award'] + $subOrg['share_comment_org_award'];
         $course['max_award']=$course['share_award']+$course['checkin_award']+$course['group_buying_award'];
         $org_summary=$subOrg->orgsummary;
+
+        $org_teachers =TeachingTeacherRepository::getTeachersByOrgSummaryId($org_summary['id']);
+
         $fake_user_info=$this->getRandomUserInfo();
         $fake_number = rand(3, 5);
 
-        $org_teachers =TeachingTeacherRepository::getTeachersByOrgSummaryId($org_summary['id']);
-        return view('web.course.share_course-v1_8')->with(compact(['course','org_summary','fake_user_info','fake_number','org_teachers']));
+        //评论信息
+        $comments=CommentOrgRepository::getAllCommentsByOrgSummaryId($org_summary['id']);
+        return view('web.course.share_course-v1_8')->with(compact([
+            'course','org_summary',
+            'fake_user_info','fake_number',
+            'org_teachers','comments'
+        ]));
     }
 
 

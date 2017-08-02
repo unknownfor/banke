@@ -182,46 +182,33 @@
         @endif
     </div>
     <div class="evaluate-info container hide">
-        <div class="evaluate-box">
-            <div class="evaluate-img">
-                <img src="/front/assets/img/course/v1.8/logo.jpg" />
-            </div>
-            <div class="evaluate-detail">
-                <div class="name">半课用户评价</div>
-                <div class="stars">
-                    <i class="star colored iconfont">&#xe70e;</i>
-                    <i class="star colored iconfont">&#xe70e;</i>
-                    <i class="star colored half iconfont">&#xe62f;</i>
-                    <i class="star iconfont">&#xe680;</i>
+        @if($comments)
+            @foreach($comments as $v)
+                <div class="evaluate-box" data-uid="{{$v['uid']}}">
+                    <div class="evaluate-img">
+                        <img src="{{$v['user_info']['avatar']}}" />
+                    </div>
+                    <div class="evaluate-detail">
+                        <div class="name">{{$v['user_info']['name']}}</div>
+                        <div class="stars" data-grade-total="{{$v->star_counts}}">
+                            {{--<i class="star colored iconfont">&#xe70e;</i>--}}
+                            {{--<i class="star colored iconfont">&#xe70e;</i>--}}
+                            {{--<i class="star colored half iconfont">&#xe62f;</i>--}}
+                            {{--<i class="star iconfont">&#xe680;</i>--}}
+                        </div>
+                        <div class="detail">
+                            {{$v['content']}}
+                        </div>
+                        <?php
+                            $time =substr($v['created_at'],0,16);
+                        ?>
+                        <div class="time">
+                            {{$time}}
+                        </div>
+                    </div>
                 </div>
-                <div class="detail">
-                    机构评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论
-                </div>
-                <div class="time">
-                    2017-07-08 17:45
-                </div>
-            </div>
-        </div>
-        <div class="evaluate-box">
-            <div class="evaluate-img">
-                <img src="/front/assets/img/course/v1.8/logo.jpg" />
-            </div>
-            <div class="evaluate-detail">
-                <div class="name">半课用户评价</div>
-                <div class="stars">
-                    <i class="star colored iconfont">&#xe70e;</i>
-                    <i class="star colored iconfont">&#xe70e;</i>
-                    <i class="star colored half iconfont">&#xe62f;</i>
-                    <i class="star iconfont">&#xe680;</i>
-                </div>
-                <div class="detail">
-                    机构评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论评论
-                </div>
-                <div class="time">
-                    2017-07-08 17:45
-                </div>
-            </div>
-        </div>
+            @endforeach
+        @endif
     </div>
 
     <div class="call-mask hide">

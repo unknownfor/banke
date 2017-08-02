@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeCommentOrg;
+use App\Models\Banke\BankeOrgSummary;
 use Carbon\Carbon;
 use Flash;
 use DB;
@@ -357,6 +358,26 @@ class CommentOrgRepository
 			array_push($arr, ['name' => $name, 'uid' => $c->uid, 'time' => date("Y-m-d H:i:s", $lastTime)]);
 		}
 		return $arr;
+	}
+
+	/*
+	 * 通过主机构id，得到所有评论
+	 */
+	public static function getAllCommentsByOrgSummaryId($id)
+	{
+		$allOrgIds=BankeOrg::where(['pid'=>$id,'status'=>1])->get(['id'])->toArray();
+		$ids=[];
+		foreach($allOrgIds as $v){
+			array_push($ids,$v);
+		}
+		$comments=BankeCommentOrg::whereIn('org_id', $ids)
+			->where('status','1')
+			->orderBy('id','desc')
+			->get(['uid','content','star_counts','created_at']);
+		foreach($comments as $v) {
+			$v['user_info']=$v->userSimple;
+		}
+		return $comments;
 	}
 
 }

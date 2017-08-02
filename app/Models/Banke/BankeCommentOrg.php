@@ -35,7 +35,7 @@ class BankeCommentOrg extends Model
         return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid');
     }
     public  function userSimple(){
-        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid')->select('uid','mobile','avatar');
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid')->select('uid','mobile','avatar','name');
     }
 
 
