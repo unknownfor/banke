@@ -205,9 +205,7 @@ class CourseController extends Controller
 
     public function imgdetails_course_v1_8($id){
         $course = BankeCourse::find($id);
-        $subOrg = $course->org;
-        $org_summary=$subOrg->orgsummary;
-        return view('web.course.course_imgdetails-v1_8')->with(compact(['org_summary']));
+        return view('web.course.course_imgdetails-v1_8')->with(compact(['course']));
     }
 
 }
