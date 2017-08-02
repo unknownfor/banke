@@ -180,6 +180,8 @@
             @endforeach
         @endif
     </div>
+
+
     <div class="evaluate-info container hide">
         @if($comments)
             @foreach($comments as $v)
