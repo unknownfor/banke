@@ -10,7 +10,7 @@ use ActivityRepository;
 use App\Models\Banke\BankeCourse;
 use Illuminate\Http\Request;
 use App\Http\Requests\ActivityRequest;
-use App\Models\Banke\BankeBusinessCity;
+use BusinessCityRepository;
 use App\Repositories\admin\ActivityCourseRepository;
 use Flash;
 
@@ -48,7 +48,7 @@ class ActivityController extends Controller {
      */
     public function create()
     {
-        $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
+        $cities=BusinessCityRepository::getAllBusinessCity();
         $allcourse=$this->getAllCourse();
         return view('admin.activity.create')->with(compact(['cities','allcourse']));
     }
@@ -76,7 +76,7 @@ class ActivityController extends Controller {
      */
     public function edit($id)
     {
-        $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
+        $cities=BusinessCityRepository::getAllBusinessCity();
         $activity = ActivityRepository::edit($id);
         $repository=new ActivityCourseRepository();
         $course_arr=$repository->getAllCouseIdArrByActivityId($id);

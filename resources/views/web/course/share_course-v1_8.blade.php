@@ -172,9 +172,14 @@
     </div>
 
     <div class="special-info container hide">
-        <img src="/front/assets/img/course/v1.8/banner.jpeg" />
-        <img src="/front/assets/img/course/v1.8/banner.jpeg" />
-        <img src="/front/assets/img/course/v1.8/banner.jpeg" />
+        @if($course['album'])
+            <?php
+            $imgs=explode(',',$course['album']);
+            ?>
+            @foreach($imgs as $v)
+                <img src="{{$v}}" />
+            @endforeach
+        @endif
     </div>
     <div class="evaluate-info container hide">
         <div class="evaluate-box">
