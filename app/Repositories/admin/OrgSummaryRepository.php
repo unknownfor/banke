@@ -27,6 +27,7 @@ class OrgSummaryRepository
 
 		$surperior = request('surperior' ,'');
 		$category_id = request('category_id' ,'');
+		$name = request('name' ,'');
 
 		$org = new BankeOrgSummary;
 
@@ -34,6 +35,11 @@ class OrgSummaryRepository
 		/*状态搜索*/
 		if ($category_id!=null) {
 			$org = $org->where('category_id', $category_id);
+		}
+
+		/*名称搜索*/
+		if ($name!=null) {
+			$org = $org->where('name','like','%'.$name.'%');
 		}
 
 		/*状态搜索*/
