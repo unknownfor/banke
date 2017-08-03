@@ -11,6 +11,7 @@ var TableDatatablesAjax = function() {
         "data": function ( d ) {
           d.surperior =$('.filter select[name="surperior"] option:selected').val().replace();
           d.category_id = $('.filter select[name="category_id"] option:selected').val();
+          d.name = $('.filter input[name="name"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
