@@ -81,6 +81,27 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}} </label>
+                          <input type="hidden" id="category-id" value="{{$course->category['cid']}}">
+                          <div class="col-md-9 my-category2">
+                              {{--@foreach($allCategories as $val)--}}
+                                  {{--<div class="col-md-4">--}}
+                                      {{--<div class="md-checkbox">--}}
+                                          {{--<div class="md-radio">--}}
+                                              {{--<input type="radio" id="cate-{{$val['id']}}" name="category_id" value="{{$val['id']}}" class="md-radiobtn"--}}
+                                                     {{--@if($course->category['cid'] == $val['id']) checked @endif>--}}
+                                              {{--<label for="cate-{{$val['id']}}">--}}
+                                                  {{--<span></span>--}}
+                                                  {{--<span class="check"></span>--}}
+                                                  {{--<span class="box"></span> {{$val['name']}} </label>--}}
+                                          {{--</div>--}}
+                                      {{--</div>--}}
+                                  {{--</div>--}}
+                              {{--@endforeach--}}
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="price">{{trans('labels.course.price')}}</label>
                           <div class="col-md-9">
                               <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="{{trans('labels.course.price')}}" value="{{$course['price']}}">
@@ -194,26 +215,7 @@
 
 
 
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}} </label>
-                          <input type="hidden" id="category-id" value="{{$course->category['cid']}}">
-                          <div class="col-md-9 my-category2">
-                              @foreach($allCategories as $val)
-                                  <div class="col-md-4">
-                                      <div class="md-checkbox">
-                                          <div class="md-radio">
-                                              <input type="radio" id="cate-{{$val['id']}}" name="category_id" value="{{$val['id']}}" class="md-radiobtn"
-                                                     @if($course->category['cid'] == $val['id']) checked @endif>
-                                              <label for="cate-{{$val['id']}}">
-                                                  <span></span>
-                                                  <span class="check"></span>
-                                                  <span class="box"></span> {{$val['name']}} </label>
-                                          </div>
-                                      </div>
-                                  </div>
-                              @endforeach
-                          </div>
-                      </div>
+
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="fake_enrol_counts">{{trans('labels.course.fake_enrol_counts')}}</label>

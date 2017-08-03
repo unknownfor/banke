@@ -67,7 +67,8 @@ $(function(){
 
 
             //机构分类
-            var $orgSelect=$('.org-selectpicker');
+            var $orgSelect=$('.org-selectpicker'),
+                $subOrgSelect=$('.sub-org-selectpicker');
             $orgSelect.selectpicker({
                 liveSearchNormalize:true,
                 liveSearchPlaceholder:'输入名称进行搜索'
@@ -83,6 +84,8 @@ $(function(){
                 that.refressCommentSharePercent(e.currentTarget.value);
             });
 
+            this.refressCommentSharePercent($subOrgSelect.val());
+            that.refressCategorySelect($subOrgSelect.val());
 
 
             /*重新计算任务总比例*/
@@ -413,9 +416,11 @@ $(function(){
                 })
             },
 
-            //刷新分类列表
+            //刷新子机构列表
             refressSubOrgSelect:function (pid){
-                var url='/admin/org/getOrgByPid/'+pid,that=this;
+                var url='/admin/org/getOrgByPid/'+pid,
+                    that=this,
+                    $subOrgSelect=$('.sub-org-selectpicker');
                 window.getDataAsync(url,{},function(res){
                     var str='',len=res.length,selected='';
                     for(var i=0;i<len;i++){
@@ -425,7 +430,11 @@ $(function(){
                         }
                         str+='<option value="'+res[i].id+'"'+ selected+'>' + res[i].name+'</option>';
                     }
-                    $('.sub-org-selectpicker').html(str).selectpicker('refresh');
+                    $subOrgSelect.html(str).selectpicker('refresh');
+                    window.setTimeout(function(){
+                        that.refressCommentSharePercent($subOrgSelect.val());
+                        that.refressCategorySelect($subOrgSelect.val());
+                    },0);
                 })
             },
 
@@ -433,7 +442,7 @@ $(function(){
             //刷新机构评论返钱比例
             refressCommentSharePercent:function (id){
                 var that=this;
-                if(id==-1){
+                if(id<=0){
                     $('#orgSharePercent').text('*%');
                     return;
                 }
