@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeBalanceLog;
+use App\Models\Banke\BankeInvitation;
 use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserProfiles;
@@ -282,8 +283,8 @@ class AppUserRepository
 						$register_award = BankeDict::where('id', 1)->first();
 						$user_profile->account_balance += $register_award->value;
 						$user_profile->register_amount += $register_award->value;
-                                                //将用户注册认证的金额加到用户表做任务已领金额中
-                                                $user_profile->get_do_task_amount+= $register_award->value;
+						//将用户注册认证的金额加到用户表做任务已领金额中
+						$user_profile->get_do_task_amount+= $register_award->value;
 						$balance_log = [
 							'uid'=>$id,
 							'change_amount'=>$register_award->value,
@@ -302,25 +303,30 @@ class AppUserRepository
 						//记录消息
 						BankeMessage::create($message1);
 
-						//v1.7将招生都老师的邀请奖励提到 老师审核时，所以此处不奖励
+						//v1.7招生老师审核时，所以此处不奖励
 						if($user_profile->user_type!=3){
 
-							if ($user_profile->invitation_uid > 0) {
-								$invitation_user = BankeUserProfiles::where('uid', $user_profile->invitation_uid)->lockForUpdate()->first();
-								//查询系统配置里邀请人注册认证的奖金
-								$invitation_award = BankeDict::where('id', 2)->first();
-								$invitation_user->invitation_amount += $invitation_award->value;
+							$invitor_id=$user_profile->invitation_uid;
 
-								$invitation_user->account_balance += $invitation_award->value;
+							if ($invitor_id > 0) {
+								$invitation_user = BankeUserProfiles::where('uid', $invitor_id)->lockForUpdate()->first();
+								//查询系统配置里邀请人注册认证的奖金
+								$award_amount = BankeDict::where('id', 2)->first()->value;
+								$invitation_user->invitation_amount += $award_amount;
+
+								$invitation_user->account_balance += $award_amount;
 
 								//将邀请他人注册认证的奖金加大做任务的已领金额中去
-								$invitation_user->get_do_task_amount += $invitation_award->value;
+								$invitation_user->get_do_task_amount += $award_amount;
 
 								$invitation_user->save();
 
+								//更新邀请表 的奖励金额
+								$this->updateInvitationTableInfo($invitor_id,$user_profile->mobile,$award_amount);
+
 								$balance_log1 = [
 									'uid' => $user_profile->invitation_uid,
-									'change_amount' => $invitation_award->value,
+									'change_amount' => $award_amount,
 									'change_type' => '+',
 									'business_type' => 'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS',
 									'operator_uid' => $cur_user->id
@@ -332,7 +338,7 @@ class AppUserRepository
 									'uid' => $user_profile->invitation_uid,
 									'title' => '好友认证成功',
 									'content' => '您的好友' . $user_profile->mobile . '已经认证成功！平台已奖励您'
-										. $invitation_award->value . '元现金，快去现金钱包里查看吧！',
+										. $award_amount . '元现金，快去现金钱包里查看吧！',
 									'type' => 'FRIEND_CERTIFICATE_SUCCESS'
 								];
 								//记录消息
@@ -362,6 +368,14 @@ class AppUserRepository
 		}else{
 			abort(404);
 		}
+	}
+
+	//更新邀请表 的奖励金额
+	public function  updateInvitationTableInfo($uid,$targetMobile,$award_amount)
+	{
+		$invitation_table=BankeInvitation::where(['target_mobile'=>$targetMobile,'uid'=>$uid])->first();
+		$invitation_table->award_amount=$award_amount;
+		$invitation_table->save();
 	}
 
 	/**

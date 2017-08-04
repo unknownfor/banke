@@ -258,6 +258,8 @@ Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
     //机构特色
     Route::get('/orgfeature/{id}', 'OrgController@org_feature_v1_8');
 
+    Route::get('/marketingambassadorintro', 'MarketingAmbassadorController@introduce_v1_8');
+
 });
 
 //v1.8分享
