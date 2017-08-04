@@ -16,8 +16,9 @@
     <title>半课推广大使</title>
 </head>
 <body>
-    <div class="wrapper">
-        <img  class="banner" src="/front/assets/img/introduce/banner.png" />
+    <div id="wrapper">
+        {{--<img  class="banner" src="/front/assets/img/introduce/banner.png" />--}}
+        <img  class="banner" src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" />
         <div class="container">
             <div class="title">什么是半课推广大使？</div>
             <div class="info">
