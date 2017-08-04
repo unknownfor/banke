@@ -11,13 +11,22 @@ use GuzzleHttp\Exception\ClientException;
 use Validator;
 use Illuminate\Http\Request;
 
-class MarketingAmbassadorController extends Controller
+class FreeStudyController extends Controller
 {
     /**
-    * 介绍详情
+    * 免费学详情
     */
-    public function introduce_v1_8()
+    public function v1_8($id)
     {
-        return view('web.marketingambassador.introduce_v1_8');
+        return view('web.freestudy.v1_8');
+    }
+
+
+    /**
+     * 免费学详情
+     */
+    public function share_v1_8($id)
+    {
+        return view('web.freestudy.share_v1_8');
     }
 }

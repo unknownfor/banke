@@ -636,19 +636,21 @@ class AppUserRepository
 	 * 5：开团邀请好友阅读量达标奖励
 	 *
 		 * 'balance_log' => [
-				'WITHDRAW' => '提现',
-				'CHECK_IN_SUCCESS' => '打卡奖励',
-				'INVITE_FRIEND_ENROL_SUCCESS' => '邀请报名成功奖励',
-				'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS' => '邀请认证成功奖励',
-				'REGISTER_AND_CERTIFICATE_SUCCESS' => ' 注册并认证奖励',
-				'REGISTER_SUCCESS' => '注册奖励',
-				'PUNISHMENT' => '惩罚',
-				'REFUND' => '退款',
-				'WITHDRAW_FAIL' => '提现失败退回',
-				'COMMENT'=>'评论奖励'，//v1.5之后区分 COMMENT_ORG COMMENT_COURSE
-				'COMMENT_ORG'=> '机构评论奖励',
-				'COMMENT_COURSE' => '课程心得奖励',
-				'SHARE_GROUP_BUYING'=>'开团分享'
+				['key'=>'WITHDRAW','desc' => '提现'],
+				['key'=>'CHECK_IN_SUCCESS','desc' => '打卡奖励'],
+				['key'=>'INVITE_FRIEND_ENROL_SUCCESS','desc' => '邀请报名成功奖励'],
+				['key'=>'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS','desc' => '邀请认证成功奖励'],
+				['key'=>'REGISTER_AND_CERTIFICATE_SUCCESS','desc' => ' 注册并认证奖励'],
+				['key'=>'REGISTER_SUCCESS','desc' => '注册奖励'],
+				['key'=>'PUNISHMENT','desc' => '惩罚'],
+				['key'=>'REFUND','desc' => '退款'],
+				['key'=>'WITHDRAW_FAIL','desc' => '提现失败退回'],
+				['key'=>'COMMENT','desc' => '评论奖励'], //v1.5之后区分 COMMENT_ORG COMMENT_COURSE
+				['key'=>'COMMENT_ORG','desc' => '机构评论奖励'],
+				['key'=>'COMMENT_COURSE','desc' => '课程心得奖励'],
+				['key'=>'SHARE_GROUP_BUYING','desc' => '开团分享'],
+				['key'=>'SHARE_SUCCESS','desc' => '分享奖励'],
+				['key'=>'INVITE_FRIEND_BECOME_MARKETING_AMBASSADOR','desc' => '邀请好友成为推广大使奖励'],
 			],
 		 *
 	 */
@@ -685,6 +687,10 @@ class AppUserRepository
 				case 6:  //开团分享
 					$user_profile->get_do_task_amount += $award;
 					$businessTypeIndex=12;
+					break;
+				case 7:  //邀请好友成为推广大使
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=13;
 					break;
 				default:
 					break;

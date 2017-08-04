@@ -2,6 +2,10 @@
 
 return [
 
+    'common'=>[
+        'already_active'    => '该记录已经通过审核，不能重复审核'
+    ],
+
     'permissions' => [
         'created_success'   => '创建权限成功.',
         'created_error'     => '创建权限失败.',

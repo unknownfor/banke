@@ -252,6 +252,9 @@ Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
     //活动详情分享
     Route::get('/activity/{id}', 'ActivityController@v1_8');
 
+    //免费学详情分享
+    Route::get('/freestudy/{id}', 'FreeStudyController@v1_8');
+
     //课程图片详情
     Route::get('/courseimgdetails/{id}', 'CourseController@imgdetails_course_v1_8');
 
@@ -282,6 +285,9 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
 
     //活动详情分享
     Route::get('/activity/{id}', 'ActivityController@share_v1_8');
+
+    //免费学详情分享
+    Route::get('/freestudy/{id}', 'FreeStudyController@share_v1_8');
 });
 
 

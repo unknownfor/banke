@@ -241,7 +241,7 @@ class OrderRepository
 			$isRepeat=BankeCashBackUser::where(['course_id'=>$order->course_id,'uid'=>$order->uid,'status'=>1])->count()>0;
 
 			if($order['status'] == config('admin.global.status.active') || $isRepeat){
-				Flash::error(trans('alerts.order.already_active'));
+				Flash::error(trans('alerts.common.already_active'));
 				return false;
 			}
 			$cur_user = Auth::user();

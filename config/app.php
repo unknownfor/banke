@@ -273,6 +273,7 @@ return [
         'ActivityRepository' => App\Facades\ActivityFacade::class,
         'TeachingTeacherRepository' => App\Facades\TeachingTeacherFacade::class,
         'BusinessCityRepository' => App\Facades\BusinessCityFacade::class,
+        'MarketingAmbassadorRepository' => App\Facades\MarketingAmbassadorFacade::class,
     ],
 
 ];
