@@ -25,6 +25,26 @@ class BankeMarketingAmbassador extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.marktingambassador.action');
+        $this->action = config('admin.global.marketingambassador.action');
+    }
+
+    //实名后
+    public  function invitorAuthen(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','invitor_id');
+    }
+
+    //实名后
+    public  function invitorAuthenSimple(){
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','invitor_id')->select('uid','real_name');
+    }
+
+    //未实名
+    public  function invitor(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','invitor_id');
+    }
+
+    //
+    public  function invitorSimple(){
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','invitor_id')->select('uid','name','avatar','mobile');
     }
 }

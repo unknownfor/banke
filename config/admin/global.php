@@ -7,8 +7,8 @@ return[
 	 * 全局状态
 	 * audit 	待审核
 	 * active 	正常
-	 * ban 		禁用
-	 * trash	回收站/不通过
+	 * ban 		拒绝
+	 * trash	回收站
 	 * destory 	彻底删除
 	 */
 	'status' => [
@@ -349,5 +349,12 @@ return[
 		// 控制是否显示查看按钮
 		'show' => false,
 		'action' => 'teachingteacher',
+	],
+
+	//推广大使
+	'marketingambassador' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'marketingambassador',
 	],
 ];

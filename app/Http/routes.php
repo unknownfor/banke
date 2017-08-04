@@ -156,6 +156,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //教学老师
         require(__DIR__ . '/Routes/TeachingTeacherRoute.php');
 
+        //推广大使
+        require(__DIR__ . '/Routes/MarketingAmbassadorRoute.php');
+
     });
 });
 

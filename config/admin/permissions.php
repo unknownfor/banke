@@ -264,4 +264,10 @@ return[
 		'edit' 		=> 'admin.teachingteacher.edit',
 		'destroy' 	=> 'admin.teachingteacher.delete',
 	],
+
+	'marketingambassador' => [
+//		'edit' 		=> 'admin.marketingambassador.edit',
+		'certificate' 	=> 'admin.marketingambassador.certificate',
+//		'destroy' 	=> 'admin.marketingambassador.delete',
+	],
 ];

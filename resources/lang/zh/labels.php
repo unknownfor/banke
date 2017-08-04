@@ -247,6 +247,10 @@ return [
 		'teachingteacherCreate' => '<i class="fa fa-list"></i> 添加教学老师',
 		'teachingteacherEdit' => '<i class="fa fa-list"></i> 编辑教学老师',
 
+		'marketingambassadorList' => '<i class="fa fa-list"></i> 推广大使列表',
+		'marketingambassadorCreate' => '<i class="fa fa-list"></i> 添加推广大使',
+		'marketingambassadorEdit' => '<i class="fa fa-list"></i> 编辑推广大使',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -828,6 +832,18 @@ return [
 		'status' => '状态',
 		'sort' => '排序',
 		'list' => '教学老师列表'
+	],
+
+	'marketingambassador' => [
+		'id' => '序号',
+		'name' => '名字',
+		'mobile'=>'手机号',
+		'status'=>'认证状态',
+		'invitor_mobile' => '邀请人手机号',
+		'award_amount' => '奖励金额',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '推广大使列表'
 	],
 
 ];
