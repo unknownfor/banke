@@ -4,10 +4,10 @@ namespace App\Models\Banke;
 use App\Models\ActionAttributeTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class BankeMarktingAmbassador extends Model
+class BankeMarketingAmbassador extends Model
 {
     // »î¶¯
-    protected $table = 'banke_markting_ambassador';
+    protected $table = 'banke_marketing_ambassador';
     use ActionAttributeTrait;
     protected $fillable = [
         'name',

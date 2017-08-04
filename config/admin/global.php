@@ -8,7 +8,7 @@ return[
 	 * audit 	待审核
 	 * active 	正常
 	 * ban 		禁用
-	 * trash	回收站
+	 * trash	回收站/不通过
 	 * destory 	彻底删除
 	 */
 	'status' => [
@@ -66,6 +66,8 @@ return[
 		['key'=>'COMMENT_ORG','desc' => '机构评论奖励'],
 		['key'=>'COMMENT_COURSE','desc' => '课程心得奖励'],
 		['key'=>'SHARE_GROUP_BUYING','desc' => '开团分享'],
+		['key'=>'SHARE_SUCCESS','desc' => '分享奖励'],
+		['key'=>'INVITE_FRIEND_BECOME_MARKETING_AMBASSADOR','desc' => '邀请好友成为推广大使奖励'],
 	],
 
 	'moneynews_business_type' => [
