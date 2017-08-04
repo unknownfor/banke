@@ -191,12 +191,7 @@
                     </div>
                     <div class="evaluate-detail">
                         <div class="name">{{$v['user_info']['name']}}</div>
-                        <div class="stars" data-grade-total="{{$v->star_counts}}">
-                            {{--<i class="star colored iconfont">&#xe70e;</i>--}}
-                            {{--<i class="star colored iconfont">&#xe70e;</i>--}}
-                            {{--<i class="star colored half iconfont">&#xe62f;</i>--}}
-                            {{--<i class="star iconfont">&#xe680;</i>--}}
-                        </div>
+                        <div class="stars" data-grade-total="{{$v->star_counts}}"></div>
                         <div class="detail">
                             {{$v['content']}}
                         </div>

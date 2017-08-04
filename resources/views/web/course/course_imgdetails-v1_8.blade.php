@@ -17,15 +17,15 @@
 </head>
 <body>
 <div id="course">
-    @if($course['img_details'])
-        <?php
-        $imgs=explode(',',$course['img_details']);
-        ?>
-        @foreach($imgs as $v)
-            <img src="{{$v}}" />
-        @endforeach
-    @endif
     <div class="description container">
+        @if($course['img_details'])
+            <?php
+            $imgs=explode(',',$course['img_details']);
+            ?>
+            @foreach($imgs as $v)
+                <img src="{{$v}}" />
+            @endforeach
+        @endif
         <div class="des-txt">
             <div class="txt-box">
                 <div class="title">购买流程</div>
