@@ -382,4 +382,11 @@ return[
 		'action' => 'freestudy',
 	],
 
+	//半课任务
+	'task' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'freestudy',
+	],
+
 ];
