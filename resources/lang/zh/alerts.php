@@ -292,4 +292,11 @@ return [
         'deleted_error' => '删除教学老师失败',
     ],
 
+    'marketingambassador' => [
+        'updated_success'   => '审核推广大使成功.',
+        'updated_error'     => '更新推广大使失败.',
+        'deleted_success' => '删除推广大使成功',
+        'deleted_error' => '删除推广大使失败',
+    ],
+
 ];

@@ -6,12 +6,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use MarketingambassadorRepository;
+use MarketingAmbassadorRepository;
 use App\Models\Banke\BankeCourse;
 use Illuminate\Http\Request;
-use App\Http\Requests\MarketingambassadorRequest;
+use App\Http\Requests\MarketingAmbassadorRequest;
 use BusinessCityRepository;
-use App\Repositories\admin\MarketingambassadorCourseRepository;
 use Flash;
 
 class MarketingAmbassadorController extends Controller {
@@ -78,6 +77,20 @@ class MarketingAmbassadorController extends Controller {
     public function destroy($id)
     {
         MarketingAmbassadorRepository::destroy($id);
+        return redirect('admin/marketingambassador');
+    }
+
+    /**
+     * 修改认证状态
+     * @author shaolei
+     * @date   2016-04-14T11:50:04+0800
+     * @param  [type]                   $id     [description]
+     * @param  [type]                   $status [description]
+     * @return [type]                           [description]
+     */
+    public function certificate($id,$status)
+    {
+        MarketingAmbassadorRepository::certificate($id,$status);
         return redirect('admin/marketingambassador');
     }
 }

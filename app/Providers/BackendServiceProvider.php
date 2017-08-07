@@ -214,5 +214,10 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('MarketingAmbassadorRepository', function($app){
             return new \App\Repositories\admin\MarketingAmbassadorRepository();
         });
+
+        //每日任务记录
+        $this->app->singleton('DailyTaskLogRepository', function($app){
+            return new \App\Repositories\admin\DailyTaskLogRepository();
+        });
     }
 }

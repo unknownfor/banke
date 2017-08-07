@@ -7,6 +7,7 @@ trait ActionAttributeTrait{
 	protected $html_build;
 
 	protected $certificationIconArr=Array('order','recruiteteacher','drawback');
+	protected $certificateInListArr=Array('marketingambassador');
 
 	/**
 	 * 查看按钮
@@ -36,7 +37,7 @@ trait ActionAttributeTrait{
 	public function getEditActionButton()
 	{
 //		if ($this->action == 'order' || $this->action == 'drawback') {
-		if (in_array($this->action,$this->certificationIconArr)) {
+		if (in_array($this->action,$this->certificationIconArr) || in_array($this->action,$this->certificateInListArr)) {
 			return $this;
 		}
 
@@ -207,6 +208,39 @@ trait ActionAttributeTrait{
 
 
 	/**
+	 * 通过认证按钮 直接在列表认证
+	 * @return $this
+	 */
+	public function getCertificateInListButton()
+	{
+		if(in_array($this->action,$this->certificateInListArr)){
+			if (($this->status == config('admin.global.'.$this->action.'.audit'))) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
+					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/mark/'.config('admin.global.status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+				}
+			}
+		}
+		return $this;
+	}
+
+	/**
+	 * 拒绝认证按钮 直接在列表认证
+	 * @return $this
+	 */
+	public function getRefuseCertificateInListButton()
+	{
+		if(in_array($this->action,$this->certificateInListArr)){
+			if (($this->status == config('admin.global.'.$this->action.'.audit'))) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
+					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/mark/'.config('admin.global.status.ban')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
+				}
+			}
+		}
+		return $this;
+	}
+
+
+	/**
 	 * 组合按钮
 	 * @param bool $showType
 	 * @return $this
@@ -226,6 +260,8 @@ trait ActionAttributeTrait{
 					->getDestroyActionButton()
 					->getCertificateActionButton()
 					->getRefuseCertificateActionButton()
+					->getCertificateInListButton()
+					->getRefuseCertificateInListButton()
 					->getDrawbackActionButton();
 
 		return $this->html_build;
