@@ -12,12 +12,12 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    {{--<link type="text/css" href="/front/assets/css/activity/v1.8/activity.css" rel="stylesheet">--}}
+    <link type="text/css" href="/front/assets/css/activity/v1.8/activity.css" rel="stylesheet">
     <title>免费学页面</title>
 </head>
 <body>
 <div id="activity">
-
+    免费学分享页
 </div>
 @include('web.layout.downloadbar')
 </body>
