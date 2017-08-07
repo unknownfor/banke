@@ -17,7 +17,10 @@
 </head>
 <body>
 <div id="activity">
-
+    <div class="head">
+        <div class="title"></div>
+    </div>
+    <div class="content"></div>
 </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
