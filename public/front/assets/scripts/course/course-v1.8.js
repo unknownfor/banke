@@ -9,6 +9,29 @@ $(function() {
     showStars();
 
 
+    function transStar (num,maxNum) {
+        num=parseInt(num);
+        if(!maxNum){
+            maxNum=5;
+        }
+        if(num<maxNum){
+            num= (num*10/5);
+            if(num%5!=0){
+                num=num.toString();
+                var index=num.indexOf('.');
+                if(index>=0) {
+                    num = num.substr(0, index + 2);
+                    var arr = num.split('.');
+                    if (arr[1] == 0) {
+                        num = arr[0];
+                    }
+                }
+            }
+            num+='万';
+        }
+        return num;
+    }
+
     /*
     * 机构评分星星*/
     function showStars () {
