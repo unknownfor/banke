@@ -56,7 +56,7 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
           "render":function(data,type,full) {
             var str='';
-            if(full.status==1){
+            if(full.status==1 && data>0){
               str='邀请人得到 <span style="color:red">'+data+' </span>元奖励';
             }
             return str;

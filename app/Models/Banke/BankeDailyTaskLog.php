@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class BankeDailyTaskLog extends Model
 {
     // 每日任务表
-    protected $table = 'banke_activity';
+    protected $table = 'banke_daily_task_log';
     use ActionAttributeTrait;
     protected $fillable = [
         'uid',

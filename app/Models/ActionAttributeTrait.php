@@ -216,7 +216,7 @@ trait ActionAttributeTrait{
 		if(in_array($this->action,$this->certificateInListArr)){
 			if (($this->status == config('admin.global.'.$this->action.'.audit'))) {
 				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
-					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/mark/'.config('admin.global.status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/certificate/'.config('admin.global.status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
 				}
 			}
 		}
@@ -232,7 +232,7 @@ trait ActionAttributeTrait{
 		if(in_array($this->action,$this->certificateInListArr)){
 			if (($this->status == config('admin.global.'.$this->action.'.audit'))) {
 				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
-					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/mark/'.config('admin.global.status.ban')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
+					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/certificate/'.config('admin.global.status.ban')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
 				}
 			}
 		}

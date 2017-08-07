@@ -303,12 +303,16 @@ class AppUserRepository
 						//记录消息
 						BankeMessage::create($message1);
 
+
 						//v1.7招生老师审核时，所以此处不奖励
 						if($user_profile->user_type!=3){
 
 							$invitor_id=$user_profile->invitation_uid;
 
-							if ($invitor_id > 0) {
+							//v1.8 更新每日任务信息，并对每天是否能奖励做过滤
+							$award_flag = DailyTaskLogRepository::updateBankeDailyTaskLog($invitor_id,3);
+							if ($invitor_id > 0 && $award_flag) {
+
 								$invitation_user = BankeUserProfiles::where('uid', $invitor_id)->lockForUpdate()->first();
 								//查询系统配置里邀请人注册认证的奖金
 								$award_amount = BankeDict::where('id', 2)->first()->value;
@@ -357,9 +361,11 @@ class AppUserRepository
 					}
 					//同步认证状态
 					$user_profile->save();
+					DB::commit();
 					Flash::success(trans('alerts.app_user.certificate_success'));
 					return true;
 				} catch (Exception $e) {
+					DB::rollback();
 					Flash::error(trans('alerts.app_user.certificate_error'));
 					var_dump($e);
 					return false;
@@ -690,7 +696,7 @@ class AppUserRepository
 					break;
 				case 7:  //邀请好友成为推广大使
 					$user_profile->get_do_task_amount += $award;
-					$businessTypeIndex=13;
+					$businessTypeIndex=14;
 					break;
 				default:
 					break;

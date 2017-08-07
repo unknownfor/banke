@@ -2,6 +2,7 @@
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeUserProfiles;
+use App\Models\Banke\BankeMessage;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeMarketingAmbassador;
@@ -9,6 +10,8 @@ use App\Models\Banke\BankeDailyTaskLog;
 use AppUserRepository;
 use DailyTaskLogRepository;
 use Illuminate\Support\Facades\Log;
+use DB;
+use Auth;
 
 /**
 * 推广大全大使
@@ -113,6 +116,19 @@ class MarketingAmbassadorRepository
 	}
 
 	/**
+	 * 修改推广大使状态
+	 * @author jimmy
+	 * @date   2016-04-13T11:51:02+0800
+	 * @param  [type]                   $id     [description]
+	 * @param  [type]                   $status [description]
+	 * @return [type]                           [description]
+	 */
+	public function certificate($id,$status)
+	{
+		$this->update($status,$id);
+	}
+
+	/**
 	 * 修改活动
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:46+0800
@@ -120,9 +136,8 @@ class MarketingAmbassadorRepository
 	 * @param  [type]                   $id      [description]
 	 * @return [type]                            [description]
 	 */
-	public function update($request,$id)
+	public function update($status,$id)
 	{
-		$input = $request->only(['status']);  //只更新夜夜认证状态
 		$marktingAmbassador = BankeMarketingAmbassador::find($id);
 		if ($marktingAmbassador) {
 			if ($marktingAmbassador['status'] == config('admin.global.status.active')) {
@@ -130,22 +145,33 @@ class MarketingAmbassadorRepository
 				return false;
 			}
 			else {
-
-				DB::transaction(function () use ($input, $marktingAmbassador) {
+				DB::transaction(function () use ($status, $marktingAmbassador) {
 					try {
 						$cur_user = Auth::user();
-						$input['operator_id']=$cur_user->id;
-							if ($marktingAmbassador->fill($input->all())->save()) {
+						$marktingAmbassador->operator_id=$cur_user->id;
+						$marktingAmbassador->status=$status;
 
-								//奖励邀请人。通过认证后，给推荐人奖励，并且将记录添加到 banke_daily_task_log 表中
-								if ($input['status'] == config('admin.global.status.active')) {
-									$this->updateBankeDailyTaskLog($marktingAmbassador['invitor_id']);
-								}
-								Flash::success(trans('alerts.marketingambassador.updated_success'));
-								DB::commit();
-								Flash::success(trans('alerts.marketingambassador.updated_success'));
-								return true;
+						//奖励邀请人。通过认证后，给推荐人奖励，并且将记录添加到 banke_daily_task_log 表中
+						if ($status == config('admin.global.status.active')) {
+
+							$invitor_id=$marktingAmbassador['invitor_id'];
+
+							//更新每日任务信息，并对每天是否能奖励做过滤
+							$award_flag = DailyTaskLogRepository::updateBankeDailyTaskLog($invitor_id,1);
+
+							if($award_flag) {
+								$award = BankeDict::find(22)->value;
+								$marktingAmbassador->award_amount = $award;
+
+								$mobile=$marktingAmbassador->invitorSimple['mobile'];
+								$this->award_invitor($invitor_id,$mobile,$award);//奖励用户
+							}
 						}
+						$marktingAmbassador->save();
+						DB::commit();
+						Flash::success(trans('alerts.marketingambassador.updated_success'));
+						return true;
+
 					}
 					catch (Exception $e) {
 						DB::rollback();
@@ -169,11 +195,19 @@ class MarketingAmbassadorRepository
 	 * @param  [type]                   $id [description]
 	 * @return [type]                       [description]
 	 */
-	private function award_invitor($invitor_id)
+	private function award_invitor($invitor_id,$mobile,$award)
 	{
-		$award=BankeDict::find(22)->value;
 		AppUserRepository::execUpdateUserAccountInfo($invitor_id,$award,1,7);
-		//记录到 banke_daily_task_log 表中
+
+		//奖励信息添加添加到message表中
+		$message = [
+			'uid' => $invitor_id,
+			'title' => '您的好友成功认证为推广大使',
+			'content' => '您邀请的好友 ' . $mobile . ' 成功认证为推广大使,平台奖励您' . $award . '元现金，快去现金钱包里查看吧！',
+			'type' => config('admin.global.balance_log')[14]['key']
+		];
+		//记录消息
+		BankeMessage::create($message);
 	}
 
 	/**
@@ -185,16 +219,20 @@ class MarketingAmbassadorRepository
 	 */
 	private function updateBankeDailyTaskLog($invitor_id)
 	{
+		$user=BankeUserProfiles::find($invitor_id);
+		$mobile=$user['mobile'];
+		$award_flag=false;
+
 		// 奖励邀请人，如果今天已经审核通过次数，达到了上限，不给奖励
 		$dailyTask=BankeDailyTaskLog::where(['uid'=>$invitor_id,'task_type'=>1]);
 		$count=$dailyTask->count();
 		if($count>0){
-			$dic=BankeDict::whereIn('id',[21,23])->get('value')->toArray();
-			$systemLimitCounts=$dic[0];
-			$switch=$dic[1];
-			$award_flag=false;
+			$dic=BankeDict::whereIn('id',array(21,23))->get(['value'])->toArray();
+			$systemLimitCounts=$dic[0]['value'];
+			$switch=$dic[1]['value'];
 
-			$todayCounts=$dailyTask['today_count'];
+			$dailyTask=$dailyTask->first();
+			$todayCounts=$dailyTask['today_counts'];
 
 			//总次数更新
 			$dailyTask->total_counts++;
@@ -210,26 +248,27 @@ class MarketingAmbassadorRepository
 			}
 
 			if($award_flag){
-				$this->award_invitor($invitor_id);
+				$this->award_invitor($invitor_id,$mobile);
 			}
 			$dailyTask->save();
-		}else{
+		}
+		else{
 			//记录到 banke_daily_task_log 表中
-			$user=BankeUserProfiles::find($invitor_id);
-			$mobile=$user['mobile'];
+			$award_flag=true;
 			if($mobile) {
 				$request = [
 					'uid' => $invitor_id,
 					'mobile'=>$mobile,
-					'total_counts'=>0,
-					'today_counts'=>0,
+					'total_counts'=>1,
+					'today_counts'=>1,
 					'task_type'=>1,
 					'status'=>1,
 				];
 				DailyTaskLogRepository::store($request);
-				$this->award_invitor($invitor_id);
+				$this->award_invitor($invitor_id,$mobile);
 			}
 		}
+		return $award_flag;
 	}
 
 
