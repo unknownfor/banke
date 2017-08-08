@@ -188,4 +188,28 @@ class OrderDepositRepository
 		}
 		return ['counts'=>$allOrders->count(),'account'=>$totalAccount];
 	}
+
+	/**
+	 * 更新支付状态，status 1：尚未报名，2：已经线下报名
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function updateOutLineStatus($uid,$course_id)
+	{
+		$deposit = BankeOrderDeposit::where(['uid'=>$uid,'course_id'=>$course_id]);
+		if ($deposit->count()>0) {
+			$deposit=$deposit->first();
+			$deposit->status=2;
+			if ($deposit->save()) {
+				Flash::success(trans('alerts.orderdeposit.updated_success'));
+				return true;
+			}
+			Flash::error(trans('alerts.orderdeposit.updated_error'));
+			return false;
+		}
+		abort(404);
+	}
+
 }
