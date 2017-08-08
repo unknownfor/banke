@@ -271,17 +271,8 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
     //课程详情分享页
     Route::get('/course/{id}','CourseController@share_course_v1_8');
 
-    //教学老师
-    Route::get('/teachingteacher/{id}', 'TeachingTeacherController@share_teachingteacher_v1_8');
-
     //机构详情分享
     Route::get('/org/{id}', 'OrgController@share_org_v1_8');
-
-    //分期详情分享
-    Route::get('/installment/{id}', 'InstallmentController@share_installment_v1_8');
-
-    //退款详情分享
-    Route::get('/refund/{id}', 'RefundController@share_refund_v1_8');
 
     //活动详情分享
     Route::get('/activity/{id}', 'ActivityController@share_v1_8');

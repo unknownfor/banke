@@ -18,19 +18,11 @@ use Illuminate\Http\Request;
 class TeachingTeacherController extends Controller
 {
     /**
-    * 课程详情
+    * 机构老师详情
     */
     public function teachingteacher_v1_8($id)
     {
         return view('web.teachingteacher.teachingteacher-v1_8');
     }
 
-
-    /**
-     * 分享机构详情
-     */
-    public function share_teachingteacher_v1_8($id)
-    {
-        return view('web.teachingteacher.share_teachingteacher-v1_8');
-    }
 }

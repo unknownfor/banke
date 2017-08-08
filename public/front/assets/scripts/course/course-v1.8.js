@@ -55,8 +55,6 @@ $(function() {
     }
 
 
-
-
     /*
     * 点击查看分期说明*/
     $(document).on( window.eventName,'#installment-btn', function() {

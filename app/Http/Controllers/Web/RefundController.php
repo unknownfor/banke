@@ -21,11 +21,4 @@ class RefundController extends Controller
     }
 
 
-    /**
-     * 分享退款详情
-     */
-    public function share_refund_v1_8($id)
-    {
-        return view('web.refund.share_refund-v1_8');
-    }
 }

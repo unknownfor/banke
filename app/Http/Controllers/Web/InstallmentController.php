@@ -20,12 +20,4 @@ class InstallmentController extends Controller
         return view('web.installment.installment-v1_8');
     }
 
-
-    /**
-     * 分享分期详情
-     */
-    public function share_installment_v1_8($id)
-    {
-        return view('web.installment.share_installment-v1_8');
-    }
 }
