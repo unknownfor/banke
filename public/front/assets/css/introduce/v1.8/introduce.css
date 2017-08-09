@@ -185,15 +185,23 @@ input {
     -webkit-transform: rotate(360deg);
   }
 }
+html {
+  height: 100%;
+}
 body {
   margin: 0 auto;
   padding: 0;
+  background-color: #fff;
   height: 100%;
   max-width: 700px;
   overflow-x: hidden;
   word-wrap: break-word;
   font-size: 14px;
   position: relative;
+}
+#wrapper {
+  background-color: #fff;
+  height: 100%;
 }
 #wrapper .banner {
   border: none;
