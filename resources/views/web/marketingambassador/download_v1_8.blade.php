@@ -12,33 +12,16 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/introduce/v1.8/introduce.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/download/v1.8/download.css" rel="stylesheet">
     <title>下载半课，成为推广大使</title>
 </head>
 <body>
     <div id="wrapper">
-        <img  class="banner" src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" />
-        <div class="container">
-            <div class="title">下载半课，半课推广大使？</div>
-            <div class="info">
-                <p>1.负责半课“合作机构”校园内的招生推广；</p>
-                <p>2.了解身边有培训意向的同学，推荐更多的小伙伴使用“半课APP”；</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="title">推广大使能够获得什么？</div>
-            <div class="info">
-                <p>1.加入我们，任务轻松、报酬高。</p>
-                <p>2.半课校园大使=丰厚报酬+成长机会。</p>
-                <p>3.遇见半课，遇见更多志同道合的朋友。</p>
-                <p>4.分享半课，为好友省钱谋福利。</p>
-            </div>
-        </div>
-        <div class="container">
-            <div class="title">如何成为推广大使？</div>
-            <div class="info">
-                <p>如果想成为推广大使，请拨打电话咨询，或者点击下方“一键加入QQ群”加入官方推广大使的专属QQ群。</p>
-            </div>
+        <div class="container" >
+            <img class="bg second" src="/front/assets/img/invitation/v1.7/coo1.png"/>
+            <div class="txt txt-one">下载半课</div>
+            <div class="txt txt-two">成为半课推广大使</div>
+            <div class="btn active"><a href="http://www.91banke.com/web/download">下载半课</a></div>
         </div>
     </div>
 </body>
