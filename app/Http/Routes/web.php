@@ -280,7 +280,7 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
     //免费学详情分享
     Route::get('/freestudy/{id}', 'FreeStudyController@share_v1_8');
 
-    Route::get('/marketingambassadordownload', 'MarketingAmbassadorController@download_v1_8');
+    Route::get('/ambassadordownload', 'MarketingAmbassadorController@download_v1_8');
 });
 
 
