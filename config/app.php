@@ -275,6 +275,7 @@ return [
         'BusinessCityRepository' => App\Facades\BusinessCityFacade::class,
         'MarketingAmbassadorRepository' => App\Facades\MarketingAmbassadorFacade::class,
         'DailyTaskLogRepository' => App\Facades\DailyTaskLogFacade::class,
+        'InvitationSignUpRepository' => App\Facades\InvitationSignUpFacade::class,
     ],
 
 ];
