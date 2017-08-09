@@ -391,7 +391,7 @@ class OrderRepository
 					$message1 = [
 						'uid' => $invitation_uid,
 						'title' => '您的好友报名成功',
-						'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程——' . $order['course_name'] . '。平台已帮您领取了' . $invitation_award
+						'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程 “ ' . $order['course_name'] . ' ” 。平台已帮您领取了' . $invitation_award
 							. '元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
 						'type' => 'FRIEND_ENROL_SUCCESS'
 					];
