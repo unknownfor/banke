@@ -20,4 +20,12 @@ class MarketingAmbassadorController extends Controller
     {
         return view('web.marketingambassador.introduce_v1_8');
     }
+
+    /**
+     * 下载
+     */
+    public function download_v1_8()
+    {
+        return view('web.marketingambassador.download_v1_8');
+    }
 }
