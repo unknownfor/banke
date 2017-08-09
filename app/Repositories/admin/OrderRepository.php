@@ -602,34 +602,6 @@ class OrderRepository
 
 				//获取课程信息，计算任务分享信息
 
-				//course
-				$commentCourseAward=moneyFormat($tuition*$course['share_comment_course_award']/100);
-				$commentCourseCounts=$course['share_comment_course_counts'];//最多可以奖励次数
-				$input['share_comment_course_amount'] = $commentCourseAward;
-				$input['share_comment_course_counts'] = $commentCourseCounts;
-				$input['share_comment_course_view_counts'] = $this->getViewCountsByAward($commentCourseAward,$commentCourseCounts);  //浏览多少次达到要求
-
-				$org=$course->org;
-
-				//org
-				$commentOrgAward=moneyFormat($tuition*$org['share_comment_org_award']/100);
-				$commentOrgCounts=$org['share_comment_org_counts'];//最多可以奖励次数
-				$input['share_comment_org_amount'] =$commentOrgAward;
-				$input['share_comment_org_counts'] = $commentOrgCounts;
-				$input['share_comment_org_view_counts'] = $this->getViewCountsByAward($commentOrgAward,$commentOrgCounts);
-
-				//groupbuying
-				$gbAllAward=moneyFormat($tuition*$course['group_buying_award']/100);
-				$input['group_buying_amount'] = $gbAllAward;
-
-				$gbAward=moneyFormat($tuition*$course['share_group_buying_award']/100);
-				$gbCounts=$course['share_group_buying_counts'];//最多可以奖励次数
-
-				$input['share_group_buying_amount'] = $gbAward;
-				$input['share_group_buying_counts'] = $gbCounts;
-				$input['share_group_buying_view_counts'] = $this->getViewCountsByAward($gbAward,$gbCounts);
-
-
 				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
 
 				$cur_user = Auth::user();
