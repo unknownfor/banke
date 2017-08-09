@@ -600,7 +600,9 @@ class OrderRepository
 				$input['check_in_amount']=moneyFormat($tuition * $course->checkin_award / 100);
 				$input['do_task_amount']=moneyFormat($tuition * $course->task_award / 100);
 
-				//获取课程信息，计算任务分享信息
+				//groupbuying
+				$gbAllAward=moneyFormat($tuition*$course['group_buying_award']/100);
+				$input['group_buying_amount'] = $gbAllAward;
 
 				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
 

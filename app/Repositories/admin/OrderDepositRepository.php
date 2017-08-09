@@ -209,7 +209,6 @@ class OrderDepositRepository
 			Flash::error(trans('alerts.orderdeposit.updated_error'));
 			return false;
 		}
-		abort(404);
 	}
 
 }
