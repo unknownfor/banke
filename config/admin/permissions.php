@@ -275,4 +275,9 @@ return[
 		'destroy' 	=> 'admin.commentappstore.delete',
 	],
 
+	'goodarticle' => [
+		'create' 	=> 'admin.goodarticle.create',
+		'destroy' 	=> 'admin.goodarticle.delete',
+	],
+
 ];

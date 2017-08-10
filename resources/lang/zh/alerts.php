@@ -306,4 +306,11 @@ return [
         'deleted_error' => '删除评论失败',
     ],
 
+    'goodarticle' => [
+        'created_success'   => '创建半课好文成功.',
+        'created_error'     => '创建半课好失败.',
+        'deleted_success' => '删除半课好成功',
+        'deleted_error' => '删除半课好失败',
+    ],
+
 ];

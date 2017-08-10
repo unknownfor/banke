@@ -202,7 +202,7 @@ class MarketingAmbassadorRepository
 		//奖励信息添加添加到message表中
 		$message = [
 			'uid' => $invitor_id,
-			'title' => '您的好友成功认证为推广大使',
+			'title' => '邀请推广大使成功',
 			'content' => '您邀请的好友 ' . $mobile . ' 成功认证为推广大使,平台奖励您' . $award . '元现金，快去现金钱包里查看吧！',
 			'type' => config('admin.global.balance_log')[14]['key']
 		];

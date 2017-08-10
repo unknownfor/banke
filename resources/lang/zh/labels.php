@@ -255,6 +255,9 @@ return [
 		'commentappstoreCreate' => '<i class="fa fa-list"></i> 添加应用商店评论',
 		'commentappstoreEdit' => '<i class="fa fa-list"></i> 编辑应用商店评论',
 
+		'goodarticleList' => '<i class="fa fa-list"></i> 半课好文列表',
+		'goodarticleCreate' => '<i class="fa fa-list"></i> 添加半课好文',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -859,6 +862,19 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'list' => '应用商店评论列表'
+	],
+
+	'goodarticle' => [
+		'id' => '序号',
+		'title' => '标题',
+		'cover'=>'封面',
+		'intro'=>'描述',
+		'url' => '地址',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '半课好文列表',
+		'strategy_id'=>'攻略id'
 	],
 
 ];

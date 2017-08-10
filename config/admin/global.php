@@ -365,4 +365,12 @@ return[
 		'show' => false,
 		'action' => 'commentappstore',
 	],
+
+	//半课好文章
+	'goodarticle' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'goodarticle',
+	],
+
 ];
