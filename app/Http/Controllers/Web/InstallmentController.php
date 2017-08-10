@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Validator;
 use Illuminate\Http\Request;
+use App\Models\Banke\BankeCourse;
 
 class InstallmentController extends Controller
 {
@@ -17,7 +18,9 @@ class InstallmentController extends Controller
     */
     public function installment_v1_8($id)
     {
-        return view('web.installment.installment-v1_8');
+        $org=BankeCourse::find($id)->org;
+        $content=$org['installment_content'];
+        return view('web.installment.installment-v1_8')->with(compact(['content']));
     }
 
 }

@@ -9,6 +9,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
 use Validator;
 use Illuminate\Http\Request;
+use App\Models\Banke\BankeCourse;
 
 class RefundController extends Controller
 {
@@ -17,7 +18,9 @@ class RefundController extends Controller
     */
     public function refund_v1_8($id)
     {
-        return view('web.refund.refund-v1_8');
+        $org=BankeCourse::find($id)->org;
+        $content=$org['refund_content'];
+        return view('web.refund.refund-v1_8')->with(compact(['content']));;
     }
 
 

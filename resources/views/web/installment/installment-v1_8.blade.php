@@ -17,11 +17,9 @@
 </head>
 <body>
 <div id="wrapper">
-    {{--    @if($strategy['content'])--}}
     <div class="container">
-        <div class="info">{!! $strategy['content'] !!}</div>
+        <div class="info">{!! $content !!}</div>
     </div>
-    {{--@endif--}}
 </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
