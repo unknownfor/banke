@@ -12,11 +12,11 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link type="text/css" href="/front/assets/css/activity/v1.8/activity.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/freestudy/v1.8/freestudy.css" rel="stylesheet">
     <title>免费学页面</title>
 </head>
 <body>
-<div id="activity">
+<div id="freestudy">
     <div class="head">
         <div class="title">红色高棉为什么要屠杀本国人?</div>
     </div>
@@ -27,8 +27,12 @@
     <div class="download">
         <div class="down-btn">我要申请</div>
     </div>
-    <div class="mask">
-        <div class="close"></div>
+    <div class="sign-mask show">
+        <from class="sign-box">
+            <p class="title">申请成功</p>
+            <input class="phone" type="number" placeholder="输入手机号方便客服联系你">
+            <div class="quite"><span>马上领取</span></div>
+        </from>
     </div>
 </div>
 {{--@include('web.layout.downloadbar')--}}
@@ -36,4 +40,5 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/freestudy/freestudy-v1.8.js" type="text/javascript"></script>
 </html>
