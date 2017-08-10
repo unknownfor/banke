@@ -24,7 +24,29 @@ $(function() {
         }
     });
 
-    /*检测手机号码合法性*/
+    /*检测手机号码合法性
+     * 填写手机号
+     * 输入框变色，按钮变色*/
+    $(document).on('input', '#phone-num', function(){
+        //页面禁止滚动
+        window.scrollControl(false);
+        var number=$(this).val(),
+            reg = /^1(3|4|5|7|8)\d{9}$/;
+        var $btn=$('.btn');
+        if(number!=''){
+            if(reg.test(number)) {
+                $('.phone').addClass('active');
+                $btn.removeClass('nouse');
+                $btn.addClass('active');
+                window.scrollControl(true);
+            }else{
+                $('.phone').removeClass('active');
+                $btn.addClass('nouse');
+                $btn.removeClass('active');
+                // window.scrollControl(true);
+            }
+        }
+    });
 
 
     //调用客户端方法,显示拨打电话

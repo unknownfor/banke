@@ -22,7 +22,7 @@
         <div class="org-head">
             <img class="org-img" src="/front/assets/img/course/v1.8/logo.jpg" />
             <p class="org-name">武汉仁和会计设计培训</p>
-            <span class="org-price">课程单均价5000</span>ss
+            <span class="org-price">课程单均价5000</span>
             <div class="org-num">
                 <div class="num-box">
                     <div class="num">128397</div>
