@@ -4,20 +4,16 @@ namespace App\Models\Banke;
 use App\Models\ActionAttributeTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class BankeArticle extends Model
+class BankeGoodArticle extends Model
 {
-    // 活动
-    protected $table = 'banke_activity';
+    // 半课好文章
+    protected $table = 'banke_article';
     use ActionAttributeTrait;
     protected $fillable = [
         'title',
         'cover',
-        'content',
-        'url_type',
+        'intro',
         'url',
-        'cover_img',
-        'city',
-        'sort',
         'status',
         'created_at',
         'updated_at',
@@ -28,6 +24,6 @@ class BankeArticle extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.activity.action');
+        $this->action = config('admin.global.goodarticle.action');
     }
 }

@@ -162,6 +162,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //用户商店评论
         require(__DIR__ . '/Routes/CommentAppStoreRoute.php');
 
+        //半课好文章
+        require(__DIR__ . '/Routes/GoodArticleRoute.php');
+
     });
 });
 
