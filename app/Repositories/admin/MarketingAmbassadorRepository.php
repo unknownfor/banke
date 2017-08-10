@@ -129,7 +129,7 @@ class MarketingAmbassadorRepository
 	}
 
 	/**
-	 * 修改活动
+	 * 修改推广大使
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]
@@ -140,7 +140,7 @@ class MarketingAmbassadorRepository
 	{
 		$marktingAmbassador = BankeMarketingAmbassador::find($id);
 		if ($marktingAmbassador) {
-			if ($marktingAmbassador['status'] == config('admin.global.status.active')) {
+			if ($marktingAmbassador['certification_status'] == config('admin.global.status.active')) {
 				Flash::error(trans('alerts.common.already_active'));
 				return false;
 			}
@@ -149,7 +149,7 @@ class MarketingAmbassadorRepository
 					try {
 						$cur_user = Auth::user();
 						$marktingAmbassador->operator_id=$cur_user->id;
-						$marktingAmbassador->status=$status;
+						$marktingAmbassador->certification_status=$status;
 
 						//奖励邀请人。通过认证后，给推荐人奖励，并且将记录添加到 banke_daily_task_log 表中
 						if ($status == config('admin.global.status.active')) {

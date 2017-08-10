@@ -276,6 +276,7 @@ return [
         'MarketingAmbassadorRepository' => App\Facades\MarketingAmbassadorFacade::class,
         'DailyTaskLogRepository' => App\Facades\DailyTaskLogFacade::class,
         'InvitationSignUpRepository' => App\Facades\InvitationSignUpFacade::class,
+        'CommentAppStoreRepository' => App\Facades\CommentAppStoreFacade::class,
     ],
 
 ];

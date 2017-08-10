@@ -251,6 +251,10 @@ return [
 		'marketingambassadorCreate' => '<i class="fa fa-list"></i> 添加推广大使',
 		'marketingambassadorEdit' => '<i class="fa fa-list"></i> 编辑推广大使',
 
+		'commentappstoreList' => '<i class="fa fa-list"></i> 应用商店评论列表',
+		'commentappstoreCreate' => '<i class="fa fa-list"></i> 添加应用商店评论',
+		'commentappstoreEdit' => '<i class="fa fa-list"></i> 编辑应用商店评论',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -844,6 +848,17 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'list' => '推广大使列表'
+	],
+
+	'commentappstore' => [
+		'id' => '序号',
+		'uid' => '用户id',
+		'mobile'=>'手机号',
+		'certificatoin_status'=>'认证状态',
+		'comment_img' => '评论截图',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '应用商店评论列表'
 	],
 
 ];

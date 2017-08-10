@@ -266,8 +266,13 @@ return[
 	],
 
 	'marketingambassador' => [
-//		'edit' 		=> 'admin.marketingambassador.edit',
 		'certificate' 	=> 'admin.marketingambassador.certificate',
 		'destroy' 	=> 'admin.marketingambassador.delete',
 	],
+
+	'commentappstore' => [
+		'certificate' 	=> 'admin.commentappstore.certificate',
+		'destroy' 	=> 'admin.commentappstore.delete',
+	],
+
 ];
