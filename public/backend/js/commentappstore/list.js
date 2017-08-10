@@ -7,9 +7,9 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/marketingambassador/ajaxIndex',
+        'url' : '/admin/commentappstore/ajaxIndex',
         "data": function ( d ) {
-          d.status = $('.filter select[name="status"] option:selected').val();
+          d.certification_status = $('.filter select[name="certification_status"] option:selected').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -22,45 +22,33 @@ var TableDatatablesAjax = function() {
         	"name" : "id",
       	},
         {
-        	"data": "name",
-        	"name" : "name",
-        	"orderable" : false,
-        },
-        {
         	"data": "mobile",
         	"name": "mobile",
         	"orderable" : false,
+        },
+        {
+          "data": "comment_img",
+          "name": "comment_img",
+          "orderable" : false,
+          render:function(data){
+            return '<a class="fancybox" rel="group" href="' + data
+                + '"><img style="width: 32px; height: 60px;" src="' + data
+                + '" alt="点击查看大图"></a>';
+          }
         },
         { 
         	"data": "certification_status",
         	"name": "certification_status",
         	"orderable" : true,
-          render:function(data){
-            if (data == 1) {
-              return '<span class="label label-success"> 通过 </span>';
-            }else if(data == 0){
-              return '<span class="label label-warning"> 未审核 </span>';
-            }else{
-              return '<span class="label label-danger"> 拒绝 </span>';
+            render:function(data){
+              if (data == 1) {
+                return '<span class="label label-success"> 通过并奖励 </span>';
+              }else if(data == 0){
+                return '<span class="label label-warning"> 未审核 </span>';
+              }else{
+                return '<span class="label label-danger"> 拒绝 </span>';
+              }
             }
-          }
-        },
-        {
-          "data": "invitor_mobile",
-          "name": "invitor_mobile",
-          "orderable" : false,
-        },
-        {
-          "data": "award_amount",
-          "name" : "award_amount",
-          "orderable" : false,
-          "render":function(data,type,full) {
-            var str='';
-            if(full.status==1 && data>0){
-              str='邀请人得到 <span style="color:red">'+data+' </span>元奖励';
-            }
-            return str;
-          }
         },
         { 
         	"data": "created_at",
@@ -75,10 +63,11 @@ var TableDatatablesAjax = function() {
         },
     	],
       "drawCallback": function( settings ) {
+        $( ".fancybox").fancybox();
         ajax_datatable.$('.tooltips').tooltip( {
           placement : 'top',
           html : true
-        });  
+        });
       },
       "language": {
         url: '/admin/i18n'
@@ -102,9 +91,6 @@ var TableDatatablesAjax = function() {
       ajax_datatable.ajax.reload();
     });
 
-    $('.input-group.date').datepicker({
-      autoclose: true
-    });
     $(".bs-select").selectpicker({
       iconBase: "fa",
       tickIcon: "fa-check"

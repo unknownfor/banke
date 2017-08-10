@@ -224,5 +224,10 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('InvitationSignUpRepository', function($app){
             return new \App\Repositories\admin\InvitationSignUpRepository();
         });
+
+        //app store好评记录
+        $this->app->singleton('CommentAppStoreRepository', function($app){
+            return new \App\Repositories\admin\CommentAppStoreRepository();
+        });
     }
 }

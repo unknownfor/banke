@@ -299,4 +299,11 @@ return [
         'deleted_error' => '删除推广大使失败',
     ],
 
+    'commentappstore' => [
+        'updated_success'   => '审核评论成功.',
+        'updated_error'     => '审核评论失败.',
+        'deleted_success' => '删除评论成功',
+        'deleted_error' => '删除评论失败',
+    ],
+
 ];

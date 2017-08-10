@@ -12,22 +12,22 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    {{--<link type="text/css" href="/front/assets/css/activity/v1.8/activity.css" rel="stylesheet">--}}
+    <link type="text/css" href="/front/assets/css/activity/v1.8/activity.css" rel="stylesheet">
     <title>活动页面</title>
 </head>
 <body>
 <div id="activity">
-    {{--@if($strategy['title'])--}}
-    <div class="head">
-        <div class="title">{{$strategy['title']}}</div>
-        {{--@if($strategy['author'])--}}
-        <div class="author">by: {{$strategy['author']}}</div>
-        {{--@endif--}}
-    </div>
-    {{--@endif--}}
-    {{--    @if($strategy['content'])--}}
-    <div class="content">{!! $strategy['content'] !!}</div>
-    {{--@endif--}}
+    @if($activity['title'])
+        <div class="head">
+            <div class="title">{{$activity['title']}}</div>
+            @if($activity['author'])
+                <div class="author">by: {{$activity['author']}}</div>
+            @endif
+        </div>
+    @endif
+    @if($activity['content'])
+        <div class="content">{!! $activity['content'] !!}</div>
+    @endif
 </div>
 @include('web.layout.downloadbar')
 </body>

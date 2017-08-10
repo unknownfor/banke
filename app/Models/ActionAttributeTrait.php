@@ -7,7 +7,7 @@ trait ActionAttributeTrait{
 	protected $html_build;
 
 	protected $certificationIconArr=Array('order','recruiteteacher','drawback');
-	protected $certificateInListArr=Array('marketingambassador');
+	protected $certificateInListArr=Array('marketingambassador','commentappstore');
 
 	/**
 	 * 查看按钮
@@ -103,6 +103,8 @@ trait ActionAttributeTrait{
 		return $this;
 	}
 
+
+
 	/**
 	 * 修改用户密码
 	 * @return $this
@@ -121,9 +123,11 @@ trait ActionAttributeTrait{
 	 */
 	public function getCertificateActionButton()
 	{
-		if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
-			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
-				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.audit')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+		if($this->action=='app_user') {
+			if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
+					$this->html_build .= '<a href="' . url('admin/' . $this->action . '/' . $this->uid . '/certificate/' . config('admin.global.certification_status.audit')) . '" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+				}
 			}
 		}
 		return $this;
@@ -135,9 +139,11 @@ trait ActionAttributeTrait{
 	 */
 	public function getRefuseCertificateActionButton()
 	{
-		if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
-			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
-				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.trash')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
+		if($this->action=='app_user') {
+			if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
+					$this->html_build .= '<a href="' . url('admin/' . $this->action . '/' . $this->uid . '/certificate/' . config('admin.global.certification_status.trash')) . '" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
+				}
 			}
 		}
 		return $this;
@@ -214,7 +220,10 @@ trait ActionAttributeTrait{
 	public function getCertificateInListButton()
 	{
 		if(in_array($this->action,$this->certificateInListArr)){
-			if (($this->status == config('admin.global.'.$this->action.'.audit'))) {
+			if($this->id==36){
+				$aa='';
+			}
+			if ($this->certification_status == config('admin.global.status.audit')) {
 				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
 					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/certificate/'.config('admin.global.status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
 				}
@@ -230,7 +239,7 @@ trait ActionAttributeTrait{
 	public function getRefuseCertificateInListButton()
 	{
 		if(in_array($this->action,$this->certificateInListArr)){
-			if (($this->status == config('admin.global.'.$this->action.'.audit'))) {
+			if ($this->certification_status == config('admin.global.status.audit')) {
 				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
 					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/certificate/'.config('admin.global.status.ban')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
 				}

@@ -17,17 +17,17 @@
 </head>
 <body>
 <div id="activity">
-    {{--@if($strategy['title'])--}}
+    @if($activity['title'])
         <div class="head">
-            <div class="title">{{$strategy['title']}}</div>
-            {{--@if($strategy['author'])--}}
-                <div class="author">by: {{$strategy['author']}}</div>
-            {{--@endif--}}
+            <div class="title">{{$activity['title']}}</div>
+            @if($activity['author'])
+                <div class="author">by: {{$activity['author']}}</div>
+            @endif
         </div>
-    {{--@endif--}}
-{{--    @if($strategy['content'])--}}
-        <div class="content">{!! $strategy['content'] !!}</div>
-    {{--@endif--}}
+    @endif
+    @if($activity['content'])
+        <div class="content">{!! $activity['content'] !!}</div>
+    @endif
 </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>

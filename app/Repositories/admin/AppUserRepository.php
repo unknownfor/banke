@@ -657,6 +657,7 @@ class AppUserRepository
 				['key'=>'SHARE_GROUP_BUYING','desc' => '开团分享'],
 				['key'=>'SHARE_SUCCESS','desc' => '分享奖励'],
 				['key'=>'INVITE_FRIEND_BECOME_MARKETING_AMBASSADOR','desc' => '邀请好友成为推广大使奖励'],
+				['key'=>'COMMENT_APP_STORE','desc' => '应用市场好评奖励'],
 			],
 		 *
 	 */
@@ -697,6 +698,10 @@ class AppUserRepository
 				case 7:  //邀请好友成为推广大使
 					$user_profile->get_do_task_amount += $award;
 					$businessTypeIndex=14;
+					break;
+				case 8:  //app store好评
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=15;
 					break;
 				default:
 					break;

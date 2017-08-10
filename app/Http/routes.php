@@ -159,6 +159,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //推广大使
         require(__DIR__ . '/Routes/MarketingAmbassadorRoute.php');
 
+        //用户商店评论
+        require(__DIR__ . '/Routes/CommentAppStoreRoute.php');
+
     });
 });
 
