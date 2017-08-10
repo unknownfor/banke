@@ -137,7 +137,7 @@ class CommentAppStoreRepository
 		//奖励信息添加添加到message表中
 		$message = [
 			'uid' => $uid,
-			'title' => '您的好友成功认证为推广大使',
+			'title' => '半课好评奖励',
 			'content' => '感谢您对半课的好评,平台奖励您' . $award . '元现金，快去现金钱包里查看吧！',
 			'type' => config('admin.global.balance_log')[15]['key']
 		];
