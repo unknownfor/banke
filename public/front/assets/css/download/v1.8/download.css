@@ -185,56 +185,91 @@ input {
     -webkit-transform: rotate(360deg);
   }
 }
+html {
+  height: 100%;
+}
 body {
   margin: 0 auto;
   padding: 0;
+  background-color: #fff;
   height: 100%;
   max-width: 700px;
   overflow-x: hidden;
   word-wrap: break-word;
-  position: relative;
-}
-img {
-  max-width: 100%;
-}
-#activity {
-  margin: 15px;
   font-size: 14px;
-  line-height: 22px;
   position: relative;
 }
-#activity .head {
-  text-align: left;
-  border-bottom: 1px solid #D8D8D8;
+#wrapper {
+  background-color: #fff;
+  height: 100%;
 }
-#activity .head .title {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-  font-size: 15px;
-  font-weight: bold;
-  color: #383D43;
-  padding-bottom: 10px;
-}
-#activity .head .author {
-  color: #999999;
-  margin: 15px 0;
-}
-#activity .content {
-  margin: 15px 0 35px 0;
-}
-#activity .content > img {
+#wrapper img {
   max-width: 100%;
+  border: none;
 }
-#activity .download {
-  position: fixed;
+#wrapper .container {
+  opacity: 0;
+  -webkit-animation: slideToTop .8s 0.2s ease both;
+  position: relative;
+  background-color: #ffffff;
+  height: 100%;
+  overflow-x: hidden;
+  text-align: center;
+}
+#wrapper .container .bg {
+  max-height: 220px;
+  margin-bottom: 10px;
+}
+#wrapper .container .bg.second {
+  margin-top: 80px;
+}
+#wrapper .container .txt {
+  letter-spacing: 1px;
+}
+#wrapper .container .txt.txt-one {
+  margin: 25px 0 10px 0;
+  font-size: 14px;
+}
+#wrapper .container .txt.txt-two {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 5px;
+}
+#wrapper .container .txt.txt-two > span {
+  color: #FA4535;
+}
+#wrapper .container .btn {
+  margin: 0 20px;
+  position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
+  bottom: 45px;
+  font-size: 14px;
+  width: auto;
+  height: 45px;
+  line-height: 45px;
+  color: #ffffff;
+  border-radius: 10px;
+  background-color: rgba(250, 192, 46, 0.5);
+  border: none;
+}
+#wrapper .container .btn > a {
+  color: #fff;
+}
+#wrapper .container .btn.active {
+  background-color: #FAC02E;
+}
+#wrapper .container.hide {
+  display: none;
+}
+@-webkit-keyframes slideToTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
 }
