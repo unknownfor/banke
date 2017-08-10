@@ -69,7 +69,7 @@ class GoodArticleController extends Controller {
             'title'=>$stragegy['title'],
             'cover'=>$stragegy['cover_img'],
             'intro'=>$stragegy['content'],
-            'url'=>'http://'.$_SERVER['HTTP_HOST'].'/v1.7/web/monystrategy/'.$stragegy_id,
+            'url'=>'http://'.$_SERVER['HTTP_HOST'].'/v1.7/web/moneystrategy/'.$stragegy_id,
         ];
         GoodArticleRepository::store($input);
         return redirect('admin/goodarticle');
