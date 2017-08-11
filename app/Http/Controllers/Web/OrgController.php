@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeCourse;
+use App\Models\Banke\BankeOrgSummary;
 use App\Repositories\admin\OrgRepository;
 use App\Repositories\admin\OrgApplyForRepository;
-use App\Repositories\admin\OrgSummaryRepository;
+use OrgSummaryRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -51,7 +52,7 @@ class OrgController extends Controller
      */
     public function org_v1_8($id)
     {
-        $org = BankeOrg::find($id);
+        $org = BankeOrgSummary::find($id);
         return view('web.org.org-v1_8')->with(compact(['org']));
     }
 
@@ -61,8 +62,9 @@ class OrgController extends Controller
      */
     public function share_org_v1_8($id)
     {
-        $org = BankeOrg::find($id);
-        return view('web.org.share_org-v1_8')->with(compact(['org']));
+        $org = BankeOrgSummary::find($id);
+        $course=OrgSummaryRepository::getCourse($id,3);
+        return view('web.org.share_org-v1_8')->with(compact(['org','course']));
     }
 
     /**评论分享页面**/

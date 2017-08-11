@@ -295,4 +295,40 @@ class OrgSummaryRepository
 	{
 		return BankeOrgSummary::where('status',1)->get(['id','name']);
 	}
+
+	/**
+	 * 得到部分课程
+	 * @author jimmy
+	 * @date   2017-02-23T11:51:19+0800
+	 * @param  [type]                   $id [description]
+	 * @return [type]                       [description]
+	 */
+	public static function getCourse($id,$num=3)
+	{
+
+		$course_arr=[];
+		$n=0;
+		$orgs=BankeOrgSummary::find($id)->org;
+		if ($orgs->count()>0) {
+			foreach ($orgs as &$v) {
+				if($v['status']==1) {
+					$courses = $v->course;
+					if ($courses->count() > 0) {
+						foreach ($courses as &$c) {
+							if ($c['status'] == 1) {
+								$n++;
+								array_push($course_arr, $c);
+								if($n==$num){
+									return $course_arr;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return $course_arr;
+
+		return BankeOrgSummary::where('status',1)->get(['id','name']);
+	}
 }
