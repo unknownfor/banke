@@ -31,8 +31,14 @@
         <from class="sign-box">
             <p class="title">申请成功</p>
             <input class="phone" type="number" placeholder="输入手机号方便客服联系你">
-            <div class="quite"><div id="btn">马上领取</div></div>
+            <div class="quite"><div id="jump-btn">马上领取</div></div>
         </from>
+    </div>
+    <div class="container hide">
+        <img class="bg second" src="/front/assets/img/freestudy/v1.8/bg.png"/>
+        <div class="txt txt-one">下载半课</div>
+        <div class="txt txt-two">获得更多免费学资格</div>
+        <div class="btn active"><a href="http://www.91banke.com/web/download">下载半课</a></div>
     </div>
 </div>
 {{--@include('web.layout.downloadbar')--}}
