@@ -80,7 +80,7 @@
         <div class="address-head">
             <div class="head-left">
                 <span class="underline">最近校</span>区：
-                <span>中南校区</span>
+                <span class="school-add">{{$sub_org['name']}}</span>
             </div>
             <div class="head-right">
                 <span>全部校区</span>
@@ -89,14 +89,13 @@
         </div>
         <div class="address-bottom">
             <div class="address-left"></div>
-            <div class="address-middle">湖北省武汉市洪山区雄楚大道666号中南财经政法大学武汉学院</div>
+            <div class="address-middle">{{$sub_org['address']}}</div>
             <div class="address-right">
                 <div class="call-img"></div>
             </div>
         </div>
     </div>
 
-    
     <div class="introduction container">
         <ul class="org-album">
             @if($org->album)
@@ -208,11 +207,11 @@
 
     <div class="call-mask hide">
         <div class="call-container">
-            @if($org['tel_phone'])
-                <div class="call-box"><a class="" href="tel:{{$org['tel_phone']}}">{{$org['tel_phone']}}</a></div>
+            @if($sub_org['tel_phone'])
+                <div class="call-box"><a class="" href="tel:{{$sub_org['tel_phone']}}">{{$sub_org['tel_phone']}}</a></div>
             @endif
-            @if($org['tel_phone2'])
-                <div class="call-box"><a class="" href="tel:{{$org['tel_phone2']}}">{{$org['tel_phone2']}}</a></div>
+            @if($sub_org['tel_phone'])
+                <div class="call-box"><a class="" href="tel:{{$sub_org['tel_phone2']}}">{{$sub_org['tel_phone']}}</a></div>
             @endif
             <p class="quite">取消</p>
         </div>

@@ -169,8 +169,17 @@ ul {
         display: flex;
         padding-bottom: 10px;
         .head-left {
-          flex: 1;
+          flex: 2;
+          height: 22px;
+          display: flex;
           text-align: left;
+          .underline {
+            flex: 0 0 42px;
+          }
+          .school-add {
+            flex: 1;
+            .txt-ellipsis-p(1);
+          }
         }
         .head-right {
           flex:1;
@@ -375,7 +384,7 @@ ul {
               font-size: 11px;
               color: #fff;
               background-color: #ffd842;
-              padding: 1px;
+              padding: 2px 3px;
               border-radius: 4px;
             }
           }
