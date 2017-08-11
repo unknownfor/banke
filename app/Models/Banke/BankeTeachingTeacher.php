@@ -39,6 +39,6 @@ class BankeTeachingTeacher extends Model
     }
     public function orgSummary()
     {
-        return $this->hasOne('App\Models\Banke\BankeSummaryOrg','id','org_id');
+        return $this->hasOne('App\Models\Banke\BankeSummaryOrg','id','org_id')->select('id','name');
     }
 }

@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-use App\Models\Banke\BankeCourse;
-use App\Models\Banke\BankeUserProfiles;
-use OrgRepository;
-use OrgApplyForRepository;
+use App\Models\Banke\BankeTeachingTeacher;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -22,7 +19,8 @@ class TeachingTeacherController extends Controller
     */
     public function teachingteacher_v1_8($id)
     {
-        return view('web.teachingteacher.teachingteacher-v1_8');
+        $teacher=BankeTeachingTeacher::find($id);
+        return view('web.teachingteacher.teachingteacher-v1_8')->with(compact(['teacher']));
     }
 
 }

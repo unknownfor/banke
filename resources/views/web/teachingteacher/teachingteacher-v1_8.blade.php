@@ -19,21 +19,36 @@
     <div id="wrapper">
         <div class="teacher container">
             <div class="head">
-                <img class="logo" src="/front/assets/img/course/v1.8/banner.jpeg" />
-                <div class="name">建明·蒋蒋</div>
-                <div class="tips"><span>金牌讲师</span></div>
-                <div class="org">武汉仁和会计培训有限公司</div>
+                <img class="logo" src="{{$teacher['avatar']}}" />
+                <div class="name">{{$teacher['name']}}</div>
+                <div class="tips">
+                    @if($teacher['tags'])
+                        <?php
+                            $tags=explode(',',$teacher['tags']);
+                        ?>
+                        @foreach($tags as $v)
+                            <span>{{$v}}</span>
+                        @endforeach
+                    @endif
+                </div>
+                <div class="org">{{$teacher->org['name']}}</div>
             </div>
             <div class="detail">
                 <div class="title">擅长课程：</div>
-                <div class="info"><span class="course">注册会计</span><span class="course">审计会计</span></div>
+                <div class="info">
+                    @if($teacher['goodat_course'])
+                        <?php
+                            $goodat_course=explode(',',$teacher['goodat_course']);
+                        ?>
+                        @foreach($tags as $v)
+                            <span class="course">{{$v}}</span>
+                        @endforeach
+                    @endif
+                </div>
             </div>
             <div class="detail">
                 <div class="title">个人简介：</div>
-                <div class="info">我很佩服高晓松的一点，是他已经有极为广泛的受众，依然容许自己的脱口卑，
-                    人要大胆的允许自己被误读、被曲解，被认为是SB或者就承认自己就是个SB，可我做不到，后来常常发现，现实里几句话就能说明白的事情，
-                    我放到微博上不会说了，字里行间要加一堆语境与前提，总觉得这能被人挑刺、那会被人误解、这里不严谨、那里还能再检查下，
-                    总是在语言的旮旯角、残渣上用力，太损伤一个人文字的生命力了，我就是这样，我太伤心了。</div>
+                <div class="info">{!! $teacher['intro'] !!}</div>
             </div>
         </div>
         <div class="course container">
