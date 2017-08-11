@@ -308,9 +308,17 @@ return [
 
     'goodarticle' => [
         'created_success'   => '创建半课好文成功.',
-        'created_error'     => '创建半课好失败.',
-        'deleted_success' => '删除半课好成功',
-        'deleted_error' => '删除半课好失败',
+        'created_error'     => '创建半课好文失败.',
+        'deleted_success' => '删除半课好文成功',
+        'deleted_error' => '删除半课好文失败',
+    ],
+    'freestudy' => [
+        'created_success'   => '创建免费学成功.',
+        'created_error'     => '创建免费学失败.',
+        'updated_success'   => '编辑免费学成功.',
+        'updated_error'     => '编辑免费学失败.',
+        'deleted_success' => '删除免费学成功',
+        'deleted_error' => '删除免费学失败',
     ],
 
 ];

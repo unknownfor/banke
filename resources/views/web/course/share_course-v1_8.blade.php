@@ -18,7 +18,7 @@
 </head>
 <body>
 <div id="course">
-    <img class="head-img" src="/front/assets/img/course/v1.8/banner.jpeg" />
+    <img class="head-img" src="{{$course['cover']}}" />
     <div class="head container">
         <div class="head-info">
             <div class="course-name">{{$course['name']}}</div>

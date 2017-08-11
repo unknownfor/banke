@@ -278,6 +278,7 @@ return [
         'InvitationSignUpRepository' => App\Facades\InvitationSignUpFacade::class,
         'CommentAppStoreRepository' => App\Facades\CommentAppStoreFacade::class,
         'GoodArticleRepository' => App\Facades\GoodArticleFacade::class,
+        'FreeStudyRepository' => App\Facades\FreeStudyFacade::class,
     ],
 
 ];

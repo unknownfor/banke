@@ -258,6 +258,10 @@ return [
 		'goodarticleList' => '<i class="fa fa-list"></i> 半课好文列表',
 		'goodarticleCreate' => '<i class="fa fa-list"></i> 添加半课好文',
 
+		'freestudyList' => '<i class="fa fa-list"></i> 免费学列表',
+		'freestudyEdit' => '<i class="fa fa-list"></i> 编辑免费学',
+		'freestudyCreate' => '<i class="fa fa-list"></i> 添加免费学',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -875,6 +879,22 @@ return [
 		'updated_at' => '修改时间',
 		'list' => '半课好文列表',
 		'strategy_id'=>'攻略id'
+	],
+
+	'freestudy' => [
+		'id' => '序号',
+		'title' => '标题',
+		'shot_content'=>'描述',
+		'content'=>'内容',
+		'img_url' => '图片地址',
+		'type' => '链接',
+		'url' => '链接地址',
+		'sort' => '排序',
+		'status' => '状态',
+		'fake_signup_count' => '报名人数',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '费用学列表',
 	],
 
 ];

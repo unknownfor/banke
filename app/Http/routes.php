@@ -165,6 +165,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //半课好文章
         require(__DIR__ . '/Routes/GoodArticleRoute.php');
 
+        //免费学
+        require(__DIR__ . '/Routes/FreeStudyRoute.php');
+
     });
 });
 
