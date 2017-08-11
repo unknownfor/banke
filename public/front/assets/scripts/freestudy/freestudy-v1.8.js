@@ -3,12 +3,15 @@
  */
 $(function() {
 
+    window.addLoadingImg();
+    window.addTip();
+
     var href = window.location.href;
     var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
 
 
     /*
-    * 点击关闭分期说明弹窗*/
+    * 点击关闭弹窗*/
     $(document).on( window.eventName,'#jump-btn', function() {
         $('.sign-mask').addClass('hide').removeClass('show');
     });
@@ -17,8 +20,7 @@ $(function() {
     /*我要申请-判断来源是否是分享页*/
     $(document).on( window.eventName,'.down-btn', function() {
         if (!notFromApp) {
-            //调用客户端拨打电话方法
-            // showCallNumber();
+            return;
         }else {
             $('.sign-mask').removeClass('hide').addClass('show');
         }
@@ -45,7 +47,7 @@ $(function() {
     });
 
     $(document).on(window.eventName,'#jump-btn.active', function () {
-        // window.controlLoadingBox(true);
+        window.controlLoadingBox(true);
         // var url='/v1.3/share/doenrol',
         //     uid=$('.user').attr('data-uid'),
         //     cid=$('.user').attr('data-course-id'),
@@ -77,36 +79,13 @@ $(function() {
     });
 
 
-    //调用客户端方法,显示拨打电话
-    // function showCallNumber(){
-    //     if (window.deviceType.mobile) {
-    //         if (this.deviceType.android) {
-    //             //如果方法存在
-    //             if (typeof AppFunction != "undefined"&&  typeof AppFunction.callServicePhone !='undefined') {
-    //                 AppFunction.callServicePhone(); //调用app的方法，得到用户的基体信息
-    //             }
-    //         }
-    //         else {
-    //             //如果方法存在
-    //             if (typeof callServicePhone != "undefined") {
-    //                 callServicePhone();//调用app的方法，得到电话
-    //             }
-    //         }
-    //     }
-    // };
-
-
     //跳转申请成功页面
     function showSuccessPage() {
-        $('sign-mask').addClass('hide');
-        $('container').removeClass('hide');
+        $('.sign-mask').addClass('hide').removeClass('show');
+        $('.head').addClass('hide');
+        $('.content').addClass('hide');
+        $('.download').addClass('hide');
+        $('.container').removeClass('hide');
     }
-
-    //点击关闭拨打电话弹窗
-    $(document).on( window.eventName,'#jump-btn', function() {
-        var $target=$('.sign-mask');
-        $target.removeClass('show').addClass('hide');
-    });
-
 
 });
