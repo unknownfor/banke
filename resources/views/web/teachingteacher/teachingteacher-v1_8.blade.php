@@ -50,135 +50,22 @@
                 <div class="title">个人简介：</div>
                 <div class="info">{!! $teacher['intro'] !!}</div>
             </div>
-            <div>
-                @if($teacher['album'])
-                    <?php
-                    $imgs=explode(',',$teacher['album']);
-                    ?>
-                    @foreach($imgs as $v)
-                        <span>{{$v}}</span>
-                    @endforeach
-                @endif
-            </div>
         </div>
-        <div class="course container">
-            <div class="main-title">相关课程推荐</div>
 
-            <div class="course-box">
-                <div class="course-head">
-                    <div class="course-left">
-                        <img src="/front/assets/img/course/v1.8/head.jpg" />
-                    </div>
-                    <div class="course-middle">
-                        <div class="name">会计从业资格证会计从业资格证</div>
-                        <div class="org">武汉仁和武汉仁和</div>
-                    </div>
-                    <div class="course-right">
-                        <div class="price">￥80000</div>
-                        <div class="old-price">￥182733</div>
-                    </div>
-                </div>
-                <div class="course-appoint">
-                    <div class="appoint-left">
-                        <span class="appoint underline">学习周</span>期：
-                    </div>
-                    <div class="appoint-right">
-                        <div class="appoint-tips">
-                            <span class="appoint">5个月</span>
-                            <span class="appoint first">预约数:0</span>
-                        </div>
-                        <div class="appoint-tips">
-                            <span class="appoint">6天</span>
-                            <span class="appoint first">预约数:23</span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="head-link">
-                    <div class="link-info">
-                        <div class="link-left">
-                            <div class="link-img" id="back-img"></div>
-                            <span class="link-name">半课返现</span>
-                        </div>
-                        <hr style="color:#d8d8d8"/>
-                        <div class="link-middle">报名成功后最高返现50%</div>
-                    </div>
-                    <div class="link-info">
-                        <div class="link-left">
-                            <div class="link-img" id="support-img"></div>
-                            <span class="link-name">半课分期</span>
-                        </div>
-                        <hr style="color:#d8d8d8"/>
-                        <div class="link-middle">首付200预约金，尾款分期付：<span>￥600*12期</span></div>
-                    </div>
-                    <div class="link-info">
-                        <div class="link-left">
-                            <div class="link-img" id="refund-img"></div>
-                            <span class="link-name">支持7天退</span>
-                        </div>
-                        <hr style="color:#d8d8d8"/>
-                        <div class="link-middle">报名7天内，学习不满意可以申请退款</div>
-                    </div>
-                </div>
-            </div>
-            <div class="course-box">
-                <div class="course-head">
-                    <div class="course-left">
-                        <img src="/front/assets/img/course/v1.8/head.jpg" />
-                    </div>
-                    <div class="course-middle">
-                        <div class="name">会计从业资格证会计从业资格证</div>
-                        <div class="org">武汉仁和武汉仁和</div>
-                    </div>
-                    <div class="course-right">
-                        <div class="price">￥80000</div>
-                        <div class="old-price">￥182733</div>
-                    </div>
-                </div>
-                <div class="course-appoint">
-                    <div class="appoint-left">
-                        <span class="appoint underline">学习周</span>期：
-                    </div>
-                    <div class="appoint-right">
-                        <div class="appoint-tips">
-                            <span class="appoint">5个月</span>
-                            <span class="appoint first">预约数:0</span>
-                        </div>
-                        <div class="appoint-tips">
-                            <span class="appoint">6天</span>
-                            <span class="appoint first">预约数:23</span>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="head-link">
-                    <div class="link-info">
-                        <div class="link-left">
-                            <div class="link-img" id="back-img"></div>
-                            <span class="link-name">半课返现</span>
-                        </div>
-                        <hr style="color:#d8d8d8"/>
-                        <div class="link-middle">报名成功后最高返现50%</div>
-                    </div>
-                    <div class="link-info">
-                        <div class="link-left">
-                            <div class="link-img" id="support-img"></div>
-                            <span class="link-name">半课分期</span>
-                        </div>
-                        <hr style="color:#d8d8d8"/>
-                        <div class="link-middle">首付200预约金，尾款分期付：<span>￥600*12期</span></div>
-                    </div>
-                    <div class="link-info">
-                        <div class="link-left">
-                            <div class="link-img" id="refund-img"></div>
-                            <span class="link-name">支持7天退</span>
-                        </div>
-                        <hr style="color:#d8d8d8"/>
-                        <div class="link-middle">报名7天内，学习不满意可以申请退款</div>
-                    </div>
-                </div>
-            </div>
+        
+        @if($teacher['album'])
+        <div class="album container">
+            <div class="main-title">老师相册</div>
+            <ul class="album-ul">
+                <?php
+                $imgs=explode(',',$teacher['album']);
+                ?>
+                @foreach($imgs as $v)
+                        <li class="album-li"><img src="{{$v}}" /></li>
+                @endforeach
+            </ul>
         </div>
+        @endif
     </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
