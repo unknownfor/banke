@@ -50,9 +50,20 @@
                 <div class="title">个人简介：</div>
                 <div class="info">{!! $teacher['intro'] !!}</div>
             </div>
+            <div>
+                @if($teacher['album'])
+                    <?php
+                    $imgs=explode(',',$teacher['album']);
+                    ?>
+                    @foreach($imgs as $v)
+                        <span>{{$v}}</span>
+                    @endforeach
+                @endif
+            </div>
         </div>
         <div class="course container">
             <div class="main-title">相关课程推荐</div>
+
             <div class="course-box">
                 <div class="course-head">
                     <div class="course-left">
