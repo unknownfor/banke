@@ -41,6 +41,7 @@
             </div>
         </div>
         <div class="head-tips">
+            <div>总分：{{$org['grade_total']}}</div>
             <div class="org-stars">
                 <i class="star colored iconfont">&#xe70e;</i>
                 <i class="star colored iconfont">&#xe70e;</i>
