@@ -75,25 +75,34 @@ img {
       border-radius: @r;
       width: @w;
       .title {
+        padding: 10px 0;
         line-height: @h;
         color: #000;
         .size(@w,@h);
       }
       .phone {
+        width: 80%;
         height: @h - 10px;
         font-size: 12px;
         border: 1px solid #f6d259;
-        color: #c7c7c7;
         padding-left: 5px;
         border-radius: 4px;
       }
       .quite {
+        padding: 10px 0;
         height: @h;
-        line-height: @h;
-        padding: 0;
-        margin: 0;
         font-size: 12px;
         color: #5A5A5A;
+        text-align: center;
+        #btn {
+          border-radius: 4px;
+          line-height: 30px;
+          color: #fff;
+          margin-top: 10px;
+          display: inline-block;
+          .size(85px,30px);
+          background-color: #f6d259;
+        }
       }
     }
     &.show{

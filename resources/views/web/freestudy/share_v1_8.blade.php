@@ -27,11 +27,11 @@
     <div class="download">
         <div class="down-btn">我要申请</div>
     </div>
-    <div class="sign-mask show">
+    <div class="sign-mask hide">
         <from class="sign-box">
             <p class="title">申请成功</p>
             <input class="phone" type="number" placeholder="输入手机号方便客服联系你">
-            <div class="quite"><span>马上领取</span></div>
+            <div class="quite"><div id="btn">马上领取</div></div>
         </from>
     </div>
 </div>

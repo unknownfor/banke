@@ -9,60 +9,72 @@ $(function() {
 
     /*
     * 点击关闭分期说明弹窗*/
-    $(document).on( window.eventName,'.close-btn', function() {
-        $('.installment').addClass('hide').removeClass('show');
+    $(document).on( window.eventName,'#btn', function() {
+        $('.sign-mask').addClass('hide').removeClass('show');
     });
 
 
-    /*电话咨询-判断来源是否是分享页*/
-    $(document).on( window.eventName,'#phone', function() {
+    /*我要申请-判断来源是否是分享页*/
+    $(document).on( window.eventName,'.down-btn', function() {
         if (!notFromApp) {
             //调用客户端拨打电话方法
-            showCallNumber();
+            // showCallNumber();
         }else {
-            $('.call-mask').removeClass('hide').addClass('show');
+            $('.sign-mask').removeClass('hide').addClass('show');
+        }
+    });
+
+    /*检测手机号码合法性
+     * 填写手机号
+     * 输入框变色，按钮变色*/
+    $(document).on('input', '#phone-num', function(){
+        //页面禁止滚动
+        window.scrollControl(false);
+        var number=$(this).val(),
+            reg = /^1(3|4|5|7|8)\d{9}$/;
+        var $btn=$('.btn');
+        if(number!=''){
+            if(reg.test(number)) {
+                $('.phone').addClass('active');
+                $btn.removeClass('nouse');
+                $btn.addClass('active');
+                window.scrollControl(true);
+            }else{
+                $('.phone').removeClass('active');
+                $btn.addClass('nouse');
+                $btn.removeClass('active');
+                // window.scrollControl(true);
+            }
         }
     });
 
 
     //调用客户端方法,显示拨打电话
-    function showCallNumber(){
-        if (window.deviceType.mobile) {
-            if (this.deviceType.android) {
-                //如果方法存在
-                if (typeof AppFunction != "undefined"&&  typeof AppFunction.callServicePhone !='undefined') {
-                    AppFunction.callServicePhone(); //调用app的方法，得到用户的基体信息
-                }
-            }
-            else {
-                //如果方法存在
-                if (typeof callServicePhone != "undefined") {
-                    callServicePhone();//调用app的方法，得到电话
-                }
-            }
-        }
-    };
+    // function showCallNumber(){
+    //     if (window.deviceType.mobile) {
+    //         if (this.deviceType.android) {
+    //             //如果方法存在
+    //             if (typeof AppFunction != "undefined"&&  typeof AppFunction.callServicePhone !='undefined') {
+    //                 AppFunction.callServicePhone(); //调用app的方法，得到用户的基体信息
+    //             }
+    //         }
+    //         else {
+    //             //如果方法存在
+    //             if (typeof callServicePhone != "undefined") {
+    //                 callServicePhone();//调用app的方法，得到电话
+    //             }
+    //         }
+    //     }
+    // };
 
 
-    $(document).on(window.eventName,function(e){
-        toHideMask(e);
-    });
 
     //点击关闭拨打电话弹窗
     $(document).on( window.eventName,'.quite', function() {
-        var $target=$('.call-mask');
+        var $target=$('.sign-mask');
         $target.removeClass('show').addClass('hide');
     });
 
-    function toHideMask(e){
-        var $target=$(e.srcElement);
-        if($target.hasClass('box') ||
-            $target.hasClass('call-box') ||
-            $target.closest('.call-box').length>0)
-        {
-            return;
-        }
-    };
 
 
 
