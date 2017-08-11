@@ -462,7 +462,7 @@ class OrderRepository
 				' 报名时间： ' .$order->pay_tuition_time.'。'.
 				' 学费：' .$order->tuition_amount.'元。'.
 				' 平台奖励：' .$cash_back_percent.'%，待返金额为 ' .($order->check_in_amount + $order->do_task_amount) .'元，'.
-				' 每次上课打卡和做任务即可领取。',
+				' 每次上课签到和做任务即可领取。',
 			'type'=>'USER_ENROL_SUCCESS'
 		];
 		//记录消息
