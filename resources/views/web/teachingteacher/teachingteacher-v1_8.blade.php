@@ -12,6 +12,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
+    <link href="/front/assets/css/photoswipeunion.min.css" rel="stylesheet" type="text/css">
     <link type="text/css" href="/front/assets/css/teachingteacher/v1.8/teacher.css" rel="stylesheet">
     <title>{{$teacher['name']}}</title>
 </head>
@@ -71,5 +72,11 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-{{--<script src="/front/assets/scripts/teachingteacher/teacher-v1.8.js" type="text/javascript"></script>--}}
+<script src="/front/assets/plugins/photoswipe/myphotoswipe.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/photoswipe/photoswipe.min.js" type="text/javascript"></script>
+<script>
+    new MyPhotoSwipe('.album-ul',{
+        bgFilter:true,
+    });
+</script>
 </html>
