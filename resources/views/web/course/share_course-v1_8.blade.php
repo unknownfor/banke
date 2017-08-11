@@ -182,8 +182,8 @@
     </div>
 
 
+    @if($comments)
     <div class="evaluate-info container hide">
-        @if($comments)
             @foreach($comments as $v)
                 <div class="evaluate-box" data-uid="{{$v['uid']}}">
                     <div class="evaluate-img">
@@ -204,8 +204,8 @@
                     </div>
                 </div>
             @endforeach
-        @endif
     </div>
+    @endif
 
 
     <div class="call-mask hide">

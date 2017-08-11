@@ -13,7 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/teachingteacher/v1.8/teacher.css" rel="stylesheet">
-    <title>teachingteacher1.8</title>
+    <title>{{$teacher['name']}}</title>
 </head>
 <body>
     <div id="wrapper">
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        
+
         @if($teacher['album'])
         <div class="album container">
             <div class="main-title">老师相册</div>
