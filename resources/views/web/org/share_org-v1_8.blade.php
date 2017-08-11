@@ -76,25 +76,26 @@
             </div>
         </div>
     </div>
-    {{--<div class="address container">--}}
-        {{--<div class="address-head">--}}
-            {{--<div class="head-left">--}}
-                {{--<span class="underline">最近校</span>区：--}}
-                {{--<span>中南校区</span>--}}
-            {{--</div>--}}
-            {{--<div class="head-right">--}}
-                {{--<span>全部校区</span>--}}
-                {{--<i class="iconfont" id="more-school">&#xe600;</i>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-        {{--<div class="address-bottom">--}}
-            {{--<div class="address-left"></div>--}}
-            {{--<div class="address-middle">湖北省武汉市洪山区雄楚大道666号中南财经政法大学武汉学院</div>--}}
-            {{--<div class="address-right">--}}
-                {{--<div class="call-img"></div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
+    <div class="address container">
+        <div class="address-head">
+            <div class="head-left">
+                <span class="underline">最近校</span>区：
+                <span>{{$sub_org['name']}}</span>
+            </div>
+            <div class="head-right">
+                <span>全部校区</span>
+                <i class="iconfont" id="more-school">&#xe600;</i>
+            </div>
+        </div>
+        <div class="address-bottom">
+            <div class="address-left"></div>
+            <div class="address-middle">{{$sub_org['address']}}</div>
+            <div class="address-right">
+                <span>tel:{{$sub_org['tel_phone']}}</span>
+                <div class="call-img"></div>
+            </div>
+        </div>
+    </div>
     <div class="introduction container">
         <ul class="org-album">
             @if($org->album)
