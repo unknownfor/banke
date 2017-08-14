@@ -75,7 +75,7 @@
 <script src="/front/assets/plugins/photoswipe/myphotoswipe.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/photoswipe/photoswipe.min.js" type="text/javascript"></script>
 <script>
-    new MyPhotoSwipe('.album-ul',{
+    new MyPhotoSwipe('.album',{
         bgFilter:true,
     });
 </script>

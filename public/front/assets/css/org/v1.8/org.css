@@ -507,6 +507,8 @@ ul {
   -webkit-flex: 0 0 66px;
   -ms-flex: 0 0 66px;
   flex: 0 0 66px;
+  display: inline-block;
+  position: relative;
 }
 #org .container.introduction .org-album .album-li > img {
   display: inline-block;
@@ -516,7 +518,7 @@ ul {
 #org .container.introduction .intro {
   text-align: left;
   line-height: 22px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 #org .container.course {
   padding-bottom: 0;
