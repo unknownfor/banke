@@ -30,7 +30,7 @@
     <div class="sign-mask hide">
         <from class="sign-box">
             <p class="title">申请成功</p>
-            <input class="phone" type="number" placeholder="输入手机号方便客服联系你" value="135541543255">
+            <input class="phone" type="number" placeholder="输入手机号方便客服联系你">
             <div class="quite"><div id="jump-btn">马上领取</div></div>
         </from>
     </div>

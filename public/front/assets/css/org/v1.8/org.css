@@ -425,6 +425,8 @@ ul {
 }
 #org .container.address .address-head .head-right #more-school {
   display: inline-block;
+  width: 8px;
+  height: 20px;
   font-size: 22px;
   -webkit-transform: translate(-11px, 0px);
 }
@@ -761,8 +763,16 @@ ul {
   opacity: 0;
 }
 #org .half {
-  height: 83px;
   overflow: hidden;
+}
+#org .half#full-intro {
+  height: 90px;
+}
+#org .half#full-course {
+  height: 200px;
+}
+#org .half#full-teacher {
+  height: 80px;
 }
 #org .hide {
   opacity: 0;
