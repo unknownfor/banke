@@ -421,21 +421,26 @@ class UserRepository
 				];
 				$user->authentication()->create($authentication);
 
-				//记录邀请信息
-				$invitation_log = [
-					'uid'=>$invitation_uid,
-					'name'=>$invitation_user['name'],
-					'mobile'=>$invitation_user['mobile'],
-					'target_mobile'=>$userData['mobile']
-				];
-				BankeInvitation::create($invitation_log);
+				//v1.8  禁止重复邀请
+				$invitationInfo=BankeInvitation::where('target_mobile',$userData['mobile']);
+				if($invitationInfo->count()==0) {
 
+					//记录邀请信息
+					$invitation_log = [
+						'uid' => $invitation_uid,
+						'name' => $invitation_user['name'],
+						'mobile' => $invitation_user['mobile'],
+						'target_mobile' => $userData['mobile']
+					];
+					BankeInvitation::create($invitation_log);
+				}
 
 				//v1.7添加招生老师注册
 				if($userData['userType']==3) {
 					$userData['invitation_uid'] = $invitation_uid;
 					RecruiteTeacherRepository::register($userData);
 				}
+
 
 				DB::commit();
 				Flash::success(trans('alerts.users.created_success'));

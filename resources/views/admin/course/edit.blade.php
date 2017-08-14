@@ -58,38 +58,71 @@
                       </div>
 
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="email">{{trans('labels.course.org_id')}}</label>
+                          <label class="col-md-1 control-label" for="org">{{trans('labels.course.org_summary_id')}}</label>
                           <div class="col-md-4">
-                              <select name="org_id" class="orgSelectpicker show-tick form-control" data-live-search="true">
-                                  @if($orgs)
-                                      @foreach($orgs as $org)
-                                          @if($org->id == $course['org_id'])
-                                              <option value="{{$org->id}}" selected> {{$org->name}}</option>
-                                          @else
-                                              <option value="{{$org->id}}" > {{$org->name}}</option>
-                                          @endif
+                              <select class="org-selectpicker show-tick form-control" data-live-search="true">
+                                  <option value="-1">选择机构</option>
+                                  @if($orgSummary)
+                                      @foreach($orgSummary as $org)
+                                          <option value="{{$org->id}}"
+                                                  @if($course['org_summary_id']==$org->id) selected @endif> {{$org->name}}</option>
                                       @endforeach
                                   @endif
                               </select>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="sub_name">{{trans('labels.course.org_id')}}</label>
+                          <div class="col-md-4">
+                              <select data-id="{{$course['org_id']}}" name="org_id" class="sub-org-selectpicker show-tick form-control" data-live-search="true"></select>
                               <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}} </label>
+                          <input type="hidden" id="category-id" value="{{$course->category['cid']}}">
+                          <div class="col-md-9 my-category2">
+                              {{--@foreach($allCategories as $val)--}}
+                                  {{--<div class="col-md-4">--}}
+                                      {{--<div class="md-checkbox">--}}
+                                          {{--<div class="md-radio">--}}
+                                              {{--<input type="radio" id="cate-{{$val['id']}}" name="category_id" value="{{$val['id']}}" class="md-radiobtn"--}}
+                                                     {{--@if($course->category['cid'] == $val['id']) checked @endif>--}}
+                                              {{--<label for="cate-{{$val['id']}}">--}}
+                                                  {{--<span></span>--}}
+                                                  {{--<span class="check"></span>--}}
+                                                  {{--<span class="box"></span> {{$val['name']}} </label>--}}
+                                          {{--</div>--}}
+                                      {{--</div>--}}
+                                  {{--</div>--}}
+                              {{--@endforeach--}}
                           </div>
                       </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="price">{{trans('labels.course.price')}}</label>
                           <div class="col-md-9">
-                              <input type="text" class="form-control" id="price" name="price" placeholder="{{trans('labels.course.price')}}" value="{{$course['price']}}">
+                              <input type="number" step="0.01" class="form-control" id="price" name="price" placeholder="{{trans('labels.course.price')}}" value="{{$course['price']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="original_price">{{trans('labels.course.original_price')}}</label>
+                          <div class="col-md-9">
+                              <input type="number" step="0.01" class="form-control" id="original_price" name="original_price" placeholder="{{trans('labels.course.original_price')}}" value="{{$course['original_price']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
-                      {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-1 control-label" for="period">{{trans('labels.course.period')}}</label>--}}
-                          {{--<div class="col-md-9">--}}
-                              {{--<input type="text" class="form-control" id="period" name="period" placeholder="{{trans('labels.course.period')}}" value="{{$course['period']}}">--}}
-                              {{--<div class="form-control-focus"> </div>--}}
-                          {{--</div>--}}
-                      {{--</div>--}}
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="period_desc">{{trans('labels.course.period_desc')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" class="form-control" id="period_desc" name="period_desc" placeholder="{{trans('labels.course.period_desc')}}" value="{{$course['period_desc']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="checkin_award">{{trans('labels.course.checkin_award')}}(%)</label>
@@ -182,24 +215,13 @@
 
 
 
+
+
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="category">{{trans('labels.course.category')}} </label>
-                          <input type="hidden" id="category-id" value="{{$course->category['cid']}}">
-                          <div class="col-md-9 my-category2">
-                              @foreach($allCategories as $val)
-                                  <div class="col-md-4">
-                                      <div class="md-checkbox">
-                                          <div class="md-radio">
-                                              <input type="radio" id="cate-{{$val['id']}}" name="category_id" value="{{$val['id']}}" class="md-radiobtn"
-                                                     @if($course->category['cid'] == $val['id']) checked @endif>
-                                              <label for="cate-{{$val['id']}}">
-                                                  <span></span>
-                                                  <span class="check"></span>
-                                                  <span class="box"></span> {{$val['name']}} </label>
-                                          </div>
-                                      </div>
-                                  </div>
-                              @endforeach
+                          <label class="col-md-1 control-label" for="fake_enrol_counts">{{trans('labels.course.fake_enrol_counts')}}</label>
+                          <div class="col-md-9">
+                              <input type="text" class="form-control" id="fake_enrol_counts" name="fake_enrol_counts" placeholder="{{trans('labels.course.fake_enrol_counts')}}" value="{{$course['fake_enrol_counts']}}">
+                              <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
@@ -212,19 +234,28 @@
                           </div>
                       </div>
 
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="deposit">{{trans('labels.course.deposit')}}</label>
+                          <div class="col-md-9">
+                              <input type="number" step="1" class="form-control" id="deposit" name="deposit"
+                                     placeholder="{{trans('labels.course.deposit')}}" value="{{$course['deposit']}}">
+                              <div class="form-control-focus"> </div>
+                          </div>
+                      </div>
+
                       <div class="form-group form-md-line-input form-md-line-cover">
                           <label class="col-md-1 control-label">{{trans('labels.course.cover')}}</label>
                           <div class="col-md-9">
                               <div class="cover-box">
-                                  <div class="add-cover-img-btn">+
-                                      <div class="cover-size-tips">60*60</div>
+                                  <div class="add-img-btn add-cover-img-btn">+
+                                      <div class="img-size-tips">60*60</div>
                                   </div>
-                                  <ul class="cover-list-box">
+                                  <ul class="imgs-list-box cover-list-box">
                                       @if($course['cover'])
                                       <li>
-                                          <a href="{{$course['cover']}}" data-size="435x263"></a>
-                                          <img src="{{$course['cover']}}@142w_80h_1e">
-                                          <span class="remove-cover-img">×</span>
+                                          <a href="{{$course['cover']}}" data-size="435x435"></a>
+                                          <img src="{{$course['cover']}}@80w_80h_1e">
+                                          <span class="remove-img">×</span>
                                       </li>
                                       @endif
                                   </ul>
@@ -233,23 +264,87 @@
                           </div>
                       </div>
 
-                      {{--<div class="form-group form-md-line-input">--}}
-                          {{--<label class="col-md-1 control-label" for="enddated_at">{{trans('labels.course.enddated_at')}}</label>--}}
-                          {{--<div class="col-md-3">--}}
-                              {{--<div class="input-group date date-picker" data-date-format="yyyy-mm-dd">--}}
-                                  {{--<input type="text" class="form-control form-filter input-sm" readonly placeholder="课程截止" id="enddated_at" name="enddated_at" value="{{$course['enddated_at']}}">--}}
-                                        {{--<span class="input-group-addon">--}}
-                                          {{--<i class="fa fa-calendar"></i>--}}
-                                        {{--</span>--}}
-                              {{--</div>--}}
-                          {{--</div>--}}
-                      {{--</div>--}}
+
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="details">{{trans('labels.course.details')}}</label>
                           <div class="col-md-9">
                               <textarea style="display: none" name="details" id="target-area">{{$course['details']}}</textarea>
                               <textarea id="my-editor"></textarea>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input form-md-line-cover">
+                          <label class="col-md-1 control-label">{{trans('labels.course.img_details')}}</label>
+                          <div class="col-md-9">
+                              <div class="cover-box">
+                                  <div class="add-img-btn add-img-details-btn">+
+                                      <div class="img-size-tips">图片可拖动排序</div>
+                                  </div>
+                                  <ul class="imgs-list-box img-details-list-box">
+                                      @if($course['img_details'])
+                                          <?php
+                                          $imgs=explode(',',$course['img_details']);
+                                          ?>
+                                          @foreach($imgs as $img)
+                                              <li>
+                                                  <a href="{{$img}}" data-size="435x435"></a>
+                                                  <img src="{{$img}}@80w_80h_1e">
+                                                  <span class="remove-img">×</span>
+                                              </li>
+                                          @endforeach
+                                      @endif
+                                  </ul>
+                                  <input id="img-details" name="img_details" type="hidden" value="">
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input form-md-line-cover">
+                          <label class="col-md-1 control-label">{{trans('labels.course.album')}}</label>
+                          <div class="col-md-9">
+                              <div class="cover-box">
+                                  <div class="add-img-btn add-album-img-btn">+
+                                      <div class="img-size-tips">1*1</div>
+                                  </div>
+                                  <ul class="imgs-list-box album-list-box">
+                                      @if($course['album'])
+                                          <?php
+                                          $imgs=explode(',',$course['album']);
+                                          ?>
+                                          @foreach($imgs as $img)
+                                              <li>
+                                                  <a href="{{$img}}" data-size="435x435"></a>
+                                                  <img src="{{$img}}@80w_80h_1e">
+                                                  <span class="remove-img">×</span>
+                                              </li>
+                                          @endforeach
+                                      @endif
+                                  </ul>
+                                  <input id="album" name="album" type="hidden" value="">
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.course.hot')}}</label>
+                          <div class="col-md-9">
+                              <div class="md-radio-inline">
+                                  <div class="md-radio">
+                                      <input type="radio" id="hot1" name="hot" value="{{config('admin.global.status.active')}}" class="md-radiobtn"   @if($course['hot'] == config('admin.global.status.active')) checked @endif>
+                                      <label for="hot1">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
+                                  </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="hot2" name="hot" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"  @if($course['hot'] == config('admin.global.status.audit')) checked @endif>
+                                      <label for="hot2">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> {{trans('strings.toggle_status.audit.1')}} </label>
+                                  </div>
+                              </div>
                           </div>
                       </div>
 
@@ -281,10 +376,6 @@
                               </div>
                           </div>
                       </div>
-
-
-
-
                   </div>
                   <div class="form-actions">
                       <div class="row">
@@ -310,7 +401,14 @@
 </form>
 
 <form id="upImgForm1" method="post" class="hiddenForm">
-    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif, image/jpeg" multiple>
+</form>
+
+<form id="upImgForm2" method="post" class="hiddenForm">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif, image/jpeg"  multiple="multiple">
+</form>
+<form id="upImgForm3" method="post" class="hiddenForm">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile3" size="28" accept="image/png,image/gif, image/jpeg"  multiple="multiple">
 </form>
 <div class="loding-modal">
     <i id="imgLoadingCircle" class="loadingCircle active"></i>
@@ -330,6 +428,8 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
+
+    <script type="text/javascript" src="{{asset('backend/plugins/jquery-ui/jquery-ui.js')}}"></script>
     <script type="text/javascript">
       $(function() {
         /*modal事件监听*/

@@ -17,7 +17,7 @@ class VerifyCsrfToken extends BaseVerifier
         'wechat/callback',
         'v1/*',
         'bankehome/*',
-        'mini/login'
+        'mini/*',
     ];
 
    

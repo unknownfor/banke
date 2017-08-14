@@ -221,7 +221,7 @@
                                 <div class="col-md-2" style="color:#32c5d2">输入文字后，回车添加</div>
                                 <div class="col-md-7">
                                     <div id="medium"></div>
-                                    <input type="hidden" name="tags" id="tags" value="{!!implode(';',$org['tags']) !!}">
+                                    <input type="hidden" name="tags" id="tags" value="{!!implode(',',$org['tags']) !!}">
                                 </div>
                             </div>
 
@@ -256,8 +256,8 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="details">{{trans('labels.org.details')}}</label>
                                 <div class="col-md-9">
-                                    <textarea style="display: none" name="details" id="target-area">{{$org['details']}}</textarea>
-                                    <textarea id="my-editor"></textarea>
+                                    <textarea style="display: none" name="details" id="details-content-area">{{$org['details']}}</textarea>
+                                    <textarea id="details-editor"></textarea>
                                 </div>
                             </div>
 
@@ -390,6 +390,89 @@
                                 </div>
                             </div>
 
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="installment_flag">{{trans('labels.orgsummary.installment_flag')}}</label>
+                                <div class="col-md-9">
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="installment_flag1" name="installment_flag" value="{{config('admin.global.status.active')}}" class="md-radiobtn"
+                                                   @if($org['installment_flag']==config('admin.global.status.active')) checked @endif>
+                                            <label for="installment_flag1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="installment_flag2" name="installment_flag" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"
+                                                   @if($org['installment_flag']==config('admin.global.status.audit')) checked @endif>
+                                            <label for="installment_flag2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.audit.1')}} </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="installment_title">{{trans('labels.orgsummary.installment_title')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="installment_title" name="installment_title"
+                                           placeholder="{{trans('labels.orgsummary.installment_title')}}" value="{{$org['installment_title']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="installment_content">{{trans('labels.org.installment_content')}}</label>
+                                <div class="col-md-9">
+                                    <textarea style="display: none" name="installment_content" id="installment-content-area">{{$org['installment_content']}}</textarea>
+                                    <textarea id="installment-editor"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="refund_flag">{{trans('labels.org.refund_flag')}}</label>
+                                <div class="col-md-9">
+                                    <div class="md-radio-inline">
+                                        <div class="md-radio">
+                                            <input type="radio" id="refund_flag1" name="refund_flag" value="{{config('admin.global.status.active')}}" class="md-radiobtn"
+                                                   @if($org['refund_flag']==config('admin.global.status.active')) checked @endif>
+                                            <label for="refund_flag1">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.active.1')}} </label>
+                                        </div>
+                                        <div class="md-radio">
+                                            <input type="radio" id="refund_flag2" name="refund_flag" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"
+                                                   @if($org['refund_flag']==config('admin.global.status.audit')) checked @endif>
+                                            <label for="refund_flag2">
+                                                <span></span>
+                                                <span class="check"></span>
+                                                <span class="box"></span> {{trans('strings.toggle_status.audit.1')}} </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="refund_title">{{trans('labels.org.refund_title')}}</label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" id="refund_title" name="refund_title"
+                                           placeholder="{{trans('labels.org.refund_title')}}" value="{{$org['refund_title']}}">
+                                    <div class="form-control-focus"> </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="refund_content">{{trans('labels.org.refund_content')}}</label>
+                                <div class="col-md-9">
+                                    <textarea style="display: none" name="refund_content" id="refund-content-area">{{$org['refund_content']}}</textarea>
+                                    <textarea id="refund-editor"></textarea>
+                                </div>
+                            </div>
 
 
                             <div class="form-group form-md-line-input">

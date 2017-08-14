@@ -25,7 +25,13 @@ class BankeOrg extends Model
         'qrcode',
         'qrcode_desc',
         'eable_location_checkin',
-        'location_checkin_distance'
+        'location_checkin_distance',
+        'installment_flag',
+        'installment_title',
+        'installment_content',
+        'refund_flag',
+        'refund_title',
+        'refund_content'
     ];
 
     private $action;
@@ -57,5 +63,11 @@ class BankeOrg extends Model
     public function comments()
     {
         return $this->hasMany('App\Models\Banke\BankeCommentOrg','org_id','id');
+    }
+
+    //父机构
+    public function orgsummary()
+    {
+        return $this->hasOne('App\Models\Banke\BankeOrgSummary','id','pid');
     }
 }

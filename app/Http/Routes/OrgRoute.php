@@ -18,6 +18,8 @@ $router->group(['prefix' => 'org'], function($router){
 
 
 	$router->get('map', 'OrgController@mapPage');
+
+	$router->get('getOrgByPid/{id}', 'OrgController@getOrgByPid');
 });
 
 $router->resource('org', 'OrgController');

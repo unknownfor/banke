@@ -4,7 +4,7 @@
 
 $(function(){
 
-
+        $(".img-details-list-box").sortable();
 
         //设置查询时间
         var $inputEndedAt=$('#enddated_at'),
@@ -35,24 +35,57 @@ $(function(){
             }else{
                 that.taskTotalNum = 0;  //总的任务值
             }
+
+            this.subOrgId=$('.sub-org-selectpicker').attr('data-id');
+
             /*上传文件*/
             $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadImgEditor'));
 
             $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadCoverImg'));
+
+            $(document).on('change', '#uploadImgFile2', $.proxy(this,'initUploadAlbumImg'));
+
+            $(document).on('change', '#uploadImgFile3', $.proxy(this,'initUploadImgDetails'));
 
             /*上传封面文件*/
             $(document).on('click','.add-cover-img-btn', function(){
                 $('#uploadImgFile1').trigger('click');
             });
 
-            $(document).on('click','.remove-cover-img', $.proxy(this,'deletCoverImg'));
+            $(document).on('click','.remove-img', $.proxy(this,'deletCoverImg'));
 
-            $('.orgSelectpicker').selectpicker({
+            /*上传相册文件*/
+            $(document).on('click','.add-album-img-btn', function(){
+                $('#uploadImgFile2').trigger('click');
+            });
+
+            /*上传商品详情图*/
+            $(document).on('click','.add-img-details-btn', function(){
+                $('#uploadImgFile3').trigger('click');
+            });
+
+
+
+            //机构分类
+            var $orgSelect=$('.org-selectpicker'),
+                $subOrgSelect=$('.sub-org-selectpicker');
+            $orgSelect.selectpicker({
+                liveSearchNormalize:true,
+                liveSearchPlaceholder:'输入名称进行搜索'
+            }).on('changed.bs.select', function (e) {
+                that.refressSubOrgSelect($orgSelect.val());
+            });
+            that.refressSubOrgSelect($orgSelect.val());
+
+            $('.sub-org-selectpicker').selectpicker({
                 liveSearchPlaceholder:'输入机构名称进行搜索'
             }).on('changed.bs.select', function (e) {
                 that.refressCategorySelect(e.currentTarget.value);
                 that.refressCommentSharePercent(e.currentTarget.value);
             });
+
+            this.refressCommentSharePercent($subOrgSelect.val());
+            that.refressCategorySelect($subOrgSelect.val());
 
 
             /*重新计算任务总比例*/
@@ -61,7 +94,7 @@ $(function(){
             });
 
             //photoswipe   //图片信息查看  相册、视频信息查看
-            new MyPhotoSwipe('.cover-list-box');
+            new MyPhotoSwipe('.imgs-list-box');
         };
         MyCourse.prototype={
 
@@ -241,7 +274,7 @@ $(function(){
                 this.initUploadImg($target,$form,function(data){
                     data=JSON.parse(data);
                     if(data) {
-                        var str=that.getConverImgStr(data.filedata);
+                        var str=that.getImgStr(data.filedata);
                         $('.cover-list-box').html(str);
                         that.controlLoadingCircleStatus(false);
                         $form[0].reset();
@@ -249,18 +282,59 @@ $(function(){
                 });
             },
 
-            getConverImgStr:function(url){
-                return '<li>'+
-                    '<a href="'+url+'" data-size="435x263"></a>'+
-                    '<img src="'+url+'@142w_80h_1e">'+
-                    '<span class="remove-cover-img">×</span>'+
-                    '</li>';
+            //上传相册图
+            initUploadAlbumImg:function(){
+                var $target = $('#uploadImgFile2'),
+                    $form=$('#upImgForm2'),
+                    that=this;
+                that.controlLoadingCircleStatus(true);
+                this.initUploadImg($target,$form,function(data){
+                    data=JSON.parse(data);
+                    if(data) {
+                        var str=that.getImgStr(data.filedata);
+                        $('.album-list-box').prepend(str);
+                        that.controlLoadingCircleStatus(false);
+                        $form[0].reset();
+                    }
+                });
+            },
+
+            //上传详情图片，类似商品详情图
+            initUploadImgDetails:function(){
+                var $target = $('#uploadImgFile3'),
+                    $form=$('#upImgForm3'),
+                    that=this;
+                that.controlLoadingCircleStatus(true);
+                this.initUploadImg($target,$form,function(data){
+                    data=JSON.parse(data);
+                    if(data) {
+                        var str=that.getImgStr(data.filedata);
+                        $('.img-details-list-box').prepend(str);
+                        that.controlLoadingCircleStatus(false);
+                        $form[0].reset();
+                    }
+                });
+            },
+
+            getImgStr:function(urlInfo){
+                if(!urlInfo instanceof Array){
+                    urlInfo=[urlInfo];
+                }
+                var str='';
+                for(var i=0;i<urlInfo.length;i++) {
+                    str+= '<li>' +
+                        '<a href="' + urlInfo[i] + '" data-size="435x435"></a>' +
+                        '<img src="' + urlInfo[i] + '@80w_80h_1e">' +
+                        '<span class="remove-img">×</span>' +
+                        '</li>';
+                }
+                return str;
             },
 
             /*删除封面*/
             deletCoverImg:function(e){
                 e.stopPropagation();
-                if(window.confirm('确定删除该封面么？')) {
+                if(window.confirm('确定删除该图片么？')) {
                     var $target=$(e.currentTarget).closest('li').addClass('deleting');
                     window.setTimeout(function(){
                         $target.remove();
@@ -284,13 +358,30 @@ $(function(){
                 }
             },
 
-            getCoverImg:function(){
-                var $imgs=$('.cover-list-box li'),arr=[];
+            /*获得图片地址*/
+            getImgsUrl:function($target){
+                var $imgs=$target,
+                    arr=[];
 
                 $.each($imgs,function(){
                     arr.push($(this).find('a').attr('href'));
                 });
                 return arr;
+            },
+
+            /*封面地址*/
+            getCoverImg:function(){
+                return this.getImgsUrl($('.cover-list-box li'));
+            },
+
+            /*封面地址*/
+            getAlbumImg:function(){
+                return this.getImgsUrl($('.album-list-box li'));
+            },
+
+            /*商品地址*/
+            getImgDetails:function(){
+                return this.getImgsUrl($('.img-details-list-box li'));
             },
 
 
@@ -325,11 +416,33 @@ $(function(){
                 })
             },
 
+            //刷新子机构列表
+            refressSubOrgSelect:function (pid){
+                var url='/admin/org/getOrgByPid/'+pid,
+                    that=this,
+                    $subOrgSelect=$('.sub-org-selectpicker');
+                window.getDataAsync(url,{},function(res){
+                    var str='',len=res.length,selected='';
+                    for(var i=0;i<len;i++){
+                        selected='';
+                        if(that.subOrgId==res[i].id){
+                            selected='selected';
+                        }
+                        str+='<option value="'+res[i].id+'"'+ selected+'>' + res[i].name+'</option>';
+                    }
+                    $subOrgSelect.html(str).selectpicker('refresh');
+                    window.setTimeout(function(){
+                        that.refressCommentSharePercent($subOrgSelect.val());
+                        that.refressCategorySelect($subOrgSelect.val());
+                    },0);
+                })
+            },
+
 
             //刷新机构评论返钱比例
             refressCommentSharePercent:function (id){
                 var that=this;
-                if(id==-1){
+                if(id<=0){
                     $('#orgSharePercent').text('*%');
                     return;
                 }
@@ -387,14 +500,20 @@ $(function(){
             }
         }
 
-
         //提交编辑
         window.setDataBeforeCommit=function(){
             var val=course.getValue();
             val=val.replace(/\n/g,"<br/>");
             $('#target-area').text(val);
-            //相册
+            //封面
             $('#cover').val(course.getCoverImg().join(','));
+
+            //相册
+            $('#album').val(course.getAlbumImg().join(','));
+
+            //商品详情图
+            $('#img-details').val(course.getImgDetails().join(','));
+
             course.calcTotalTaskNumber();
         };
 });

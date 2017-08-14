@@ -150,6 +150,24 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //赚钱动态
         require(__DIR__ . '/Routes/MoneyNewsRoute.php');
 
+        //活动
+        require(__DIR__ . '/Routes/ActivityRoute.php');
+
+        //教学老师
+        require(__DIR__ . '/Routes/TeachingTeacherRoute.php');
+
+        //推广大使
+        require(__DIR__ . '/Routes/MarketingAmbassadorRoute.php');
+
+        //用户商店评论
+        require(__DIR__ . '/Routes/CommentAppStoreRoute.php');
+
+        //半课好文章
+        require(__DIR__ . '/Routes/GoodArticleRoute.php');
+
+        //免费学
+        require(__DIR__ . '/Routes/FreeStudyRoute.php');
+
     });
 });
 

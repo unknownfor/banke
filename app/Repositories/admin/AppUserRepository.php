@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeBalanceLog;
+use App\Models\Banke\BankeInvitation;
 use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeUserProfiles;
@@ -282,8 +283,8 @@ class AppUserRepository
 						$register_award = BankeDict::where('id', 1)->first();
 						$user_profile->account_balance += $register_award->value;
 						$user_profile->register_amount += $register_award->value;
-                                                //将用户注册认证的金额加到用户表做任务已领金额中
-                                                $user_profile->get_do_task_amount+= $register_award->value;
+						//将用户注册认证的金额加到用户表做任务已领金额中
+						$user_profile->get_do_task_amount+= $register_award->value;
 						$balance_log = [
 							'uid'=>$id,
 							'change_amount'=>$register_award->value,
@@ -302,25 +303,34 @@ class AppUserRepository
 						//记录消息
 						BankeMessage::create($message1);
 
-						//v1.7将招生都老师的邀请奖励提到 老师审核时，所以此处不奖励
+
+						//v1.7招生老师审核时，所以此处不奖励
 						if($user_profile->user_type!=3){
 
-							if ($user_profile->invitation_uid > 0) {
-								$invitation_user = BankeUserProfiles::where('uid', $user_profile->invitation_uid)->lockForUpdate()->first();
-								//查询系统配置里邀请人注册认证的奖金
-								$invitation_award = BankeDict::where('id', 2)->first();
-								$invitation_user->invitation_amount += $invitation_award->value;
+							$invitor_id=$user_profile->invitation_uid;
 
-								$invitation_user->account_balance += $invitation_award->value;
+							//v1.8 更新每日任务信息，并对每天是否能奖励做过滤
+							$award_flag = DailyTaskLogRepository::updateBankeDailyTaskLog($invitor_id,3);
+							if ($invitor_id > 0 && $award_flag) {
+
+								$invitation_user = BankeUserProfiles::where('uid', $invitor_id)->lockForUpdate()->first();
+								//查询系统配置里邀请人注册认证的奖金
+								$award_amount = BankeDict::where('id', 2)->first()->value;
+								$invitation_user->invitation_amount += $award_amount;
+
+								$invitation_user->account_balance += $award_amount;
 
 								//将邀请他人注册认证的奖金加大做任务的已领金额中去
-								$invitation_user->get_do_task_amount += $invitation_award->value;
+								$invitation_user->get_do_task_amount += $award_amount;
 
 								$invitation_user->save();
 
+								//更新邀请表 的奖励金额
+								$this->updateInvitationTableInfo($invitor_id,$user_profile->mobile,$award_amount);
+
 								$balance_log1 = [
 									'uid' => $user_profile->invitation_uid,
-									'change_amount' => $invitation_award->value,
+									'change_amount' => $award_amount,
 									'change_type' => '+',
 									'business_type' => 'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS',
 									'operator_uid' => $cur_user->id
@@ -332,7 +342,7 @@ class AppUserRepository
 									'uid' => $user_profile->invitation_uid,
 									'title' => '好友认证成功',
 									'content' => '您的好友' . $user_profile->mobile . '已经认证成功！平台已奖励您'
-										. $invitation_award->value . '元现金，快去现金钱包里查看吧！',
+										. $award_amount . '元现金，快去现金钱包里查看吧！',
 									'type' => 'FRIEND_CERTIFICATE_SUCCESS'
 								];
 								//记录消息
@@ -351,9 +361,11 @@ class AppUserRepository
 					}
 					//同步认证状态
 					$user_profile->save();
+					DB::commit();
 					Flash::success(trans('alerts.app_user.certificate_success'));
 					return true;
 				} catch (Exception $e) {
+					DB::rollback();
 					Flash::error(trans('alerts.app_user.certificate_error'));
 					var_dump($e);
 					return false;
@@ -362,6 +374,14 @@ class AppUserRepository
 		}else{
 			abort(404);
 		}
+	}
+
+	//更新邀请表 的奖励金额
+	public function  updateInvitationTableInfo($uid,$targetMobile,$award_amount)
+	{
+		$invitation_table=BankeInvitation::where(['target_mobile'=>$targetMobile,'uid'=>$uid])->first();
+		$invitation_table->award_amount=$award_amount;
+		$invitation_table->save();
 	}
 
 	/**
@@ -622,19 +642,22 @@ class AppUserRepository
 	 * 5：开团邀请好友阅读量达标奖励
 	 *
 		 * 'balance_log' => [
-				'WITHDRAW' => '提现',
-				'CHECK_IN_SUCCESS' => '打卡奖励',
-				'INVITE_FRIEND_ENROL_SUCCESS' => '邀请报名成功奖励',
-				'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS' => '邀请认证成功奖励',
-				'REGISTER_AND_CERTIFICATE_SUCCESS' => ' 注册并认证奖励',
-				'REGISTER_SUCCESS' => '注册奖励',
-				'PUNISHMENT' => '惩罚',
-				'REFUND' => '退款',
-				'WITHDRAW_FAIL' => '提现失败退回',
-				'COMMENT'=>'评论奖励'，//v1.5之后区分 COMMENT_ORG COMMENT_COURSE
-				'COMMENT_ORG'=> '机构评论奖励',
-				'COMMENT_COURSE' => '课程心得奖励',
-				'SHARE_GROUP_BUYING'=>'开团分享'
+				['key'=>'WITHDRAW','desc' => '提现'],
+				['key'=>'CHECK_IN_SUCCESS','desc' => '打卡奖励'],
+				['key'=>'INVITE_FRIEND_ENROL_SUCCESS','desc' => '邀请报名成功奖励'],
+				['key'=>'INVITE_FRIEND_REGISTER_AND_CERTIFICATE_SUCCESS','desc' => '邀请认证成功奖励'],
+				['key'=>'REGISTER_AND_CERTIFICATE_SUCCESS','desc' => ' 注册并认证奖励'],
+				['key'=>'REGISTER_SUCCESS','desc' => '注册奖励'],
+				['key'=>'PUNISHMENT','desc' => '惩罚'],
+				['key'=>'REFUND','desc' => '退款'],
+				['key'=>'WITHDRAW_FAIL','desc' => '提现失败退回'],
+				['key'=>'COMMENT','desc' => '评论奖励'], //v1.5之后区分 COMMENT_ORG COMMENT_COURSE
+				['key'=>'COMMENT_ORG','desc' => '机构评论奖励'],
+				['key'=>'COMMENT_COURSE','desc' => '课程心得奖励'],
+				['key'=>'SHARE_GROUP_BUYING','desc' => '开团分享'],
+				['key'=>'SHARE_SUCCESS','desc' => '分享奖励'],
+				['key'=>'INVITE_FRIEND_BECOME_MARKETING_AMBASSADOR','desc' => '邀请好友成为推广大使奖励'],
+				['key'=>'COMMENT_APP_STORE','desc' => '应用市场好评奖励'],
 			],
 		 *
 	 */
@@ -671,6 +694,14 @@ class AppUserRepository
 				case 6:  //开团分享
 					$user_profile->get_do_task_amount += $award;
 					$businessTypeIndex=12;
+					break;
+				case 7:  //邀请好友成为推广大使
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=14;
+					break;
+				case 8:  //app store好评
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=15;
 					break;
 				default:
 					break;

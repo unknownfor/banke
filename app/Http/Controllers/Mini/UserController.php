@@ -9,9 +9,11 @@ use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use SuperClosure\Analyzer\Token;
 use Validator;
 use Illuminate\Http\Request;
 use UserRepository;
+use App\Services\Mini\TokenService;
 
 class UserController extends Controller
 {
@@ -22,6 +24,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'mobile' => 'required|mobile',
             'password'=>'required|min:6|max:32',
+            'code'=>'required'
         ]);
 
         if ($validator->fails()) {
@@ -33,7 +36,8 @@ class UserController extends Controller
             return response()->json(['msg' => $sss, 'status' => false]);
         }
         try {
-            $token=csrf_token();
+            $tokenService = new TokenService();
+            $token = $tokenService->getToken($request->all()['code']);
             $orgId = UserRepository::loginByMobileAndPwdOrg($request->all());
             if ($orgId!=0) {
                 $result=['token'=>$token,'orgId'=>$orgId];

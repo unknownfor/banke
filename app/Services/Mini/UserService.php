@@ -9,12 +9,6 @@ use GuzzleHttp\Exception\ClientException;
 
 class UserService
 {
-    //获取token
-    public function getToken(){
-        $token=csrf_token();
-        return $token;
-    }
-
     //根据微信信息，得到openid
     private function getWxInfo($code){
         $http = new Client();
