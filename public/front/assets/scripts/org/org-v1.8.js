@@ -49,25 +49,12 @@ $(function() {
     };
 
 
-    $(document).on(window.eventName,function(e){
-        toHideMask(e);
-    });
-
     //点击关闭拨打电话弹窗
     $(document).on( window.eventName,'.quite', function() {
         var $target=$('.call-mask');
         $target.removeClass('show').addClass('hide');
     });
 
-    function toHideMask(e){
-        var $target=$(e.srcElement);
-        if($target.hasClass('box') ||
-            $target.hasClass('call-box') ||
-            $target.closest('.call-box').length>0)
-        {
-            return;
-        }
-    };
 
 
     function showMoreInfo () {

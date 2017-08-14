@@ -108,7 +108,7 @@
             @endif
             <div class="clear"></div>
         </ul>
-        <div class="intro">{{$org['intro']}}</div>
+        <div class="intro half">{{$org['intro']}}</div>
         <div class="read-more">
             <i class="iconfont">&#xe600;</i>
             <span>查看简介</span>
@@ -181,6 +181,10 @@
                 </div>
             @endforeach
         @endif
+        <div class="read-more">
+            <i class="iconfont">&#xe600;</i>
+            <span>查看全部课程</span>
+        </div>
     </div>
     <div class="teacher container">
         <div class="main-title">金牌讲师</div>
@@ -202,6 +206,10 @@
                 </div>
             </div>
         @endforeach
+        <div class="read-more">
+            <i class="iconfont">&#xe600;</i>
+            <span>查看全部老师</span>
+        </div>
     </div>
 
 
