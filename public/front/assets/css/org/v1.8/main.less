@@ -191,6 +191,7 @@ ul {
           }
           #more-school {
             display: inline-block;
+            .size(8px,20px);
             font-size: 22px;
             -webkit-transform: translate(-11px, 0px);
           }
@@ -445,9 +446,18 @@ ul {
     }
   }
   .half {
-    height: 83px;
     overflow: hidden;
+    &#full-intro {
+      height: 90px;
+    }
+    &#full-course {
+      height: 200px;
+    }
+    &#full-teacher {
+      height: 80px;
+    }
   }
+
   .hide {
     opacity: 0;
     display: none;

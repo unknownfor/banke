@@ -22,11 +22,19 @@ $(function() {
         }
     });
 
-    /*点击查看更多*/
-    $(document).on( window.eventName,'.read-more', function() {
-        //页面恢复滚动
-        window.scrollControl(true);
-        showMoreInfo();
+    /*点击查看更多机构简介*/
+    $(document).on( window.eventName,'#btn-intro', function() {
+        showMoreIntroInfo();
+    });
+
+    /*点击查看更多课程简介*/
+    $(document).on( window.eventName,'#btn-course', function() {
+        showMoreCourseInfo();
+    });
+
+    /*点击查看更多老师简介*/
+    $(document).on( window.eventName,'#btn-teacher', function() {
+        showMoreTeacherInfo();
     });
 
 
@@ -56,13 +64,24 @@ $(function() {
     });
 
 
-
-    function showMoreInfo () {
-        var box=$('.org-information'),
-            add=$('.address'),
-            btn=$('.read-more');
+    function showMoreIntroInfo () {
+        var box=$('#full-intro'),
+            btn=$('#btn-intro');
         box.removeClass('half');
-        add.removeClass('hide');
+        btn.addClass('hide');
+    }
+
+    function showMoreCourseInfo() {
+        var box=$('#full-course'),
+            btn=$('#btn-course');
+        box.removeClass('half');
+        btn.addClass('hide');
+    }
+
+    function showMoreTeacherInfo() {
+        var box=$('#full-teacher'),
+            btn=$('#btn-teacher');
+        box.removeClass('half');
         btn.addClass('hide');
     }
 
