@@ -894,7 +894,18 @@ return [
 		'fake_signup_count' => '报名人数',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
-		'list' => '免费用学列表',
+		'list' => '免费学列表',
+	],
+
+	'freestudyusers' => [
+		'id' => '序号',
+		'free_study_id' => '活动标题',
+		'mobile'=>'手机号',
+		'certification_status'=>'人员状态',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '免费学人员列表',
 	],
 
 ];

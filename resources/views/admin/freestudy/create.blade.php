@@ -116,11 +116,11 @@
                                             <div class="img-size-tips">16:7的图片</div>
                                         </div>
                                         <ul class="imgs-list-box cover-list-box">
-                                            <li>
-                                                <a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>
-                                                <img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">
-                                                <span class="remove-img">×</span>
-                                            </li>
+                                            {{--<li>--}}
+                                                {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
+                                                {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
+                                                {{--<span class="remove-img">×</span>--}}
+                                            {{--</li>--}}
                                         </ul>
                                         <input id="cover" name="img_url" type="hidden" value="">
                                     </div>

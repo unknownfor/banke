@@ -168,6 +168,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //免费学
         require(__DIR__ . '/Routes/FreeStudyRoute.php');
 
+        //免费学成员
+        require(__DIR__ . '/Routes/FreeStudyUsersRoute.php');
+
     });
 });
 
