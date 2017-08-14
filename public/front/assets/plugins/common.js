@@ -192,3 +192,19 @@ window.getDataAsync=function(url,data,callback,eCallback,type){
         }
     });
 }
+
+/*通过句柄，获得当前事件对象*/
+window.getTargetByEvent=function (e) {
+    var event = e || window.event,
+        target = event.srcElement || event.target;
+    return $(target);
+};
+
+
+/*点击模态的基本区域，关闭模态窗口*/
+window.toHideModuleByClickOutside=function(e,closeFn){
+    var $target=window.getTargetByEvent(e);
+    if($target.closest('.modal-box-main').length==0){
+        closeFn && closeFn();
+    }
+};

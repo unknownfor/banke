@@ -13,6 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/freestudy/v1.8/freestudy.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/freestudy/v1.8/iconfont/iconfont.css" rel="stylesheet">
     <title>免费学页面</title>
 </head>
 <body>
@@ -27,9 +28,13 @@
     <div class="download">
         <div class="down-btn">我要申请</div>
     </div>
-    <div class="sign-mask hide">
-        <from class="sign-box">
-            <p class="title">申请成功</p>
+    {{--<div class="sign-mask hide">--}}
+    <div class="sign-mask show">
+        <from class="modal-box-main">
+            <div class="sign-head">
+                <i id="close" class="iconfont">&#xe641;</i>
+            </div>
+            <div class="title">申请成功</div>
             <input class="phone" type="number" placeholder="输入手机号方便客服联系你">
             <div class="quite"><div id="jump-btn">马上领取</div></div>
         </from>
