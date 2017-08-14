@@ -373,4 +373,11 @@ return[
 		'action' => 'goodarticle',
 	],
 
+	//半课免费学
+	'freestudy' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'freestudy',
+	],
+
 ];

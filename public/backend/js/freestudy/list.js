@@ -1,9 +1,9 @@
 var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
-		ajax_datatable = dt.DataTable({
-          "lengthMenu": [[30,50], [30, 50]],
-          "processing": true,
+    ajax_datatable = dt.DataTable({
+      "lengthMenu": [[30,50], [30, 50]],
+      "processing": true,
       "serverSide": true,
       "searching" : false,
       "ajax": {
@@ -18,30 +18,30 @@ var TableDatatablesAjax = function() {
       "dom" : "<'row'<'col-sm-3'l><'col-sm-6'<'customtoolbar'>><'col-sm-3'f>>" +"<'row'<'col-sm-12'tr>>" +"<'row'<'col-sm-5'i><'col-sm-7'p>>",
       "columns": [
         {
-        	"data": "id",
-        	"name" : "id",
-      	},
-        {
-        	"data": "title",
-        	"name" : "title",
-        	"orderable" : false,
+          "data": "id",
+          "name" : "id",
         },
         {
-        	"data": "shot_content",
-        	"name" : "shot_content",
-        	"orderable" : false,
+          "data": "title",
+          "name" : "title",
+          "orderable" : false,
         },
         {
-        	"data": "type",
-        	"name": "type",
-        	"orderable" : false,
-            "render":function(data){
-              var userType=[
-                  '<span class="label label-success">内链</span>',
-                  '<span class="label label-warning">外链</span>'
-              ];
-              return userType[data];
-            },
+          "data": "shot_content",
+          "name" : "shot_content",
+          "orderable" : false,
+        },
+        {
+          "data": "type",
+          "name": "type",
+          "orderable" : false,
+          "render":function(data){
+            var userType=[
+              '<span class="label label-success">内链</span>',
+              '<span class="label label-warning">外链</span>'
+            ];
+            return userType[data];
+          },
         },
         {
           "data": "url",
@@ -54,7 +54,7 @@ var TableDatatablesAjax = function() {
             return data;
           }
         },
-        { 
+        {
           "data": "status",
           "name": "status",
           "orderable" : true,
@@ -68,23 +68,23 @@ var TableDatatablesAjax = function() {
             }
           }
         },
-        { 
-        	"data": "created_at",
-        	"name": "created_at",
-        	"orderable" : true,
+        {
+          "data": "created_at",
+          "name": "created_at",
+          "orderable" : true,
         },
-        { 
+        {
           "data": "actionButton",
           "name": "actionButton",
           "type": "html",
           "orderable" : false,
         },
-    	],
+      ],
       "drawCallback": function( settings ) {
         ajax_datatable.$('.tooltips').tooltip( {
           placement : 'top',
           html : true
-        });  
+        });
       },
       "language": {
         url: '/admin/i18n'
@@ -92,18 +92,18 @@ var TableDatatablesAjax = function() {
     });
 
     $(document).on('click', '.filter-submit', function(){
-      ajax_datatable.ajax.reload(); 
+      ajax_datatable.ajax.reload();
     });
 
     dt.on('click', '.filter-cancel', function(){
       $('textarea.form-filter, select.form-filter, input.form-filter', dt).each(function() {
-          $(this).val("");
+        $(this).val("");
       });
 
       $('select.form-filter').selectpicker('refresh');
 
       $('input.form-filter[type="checkbox"]', dt).each(function() {
-          $(this).attr("checked", false);
+        $(this).attr("checked", false);
       });
       ajax_datatable.ajax.reload();
     });
@@ -117,12 +117,12 @@ var TableDatatablesAjax = function() {
     });
     /*modal事件监听*/
     $(".modal").on("hidden.bs.modal", function() {
-         $(".modal-content").empty();
+      $(".modal-content").empty();
     });
 
-	};
+  };
 
-	return {
-		init : datatableAjax
-	}
+  return {
+    init : datatableAjax
+  }
 }();

@@ -894,7 +894,7 @@ return [
 		'fake_signup_count' => '报名人数',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
-		'list' => '费用学列表',
+		'list' => '免费用学列表',
 	],
 
 ];
