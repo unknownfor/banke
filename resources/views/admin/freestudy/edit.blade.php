@@ -7,6 +7,10 @@
         .imgs-list-box li{
             width: 160px;
         }
+        #shot_content{
+            width: 100%;
+            height: 50px;
+        }
     </style>
 @endsection
 @section('content')
@@ -94,7 +98,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="slug">{{trans('labels.freestudy.shot_content')}}</label>
                           <div class="col-md-8">
-                              <textarea name="shot_content">{{$freestudy['shot_content']}}</textarea>
+                              <textarea id="shot_content" name="shot_content">{{$freestudy['shot_content']}}</textarea>
                           </div>
                       </div>
 
@@ -151,21 +155,21 @@
                                     <label for="status1">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.common_status.active.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.freestudy_status.active.1')}} </label>
                                 </div>
                                 <div class="md-radio">
                                     <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($freestudy['status'] == config('admin.global.status.audit')) checked @endif>
                                     <label for="status2">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.common_status.audit.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.freestudy_status.audit.1')}} </label>
                                 </div>
                                 <div class="md-radio">
-                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" @if($freestudy['status'] == config('admin.global.status.trash')) checked @endif>
+                                    <input type="radio" id="status3" name="status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($freestudy['status'] == config('admin.global.status.ban')) checked @endif>
                                     <label for="status3">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> {{trans('strings.common_status.trash.1')}} </label>
+                                        <span class="box"></span> {{trans('strings.freestudy_status.ban.1')}} </label>
                                 </div>
                             </div>
                         </div>

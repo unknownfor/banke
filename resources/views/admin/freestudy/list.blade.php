@@ -44,8 +44,8 @@
                     <div class="form-group form-md-line-input">
                         <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
                             <option value="" data-icon="fa-glass icon-success">状态....</option>
-                            @if(trans('strings.common_status'))
-                                @foreach(trans('strings.common_status') as $status_key => $status_value)
+                            @if(trans('strings.freestudy_status'))
+                                @foreach(trans('strings.freestudy_status') as $status_key => $status_value)
                                     <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
                                 @endforeach
                             @endif

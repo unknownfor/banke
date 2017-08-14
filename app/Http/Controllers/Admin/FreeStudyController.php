@@ -92,4 +92,28 @@ class FreeStudyController extends Controller
         return redirect('admin/freestudy');
 
     }
+    /**
+     * 添加免费学
+     * @author jimmy
+     * @date   2016-04-13T11:26:16+0800
+     * @return [type]                   [description]
+     */
+    public function create()
+    {
+        return view('admin.freestudy.create');
+    }
+
+    /**
+     * 添加课程
+     * @author 晚黎
+     * @date   2016-04-14T11:31:29+0800
+     * @param  CreateUserRequest        $request [description]
+     * @return [type]                            [description]
+     */
+    public function store(FreeStudyRequest $request)
+    {
+        FreeStudyRepository::store($request);
+        return redirect('admin/freestudy');
+    }
+
 }
