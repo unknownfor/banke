@@ -108,7 +108,7 @@
             @endif
             <div class="clear"></div>
         </ul>
-        <div class="intro half">{{$org['intro']}}</div>
+        <div class="intro half">{!! $org['details'] !!}</div>
         <div class="read-more">
             <i class="iconfont">&#xe600;</i>
             <span>查看简介</span>
