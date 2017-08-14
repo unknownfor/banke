@@ -16,6 +16,15 @@ $(function() {
         $('.sign-mask').addClass('hide').removeClass('show');
     });
 
+    /*
+     * 点击蒙板关闭*/
+    $(document).on( window.eventName,'.sign-mask', function(e) {
+        window.toHideModuleByClickOutside(e,function () {
+            // $('.sign-mask').hide();
+            $('.sign-mask').addClass('hide').removeClass('show');
+        });
+    });
+
 
     /*我要申请-判断来源是否是分享页*/
     $(document).on( window.eventName,'.down-btn', function() {
@@ -88,4 +97,9 @@ $(function() {
         $('.container').removeClass('hide');
     }
 
+
+    /*
+    *判断活动是否结束
+    * status 0：未启用。1：进行中。2：已结束
+     */
 });
