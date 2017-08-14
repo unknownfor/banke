@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/datatables.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
 @endsection
 @section('content')
 <div class="page-bar">
@@ -69,6 +69,7 @@
                           <th> {{ trans('labels.freestudy.shot_content') }} </th>
                           <th> {{ trans('labels.freestudy.type') }} </th>
                           <th> {{ trans('labels.freestudy.url') }} </th>
+                          <th> {{ trans('labels.freestudy.status') }} </th>
                           <th width="15%"> {{ trans('labels.freestudy.created_at') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
@@ -90,11 +91,11 @@
 </div>
 @endsection
 @section('js')
-<script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/js/freestudy/list.js')}}"></script>
-<script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/freestudy/list.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {
     TableDatatablesAjax.init();

@@ -280,4 +280,10 @@ return[
 		'destroy' 	=> 'admin.goodarticle.delete',
 	],
 
+	'freestudy' => [
+		'create' 	=> 'admin.freestudy.create',
+		'edit' 	=> 'admin.freestudy.edit',
+		'destroy' 	=> 'admin.freestudy.delete',
+	],
+
 ];

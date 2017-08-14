@@ -8,13 +8,6 @@ $(function(){
     /**MyCourse**/
     var MyStrategy=function(){
         this.init();
-        var that=this,
-            orgCommentSharePercent=$('#orgSharePercent').attr('data-percent');
-        if(orgCommentSharePercent) {
-            that.taskTotalNum = Number(orgCommentSharePercent);  //总的任务值
-        }else{
-            that.taskTotalNum = 0;  //总的任务值
-        }
         /*上传文件*/
         $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadImgEditor'));
 
@@ -26,8 +19,6 @@ $(function(){
         });
 
         $(document).on('click','.remove-img', $.proxy(this,'deletCoverImg'));
-
-        $('.selectpicker').selectpicker();
 
 
         //photoswipe   //图片信息查看  相册、视频信息查看
@@ -311,6 +302,5 @@ $(function(){
         $('#target-area').text(val);
         //相册
         $('#cover').val(strategy.getCoverImg().join(','));
-        $('#course').val(strategy.getAllCourse().join(','));
     };
 });
