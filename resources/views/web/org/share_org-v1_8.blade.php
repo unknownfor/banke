@@ -14,7 +14,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/org/v1.8/org.css" rel="stylesheet">
     <link type="text/css" href="/front/assets/css/course/v1.8/iconfont/iconfont.css" rel="stylesheet">
-    <title>机构详情</title>
+    <title>{{$org['name']}}</title>
 </head>
 <body>
 <div id="org">
@@ -56,10 +56,11 @@
                         @endforeach
                     @endif
                 </div>
-                <div class="tips-right">
-                    <span>{{$org['fake_comment_count']}}人评价</span>
-                    <i class="iconfont" id="more">&#xe600;</i>
-                </div>
+                {{--机构评价--}}
+                {{--<div class="tips-right">--}}
+                    {{--<span>{{$org['fake_comment_count']}}人评价</span>--}}
+                    {{--<i class="iconfont" id="more">&#xe600;</i>--}}
+                {{--</div>--}}
             </div>
 
         </div>
@@ -82,10 +83,11 @@
                 <span class="underline">最近校</span>区：
                 <span class="school-add">{{$sub_org['name']}}</span>
             </div>
-            <div class="head-right">
-                <span>全部校区</span>
-                <i class="iconfont" id="more-school">&#xe600;</i>
-            </div>
+            {{--全部校区--}}
+            {{--<div class="head-right">--}}
+                {{--<span>全部校区</span>--}}
+                {{--<i class="iconfont" id="more-school">&#xe600;</i>--}}
+            {{--</div>--}}
         </div>
         <div class="address-bottom">
             <div class="address-left"></div>
@@ -108,86 +110,87 @@
             @endif
             <div class="clear"></div>
         </ul>
-        <div class="intro half">{!! $org['details'] !!}</div>
-        <div class="read-more">
+        <div class="half" id="full-intro">
+            <div class="intro">{!! $org['details'] !!}</div>
+        </div>
+        <div class="read-more"  id="btn-intro">
             <i class="iconfont">&#xe600;</i>
             <span>查看简介</span>
         </div>
     </div>
     <div class="course container">
         <div class="main-title">优秀课程推荐</div>
-        @if($course)
-            @foreach($course as $v)
-                <div class="course-box">
-                    <div class="course-head">
-                        <div class="course-left">
-                            <img src="{{$v->cover}}" />
-                        </div>
-                        <div class="course-middle">
-                            <div class="name">{{$v->name}}</div>
-                            <div class="org">{{$org['name']}}</div>
-                        </div>
-                        <div class="course-right">
-                            <div class="price">￥{{$v->price}}</div>
-                            <div class="old-price">￥{{$v->original_price}}</div>
-                        </div>
-                    </div>
-                    <div class="course-appoint">
-                        <div class="appoint-left">
-                            <span class="appoint underline">学习周期：</span>
-                        </div>
-                        <div class="appoint-right">
-                            <div class="appoint-tips">
-                                <span class="appoint">{{$v->period_desc}}</span>
-                                <span class="appoint first">预约数:{{$v->fake_enrol_counts}}</span>
+        <div class="half" id="full-course">
+            @if($course)
+                @foreach($course as $v)
+                    <div class="course-box">
+                        <div class="course-head">
+                            <div class="course-left">
+                                <img src="{{$v->cover}}" />
                             </div>
-                            <div class="appoint-tips">
-                                <span class="appoint">6天</span>
-                                <span class="appoint first">预约数:23</span>
+                            <div class="course-middle">
+                                <div class="name">{{$v->name}}</div>
+                                <div class="org">{{$org['name']}}</div>
+                            </div>
+                            <div class="course-right">
+                                <div class="price">￥{{$v->price}}</div>
+                                <div class="old-price">￥{{$v->original_price}}</div>
                             </div>
                         </div>
+                        <div class="course-appoint">
+                            <div class="appoint-left">
+                                <span class="appoint underline">学习周期：</span>
+                            </div>
+                            <div class="appoint-right">
+                                <div class="appoint-tips">
+                                    <span class="appoint">{{$v->period_desc}}</span>
+                                    <span class="appoint first">预约数:{{$v->fake_enrol_counts}}</span>
+                                </div>
+                            </div>
 
-                    </div>
-                    <div class="head-link">
-                        <div class="link-info">
-                            <div class="link-left">
-                                <div class="link-img" id="back-img"></div>
-                                 <span class="link-name">半课返现</span>
-                                </div>
-                                <hr style="color:#d8d8d8"/>
-                            <div class="link-middle">报名成功后最高返现50%</div>
                         </div>
-                        @if($org->installment_flag==1)
+                        <div class="head-link">
                             <div class="link-info">
                                 <div class="link-left">
-                                    <div class="link-img" id="support-img"></div>
-                                    <span class="link-name">半课分期</span>
+                                    <div class="link-img" id="back-img"></div>
+                                    <span class="link-name">半课返现</span>
                                 </div>
                                 <hr style="color:#d8d8d8"/>
-                                <div class="link-middle">{{$org['installment_title']}}</div>
+                                <div class="link-middle">报名成功后最高返现50%</div>
                             </div>
-                        @endif
-                        @if($org->refund_flag==1)
-                            <div class="link-info">
-                                <div class="link-left">
-                                    <div class="link-img" id="refund-img"></div>
-                                    <span class="link-name">支持7天退</span>
+                            @if($org->installment_flag==1)
+                                <div class="link-info">
+                                    <div class="link-left">
+                                        <div class="link-img" id="support-img"></div>
+                                        <span class="link-name">半课分期</span>
+                                    </div>
+                                    <hr style="color:#d8d8d8"/>
+                                    <div class="link-middle">{{$org['installment_title']}}</div>
                                 </div>
-                                <hr style="color:#d8d8d8"/>
-                                <div class="link-middle">{{$org['refund_title']}}</div>
-                            </div>
-                        @endif
+                            @endif
+                            @if($org->refund_flag==1)
+                                <div class="link-info">
+                                    <div class="link-left">
+                                        <div class="link-img" id="refund-img"></div>
+                                        <span class="link-name">支持7天退</span>
+                                    </div>
+                                    <hr style="color:#d8d8d8"/>
+                                    <div class="link-middle">{{$org['refund_title']}}</div>
+                                </div>
+                            @endif
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        @endif
-        <div class="read-more">
+                @endforeach
+            @endif
+        </div>
+        <div class="read-more" id="btn-course">
             <i class="iconfont">&#xe600;</i>
             <span>查看全部课程</span>
         </div>
     </div>
     <div class="teacher container">
         <div class="main-title">金牌讲师</div>
+        <div class="half" id="full-teacher">
         @foreach($org->teachers as $v)
             <div class="teacher-box">
                 <div class="teacher-left">
@@ -206,12 +209,12 @@
                 </div>
             </div>
         @endforeach
-        <div class="read-more">
+        </div>
+        <div class="read-more" id="btn-teacher">
             <i class="iconfont">&#xe600;</i>
             <span>查看全部老师</span>
         </div>
     </div>
-
 
     <div class="call-mask hide">
         <div class="call-container">

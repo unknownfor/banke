@@ -200,4 +200,10 @@ return [
 		'active' => ['fa fa-navicon','审核通过'],
 		'trash' => ['fa fa-trash','未通过'],
 	],
+
+	'freestudy_status' => [
+		'audit' => ['fa fa-paw','未开始'],
+		'active' => ['fa fa-navicon','进行中'],
+		'ban' => ['fa fa-trash','已结束'],
+	],
 ];

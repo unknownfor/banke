@@ -191,6 +191,7 @@ ul {
           }
           #more-school {
             display: inline-block;
+            .size(8px,20px);
             font-size: 22px;
             -webkit-transform: translate(-11px, 0px);
           }
@@ -237,6 +238,8 @@ ul {
         margin: 0 auto;
         .album-li {
           flex: 0 0 @w;
+          display: inline-block;
+          position: relative;
           > img {
             display: inline-block;
             .size (@w,75px);
@@ -246,7 +249,7 @@ ul {
       .intro {
         text-align: left;
         line-height: 22px;
-        padding-bottom: 5px;
+        padding-bottom: 10px;
       }
     }
     &.course {
@@ -445,9 +448,18 @@ ul {
     }
   }
   .half {
-    height: 83px;
     overflow: hidden;
+    &#full-intro {
+      height: 90px;
+    }
+    &#full-course {
+      height: 200px;
+    }
+    &#full-teacher {
+      height: 80px;
+    }
   }
+
   .hide {
     opacity: 0;
     display: none;

@@ -25,7 +25,7 @@ class FreeStudyRequest extends Request
     {
         return [
             'title' => 'required',
-            'short_content' => 'required',
+            'shot_content' => 'required',
             'content' => 'required',
             'type' => 'required',
             'url' => 'required',
@@ -46,7 +46,7 @@ class FreeStudyRequest extends Request
     {
         return [
             'title'          => trans('labels.freestudy.title'),
-            'short_content'          => trans('labels.freestudy.short_content'),
+            'shot_content'          => trans('labels.freestudy.shot_content'),
             'content'          => trans('labels.freestudy.content'),
             'type'          => trans('freestudy.banner.type'),
             'url'          => trans('labels.freestudy.url'),
