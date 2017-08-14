@@ -229,23 +229,45 @@ ul {
     &.introduction {
       text-align: center;
       padding-bottom: 0px;
-      .org-album {
-        @w: 66px;
-        width: 300px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin: 0 auto;
-        .album-li {
-          flex: 0 0 @w;
-          display: inline-block;
-          position: relative;
-          > img {
+      .org-album-pre {
+        overflow-x: auto;
+        .org-album {
+          //@w: 66px;
+          //width: 300px;
+          //display: flex;
+          //flex-wrap: wrap;
+          //justify-content: space-between;
+          //margin: 0px 0 14px 0;
+          //white-space: nowrap;
+          margin: 0px 0 14px 0;
+          white-space: nowrap;
+          .album-li {
+            //flex: 0 0 @w;
+            //display: inline-block;
+            //position: relative;
+            //overflow-y: hidden;
+            //height: 75px;
+            overflow-y: hidden;
+            border: 1px solid rgba(145, 145, 145, 0.2);
+            width: 40%;
+            height: 110px;
             display: inline-block;
-            .size (@w,75px);
+            vertical-align: top;
+            margin-right: 5px;
+            > a {
+              text-decoration: none;
+              word-break: break-all;
+              > img {
+                //display: inline-block;
+                //.size (@w,75px);
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
           }
         }
-      }
+
       .intro {
         text-align: left;
         line-height: 22px;

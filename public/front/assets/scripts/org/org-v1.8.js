@@ -9,7 +9,14 @@ $(function() {
 
     /*
     * 机构评分星星*/
+    function orgStar () {
+        var  str;
+        str = '<span class="rightItem starsCon">' +
+        this.getStarInfoByScore(item.comprehensive_score | 0) +
+        '</span>';
 
+        $('.org-stars').append(str);
+    };
 
 
     /*电话咨询-判断来源是否是分享页*/

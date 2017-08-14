@@ -11,6 +11,13 @@ $(function() {
 
 
     /*
+     * 点击关闭弹窗*/
+    $(document).on( window.eventName,'#close', function() {
+        $('.sign-mask').addClass('hide').removeClass('show');
+    });
+
+
+    /*
     * 点击关闭弹窗*/
     $(document).on( window.eventName,'#jump-btn', function() {
         $('.sign-mask').addClass('hide').removeClass('show');
