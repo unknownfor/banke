@@ -281,6 +281,9 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
     Route::get('/freestudy/{id}', 'FreeStudyController@share_v1_8');
 
     Route::get('/ambassadordownload', 'MarketingAmbassadorController@download_v1_8');
+
+    //申请免费学
+    Route::post('/freestudysignup','FreeStudyController@signup');
 });
 
 

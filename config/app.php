@@ -279,6 +279,7 @@ return [
         'CommentAppStoreRepository' => App\Facades\CommentAppStoreFacade::class,
         'GoodArticleRepository' => App\Facades\GoodArticleFacade::class,
         'FreeStudyRepository' => App\Facades\FreeStudyFacade::class,
+        'FreeStudyUsersRepository' => App\Facades\FreeStudyUsersFacade::class,
     ],
 
 ];

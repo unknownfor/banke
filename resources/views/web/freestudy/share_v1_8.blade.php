@@ -16,7 +16,8 @@
     <title>免费学页面</title>
 </head>
 <body>
-<div id="freestudy">
+{!! csrf_field() !!}
+<div id="freestudy" data-id="{{$freestudy['id']}}">
     <div class="head">
         <div class="title">{{$freestudy['title']}}</div>
     </div>

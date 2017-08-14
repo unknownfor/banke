@@ -48,34 +48,30 @@ $(function() {
 
     $(document).on(window.eventName,'#jump-btn.active', function () {
         window.controlLoadingBox(true);
-        // var url='/v1.3/share/doenrol',
-        //     uid=$('.user').attr('data-uid'),
-        //     cid=$('.user').attr('data-course-id'),
-        //     oid=$('.user').attr('data-org-id'),
-        //     mobile = $('.phone').val(),
-        //     data={
-        //         org_id:oid,
-        //         course_id:cid,
-        //         invitation_uid:uid,
-        //         mobile:mobile
-        //     };
-        // $(this).removeClass('active');
-        // getDataAsync(url,data,function(res) {
-        //     //成功返回之后调用的函数
-        //     window.controlLoadingBox(false);
-        //     if (res.status_code == 0) {
+         var url='/v1.8/share/freestudysignup',
+             id=$('#freestudy').attr('data-id'),
+             mobile = $('.phone').val(),
+             data={
+                 free_study_id:id,
+                 mobile:mobile
+             };
+         $(this).removeClass('active');
+         getDataAsync(url,data,function(res) {
+             //成功返回之后调用的函数
+             window.controlLoadingBox(false);
+             if (res.status_code == 0) {
                 window.showTips('<p>恭喜您，申请成功!</p>',2000);
                 window.setTimeout(function() {
                     showSuccessPage();
                 },2000);
-            // }
-            // else{
-            //     window.showTips(res.message);
-            // }
-        // },function(){
-        //     window.controlLoadingBox(false);
-        //     $(this).addClass('active');
-        // },'post');
+             }
+             else{
+                 window.showTips(res.msg);
+             }
+         },function(){
+             window.controlLoadingBox(false);
+             $(this).addClass('active');
+         },'post');
     });
 
 

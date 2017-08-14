@@ -239,5 +239,10 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('FreeStudyRepository', function($app){
             return new \App\Repositories\admin\FreeStudyRepository();
         });
+
+        //半课免费学成员
+        $this->app->singleton('FreeStudyUsersRepository', function($app){
+            return new \App\Repositories\admin\FreeStudyUsersRepository();
+        });
     }
 }
