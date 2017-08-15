@@ -46,8 +46,10 @@
             <div class="org-stars">
                 <i class="star colored iconfont">&#xe70e;</i>
                 <i class="star colored iconfont">&#xe70e;</i>
-                <i class="star colored half iconfont">&#xe62f;</i>
-                <i class="star iconfont">&#xe680;</i>
+                <i class="star colored iconfont">&#xe70e;</i>
+                <i class="star colored iconfont">&#xe70e;</i>
+                {{--<i class="star colored half iconfont">&#xe62f;</i>--}}
+                {{--<i class="star iconfont">&#xe680;</i>--}}
             </div>
             <div class="tips">
                 <div class="tips-left">
@@ -116,9 +118,11 @@
                 <div class="clear"></div>
             </ul>
         </div>
+        @if(!!$org['details'])
         <div class="half" id="full-intro">
             <div class="intro">{!! $org['details'] !!}</div>
         </div>
+        @endif
         <div class="read-more"  id="btn-intro">
             <i class="iconfont">&#xe600;</i>
             <span>查看简介</span>
