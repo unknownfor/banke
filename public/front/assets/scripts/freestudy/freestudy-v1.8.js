@@ -67,6 +67,7 @@ $(function() {
         window.controlLoadingBox(true);
          var url='/v1.8/share/freestudysignup',
              id=$('#freestudy').attr('data-id'),
+             status = $('#freestudy').attr('data-id'),
              mobile = $('.phone').val(),
              data={
                  free_study_id:id,
@@ -104,19 +105,25 @@ $(function() {
 
     /*
     *判断活动是否结束
-    * status 0：未启用。1：进行中。2：已结束
+    * status 0：未启用。1：进行中。2：已结束 -1:已参加
     * 0或者1时 显示“我要申请”
     * 2 显示“活动已结束”
+    * -1 显示“已参加”
      */
     function judgeTheActive() {
         var status = $('#freestudy').attr('data-id'),
-            btn = $('.down-btn');
+            btn = $('.down-btn'),
+            item;
         if (status != 2) {
-            var item = '<span>我要申请</span>';
+            item = '<span>我要申请</span>';
             btn.removeClass('nouse');
         }else {
-            var item = '<span>活动已结束</span>';
-            btn.addClass('nouse');
+            if(status = -1) {
+                item = '<span>活动已结束</span>';
+            }else {
+                item = '<span>已参加</span>';
+                btn.addClass('nouse');
+            }
         }
         btn.html(item);
 
