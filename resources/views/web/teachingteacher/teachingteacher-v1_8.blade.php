@@ -12,7 +12,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    <link href="/front/assets/css/photoswipeunion.min.css" rel="stylesheet" type="text/css">
+    <link href="/front/assets/css/photoswipe/photoswipeunion.min.css" rel="stylesheet" type="text/css">
     <link type="text/css" href="/front/assets/css/teachingteacher/v1.8/teacher.css" rel="stylesheet">
     <title>{{$teacher['name']}}</title>
 </head>
@@ -41,7 +41,7 @@
                         <?php
                             $goodat_course=explode(',',$teacher['goodat_course']);
                         ?>
-                        @foreach($tags as $v)
+                        @foreach($goodat_course as $v)
                             <span class="course">{{$v}}</span>
                         @endforeach
                     @endif
@@ -62,7 +62,11 @@
                 $imgs=explode(',',$teacher['album']);
                 ?>
                 @foreach($imgs as $v)
-                        <li class="album-li"><img src="{{$v}}" /></li>
+                        <li class="album-li">
+                            <a href="{{$v}}">
+                                <img src="{{$v}}" />
+                            </a>
+                        </li>
                 @endforeach
             </ul>
         </div>
@@ -74,9 +78,12 @@
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/photoswipe/myphotoswipe.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/photoswipe/photoswipe.min.js" type="text/javascript"></script>
+<script src="/front/assets/plugins/photoswipe/photoswipe-ui-default.min.js.js" type="text/javascript"></script>
 <script>
-    new MyPhotoSwipe('.album',{
-        bgFilter:true,
-    });
+    /*
+    * photoswipe
+    * 图片信息查看  相册、视频信息查看
+    * */
+    new MyPhotoSwipe('.album-ul');
 </script>
 </html>
