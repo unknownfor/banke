@@ -81,7 +81,7 @@
                                 <th>#</th>
                                 <th width="20%"> {{ trans('labels.banner.title') }} </th>
                                 <th> {{ trans('labels.banner.img_url') }} </th>
-                                <th style="width:400px"> {{ trans('labels.banner.url') }} </th>
+                                <th style="width:400px;max-width: 400px;"> {{ trans('labels.banner.url') }} </th>
                                 <th> {{ trans('labels.banner.sort') }} </th>
                                 <th width="8%"> {{ trans('labels.banner.status') }} </th>
                                 <th> {{ trans('labels.banner.updated_at') }} </th>
