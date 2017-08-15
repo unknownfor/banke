@@ -24,7 +24,7 @@ class MarketingAmbassadorController extends Controller
     /**
      * 下载
      */
-    public function download_v1_8()
+    public function download_v1_8($uid)
     {
         return view('web.marketingambassador.download_v1_8');
     }
