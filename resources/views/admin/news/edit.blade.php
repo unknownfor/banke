@@ -58,18 +58,18 @@
                           <div class="col-md-10">
                               <div class="md-radio-inline">
                                   <div class="md-radio">
-                                      <input type="radio" id="type1" name="type" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($news['status'] == config('admin.global.status.active')) checked @endif>
-                                      <label for="status1">
-                                          <span></span>
-                                          <span class="check"></span>
-                                          <span class="box"></span> 普通的平台动态 </label>
-                                  </div>
-                                  <div class="md-radio">
-                                      <input type="radio" id="type2" name="type" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($news['status'] === config('admin.global.status.audit')) checked @endif>
-                                      <label for="status2">
+                                      <input type="radio" id="type1" name="type" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($news['type'] == config('admin.global.status.active')) checked @endif>
+                                      <label for="type1">
                                           <span></span>
                                           <span class="check"></span>
                                           <span class="box"></span> 学习动态 </label>
+                                  </div>
+                                  <div class="md-radio">
+                                      <input type="radio" id="type2" name="type" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($news['type'] === config('admin.global.status.audit')) checked @endif>
+                                      <label for="type2">
+                                          <span></span>
+                                          <span class="check"></span>
+                                          <span class="box"></span> 普通的平台动态 </label>
                                   </div>
                               </div>
                           </div>

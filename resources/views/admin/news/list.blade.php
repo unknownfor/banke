@@ -46,10 +46,10 @@
                         <tr role="row" class="heading">
                           <th>#</th>
                           <th width="15%"> {{ trans('labels.news.title') }} </th>
+                          <th> {{ trans('labels.news.type') }} </th>
                           <th> {{ trans('labels.news.sort') }} </th>
                           <th> {{ trans('labels.news.status') }} </th>
                           <th width="15%"> {{ trans('labels.news.created_at') }} </th>
-                          <th width="15%"> {{ trans('labels.news.updated_at') }} </th>
                           <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                         <tr role="row" class="filter">
