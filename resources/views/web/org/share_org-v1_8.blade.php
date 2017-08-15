@@ -125,7 +125,7 @@
         </div>
     </div>
 
-    @if($course->count()>0)
+    @if($course)
     <div class="course container">
         <div class="main-title">优秀课程推荐</div>
         <div class="half" id="full-course">
