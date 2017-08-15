@@ -141,6 +141,7 @@ class CourseController extends Controller
 
         //评论信息
         $comments=CommentOrgRepository::getAllCommentsByOrgSummaryId($org_summary['id']);
+        $link_base_url='http://'.env('ADMIN_DOMAIN');
         return view('web.course.share_course-v1_8')->with(compact([
             'course','org_summary',
             'fake_user_info','fake_number',

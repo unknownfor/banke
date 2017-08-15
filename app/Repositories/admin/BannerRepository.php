@@ -49,7 +49,7 @@ class BannerRepository
 
 
 		$banner = $banner->offset($start)->limit($length);
-		$banners = $banner->orderBy("sort")->get();
+		$banners = $banner->orderBy("sort","desc")->get();
                
 
 		if ($banners) {

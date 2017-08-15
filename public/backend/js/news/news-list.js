@@ -31,6 +31,18 @@ var TableDatatablesAjax = function() {
         	"orderable" : false,
         },
         {
+          "data": "type",
+          "name" : "type",
+          "orderable" : false,
+          render:function(data){
+            if (data == 1) {
+              return '<span class="label label-success"> 学习动态 </span>';
+            }else {
+              return '<span class="label label-warning"> 普通的平台动态 </span>';
+            }
+          }
+        },
+        {
         	"data": "sort",
         	"name": "sort",
         	"orderable" : false,
@@ -52,11 +64,6 @@ var TableDatatablesAjax = function() {
         { 
         	"data": "created_at",
         	"name": "created_at",
-        	"orderable" : true,
-        },
-        { 
-        	"data": "updated_at",
-        	"name": "updated_at",
         	"orderable" : true,
         },
         { 

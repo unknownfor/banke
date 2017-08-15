@@ -57,17 +57,18 @@
         </div>
     </div>
 
-    {{--<div class="join container">--}}
-        {{--<div class="join-title">以下小伙伴正在发起团购，参团享返现哟</div>--}}
-        {{--<div class="join-box">--}}
-            {{--<img class="join-img" src="{{$fake_user_info['img']}}" />--}}
-            {{--<div class="join-detail">--}}
-                {{--<div class="join-name">{{$fake_user_info['name']}}</div>--}}
-                {{--<div class="join-num">已有<span>{{$fake_number}}人</span>参团</div>--}}
-                {{--<div class="join-btn"><a href="#">立即参团</a></div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
+<<<<<<< HEAD
+    <div class="join container">
+        <div class="join-title">以下小伙伴正在发起团购，参团享返现哟</div>
+        <div class="join-box">
+            <img class="join-img" src="{{$fake_user_info['img']}}" />
+            <div class="join-detail">
+                <div class="join-name">{{$fake_user_info['name']}}</div>
+                <div class="join-num">已有<span>{{$fake_number}}人</span>参团</div>
+                <div class="join-btn"><a href="{{$link_base_url}}/v1.6/share/enrol/">立即参团</a></div>
+            </div>
+        </div>
+    </div>
 
     <div class="org container">
         <div class="org-box">

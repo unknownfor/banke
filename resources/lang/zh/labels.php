@@ -432,6 +432,7 @@ return [
 		'id' => '序号',
 		'title' => '标题',
 		'sort' => '排序',
+		'type'=>'动态类型',
 		'content' => '内容',
 		'status' => '状态',
 		'created_at' => '创建时间',
