@@ -6,9 +6,10 @@ $(function() {
     window.addLoadingImg();
     window.addTip();
 
+    judgeTheActive();
+
     var href = window.location.href;
     var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
-
 
     /*
      * 点击关闭弹窗*/
@@ -104,5 +105,20 @@ $(function() {
     /*
     *判断活动是否结束
     * status 0：未启用。1：进行中。2：已结束
+    * 0或者1时 显示“我要申请”
+    * 2 显示“活动已结束”
      */
+    function judgeTheActive() {
+        var status = $('#freestudy').attr('data-id'),
+            btn = $('.down-btn');
+        if (status != 2) {
+            var item = '<span>我要申请</span>';
+            btn.removeClass('nouse');
+        }else {
+            var item = '<span>活动已结束</span>';
+            btn.addClass('nouse');
+        }
+        btn.html(item);
+
+    }
 });

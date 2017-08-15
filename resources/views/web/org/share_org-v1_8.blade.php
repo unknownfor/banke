@@ -14,6 +14,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/org/v1.8/org.css" rel="stylesheet">
     <link type="text/css" href="/front/assets/css/course/v1.8/iconfont/iconfont.css" rel="stylesheet">
+    <link href="/backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css" rel="stylesheet" type="text/css">
     <title>{{$org['name']}}</title>
 </head>
 <body>
@@ -106,7 +107,10 @@
                     $albums=explode(',',$org->album);
                     ?>
                     @foreach($albums as $v)
-                            <li class="album-li"><a href="{{$v}}" ><img src="{{$v}}"/></a></li>
+                            <li class="album-li">
+                                <a href="{{$v}}" data-size="400x500"></a>
+                                <img src="{{$v}}"/>
+                            </li>
                     @endforeach
                 @endif
                 <div class="clear"></div>
@@ -120,6 +124,8 @@
             <span>查看简介</span>
         </div>
     </div>
+
+    @if($course)
     <div class="course container">
         <div class="main-title">优秀课程推荐</div>
         <div class="half" id="full-course">
@@ -190,6 +196,10 @@
             <span>查看全部课程</span>
         </div>
     </div>
+    @endif
+
+
+    @if($org['teachers']->count()>0)
     <div class="teacher container">
         <div class="main-title">金牌讲师</div>
         <div class="half" id="full-teacher">
@@ -217,6 +227,8 @@
             <span>查看全部老师</span>
         </div>
     </div>
+    @endif
+
 
     <div class="call-mask hide">
         <div class="call-container">
@@ -234,6 +246,16 @@
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
+<script src="/backend/js/libs/photoswipe/photoswipe.min.js" type="text/javascript"></script>
+<script src="/backend/js/libs/photoswipe/photoswipe-ui-default.min.js" type="text/javascript"></script>
+<script src="/backend/js/libs/photoswipe/myphotoswipe.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 <script src="/front/assets/scripts/org/org-v1.8.js" type="text/javascript"></script>
+<script type="text/javascript">
+    /*
+     * photoswipe
+     * 图片信息查看  相册、视频信息查看
+     * */
+    new MyPhotoSwipe('.org-album');
+</script>
 </html>
