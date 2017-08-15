@@ -246,8 +246,14 @@ Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
     //分期详情分享
     Route::get('/installment/{id}', 'InstallmentController@installment_v1_8');
 
+    //分期详情分享
+    Route::get('/installment_oid/{id}', 'InstallmentController@installment_oid_v1_8');
+
     //退款详情分享
     Route::get('/refund/{id}', 'RefundController@refund_v1_8');
+
+    //退款详情分享
+    Route::get('/refund_oid/{id}', 'RefundController@refund_oid_v1_8');
 
     //活动详情分享
     Route::get('/activity/{id}', 'ActivityController@v1_8');

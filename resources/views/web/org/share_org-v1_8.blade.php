@@ -161,24 +161,24 @@
                                 <div class="link-middle">报名成功后最高返现50%</div>
                             </div>
                             @if($org->installment_flag==1)
-                                <div class="link-info">
+                                <a href="{{$link_base_url}}/v1.8/web/installment/{{$v->id}}" class="link-info">
                                     <div class="link-left">
                                         <div class="link-img" id="support-img"></div>
                                         <span class="link-name">半课分期</span>
                                     </div>
                                     <hr style="color:#d8d8d8"/>
                                     <div class="link-middle">{{$org['installment_title']}}</div>
-                                </div>
+                                </a>
                             @endif
                             @if($org->refund_flag==1)
-                                <div class="link-info">
+                                <a href="{{$link_base_url}}/v1.8/web/refund/{{$v->id}}" class="link-info">
                                     <div class="link-left">
                                         <div class="link-img" id="refund-img"></div>
                                         <span class="link-name">支持7天退</span>
                                     </div>
                                     <hr style="color:#d8d8d8"/>
                                     <div class="link-middle">{{$org['refund_title']}}</div>
-                                </div>
+                                </a>
                             @endif
                         </div>
                     </div>
@@ -194,7 +194,7 @@
         <div class="main-title">金牌讲师</div>
         <div class="half" id="full-teacher">
         @foreach($org->teachers as $v)
-            <a href="{{$link_base_url}}/{{$v->id}}" class="teacher-box">
+            <a href="{{$link_base_url}}/v1.8/web/teachingteacher/{{$v->id}}" class="teacher-box">
                 <div class="teacher-left">
                     <img src="{{$v->avatar}}" />
                 </div>
