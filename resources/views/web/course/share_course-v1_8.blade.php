@@ -64,7 +64,7 @@
             <div class="join-detail">
                 <div class="join-name">{{$fake_user_info['name']}}</div>
                 <div class="join-num">已有<span>{{$fake_number}}人</span>参团</div>
-                <div class="join-btn"><a href="#">立即参团</a></div>
+                <div class="join-btn"><a href="{{$link_base_url}}/v1.6/share/enrol/">立即参团</a></div>
             </div>
         </div>
     </div>

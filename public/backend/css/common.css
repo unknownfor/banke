@@ -229,3 +229,25 @@
 .custom-label{
   line-height: 35px;
 }
+
+.color-block{
+  border-radius: 3px;
+  padding: 2px 5px;
+  font-size: 12px;
+  color: #fff;
+  margin: 3px;
+  display: inline-block;
+  white-space: nowrap;
+}
+.color-block.green{
+  background-color: #1ABC9C;
+}
+.color-block.success{
+  background-color: #36c6d3;
+}
+.color-block.danger{
+  background-color: #ed6b75;
+}
+.color-block.warning{
+  background-color: #F1C40F;
+}
