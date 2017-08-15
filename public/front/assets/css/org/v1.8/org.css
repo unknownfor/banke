@@ -487,33 +487,29 @@ ul {
   text-align: center;
   padding-bottom: 0px;
 }
-#org .container.introduction .org-album {
-  width: 300px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  margin: 0 auto;
+#org .container.introduction .org-album-pre {
+  overflow-x: auto;
 }
-#org .container.introduction .org-album .album-li {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 66px;
-  -ms-flex: 0 0 66px;
-  flex: 0 0 66px;
-  display: inline-block;
-  position: relative;
+#org .container.introduction .org-album-pre .org-album {
+  margin: 0px 0 14px 0;
+  white-space: nowrap;
 }
-#org .container.introduction .org-album .album-li > img {
+#org .container.introduction .org-album-pre .org-album .album-li {
+  overflow-y: hidden;
+  border: 1px solid rgba(145, 145, 145, 0.2);
+  width: 40%;
+  height: 110px;
   display: inline-block;
-  width: 66px;
-  height: 75px;
+  vertical-align: top;
+  margin-right: 5px;
+}
+#org .container.introduction .org-album-pre .org-album .album-li > a {
+  text-decoration: none;
+  word-break: break-all;
+}
+#org .container.introduction .org-album-pre .org-album .album-li > a > img {
+  width: 100%;
+  height: 100%;
 }
 #org .container.introduction .intro {
   text-align: left;

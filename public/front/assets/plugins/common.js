@@ -208,3 +208,51 @@ window.toHideModuleByClickOutside=function(e,closeFn){
         closeFn && closeFn();
     }
 };
+
+/*根据分数情况，得到星星的信息*/
+window.getStarInfoByScore=function(num){
+    if(num.toString().indexOf('.')>0){
+        num=this.myRoundNumber(num);
+    }
+    var str='',
+        allNum=Math.floor(num),
+        tempNum=Math.ceil(num),
+        halfNum=tempNum==allNum? 0:1,
+        blankNum=5-tempNum;
+    for(var i=0;i<allNum;i++){
+        str+='<i class="star colored iconfont">&#xe70e;</i>';
+    }
+    if(halfNum==1){
+        str+='<i class="star colored half iconfont">&#xe62f;</i>';
+    }
+    for(var i=0;i<blankNum;i++){
+        str+='<i class="star iconfont">&#xe680;</i>';
+    }
+    return str;
+};
+
+/*
+ *对评分进行四舍五入
+ * 按照以下类似规则：
+ * 1：   2.1，2.2  = 2.0
+ * 2：   2.3，2.4，2.5，2.6 = 2.5
+ * 3：   2.7，2.8，2.9  = 3.0
+ */
+window.myRoundNumber=function(num){
+    num=num.toFixed(1);
+    var arr=num.split('.'),
+        firstNum=arr[0],
+        lastNum=arr[1];
+    if(lastNum!=0){
+        var flag1=lastNum<= 2,
+            flag2=lastNum>=7;
+        if(flag1){
+            return firstNum | 0;
+        }else if(flag2){
+            return parseInt (firstNum) + 1;
+        }
+        else{
+            return parseInt(firstNum) + 0.5;
+        }
+    }
+};

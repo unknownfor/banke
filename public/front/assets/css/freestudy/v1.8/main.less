@@ -69,7 +69,7 @@ img {
     z-index: 10000;
     background-color: rgba(33,33,33,0.8);
     @w: 240px;
-    @h: 35px;
+    @h: 45px;
     @r:10px;
     font-size: 14px;
     .modal-box-main{
@@ -80,15 +80,17 @@ img {
       width: @w;
       .title {
         padding-bottom: 10px;
-        line-height: @h;
+        line-height: 35px;
         color: #000;
-        .size(@w,@h);
+        .size(@w,35px);
       }
       .sign-head {
         display: inline-block;
         width: 100%;
         margin-right: 15px;
         #close {
+          float: right;
+          padding-right: 15px;
           @cw:20px;
           display: inline-block;
           font-size: @cw;

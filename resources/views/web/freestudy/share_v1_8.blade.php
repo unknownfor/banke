@@ -28,8 +28,7 @@
     <div class="download">
         <div class="down-btn">我要申请</div>
     </div>
-    {{--<div class="sign-mask hide">--}}
-    <div class="sign-mask show">
+    <div class="sign-mask hide">
         <from class="modal-box-main">
             <div class="sign-head">
                 <i id="close" class="iconfont">&#xe641;</i>

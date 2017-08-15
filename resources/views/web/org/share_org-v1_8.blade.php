@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="head-tips">
-            <div>总分：{{$org['grade_total']}}</div>
+            <div>{{$org['grade_total']}}</div>
             <div class="org-stars">
                 <i class="star colored iconfont">&#xe70e;</i>
                 <i class="star colored iconfont">&#xe70e;</i>
@@ -99,17 +99,19 @@
     </div>
 
     <div class="introduction container">
-        <ul class="org-album">
-            @if($org->album)
-                <?php
+        <div class="org-album-pre">
+            <ul class="org-album">
+                @if($org->album)
+                    <?php
                     $albums=explode(',',$org->album);
-                ?>
-                @foreach($albums as $v)
-                    <li class="album-li"><img src="{{$v}}"/></li>
-                @endforeach
-            @endif
-            <div class="clear"></div>
-        </ul>
+                    ?>
+                    @foreach($albums as $v)
+                            <li class="album-li"><a href="{{$v}}" ><img src="{{$v}}"/></a></li>
+                    @endforeach
+                @endif
+                <div class="clear"></div>
+            </ul>
+        </div>
         <div class="half" id="full-intro">
             <div class="intro">{!! $org['details'] !!}</div>
         </div>
