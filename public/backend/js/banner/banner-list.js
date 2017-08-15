@@ -42,7 +42,7 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
           render:function(data){
             if(data.indexOf('banke')!=0){
-              return  '<div style="max-width: 400px;"><a style="display:block" target="_blank" href="'+data+'">'+data+'</a></div>'
+              return  '<div style="max-width: 400px;"><a style="display:block;word-wrap:break-word;" target="_blank" href="'+data+'">'+data+'</a></div>'
             }else{
               return data;
             }
