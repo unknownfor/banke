@@ -60,11 +60,11 @@ class FreeStudyController extends Controller
         $id=$request['free_study_id'];
         $freestudy=BankeFreeStudy::find($id);
         if($freestudy['status']==2){
-            return response()->json(['msg' => '该活动已结束，不能申请', 'status' => false,'code'=>-1]);
+            return response()->json(['msg' => '该活动已结束，不能申请', 'status' => false,'code'=>2]);
         }
         $users=BankeFreeStudyUsers::where(['free_study_id'=>$id,'mobile'=>$request['mobile']]);
         if($users->count()>0){
-            return response()->json(['msg' => '您已申请该活动，不能再申请', 'status' => false,'code'=>0]);
+            return response()->json(['msg' => '您已申请该活动，不能再申请', 'status' => false,'code'=>-1]);
         }
 
         $userData = $request->all();
