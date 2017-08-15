@@ -192,7 +192,7 @@
         <div class="main-title">金牌讲师</div>
         <div class="half" id="full-teacher">
         @foreach($org->teachers as $v)
-            <div class="teacher-box">
+            <a href="{{$link_base_url}}/{{$v->id}}" class="teacher-box">
                 <div class="teacher-left">
                     <img src="{{$v->avatar}}" />
                 </div>
@@ -207,7 +207,7 @@
                     @endif
                     <div class="org">{{$org['name']}}</div>
                 </div>
-            </div>
+            </a>
         @endforeach
         </div>
         <div class="read-more" id="btn-teacher">

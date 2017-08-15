@@ -65,7 +65,8 @@ class OrgController extends Controller
         $org = BankeOrgSummary::find($id);
         $sub_org=$org->org->toArray()[0];
         $course=OrgSummaryRepository::getCourse($id,3);
-        return view('web.org.share_org-v1_8')->with(compact(['org','course','sub_org']));
+        $link_base_url='http://'.env('ADMIN_DOMAIN').'/v1.8/web/teachingteacher';
+        return view('web.org.share_org-v1_8')->with(compact(['org','course','sub_org','link_base_url']));
     }
 
     /**评论分享页面**/
