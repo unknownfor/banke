@@ -57,6 +57,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <div class="join container">
         <div class="join-title">以下小伙伴正在发起团购，参团享返现哟</div>
         <div class="join-box">
