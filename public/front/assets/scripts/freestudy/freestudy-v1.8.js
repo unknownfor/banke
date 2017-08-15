@@ -6,6 +6,8 @@ $(function() {
     window.addLoadingImg();
     window.addTip();
 
+    judgeTheActive();
+
     var href = window.location.href;
     var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
 
@@ -107,6 +109,16 @@ $(function() {
     * 2 显示“活动已结束”
      */
     function judgeTheActive() {
+        var status = $('#freestudy').attr('data-id'),
+            btn = $('.down-btn');
+        if (status != 2) {
+            var item = '<span>我要申请</span>';
+            btn.removeClass('nouse');
+        }else {
+            var item = '<span>活动已结束</span>';
+            btn.addClass('nouse');
+        }
+        btn.html(item);
 
     }
 });
