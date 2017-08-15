@@ -614,6 +614,7 @@ ul {
   display: -ms-flexbox;
   display: flex;
   margin-top: 10px;
+  color: #666666;
 }
 #org .container.course .head-link .link-info .link-img {
   width: 20px;
@@ -637,11 +638,11 @@ ul {
   vertical-align: 6px;
 }
 #org .container.course .head-link .link-info .link-left {
-  text-align: center;
+  text-align: left;
   -webkit-box-flex: 0;
-  -webkit-flex: 0 0 75px;
-  -ms-flex: 0 0 75px;
-  flex: 0 0 75px;
+  -webkit-flex: 0 0 85px;
+  -ms-flex: 0 0 85px;
+  flex: 0 0 85px;
 }
 #org .container.course .head-link .link-info .link-middle {
   margin-left: 3px;
