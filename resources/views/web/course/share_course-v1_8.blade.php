@@ -227,6 +227,16 @@
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
+<script src="/backend/js/libs/photoswipe/photoswipe.min.js" type="text/javascript"></script>
+<script src="/backend/js/libs/photoswipe/photoswipe-ui-default.min.js" type="text/javascript"></script>
+<script src="/backend/js/libs/photoswipe/myphotoswipe.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
 <script src="/front/assets/scripts/course/course-v1.8.js" type="text/javascript"></script>
+<script type="text/javascript">
+    /*
+     * photoswipe
+     * 图片信息查看  相册、视频信息查看
+     * */
+    new MyPhotoSwipe('.org-album');
+</script>
 </html>

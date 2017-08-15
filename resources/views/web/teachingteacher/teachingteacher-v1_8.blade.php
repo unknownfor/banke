@@ -74,7 +74,7 @@
 </body>
 
 <script src="/front/assets/plugins/zepto.min.js"></script>
-
+<script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/backend/js/libs/photoswipe/photoswipe.min.js" type="text/javascript"></script>
 <script src="/backend/js/libs/photoswipe/photoswipe-ui-default.min.js" type="text/javascript"></script>
 <script src="/backend/js/libs/photoswipe/myphotoswipe.js" type="text/javascript"></script>
