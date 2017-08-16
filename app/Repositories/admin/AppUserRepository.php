@@ -662,7 +662,8 @@ class AppUserRepository
 		 *
 	 */
 	public static function execUpdateUserAccountInfo($uid,$award,$type,$taskType){
-		$user_profile = BankeUserProfiles::find($uid);//更新用户表
+		$user_profile = BankeUserProfiles::lockForUpdate()->find($uid);//更新用户表
+//		$user_profile = BankeUserProfiles::find($uid);//更新用户表
 		$changeType='+';  //余额添加还是减
 		$businessTypeIndex='-1';  //事务类型，下标对应 config->admin->balance_log 数组
 

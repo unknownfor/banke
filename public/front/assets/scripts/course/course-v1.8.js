@@ -8,30 +8,6 @@ $(function() {
 
     showStars();
 
-
-    function transStar (num,maxNum) {
-        num=parseInt(num);
-        if(!maxNum){
-            maxNum=5;
-        }
-        if(num<maxNum){
-            num= (num*10/5);
-            if(num%5!=0){
-                num=num.toString();
-                var index=num.indexOf('.');
-                if(index>=0) {
-                    num = num.substr(0, index + 2);
-                    var arr = num.split('.');
-                    if (arr[1] == 0) {
-                        num = arr[0];
-                    }
-                }
-            }
-            num+='万';
-        }
-        return num;
-    }
-
     /*
     * 机构评分星星*/
     function showStars () {
@@ -57,14 +33,23 @@ $(function() {
 
     /*
     * 点击查看分期说明*/
-    $(document).on( window.eventName,'#installment-btn', function() {
+    $(document).on( window.eventName,'#help-img', function() {
         $('.installment').removeClass('hide').addClass('show');
      });
 
+
     /*
     * 点击关闭分期说明弹窗*/
-    $(document).on( window.eventName,'.close-btn', function() {
+    $(document).on( window.eventName,'.close-btn', function(e) {
         $('.installment').addClass('hide').removeClass('show');
+    });
+
+    /*
+     * 点击蒙板关闭*/
+    $(document).on( window.eventName,'.installment', function(e) {
+        window.toHideModuleByClickOutside(e,function () {
+            $('.installment').addClass('hide').removeClass('show');
+        });
     });
 
     /*点击切换机构特色*/
@@ -143,27 +128,12 @@ $(function() {
         }
     };
 
-
-
-    $(document).on(window.eventName,function(e){
-        toHideMask(e);
-    });
-
     //点击关闭拨打电话弹窗
     $(document).on( window.eventName,'.quite', function() {
         var $target=$('.call-mask');
         $target.removeClass('show').addClass('hide');
     });
 
-    function toHideMask(e){
-        var $target=$(e.srcElement);
-        if($target.hasClass('box') ||
-            $target.hasClass('call-box') ||
-            $target.closest('.call-box').length>0)
-        {
-            return;
-        }
-    };
 
 
 

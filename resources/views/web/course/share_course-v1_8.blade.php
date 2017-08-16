@@ -81,14 +81,14 @@
                 </div>
             </div>
         </div>
-        @if($org_summary->tel_phone)
+        {{--@if($org_summary->tel_phone)--}}
             <div class="org-contact">
                 <div class="contact-btn" id="phone">
                     <div class="contact-img"></div>
                     <div class="contact">电话咨询</div>
                 </div>
             </div>
-        @endif
+        {{--@endif--}}
 
         <div class="teacher-box">
             @foreach($org_teachers as $v)
@@ -195,6 +195,17 @@
     </div>
     @endif
 
+    <div class="installment hide">
+        <div class="installment-box">
+            <div class="title">什么是预约金</div>
+            <div class="txt one">预约金是通过半课报名需要支付的课程费用，通过在半课预约并报名成功即可获得课程价50%返现。</div>
+            <div class="txt two">
+                预约金+课程尾款=课程价
+                <br />
+                注：预约金可以在消费之前退还或者换为其他课程预约金</div>
+            <div class="close-btn">知道了</div>
+        </div>
+    </div>
 
     <div class="call-mask hide">
         <div class="call-container">
