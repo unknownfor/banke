@@ -207,6 +207,10 @@ img {
   opacity: 0;
   display: none;
 }
+#course .head-img {
+  max-height: 340px;
+  width: 100%;
+}
 #course .container {
   background-color: #ffffff;
   padding: 15px;
@@ -225,9 +229,6 @@ img {
 }
 #course .container .org-stars .star.colored {
   color: #ffd842;
-}
-#course .container .head-img {
-  max-height: 340px;
 }
 #course .container.head .head-info {
   text-align: left;
