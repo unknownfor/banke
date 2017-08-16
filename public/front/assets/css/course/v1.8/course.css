@@ -762,7 +762,9 @@ img {
 #course .installment .installment-box .title {
   font-size: 14px;
   color: #383d43;
+  margin-top: 5px;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 #course .installment .installment-box .txt {
   line-height: 22px;
@@ -783,7 +785,7 @@ img {
   line-height: 30px;
   background-color: #ffd842;
   border-radius: 3px;
-  margin-top: 45px;
+  margin-top: 30px;
 }
 #course .installment.show {
   display: -webkit-box;
