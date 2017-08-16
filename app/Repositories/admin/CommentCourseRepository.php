@@ -106,10 +106,10 @@ class CommentCourseRepository
 	 */
 	public function updateComment($request,$id)
 	{
-		$commentCourse = BankeCommentCourse::find($id);
-		if ($commentCourse) {
+		$commentCourse = BankeCommentCourse::where('id',$id);
+		if ($commentCourse->count()>0) {
 			DB::transaction(function () use ($commentCourse,$request) {
-				$commentCourse = $commentCourse->lockForUpdate();
+				$commentCourse = $commentCourse->lockForUpdate()->first();
 				try {
 					$oldAwardStatus=$commentCourse['award_status'];
 					$commentCourse=$commentCourse->fill($request->all());
