@@ -765,13 +765,13 @@ ul {
   overflow: hidden;
 }
 #org .half#full-intro {
-  height: 30px;
+  height: 25px;
 }
 #org .half#full-course {
-  height: 200px;
+  height: 137px;
 }
 #org .half#full-teacher {
-  height: 80px;
+  height: 75px;
 }
 #org .hide {
   opacity: 0;
