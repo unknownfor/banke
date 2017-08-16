@@ -108,18 +108,16 @@ $(function (){
      id   表示记录id
      * */
     function viewCounts() {
-        for(var i=0;i<10;i++) {
-            var box = $('.user'),
-                typeId = box.attr('data-type-id'),
-                id = box.attr('data-record-id'),
-                url = '/v1.5/share/updateviewcounts',
-                data = {
-                    typeid: typeId,
-                    id: id
-                }
-            getDataAsync(url, data, function () {
+        var box = $('.user'),
+            typeId = box.attr('data-type-id'),
+            id = box.attr('data-record-id'),
+            url = '/v1.5/share/updateviewcounts',
+            data = {
+                typeid: typeId,
+                id: id
+            }
+        getDataAsync(url, data, function () {
 
-            }, null, 'post');
-        }
+        }, null, 'post');
     };
 });
