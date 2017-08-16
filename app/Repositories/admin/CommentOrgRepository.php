@@ -125,6 +125,7 @@ class CommentOrgRepository
 		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
 			DB::transaction(function () use ($comment,$request) {
+				$comment=$comment->lockForUpdate();
 				try {
 					$oldAwardStatus=$comment['award_status'];
 					$comment=$comment->fill($request->all());

@@ -183,7 +183,7 @@ class GroupbuyingRepository
 
 	/**
 	 * 修改浏览量
-	 * 如果浏览量  等于要求量，则息自动 进行奖励
+	 * 如果浏览量  等于要求量，则自动 进行奖励
 	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]
@@ -192,7 +192,7 @@ class GroupbuyingRepository
 	 */
 	public static function updateViewCounts($id)
 	{
-		$groupbuying = BankeGroupbuying::lockForUpdate()->find($id);
+		$groupbuying = BankeGroupbuying::find($id);
 		$max_finished_share_counts=$groupbuying->max_finished_share_counts;
 
 		$time = time();
@@ -204,6 +204,7 @@ class GroupbuyingRepository
 		if($groupbuying['finished_share_counts']<$max_finished_share_counts){  //未完成 浏览量
 			DB::transaction(function () use ($groupbuying,$time) {
 				try {
+					$groupbuying=$groupbuying->lockForUpdate();
 					$groupbuying->view_counts++;
 					//达到浏览量
 					if (($groupbuying->view_counts)%$groupbuying->min_view_counts==0) {

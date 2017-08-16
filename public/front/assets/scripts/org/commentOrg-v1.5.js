@@ -141,20 +141,17 @@ $(function() {
      id   表示记录id
      * */
     function viewCounts() {
-        var url='/v1.5/share/updateviewcounts',
-            box=$('.head'),
-            typeId =box.attr('data-typeId'),
-            id =box.attr('data-id'),
-            data = {
-                typeid:typeId,
-                id:id
-            }
-            getDataAsync(url,data,function(){
+            var url = '/v1.5/share/updateviewcounts',
+                box = $('.head'),
+                typeId = box.attr('data-typeId'),
+                id = box.attr('data-id'),
+                data = {
+                    typeid: typeId,
+                    id: id
+                }
+            getDataAsync(url, data, function () {
 
-            },null,'post');
-
+            }, null, 'post');
     };
-
-
 
 });
