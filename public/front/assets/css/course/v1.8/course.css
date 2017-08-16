@@ -749,6 +749,7 @@ img {
   background-color: rgba(33, 33, 33, 0.8);
   font-size: 14px;
   display: none;
+  line-height: 22px;
 }
 #course .installment .installment-box {
   padding: 10px;

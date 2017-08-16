@@ -170,7 +170,7 @@
     </div>
 
 
-    @if($comments)
+    @if($comments->count()>0)
     <div class="evaluate-info container hide">
             @foreach($comments as $v)
                 <div class="evaluate-box" data-uid="{{$v['uid']}}">
@@ -209,11 +209,11 @@
 
     <div class="call-mask hide">
         <div class="call-container">
-            @if($org_summary->tel_phone)
-                <div class="call-box"><a class="" href="tel:{{$org_summary['tel_phone']}}">{{$org_summary['tel_phone']}}</a></div>
+            @if($course->org->tel_phone)
+                <div class="call-box"><a class="" href="tel:{{$course->org->tel_phone}}">{{$course->org->tel_phone}}</a></div>
             @endif
             @if($org_summary->tel_phone2)
-                <div class="call-box"><a class="" href="tel:{{$org_summary['tel_phone2']}}">{{$org_summary['tel_phone2']}}</a></div>
+                <div class="call-box"><a class="" href="tel:{{$course->org->tel_phone2}}">{{$course->$org->tel_phone2}}</a></div>
             @endif
             <p class="quite">取消</p>
         </div>
