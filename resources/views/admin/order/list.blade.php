@@ -105,7 +105,7 @@
                 <table class="table table-striped table-bordered table-hover table-checkable" id="datatable_ajax">
                     <thead>
                         <tr role="row" class="heading">
-                              {{--<th>id</th>--}}
+                              <th>id</th>
                               <th width="10%"> {{ trans('labels.order.name') }} </th>
                               <th width="10%"> {{ trans('labels.order.mobile') }} </th>
                               <th width="15%"> {{ trans('labels.order.org_name') }} </th>

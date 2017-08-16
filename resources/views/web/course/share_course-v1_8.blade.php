@@ -26,7 +26,7 @@
             <div class="course-payback">报名后最高返现<div id="payback">￥{{$course['max_award']}}</div><div class="appoint">预约数：<span>{{$course['fake_enrol_counts']}}</span></div></div>
         </div>
         <div class="head-link">
-            @if($org_summary->installment_flag)
+            @if($course->org->installment_flag)
                 <a href="javascript:void(0)">
                 <div class="link-info">
                     <div class="link-left">
@@ -42,7 +42,7 @@
                 </div>
             </a>
             @endif
-            @if($org_summary->refund_flag)
+            @if($course->org->refund_flag)
                 <a href="javascript:void(0)">
                 <div class="link-info">
                     <div class="link-left">

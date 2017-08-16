@@ -26,6 +26,6 @@ class MarketingAmbassadorController extends Controller
      */
     public function download_v1_8($uid)
     {
-        return view('web.marketingambassador.download_v1_8');
+        return view('web.marketingambassador.download_v1_8')->with(compact(['uid']));
     }
 }

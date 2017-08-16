@@ -106,9 +106,10 @@ class CommentCourseRepository
 	 */
 	public function updateComment($request,$id)
 	{
-		$commentCourse = BankeCommentCourse::find($id);
-		if ($commentCourse) {
+		$commentCourse = BankeCommentCourse::where('id',$id);
+		if ($commentCourse->count()>0) {
 			DB::transaction(function () use ($commentCourse,$request) {
+				$commentCourse = $commentCourse->lockForUpdate()->first();
 				try {
 					$oldAwardStatus=$commentCourse['award_status'];
 					$commentCourse=$commentCourse->fill($request->all());
@@ -133,7 +134,7 @@ class CommentCourseRepository
 
 	/*奖励用户*/
 	private function awardUser($oldAwardStatus,$comment,$request,$comment_award){
-		if($this->isAward($oldAwardStatus,$request)){
+		if($this->isAward($oldAwardStatus,$request,$comment)){
 			$course=$comment->course;
 			if(!$comment_award) {
 				$comment_award = $course['comment_award'];  //当前课程的奖励金额,v1.5 不是固定的，而是动态计算得到
@@ -157,7 +158,7 @@ class CommentCourseRepository
 	}
 
 	//一个课程可以多次打赏
-	private function isAward($oldAwardStatus,$request){
+	private function isAward($oldAwardStatus,$request,$comment){
 		$flag1=$oldAwardStatus==0 && $request['award_status']==1;  //更新状态为奖励
 		return $flag1;
 	}

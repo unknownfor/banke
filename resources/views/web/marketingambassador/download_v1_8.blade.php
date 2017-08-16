@@ -16,7 +16,7 @@
     <title>下载半课，成为推广大使</title>
 </head>
 <body>
-    <div id="wrapper">
+    <div id="wrapper" data-id="{{$uid}}">
         <div class="container" >
             <img class="bg second" src="/front/assets/img/invitation/v1.7/coo1.png"/>
             <div class="txt txt-one">下载半课</div>

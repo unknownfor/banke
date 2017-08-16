@@ -183,7 +183,7 @@ class GroupbuyingRepository
 
 	/**
 	 * 修改浏览量
-	 * 如果浏览量  等于要求量，则息自动 进行奖励
+	 * 如果浏览量  等于要求量，则自动 进行奖励
 	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]
@@ -192,17 +192,17 @@ class GroupbuyingRepository
 	 */
 	public static function updateViewCounts($id)
 	{
-		$groupbuying = BankeGroupbuying::lockForUpdate()->find($id);
-		$max_finished_share_counts=$groupbuying->max_finished_share_counts;
-
+		$groupbuying = BankeGroupbuying::where('id',$id);
 		$time = time();
-		$today = date("Y-m-d",$time); //2010-08-29
-		$flag = strtotime($groupbuying->lastly_finished_at)>=strtotime($today); //今天已经完成，不能再更新信息
-		if($flag){
-			return false;
-		}
-		if($groupbuying['finished_share_counts']<$max_finished_share_counts){  //未完成 浏览量
-			DB::transaction(function () use ($groupbuying,$time) {
+		DB::transaction(function () use ($groupbuying,$time) {
+			$groupbuying=$groupbuying->lockForUpdate()->first();
+			$max_finished_share_counts=$groupbuying->max_finished_share_counts;
+			$today = date("Y-m-d",$time); //2010-08-29
+			$flag = strtotime($groupbuying->lastly_finished_at)>=strtotime($today); //今天已经完成，不能再更新信息
+			if($flag){
+				return false;
+			}
+			if($groupbuying['finished_share_counts']<$max_finished_share_counts){  //未完成 浏览量
 				try {
 					$groupbuying->view_counts++;
 					//达到浏览量
@@ -220,9 +220,9 @@ class GroupbuyingRepository
 					var_dump($e);
 					return false;
 				}
-			});
+			}
 			return true;
-		}
+		});
 		return false;
 	}
 

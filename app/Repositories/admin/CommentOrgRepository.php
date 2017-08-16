@@ -125,6 +125,7 @@ class CommentOrgRepository
 		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
 			DB::transaction(function () use ($comment,$request) {
+				$comment=$comment->lockForUpdate();
 				try {
 					$oldAwardStatus=$comment['award_status'];
 					$comment=$comment->fill($request->all());
@@ -252,28 +253,31 @@ class CommentOrgRepository
 	 */
 	public static function updateViewCounts($id)
 	{
-		$commentOrg = BankeCommentOrg::lockForUpdate()->find($id);
-		if(!$commentOrg->view_counts_flag){  //未完成 浏览量
+		$commentOrg = BankeCommentOrg::where('id',$id);
 			DB::transaction(function () use ($commentOrg) {
 				try {
-					$commentOrg->view_counts++;
+					$commentOrg=$commentOrg->lockForUpdate()->first();
+					if(!$commentOrg->view_counts_flag) {  //未完成 浏览量
+						$commentOrg->view_counts++;
+						//达到浏览量
+						if ($commentOrg->view_counts == $commentOrg->min_view_counts) {
+							$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
 
-					//达到浏览量
-					if ($commentOrg->view_counts == $commentOrg->min_view_counts) {
-						$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
+							//奖励
+							$oldAwardStatus = $commentOrg['award_status'];
+							$request = array('award_status' => 1);
 
-						//奖励
-						$oldAwardStatus = $commentOrg['award_status'];
-						$request = array('award_status' => 1);
+							$that = new CommentOrgRepository();
 
-						$that=new CommentOrgRepository();
+							$comment_award = $that->getAward($commentOrg);  //奖励金额
 
-						$comment_award=$that->getAward($commentOrg);  //奖励金额
-
-						$that->awardUser($oldAwardStatus, $commentOrg, $request,$comment_award);  //奖励相应
-						$commentOrg->award_status=1;
+							$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
+							$commentOrg->award_status = 1;
+						}
+						$commentOrg->save();
+					}else{
+						return false;
 					}
-					$commentOrg->save();
 				}
 				catch(Exception $e){
 					Flash::error(trans('alerts.course.updated_error'));
@@ -282,8 +286,6 @@ class CommentOrgRepository
 				}
 			});
 			return true;
-		}
-		return false;
 	}
 
 	/*
