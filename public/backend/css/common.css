@@ -1,3 +1,10 @@
+ul,li{
+  margin: 0;
+  padding: 0;
+}
+li{
+  list-style: none;
+}
 .form-area {
   min-height: 200px;
 }

@@ -20,9 +20,16 @@ $(function(){
 
         $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadCoverImg'));
 
+        $(document).on('change', '#uploadImgFile2', $.proxy(this,'initUploadContentImgForOutLinkClick'));
+
         /*上传封面文件*/
         $(document).on('click','.add-cover-img-btn', function(){
             $('#uploadImgFile1').trigger('click');
+        });
+
+        /*上传可以点击外链的详情图片*/
+        $(document).on('click','.add-content-img-btn', function(){
+            $('#uploadImgFile2').trigger('click');
         });
 
         $(document).on('click','.remove-img', $.proxy(this,'deletCoverImg'));
@@ -32,6 +39,8 @@ $(function(){
 
         //photoswipe   //图片信息查看  相册、视频信息查看
         new MyPhotoSwipe('.imgs-list-box');
+
+        $(".content-img-list-box,.content-img-url-box").sortable();
     };
     MyStrategy.prototype={
 
@@ -211,7 +220,7 @@ $(function(){
             this.initUploadImg($target,$form,function(data){
                 data=JSON.parse(data);
                 if(data) {
-                    var str=that.getConverImgStr(data.filedata);
+                    var str=that.getImgStr(data.filedata);
                     $('.cover-list-box').html(str);
                     that.controlLoadingCircleStatus(false);
                     $form[0].reset();
@@ -219,12 +228,36 @@ $(function(){
             });
         },
 
-        getConverImgStr:function(url){
-            return '<li>'+
-                '<a href="'+url+'" data-size="435x263"></a>'+
-                '<img src="'+url+'@142w_80h_1e">'+
-                '<span class="remove-img">×</span>'+
-                '</li>';
+        //上传可以点击外链的详情图片
+        initUploadContentImgForOutLinkClick:function(e){
+            var $target = $('#uploadImgFile2'),
+                $form=$('#upImgForm2'),
+                that=this;
+            that.controlLoadingCircleStatus(true);
+            this.initUploadImg($target,$form,function(data){
+                data=JSON.parse(data);
+                if(data) {
+                    var str=that.getImgStr(data.filedata);
+                    $('.content-img-list-box').html(str);
+                    that.controlLoadingCircleStatus(false);
+                    $form[0].reset();
+                }
+            });
+        },
+
+        getImgStr:function(urlInfo){
+            if(!urlInfo instanceof Array){
+                urlInfo=[urlInfo];
+            }
+            var str='';
+            for(var i=0;i<urlInfo.length;i++) {
+                str+= '<li>' +
+                    '<a href="' + urlInfo[i] + '" data-size="435x435"></a>' +
+                    '<img src="' + urlInfo[i] + '@80w_80h_1e">' +
+                    '<span class="remove-img">×</span>' +
+                    '</li>';
+            }
+            return str;
         },
 
         /*删除封面*/
@@ -306,6 +339,14 @@ $(function(){
 
     //提交编辑
     window.setDataBeforeCommit=function(){
+
+
+        var type=$('.nav-tabs .li.active').index();
+        //0 可以点击的外链，1是普通外链，2是内链
+        if(type==0){
+
+        }
+
         var val=strategy.getValue();
         val=val.replace(/\n/g,"<br/>");
         $('#target-area').text(val);
