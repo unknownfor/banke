@@ -6,7 +6,7 @@ $(function(){
 
 
     /**MyCourse**/
-    var MyStrategy=function(){
+    var MyActivity=function(){
         this.init();
         var that=this,
             orgCommentSharePercent=$('#orgSharePercent').attr('data-percent');
@@ -34,6 +34,10 @@ $(function(){
 
         $(document).on('click','.remove-img', $.proxy(this,'deletCoverImg'));
 
+        $(document).on('click','#add-img-url', $.proxy(this,'addImgUrlInputBox'));
+
+        $(document).on('click','.delete-img-url-input-box', $.proxy(this,'deleteImgUrlInputBox'));
+
         $('.selectpicker').selectpicker();
 
 
@@ -42,7 +46,7 @@ $(function(){
 
         $(".content-img-list-box,.content-img-url-box").sortable();
     };
-    MyStrategy.prototype={
+    MyActivity.prototype={
 
         init:function(){
             this.initEditor();
@@ -260,6 +264,44 @@ $(function(){
             return str;
         },
 
+        /*获得图片地址*/
+        getImgsUrl:function($target){
+            var $imgs=$target,
+                arr=[];
+
+            $.each($imgs,function(){
+                arr.push($(this).find('a').attr('href'));
+            });
+            return arr;
+        },
+
+        /*封面图*/
+        getCoverImg:function(){
+            return this.getImgsUrl($('.imgs-list-box li'));
+        },
+
+        /*详情图*/
+        getContentImgForOutLinkClick:function(){
+            return this.getImgsUrl($('.content-img-list-box li'));
+        },
+
+        /*详情图地址*/
+        getAllLinkUrlsForOutLinkClick:function(){
+            var $inputs=$('.content-img-url-box li input'),
+                arr=[];
+
+            $.each($inputs,function(){
+                arr.push($(this).val());
+            });
+            return arr;
+        },
+
+        /*可点击外链的总内容*/
+        getContentForOutLinkClick:function(){
+
+        },
+
+
         /*删除封面*/
         deletCoverImg:function(e){
             e.stopPropagation();
@@ -287,14 +329,7 @@ $(function(){
             }
         },
 
-        getCoverImg:function(){
-            var $imgs=$('.imgs-list-box li'),arr=[];
 
-            $.each($imgs,function(){
-                arr.push($(this).find('a').attr('href'));
-            });
-            return arr;
-        },
 
         getAllCourse:function(){
             var $course=$('.course-select option:selected'),arr=[];
@@ -305,22 +340,37 @@ $(function(){
             return arr;
         },
 
-        CLASS_NAME:'MyStrategy'
+        addImgUrlInputBox:function(){
+            var str='<li class="ui-sortable-handle">'+
+                '<input type="text" placeholder="请输入链接地址">'+
+                '<span class="color-block danger delete-img-url-input-box">删除</span>'+
+                '</li>';
+            $('.content-img-url-box').append(str);
+
+        },
+
+        deleteImgUrlInputBox:function(e){
+            var $target = this.getTargetByEvent(e);
+            $target.remove();
+        },
+
+
+        CLASS_NAME:'MyActivity'
 
     };
 
-    var strategy;
+    var activity;
     initStrategy();
 
     function initStrategy() {
-        strategy=new MyStrategy();
+        activity=new MyActivity();
     }
 
     //初始化编辑器内容
     setEditorVal();
     function setEditorVal(){
         var val=$('#target-area').text();
-        strategy.setValue(val);
+        activity.setValue(val);
     }
 
     setIntroduce();
@@ -344,14 +394,24 @@ $(function(){
         var type=$('.nav-tabs .li.active').index();
         //0 可以点击的外链，1是普通外链，2是内链
         if(type==0){
+            var imgArr=activity.getContentImgForOutLinkClick();
+            var imgLinkUrlArr=activity.getAllLinkUrlsForOutLinkClick();
+            if(imgArr.length!=imgLinkUrlArr.length);{
+                alert("详情图数目和地址数目不对应");
+                return false;
+            }
+            for(var i=0;i<imgArr.length;i++) {
+                var str = '<a href=""><img/>';
+                //todo 拼接图片带有地址链接的内容
+            }
 
         }
 
-        var val=strategy.getValue();
+        var val=activity.getValue();
         val=val.replace(/\n/g,"<br/>");
         $('#target-area').text(val);
         //相册
-        $('#cover').val(strategy.getCoverImg().join(','));
-        $('#course').val(strategy.getAllCourse().join(','));
+        $('#cover').val(activity.getCoverImg().join(','));
+        $('#course').val(activity.getAllCourse().join(','));
     };
 });

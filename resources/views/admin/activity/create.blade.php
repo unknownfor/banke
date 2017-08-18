@@ -32,6 +32,10 @@
         .content-img-url-box li span:active{
             background-color: #ec5b66;
         }
+        #add-img-url{
+            width: 100px;
+            height: 35px;
+        }
     </style>
 @endsection
 @section('content')
@@ -117,7 +121,7 @@
 
                                             <div class="form-group form-md-line-input form-md-line-cover">
                                                 <label class="col-md-1 control-label">压缩详情图说明</label>
-                                                <div class="col-md-9">
+                                                <div class="col-md-9" style="color:red;">
                                                     <p>压缩图片可以加快App访问速度，也可以减小公司图片存储产生的费用。请务必使用</p>
                                                     <p>1.点击<a href="https://tinypng.com/" target="tinypng" name="tinypng">打开网址</a>,上传图片进行压缩</p>
                                                     <p>2.下载压缩好的图片</p>
@@ -155,15 +159,16 @@
                                                     <div class="cover-box">
                                                         <p>对应每个详情图的地址，地址格式为：banke://organization/detailinfo?id=12</p>
                                                         <p>不明白之处请咨询测试妹子</p>
+                                                        <button type="button" class="btn blue" id="add-img-url">添加</button>
                                                         <ul class="content-img-url-box">
-                                                            <li>
-                                                                <input type="text" placeholder="请输入链接地址">
-                                                                <span class="color-block danger">删除</span>
-                                                            </li>
-                                                            <li>
-                                                                <input type="text" placeholder="请输入链接地址">
-                                                                <span class="color-block danger">删除</span>
-                                                            </li>
+                                                            {{--<li>--}}
+                                                                {{--<input type="text" placeholder="请输入链接地址">--}}
+                                                                {{--<span class="color-block danger">删除</span>--}}
+                                                            {{--</li>--}}
+                                                            {{--<li>--}}
+                                                                {{--<input type="text" placeholder="请输入链接地址">--}}
+                                                                {{--<span class="color-block danger">删除</span>--}}
+                                                            {{--</li>--}}
                                                         </ul>
                                                         <input id="content_img" name="content_img" type="hidden" value="">
                                                     </div>
@@ -238,7 +243,7 @@
                                             <div class="row">
                                                 <div class="col-md-offset-1 col-md-10">
                                                     <a href="{{url('admin/activity')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                                    <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
+                                                    <button type="submit" class="btn blue" onclick="return setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -355,7 +360,7 @@
                                             <div class="row">
                                                 <div class="col-md-offset-1 col-md-10">
                                                     <a href="{{url('admin/activity')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                                    <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
+                                                    <button type="submit" class="btn blue" onclick="return setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -472,7 +477,7 @@
                                             <div class="row">
                                                 <div class="col-md-offset-1 col-md-10">
                                                     <a href="{{url('admin/activity')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                                    <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
+                                                    <button type="submit" class="btn blue" onclick="return setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                                                 </div>
                                             </div>
                                         </div>
