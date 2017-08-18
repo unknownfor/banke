@@ -16,20 +16,34 @@ $(function(){
             that.taskTotalNum = 0;  //总的任务值
         }
         /*上传文件*/
-        $(document).on('change', '#uploadImgFile', $.proxy(this,'initUploadImgEditor'));
-
-        $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadCoverImg'));
+        $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadCoverOutLinkClick'));
 
         $(document).on('change', '#uploadImgFile2', $.proxy(this,'initUploadContentImgForOutLinkClick'));
 
-        /*上传封面文件*/
-        $(document).on('click','.add-cover-img-btn', function(){
+        $(document).on('change', '#uploadImgFile3', $.proxy(this,'initUploadCoverOutLinkNormal'));
+
+        $(document).on('change', '#uploadImgFile4', $.proxy(this,'initUploadImgEditor'));
+
+        $(document).on('change', '#uploadImgFile5', $.proxy(this,'initUploadCoverInLink'));
+
+        /*上传封面文件  点击外链*/
+        $(document).on('click','.add-cover-img-btn-outlink-click', function(){
             $('#uploadImgFile1').trigger('click');
         });
 
-        /*上传可以点击外链的详情图片*/
+        /*上传内容图片文件  点击外链*/
         $(document).on('click','.add-content-img-btn', function(){
             $('#uploadImgFile2').trigger('click');
+        });
+
+        /*上传封面文件  普通外链*/
+        $(document).on('click','.add-content-img-btn-outlink-normal', function(){
+            $('#uploadImgFile3').trigger('click');
+        });
+
+        /*上传封面文件  内链*/
+        $(document).on('click','.add-content-img-btn-inlink', function(){
+            $('#uploadImgFile5').trigger('click');
         });
 
         $(document).on('click','.remove-img', $.proxy(this,'deletCoverImg'));
@@ -128,7 +142,7 @@ $(function(){
                 if (info) {
                     //that.btn.createImage('', info.id);
 
-                    $("#uploadImgFile").trigger('click');
+                    $("#uploadImgFile4").trigger('click');
 
                 } else {
                     alert('最多只能添加100张图片');
@@ -193,30 +207,10 @@ $(function(){
 
         },
 
-        //上传图片，编辑器
-        initUploadImgEditor:function(){
-            var $target = $('#uploadImgFile'),
-                $form=$('#upImgForm'),
-                that=this;
-            this.controlLoadingCircleStatus(true);
-            this.initUploadImg($target,$form,function(data){
-                data=JSON.parse(data);
-                var info=that.getMaxImgsId();
-                if(info) {
-                    that.btn.createImage('', info.id);
-                    info=that.editorImgsArr[info.index];
-                    info.status=1;
-                    var $img = $('#'+info.id).attr('src', data.filedata);
-                    $('#upImgForm')[0].reset();
-                    $img[0].onload = function () {
-                        that.controlLoadingCircleStatus(false);
-                    };
-                }
-            });
-        },
 
-        //上传封面图片
-        initUploadCoverImg:function(e){
+
+        //上传封面图片  可点击外链
+        initUploadCoverOutLinkClick:function(e){
             var $target = $('#uploadImgFile1'),
                 $form=$('#upImgForm1'),
                 that=this;
@@ -225,7 +219,7 @@ $(function(){
                 data=JSON.parse(data);
                 if(data) {
                     var str=that.getImgStr(data.filedata);
-                    $('.cover-list-box').html(str);
+                    $('.cover-list-box-outlink-click').html(str);
                     that.controlLoadingCircleStatus(false);
                     $form[0].reset();
                 }
@@ -248,6 +242,66 @@ $(function(){
                 }
             });
         },
+
+        //上传封面图片  普通外链
+        initUploadCoverOutLinkNormal:function(e){
+            var $target = $('#uploadImgFile3'),
+                $form=$('#upImgForm3'),
+                that=this;
+            that.controlLoadingCircleStatus(true);
+            this.initUploadImg($target,$form,function(data){
+                data=JSON.parse(data);
+                if(data) {
+                    var str=that.getImgStr(data.filedata);
+                    $('.cover-list-box-outlink-normal').html(str);
+                    that.controlLoadingCircleStatus(false);
+                    $form[0].reset();
+                }
+            });
+        },
+
+        //上传图片，编辑器  普通外链
+        initUploadImgEditor:function(){
+            var $target = $('#uploadImgFile4'),
+                $form=$('#upImgForm4'),
+                that=this;
+            this.controlLoadingCircleStatus(true);
+            this.initUploadImg($target,$form,function(data){
+                data=JSON.parse(data);
+                var info=that.getMaxImgsId();
+                if(info) {
+                    that.btn.createImage('', info.id);
+                    info=that.editorImgsArr[info.index];
+                    info.status=1;
+                    var $img = $('#'+info.id).attr('src', data.filedata);
+                    $('#upImgForm4')[0].reset();
+                    $img[0].onload = function () {
+                        that.controlLoadingCircleStatus(false);
+                    };
+                }
+            });
+        },
+
+
+
+        //上传封面图片  内链
+        initUploadCoverInLink:function(e){
+            var $target = $('#uploadImgFile5'),
+                $form=$('#upImgForm5'),
+                that=this;
+            that.controlLoadingCircleStatus(true);
+            this.initUploadImg($target,$form,function(data){
+                data=JSON.parse(data);
+                if(data) {
+                    var str=that.getImgStr(data.filedata);
+                    $('.cover-list-box-inlink').html(str);
+                    that.controlLoadingCircleStatus(false);
+                    $form[0].reset();
+                }
+            });
+        },
+
+
 
         getImgStr:function(urlInfo){
             if(!urlInfo instanceof Array){
@@ -275,9 +329,47 @@ $(function(){
             return arr;
         },
 
-        /*封面图*/
-        getCoverImg:function(){
-            return this.getImgsUrl($('.imgs-list-box li'));
+        /*可点击外链封面图*/
+        getCoverImgOutLinkClick:function(){
+            return this.getImgsUrl($('.cover-list-box-outlink-click li'));
+        },
+
+
+        getAllCourseOutLinkClick:function(){
+            var $course=$('.course-select-outlink-click option:selected'),arr=[];
+
+            $.each($course,function(){
+                arr.push($(this).val());
+            });
+            return arr;
+        },
+
+        getCoverImgOutLinkNormal:function(){
+            return this.getImgsUrl($('.cover-list-box-outlink-normal li'));
+        },
+
+
+        getAllCourseOutLinkNormal:function(){
+            var $course=$('.course-select-outlink-normal option:selected'),arr=[];
+
+            $.each($course,function(){
+                arr.push($(this).val());
+            });
+            return arr;
+        },
+
+        getCoverImgInLink:function(){
+            return this.getImgsUrl($('.cover-list-box-inlink li'));
+        },
+
+
+        getAllCourseInLink:function(){
+            var $course=$('.course-select-inlink option:selected'),arr=[];
+
+            $.each($course,function(){
+                arr.push($(this).val());
+            });
+            return arr;
         },
 
         /*详情图*/
@@ -294,11 +386,6 @@ $(function(){
                 arr.push($(this).val());
             });
             return arr;
-        },
-
-        /*可点击外链的总内容*/
-        getContentForOutLinkClick:function(){
-
         },
 
 
@@ -330,15 +417,6 @@ $(function(){
         },
 
 
-
-        getAllCourse:function(){
-            var $course=$('.course-select option:selected'),arr=[];
-
-            $.each($course,function(){
-                arr.push($(this).val());
-            });
-            return arr;
-        },
 
         addImgUrlInputBox:function(){
             var str='<li class="ui-sortable-handle">'+
@@ -388,30 +466,36 @@ $(function(){
 
 
     //提交编辑
-    window.setDataBeforeCommit=function(){
+    window.setDataBeforeCommit=function() {
 
 
-        var type=$('.nav-tabs .li.active').index();
+        var type = $('.nav-tabs .li.active').index();
         //0 可以点击的外链，1是普通外链，2是内链
-        if(type==0){
-            var imgArr=activity.getContentImgForOutLinkClick();
-            var imgLinkUrlArr=activity.getAllLinkUrlsForOutLinkClick();
-            if(imgArr.length!=imgLinkUrlArr.length);{
+        if (type == 0) {
+            var imgArr = activity.getContentImgForOutLinkClick();
+            var imgLinkUrlArr = activity.getAllLinkUrlsForOutLinkClick();
+            if (imgArr.length != imgLinkUrlArr.length);
+            {
                 alert("详情图数目和地址数目不对应");
                 return false;
             }
-            for(var i=0;i<imgArr.length;i++) {
-                var str = '<a href=""><img/>';
-                //todo 拼接图片带有地址链接的内容
+            var str = '';
+            for (var i = 0; i < imgArr.length; i++) {
+                str += '<a href="' + imgLinkUrlArr[i] + '"><img src="' + imgArr[i] + '"/></a>';
             }
-
+            $('#area_outlink_click').text(str);
+            $('#cover_outlink_click').val(activity.getCoverImgOutLinkClick().join(','));
+            $('#course_outlink_click').val(activity.getAllCourseOutLinkClick().join(','));
+        } else if(type==1) {
+            var val = activity.getValue();
+            val = val.replace(/\n/g, "<br/>");
+            $('#area_outlink_noraml').text(val);
+            //相册
+            $('#cover_outlink_narmal').val(activity.getCoverImgOutLinkNormal().join(','));
+            $('#course_outlink_noraml').val(activity.getAllCourseOutLinkNormal().join(','));
+        }else{
+            $('#cover_cover_inlink').val(activity.getCoverImgInLink().join(','));
+            $('#course_cover_inlink').val(activity.getAllCourseInLink().join(','));
         }
-
-        var val=activity.getValue();
-        val=val.replace(/\n/g,"<br/>");
-        $('#target-area').text(val);
-        //相册
-        $('#cover').val(activity.getCoverImg().join(','));
-        $('#course').val(activity.getAllCourse().join(','));
     };
 });

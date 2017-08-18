@@ -86,35 +86,38 @@
                             </ul>
 
                             <div class="tab-content">
+
                                 <div class="tab-pane active" id="panel-778015">
                                     <form role="form" class="form-horizontal" method="POST" action="{{url('admin/activity/activity_outlink_click')}}">
                                         {!! csrf_field() !!}
                                         <div class="form-body">
                                             <input type="hidden" name="type" value="0">
                                             <input type="hidden" name="out_url_type" value="0">
+                                            <textarea style="display: none" name="content" id="area_outlink_click"></textarea>
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
                                                 <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.activity.title')}}" value="{{old('title')}}">
+                                                    <input type="text" class="form-control"  name="title" placeholder="{{trans('labels.activity.title')}}" value="{{old('title')}}">
                                                     <div class="form-control-focus"> </div>
                                                 </div>
                                             </div>
+
 
                                             <div class="form-group form-md-line-input form-md-line-cover">
                                                 <label class="col-md-1 control-label">{{trans('labels.activity.cover')}} </label>
                                                <div class="col-md-9">
                                                     <div class="cover-box">
-                                                        <div class="add-img-btn add-cover-img-btn">+
+                                                        <div class="add-img-btn add-cover-img-btn-outlink-click">+
                                                             <div class="img-size-tips">16:7的图片</div>
                                                         </div>
-                                                        <ul class="imgs-list-box cover-list-box">
+                                                        <ul class="imgs-list-box cover-list-box cover-list-box-outlink-click">
                                                             {{--<li>--}}
                                                             {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
                                                             {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
                                                             {{--<span class="remove-img">×</span>--}}
                                                             {{--</li>--}}
                                                         </ul>
-                                                        <input id="cover" name="cover" type="hidden" value="">
+                                                        <input id="cover_outlink_click" name="cover" type="hidden" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,7 +151,6 @@
                                                                 <span class="remove-img">×</span>
                                                             </li>
                                                         </ul>
-                                                        <input id="content_img" name="content_img" type="hidden" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,7 +172,6 @@
                                                                 {{--<span class="color-block danger">删除</span>--}}
                                                             {{--</li>--}}
                                                         </ul>
-                                                        <input id="content_img" name="content_img" type="hidden" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,7 +179,7 @@
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="city">{{trans('labels.activity.city')}}</label>
                                                 <div class="col-md-4">
-                                                    <select id="city" name="city" class="selectpicker se show-tick form-control" data-live-search="true">
+                                                    <select  name="city" class="selectpicker se show-tick form-control" data-live-search="true">
                                                         @foreach($cities as  $index => $v)
                                                             <option value="{{$v->name}}" @if($index==0) selected @endif>{{$v->name}}</option>
                                                         @endforeach
@@ -190,14 +191,14 @@
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="course">{{trans('labels.activity.course')}}</label>
                                                 <div class="col-md-8">
-                                                    <select class="selectpicker course-select show-tick form-control" data-live-search="true" multiple="multiple">
+                                                    <select class="selectpicker course-select-outlink-click show-tick form-control" data-live-search="true" multiple="multiple">
                                                         @if($allcourse)
                                                             @foreach($allcourse as $v)
                                                                 <option value="{{$v->id}}" > {{$v->name}}({{$v->org['short_name']}} {{$v->org['branch_school']}})</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
-                                                    <input type="hidden" name="course" id="course">
+                                                    <input type="hidden" name="course" id="course_outlink_click">
                                                 </div>
                                             </div>
 
@@ -205,7 +206,7 @@
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="sort">{{trans('labels.activity.sort')}}</label>
                                                 <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.activity.sort')}}" value="{{old('sort')}}">
+                                                    <input type="text" class="form-control" name="sort" placeholder="{{trans('labels.activity.sort')}}" value="{{old('sort')}}">
                                                     <div class="form-control-focus"> </div>
                                                 </div>
                                             </div>
@@ -249,26 +250,25 @@
                                         </div>
                                     </form>
                                 </div>
+
                                 <div class="tab-pane" id="panel-778016">
                                     <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/activity_outlink')}}">
                                         {!! csrf_field() !!}
                                         <div class="form-body">
+                                            <input type="hidden" name="type" value="0">
+                                            <input type="hidden" name="out_url_type" value="1">
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
                                                 <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.activity.title')}}" value="{{old('title')}}">
+                                                    <input type="text" class="form-control"  name="title" placeholder="{{trans('labels.activity.title')}}" value="{{old('title')}}">
                                                     <div class="form-control-focus"> </div>
                                                 </div>
                                             </div>
-
-                                            <input type="hidden" name="type" value="0">
-                                            <input type="hidden" name="out_url_type" value="1">
-
                                             <div class="form-group form-md-line-input form-md-line-cover">
                                                 <label class="col-md-1 control-label">{{trans('labels.activity.cover')}}</label>
                                                 <div class="col-md-9">
                                                     <div class="cover-box">
-                                                        <div class="add-img-btn add-cover-img-btn">+
+                                                        <div class="add-img-btn add-cover-img-btn-outlink-normal">+
                                                             <div class="img-size-tips">16:7的图片</div>
                                                         </div>
                                                         <ul class="imgs-list-box cover-list-box">
@@ -278,15 +278,14 @@
                                                             {{--<span class="remove-img">×</span>--}}
                                                             {{--</li>--}}
                                                         </ul>
-                                                        <input id="cover" name="cover" type="hidden" value="">
+                                                        <input id="cover_outlink_narmal" name="cover" type="hidden" value="">
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="form-group form-md-line-input">
-                                                <label class="col-md-1 control-label" for="slug">{{trans('labels.activity.content')}} (外链)</label>
+                                                <label class="col-md-1 control-label" for="slug">{{trans('labels.activity.content')}}</label>
                                                 <div class="col-md-8">
-                                                    <textarea style="display: none" name="content" id="target-area"></textarea>
+                                                    <textarea style="display: none" name="content" id="area_outlink_noraml"></textarea>
                                                     <textarea id="my-editor"></textarea>
                                                 </div>
                                             </div>
@@ -295,7 +294,7 @@
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="city">{{trans('labels.activity.city')}}</label>
                                                 <div class="col-md-4">
-                                                    <select id="city" name="city" class="selectpicker se show-tick form-control" data-live-search="true">
+                                                    <select  name="city" class="selectpicker se show-tick form-control" data-live-search="true">
                                                         @foreach($cities as  $index => $v)
                                                             <option value="{{$v->name}}" @if($index==0) selected @endif>{{$v->name}}</option>
                                                         @endforeach
@@ -307,14 +306,14 @@
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="course">{{trans('labels.activity.course')}}</label>
                                                 <div class="col-md-8">
-                                                    <select class="selectpicker course-select show-tick form-control" data-live-search="true" multiple="multiple">
+                                                    <select class="selectpicker course-select-outlink-noraml show-tick form-control" data-live-search="true" multiple="multiple">
                                                         @if($allcourse)
                                                             @foreach($allcourse as $v)
                                                                 <option value="{{$v->id}}" > {{$v->name}}({{$v->org['short_name']}} {{$v->org['branch_school']}})</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
-                                                    <input type="hidden" name="course" id="course">
+                                                    <input type="hidden" name="course" id="course_outlink_noraml">
                                                 </div>
                                             </div>
 
@@ -366,45 +365,43 @@
                                         </div>
                                     </form>
                                 </div>
+
                                 <div class="tab-pane" id="panel-778017">
                                     <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/activity')}}">
                                         {!! csrf_field() !!}
+                                        <input type="hidden" name="type" value="1">
                                         <div class="form-body">
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
                                                 <div class="col-md-8">
-                                                    <input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.activity.title')}}" value="{{old('title')}}">
+                                                    <input type="text" class="form-control"  name="title" placeholder="{{trans('labels.activity.title')}}" value="{{old('title')}}">
                                                     <div class="form-control-focus"> </div>
                                                 </div>
                                             </div>
 
-                                            <input type="hidden" name="type" value="1">
-
-
                                             <div class="form-group form-md-line-input">
-                                                <label class="col-md-1 control-label" for="slug">{{trans('labels.activity.content')}} (外链)</label>
+                                                <label class="col-md-1 control-label" for="name">{{trans('labels.activity.url')}}</label>
                                                 <div class="col-md-8">
-                                                    <textarea style="display: none" name="content" id="target-area"></textarea>
-                                                    <textarea id="my-editor"></textarea>
+                                                    <input type="text" class="form-control"  name="url" placeholder="{{trans('labels.activity.url')}}" value="{{old('title')}}">
+                                                    <div class="form-control-focus"> </div>
                                                 </div>
                                             </div>
-
 
                                             <div class="form-group form-md-line-input form-md-line-cover">
                                                 <label class="col-md-1 control-label">{{trans('labels.activity.cover')}}</label>
                                                 <div class="col-md-9">
                                                     <div class="cover-box">
-                                                        <div class="add-img-btn add-cover-img-btn">+
+                                                        <div class="add-img-btn add-cover-img-btn-inlink">+
                                                             <div class="img-size-tips">16:7的图片</div>
                                                         </div>
-                                                        <ul class="imgs-list-box cover-list-box">
+                                                        <ul class="imgs-list-box cover-list-box-inlink">
                                                             {{--<li>--}}
                                                             {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
                                                             {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
                                                             {{--<span class="remove-img">×</span>--}}
                                                             {{--</li>--}}
                                                         </ul>
-                                                        <input id="cover" name="cover" type="hidden" value="">
+                                                        <input id="cover_inlink" name="cover" type="hidden" value="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -412,7 +409,7 @@
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="city">{{trans('labels.activity.city')}}</label>
                                                 <div class="col-md-4">
-                                                    <select id="city" name="city" class="selectpicker se show-tick form-control" data-live-search="true">
+                                                    <select  name="city" class="selectpicker se show-tick form-control" data-live-search="true">
                                                         @foreach($cities as  $index => $v)
                                                             <option value="{{$v->name}}" @if($index==0) selected @endif>{{$v->name}}</option>
                                                         @endforeach
@@ -424,14 +421,14 @@
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="course">{{trans('labels.activity.course')}}</label>
                                                 <div class="col-md-8">
-                                                    <select class="selectpicker course-select show-tick form-control" data-live-search="true" multiple="multiple">
+                                                    <select class="selectpicker course-select-inlink show-tick form-control" data-live-search="true" multiple="multiple">
                                                         @if($allcourse)
                                                             @foreach($allcourse as $v)
                                                                 <option value="{{$v->id}}" > {{$v->name}}({{$v->org['short_name']}} {{$v->org['branch_school']}})</option>
                                                             @endforeach
                                                         @endif
                                                     </select>
-                                                    <input type="hidden" name="course" id="course">
+                                                    <input type="hidden" name="course" id="course_inlink">
                                                 </div>
                                             </div>
 
@@ -483,167 +480,33 @@
                                         </div>
                                     </form>
                                 </div>
+
                             </div>
                         </div>
-
-
-
-                    {{--<form role="form" class="form-horizontal" method="POST" action="{{url('admin/activity')}}">--}}
-                        {{--{!! csrf_field() !!}--}}
-                        {{--<div class="form-body">--}}
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>--}}
-                                {{--<div class="col-md-8">--}}
-                                    {{--<input type="text" class="form-control" id="title" name="title" placeholder="{{trans('labels.activity.title')}}" value="{{old('title')}}">--}}
-                                    {{--<div class="form-control-focus"> </div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="form_control_1">{{trans('labels.activity.url_type')}}</label>--}}
-                                {{--<div class="col-md-10">--}}
-                                    {{--<div class="md-radio-inline">--}}
-                                        {{--<div class="md-radio">--}}
-                                            {{--<input type="radio" id="url_type1" name="url_type" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"  >--}}
-                                            {{--<label for="url_type1">--}}
-                                                {{--<span></span>--}}
-                                                {{--<span class="check"></span>--}}
-                                                {{--<span class="box"></span> 内链 </label>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="md-radio">--}}
-                                            {{--<input type="radio" id="url_type2" name="url_type" value="{{config('admin.global.status.active')}}" class="md-radiobtn" checked>--}}
-                                            {{--<label for="url_type2">--}}
-                                                {{--<span></span>--}}
-                                                {{--<span class="check"></span>--}}
-                                                {{--<span class="box"></span> 外链 </label>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="url">{{trans('labels.activity.url')}}(内链)</label>--}}
-                                {{--<div class="col-md-8">--}}
-                                    {{--<input type="text" class="form-control" id="url" name="url" placeholder="{{trans('labels.activity.url')}}" value="{{old('url')}}">--}}
-                                    {{--<div class="form-control-focus"> </div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="slug">{{trans('labels.activity.content')}} (外链)</label>--}}
-                                {{--<div class="col-md-8">--}}
-                                    {{--<textarea style="display: none" name="content" id="target-area"></textarea>--}}
-                                    {{--<textarea id="my-editor"></textarea>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-
-                            {{--<div class="form-group form-md-line-input form-md-line-cover">--}}
-                                {{--<label class="col-md-1 control-label">{{trans('labels.activity.cover')}}</label>--}}
-                                {{--<div class="col-md-9">--}}
-                                    {{--<div class="cover-box">--}}
-                                        {{--<div class="add-img-btn add-cover-img-btn">+--}}
-                                            {{--<div class="img-size-tips">16:7的图片</div>--}}
-                                        {{--</div>--}}
-                                        {{--<ul class="imgs-list-box cover-list-box">--}}
-                                            {{--<li>--}}
-                                                {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
-                                                {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
-                                                {{--<span class="remove-img">×</span>--}}
-                                            {{--</li>--}}
-                                        {{--</ul>--}}
-                                        {{--<input id="cover" name="cover" type="hidden" value="">--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="city">{{trans('labels.activity.city')}}</label>--}}
-                                {{--<div class="col-md-4">--}}
-                                    {{--<select id="city" name="city" class="selectpicker se show-tick form-control" data-live-search="true">--}}
-                                        {{--@foreach($cities as  $index => $v)--}}
-                                            {{--<option value="{{$v->name}}" @if($index==0) selected @endif>{{$v->name}}</option>--}}
-                                        {{--@endforeach--}}
-                                    {{--</select>--}}
-                                    {{--<div class="form-control-focus"> </div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="course">{{trans('labels.activity.course')}}</label>--}}
-                                {{--<div class="col-md-8">--}}
-                                    {{--<select class="selectpicker course-select show-tick form-control" data-live-search="true" multiple="multiple">--}}
-                                        {{--@if($allcourse)--}}
-                                            {{--@foreach($allcourse as $v)--}}
-                                                {{--<option value="{{$v->id}}" > {{$v->name}}({{$v->org['short_name']}} {{$v->org['branch_school']}})</option>--}}
-                                            {{--@endforeach--}}
-                                        {{--@endif--}}
-                                    {{--</select>--}}
-                                    {{--<input type="hidden" name="course" id="course">--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="sort">{{trans('labels.activity.sort')}}</label>--}}
-                                {{--<div class="col-md-8">--}}
-                                    {{--<input type="text" class="form-control" id="sort" name="sort" placeholder="{{trans('labels.activity.sort')}}" value="{{old('sort')}}">--}}
-                                    {{--<div class="form-control-focus"> </div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-
-                            {{--<div class="form-group form-md-line-input">--}}
-                                {{--<label class="col-md-1 control-label" for="form_control_1">{{trans('labels.activity.status')}}</label>--}}
-                                {{--<div class="col-md-10">--}}
-                                    {{--<div class="md-radio-inline">--}}
-                                        {{--<div class="md-radio">--}}
-                                            {{--<input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" checked >--}}
-                                            {{--<label for="status1">--}}
-                                                {{--<span></span>--}}
-                                                {{--<span class="check"></span>--}}
-                                                {{--<span class="box"></span> {{trans('strings.common_status.active.1')}} </label>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="md-radio">--}}
-                                            {{--<input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">--}}
-                                            {{--<label for="status2">--}}
-                                                {{--<span></span>--}}
-                                                {{--<span class="check"></span>--}}
-                                                {{--<span class="box"></span> {{trans('strings.common_status.audit.1')}} </label>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="md-radio">--}}
-                                            {{--<input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn" >--}}
-                                            {{--<label for="status3">--}}
-                                                {{--<span></span>--}}
-                                                {{--<span class="check"></span>--}}
-                                                {{--<span class="box"></span> {{trans('strings.common_status.trash.1')}} </label>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="form-actions">--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col-md-offset-1 col-md-10">--}}
-                                    {{--<a href="{{url('admin/activity')}}" class="btn default">{{trans('crud.cancel')}}</a>--}}
-                                    {{--<button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</form>--}}
                 </div>
             </div>
         </div>
     </div>
-    <form id="upImgForm" method="post" class="hiddenForm">
-        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif,image/jpeg">
-    </form>
+
     <form id="upImgForm1" method="post" class="hiddenForm">
         <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif,image/jpeg">
     </form>
+
     <form id="upImgForm2" method="post" class="hiddenForm">
         <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif,image/jpeg" multiple="multiple">
     </form>
+    <form id="upImgForm3" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile3" size="28" accept="image/png,image/gif,image/jpeg">
+    </form>
+
+    <form id="upImgForm4" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile4" size="28" accept="image/png,image/gif,image/jpeg" multiple="multiple">
+    </form>
+
+    <form id="upImgForm5" method="post" class="hiddenForm">
+        <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile5" size="28" accept="image/png,image/gif,image/jpeg" multiple="multiple">
+    </form>
+
     <div class="loding-modal">
         <i id="imgLoadingCircle" class="loadingCircle active"></i>
         <div>上传中…</div>
