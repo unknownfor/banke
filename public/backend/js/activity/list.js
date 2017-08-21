@@ -44,7 +44,8 @@ var TableDatatablesAjax = function() {
           "orderable" : false,
           "render":function(data,type,full) {
             if(full.url_type==1){
-              data='<a href="'+data+'">'+data+'</a>';
+              var url='test.cms.91banke.com/v1.8/share/activity/'+full.id;
+              data='<a href="'+url+'">'+url+'</a>';
             }
             return data;
           }
