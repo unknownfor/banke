@@ -255,7 +255,7 @@
                                     <form role="form" class="form-horizontal" method="POST" action="{{url('admin/activity')}}">
                                         {!! csrf_field() !!}
                                         <div class="form-body">
-                                            <input type="hidden" name="url_type" value="0">
+                                            <input type="hidden" name="url_type" value="1">
                                             <input type="hidden" name="out_url_type" value="1">
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
@@ -271,7 +271,7 @@
                                                         <div class="add-img-btn add-cover-img-btn-outlink-normal">+
                                                             <div class="img-size-tips">16:7的图片</div>
                                                         </div>
-                                                        <ul class="imgs-list-box cover-list-box">
+                                                        <ul class="imgs-list-box cover-list-box-outlink-normal">
                                                             <li>
                                                             <a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>
                                                             <img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">
@@ -306,7 +306,7 @@
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="course">{{trans('labels.activity.course')}}</label>
                                                 <div class="col-md-8">
-                                                    <select class="selectpicker course-select-outlink-noraml show-tick form-control" data-live-search="true" multiple="multiple">
+                                                    <select class="selectpicker course-select-outlink-normal show-tick form-control" data-live-search="true" multiple="multiple">
                                                         @if($allcourse)
                                                             @foreach($allcourse as $v)
                                                                 <option value="{{$v->id}}" > {{$v->name}}({{$v->org['short_name']}} {{$v->org['branch_school']}})</option>
