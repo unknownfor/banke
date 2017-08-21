@@ -428,7 +428,7 @@ $(function(){
         },
 
         deleteImgUrlInputBox:function(e){
-            var $target = this.getTargetByEvent(e);
+            var $target = this.getTargetByEvent(e).closest('li');
             $target.remove();
         },
 
@@ -469,13 +469,12 @@ $(function(){
     window.setDataBeforeCommit=function() {
 
 
-        var type = $('.nav-tabs .li.active').index();
+        var type = $('.nav-tabs li.active').index();
         //0 可以点击的外链，1是普通外链，2是内链
         if (type == 0) {
             var imgArr = activity.getContentImgForOutLinkClick();
             var imgLinkUrlArr = activity.getAllLinkUrlsForOutLinkClick();
-            if (imgArr.length != imgLinkUrlArr.length);
-            {
+            if (imgArr.length != imgLinkUrlArr.length){
                 alert("详情图数目和地址数目不对应");
                 return false;
             }

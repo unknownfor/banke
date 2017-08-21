@@ -48,7 +48,7 @@ class ActivityRequest extends Request
             'title'          => trans('labels.activity.title'),
             'course'          => trans('labels.activity.course'),
             'city'          => trans('labels.activity.city'),
-            'url_type'          => trans('activity.banner.type'),
+            'url_type'          => trans('activity.activity.type'),
             'cover'          => trans('labels.activity.cover'),
             'status'        => trans('labels.activity.status'),
         ];

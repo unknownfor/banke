@@ -88,10 +88,10 @@
                             <div class="tab-content">
 
                                 <div class="tab-pane active" id="panel-778015">
-                                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/activity/activity_outlink_click')}}">
+                                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/activity')}}">
                                         {!! csrf_field() !!}
                                         <div class="form-body">
-                                            <input type="hidden" name="type" value="0">
+                                            <input type="hidden" name="url_type" value="1">
                                             <input type="hidden" name="out_url_type" value="0">
                                             <textarea style="display: none" name="content" id="area_outlink_click"></textarea>
                                             <div class="form-group form-md-line-input">
@@ -111,11 +111,11 @@
                                                             <div class="img-size-tips">16:7的图片</div>
                                                         </div>
                                                         <ul class="imgs-list-box cover-list-box cover-list-box-outlink-click">
-                                                            {{--<li>--}}
-                                                            {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
-                                                            {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
-                                                            {{--<span class="remove-img">×</span>--}}
-                                                            {{--</li>--}}
+                                                            <li>
+                                                            <a href="http://pic.hisihi.com/2017-04-22/1492852034793583.jpg" data-size="435x263"></a>
+                                                            <img src="http://pic.hisihi.com/2017-04-22/1492852034793583.jpg@142w_80h_1e">
+                                                            <span class="remove-img">×</span>
+                                                            </li>
                                                         </ul>
                                                         <input id="cover_outlink_click" name="cover" type="hidden" value="">
                                                     </div>
@@ -252,10 +252,10 @@
                                 </div>
 
                                 <div class="tab-pane" id="panel-778016">
-                                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/activity_outlink')}}">
+                                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/activity')}}">
                                         {!! csrf_field() !!}
                                         <div class="form-body">
-                                            <input type="hidden" name="type" value="0">
+                                            <input type="hidden" name="url_type" value="0">
                                             <input type="hidden" name="out_url_type" value="1">
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
@@ -272,11 +272,11 @@
                                                             <div class="img-size-tips">16:7的图片</div>
                                                         </div>
                                                         <ul class="imgs-list-box cover-list-box">
-                                                            {{--<li>--}}
-                                                            {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
-                                                            {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
-                                                            {{--<span class="remove-img">×</span>--}}
-                                                            {{--</li>--}}
+                                                            <li>
+                                                            <a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>
+                                                            <img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">
+                                                            <span class="remove-img">×</span>
+                                                            </li>
                                                         </ul>
                                                         <input id="cover_outlink_narmal" name="cover" type="hidden" value="">
                                                     </div>
@@ -367,7 +367,7 @@
                                 </div>
 
                                 <div class="tab-pane" id="panel-778017">
-                                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/app_user/activity')}}">
+                                    <form role="form" class="form-horizontal" method="POST" action="{{url('admin/activity')}}">
                                         {!! csrf_field() !!}
                                         <input type="hidden" name="type" value="1">
                                         <div class="form-body">
