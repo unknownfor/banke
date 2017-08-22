@@ -6,7 +6,7 @@ $(function() {
     window.addLoadingImg();
     window.addTip();
 
-    judgeTheActive();
+    // judgeTheActive();
 
     var href = window.location.href;
     var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
