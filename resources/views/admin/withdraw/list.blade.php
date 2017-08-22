@@ -98,6 +98,7 @@
                             <th width="15%"> {{ trans('labels.withdraw.zhifubao_account') }} </th>
                             <th width="15%"> {{ trans('labels.withdraw.updated_at') }} </th>
                             <th width="15%"> {{ trans('labels.withdraw.operator_name') }} </th>
+                            <th width="10%"> {{ trans('labels.withdraw.amount_detail_logs') }} </th>
                             <th width="8%"> {{ trans('labels.withdraw.status') }} </th>
                             <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>

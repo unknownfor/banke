@@ -55,6 +55,14 @@ var TableDatatablesAjax = function() {
           "name": "operator_name",
           "orderable" : true,
         },
+        {
+          "data": "amount_logs",
+          "name": "amount_logs",
+          "orderable" : true,
+          render:function(data){
+              return '<a  href="/admin/appuser/'+data+'/amountlogs"> 查看明细 </span>';
+          }
+        },
         { 
           "data": "status",
           "name": "status",

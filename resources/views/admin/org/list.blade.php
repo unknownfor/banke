@@ -92,7 +92,7 @@
                 {{--</div>--}}
                 <div class="col-md-4">
                     <div class="col-md-9 form-group form-md-line-input">
-                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="pid">
+                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="pid" data-live-search="true">
                             <option value="" data-icon="fa-glass icon-success">所属机构....</option>
                             @if($summary_orgs)
                                 @foreach($summary_orgs as $v)

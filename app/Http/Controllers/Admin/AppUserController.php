@@ -42,6 +42,18 @@ class AppUserController extends Controller
     }
 
     /**
+     * 用户金额明细信息
+     * @author shaolei
+     * @date   2016-04-13T21:12:18+0800
+     * @return [type]                   [description]
+     */
+    public function amountlogs($id=0)
+    {
+        $user=AppUserRepository::getUserAllDetailInfo($id);
+        return view('admin.app_user.userdetail')->with(compact(['user']));
+    }
+
+    /**
      * datatable 获取数据
      * @author shaolei
      * @date   2016-04-13T11:25:58+0800
