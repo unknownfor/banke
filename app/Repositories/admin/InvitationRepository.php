@@ -135,7 +135,7 @@ class InvitationRepository
 		return false;
 	}
 
-	/**添加常见问题
+	/**添加预约
 	 * @author shaolei
 	 * @date   2016-04-14T11:32:04+0800
 	 * @param  [type]                   $request [description]
@@ -153,7 +153,7 @@ class InvitationRepository
 	}
 
 	/**
-	 * 修改常见问题视图
+	 * 修改预约视图
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:34+0800
 	 * @param  [type]                   $id [description]
@@ -170,7 +170,7 @@ class InvitationRepository
 	}
 
 	/**
-	 * 查看常见问题
+	 * 查看预约
 	 * @author 晚黎
 	 * @date   2016-04-13T17:09:22+0800
 	 * @param  [type]                   $id [description]
@@ -183,7 +183,7 @@ class InvitationRepository
 	}
 
 	/**
-	 * 修改常见问题
+	 * 修改预约
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]

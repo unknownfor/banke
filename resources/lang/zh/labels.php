@@ -243,6 +243,25 @@ return [
 		'activityCreate' => '<i class="fa fa-list"></i> 添加活动',
 		'activityEdit' => '<i class="fa fa-list"></i> 编辑活动',
 
+		'teachingteacherList' => '<i class="fa fa-list"></i> 教学老师列表',
+		'teachingteacherCreate' => '<i class="fa fa-list"></i> 添加教学老师',
+		'teachingteacherEdit' => '<i class="fa fa-list"></i> 编辑教学老师',
+
+		'marketingambassadorList' => '<i class="fa fa-list"></i> 推广大使列表',
+		'marketingambassadorCreate' => '<i class="fa fa-list"></i> 添加推广大使',
+		'marketingambassadorEdit' => '<i class="fa fa-list"></i> 编辑推广大使',
+
+		'commentappstoreList' => '<i class="fa fa-list"></i> 应用商店评论列表',
+		'commentappstoreCreate' => '<i class="fa fa-list"></i> 添加应用商店评论',
+		'commentappstoreEdit' => '<i class="fa fa-list"></i> 编辑应用商店评论',
+
+		'goodarticleList' => '<i class="fa fa-list"></i> 半课好文列表',
+		'goodarticleCreate' => '<i class="fa fa-list"></i> 添加半课好文',
+
+		'freestudyList' => '<i class="fa fa-list"></i> 免费学列表',
+		'freestudyEdit' => '<i class="fa fa-list"></i> 编辑免费学',
+		'freestudyCreate' => '<i class="fa fa-list"></i> 添加免费学',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -332,13 +351,20 @@ return [
 		'qrcode'=>'二维码',
 		'qrcode_desc'=>'二维码说明',
 		'eable_location_checkin'=>'开启定位打卡',
-		'location_checkin_distance'=>'定位打卡距离(m)'
+		'location_checkin_distance'=>'定位打卡距离(m)',
+		'installment_flag'=>'支持分期',
+		'installment_title'=>'分期标题',
+		'installment_content'=>'分期说明',
+		'refund_flag'=>'支持退款',
+		'refund_title'=>'退款标题',
+		'refund_content'=>'退款说明',
 	],
 	'course' => [
 		'id' => '序号',
 		'name' => '名称',
 		'org'=>'所属机构',
 		'org_id'=>'所属机构',
+		'org_summary_id'=>'总机构',
 		'price'=>'参考价',
 		'original_price'=>'原价',
 		'real_price' => '成交价',
@@ -346,6 +372,7 @@ return [
 		'z_award_amount_teacher' => '介绍费(招生老师)',
 		'cover'=>'封面',
 		'details'=>'课程介绍',
+		'img_details'=>'图片介绍',
 		'period'=>'课时',
 		'checkin_award'=>'打卡奖励比例',
 		'check_in_days' => '打卡天数',
@@ -405,6 +432,7 @@ return [
 		'id' => '序号',
 		'title' => '标题',
 		'sort' => '排序',
+		'type'=>'动态类型',
 		'content' => '内容',
 		'status' => '状态',
 		'created_at' => '创建时间',
@@ -787,6 +815,8 @@ return [
 		'title' => '标题',
 		'cover'=>'封面',
 		'content' => '内容',
+		'content_img' => '详情图',
+		'content_img_url' => '详情链接',
 		'url_type' => '链接类型',
 		'url' => '链接地址',
 		'city' => '针对城市',
@@ -796,6 +826,89 @@ return [
 		'status' => '状态',
 		'course' => '参与课程',
 		'list' => '活动列表'
+	],
+
+	'teachingteacher' => [
+		'id' => '序号',
+		'uid' => '用户id',
+		'org'=>'总机构',
+		'org_id'=>'总机构',
+		'sub_org' => '子机构',
+		'sub_org_id' => '子机构',
+		'name' => '姓名',
+		'avatar' => '头像',
+		'goodat_course' => '擅长课程',
+		'intro' => '简介',
+		'album' => '相册',
+		'tags' => '标签',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'status' => '状态',
+		'sort' => '排序',
+		'list' => '教学老师列表'
+	],
+
+	'marketingambassador' => [
+		'id' => '序号',
+		'name' => '名字',
+		'mobile'=>'手机号',
+		'status'=>'认证状态',
+		'invitor_mobile' => '邀请人手机号',
+		'award_amount' => '奖励金额',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '推广大使列表'
+	],
+
+	'commentappstore' => [
+		'id' => '序号',
+		'uid' => '用户id',
+		'mobile'=>'手机号',
+		'certificatoin_status'=>'认证状态',
+		'comment_img' => '评论截图',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '应用商店评论列表'
+	],
+
+	'goodarticle' => [
+		'id' => '序号',
+		'title' => '标题',
+		'cover'=>'封面',
+		'intro'=>'描述',
+		'url' => '地址',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '半课好文列表',
+		'strategy_id'=>'攻略id'
+	],
+
+	'freestudy' => [
+		'id' => '序号',
+		'title' => '标题',
+		'shot_content'=>'描述',
+		'content'=>'内容',
+		'img_url' => '图片地址',
+		'type' => '链接',
+		'url' => '链接地址',
+		'sort' => '排序',
+		'status' => '状态',
+		'fake_signup_count' => '报名人数',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '免费学列表',
+	],
+
+	'freestudyusers' => [
+		'id' => '序号',
+		'free_study_id' => '活动标题',
+		'mobile'=>'手机号',
+		'certification_status'=>'人员状态',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'list' => '免费学人员列表',
 	],
 
 ];

@@ -120,6 +120,7 @@ $(function () {
                 mobile:phone,
                 smsId:code,
                 password:password,
+                userType:0
             };
         $(this).removeClass('active');
         getDataAsync(url,data,function(res) {

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BankeBusinessCity extends Model
 {
-    // 活动
+    // 合作城市
     protected $table = 'banke_business_city';
     use ActionAttributeTrait;
     protected $fillable = [

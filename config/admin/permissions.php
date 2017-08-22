@@ -258,4 +258,32 @@ return[
 		'edit' 		=> 'admin.activity.edit',
 		'destroy' 	=> 'admin.activity.delete',
 	],
+
+	'teachingteacher' => [
+		'create' 	=> 'admin.teachingteacher.create',
+		'edit' 		=> 'admin.teachingteacher.edit',
+		'destroy' 	=> 'admin.teachingteacher.delete',
+	],
+
+	'marketingambassador' => [
+		'certificate' 	=> 'admin.marketingambassador.certificate',
+		'destroy' 	=> 'admin.marketingambassador.delete',
+	],
+
+	'commentappstore' => [
+		'certificate' 	=> 'admin.commentappstore.certificate',
+		'destroy' 	=> 'admin.commentappstore.delete',
+	],
+
+	'goodarticle' => [
+		'create' 	=> 'admin.goodarticle.create',
+		'destroy' 	=> 'admin.goodarticle.delete',
+	],
+
+	'freestudy' => [
+		'create' 	=> 'admin.freestudy.create',
+		'edit' 	=> 'admin.freestudy.edit',
+		'destroy' 	=> 'admin.freestudy.delete',
+	],
+
 ];

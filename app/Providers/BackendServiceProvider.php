@@ -199,5 +199,50 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('ActivityRepository', function($app){
             return new \App\Repositories\admin\ActivityRepository();
         });
+
+        //教学老师
+        $this->app->singleton('TeachingTeacherRepository', function($app){
+            return new \App\Repositories\admin\TeachingTeacherRepository();
+        });
+
+        //合作城市
+        $this->app->singleton('BusinessCityRepository', function($app){
+            return new \App\Repositories\admin\BusinessCityRepository();
+        });
+
+        //推广大使
+        $this->app->singleton('MarketingAmbassadorRepository', function($app){
+            return new \App\Repositories\admin\MarketingAmbassadorRepository();
+        });
+
+        //每日任务记录
+        $this->app->singleton('DailyTaskLogRepository', function($app){
+            return new \App\Repositories\admin\DailyTaskLogRepository();
+        });
+
+        //每日邀请好友报名详细记录
+        $this->app->singleton('InvitationSignUpRepository', function($app){
+            return new \App\Repositories\admin\InvitationSignUpRepository();
+        });
+
+        //app store好评记录
+        $this->app->singleton('CommentAppStoreRepository', function($app){
+            return new \App\Repositories\admin\CommentAppStoreRepository();
+        });
+
+        //半课好文章
+        $this->app->singleton('GoodArticleRepository', function($app){
+            return new \App\Repositories\admin\GoodArticleRepository();
+        });
+
+         //半课免费学
+        $this->app->singleton('FreeStudyRepository', function($app){
+            return new \App\Repositories\admin\FreeStudyRepository();
+        });
+
+        //半课免费学成员
+        $this->app->singleton('FreeStudyUsersRepository', function($app){
+            return new \App\Repositories\admin\FreeStudyUsersRepository();
+        });
     }
 }

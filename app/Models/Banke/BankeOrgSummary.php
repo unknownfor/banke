@@ -73,4 +73,10 @@ class BankeOrgSummary extends Model
     {
         return $this->hasMany('App\Models\Banke\BankeOrgSummaryHotMsg','org_id','id');
     }
+
+    //1对多个老师
+    public function teachers()
+    {
+        return $this->hasMany('App\Models\Banke\BankeTeachingTeacher','org_id','id');
+    }
 }

@@ -7,7 +7,7 @@ return[
 	 * 全局状态
 	 * audit 	待审核
 	 * active 	正常
-	 * ban 		禁用
+	 * ban 		拒绝
 	 * trash	回收站
 	 * destory 	彻底删除
 	 */
@@ -66,6 +66,9 @@ return[
 		['key'=>'COMMENT_ORG','desc' => '机构评论奖励'],
 		['key'=>'COMMENT_COURSE','desc' => '课程心得奖励'],
 		['key'=>'SHARE_GROUP_BUYING','desc' => '开团分享'],
+		['key'=>'SHARE_SUCCESS','desc' => '分享奖励'],
+		['key'=>'INVITE_FRIEND_BECOME_MARKETING_AMBASSADOR','desc' => '邀请好友成为推广大使奖励'],
+		['key'=>'COMMENT_APP_STORE','desc' => '应用市场好评奖励'],
 	],
 
 	'moneynews_business_type' => [
@@ -121,7 +124,7 @@ return[
 	//机构
 	'org' => [
 		// 控制是否显示查看按钮
-		'show' => true,
+		'show' => false,
 		// trait 中的 action 参数
 		'action' => 'org',
 	],
@@ -135,7 +138,7 @@ return[
 	//课程
 	'course' => [
 		// 控制是否显示查看按钮
-		'show' => true,
+		'show' => false,
 		// trait 中的 action 参数
 		'action' => 'course',
 	],
@@ -341,4 +344,40 @@ return[
 		'show' => false,
 		'action' => 'activity',
 	],
+
+	//教学老师
+	'teachingteacher' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'teachingteacher',
+	],
+
+	//推广大使
+	'marketingambassador' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'marketingambassador',
+	],
+
+	//app 好评
+	'commentappstore' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'commentappstore',
+	],
+
+	//半课好文章
+	'goodarticle' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'goodarticle',
+	],
+
+	//半课免费学
+	'freestudy' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'freestudy',
+	],
+
 ];

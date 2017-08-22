@@ -1,6 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeCommentOrg;
+use App\Models\Banke\BankeSpecialMobile;
 use Carbon\Carbon;
 use Flash;
 use DB;
@@ -124,6 +125,7 @@ class CommentOrgRepository
 		$comment = BankeCommentOrg::find($id);
 		if ($comment) {
 			DB::transaction(function () use ($comment,$request) {
+				$comment=$comment->lockForUpdate();
 				try {
 					$oldAwardStatus=$comment['award_status'];
 					$comment=$comment->fill($request->all());
@@ -166,8 +168,11 @@ class CommentOrgRepository
 				//记录消息
 				BankeMessage::create($message);
 			}
+			return true;
 		}
-		return true;
+		else{
+			return false;
+		}
 	}
 
 	//是否可以奖励 同一个人，同个机构只能打赏一次
@@ -176,10 +181,23 @@ class CommentOrgRepository
 
 		$org_id=$comment['org_id'];
 		$uid=$comment['uid'];
-		//同一个人，同个机构之前没有打赏过
-		$flag2=BankeCommentOrg::where('uid',$uid)
-				->where('org_id',$org_id)
-				->where('award_status',1)->count()==0;
+
+		//特别的几个用户单独可以完成多次
+		$specialMobile=BankeSpecialMobile::get();
+		$arr=[];
+		foreach($specialMobile as $v){
+			array_push($arr,$v->userSimple['uid']);
+		}
+		$flag2=false;
+		if(in_array($uid, $arr)){
+			$flag2=true;
+		}
+		else {
+			//同一个人，同个机构之前没有打赏过
+			$flag2 = BankeCommentOrg::where('uid', $uid)
+					->where('org_id', $org_id)
+					->where('award_status', 1)->count() == 0;
+		}
 
 		return $flag1 && $flag2;
 	}
@@ -251,28 +269,31 @@ class CommentOrgRepository
 	 */
 	public static function updateViewCounts($id)
 	{
-		$commentOrg = BankeCommentOrg::lockForUpdate()->find($id);
-		if(!$commentOrg->view_counts_flag){  //未完成 浏览量
+		$commentOrg = BankeCommentOrg::where('id',$id);
 			DB::transaction(function () use ($commentOrg) {
 				try {
-					$commentOrg->view_counts++;
+					$commentOrg=$commentOrg->lockForUpdate()->first();
+					if(!$commentOrg->view_counts_flag) {  //未完成 浏览量
+						$commentOrg->view_counts++;
+						//达到浏览量
+						if ($commentOrg->view_counts == $commentOrg->min_view_counts) {
+							$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
 
-					//达到浏览量
-					if ($commentOrg->view_counts == $commentOrg->min_view_counts) {
-						$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
+							//奖励
+							$oldAwardStatus = $commentOrg['award_status'];
+							$request = array('award_status' => 1);
 
-						//奖励
-						$oldAwardStatus = $commentOrg['award_status'];
-						$request = array('award_status' => 1);
+							$that = new CommentOrgRepository();
 
-						$that=new CommentOrgRepository();
+							$comment_award = $that->getAward($commentOrg);  //奖励金额
 
-						$comment_award=$that->getAward($commentOrg);  //奖励金额
-
-						$that->awardUser($oldAwardStatus, $commentOrg, $request,$comment_award);  //奖励相应
-						$commentOrg->award_status=1;
+							$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
+							$commentOrg->award_status = 1;
+						}
+						$commentOrg->save();
+					}else{
+						return false;
 					}
-					$commentOrg->save();
 				}
 				catch(Exception $e){
 					Flash::error(trans('alerts.course.updated_error'));
@@ -281,8 +302,6 @@ class CommentOrgRepository
 				}
 			});
 			return true;
-		}
-		return false;
 	}
 
 	/*
@@ -357,6 +376,26 @@ class CommentOrgRepository
 			array_push($arr, ['name' => $name, 'uid' => $c->uid, 'time' => date("Y-m-d H:i:s", $lastTime)]);
 		}
 		return $arr;
+	}
+
+	/*
+	 * 通过主机构id，得到所有评论
+	 */
+	public static function getAllCommentsByOrgSummaryId($id)
+	{
+		$allOrgIds=BankeOrg::where(['pid'=>$id,'status'=>1])->get(['id'])->toArray();
+		$ids=[];
+		foreach($allOrgIds as $v){
+			array_push($ids,$v);
+		}
+		$comments=BankeCommentOrg::whereIn('org_id', $ids)
+			->where('status','1')
+			->orderBy('id','desc')
+			->get(['uid','content','star_counts','created_at']);
+		foreach($comments as $v) {
+			$v['user_info']=$v->userSimple;
+		}
+		return $comments;
 	}
 
 }

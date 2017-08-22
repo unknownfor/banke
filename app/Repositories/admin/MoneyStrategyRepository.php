@@ -190,4 +190,9 @@ class MoneyStrategyRepository
 		return false;
 	}
 
+	public static function  getAll()
+	{
+		return BankeMoneyStrategy::where('status',1)->get();
+	}
+
 }

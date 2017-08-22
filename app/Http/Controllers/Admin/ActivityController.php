@@ -10,7 +10,8 @@ use ActivityRepository;
 use App\Models\Banke\BankeCourse;
 use Illuminate\Http\Request;
 use App\Http\Requests\ActivityRequest;
-use App\Models\Banke\BankeBusinessCity;
+use App\Http\Requests\ActivityOutlinkClickRequest;
+use BusinessCityRepository;
 use App\Repositories\admin\ActivityCourseRepository;
 use Flash;
 
@@ -48,7 +49,7 @@ class ActivityController extends Controller {
      */
     public function create()
     {
-        $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
+        $cities=BusinessCityRepository::getAllBusinessCity();
         $allcourse=$this->getAllCourse();
         return view('admin.activity.create')->with(compact(['cities','allcourse']));
     }
@@ -68,6 +69,20 @@ class ActivityController extends Controller {
     }
 
     /**
+     * 添加活动 可点击外链
+     * @author 晚黎
+     * @date   2016-04-14T11:31:29+0800
+     * @param  CreateUserRequest        $request [description]
+     * @return [type]                            [description]
+     */
+    public function store_outlink_click(ActivityOutlinkClickRequest $request)
+    {
+        $activity_id = ActivityRepository::storeOutlinkClick($request);
+        $this->updateJoinInCourse($activity_id,$request);
+        return redirect('admin/activity');
+    }
+
+    /**
      * 修改活动视图
      * @author 晚黎
      * @date   2016-04-14T15:01:16+0800
@@ -76,7 +91,7 @@ class ActivityController extends Controller {
      */
     public function edit($id)
     {
-        $cities=BankeBusinessCity::where('status',1)->orderBy('sort')->get(['name']);
+        $cities=BusinessCityRepository::getAllBusinessCity();
         $activity = ActivityRepository::edit($id);
         $repository=new ActivityCourseRepository();
         $course_arr=$repository->getAllCouseIdArrByActivityId($id);

@@ -69,6 +69,7 @@ class OrgController extends Controller
      */
     public function store(CreateOrgRequest $request)
     {
+        $all = $request->all();
         $id = OrgRepository::store($request);
         $category1 = $request->category1;
         $category2 = $request->category2;
@@ -206,6 +207,13 @@ class OrgController extends Controller
     {
         $org_id = request('org_id', '');
         $data = OrgRepository::getCommentSharePercent($org_id);
+        return response()->json($data);
+    }
+
+    //根据父机构id 获得机构
+    public function getOrgByPid($pid)
+    {
+        $data = OrgRepository::getOrgByPid($pid);
         return response()->json($data);
     }
 

@@ -178,10 +178,10 @@ class NewsRepository
 	{
 		$isDelete = BankeNews::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.news.deleted_success'));
+			Flash::success(trans('alerts.news.delete_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.news.deleted_error'));
+		Flash::error(trans('alerts.news.delete_error'));
 		return false;
 	}
 

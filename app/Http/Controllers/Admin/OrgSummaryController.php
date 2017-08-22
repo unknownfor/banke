@@ -9,6 +9,7 @@ use App\Http\Requests\CreateOrgSummaryRequest;
 use PermissionRepository;
 use RoleRepository;
 use OrgSummaryRepository;
+use BusinessCityRepository;
 use TrainCategoryRepository;
 use App\Repositories\admin\OrgSummaryTagsRepository;
 use App\Repositories\admin\OrgSummaryHotMsgRepository;
@@ -50,7 +51,8 @@ class OrgSummaryController extends Controller
         $permissions = PermissionRepository::findPermissionWithArray();
         $roles = RoleRepository::findRoleWithObject();
         $allCategories=TrainCategoryRepository::getAllTopCategory();
-        return view('admin.orgsummary.create')->with(compact(['permissions','roles','allCategories']));
+        $cities = BusinessCityRepository::getAllBusinessCity();
+        return view('admin.orgsummary.create')->with(compact(['permissions','roles','allCategories','cities']));
     }
 
     /**
@@ -96,7 +98,9 @@ class OrgSummaryController extends Controller
 
         $orgsummary['real_avg']=OrgSummaryRepository::getCoursePriceAvg($id);;
 
-        return view('admin.orgsummary.edit')->with(compact('orgsummary','categories'));
+        $cities = BusinessCityRepository::getAllBusinessCity();
+
+        return view('admin.orgsummary.edit')->with(compact('orgsummary','categories','cities'));
     }
     /**
      * 修改机构资料

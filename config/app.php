@@ -271,6 +271,15 @@ return [
         'AlertBoxRepository' => App\Facades\AlertBoxFacade::class,
         'MoneyNewsRepository' => App\Facades\MoneyNewsFacade::class,
         'ActivityRepository' => App\Facades\ActivityFacade::class,
+        'TeachingTeacherRepository' => App\Facades\TeachingTeacherFacade::class,
+        'BusinessCityRepository' => App\Facades\BusinessCityFacade::class,
+        'MarketingAmbassadorRepository' => App\Facades\MarketingAmbassadorFacade::class,
+        'DailyTaskLogRepository' => App\Facades\DailyTaskLogFacade::class,
+        'InvitationSignUpRepository' => App\Facades\InvitationSignUpFacade::class,
+        'CommentAppStoreRepository' => App\Facades\CommentAppStoreFacade::class,
+        'GoodArticleRepository' => App\Facades\GoodArticleFacade::class,
+        'FreeStudyRepository' => App\Facades\FreeStudyFacade::class,
+        'FreeStudyUsersRepository' => App\Facades\FreeStudyUsersFacade::class,
     ],
 
 ];

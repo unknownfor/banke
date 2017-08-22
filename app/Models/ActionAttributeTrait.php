@@ -7,6 +7,7 @@ trait ActionAttributeTrait{
 	protected $html_build;
 
 	protected $certificationIconArr=Array('order','recruiteteacher','drawback');
+	protected $certificateInListArr=Array('marketingambassador','commentappstore');
 
 	/**
 	 * 查看按钮
@@ -36,7 +37,7 @@ trait ActionAttributeTrait{
 	public function getEditActionButton()
 	{
 //		if ($this->action == 'order' || $this->action == 'drawback') {
-		if (in_array($this->action,$this->certificationIconArr)) {
+		if (in_array($this->action,$this->certificationIconArr) || in_array($this->action,$this->certificateInListArr)) {
 			return $this;
 		}
 
@@ -102,6 +103,8 @@ trait ActionAttributeTrait{
 		return $this;
 	}
 
+
+
 	/**
 	 * 修改用户密码
 	 * @return $this
@@ -120,9 +123,11 @@ trait ActionAttributeTrait{
 	 */
 	public function getCertificateActionButton()
 	{
-		if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
-			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
-				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.audit')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+		if($this->action=='app_user') {
+			if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
+					$this->html_build .= '<a href="' . url('admin/' . $this->action . '/' . $this->uid . '/certificate/' . config('admin.global.certification_status.audit')) . '" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+				}
 			}
 		}
 		return $this;
@@ -134,9 +139,11 @@ trait ActionAttributeTrait{
 	 */
 	public function getRefuseCertificateActionButton()
 	{
-		if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
-			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.certificate'))) {
-				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->uid.'/certificate/'.config('admin.global.certification_status.trash')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
+		if($this->action=='app_user') {
+			if ((!empty($this->certification_status) && $this->certification_status != config('admin.global.certification_status.audit'))) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
+					$this->html_build .= '<a href="' . url('admin/' . $this->action . '/' . $this->uid . '/certificate/' . config('admin.global.certification_status.trash')) . '" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
+				}
 			}
 		}
 		return $this;
@@ -207,6 +214,42 @@ trait ActionAttributeTrait{
 
 
 	/**
+	 * 通过认证按钮 直接在列表认证
+	 * @return $this
+	 */
+	public function getCertificateInListButton()
+	{
+		if(in_array($this->action,$this->certificateInListArr)){
+			if($this->id==36){
+				$aa='';
+			}
+			if ($this->certification_status == config('admin.global.status.audit')) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
+					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/certificate/'.config('admin.global.status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+				}
+			}
+		}
+		return $this;
+	}
+
+	/**
+	 * 拒绝认证按钮 直接在列表认证
+	 * @return $this
+	 */
+	public function getRefuseCertificateInListButton()
+	{
+		if(in_array($this->action,$this->certificateInListArr)){
+			if ($this->certification_status == config('admin.global.status.audit')) {
+				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
+					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/certificate/'.config('admin.global.status.ban')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.refuse') . '"  data-placement="top"><i class="fa fa-pause"></i></a>';
+				}
+			}
+		}
+		return $this;
+	}
+
+
+	/**
 	 * 组合按钮
 	 * @param bool $showType
 	 * @return $this
@@ -226,6 +269,8 @@ trait ActionAttributeTrait{
 					->getDestroyActionButton()
 					->getCertificateActionButton()
 					->getRefuseCertificateActionButton()
+					->getCertificateInListButton()
+					->getRefuseCertificateInListButton()
 					->getDrawbackActionButton();
 
 		return $this->html_build;

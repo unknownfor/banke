@@ -8,7 +8,7 @@ class BankeNews extends Model
 {
     //
     use ActionAttributeTrait;
-    protected $fillable = ['title', 'content', 'status', 'sort'];
+    protected $fillable = ['title', 'content', 'status', 'sort','type'];
 
     private $action;
 

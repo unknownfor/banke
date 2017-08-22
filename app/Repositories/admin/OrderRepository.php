@@ -19,6 +19,9 @@ use League\Flysystem\Exception;
 use DB;
 use Auth;
 use MoneyNewsRepository;
+use DailyTaskLogRepository;
+use InvitationSignUpRepository;
+use OrderDepositRepository;
 
 /**
 * 订单（报名）仓库
@@ -235,13 +238,14 @@ class OrderRepository
 	public function update($request,$id)
 	{
 		$order = BankeCashBackUser::find($id);
+
 		$input = $request->only(['comment', 'status']);
 		if ($order) {
 			//重复订单
 			$isRepeat=BankeCashBackUser::where(['course_id'=>$order->course_id,'uid'=>$order->uid,'status'=>1])->count()>0;
 
 			if($order['status'] == config('admin.global.status.active') || $isRepeat){
-				Flash::error(trans('alerts.order.already_active'));
+				Flash::error(trans('alerts.common.already_active'));
 				return false;
 			}
 			$cur_user = Auth::user();
@@ -250,6 +254,7 @@ class OrderRepository
 			if($input['status'] == config('admin.global.status.active')){
 				DB::transaction(function () use ($input, $order,$operator_id) {
 					try{
+						$uid=$order->uid;
 
 						//更新机构的学习人数
 						$org = $order->org;
@@ -257,7 +262,11 @@ class OrderRepository
 						$org->save();
 
 						$order->save();
-						$userProfile = BankeUserProfiles::where('uid', $order->uid)->lockForUpdate()->first();
+
+						//更新订金表信息
+						OrderDepositRepository::updateOutLineStatus($uid,$order->course_id);
+
+						$userProfile = BankeUserProfiles::where('uid', $uid)->lockForUpdate()->first();
 
 						$this->execUpadateUserInfo($order,$userProfile); //更新用户信息
 
@@ -270,7 +279,7 @@ class OrderRepository
 
 						//将报名赚钱信息添加到赚钱动态表中
 						$info=[
-							'uid'=>$order->uid,
+							'uid'=>$uid,
 							'amount'=>$order->do_task_amount+$order->check_in_amount,
 							'business_type'=>'ENROL_SUCCESS',
 							'org_id'=>$org->id
@@ -333,67 +342,93 @@ class OrderRepository
 	private  function  execUpadateInvitorInfo($order,$org){
 		$course_id=$order->course_id;
 		$enrol=BankeEnrol::where(['course_id'=>$course_id,'mobile'=>$order->mobile]);  //预约表查询
-		if($enrol && $enrol->count()>0){
-			$enrol=$enrol->first();
-			$enrol->order_status=1;  //更新预约信息，表示真实报名了
+		if($enrol && $enrol->count()>0) {
+			$enrol = $enrol->first();
+			$enrol->order_status = 1;  //更新预约信息，表示真实报名了
 			$enrol->save();
-			$invitation_uid=$enrol->invitation_uid;
-			if ($invitation_uid!=0) {
+			$invitation_uid = $enrol->invitation_uid;
+
+			if ($invitation_uid != 0) {
+
+				//v1.8 更新每日任务信息，并对每天是否能奖励做过滤
+				$award_flag = DailyTaskLogRepository::updateBankeDailyTaskLog($invitation_uid, 0);
+
 				// 奖励金额比例使用实时课程的数值，金额底数，使用被邀请者的成交价
 				$invite_enrol_course = BankeCourse::find($course_id);
 
-				if($enrol->invitorUserSimple['user_type']>=3) {
+				if ($enrol->invitorUserSimple['user_type'] >= 3) {
 					$percent = $invite_enrol_course['z_award_amount_teacher'];
-				}else{
+				} else {
 					$percent = $invite_enrol_course['z_award_amount'];
 				}
 				$invitation_award = moneyFormat(($order['tuition_amount'] * $percent / 100));
 
-				$course_id=$order->course_id;
-				$order_invitor = BankeCashBackUser::where(['course_id' => $course_id, 'uid' => $invitation_uid, 'status' => 1])->first();
-
-				// v1.7之前版本,和之后版本做区别
-				$groupbuying_flag=$this->dealwithOrderFromType($course_id,$invitation_uid,$invitation_award);
-				if(!$groupbuying_flag) {
-					//更新邀请人的订单信息，已获邀请金额 + award
-					$order_invitor = BankeCashBackUser::where(['course_id' => $course_id, 'uid' => $invitation_uid, 'status' => 1]);
-					if ($order_invitor->count() > 0) {
-						$order_invitor = $order_invitor->first();
-						$order_invitor->get_group_buying_amount += $invitation_award;  //已经获得的开团金额金额 += $award
-						$order_invitor->save();
-					}
-					else {
-						return false;
-					}
+				//写入invitation signup
+				$new_award=0;
+				if($award_flag){
+					$new_award=$invitation_award;
 				}
-				//更新用户账户金额信息以及添加变动记录
-				AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
+				$this->addInvationSingUpRecord($order,$invitation_uid,$new_award);
 
-				$message1 = [
-					'uid' => $invitation_uid,
-					'title' => '您的好友报名成功',
-					'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程——'.$order['course_name'].'。平台已帮您领取了' . $invitation_award
-						. '元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
-					'type' => 'FRIEND_ENROL_SUCCESS'
-				];
-				//记录消息
-				BankeMessage::create($message1);
+				if ($award_flag) {
+
+					$order_invitor = BankeCashBackUser::where(['course_id' => $course_id, 'uid' => $invitation_uid, 'status' => 1])->first();
+
+					// v1.7之前版本,和之后版本做区别
+					$groupbuying_flag = $this->dealwithOrderFromType($course_id, $invitation_uid, $invitation_award);
+					if (!$groupbuying_flag) {
+						//更新邀请人的订单信息，已获邀请金额 + award
+						$order_invitor = BankeCashBackUser::where(['course_id' => $course_id, 'uid' => $invitation_uid, 'status' => 1]);
+						if ($order_invitor->count() > 0) {
+							$order_invitor = $order_invitor->first();
+							$order_invitor->get_group_buying_amount += $invitation_award;  //已经获得的开团金额金额 += $award
+							$order_invitor->save();
+						}
+					}
+					//更新用户账户金额信息以及添加变动记录
+					AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
+
+					if($invitation_award==0){
+						return;
+					}
+					$message1 = [
+						'uid' => $invitation_uid,
+						'title' => '您的好友报名成功',
+						'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程 “ ' . $order['course_name'] . ' ” 。平台已帮您领取了' . $invitation_award
+							. '元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
+						'type' => 'FRIEND_ENROL_SUCCESS'
+					];
+					//记录消息
+					BankeMessage::create($message1);
 
 
-				//将报名赚钱信息添加到赚钱动态表中
-				$info=[
-					'uid'=>$invitation_uid,
-					'invited_uid'=>$order->uid,
-					'cut_amount'=>$order->do_task_amount+$order->check_in_amount,
-					'amount'=>$invitation_award,
-					'business_type'=>'INVITE_FRIEND_ENROL_SUCCESS',
-					'org_id'=>$org->id
-				];
-				MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
+					//将报名赚钱信息添加到赚钱动态表中
+					$info = [
+						'uid' => $invitation_uid,
+						'invited_uid' => $order->uid,
+						'cut_amount' => $order->do_task_amount + $order->check_in_amount,
+						'amount' => $invitation_award,
+						'business_type' => 'INVITE_FRIEND_ENROL_SUCCESS',
+						'org_id' => $org->id
+					];
+					MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
+				}
 			}
 		}
 	}
 
+	private function addInvationSingUpRecord($order,$invitation_uid,$invitation_award){
+		$invitaionInfo = [
+			'uid'=> $order->uid,
+			'course_id'=>$order->course_id,
+			'course_name'=>$order->course_name,
+			'tuition_amount'=>$order->tuition_amount,
+			'invitor_id'=>$invitation_uid,
+			'invitor_award_amount'=>$invitation_award,
+			'status'=>1,
+		];
+		InvitationSignUpRepository::store($invitaionInfo);
+	}
 
 	/*
 	 * v1.7之前版本：
@@ -430,7 +465,7 @@ class OrderRepository
 				' 报名时间： ' .$order->pay_tuition_time.'。'.
 				' 学费：' .$order->tuition_amount.'元。'.
 				' 平台奖励：' .$cash_back_percent.'%，待返金额为 ' .($order->check_in_amount + $order->do_task_amount) .'元，'.
-				' 每次上课打卡和做任务即可领取。',
+				' 每次上课签到和做任务即可领取。',
 			'type'=>'USER_ENROL_SUCCESS'
 		];
 		//记录消息
@@ -568,35 +603,9 @@ class OrderRepository
 				$input['check_in_amount']=moneyFormat($tuition * $course->checkin_award / 100);
 				$input['do_task_amount']=moneyFormat($tuition * $course->task_award / 100);
 
-				//获取课程信息，计算任务分享信息
-
-				//course
-				$commentCourseAward=moneyFormat($tuition*$course['share_comment_course_award']/100);
-				$commentCourseCounts=$course['share_comment_course_counts'];//最多可以奖励次数
-				$input['share_comment_course_amount'] = $commentCourseAward;
-				$input['share_comment_course_counts'] = $commentCourseCounts;
-				$input['share_comment_course_view_counts'] = $this->getViewCountsByAward($commentCourseAward,$commentCourseCounts);  //浏览多少次达到要求
-
-				$org=$course->org;
-
-				//org
-				$commentOrgAward=moneyFormat($tuition*$org['share_comment_org_award']/100);
-				$commentOrgCounts=$org['share_comment_org_counts'];//最多可以奖励次数
-				$input['share_comment_org_amount'] =$commentOrgAward;
-				$input['share_comment_org_counts'] = $commentOrgCounts;
-				$input['share_comment_org_view_counts'] = $this->getViewCountsByAward($commentOrgAward,$commentOrgCounts);
-
 				//groupbuying
 				$gbAllAward=moneyFormat($tuition*$course['group_buying_award']/100);
 				$input['group_buying_amount'] = $gbAllAward;
-
-				$gbAward=moneyFormat($tuition*$course['share_group_buying_award']/100);
-				$gbCounts=$course['share_group_buying_counts'];//最多可以奖励次数
-
-				$input['share_group_buying_amount'] = $gbAward;
-				$input['share_group_buying_counts'] = $gbCounts;
-				$input['share_group_buying_view_counts'] = $this->getViewCountsByAward($gbAward,$gbCounts);
-
 
 				$input['pay_tuition_time'] = date("Y-m-d H:i:s");
 

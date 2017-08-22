@@ -5,13 +5,12 @@
 
         $('.citySelectpicker').selectpicker({
             liveSearchNormalize:true,
-            liveSearchPlaceholder:'输入城市名称进行搜索',
+            liveSearchPlaceholder:'输入名称进行搜索',
             //'selectedText': 'cat',
             actionsBox:true
         });
 
-        /**定义一个MyEditor对象**/
-        var MyEditor=function(){
+        var MyObj=function(){
             this.init();
             var that=this;
 
@@ -77,14 +76,20 @@
             //photoswipe   //图片信息查看  相册、视频信息查看
             new MyPhotoSwipe('.img-list-box');
         };
-        MyEditor.prototype={
+        MyObj.prototype={
 
             init:function(){
-                this.initEditor();
+                this.baseToolBar = ['title', 'bold', 'italic', 'underline', 'fontScale', 'color', '|',
+                    'ol', 'ul', 'blockquote', 'table', '|',
+                    'code','link', 'image', 'hr', '|',
+                    'indent', 'outdent', 'alignment'
+                ];
+                this.initDetailEditor();  //机构详情内容
+                this.initInstallmentEditor(); //分期内容
+                this.initRefundEditor(); //分期内容
                 this.initImgsArr();  //定义100个图片id 数组。
                 this.initTags();
                 this.getCategory();
-
             },
 
             initTags:function(){
@@ -116,23 +121,50 @@
                 this.myCategory2=arr;
             },
 
-            initEditor:function(){
-                var $editor = $('#my-editor'),
-                    toolbar = ['title', 'bold', 'italic', 'underline', 'fontScale', 'color', '|',
-                        'ol', 'ul', 'blockquote', 'table', '|',
-                        'code','link', 'image', 'hr', '|',
-                        'indent', 'outdent', 'alignment'
-                    ];
-                this.editor = new Simditor({
+            /*详情编辑器*/
+            initDetailEditor:function(){
+                var $editor = $('#details-editor');
+                this.detailEditor = this.initEditor($editor,this.baseToolBar);
+                this.overWriteImgBtnFn(this.baseToolBar);
+                var val=$('#details-content-area').text();
+                if(val){
+                    this.detailEditor.setValue(val);
+                }
+            },
+
+            /*分期编辑器*/
+            initInstallmentEditor:function(){
+                var $editor = $('#installment-editor');
+                this.installmentEditor = this.initEditor($editor,this.baseToolBar);
+
+                var val=$('#installment-content-area').text();
+                if(val){
+                    this.installmentEditor.setValue(val);
+                }
+            },
+
+            /*退款编辑器*/
+            initRefundEditor:function(){
+                var $editor = $('#refund-editor');
+                this.refundEditor = this.initEditor($editor,this.baseToolBar);
+
+                var val=$('#refund-content-area').text();
+                if(val){
+                    this.refundEditor.setValue(val);
+                }
+            },
+
+            initEditor:function($editor,toolbar){
+                var $editorObj = new Simditor({
                     textarea: $editor,
                     toolbar:toolbar,
                     toolbarFloat: true,
                     cleanPaste:false
                 });
                 window.setTimeout(function () {
-                    $editor.add().css('opacity', '1');
+                    $editor.css('opacity', '1');
                 }, 200);
-                this.overWriteImgBtnFn(toolbar);
+                return $editorObj;
             },
 
             getTargetByEvent:function(e){
@@ -154,33 +186,30 @@
                 return false;
             },
 
-            setValue:function(val){
-                this.editor.setValue(val);
-            },
-
-            getValue:function(){
-              return this.editor.getValue();
+            /*得到编辑器内容*/
+            getEditorVal:function($editorObj){
+                return $editorObj.getValue().replace(/\n/g,"<br/>");
             },
 
             /*重写编辑器的上传图片的方法*/
             overWriteImgBtnFn:function(arr) {
-                this.btn = this.editor.toolbar.buttons[this.getImageBtnIndex(arr)];
+                this.btn = this.detailEditor.toolbar.buttons[this.getImageBtnIndex(arr)];
                 var that = this;
                 this.btn.createImage = function (url, maxId) {
                     var range;
                     if (url == null) {
                         url = 'http://hisihi-other.oss-cn-qingdao.aliyuncs.com/hotkeys/hisihiOrgLogo.png';
                     }
-                    if (!this.editor.inputManager.focused) {
-                        this.editor.focus();
+                    if (!this.detailEditor.inputManager.focused) {
+                        this.detailEditor.focus();
                     }
-                    range = this.editor.selection.range();
+                    range = this.detailEditor.selection.range();
                     range.deleteContents();
-                    this.editor.selection.range(range);
+                    this.detailEditor.selection.range(range);
                     var $img = $('<img id="' + maxId + '">').attr('src', url);
                     range.insertNode($img[0]);
-                    this.editor.selection.setRangeAfter($img, range);
-                    this.editor.trigger('valuechanged');
+                    this.detailEditor.selection.setRangeAfter($img, range);
+                    this.detailEditor.trigger('valuechanged');
                     return $img;
                 };
 
@@ -443,52 +472,35 @@
                 });
             },
 
-            CLASS_NAME:'MyEditor'
+            CLASS_NAME:'MyObj'
 
         };
 
 
 
-        var editor;
-        initEditor();
-        setEditorVal();
-        function initEditor() {
-            editor=new MyEditor();
-        }
-
-        //初始化编辑器内容
-        function setEditorVal(){
-            var val=$('#target-area').text();
-            editor.setValue(val);
-        }
-
-        setIntroduce();
-        function setIntroduce(){
-
-            var val=$('.introduce-input').val();
-            if(val) {
-                val = val.replace(/<br\/>/g, "\r\n");
-                $('.indroduce').val(val);
-            }
-        }
-
+        var orgObj=new MyObj();
 
         //提交编辑
         window.setDataBeforeCommit=function(){
-            var val=editor.getValue();
-            val=val.replace(/\n/g,"<br/>");
-            $('#target-area').text(val);
+            var detailVal= orgObj.getEditorVal(orgObj.detailEditor);
+            $('#details-content-area').text(detailVal);
+
+            var installmentVal= orgObj.getEditorVal(orgObj.installmentEditor);
+            $('#installment-content-area').text(installmentVal);
+
+            var refundVal= orgObj.getEditorVal(orgObj.refundEditor);
+            $('#refund-content-area').text(refundVal);
 
             //封面
-            $('#cover').val(editor.getCoverImg('cover').join(','));
+            $('#cover').val(orgObj.getCoverImg('cover').join(','));
 
             //相册
-            $('#album').val(editor.getCoverImg('album').join(','));
+            $('#album').val(orgObj.getCoverImg('album').join(','));
 
             //logo
             $('#logo-input').val($('#logo').attr('src'));
 
-            $('#tags').val(editor.getTags());
+            $('#tags').val(orgObj.getTags());
         };
 
 

@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\Banke\BankeOrg;
 use App\Models\Banke\BankeCourse;
+use App\Models\Banke\BankeOrgSummary;
 use App\Repositories\admin\OrgRepository;
 use App\Repositories\admin\OrgApplyForRepository;
-use App\Repositories\admin\OrgSummaryRepository;
+use OrgSummaryRepository;
 use App\Services\ApiResponseService;
 use App\Lib\Code;
 use Illuminate\Support\Facades\Log;
@@ -51,7 +52,7 @@ class OrgController extends Controller
      */
     public function org_v1_8($id)
     {
-        $org = BankeOrg::find($id);
+        $org = BankeOrgSummary::find($id);
         return view('web.org.org-v1_8')->with(compact(['org']));
     }
 
@@ -61,8 +62,11 @@ class OrgController extends Controller
      */
     public function share_org_v1_8($id)
     {
-        $org = BankeOrg::find($id);
-        return view('web.org.share_org-v1_8')->with(compact(['org']));
+        $org = BankeOrgSummary::find($id);
+        $sub_org=$org->org->toArray()[0];
+        $course=OrgSummaryRepository::getCourse($id,3);
+        $link_base_url='http://'.env('ADMIN_DOMAIN');
+        return view('web.org.share_org-v1_8')->with(compact(['org','course','sub_org','link_base_url']));
     }
 
     /**评论分享页面**/
@@ -192,6 +196,17 @@ class OrgController extends Controller
     {
         $org = BankeOrg::find($id);
         return view('web.org.share_org-v1_6')->with(compact(['org']));
+    }
+
+    /**
+     * 机构特色,id指课程id
+     */
+    public function org_feature_v1_8($id)
+    {
+        $course = BankeCourse::find($id);
+        $subOrg = $course->org;
+        $org_summary=$subOrg->orgsummary;
+        return view('web.org.org_feature-v1_8')->with(compact(['org_summary']));
     }
 
 

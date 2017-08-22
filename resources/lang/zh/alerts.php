@@ -2,6 +2,10 @@
 
 return [
 
+    'common'=>[
+        'already_active'    => '该记录已经通过审核，不能重复审核'
+    ],
+
     'permissions' => [
         'created_success'   => '创建权限成功.',
         'created_error'     => '创建权限失败.',
@@ -277,6 +281,44 @@ return [
         'updated_error'     => '更新活动失败.',
         'deleted_success' => '删除活动成功',
         'deleted_error' => '删除活动失败',
+    ],
+
+    'teachingteacher' => [
+        'created_success'   => '创建教学老师成功.',
+        'created_error'   => '创建教学老师失败.',
+        'updated_success'   => '更新教学老师成功.',
+        'updated_error'     => '更新教学老师失败.',
+        'deleted_success' => '删除教学老师成功',
+        'deleted_error' => '删除教学老师失败',
+    ],
+
+    'marketingambassador' => [
+        'updated_success'   => '审核推广大使成功.',
+        'updated_error'     => '更新推广大使失败.',
+        'deleted_success' => '删除推广大使成功',
+        'deleted_error' => '删除推广大使失败',
+    ],
+
+    'commentappstore' => [
+        'updated_success'   => '审核评论成功.',
+        'updated_error'     => '审核评论失败.',
+        'deleted_success' => '删除评论成功',
+        'deleted_error' => '删除评论失败',
+    ],
+
+    'goodarticle' => [
+        'created_success'   => '创建半课好文成功.',
+        'created_error'     => '创建半课好文失败.',
+        'deleted_success' => '删除半课好文成功',
+        'deleted_error' => '删除半课好文失败',
+    ],
+    'freestudy' => [
+        'created_success'   => '创建免费学成功.',
+        'created_error'     => '创建免费学失败.',
+        'updated_success'   => '编辑免费学成功.',
+        'updated_error'     => '编辑免费学失败.',
+        'deleted_success' => '删除免费学成功',
+        'deleted_error' => '删除免费学失败',
     ],
 
 ];
