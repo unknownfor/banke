@@ -220,6 +220,9 @@ class GroupbuyingRepository
 					var_dump($e);
 					return false;
 				}
+			}else{
+				$groupbuying->view_counts++;
+				$groupbuying->save();
 			}
 			return true;
 		});

@@ -388,6 +388,9 @@ class OrderRepository
 					//更新用户账户金额信息以及添加变动记录
 					AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
 
+					if($invitation_award==0){
+						return;
+					}
 					$message1 = [
 						'uid' => $invitation_uid,
 						'title' => '您的好友报名成功',

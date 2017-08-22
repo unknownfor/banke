@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories\admin;
 use App\Models\Banke\BankeCommentOrg;
-use App\Models\Banke\BankeOrgSummary;
+use App\Models\Banke\BankeSpecialMobile;
 use Carbon\Carbon;
 use Flash;
 use DB;
@@ -168,8 +168,11 @@ class CommentOrgRepository
 				//记录消息
 				BankeMessage::create($message);
 			}
+			return true;
 		}
-		return true;
+		else{
+			return false;
+		}
 	}
 
 	//是否可以奖励 同一个人，同个机构只能打赏一次
@@ -178,10 +181,23 @@ class CommentOrgRepository
 
 		$org_id=$comment['org_id'];
 		$uid=$comment['uid'];
-		//同一个人，同个机构之前没有打赏过
-		$flag2=BankeCommentOrg::where('uid',$uid)
-				->where('org_id',$org_id)
-				->where('award_status',1)->count()==0;
+
+		//特别的几个用户单独可以完成多次
+		$specialMobile=BankeSpecialMobile::get();
+		$arr=[];
+		foreach($specialMobile as $v){
+			array_push($arr,$v->userSimple['uid']);
+		}
+		$flag2=false;
+		if(in_array($uid, $arr)){
+			$flag2=true;
+		}
+		else {
+			//同一个人，同个机构之前没有打赏过
+			$flag2 = BankeCommentOrg::where('uid', $uid)
+					->where('org_id', $org_id)
+					->where('award_status', 1)->count() == 0;
+		}
 
 		return $flag1 && $flag2;
 	}

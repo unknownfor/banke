@@ -815,6 +815,8 @@ return [
 		'title' => '标题',
 		'cover'=>'封面',
 		'content' => '内容',
+		'content_img' => '详情图',
+		'content_img_url' => '详情链接',
 		'url_type' => '链接类型',
 		'url' => '链接地址',
 		'city' => '针对城市',

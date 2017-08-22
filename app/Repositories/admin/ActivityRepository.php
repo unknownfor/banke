@@ -70,6 +70,24 @@ class ActivityRepository
 		return false;
 	}
 
+	/**添加活动 可以点击的外链
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function storeOutlinkClick($request)
+	{
+		$input=$request->all();
+		$activity = new BankeActivity;
+		if ($activity->fill($request->all())->save()) {
+			Flash::success(trans('alerts.activity.created_success'));
+			return $activity->id;
+		}
+		Flash::error(trans('alerts.activity.created_error'));
+		return false;
+	}
+
 	/**
 	 * 修改活动
 	 * @author shaolei

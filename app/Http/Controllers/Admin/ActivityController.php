@@ -10,6 +10,7 @@ use ActivityRepository;
 use App\Models\Banke\BankeCourse;
 use Illuminate\Http\Request;
 use App\Http\Requests\ActivityRequest;
+use App\Http\Requests\ActivityOutlinkClickRequest;
 use BusinessCityRepository;
 use App\Repositories\admin\ActivityCourseRepository;
 use Flash;
@@ -63,6 +64,20 @@ class ActivityController extends Controller {
     public function store(ActivityRequest $request)
     {
         $activity_id = ActivityRepository::store($request);
+        $this->updateJoinInCourse($activity_id,$request);
+        return redirect('admin/activity');
+    }
+
+    /**
+     * 添加活动 可点击外链
+     * @author 晚黎
+     * @date   2016-04-14T11:31:29+0800
+     * @param  CreateUserRequest        $request [description]
+     * @return [type]                            [description]
+     */
+    public function store_outlink_click(ActivityOutlinkClickRequest $request)
+    {
+        $activity_id = ActivityRepository::storeOutlinkClick($request);
         $this->updateJoinInCourse($activity_id,$request);
         return redirect('admin/activity');
     }

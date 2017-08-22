@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class ActivityRequest extends Request
+class ActivityOutlinkClickRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,6 +28,8 @@ class ActivityRequest extends Request
             'course' => 'required',
             'city' => 'required',
             'url_type' => 'required',
+            'content_img' => 'required',
+            'content_img_url' => 'required',
             'cover' => 'required',
             'status' => 'required',
         ];
@@ -49,6 +51,8 @@ class ActivityRequest extends Request
             'course'          => trans('labels.activity.course'),
             'city'          => trans('labels.activity.city'),
             'url_type'          => trans('activity.activity.type'),
+            'content_img'          => trans('activity.activity.content_img'),
+            'content_img_url'          => trans('activity.activity.content_img_url'),
             'cover'          => trans('labels.activity.cover'),
             'status'        => trans('labels.activity.status'),
         ];

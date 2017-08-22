@@ -662,6 +662,9 @@ class AppUserRepository
 		 *
 	 */
 	public static function execUpdateUserAccountInfo($uid,$award,$type,$taskType){
+		if($award==0){
+			return;
+		}
 		$user_profile = BankeUserProfiles::lockForUpdate()->find($uid);//更新用户表
 //		$user_profile = BankeUserProfiles::find($uid);//更新用户表
 		$changeType='+';  //余额添加还是减
