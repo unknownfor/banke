@@ -478,6 +478,7 @@ return [
 		'applying' => '<span class="label label-warning"> 申请中 </span>',
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
+		'amount_logs' => '金额明细'
 	],
 	'checkin' => [
 		'id' => '序号',

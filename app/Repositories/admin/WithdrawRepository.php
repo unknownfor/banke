@@ -294,4 +294,18 @@ class WithdrawRepository
 		return $user;
 	}
 
+	/**
+	 * 根据创建时间，得到提现用户
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public static function getWithdrawByUid($uid)
+	{
+		$withDraw = new BankeWithdraw();
+		$withDraw = $withDraw->where('uid',$uid)->get();
+		return $withDraw;
+	}
+
 }

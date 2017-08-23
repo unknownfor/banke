@@ -2,7 +2,7 @@ var TableDatatablesAjax = function() {
   var datatableAjax = function(){
     dt = $('#datatable_ajax');
     ajax_datatable = dt.DataTable({
-      "lengthMenu": [[ 50,100], [ 50, 100]],
+      "lengthMenu": [[ 20,30], [ 20, 30]],
       "processing": true,
       "serverSide": true,
       "searching" : false,
@@ -54,6 +54,14 @@ var TableDatatablesAjax = function() {
           "data": "operator_name",
           "name": "operator_name",
           "orderable" : true,
+        },
+        {
+          "data": "amount_logs",
+          "name": "amount_logs",
+          "orderable" : true,
+          render:function(data,type,full){
+              return '<a target="balancelogs"  href="/admin/app_user/balancelogs/'+full.uid+'"> 查看明细 </span>';
+          }
         },
         { 
           "data": "status",

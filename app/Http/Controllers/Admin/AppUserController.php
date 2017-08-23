@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Models\Banke\BankeOrg;
+use App\Repositories\admin\WithdrawRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -14,6 +15,7 @@ use App\Http\Requests\CreateOrgUserNewRequest;
 use App\Http\Requests\CreateOrgUserOldRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Log;
+use App\Models\Banke\BankeBalanceLogs;
 
 
 class AppUserController extends Controller
@@ -39,6 +41,26 @@ class AppUserController extends Controller
     {
         $user=AppUserRepository::getUserAllDetailInfo($id);
         return view('admin.app_user.userdetail')->with(compact(['user']));
+    }
+
+    /**
+     * 用户金额明细信息
+     * @author shaolei
+     * @date   2016-04-13T21:12:18+0800
+     * @return [type]                   [description]
+     */
+    public function balancelogs($uid=0)
+    {
+        return view('admin.app_user.balancelogsdetail')->with(compact(['uid']));
+    }
+
+    public function ajaxBalancelogsData()
+    {
+        $uid=request('uid','');
+        $data = AppUserRepository::ajaxUserBalanceLogs($uid);
+        $withDrawData=WithdrawRepository::getWithdrawByUid($uid)->toJSON();
+        $balance=AppUserRepository::getUserBalanceInfo($uid);
+        return Array('balanceLogs'=>$data,'withDrawData'=>$withDrawData,'balance'=>$balance);
     }
 
     /**

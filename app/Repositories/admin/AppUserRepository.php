@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Banke\BankeBalanceLog;
+use App\Models\Banke\BankeBalanceLogs;
 use App\Models\Banke\BankeInvitation;
 use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
@@ -134,6 +134,18 @@ class AppUserRepository
 				$user['major']=$authen['major'];
 			}
 			return $user;
+		}
+		else{
+			abort(404);
+		}
+	}
+
+	/*得到单个用户的余额信息*/
+	public static  function  getUserBalanceInfo($uid){
+		$user = new BankeUserProfiles;
+		$user=$user::find($uid);
+		if($user){
+			return $user->account_balance;
 		}
 		else{
 			abort(404);
@@ -769,5 +781,10 @@ class AppUserRepository
 		return $user;
 	}
 
-
+	/*用户明细*/
+	public static function ajaxUserBalanceLogs($uid)
+	{
+		$logs=BankeBalanceLogs::where('uid',$uid)->get()->toJSON();
+		return $logs;
+	}
 }
