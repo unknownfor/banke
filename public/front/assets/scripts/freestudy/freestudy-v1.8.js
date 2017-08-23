@@ -6,7 +6,7 @@ $(function() {
     window.addLoadingImg();
     window.addTip();
 
-    judgeTheActive();
+    // judgeTheActive();
 
     var href = window.location.href;
     var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
@@ -67,7 +67,6 @@ $(function() {
         window.controlLoadingBox(true);
          var url='/v1.8/share/freestudysignup',
              id=$('#freestudy').attr('data-id'),
-             status = $('#freestudy').attr('data-id'),
              mobile = $('.phone').val(),
              data={
                  free_study_id:id,

@@ -26,7 +26,7 @@
         {!! $freestudy['content'] !!}
     </div>
     <div class="download">
-        <div class="down-btn nouse"></div>
+        <div class="down-btn">我要申请</div>
     </div>
     <div class="sign-mask hide">
         <from class="modal-box-main">
