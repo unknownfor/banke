@@ -49,6 +49,9 @@ $router->group(['prefix' => 'app_user'], function($router){
 	$router->get('create_org_account', 'AppUserController@create_org_account');
 	$router->post('store_org_account_old', 'AppUserController@store_org_account_old');
 	$router->post('store_org_account_new', 'AppUserController@store_org_account_new');
+
+	$router->get('balancelogs/{uid}', 'AppUserController@balancelogs');
+	$router->post('ajaxBalancelogsData', 'AppUserController@ajaxBalancelogsData');
 });
 
 $router->resource('app_user', 'AppUserController');
