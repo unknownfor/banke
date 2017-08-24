@@ -10,6 +10,7 @@ use PermissionRepository;
 use RoleRepository;
 use WithdrawRepository;
 use Illuminate\Support\Facades\Log;
+use Auth;
 
 class WithdrawController extends Controller
 {
@@ -68,6 +69,9 @@ class WithdrawController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->can(config('admin.permissions.withdraw.financialedit'))){
+            $aa='';
+        }
         $withdraw = WithdrawRepository::edit($id);
         return view('admin.withdraw.edit')->with(compact('withdraw'));
     }

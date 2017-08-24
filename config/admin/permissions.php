@@ -132,6 +132,7 @@ return[
 	'withdraw' => [
 		'show' 		=> 'admin.withdraw.show',
 		'edit'	=> 'admin.withdraw.edit',
+		'financialedit'	=> 'admin.withdraw.financialedit',
 	],
 
 	//反馈

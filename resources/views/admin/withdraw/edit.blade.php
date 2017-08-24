@@ -90,8 +90,51 @@
                           </div>
                       </div>
 
+                      {{--运营使用权限--}}
+                      @permission(config('admin.permissions.withdraw.edit'))
+                        <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.withdraw.initial_status')}}</label>
+                              <div class="col-md-11">
+                                  @if($withdraw['initial_status']==0)
+                                    <div class="md-radio-inline">
+                                      <div class="md-radio">
+                                          <input type="radio" id="initial_status1" name="initial_status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.active')) checked @endif>
+                                          <label for="initial_status1">
+                                              <span></span>
+                                              <span class="check"></span>
+                                              <span class="box"></span> {{trans('strings.common_status.active.1')}} </label>
+                                      </div>
+                                      <div class="md-radio">
+                                          <input type="radio" id="initial_status2" name="initial_status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.audit')) checked @endif>
+                                          <label for="initial_status2">
+                                              <span></span>
+                                              <span class="check"></span>
+                                              <span class="box"></span> {{trans('strings.common_status.audit.1')}} </label>
+                                      </div>
+                                     <div class="md-radio">
+                                          <input type="radio" id="initial_status3" name="initial_status" value="{{config('admin.global.status.ban')}}" class="md-radiobtn" @if($withdraw['status'] == config('admin.global.status.ban')) checked @endif>
+                                          <label for="initial_status3">
+                                              <span></span>
+                                              <span class="check"></span>
+                                              <span class="box"></span> {{trans('strings.common_status.trash.1')}} </label>
+                                      </div>
+                                    </div>
+                                    @elseif($withdraw['initial_status']==2)
+                                      <div class="md-radio-inline">
+                                          未通过
+                                      </div>
+                                    @else
+                                    <div class="md-radio-inline">
+                                        已通过
+                                    </div>
+                                  @endif
+                              </div>
+                      </div>
+                      @endpermission
 
-                      <div class="form-group form-md-line-input">
+                      {{--账务使用权限--}}
+                      @permission(config('admin.permissions.withdraw.financialedit'))
+                        <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.withdraw.status')}}</label>
                               <div class="col-md-11">
                                   @if($withdraw['status']==0)
@@ -129,15 +172,25 @@
                                   @endif
                               </div>
                       </div>
+                      @endpermission
 
                   </div>
                   <div class="form-actions">
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/withdraw')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                              @if($withdraw['status']==0)
-                              <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
-                              @endif
+                              {{--运营使用权限--}}
+                              @permission(config('admin.permissions.withdraw.edit'))
+                                  @if($withdraw['initial_status']==0)
+                                    <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
+                                  @endif
+                              @endpermission
+                              {{--财务使用权限--}}
+                              @permission(config('admin.permissions.withdraw.financialedit'))
+                                  @if($withdraw['status']==0)
+                                      <button type="submit" onclick="setDataBeforeCommit()" class="btn blue">{{trans('crud.submit')}}</button>
+                                  @endif
+                              @endpermission
                           </div>
                       </div>
                   </div>

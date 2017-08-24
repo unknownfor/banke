@@ -168,50 +168,34 @@ class WithdrawRepository
 	 */
 	public function update($request,$id)
 	{
+		$status = $request['status'];
+		if (Auth::user()->can(config('admin.permissions.withdraw.financialedit')) && $status!=null){
+			$this->updateFinancial($request,$id);
+		}
+		else if(Auth::user()->can(config('admin.permissions.withdraw.edit'))){
+			$this->updateOperational($request,$id);
+		}else{
+
+		}
+	}
+
+	/*更新-账务权限*/
+	public function updateFinancial($request,$id){
 		$input = $request->only(['status', 'processing_result']);
 		$cur_user = Auth::user();
 		$input['operator_uid'] = $cur_user['id'];
 		$withDraw = BankeWithdraw::find($id);
 		if ($withDraw) {
+
+			//运营部门人员未审核，不能打钱
+			if($withDraw['initial_status']!=config('admin.global.status.active')){
+				Flash::error(trans('alerts.withdraw.financial_updated_error'));
+				return false;
+			}
+
 			if ($withDraw->fill($input)->save()) {
 				if($input['status'] == config('admin.global.status.ban')){
-					DB::beginTransaction();
-					try {
-						$user_profile = BankeUserProfiles::where('uid', $withDraw['uid'])->lockForUpdate()->first();
-						$user_profile->account_balance += $withDraw['withdraw_amount'];
-                                                $user_profile->total_withdraw_amount-=$withDraw['withdraw_amount'];
-						$user_profile->save();
-
-						$balance_log = [
-							'uid'=>$withDraw['uid'],
-							'change_amount'=>$withDraw['withdraw_amount'],
-							'change_type'=>'+',
-							'business_type'=>'WITHDRAW_FAIL',
-							'operator_uid'=>$cur_user['id'],
-							'withdraw_id'=>$id
-						];
-						//记录余额变动日志
-						BankeBalanceLog::create($balance_log);
-
-						$message1 = [
-							'uid'=>$withDraw['uid'],
-							'title'=>'提现失败',
-							'content'=>'您于'.$withDraw['created_at'].'发起的'.$withDraw['withdraw_amount'].'元提现失败！'
-							.$input['processing_result'],
-							'type'=>'WITHDRAW_FAIL'
-						];
-						//记录消息
-						BankeMessage::create($message1);
-
-						DB::commit();
-						Flash::success(trans('alerts.withdraw.updated_success'));
-						return true;
-					} catch (Exception $e) {
-						DB::rollback();
-						Log::info($e);
-						Flash::error(trans('alerts.withdraw.updated_error'));
-						return false;
-					}
+					$this->refuceWithdraw($withDraw,$input); //不通过审核
 				}
 				elseif($input['status'] == config('admin.global.status.active')){
 					$message1 = [
@@ -226,12 +210,84 @@ class WithdrawRepository
 
 					return true;
 				}
+				Flash::success(trans('alerts.withdraw.updated_success'));
+				return true;
 			}else{
 				Flash::error(trans('alerts.withdraw.updated_error'));
 				return false;
 			}
 		}else{
 			abort(404);
+		}
+	}
+
+	/*更新-运营权限*/
+	public function updateOperational($request,$id){
+		$input = $request->only(['initial_status', 'processing_result']);
+		$cur_user = Auth::user();
+		$input['initial_operator_id'] = $cur_user['id'];
+		$withDraw = BankeWithdraw::find($id);
+		if ($withDraw) {
+			if ($withDraw->fill($input)->save()) {
+
+				//运营部门不通过，直接通知用户
+				if($input['initial_status'] == config('admin.global.status.ban')){
+					$this->refuceWithdraw($withDraw,$input); //不通过审核
+				}
+				Flash::success(trans('alerts.withdraw.updated_success'));
+				return true;
+			}
+			else{
+				Flash::error(trans('alerts.withdraw.updated_error'));
+				return false;
+			}
+		}else{
+			abort(404);
+		}
+	}
+
+	/*不通过提现申请*/
+	public function  refuceWithdraw($withDraw,$input)
+	{
+		DB::beginTransaction();
+		try {
+			$user_profile = BankeUserProfiles::where('uid', $withDraw['uid'])->lockForUpdate()->first();
+			$user_profile->account_balance += $withDraw['withdraw_amount'];
+			$user_profile->total_withdraw_amount-=$withDraw['withdraw_amount'];
+			$user_profile->save();
+
+			$cur_user = Auth::user();
+
+			$balance_log = [
+				'uid'=>$withDraw['uid'],
+				'change_amount'=>$withDraw['withdraw_amount'],
+				'change_type'=>'+',
+				'business_type'=>'WITHDRAW_FAIL',
+				'operator_uid'=>$cur_user['id'],
+				'withdraw_id'=>$withDraw['id']
+			];
+			//记录余额变动日志
+			BankeBalanceLog::create($balance_log);
+
+			$message1 = [
+				'uid'=>$withDraw['uid'],
+				'title'=>'提现失败',
+				'content'=>'您于'.$withDraw['created_at'].'发起的'.$withDraw['withdraw_amount'].'元提现失败！'
+					.$input['processing_result'],
+				'type'=>'WITHDRAW_FAIL'
+			];
+			//记录消息
+			BankeMessage::create($message1);
+
+			DB::commit();
+			Flash::success(trans('alerts.withdraw.updated_success'));
+			return true;
+		}
+		catch (Exception $e) {
+			DB::rollback();
+			Log::info($e);
+			Flash::error(trans('alerts.withdraw.updated_error'));
+			return false;
 		}
 	}
 

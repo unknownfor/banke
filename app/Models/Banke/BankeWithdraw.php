@@ -16,7 +16,7 @@ class BankeWithdraw extends Model
      */
     protected $table = 'banke_withdraw';
 
-    protected $fillable = ['status', 'operator_uid', 'processing_result'];
+    protected $fillable = ['status', 'operator_uid', 'processing_result','initial_status','initial_operator_id'];
 
     private $action;
 
