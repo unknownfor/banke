@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Banke\BankeBalanceLogs;
+use App\Models\Banke\BankeBalanceLog;
 use App\Models\Banke\BankeInvitation;
 use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
@@ -784,7 +784,7 @@ class AppUserRepository
 	/*用户明细*/
 	public static function ajaxUserBalanceLogs($uid)
 	{
-		$logs=BankeBalanceLogs::where('uid',$uid)->get()->toJSON();
+		$logs=BankeBalanceLog::where('uid',$uid)->get()->toJSON();
 		return $logs;
 	}
 }
