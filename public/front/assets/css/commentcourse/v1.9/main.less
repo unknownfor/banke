@@ -1,0 +1,57 @@
+body {
+  margin:0 auto;
+  padding:0;
+  height: 100%;
+  max-width: 700px;
+  background-color: #F9F9F9;
+  overflow-x: hidden;
+  word-wrap:break-word;
+  position: relative;
+}
+img {
+  max-width: 100%;
+}
+#courseComment {
+  .container {
+    background-color: #fff;
+    padding: 10px 15px ;
+  }
+  .headBox {
+    text-align: center;
+    background-color: #FFD842;
+    .headImg {
+      @w:60px;
+      .size(@w,@w);
+      border-radius: @w;
+      margin-bottom: 10px;
+    }
+    .headName {
+      font-size: 13px;
+      margin-bottom: 5px;
+      > p {
+        padding-top: 5px;
+      }
+    }
+  }
+  .courseBox {
+    width: 100%;
+    .courseInfo {
+      display: flex;
+      .courseLeft {
+        flex: 0 0 65px;
+        margin-right: 10px;
+        .courseImg {
+          .size(65px,65px);
+        }
+      }
+      .courseMiddle {
+        flex: 1;
+        text-align: left;
+      }
+      .courseRight {
+        flex: 0 0 85px;
+        text-align: right;
+      }
+    }
+  }
+}
