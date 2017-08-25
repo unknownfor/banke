@@ -465,10 +465,11 @@ return [
 		'uid' => '学员id',
 		'name' => '姓名',
 		'mobile' => '手机号',
-		'withdraw_amount'=>'提现金额',
+		'withdraw_amount'=>'金额',
 		'account_balance'=>'余额',
 		'zhifubao_account'=>'提现账户',
-		'status' => '状态',
+		'status' => '打款状态',
+		'initial_status' => '初步审核状态',
 		'list' => '提现列表',
 		'created_at' => '申请时间',
 		'operator_id'=>'处理人员id',
@@ -478,7 +479,7 @@ return [
 		'applying' => '<span class="label label-warning"> 申请中 </span>',
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
-		'amount_logs' => '金额明细'
+		'amount_logs' => '明细'
 	],
 	'checkin' => [
 		'id' => '序号',

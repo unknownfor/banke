@@ -36,7 +36,13 @@ trait ActionAttributeTrait{
 	 */
 	public function getEditActionButton()
 	{
-//		if ($this->action == 'order' || $this->action == 'drawback') {
+		if ($this->action == 'withdraw') {
+			if (Auth::user()->can(config('admin.permissions.'.$this->action.'.financialedit'))
+				|| Auth::user()->can(config('admin.permissions.'.$this->action.'.edit'))) {
+				$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/edit').'" class="btn btn-xs btn-primary tooltips" data-original-title="' . trans('crud.check') . '"  data-placement="top"><i class="fa fa-check"></i></a>';
+			}
+			return $this;
+		}
 		if (in_array($this->action,$this->certificationIconArr) || in_array($this->action,$this->certificateInListArr)) {
 			return $this;
 		}
@@ -220,9 +226,6 @@ trait ActionAttributeTrait{
 	public function getCertificateInListButton()
 	{
 		if(in_array($this->action,$this->certificateInListArr)){
-			if($this->id==36){
-				$aa='';
-			}
 			if ($this->certification_status == config('admin.global.status.audit')) {
 				if (Auth::user()->can(config('admin.permissions.' . $this->action . '.certificate'))) {
 					$this->html_build .= '<a href="'.url('admin/'.$this->action.'/'.$this->id.'/certificate/'.config('admin.global.status.active')).'" class="btn btn-xs btn-primary tooltips" data-container="body" data-original-title="' . trans('crud.audit') . '"  data-placement="top"><i class="fa fa-check"></i></a>';

@@ -138,10 +138,11 @@ return [
         'updated_error'     => '修改订金失败.',
     ],
     'withdraw' => [
-        'updated_success'   => '修改提现成功.',
-        'updated_error'     => '修改提现失败.',
+        'updated_success'   => '审核提现成功.',
+        'updated_error'     => '审核提现失败.',
         'soft_deleted_success' => '删除提现成功',
         'soft_deleted_error' => '删除提现失败',
+        'financial_updated_error'=>'操作失败,运营部门尚未审核通过'
     ],
 
     'feedback' => [

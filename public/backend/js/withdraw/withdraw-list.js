@@ -72,6 +72,22 @@ var TableDatatablesAjax = function() {
               return '<span class="label label-success"> 已打款 </span>';
             }
             else if(data==0){
+              return '<span class="label label-info"> 未打款 </span>';
+            }
+            else{
+              return '<span class="label label-danger"> 未通过 </span>';
+            }
+          }
+        },
+        {
+          "data": "initial_status",
+          "name": "initial_status",
+          "orderable" : false,
+          render:function(data){
+            if (data == 1) {
+              return '<span class="label label-success"> 已通过 </span>';
+            }
+            else if(data==0){
               return '<span class="label label-info"> 申请中 </span>';
             }
             else{
