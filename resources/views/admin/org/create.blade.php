@@ -2,6 +2,7 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/org.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/areaselect.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-tags/bootstrap-tags.css')}}">
@@ -394,6 +395,24 @@
                                 </div>
                             </div>
 
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="city">city</label>
+                                <div class="col-9" id="area-info-box">
+                                    <div class="col-md-4">
+                                        <input class="form-control" placeholder="请选择省/直辖市" value="" name="location" id="AddressProvince"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control" placeholder="请选择市/区" value="" name="location" id="AddressCity"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input class="form-control" placeholder="请选择区" value="" name="location" id="AddressCity"/>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input  class="form-control" placeholder="详细街道" value="" name="location" id="Address"/>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="form-actions">
                             <div class="row">
@@ -457,5 +476,7 @@
         });
     </script>
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/org/areadata.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/org/areaselect.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
 @endsection
