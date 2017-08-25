@@ -13,7 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/commentcourse/v1.9/commentcourse.css" rel="stylesheet">
-    <link type="text/css" href="/front/assets/css/org/v1.5/iconfont/iconfont.css">
+    <link type="text/css" href="/front/assets/css/course/v1.8/iconfont/iconfont.css" rel="stylesheet">
     <title>课程评价分享</title>
 </head>
 <body>
@@ -41,6 +41,39 @@
                     <div class="furtherPrice">￥折扣前的的价格</div>
                 </div>
             </div>
+        </div>
+        <div class="addressBox container">
+            <div class="orgName">机构名称</div>
+            <div class="address">
+                <div class="addressLeft"></div>
+                <div class="addressRight">机构地址</div>
+            </div>
+        </div>
+        <div class="commentBox container">
+            <div class="title">
+                <span>课程打分</span>
+            </div>
+            <div class="comment">
+                <div class="star">
+                    <i class="star colored iconfont">&#xe70e;</i>
+                    <i class="star colored iconfont">&#xe70e;</i>
+                    <i class="star colored iconfont">&#xe70e;</i>
+                    <i class="star colored iconfont">&#xe70e;</i>
+                </div>
+                <div class="tips">
+                    <span>优势标签</span>
+                    <span>优势标签</span>
+                    <span>优势标签</span>
+                    <span>优势标签</span>
+                </div>
+                <div class="txt">课程评价课程评价课程评价课程评价课程评价课程评价</div>
+                <ul class="album">
+                    <li><img src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" /></li>
+                    <li><img src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" /></li>
+                    <li><img src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" /></li>
+                </ul>
+            </div>
+
         </div>
     </div>
 {{--@include('web.layout.downloadbar')--}}

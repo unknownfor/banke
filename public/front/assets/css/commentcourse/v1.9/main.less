@@ -15,42 +15,122 @@ img {
   .container {
     background-color: #fff;
     padding: 10px 15px ;
-  }
-  .headBox {
-    text-align: center;
-    background-color: #FFD842;
-    .headImg {
-      @w:60px;
-      .size(@w,@w);
-      border-radius: @w;
-      margin-bottom: 10px;
-    }
-    .headName {
-      font-size: 13px;
-      margin-bottom: 5px;
-      > p {
-        padding-top: 5px;
+    &.headBox {
+      text-align: center;
+      background-color: #FFD842;
+      .headImg {
+        @w:60px;
+        .size(@w,@w);
+        border-radius: @w;
+        margin-bottom: 10px;
       }
-    }
-  }
-  .courseBox {
-    width: 100%;
-    .courseInfo {
-      display: flex;
-      .courseLeft {
-        flex: 0 0 65px;
-        margin-right: 10px;
-        .courseImg {
-          .size(65px,65px);
+      .headName {
+        font-size: 13px;
+        margin-bottom: 5px;
+        > p {
+          padding-top: 5px;
         }
       }
-      .courseMiddle {
-        flex: 1;
-        text-align: left;
+    }
+    &.courseBox {
+      .courseInfo {
+        display: flex;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #dfe0e6;
+        .courseLeft {
+          flex: 0 0 65px;
+          margin-right: 10px;
+          .courseImg {
+            .size(65px,65px);
+          }
+        }
+        .courseMiddle {
+          flex: 1;
+          text-align: left;
+          .courseName {
+            .txt-ellipsis-p(1);
+          }
+          .courseSchool {
+            font-size: 12px;
+            color: #a6a6a6;
+            margin-top: 6px;
+            margin-bottom: 10px;
+            .txt-ellipsis-p(1);
+          }
+          .courseAppoint {
+            color: #666666;
+            font-size: 13px;
+          }
+        }
+        .courseRight {
+          flex: 0 0 85px;
+          text-align: right;
+          .realPrice {
+            color: #fa4224;
+            font-size: 15px;
+          }
+          .furtherPrice {
+            color: #a6a6a6;
+            font-size: 12px;
+          }
+        }
       }
-      .courseRight {
-        flex: 0 0 85px;
-        text-align: right;
+    }
+    &.addressBox {
+      padding-top: 0px;
+      .orgName {
+        font-size: 13px;
+        margin-bottom: 7px;
+      }
+      .address {
+        display: flex;
+        .addressLeft {
+          @w: 29px * 0.4;
+          @h: 39px * 0.4;
+          flex: 0 0 @w;
+          margin-right: 5px;
+          .size(@w,@h);
+          background: url("../../../img/commentcourse/point.png");
+          background-size: @w @h;
+        }
+        .addressRight {
+          color: #666666;
+          font-size: 12px;
+          flex:1;
+          .txt-ellipsis-p(1);
+        }
+      }
+
+    }
+    &.commentBox {
+      .title {
+        > span {
+          padding-left: 5px;
+          border-left: 3px solid #FFD842;
+        }
+        padding-bottom: 7px;
+
+      }
+      .comment {
+        border-top: 1px solid #dfe0e6;
+        .star {
+          color: #ffd842;
+          margin-bottom: 10px;
+        }
+        .tips {
+          font-size: 10px;
+          color: #a6a6a6;
+          margin-bottom: 10px;
+          > span {
+            padding: 2px 3px;
+            border: 1px solid #a6a6a6;
+            border-radius: 4px;
+            margin-right: 5px;
+          }
+        }
+        .txt {
+          line-height: 22px;
+        }
       }
     }
   }
