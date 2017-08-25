@@ -202,54 +202,149 @@ img {
   background-color: #fff;
   padding: 10px 15px ;
 }
-#courseComment .headBox {
+#courseComment .container.headBox {
   text-align: center;
   background-color: #FFD842;
 }
-#courseComment .headBox .headImg {
+#courseComment .container.headBox .headImg {
   width: 60px;
   height: 60px;
   border-radius: 60px;
   margin-bottom: 10px;
 }
-#courseComment .headBox .headName {
+#courseComment .container.headBox .headName {
   font-size: 13px;
   margin-bottom: 5px;
 }
-#courseComment .headBox .headName > p {
+#courseComment .container.headBox .headName > p {
   padding-top: 5px;
 }
-#courseComment .courseBox {
-  width: 100%;
-}
-#courseComment .courseBox .courseInfo {
+#courseComment .container.courseBox .courseInfo {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dfe0e6;
 }
-#courseComment .courseBox .courseInfo .courseLeft {
+#courseComment .container.courseBox .courseInfo .courseLeft {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 65px;
   -ms-flex: 0 0 65px;
   flex: 0 0 65px;
   margin-right: 10px;
 }
-#courseComment .courseBox .courseInfo .courseLeft .courseImg {
+#courseComment .container.courseBox .courseInfo .courseLeft .courseImg {
   width: 65px;
   height: 65px;
 }
-#courseComment .courseBox .courseInfo .courseMiddle {
+#courseComment .container.courseBox .courseInfo .courseMiddle {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   text-align: left;
 }
-#courseComment .courseBox .courseInfo .courseRight {
+#courseComment .container.courseBox .courseInfo .courseMiddle .courseName {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+#courseComment .container.courseBox .courseInfo .courseMiddle .courseSchool {
+  font-size: 12px;
+  color: #a6a6a6;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+#courseComment .container.courseBox .courseInfo .courseMiddle .courseAppoint {
+  color: #666666;
+  font-size: 13px;
+}
+#courseComment .container.courseBox .courseInfo .courseRight {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 85px;
   -ms-flex: 0 0 85px;
   flex: 0 0 85px;
   text-align: right;
+}
+#courseComment .container.courseBox .courseInfo .courseRight .realPrice {
+  color: #fa4224;
+  font-size: 15px;
+}
+#courseComment .container.courseBox .courseInfo .courseRight .furtherPrice {
+  color: #a6a6a6;
+  font-size: 12px;
+}
+#courseComment .container.addressBox {
+  padding-top: 0px;
+}
+#courseComment .container.addressBox .orgName {
+  font-size: 13px;
+  margin-bottom: 7px;
+}
+#courseComment .container.addressBox .address {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+#courseComment .container.addressBox .address .addressLeft {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 11.6px;
+  -ms-flex: 0 0 11.6px;
+  flex: 0 0 11.6px;
+  margin-right: 5px;
+  width: 11.6px;
+  height: 15.6px;
+  background: url("../../../img/commentcourse/point.png");
+  -webkit-background-size: 11.6px 15.6px;
+  background-size: 11.6px 15.6px;
+}
+#courseComment .container.addressBox .address .addressRight {
+  color: #666666;
+  font-size: 12px;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+#courseComment .container.commentBox .title {
+  padding-bottom: 7px;
+}
+#courseComment .container.commentBox .title > span {
+  padding-left: 5px;
+  border-left: 3px solid #FFD842;
+}
+#courseComment .container.commentBox .comment {
+  border-top: 1px solid #dfe0e6;
+}
+#courseComment .container.commentBox .comment .star {
+  color: #ffd842;
+  margin-bottom: 10px;
+}
+#courseComment .container.commentBox .comment .tips {
+  font-size: 10px;
+  color: #a6a6a6;
+  margin-bottom: 10px;
+}
+#courseComment .container.commentBox .comment .tips > span {
+  padding: 2px 3px;
+  border: 1px solid #a6a6a6;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+#courseComment .container.commentBox .comment .txt {
+  line-height: 22px;
 }
