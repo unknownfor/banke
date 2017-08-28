@@ -1,5 +1,5 @@
 /**
- * Created by hisihi on 2017/7/3.
+ * Created by mayoi on 2017/7/3.
  */
 $(function() {
 
@@ -7,15 +7,15 @@ $(function() {
     var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
 
 
-    /*
-    * 机构评分星星*/
-    function orgStar () {
-        var  str;
-        str = '<span class="rightItem starsCon">' +
-        this.getStarInfoByScore(item.comprehensive_score | 0) +
-        '</span>';
+    showStars();
 
-        $('.org-stars').append(str);
+    /*
+     * 机构评分星星*/
+    function showStars () {
+        var  star = $('.org-stars').attr('data-grade-total'),
+            str;
+        str = '<span class="rightItem starsCon">' + getStarInfoByScore(star) + '</span>';
+        $(".org-stars").html(str);
     };
 
 

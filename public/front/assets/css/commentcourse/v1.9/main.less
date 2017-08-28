@@ -120,7 +120,6 @@ img {
         .tips {
           font-size: 10px;
           color: #a6a6a6;
-          margin-bottom: 10px;
           > span {
             padding: 2px 3px;
             border: 1px solid #a6a6a6;
@@ -129,7 +128,24 @@ img {
           }
         }
         .txt {
+          margin: 10px 0;
           line-height: 22px;
+        }
+        .album-pre {
+          overflow-x: auto;
+          .album {
+            margin: 0px 0 14px 0;
+            white-space: nowrap;
+          }
+          .album-li {
+            overflow-y: hidden;
+            border: 1px solid rgba(145, 145, 145, 0.2);
+            width: 40%;
+            height: 110px;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 5px;
+          }
         }
       }
     }

@@ -209,6 +209,8 @@ window.toHideModuleByClickOutside=function(e,closeFn){
     }
 };
 
+
+
 /*根据分数情况，得到星星的信息*/
 window.getStarInfoByScore=function(num){
     if(num.toString().indexOf('.')>0){
@@ -233,13 +235,13 @@ window.getStarInfoByScore=function(num){
 
 /*
  *对评分进行四舍五入
- * 按照以下类似规则：
+ * 按照以下规则：
  * 1：   2.1，2.2  = 2.0
  * 2：   2.3，2.4，2.5，2.6 = 2.5
  * 3：   2.7，2.8，2.9  = 3.0
  */
-window.myRoundNumber=function(num){
-    num=num.toFixed(1);
+ myRoundNumber=function(num){
+     num=num.toFixed(1);
     var arr=num.split('.'),
         firstNum=arr[0],
         lastNum=arr[1];

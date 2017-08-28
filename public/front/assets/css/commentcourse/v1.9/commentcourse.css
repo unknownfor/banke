@@ -337,7 +337,6 @@ img {
 #courseComment .container.commentBox .comment .tips {
   font-size: 10px;
   color: #a6a6a6;
-  margin-bottom: 10px;
 }
 #courseComment .container.commentBox .comment .tips > span {
   padding: 2px 3px;
@@ -346,5 +345,22 @@ img {
   margin-right: 5px;
 }
 #courseComment .container.commentBox .comment .txt {
+  margin: 10px 0;
   line-height: 22px;
+}
+#courseComment .container.commentBox .comment .album-pre {
+  overflow-x: auto;
+}
+#courseComment .container.commentBox .comment .album-pre .album {
+  margin: 0px 0 14px 0;
+  white-space: nowrap;
+}
+#courseComment .container.commentBox .comment .album-pre .album-li {
+  overflow-y: hidden;
+  border: 1px solid rgba(145, 145, 145, 0.2);
+  width: 40%;
+  height: 110px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
 }
