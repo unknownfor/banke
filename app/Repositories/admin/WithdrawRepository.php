@@ -25,6 +25,8 @@ class WithdrawRepository
 	 */
 	public function ajaxIndex()
 	{
+		$this->xinge();
+		$this->xingeIOS();
 		$draw = request('draw', 1);/*获取请求次数*/
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
@@ -105,6 +107,10 @@ class WithdrawRepository
 				$v['operator_name']='';
 				if($v->operator) {
 					$v['operator_name'] = $v->operator['name'];
+				}
+				$v['initial_operator_name']='';
+				if($v->initial_operator) {
+					$v['initial_operator_name'] = $v->initial_operator['name'];
 				}
 			}
 		}
@@ -208,6 +214,7 @@ class WithdrawRepository
 					BankeMessage::create($message1);
 					Flash::success(trans('alerts.withdraw.updated_success'));
 
+
 					return true;
 				}
 				Flash::success(trans('alerts.withdraw.updated_success'));
@@ -221,11 +228,13 @@ class WithdrawRepository
 		}
 	}
 
+
+
 	/*更新-运营权限*/
 	public function updateOperational($request,$id){
 		$input = $request->only(['initial_status', 'processing_result']);
 		$cur_user = Auth::user();
-		$input['initial_operator_id'] = $cur_user['id'];
+		$input['initial_operator_uid'] = $cur_user['id'];
 		$withDraw = BankeWithdraw::find($id);
 		if ($withDraw) {
 			if ($withDraw->fill($input)->save()) {

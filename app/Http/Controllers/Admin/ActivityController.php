@@ -67,7 +67,6 @@ class ActivityController extends Controller {
         $this->updateJoinInCourse($activity_id,$request);
         return redirect('admin/activity');
     }
-
     /**
      * 添加活动 可点击外链
      * @author 晚黎

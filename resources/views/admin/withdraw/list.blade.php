@@ -95,12 +95,13 @@
                             <th width="10%"> {{ trans('labels.withdraw.name') }} </th>
                             <th width="10%"> {{ trans('labels.withdraw.mobile') }} </th>
                             <th width="8%"> {{ trans('labels.withdraw.withdraw_amount') }} </th>
-                            <th width="15%"> {{ trans('labels.withdraw.zhifubao_account') }} </th>
-                            <th width="15%"> {{ trans('labels.withdraw.updated_at') }} </th>
-                            <th width="8%"> {{ trans('labels.withdraw.operator_name') }} </th>
-                            <th width="8%"> {{ trans('labels.withdraw.amount_logs') }} </th>
+                            {{--<th width="15%"> {{ trans('labels.withdraw.zhifubao_account') }} </th>--}}
+                            <th width="8%"> {{ trans('labels.withdraw.initial_status') }} </th>
+                            <th width="10%"> {{ trans('labels.withdraw.initial_operator_name') }} </th>
                             <th width="8%"> {{ trans('labels.withdraw.status') }} </th>
-                            <th width="12%"> {{ trans('labels.withdraw.initial_status') }} </th>
+                            <th width="10%"> {{ trans('labels.withdraw.operator_name') }} </th>
+                            <th width="15%"> {{ trans('labels.withdraw.updated_at') }} </th>
+                            <th width="8%"> {{ trans('labels.withdraw.amount_logs') }} </th>
                             <th width="15%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
