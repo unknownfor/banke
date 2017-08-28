@@ -22,6 +22,7 @@ use MoneyNewsRepository;
 use DailyTaskLogRepository;
 use InvitationSignUpRepository;
 use OrderDepositRepository;
+use App\Services\MyXingeService;
 
 /**
 * 订单（报名）仓库
@@ -285,6 +286,9 @@ class OrderRepository
 							'org_id'=>$org->id
 						];
 						MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
+						$sevice = new MyXingeService();
+						$param=Array(content=>'',uid=>$uid);
+						$sevice->pushSingleMsg($param);
 
 						DB::commit();
 						Flash::success(trans('alerts.order.authen_success'));

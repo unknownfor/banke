@@ -40,29 +40,35 @@ var TableDatatablesAjax = function() {
           "name": "withdraw_amount",
           "orderable" : true,
         },
+        //{
+        //  "data": "zhifubao_account",
+        //  "name": "zhifubao_account",
+        //  "orderable" : false,
+        //},
+
+
         {
-          "data": "zhifubao_account",
-          "name": "zhifubao_account",
+          "data": "initial_status",
+          "name": "initial_status",
           "orderable" : false,
-        },
-        {
-          "data": "updated_at",
-          "name": "updated_at",
-          "orderable" : true,
-        },
-        {
-          "data": "operator_name",
-          "name": "operator_name",
-          "orderable" : true,
-        },
-        {
-          "data": "amount_logs",
-          "name": "amount_logs",
-          "orderable" : true,
-          render:function(data,type,full){
-              return '<a target="balancelogs"  href="/admin/app_user/balancelogs/'+full.uid+'"> 查看明细 </span>';
+          render:function(data){
+            if (data == 1) {
+              return '<span class="label label-success"> 已通过 </span>';
+            }
+            else if(data==0){
+              return '<span class="label label-info"> 申请中 </span>';
+            }
+            else{
+              return '<span class="label label-danger"> 未通过 </span>';
+            }
           }
         },
+        {
+          "data": "initial_operator_name",
+          "name": "initial_operator_name",
+          "orderable" : true,
+        },
+
         { 
           "data": "status",
           "name": "status",
@@ -80,19 +86,21 @@ var TableDatatablesAjax = function() {
           }
         },
         {
-          "data": "initial_status",
-          "name": "initial_status",
-          "orderable" : false,
-          render:function(data){
-            if (data == 1) {
-              return '<span class="label label-success"> 已通过 </span>';
-            }
-            else if(data==0){
-              return '<span class="label label-info"> 申请中 </span>';
-            }
-            else{
-              return '<span class="label label-danger"> 未通过 </span>';
-            }
+          "data": "operator_name",
+          "name": "operator_name",
+          "orderable" : true,
+        },
+        {
+          "data": "updated_at",
+          "name": "updated_at",
+          "orderable" : true,
+        },
+        {
+          "data": "amount_logs",
+          "name": "amount_logs",
+          "orderable" : true,
+          render:function(data,type,full){
+            return '<a target="balancelogs"  href="/admin/app_user/balancelogs/'+full.uid+'"> 查看明细 </span>';
           }
         },
         { 
