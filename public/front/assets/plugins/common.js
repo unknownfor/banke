@@ -241,7 +241,7 @@ window.getStarInfoByScore=function(num){
  * 3：   2.7，2.8，2.9  = 3.0
  */
  myRoundNumber=function(num){
-     num=num.toFixed(1);
+     num=parseFloat(num).toFixed(1);
     var arr=num.split('.'),
         firstNum=arr[0],
         lastNum=arr[1];

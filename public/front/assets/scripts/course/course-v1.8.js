@@ -13,7 +13,7 @@ $(function() {
     function showStars () {
         var  star = $('.org-stars').attr('data-grade-total'),
             str;
-        str = '<span class="rightItem starsCon">' + window.getStarInfoByScore(star | 0) + '</span>';
+        str = '<span class="rightItem starsCon">' + getStarInfoByScore(star) + '</span>';
         $(".org-stars").html(str);
     };
 
