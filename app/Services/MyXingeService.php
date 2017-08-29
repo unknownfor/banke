@@ -59,7 +59,6 @@ class MyXingeService
      */
     private function pushGroupMsgIOS($msgInfo)
     {
-        /*  	IOSÈ«²¿*/
         $push = new XingeApp(config('xinge.accessIdIOS'), config('xinge.secretKeyIOS'));
         $mess = new MessageIOS();
         $mess->setExpireTime(86400);
@@ -117,6 +116,6 @@ class MyXingeService
             if(!empty($msgInfo['custom'])) {
                 $mess->setCustom($msgInfo['custom']);
             }
-           $push->PushSingleAccount(0, $msgInfo['uid'], $mess,XingeApp::IOSENV_DEV);
+           $res = $push->PushSingleAccount(0, $msgInfo['uid'], $mess,XingeApp::IOSENV_DEV);
     }
 }
