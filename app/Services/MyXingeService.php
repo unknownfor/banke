@@ -38,14 +38,16 @@ class MyXingeService
         $push = new XingeApp(config('xinge.accessIdAndroid'), config('xinge.secretKeyAndroid'));
         $mess = new Message();
         $mess->setType(Message::TYPE_NOTIFICATION);
-        $title=$msgInfo['title'];
-        if($title==null){
-            $title="°ë¿Î";
+        $title="°ë¿Î";
+        if(!empty($msgInfo['title'])){
+            $title=$msgInfo['title'];
         }
         $mess->setTitle($title);
         $mess->setContent($msgInfo['content']);
         $mess->setExpireTime(86400);
-        $mess->setCustom($msgInfo['custom']);
+        if(!empty($msgInfo['custom'])) {
+            $mess->setCustom($msgInfo['custom']);
+        }
         $ret = $push->PushAllDevices(0, $mess);
         return $ret;
     }
@@ -62,8 +64,9 @@ class MyXingeService
         $mess = new MessageIOS();
         $mess->setExpireTime(86400);
         $mess->setAlert($msgInfo['content']);
-        //$mess->setAlert(array('key1'=>'value1'));
-        $mess->setCustom($msgInfo['custom']);
+        if(!empty($msgInfo['custom'])) {
+            $mess->setCustom($msgInfo['custom']);
+        }
         $ret = $push->PushAllDevices(0, $mess, XingeApp::IOSENV_DEV);
         return $ret;
     }
@@ -89,15 +92,16 @@ class MyXingeService
         $push = new XingeApp(config('xinge.accessIdAndroid'), config('xinge.secretKeyAndroid'));
         $mess = new Message();
         $mess->setType(Message::TYPE_NOTIFICATION);
-        $title=$msgInfo['title'];
-        if($title==null){
-            $title="°ë¿Î";
+        $title="°ë¿Î";
+        if(!empty($msgInfo['title'])){
+            $title=$msgInfo['title'];
         }
         $mess->setTitle($title);
         $mess->setContent($msgInfo['content']);
         $mess->setExpireTime(86400);
-//        $custom = array('key1'=>'111', 'key2'=>'222');
-        $mess->setCustom($msgInfo['custom']);
+        if(!empty($msgInfo['custom'])) {
+            $mess->setCustom($msgInfo['custom']);
+        }
         $res=$push->PushSingleAccount(0, $msgInfo['uid'], $mess);
         return $res;
     }
@@ -110,8 +114,9 @@ class MyXingeService
            $mess = new MessageIOS();
            $mess->setExpireTime(86400);
            $mess->setAlert($msgInfo['content']);
-//           $custom = array('type'=>'ios', 'org_id'=>123);
-           $mess->setCustom($msgInfo['custom']);
+            if(!empty($msgInfo['custom'])) {
+                $mess->setCustom($msgInfo['custom']);
+            }
            $push->PushSingleAccount(0, $msgInfo['uid'], $mess,XingeApp::IOSENV_DEV);
     }
 }

@@ -290,7 +290,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="installment_title">{{trans('labels.orgsummary.installment_title')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="installment_title" name="installment_title" placeholder="{{trans('labels.orgsummary.installment_title')}}">
+                                    <input type="text" class="form-control" id="installment_title" name="installment_title" value="首付预约金，尾款分期付" placeholder="{{trans('labels.orgsummary.installment_title')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -320,7 +320,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="refund_title">{{trans('labels.orgsummary.refund_title')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="refund_title" name="refund_title" placeholder="{{trans('labels.orgsummary.refund_title')}}">
+                                    <input type="text" class="form-control" id="refund_title" name="refund_title"  value="提供7天退款的担保服务" placeholder="{{trans('labels.orgsummary.refund_title')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>

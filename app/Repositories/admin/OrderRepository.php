@@ -287,7 +287,7 @@ class OrderRepository
 						];
 						MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
 						$sevice = new MyXingeService();
-						$param=Array(content=>'',uid=>$uid);
+						$param=Array("title"=>"半课","content"=>'恭喜您已成功报名课程：'.$order->course_name .'。',"uid"=>$uid);
 						$sevice->pushSingleMsg($param);
 
 						DB::commit();
