@@ -13,7 +13,7 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <link type="text/css" href="/front/assets/css/commentcourse/v1.9/commentcourse.css" rel="stylesheet">
-    <link type="text/css" href="/front/assets/css/course/v1.8/iconfont/iconfont.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/commentcourse/v1.9/iconfont/iconfont.css" rel="stylesheet">
     <title>课程评价分享</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
             <img class="headImg" src="http://pic.hisihi.com/2016-05-19/1463654400267875.png"/>
             <div class="headName">分享者的名字哈哈哈哈哈哈哈哈哈哈</div>
             <div class="headName">
-                <p>我在<span>武汉仁和会计中南校区</span>学习</p>
+                <p>我在“<span>武汉仁和会计中南校区</span>”学习</p>
                 <p>通过半课累计领取<span>300</span>元现金</p>
             </div>
         </div>
@@ -32,8 +32,8 @@
                     <img class="courseImg" src="http://pic.hisihi.com/2016-05-19/1463654396285620.png" />
                 </div>
                 <div class="courseMiddle">
-                    <div class="courseName">课程名称</div>
-                    <div class="courseSchool">课程所属机构校区名称</div>
+                    <div class="courseName">课程名称课程名称课程名称课程名称</div>
+                    <div class="courseSchool">课程所属培训机构的校区名称</div>
                     <div class="courseAppoint">预约数:<span>36000</span></div>
                 </div>
                 <div class="courseRight">
@@ -42,24 +42,12 @@
                 </div>
             </div>
         </div>
-        <div class="addressBox container">
-            <div class="orgName">机构名称</div>
-            <div class="address">
-                <div class="addressLeft"></div>
-                <div class="addressRight">机构地址</div>
-            </div>
-        </div>
         <div class="commentBox container">
             <div class="title">
-                <span>课程打分</span>
+                <div class="titleTxt">课程打分</div>
+                <div class="star" data-grade-total="5"></div>
             </div>
             <div class="comment">
-                <div class="star">
-                    <i class="star colored iconfont">&#xe70e;</i>
-                    <i class="star colored iconfont">&#xe70e;</i>
-                    <i class="star colored iconfont">&#xe70e;</i>
-                    <i class="star colored iconfont">&#xe70e;</i>
-                </div>
                 <div class="tips">
                     <span>优势标签</span>
                     <span>优势标签</span>
@@ -69,14 +57,32 @@
                 <div class="txt">课程评价课程评价课程评价课程评价课程评价课程评价</div>
                 <div class="album-pre">
                     <ul class="album">
-                        <li class="album-li"><img src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" /></li>
+                        <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
                     </ul>
                 </div>
             </div>
 
         </div>
-        <div class="join container">
-            <p>快来和<span>分享者的名字哈哈</span>一起参加，每天签到领学费吧</p>
+        <div class="joinBox container">
+            <div class="angle">
+                <img src="/front/assets/img/commentcourse/tangle.png" />
+            </div>
+            <div class="slogen">
+                <img src="/front/assets/img/commentcourse/slogen.png" />
+            </div>
+            <div class="joinTxt">
+                <div class="txtOne">你想要的优质机构都在这里</div>
+                <div class="txtTwo">仁和会计、韦伯英语、汇众教育、朗阁外语、天马驾校、蓝鸥IT、奇天插画</div>
+            </div>
+            <div class="joinTxt">
+                <div class="txtOne">超多品类任你选</div>
+                <div class="txtTwo">设计、外语、IT、考研、留学、美术、音乐、驾考、健身、少儿培训</div>
+            </div>
+            <div class="txtSlogen">快来和“<span>分享者</span>”一起参加，每天签到领学费吧</div>
+            <div class="input">
+                <input class="phone" type="number" placeholder="输入手机号" />
+            </div>
+            <div class="btn">我也要领学费</div>
         </div>
     </div>
 {{--@include('web.layout.downloadbar')--}}
@@ -84,5 +90,5 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-{{--<script src="/front/assets/scripts/org/commentOrg-v1.5.js" type="text/javascript"></script>--}}
+<script src="/front/assets/scripts/commentcourse/commentcourse-v1.9.js" type="text/javascript"></script>
 </html>

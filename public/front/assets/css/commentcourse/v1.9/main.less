@@ -12,12 +12,14 @@ img {
   max-width: 100%;
 }
 #courseComment {
+  font-size: 14px;
+  background-color: #fff;
   .container {
-    background-color: #fff;
+    position: relative;
     padding: 10px 15px ;
     &.headBox {
+      color: #572C1B;
       text-align: center;
-      background-color: #FFD842;
       .headImg {
         @w:60px;
         .size(@w,@w);
@@ -33,10 +35,9 @@ img {
       }
     }
     &.courseBox {
+      background-color: #fafafa;
       .courseInfo {
         display: flex;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #dfe0e6;
         .courseLeft {
           flex: 0 0 65px;
           margin-right: 10px;
@@ -63,7 +64,7 @@ img {
           }
         }
         .courseRight {
-          flex: 0 0 85px;
+          //flex: 0 0 85px;
           text-align: right;
           .realPrice {
             color: #fa4224;
@@ -76,48 +77,23 @@ img {
         }
       }
     }
-    &.addressBox {
-      padding-top: 0px;
-      .orgName {
-        font-size: 13px;
-        margin-bottom: 7px;
-      }
-      .address {
-        display: flex;
-        .addressLeft {
-          @w: 29px * 0.4;
-          @h: 39px * 0.4;
-          flex: 0 0 @w;
-          margin-right: 5px;
-          .size(@w,@h);
-          background: url("../../../img/commentcourse/point.png");
-          background-size: @w @h;
-        }
-        .addressRight {
-          color: #666666;
-          font-size: 12px;
-          flex:1;
-          .txt-ellipsis-p(1);
-        }
-      }
-
-    }
     &.commentBox {
       .title {
-        > span {
+        padding-bottom: 7px;
+        .titleTxt {
           padding-left: 5px;
           border-left: 3px solid #FFD842;
+          display: inline-block;
         }
-        padding-bottom: 7px;
-
+        .star {
+          color: #ffd842;
+          display: inline-block;
+        }
       }
       .comment {
         border-top: 1px solid #dfe0e6;
-        .star {
-          color: #ffd842;
-          margin-bottom: 10px;
-        }
         .tips {
+          margin-top: 14px;
           font-size: 10px;
           color: #a6a6a6;
           > span {
@@ -134,7 +110,6 @@ img {
         .album-pre {
           overflow-x: auto;
           .album {
-            margin: 0px 0 14px 0;
             white-space: nowrap;
           }
           .album-li {
@@ -147,6 +122,89 @@ img {
             margin-right: 5px;
           }
         }
+      }
+    }
+    &.joinBox {
+      background-color: #fff2c7;
+      margin: 0 10px 10px 10px;
+      border-radius: 10px;
+      .slogen {
+        margin: 0 auto 10px auto;
+        text-align: center;
+        > img {
+          max-width: 120px;
+          display: inline-block;
+        }
+      }
+      .angle {
+        position: relative;
+        > img {
+          position: absolute;
+          top: -10px;
+          right: -15px;
+          max-width: 50px;
+        }
+      }
+    //  @angle: 50px;
+    //@commenAngle {
+    //  content: "";
+    //  position: absolute;
+    //  display: inline-block;
+    //  width: 0;
+    //  height: 0;
+    //  border-top: @angle solid transparent;
+    //  border-right: @angle solid red;
+    //  border-bottom: @angle solid transparent;
+    //}
+    //  .angle:after {
+    //    @commenAngle;
+    //    top:0;
+    //    right: 15px;
+    //    transform:rotate(-45deg);
+    //  }
+    //  .angle:before {
+    //    @commenAngle;
+    //    transform:rotate(135deg);
+    //  }
+      .joinTxt {
+        line-height: 20px;
+        margin-bottom: 10px;
+        .txtOne {
+          color: #f94f46;
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+        .txtTwo {
+          color: #5e5e54;
+        }
+      }
+      .txtSlogen {
+        font-weight: bold;
+        text-align: center;
+        font-size: 12px;
+        color: #f94f46;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .input {
+        display: flex;
+        .phone {
+          flex:1;
+          height: 35px;
+          padding-left: 10px;
+          border: none;
+          border-radius: 4px;
+        }
+      }
+      .btn {
+        @h: 30px;
+        margin: 10px auto 0 auto;
+        text-align: center;
+        .size(108px,@h);
+        color: #ffffff;
+        line-height: @h;
+        border-radius: 4px;
+        background-color: #f67d31;
       }
     }
   }

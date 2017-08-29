@@ -198,13 +198,17 @@ body {
 img {
   max-width: 100%;
 }
-#courseComment .container {
+#courseComment {
+  font-size: 14px;
   background-color: #fff;
+}
+#courseComment .container {
+  position: relative;
   padding: 10px 15px ;
 }
 #courseComment .container.headBox {
+  color: #572C1B;
   text-align: center;
-  background-color: #FFD842;
 }
 #courseComment .container.headBox .headImg {
   width: 60px;
@@ -219,13 +223,14 @@ img {
 #courseComment .container.headBox .headName > p {
   padding-top: 5px;
 }
+#courseComment .container.courseBox {
+  background-color: #fafafa;
+}
 #courseComment .container.courseBox .courseInfo {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #dfe0e6;
 }
 #courseComment .container.courseBox .courseInfo .courseLeft {
   -webkit-box-flex: 0;
@@ -268,10 +273,6 @@ img {
   font-size: 13px;
 }
 #courseComment .container.courseBox .courseInfo .courseRight {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 85px;
-  -ms-flex: 0 0 85px;
-  flex: 0 0 85px;
   text-align: right;
 }
 #courseComment .container.courseBox .courseInfo .courseRight .realPrice {
@@ -282,59 +283,23 @@ img {
   color: #a6a6a6;
   font-size: 12px;
 }
-#courseComment .container.addressBox {
-  padding-top: 0px;
-}
-#courseComment .container.addressBox .orgName {
-  font-size: 13px;
-  margin-bottom: 7px;
-}
-#courseComment .container.addressBox .address {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-#courseComment .container.addressBox .address .addressLeft {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 11.6px;
-  -ms-flex: 0 0 11.6px;
-  flex: 0 0 11.6px;
-  margin-right: 5px;
-  width: 11.6px;
-  height: 15.6px;
-  background: url("../../../img/commentcourse/point.png");
-  -webkit-background-size: 11.6px 15.6px;
-  background-size: 11.6px 15.6px;
-}
-#courseComment .container.addressBox .address .addressRight {
-  color: #666666;
-  font-size: 12px;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
 #courseComment .container.commentBox .title {
   padding-bottom: 7px;
 }
-#courseComment .container.commentBox .title > span {
+#courseComment .container.commentBox .title .titleTxt {
   padding-left: 5px;
   border-left: 3px solid #FFD842;
+  display: inline-block;
+}
+#courseComment .container.commentBox .title .star {
+  color: #ffd842;
+  display: inline-block;
 }
 #courseComment .container.commentBox .comment {
   border-top: 1px solid #dfe0e6;
 }
-#courseComment .container.commentBox .comment .star {
-  color: #ffd842;
-  margin-bottom: 10px;
-}
 #courseComment .container.commentBox .comment .tips {
+  margin-top: 14px;
   font-size: 10px;
   color: #a6a6a6;
 }
@@ -352,7 +317,6 @@ img {
   overflow-x: auto;
 }
 #courseComment .container.commentBox .comment .album-pre .album {
-  margin: 0px 0 14px 0;
   white-space: nowrap;
 }
 #courseComment .container.commentBox .comment .album-pre .album-li {
@@ -363,4 +327,71 @@ img {
   display: inline-block;
   vertical-align: top;
   margin-right: 5px;
+}
+#courseComment .container.joinBox {
+  background-color: #fff2c7;
+  margin: 0 10px 10px 10px;
+  border-radius: 10px;
+}
+#courseComment .container.joinBox .slogen {
+  margin: 0 auto 10px auto;
+  text-align: center;
+}
+#courseComment .container.joinBox .slogen > img {
+  max-width: 120px;
+  display: inline-block;
+}
+#courseComment .container.joinBox .angle {
+  position: relative;
+}
+#courseComment .container.joinBox .angle > img {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  max-width: 50px;
+}
+#courseComment .container.joinBox .joinTxt {
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+#courseComment .container.joinBox .joinTxt .txtOne {
+  color: #f94f46;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#courseComment .container.joinBox .joinTxt .txtTwo {
+  color: #5e5e54;
+}
+#courseComment .container.joinBox .txtSlogen {
+  text-align: center;
+  font-size: 12px;
+  color: #f94f46;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#courseComment .container.joinBox .input {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+#courseComment .container.joinBox .input .phone {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 35px;
+  padding-left: 10px;
+  border: none;
+  border-radius: 4px;
+}
+#courseComment .container.joinBox .btn {
+  margin: 10px auto 0 auto;
+  text-align: center;
+  width: 108px;
+  height: 30px;
+  color: #ffffff;
+  line-height: 30px;
+  border-radius: 4px;
+  background-color: #f67d31;
 }
