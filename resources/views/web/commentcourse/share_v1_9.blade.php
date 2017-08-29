@@ -67,13 +67,16 @@
                     <span>优势标签</span>
                 </div>
                 <div class="txt">课程评价课程评价课程评价课程评价课程评价课程评价</div>
-                <ul class="album">
-                    <li><img src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" /></li>
-                    <li><img src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" /></li>
-                    <li><img src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" /></li>
-                </ul>
+                <div class="album-pre">
+                    <ul class="album">
+                        <li class="album-li"><img src="http://pic.hisihi.com/2017-08-04/1501827773793376.png" /></li>
+                    </ul>
+                </div>
             </div>
 
+        </div>
+        <div class="join container">
+            <p>快来和<span>分享者的名字哈哈</span>一起参加，每天签到领学费吧</p>
         </div>
     </div>
 {{--@include('web.layout.downloadbar')--}}
