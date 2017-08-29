@@ -25,8 +25,7 @@ class WithdrawRepository
 	 */
 	public function ajaxIndex()
 	{
-		$this->xinge();
-		$this->xingeIOS();
+
 		$draw = request('draw', 1);/*获取请求次数*/
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
