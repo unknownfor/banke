@@ -92,7 +92,7 @@
                                         {!! csrf_field() !!}
                                         <div class="form-body">
                                             <input type="hidden" name="url_type" value="1">
-                                            <input type="hidden" name="out_url_type" value="0">
+                                            <input type="hidden" name="out_url_type" value="1">
                                             <textarea style="display: none" name="content" id="area_outlink_click"></textarea>
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
@@ -172,6 +172,8 @@
                                                                 {{--<span class="color-block danger">删除</span>--}}
                                                             {{--</li>--}}
                                                         </ul>
+                                                        <input type="hidden" name="click_img_url" id="click-img-url">
+                                                        <input type="hidden" name="click_url" id="click-url">
                                                     </div>
                                                 </div>
                                             </div>
@@ -256,7 +258,7 @@
                                         {!! csrf_field() !!}
                                         <div class="form-body">
                                             <input type="hidden" name="url_type" value="1">
-                                            <input type="hidden" name="out_url_type" value="1">
+                                            <input type="hidden" name="out_url_type" value="0">
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
                                                 <div class="col-md-8">

@@ -58,13 +58,15 @@ $(function(){
         //photoswipe   //图片信息查看  相册、视频信息查看
         new MyPhotoSwipe('.imgs-list-box');
 
-        $(".content-img-list-box,.content-img-url-box").sortable();
+        //$(".content-img-list-box,.content-img-url-box").sortable();
     };
     MyActivity.prototype={
 
         init:function(){
-            this.initEditor();
-            this.initImgsArr();  //定义100个图片id 数组。
+            if($('#url-type').val()!=0) {
+                this.initEditor();
+                this.initImgsArr();  //定义100个图片id 数组。
+            }
             //this.getBasicToken();
         },
 
@@ -447,7 +449,7 @@ $(function(){
     //初始化编辑器内容
     setEditorVal();
     function setEditorVal(){
-        var val=$('#target-area').text();
+        var val=$('#area_outlink_noraml').text();
         activity.setValue(val);
     }
 
@@ -469,7 +471,9 @@ $(function(){
     window.setDataBeforeCommit=function() {
 
 
-        var type = $('.nav-tabs li.active').index();
+        var type = $('#url-type').val()==0?2:1;
+
+
         //0 可以点击的外链，1是普通外链，2是内链
         if (type == 0) {
             var imgArr = activity.getContentImgForOutLinkClick();
@@ -496,7 +500,7 @@ $(function(){
             $('#course_outlink_noraml').val(activity.getAllCourseOutLinkNormal().join(','));
         }else{
             $('#cover_inlink').val(activity.getCoverImgInLink().join(','));
-            $('#course_cover_inlink').val(activity.getAllCourseInLink().join(','));
+            $('#course_inlink').val(activity.getAllCourseInLink().join(','));
         }
     };
 });
