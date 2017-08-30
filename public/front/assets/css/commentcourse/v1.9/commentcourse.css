@@ -297,6 +297,7 @@ img {
 }
 #courseComment .container.commentBox .comment {
   border-top: 1px solid #dfe0e6;
+  margin-bottom: 10px;
 }
 #courseComment .container.commentBox .comment .tips {
   margin-top: 14px;
