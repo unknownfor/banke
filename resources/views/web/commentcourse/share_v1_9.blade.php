@@ -58,6 +58,10 @@
                 <div class="album-pre">
                     <ul class="album">
                         <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
+                        <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
+                        <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
+                        <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
+                        <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
                     </ul>
                 </div>
             </div>
