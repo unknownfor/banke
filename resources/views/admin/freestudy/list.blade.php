@@ -65,13 +65,14 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
-                          <th width="18%"> {{ trans('labels.freestudy.title') }} </th>
-                          <th> {{ trans('labels.freestudy.shot_content') }} </th>
+                          <th width="15%"> {{ trans('labels.freestudy.title') }} </th>
+                          <th width="20%"> {{ trans('labels.freestudy.shot_content') }} </th>
                           <th> {{ trans('labels.freestudy.type') }} </th>
                           <th> {{ trans('labels.freestudy.url') }} </th>
                           <th> {{ trans('labels.freestudy.status') }} </th>
-                          <th width="15%"> {{ trans('labels.freestudy.created_at') }} </th>
-                          <th width="15%"> {{ trans('labels.action') }} </th>
+                          <th width="8%"> {{ trans('labels.freestudy.created_at') }} </th>
+                          <th width="8%"> {{ trans('labels.freestudy.userslist') }} </th>
+                          <th width="8%"> {{ trans('labels.action') }} </th>
                         </tr>
                     </thead>
                     <tbody> </tbody>

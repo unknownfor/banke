@@ -262,6 +262,8 @@ return [
 		'freestudyEdit' => '<i class="fa fa-list"></i> 编辑免费学',
 		'freestudyCreate' => '<i class="fa fa-list"></i> 添加免费学',
 
+		'freestudyusersList' => '<i class="fa fa-list"></i> 免费学员列表',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -900,11 +902,12 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'list' => '免费学列表',
+		'userslist' => '参与人员列表',
 	],
 
 	'freestudyusers' => [
 		'id' => '序号',
-		'free_study_id' => '活动标题',
+		'free_study_title' => '活动标题',
 		'mobile'=>'手机号',
 		'certification_status'=>'人员状态',
 		'status' => '状态',

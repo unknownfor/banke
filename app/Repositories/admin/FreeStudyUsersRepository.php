@@ -25,12 +25,22 @@ class FreeStudyUsersRepository
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
 		$status = request('status' ,'');
+		$fid = request('fid' ,'');
+		$mobile = request('mobile' ,'');
 
 		$user = new BankeFreeStudyUsers;
 
 		/*状态搜索*/
 		if ($status!=null) {
 			$user = $user->where('status', $status);
+		}
+
+		if ($fid!=null) {
+			$user = $user->where('free_study_id', $fid);
+		}
+
+		if ($mobile!=null) {
+			$user = $user->where('mobile', $mobile);
 		}
 
 		$count = $user->count();
@@ -40,7 +50,8 @@ class FreeStudyUsersRepository
 
 		if ($users) {
 			foreach ($users as &$v) {
-				$v['actionButton'] = $v->getActionButtonAttribute();
+//				$v['actionButton'] = $v->getActionButtonAttribute();
+				$v['free_study_title']=$v->freestudy['title'];
 			}
 		}
 		return [
