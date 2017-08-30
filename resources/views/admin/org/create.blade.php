@@ -315,7 +315,8 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="installment_title">{{trans('labels.orgsummary.installment_title')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="installment_title" name="installment_title" placeholder="{{trans('labels.orgsummary.installment_title')}}">
+                                    <input type="text" class="form-control" id="installment_title" name="installment_title" value="首付预约金，尾款分期付"
+                                           placeholder="{{trans('labels.orgsummary.installment_title')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -353,7 +354,8 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="refund_title">{{trans('labels.org.refund_title')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="refund_title" name="refund_title" placeholder="{{trans('labels.org.refund_title')}}">
+                                    <input type="text" class="form-control" id="refund_title" name="refund_title" value="提供7天退款的担保服务"
+                                           placeholder="{{trans('labels.org.refund_title')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -394,25 +396,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group form-md-line-input">
-                                <label class="col-md-1 control-label" for="city">city</label>
-                                <div class="col-9" id="area-info-box">
-                                    <div class="col-md-4">
-                                        <input class="form-control" placeholder="请选择省/直辖市" value="" name="location" id="AddressProvince"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input class="form-control" placeholder="请选择市/区" value="" name="location" id="AddressCity"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input class="form-control" placeholder="请选择区" value="" name="location" id="AddressCity"/>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input  class="form-control" placeholder="详细街道" value="" name="location" id="Address"/>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                         <div class="form-actions">
                             <div class="row">

@@ -69,6 +69,8 @@ return[
 		['key'=>'SHARE_SUCCESS','desc' => '分享奖励'],
 		['key'=>'INVITE_FRIEND_BECOME_MARKETING_AMBASSADOR','desc' => '邀请好友成为推广大使奖励'],
 		['key'=>'COMMENT_APP_STORE','desc' => '应用市场好评奖励'],
+		['key'=>'SIGN_SUCCESS','desc' => '新打卡'],
+
 	],
 
 	'moneynews_business_type' => [
@@ -375,6 +377,13 @@ return[
 
 	//半课免费学
 	'freestudy' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'freestudy',
+	],
+
+	//半课任务
+	'task' => [
 		// 控制是否显示查看按钮
 		'show' => false,
 		'action' => 'freestudy',

@@ -54,6 +54,11 @@
         <script src="{{asset('backend/plugins/jquery.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('backend/plugins/bootstrap/js/bootstrap.min.js')}}" type="text/javascript"></script>
         <script src="{{asset('backend/js/app.min.js')}}" type="text/javascript"></script>
+        <script type="text/javascript">
+            var date = new Date();
+            var imgName='{{asset("backend/img/background")}}/'+date.getDate()+'.jpg';
+            $('.login').css('background-image','url("'+imgName+'")');
+        </script>
         @yield('js')
     </body>
 

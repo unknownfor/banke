@@ -15,11 +15,11 @@ use App\Services\MessageIOS;
 class MyXingeService
 {
     /**
-     * Èº·¢ÍÆËÍ
-     * @param $msgInfo ÍÆËÍÏûÏ¢Ìå
-     * title£º±êÌâ
-     * content:ÄÚÈÝ
-     * custom£º²ÎÊý£¬key val µÄ array ÐÎÊ½
+     * ç¾¤å‘æ¶ˆæ¯
+     * @param $msgInfo æ¶ˆæ¯ä½“ä¿¡æ¯
+     * titleæ ‡é¢˜ï¼ˆå®‰å“å¶æ‰ä¼šä½¿ç”¨ï¼‰
+     * contentæ¶ˆæ¯å†…å®¹
+     * custom è‡ªå®šä¹‰å‚æ•° key val çš„ array å¯¹è±¡
      */
     public  function pushGroupMsg($msgInfo)
     {
@@ -28,9 +28,9 @@ class MyXingeService
     }
 
     /**
-     * androidÈº·¢
-     * @param $msgInfo  ÍÆËÍÏûÏ¢Ìå
-     * @return array|mixed ret-code:0 ±íÊ¾·¢ËÍ³É¹¦
+     * android ç¾¤å‘æ¶ˆæ¯
+     * @param $msgInfo  æ¶ˆæ¯ä½“ä¿¡æ¯
+     * @return array|mixed ret-code:0 å‘é€æˆåŠŸ
      */
     private function pushGroupMsgAndroid($msgInfo){
 
@@ -38,80 +38,94 @@ class MyXingeService
         $push = new XingeApp(config('xinge.accessIdAndroid'), config('xinge.secretKeyAndroid'));
         $mess = new Message();
         $mess->setType(Message::TYPE_NOTIFICATION);
-        $title=$msgInfo['title'];
-        if($title==null){
-            $title="°ë¿Î";
+        $title="åŠè¯¾";
+        if(!empty($msgInfo['title'])){
+            $title=$msgInfo['title'];
         }
         $mess->setTitle($title);
         $mess->setContent($msgInfo['content']);
         $mess->setExpireTime(86400);
-        $mess->setCustom($msgInfo['custom']);
+        if(!empty($msgInfo['custom'])) {
+            $mess->setCustom($msgInfo['custom']);
+        }
         $ret = $push->PushAllDevices(0, $mess);
         return $ret;
     }
 
     /**
-     * iosÈº·¢
-     * @param $msgInfo  ÍÆËÍÏûÏ¢Ìå
-     * @return array|mixed ret-code:0 ±íÊ¾·¢ËÍ³É¹¦
+     * iosç¾¤å‘æ¶ˆæ¯
+     * @param $msgInfo  æ¶ˆæ¯ä½“ä¿¡æ¯
+     * @return array|mixed ret-code:0 å‘é€æˆåŠŸ
      */
     private function pushGroupMsgIOS($msgInfo)
     {
-        /*  	IOSÈ«²¿*/
         $push = new XingeApp(config('xinge.accessIdIOS'), config('xinge.secretKeyIOS'));
         $mess = new MessageIOS();
         $mess->setExpireTime(86400);
         $mess->setAlert($msgInfo['content']);
-        //$mess->setAlert(array('key1'=>'value1'));
-        $mess->setCustom($msgInfo['custom']);
+        if(!empty($msgInfo['custom'])) {
+            $mess->setCustom($msgInfo['custom']);
+        }
         $ret = $push->PushAllDevices(0, $mess, XingeApp::IOSENV_DEV);
         return $ret;
     }
 
 
     /**
-     * @param $msgInfo ÍÆËÍÏûÏ¢Ìå
-     * title£º±êÌâ
-     * content:ÄÚÈÝ
-     * custom£º²ÎÊý£¬key val µÄ array ÐÎÊ½
-     * uid£ºÓÃ»§id
+     * @param $msgInfo å•ç‚¹æŽ¨é€
+     * title æ ‡é¢˜
+     * content:å†…å®¹
+     * custom è‡ªå®šä¹‰å‚æ•° key val é”®å€¼å¯¹å½¢å¼ array
+     * uidç”¨æˆ·id
      */
     public  function pushSingleMsg($msgInfo)
     {
         $this->pushSingleMsgAndroid($msgInfo);
-        $this->pushSingleMsgIOS($msgInfo);
+//        $this->pushSingleMsgIOS($msgInfo);
     }
 
     /**
-     * ÍÆµ¥¸öandroid
+     * å•å‘android
      */
     private function pushSingleMsgAndroid($msgInfo){
+//        $push = new XingeApp(config('xinge.accessIdAndroid'), config('xinge.secretKeyAndroid'));
+//        $mess = new Message();
+//        $mess->setType(Message::TYPE_NOTIFICATION);
+//        $title="åŠè¯¾";
+//        if(!empty($msgInfo['title'])){
+//            $title=$msgInfo['title'];
+//        }
+//        $mess->setTitle($title);
+//        $mess->setContent($msgInfo['content']);
+//        $mess->setExpireTime(86400);
+//        if(!empty($msgInfo['custom'])) {
+//            $mess->setCustom($msgInfo['custom']);
+//        }
+//        $res=$push->PushSingleAccount(0, $msgInfo['uid'], $mess);
+//        return $res;
         $push = new XingeApp(config('xinge.accessIdAndroid'), config('xinge.secretKeyAndroid'));
         $mess = new Message();
         $mess->setType(Message::TYPE_NOTIFICATION);
-        $title=$msgInfo['title'];
-        if($title==null){
-            $title="°ë¿Î";
-        }
-        $mess->setTitle($title);
-        $mess->setContent($msgInfo['content']);
+        $mess->setTitle("åŠè¯¾");
+        $mess->setContent("å­¦å†›æ˜¯ä¸ªå±Œä¸ï¼ï¼ï¼å“ˆå“ˆå“ˆ");
         $mess->setExpireTime(86400);
-//        $custom = array('key1'=>'111', 'key2'=>'222');
-        $mess->setCustom($msgInfo['custom']);
-        $res=$push->PushSingleAccount(0, $msgInfo['uid'], $mess);
+        $custom = array('key1'=>'111', 'key2'=>'222');
+        $mess->setCustom($custom);
+        $res=$push->PushSingleAccount(0, 210, $mess);
         return $res;
     }
 
     /**
-     * ÍÆµ¥¸öios
+     * å•å‘ios
      */
     private function pushSingleMsgIOS($msgInfo){
            $push = new XingeApp(config('xinge.accessIdIOS'), config('xinge.secretKeyIOS'));
            $mess = new MessageIOS();
            $mess->setExpireTime(86400);
            $mess->setAlert($msgInfo['content']);
-//           $custom = array('type'=>'ios', 'org_id'=>123);
-           $mess->setCustom($msgInfo['custom']);
-           $push->PushSingleAccount(0, $msgInfo['uid'], $mess,XingeApp::IOSENV_DEV);
+            if(!empty($msgInfo['custom'])) {
+                $mess->setCustom($msgInfo['custom']);
+            }
+           $res = $push->PushSingleAccount(0, $msgInfo['uid'], $mess,XingeApp::IOSENV_DEV);
     }
 }

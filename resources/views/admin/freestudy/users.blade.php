@@ -18,7 +18,7 @@
   </ul>
 </div>
 <!-- END PAGE BAR -->
-<div class="row margin-top-40">
+<div class="row margin-top-40"  id="freestudy-user-list" data-fid="{{$id}}">
     <div class="col-md-12">
         @include('flash::message')
         <!-- Begin: life time stats -->
@@ -28,28 +28,17 @@
               <i class="icon-settings font-dark"></i>
               <span class="caption-subject font-dark sbold uppercase">{{trans('labels.freestudyusers.list')}}</span>
             </div>
-            <div class="actions">
-              <div class="btn-group">
-                @permission(config('admin.permissions.freestudyusers.create'))
-                <a href="{{url('admin/freestudyusers/create')}}" class="btn btn-success btn-outline btn-circle">
-                  <i class="fa fa-user-plus"></i>
-                  <span class="hidden-xs">{{trans('crud.create')}}</span>
-                </a>
-                @endpermission
-              </div>
-            </div>
           </div>
             <div class="search-box filter">
                 <div class="col-md-3">
                     <div class="form-group form-md-line-input">
-                        <select class="bs-select form-control form-filter" data-show-subtext="true" name="status">
-                            <option value="" data-icon="fa-glass icon-success">状态....</option>
-                            @if(trans('strings.freestudyusers_status'))
-                                @foreach(trans('strings.freestudyusers_status') as $status_key => $status_value)
-                                    <option value="{{config('admin.global.status.'.$status_key)}}" data-icon="{{$status_value[0]}}"> {{$status_value[1]}}</option>
-                                @endforeach
-                            @endif
-                        </select>
+                        <div class="input-group has-success">
+                            <span class="input-group-addon">
+                                <i class="fa fa-mobile-phone"></i>
+                            </span>
+                            <input type="text" class="form-control form-filter" name="mobile" placeholder="{{ trans('labels.freestudyusers.mobile') }}">
+                            <div class="form-control-focus"> </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -65,11 +54,11 @@
                     <thead>
                         <tr role="row" class="heading">
                           <th>#</th>
-                          <th width="18%"> {{ trans('labels.freestudyusers.free_study_id') }} </th>
+                          <th width="25%"> {{ trans('labels.freestudyusers.free_study_title') }} </th>
                           <th> {{ trans('labels.freestudyusers.mobile') }} </th>
                           <th> {{ trans('labels.freestudyusers.certification_status') }} </th>
                           <th width="15%"> {{ trans('labels.freestudyusers.created_at') }} </th>
-                          <th width="15%"> {{ trans('labels.action') }} </th>
+                          {{--<th width="15%"> {{ trans('labels.action') }} </th>--}}
                         </tr>
                     </thead>
                     <tbody> </tbody>
@@ -92,7 +81,7 @@
     <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/freestudyusers/list.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/freestudy/userslist.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/layer/layer.js')}}"></script>
 <script type="text/javascript">
   $(function() {

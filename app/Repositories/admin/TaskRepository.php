@@ -1,16 +1,16 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Banke\BankeFreeStudy;
 use Carbon\Carbon;
 use Flash;
-use App\Models\Banke\BankeFreeStudyUsers;
+use App\Models\Banke\BankeTask;
 use Illuminate\Support\Facades\Log;
 
 /**
-* 免费学活动参与人员仓库
+* 任务仓库
 */
-class FreeStudyUsersRepository
+class ActivityRepository
 {
+
 
 	/**
 	 * datatable获取数据
@@ -25,59 +25,66 @@ class FreeStudyUsersRepository
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
 
 		$status = request('status' ,'');
-		$fid = request('fid' ,'');
-		$mobile = request('mobile' ,'');
 
-		$user = new BankeFreeStudyUsers;
+		$task = new BankeTask;
 
 		/*状态搜索*/
 		if ($status!=null) {
-			$user = $user->where('status', $status);
+			$task = $task->where('status', $status);
 		}
 
-		if ($fid!=null) {
-			$user = $user->where('free_study_id', $fid);
-		}
+		$count = $task->count();
 
-		if ($mobile!=null) {
-			$user = $user->where('mobile', $mobile);
-		}
+		$task = $task->offset($start)->limit($length);
+		$tasks = $task->orderBy("id", "desc")->get();
 
-		$count = $user->count();
-
-		$user = $user->offset($start)->limit($length);
-		$users = $user->orderBy("id", "desc")->get();
-
-		if ($users) {
-			foreach ($users as &$v) {
-//				$v['actionButton'] = $v->getActionButtonAttribute();
-				$v['free_study_title']=$v->freestudy['title'];
+		if ($tasks) {
+			foreach ($tasks as &$v) {
+				$v['actionButton'] = $v->getActionButtonAttribute();
 			}
 		}
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $users,
+			'data' => $tasks,
 		];
 	}
 
 
 
-	/**添加活动成员
-	 * 	 * @author shaolei
+	/**添加活动
+	 * @author shaolei
 	 * @date   2016-04-14T11:32:04+0800
 	 * @param  [type]                   $request [description]
 	 * @return [type]                            [description]
 	 */
 	public function store($request)
 	{
-		$user = new BankeFreeStudyUsers;
-		if ($user->fill($request->all())->save()) {
-			Flash::success(trans('alerts.freestudy.created_success'));
-			return $user->id;
+		$task = new BankeActivity;
+		if ($task->fill($request->all())->save()) {
+			Flash::success(trans('alerts.activity.created_success'));
+			return $task->id;
 		}
-		Flash::error(trans('alerts.freestudy.created_error'));
+		Flash::error(trans('alerts.activity.created_error'));
+		return false;
+	}
+
+	/**添加活动 可以点击的外链
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function storeOutlinkClick($request)
+	{
+		$input=$request->all();
+		$task = new BankeActivity;
+		if ($task->fill($request->all())->save()) {
+			Flash::success(trans('alerts.activity.created_success'));
+			return $task->id;
+		}
+		Flash::error(trans('alerts.activity.created_error'));
 		return false;
 	}
 
@@ -90,7 +97,7 @@ class FreeStudyUsersRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeFreeStudyUsers::find($id);
+		$role = BankeActivity::find($id);
 		if ($role) {
 			$roleArray = $role->toArray();
 			return $roleArray;
@@ -107,8 +114,8 @@ class FreeStudyUsersRepository
 	 */
 	public function show($id)
 	{
-		$user = BankeFreeStudyUsers::find($id)->toArray();
-		return $user;
+		$task = BankeActivity::find($id)->toArray();
+		return $task;
 	}
 
 	/**
@@ -121,13 +128,13 @@ class FreeStudyUsersRepository
 	 */
 	public function update($request,$id)
 	{
-		$role = BankeFreeStudyUsers::find($id);
+		$role = BankeActivity::find($id);
 		if ($role) {
 			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.freestudy.updated_success'));
+				Flash::success(trans('alerts.activity.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.freestudy.updated_error'));
+			Flash::error(trans('alerts.activity.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -143,12 +150,12 @@ class FreeStudyUsersRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeFreeStudyUsers::destroy($id);
+		$isDelete = BankeActivity::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.freestudy.deleted_success'));
+			Flash::success(trans('alerts.activity.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.freestudy.deleted_error'));
+		Flash::error(trans('alerts.activity.deleted_error'));
 		return false;
 	}
 }
