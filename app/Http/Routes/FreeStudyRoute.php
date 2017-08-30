@@ -12,6 +12,8 @@ $router->group(['prefix' => 'freestudy'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
+	$router->get('users/{id}', 'FreeStudyController@users');
+	$router->get('ajaxUsersIndex', 'FreeStudyController@ajaxUsersIndex');
 });
 
 $router->resource('freestudy', 'FreeStudyController');

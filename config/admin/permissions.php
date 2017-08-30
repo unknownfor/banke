@@ -287,4 +287,8 @@ return[
 		'destroy' 	=> 'admin.freestudy.delete',
 	],
 
+	'freestudyusers' => [
+
+	],
+
 ];

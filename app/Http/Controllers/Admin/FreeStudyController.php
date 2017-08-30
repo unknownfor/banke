@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FreeStudyRequest;
 use FreeStudyRepository;
+use FreeStudyUsersRepository;
 use PermissionRepository;
 use RoleRepository;
 
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Log;
 class FreeStudyController extends Controller
 {
 	/**
-     * 反馈列表
+     * 免费学列表
      * @author jimmy
      * @date   2016-12-27
      * @return [type]                   [description]
@@ -25,7 +26,7 @@ class FreeStudyController extends Controller
     }
 
     /**
-     * datatable 获取反馈数据
+     * datatable 获取免费学数据
      * @author 晚黎
      * @date   2016-04-13T11:25:58+0800
      * @return [type]                   [description]
@@ -37,7 +38,30 @@ class FreeStudyController extends Controller
     }
 
     /**
-     * 删除反馈
+     * 免费学人员列表
+     * @author jimmy
+     * @date   2016-12-27
+     * @return [type]                   [description]
+     */
+    public function users($id=0)
+    {
+        return view('admin.freestudy.users')->with(compact(['id']));
+    }
+
+    /**
+     * datatable 获取免费学数据
+     * @author 晚黎
+     * @date   2016-04-13T11:25:58+0800
+     * @return [type]                   [description]
+     */
+    public function ajaxUsersIndex()
+    {
+        $data = FreeStudyUsersRepository::ajaxIndex();
+        return response()->json($data);
+    }
+
+    /**
+     * 删除免费学
      * @author 晚黎
      * @date   2016-04-14T11:52:40+0800
      * @param  [type]                   $id [description]
@@ -52,7 +76,7 @@ class FreeStudyController extends Controller
     }
 
     /**
-     * 查看反馈信息
+     * 查看免费学信息
      * @author 晚黎
      * @date   2016-04-14T13:49:32+0800
      * @param  [type]                   $id [description]
@@ -65,7 +89,7 @@ class FreeStudyController extends Controller
     }
 
     /**
-     * 修改反馈信息
+     * 修改免费学信息
      * @author shaolei
      * @date   2016-04-14T15:01:16+0800
      * @param  [type]                   $id [description]
@@ -78,7 +102,7 @@ class FreeStudyController extends Controller
     }
 
     /**
-     * 保存修改反馈信息
+     * 保存修改免费学信息
      * @author shaolei
      * @date   2016-04-14T15:16:54+0800
      * @param  UpdateUserRequest        $request [description]

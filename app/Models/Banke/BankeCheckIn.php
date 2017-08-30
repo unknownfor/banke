@@ -29,7 +29,7 @@ class BankeCheckIn extends Model
 
     //评论人 实名后
     public  function authenUserSimple(){
-        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','uid')->select('uid','real_name');;
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','uid')->select('uid','real_name');
     }
 
     //评论人 未实名

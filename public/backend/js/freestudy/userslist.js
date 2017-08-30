@@ -7,9 +7,11 @@ var TableDatatablesAjax = function() {
       "serverSide": true,
       "searching" : false,
       "ajax": {
-        'url' : '/admin/freestudy/ajaxIndex',
+        'url' : '/admin/freestudy/ajaxUsersIndex',
         "data": function ( d ) {
           d.status = $('.filter select[name="status"] option:selected').val();
+          d.fid = $('#freestudy-user-list').attr('data-fid');
+          d.mobile =$('.filter input[name="mobile"]').val();
         }
       },
       "pagingType": "bootstrap_full_number",
@@ -22,71 +24,38 @@ var TableDatatablesAjax = function() {
           "name" : "id",
         },
         {
-          "data": "title",
-          "name" : "title",
+          "data": "free_study_title",
+          "name" : "free_study_title",
           "orderable" : false,
         },
         {
-          "data": "shot_content",
-          "name" : "shot_content",
+          "data": "mobile",
+          "name" : "mobile",
           "orderable" : false,
         },
         {
-          "data": "type",
-          "name": "type",
+          "data": "certification_status",
+          "name": "certification_status",
           "orderable" : false,
           "render":function(data){
             var userType=[
-              '<span class="label label-success">内链</span>',
-              '<span class="label label-warning">外链</span>'
+              '<span class="label label-success">普通学员</span>',
+              '<span class="label label-warning">幸运学员</span>'
             ];
             return userType[data];
           },
-        },
-        {
-          "data": "url",
-          "name" : "url",
-          "orderable" : false,
-          "render":function(data,type,full) {
-            if(full.type==1){
-              data='<a href="'+data+'">'+data+'</a>';
-            }
-            return data;
-          }
-        },
-        {
-          "data": "status",
-          "name": "status",
-          "orderable" : true,
-          render:function(data){
-            if (data == 1) {
-              return '<span class="label label-success"> 进行中 </span>';
-            }else if(data == 0){
-              return '<span class="label label-warning"> 未开始 </span>';
-            }else{
-              return '<span class="label label-danger"> 已结束 </span>';
-            }
-          }
         },
         {
           "data": "created_at",
           "name": "created_at",
           "orderable" : true,
         },
-        {
-          "data": "userslist",
-          "name": "userslist",
-          "orderable" : true,
-          render:function(data,type,full){
-            return '<a target="userlist"  href="/admin/freestudy/users/'+full.id+'"> 参与学员 </span>';
-          }
-        },
-        {
-          "data": "actionButton",
-          "name": "actionButton",
-          "type": "html",
-          "orderable" : false,
-        },
+        //{
+        //  "data": "actionButton",
+        //  "name": "actionButton",
+        //  "type": "html",
+        //  "orderable" : false,
+        //},
       ],
       "drawCallback": function( settings ) {
         ajax_datatable.$('.tooltips').tooltip( {

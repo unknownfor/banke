@@ -37,10 +37,6 @@ class OrderRepository
 	 */
 	public function ajaxIndex()
 	{
-//		$sevice = new MyXingeService();
-//		$param=Array("title"=>"半课","content"=>'恭喜您已成功报名课程。',"uid"=>210);
-//		$sevice->pushGroupMsg($param);
-
 		$draw = request('draw', 1);/*获取请求次数*/
 		$start = request('start', config('admin.global.list.start')); /*获取开始*/
 		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
@@ -291,7 +287,13 @@ class OrderRepository
 						];
 						MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
 						$sevice = new MyXingeService();
-						$param=Array("title"=>"半课","content"=>'恭喜您已成功报名课程：'.$order->course_name .'。',"uid"=>$uid);
+						$custom = array('type'=>'ios', 'org_id'=>123);
+
+						$param=Array("title"=>"半课",
+							"content"=>'恭喜您已成功报名课程：'.$order->course_name .'。',
+							"uid"=>$uid,
+							'custom'=>$custom
+						);
 						$sevice->pushSingleMsg($param);
 
 						DB::commit();
