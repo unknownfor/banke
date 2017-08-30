@@ -10,7 +10,7 @@ class BankeBalanceLog extends Model
     //
     use ActionAttributeTrait;
 
-    protected $fillable = [ 'uid', 'change_amount', 'change_type', 'business_type', 'operator_uid'];
+    protected $fillable = [ 'uid', 'change_amount', 'change_type', 'business_type', 'operator_uid','withdraw_id'];
 
     private $action;
 

@@ -22,6 +22,7 @@ use MoneyNewsRepository;
 use DailyTaskLogRepository;
 use InvitationSignUpRepository;
 use OrderDepositRepository;
+use App\Services\MyXingeService;
 
 /**
 * 订单（报名）仓库
@@ -285,6 +286,15 @@ class OrderRepository
 							'org_id'=>$org->id
 						];
 						MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
+						$sevice = new MyXingeService();
+						$custom = array('type'=>'ios', 'org_id'=>123);
+
+						$param=Array("title"=>"半课",
+							"content"=>'恭喜您已成功报名课程：'.$order->course_name .'。',
+							"uid"=>$uid,
+							'custom'=>$custom
+						);
+						$sevice->pushSingleMsg($param);
 
 						DB::commit();
 						Flash::success(trans('alerts.order.authen_success'));

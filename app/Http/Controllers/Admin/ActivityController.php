@@ -67,7 +67,6 @@ class ActivityController extends Controller {
         $this->updateJoinInCourse($activity_id,$request);
         return redirect('admin/activity');
     }
-
     /**
      * 添加活动 可点击外链
      * @author 晚黎
@@ -93,13 +92,23 @@ class ActivityController extends Controller {
     {
         $cities=BusinessCityRepository::getAllBusinessCity();
         $activity = ActivityRepository::edit($id);
+
         $repository=new ActivityCourseRepository();
         $course_arr=$repository->getAllCouseIdArrByActivityId($id);
         $activity['course_arr']=$course_arr;
         $activity['course']=implode(',',$course_arr);
         $allcourse=$this->getAllCourse();
-        return view('admin.activity.edit')->with(compact(['activity','cities','allcourse']));
+        if($activity['url_type']==1){
+            if($activity['out_url_type']==1){
+                return view('admin.activity.edit-outclick')->with(compact(['activity','cities','allcourse']));
+            }else{
+                return view('admin.activity.edit')->with(compact(['activity','cities','allcourse']));
+            }
+        }
+        return view('admin.activity.edit-inlink')->with(compact(['activity','cities','allcourse']));
     }
+
+
     /**
      * 修改活动资料
      * @author 晚黎

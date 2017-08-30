@@ -485,6 +485,8 @@ $(function(){
             $('#area_outlink_click').text(str);
             $('#cover_outlink_click').val(activity.getCoverImgOutLinkClick().join(','));
             $('#course_outlink_click').val(activity.getAllCourseOutLinkClick().join(','));
+            $('#click-img-url').val(imgArr.join(','));
+            $('#click-url').val(imgLinkUrlArr.join(','));
         } else if(type==1) {
             var val = activity.getValue();
             val = val.replace(/\n/g, "<br/>");
@@ -493,7 +495,7 @@ $(function(){
             $('#cover_outlink_narmal').val(activity.getCoverImgOutLinkNormal().join(','));
             $('#course_outlink_noraml').val(activity.getAllCourseOutLinkNormal().join(','));
         }else{
-            $('#cover_cover_inlink').val(activity.getCoverImgInLink().join(','));
+            $('#cover_inlink').val(activity.getCoverImgInLink().join(','));
             $('#course_cover_inlink').val(activity.getAllCourseInLink().join(','));
         }
     };

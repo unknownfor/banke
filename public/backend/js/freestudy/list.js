@@ -74,6 +74,14 @@ var TableDatatablesAjax = function() {
           "orderable" : true,
         },
         {
+          "data": "userslist",
+          "name": "userslist",
+          "orderable" : true,
+          render:function(data,type,full){
+            return '<a target="userlist"  href="/admin/freestudy/users/'+full.id+'"> 参与学员 </span>';
+          }
+        },
+        {
           "data": "actionButton",
           "name": "actionButton",
           "type": "html",

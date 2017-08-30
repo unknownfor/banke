@@ -9,26 +9,13 @@ $(function() {
     showStars();
 
     /*
-    * 机构评分星星*/
+     * 机构评分星星*/
     function showStars () {
-        var star = $('.org-stars').attr('data-grade-total'),
-            fullStar = '<i class="star colored iconfont">&#xe70e;</i>',
-            halfStar = '<i class="star colored half iconfont">&#xe62f;</i>',
-            noStar = ' <i class="star iconfont">&#xe680;</i>',
-            item,
-            str,
-            str = fullStar + fullStar + fullStar;
-        if (star%4 > 5) {
-            item = str + fullStar  + fullStar;
-        } else {
-            if (0 < star%4 < 5) {
-                item = str + fullStar + halfStar;
-            }else {
-                item = str + halfStar + noStar ;
-            }
-        }
-        $(".org-stars").html(item);
-    }
+        var  star = $('.org-stars').attr('data-grade-total'),
+            str;
+        str = '<span class="rightItem starsCon">' + getStarInfoByScore(star) + '</span>';
+        $(".org-stars").html(str);
+    };
 
 
     /*
@@ -36,7 +23,6 @@ $(function() {
     $(document).on( window.eventName,'#help-img', function() {
         $('.installment').removeClass('hide').addClass('show');
      });
-
 
     /*
     * 点击关闭分期说明弹窗*/

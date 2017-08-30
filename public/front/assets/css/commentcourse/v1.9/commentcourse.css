@@ -1,0 +1,398 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.txt-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+a {
+  display: block;
+  text-decoration: none;
+  out-line: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+* {
+  -webkit-touch-callout: none;
+  /*系统默认菜单被禁用*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -khtml-user-select: none;
+  /*早期浏览器*/
+  -moz-user-select: none;
+  /*火狐*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none;
+  /*页面流畅顺滑*/
+  font-family: "Microsoft Yahei", "Microsoft YaHei", "黑体", "宋体", sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: #fff;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+a:hover {
+  -webkit-tap-highlight-color: transparent;
+}
+.clear {
+  clear: both;
+}
+input {
+  -webkit-user-select: auto;
+  /*webkit浏览器*/
+  -webkit-appearance: textfield;
+  background-color: white;
+  -webkit-rtl-ordering: logical;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  cursor: auto;
+  padding: 1px;
+  -webkit-border-image: initial;
+  -o-border-image: initial;
+  border-image: initial;
+  text-rendering: auto;
+  color: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  margin: 0em 0em 0em 0em;
+  font: 13.3333px Arial;
+  outline: none;
+}
+.noscroll {
+  height: 100%;
+  overflow: hidden;
+}
+#downloadCon {
+  margin: 0 auto;
+  max-width: 700px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  opacity: 1;
+  max-height: 113px;
+  display: inline-block;
+  background-color: #FFEB3B;
+}
+#downloadCon .downloadBar-img {
+  max-width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  opacity: 0;
+  display: inline-block;
+}
+#downloadCon a {
+  display: block;
+  text-decoration: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+#downloadBar-img {
+  width: 100%;
+  border: none;
+}
+@media screen and (max-width: 420px) {
+  #downloadCon {
+    height: 78px;
+  }
+}
+@media screen and (max-width: 380px) {
+  #downloadCon {
+    height: 71px;
+  }
+}
+@media screen and (max-width: 320px) {
+  #downloadCon {
+    height: 61px;
+  }
+}
+.result-tips {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  width: 160px;
+  height: auto;
+  z-index: 1001;
+  min-height: 34px;
+  background: rgba(51, 51, 51, 0.85);
+  margin-left: -80px;
+  margin-top: -35px;
+  border-radius: 3px;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  color: #fff;
+  text-align: center;
+}
+.result-tips p {
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  margin: 10px 0;
+}
+#loading-data {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+  top: 50%;
+  left: 50%;
+  z-index: 55555;
+  text-align: center;
+  display: none;
+}
+#loading-data.active {
+  display: block;
+}
+#loading-data.active .loding-img {
+  -webkit-animation: turning 1s linear infinite;
+  -moz-animation: turning 1s linear infinite;
+}
+#loading-data .loding-img {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+}
+@keyframes turning {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes turning {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+body {
+  margin: 0 auto;
+  padding: 0;
+  height: 100%;
+  max-width: 700px;
+  background-color: #F9F9F9;
+  overflow-x: hidden;
+  word-wrap: break-word;
+  position: relative;
+}
+img {
+  max-width: 100%;
+}
+#courseComment {
+  font-size: 14px;
+  background-color: #fff;
+}
+#courseComment .container {
+  position: relative;
+  padding: 10px 15px ;
+}
+#courseComment .container.headBox {
+  color: #572C1B;
+  text-align: center;
+}
+#courseComment .container.headBox .headImg {
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  margin-bottom: 10px;
+}
+#courseComment .container.headBox .headName {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+#courseComment .container.headBox .headName > p {
+  padding-top: 5px;
+}
+#courseComment .container.courseBox {
+  background-color: #fafafa;
+}
+#courseComment .container.courseBox .courseInfo {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+#courseComment .container.courseBox .courseInfo .courseLeft {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 65px;
+  -ms-flex: 0 0 65px;
+  flex: 0 0 65px;
+  margin-right: 10px;
+}
+#courseComment .container.courseBox .courseInfo .courseLeft .courseImg {
+  width: 65px;
+  height: 65px;
+}
+#courseComment .container.courseBox .courseInfo .courseMiddle {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: left;
+}
+#courseComment .container.courseBox .courseInfo .courseMiddle .courseName {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+#courseComment .container.courseBox .courseInfo .courseMiddle .courseSchool {
+  font-size: 12px;
+  color: #a6a6a6;
+  margin-top: 6px;
+  margin-bottom: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+#courseComment .container.courseBox .courseInfo .courseMiddle .courseAppoint {
+  color: #666666;
+  font-size: 13px;
+}
+#courseComment .container.courseBox .courseInfo .courseRight {
+  text-align: right;
+}
+#courseComment .container.courseBox .courseInfo .courseRight .realPrice {
+  color: #fa4224;
+  font-size: 15px;
+}
+#courseComment .container.courseBox .courseInfo .courseRight .furtherPrice {
+  color: #a6a6a6;
+  font-size: 12px;
+}
+#courseComment .container.commentBox .title {
+  padding-bottom: 7px;
+}
+#courseComment .container.commentBox .title .titleTxt {
+  padding-left: 5px;
+  border-left: 3px solid #FFD842;
+  display: inline-block;
+}
+#courseComment .container.commentBox .title .star {
+  color: #ffd842;
+  display: inline-block;
+}
+#courseComment .container.commentBox .comment {
+  border-top: 1px solid #dfe0e6;
+  margin-bottom: 10px;
+}
+#courseComment .container.commentBox .comment .tips {
+  margin-top: 14px;
+  font-size: 10px;
+  color: #a6a6a6;
+}
+#courseComment .container.commentBox .comment .tips > span {
+  padding: 2px 3px;
+  border: 1px solid #a6a6a6;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+#courseComment .container.commentBox .comment .txt {
+  margin: 10px 0;
+  line-height: 22px;
+}
+#courseComment .container.commentBox .comment .album-pre {
+  overflow-x: auto;
+}
+#courseComment .container.commentBox .comment .album-pre .album {
+  white-space: nowrap;
+}
+#courseComment .container.commentBox .comment .album-pre .album-li {
+  overflow-y: hidden;
+  border: 1px solid rgba(145, 145, 145, 0.2);
+  width: 40%;
+  height: 110px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+}
+#courseComment .container.joinBox {
+  background-color: #fff2c7;
+  margin: 0 10px 10px 10px;
+  border-radius: 10px;
+}
+#courseComment .container.joinBox .slogen {
+  margin: 0 auto 10px auto;
+  text-align: center;
+}
+#courseComment .container.joinBox .slogen > img {
+  max-width: 120px;
+  display: inline-block;
+}
+#courseComment .container.joinBox .angle {
+  position: relative;
+}
+#courseComment .container.joinBox .angle > img {
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  max-width: 50px;
+}
+#courseComment .container.joinBox .joinTxt {
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+#courseComment .container.joinBox .joinTxt .txtOne {
+  color: #f94f46;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+#courseComment .container.joinBox .joinTxt .txtTwo {
+  color: #5e5e54;
+}
+#courseComment .container.joinBox .txtSlogen {
+  text-align: center;
+  font-size: 12px;
+  color: #f94f46;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#courseComment .container.joinBox .input {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+#courseComment .container.joinBox .input .phone {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 35px;
+  padding-left: 10px;
+  border: none;
+  border-radius: 4px;
+}
+#courseComment .container.joinBox .btn {
+  margin: 10px auto 0 auto;
+  text-align: center;
+  width: 108px;
+  height: 30px;
+  color: #ffffff;
+  line-height: 30px;
+  border-radius: 4px;
+  background-color: #f67d31;
+}

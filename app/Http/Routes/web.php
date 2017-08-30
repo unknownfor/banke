@@ -292,6 +292,25 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
     Route::post('/freestudysignup','FreeStudyController@signup');
 });
 
+//--------------------------------- 1.9 -----------------------------------
+
+//1.9
+Route::group(['prefix'=>"v1.9/web",'namespace'=>'Web'],function() {
+
+
+});
+
+//v1.9分享
+Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
+
+    //课程详情分享页
+    Route::get('/commentcourse/{id}','CommentCourseController@share_v1_9');
+
+    //机构详情分享
+    Route::get('/commentorg/{id}', 'CommentOrgController@share_v1_9');
+
+});
+
 
 
 

@@ -24,6 +24,10 @@ class BankeFreeStudyUsers extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->action = config('admin.global.freestudy.action');
+        $this->action = config('admin.global.freestudyusers.action');
+    }
+
+    public  function freestudy(){
+        return $this->hasOne('App\Models\Banke\BankeFreeStudy','id','free_study_id');
     }
 }

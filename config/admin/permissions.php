@@ -132,6 +132,7 @@ return[
 	'withdraw' => [
 		'show' 		=> 'admin.withdraw.show',
 		'edit'	=> 'admin.withdraw.edit',
+		'financialedit'	=> 'admin.withdraw.financialedit',
 	],
 
 	//反馈
@@ -284,6 +285,10 @@ return[
 		'create' 	=> 'admin.freestudy.create',
 		'edit' 	=> 'admin.freestudy.edit',
 		'destroy' 	=> 'admin.freestudy.delete',
+	],
+
+	'freestudyusers' => [
+
 	],
 
 ];

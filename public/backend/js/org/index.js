@@ -3,6 +3,11 @@
  */
     $(function(){
 
+        new locationCard({
+            ids: ['AddressProvince', 'AddressCity','AddressCity'],
+            targetSelector:'#area-info-box'
+        }).init();
+
         $('.citySelectpicker').selectpicker({
             liveSearchNormalize:true,
             liveSearchPlaceholder:'输入名称进行搜索',

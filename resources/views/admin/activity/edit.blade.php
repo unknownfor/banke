@@ -51,6 +51,7 @@
               		{!! csrf_field() !!}
                   <input type="hidden" name="_method" value="PATCH">
                   <input type="hidden" name="id" value="{{$activity['id']}}">
+                  <input type="hidden" name="url_type" id="url-type" value="{{$activity['url_type']}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
@@ -64,7 +65,7 @@
                           <div class="col-md-10">
                               <div class="md-radio-inline">
                                   <div class="md-radio">
-                                      <input type="radio" id="url_type1" name="url_type" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"
+                                      <input type="radio" disabled id="url_type1" name="url_type" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"
                                               @if($activity['url_type']==config('admin.global.status.audit')) checked @endif>
                                       <label for="url_type1">
                                           <span></span>
@@ -72,22 +73,14 @@
                                           <span class="box"></span> 内链 </label>
                                   </div>
                                   <div class="md-radio">
-                                      <input type="radio" id="url_type2" name="url_type" value="{{config('admin.global.status.active')}}" class="md-radiobtn"
+                                      <input type="radio" disabled id="url_type2" name="url_type" value="{{config('admin.global.status.active')}}" class="md-radiobtn"
                                              @if($activity['url_type']==config('admin.global.status.active')) checked @endif>
                                       <label for="url_type2">
                                           <span></span>
                                           <span class="check"></span>
-                                          <span class="box"></span> 外链 </label>
+                                          <span class="box"></span> 普通外链 </label>
                                   </div>
                               </div>
-                          </div>
-                      </div>
-
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="url">{{trans('labels.activity.url')}}(内链)</label>
-                          <div class="col-md-8">
-                              <input type="text" class="form-control" id="url" name="url" placeholder="{{trans('labels.activity.url')}}" value="{{$activity['url']}}">
-                              <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
@@ -95,7 +88,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="slug">{{trans('labels.activity.content')}}</label>
                           <div class="col-md-8">
-                              <textarea style="display: none" name="content" id="target-area">{{$activity['content']}}</textarea>
+                              <textarea style="display: none" name="content" id="area_outlink_noraml">{{$activity['content']}}</textarea>
                               <textarea id="my-editor"></textarea>
                           </div>
                       </div>
@@ -107,7 +100,7 @@
                                   <div class="add-img-btn add-cover-img-btn">+
                                       <div class="img-size-tips">16:7的图片</div>
                                   </div>
-                                  <ul class="imgs-list-box cover-list-box">
+                                  <ul class="imgs-list-box cover-list-box-outlink-normal">
                                       @if($activity['cover'])
                                           <li>
                                               <a href="{{$activity['cover']}}" data-size="435x263"></a>
@@ -116,14 +109,10 @@
                                           </li>
                                       @endif
                                   </ul>
-                                  <input type="hidden" value="" name="cover" id="cover">
+                                  <input type="hidden" value="{{$activity['cover']}}" name="cover" id="cover_outlink_narmal">
                               </div>
                           </div>
                       </div>
-
-
-
-
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="city">{{trans('labels.activity.city')}}</label>
@@ -140,7 +129,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="course">{{trans('labels.activity.course')}}</label>
                           <div class="col-md-8">
-                              <select class="selectpicker course-select show-tick form-control" data-live-search="true" multiple="multiple">
+                              <select class="selectpicker course-select-outlink-normal show-tick form-control" data-live-search="true" multiple="multiple">
                                   @if($allcourse)
                                       @foreach($allcourse as $v)
                                           <option value="{{$v->id}}" @if(in_array($v->id, $activity['course_arr'])) selected @endif>
@@ -149,7 +138,7 @@
                                       @endforeach
                                   @endif
                               </select>
-                              <input type="hidden" name="course" id="course" value="{{$activity['course']}}">
+                              <input type="hidden" name="course" id="course_outlink_noraml" value="{{$activity['course']}}">
                           </div>
                       </div>
 
@@ -231,5 +220,5 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
 
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/activity/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/activity/edit.js')}}"></script>
 @endsection

@@ -16,7 +16,7 @@ class BankeWithdraw extends Model
      */
     protected $table = 'banke_withdraw';
 
-    protected $fillable = ['status', 'operator_uid', 'processing_result'];
+    protected $fillable = ['status', 'operator_uid', 'processing_result','initial_status','initial_operator_uid'];
 
     private $action;
 
@@ -34,5 +34,9 @@ class BankeWithdraw extends Model
 
     public function  operator(){
         return $this->hasOne('App\Models\Banke\BankeUsers', 'id', 'operator_uid');
+    }
+
+    public function  initial_operator(){
+        return $this->hasOne('App\Models\Banke\BankeUsers', 'id', 'initial_operator_uid');
     }
 }

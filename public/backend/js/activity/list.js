@@ -30,10 +30,18 @@ var TableDatatablesAjax = function() {
         	"data": "url_type",
         	"name": "url_type",
         	"orderable" : false,
-            "render":function(data){
+            "render":function(data,type,full){
+              if(data!=0){
+                if(full.out_url_type==0){
+                  data=1;
+                }else{
+                  data=2;
+                }
+              }
               var userType=[
                   '<span class="label label-success">内链</span>',
-                  '<span class="label label-warning">外链</span>'
+                  '<span class="label label-warning">普通外链</span>',
+                  '<span class="label label-danger">可点击外链</span>'
               ];
               return userType[data];
             },

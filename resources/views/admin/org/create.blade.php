@@ -2,6 +2,7 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/css/org.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/css/areaselect.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}" >
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-tags/bootstrap-tags.css')}}">
@@ -314,7 +315,8 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="installment_title">{{trans('labels.orgsummary.installment_title')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="installment_title" name="installment_title" placeholder="{{trans('labels.orgsummary.installment_title')}}">
+                                    <input type="text" class="form-control" id="installment_title" name="installment_title" value="首付预约金，尾款分期付"
+                                           placeholder="{{trans('labels.orgsummary.installment_title')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -352,7 +354,8 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="refund_title">{{trans('labels.org.refund_title')}}</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" id="refund_title" name="refund_title" placeholder="{{trans('labels.org.refund_title')}}">
+                                    <input type="text" class="form-control" id="refund_title" name="refund_title" value="提供7天退款的担保服务"
+                                           placeholder="{{trans('labels.org.refund_title')}}">
                                     <div class="form-control-focus"> </div>
                                 </div>
                             </div>
@@ -393,7 +396,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="form-actions">
                             <div class="row">
@@ -457,5 +459,7 @@
         });
     </script>
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/org/areadata.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/org/areaselect.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/org/index.js')}}"></script>
 @endsection

@@ -163,6 +163,9 @@
                 data:data,
                 success:function(res){
                     callback(res);
+                },
+                error:function(res){
+
                 }
             });
         },

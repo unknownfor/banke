@@ -262,6 +262,8 @@ return [
 		'freestudyEdit' => '<i class="fa fa-list"></i> 编辑免费学',
 		'freestudyCreate' => '<i class="fa fa-list"></i> 添加免费学',
 
+		'freestudyusersList' => '<i class="fa fa-list"></i> 免费学员列表',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -465,20 +467,21 @@ return [
 		'uid' => '学员id',
 		'name' => '姓名',
 		'mobile' => '手机号',
-		'withdraw_amount'=>'提现金额',
+		'withdraw_amount'=>'金额',
 		'account_balance'=>'余额',
 		'zhifubao_account'=>'提现账户',
-		'status' => '状态',
+		'status' => '打款状态',
+		'initial_status' => '初审状态',
 		'list' => '提现列表',
 		'created_at' => '申请时间',
-		'operator_id'=>'处理人员id',
-		'operator_name'=>'处理人员',
+		'operator_name'=>'终审人员',
+		'initial_operator_name'=>'初审人员',
 		'updated_at'=>'处理时间',
 		'active' => '<span class="label label-success"> 已打款 </span>',
 		'applying' => '<span class="label label-warning"> 申请中 </span>',
 		'notice' => '<strong>注意!</strong> 当某个角色的用户需要额外权限时添加.',
 		'info' => '暂无额外权限',
-		'amount_logs' => '金额明细'
+		'amount_logs' => '明细'
 	],
 	'checkin' => [
 		'id' => '序号',
@@ -899,11 +902,12 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'list' => '免费学列表',
+		'userslist' => '参与人员列表',
 	],
 
 	'freestudyusers' => [
 		'id' => '序号',
-		'free_study_id' => '活动标题',
+		'free_study_title' => '活动标题',
 		'mobile'=>'手机号',
 		'certification_status'=>'人员状态',
 		'status' => '状态',

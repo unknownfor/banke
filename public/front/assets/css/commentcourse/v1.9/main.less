@@ -1,0 +1,191 @@
+body {
+  margin:0 auto;
+  padding:0;
+  height: 100%;
+  max-width: 700px;
+  background-color: #F9F9F9;
+  overflow-x: hidden;
+  word-wrap:break-word;
+  position: relative;
+}
+img {
+  max-width: 100%;
+}
+#courseComment {
+  font-size: 14px;
+  background-color: #fff;
+  .container {
+    position: relative;
+    padding: 10px 15px ;
+    &.headBox {
+      color: #572C1B;
+      text-align: center;
+      .headImg {
+        @w:60px;
+        .size(@w,@w);
+        border-radius: @w;
+        margin-bottom: 10px;
+      }
+      .headName {
+        font-size: 13px;
+        margin-bottom: 5px;
+        > p {
+          padding-top: 5px;
+        }
+      }
+    }
+    &.courseBox {
+      background-color: #fafafa;
+      .courseInfo {
+        display: flex;
+        .courseLeft {
+          flex: 0 0 65px;
+          margin-right: 10px;
+          .courseImg {
+            .size(65px,65px);
+          }
+        }
+        .courseMiddle {
+          flex: 1;
+          text-align: left;
+          .courseName {
+            .txt-ellipsis-p(1);
+          }
+          .courseSchool {
+            font-size: 12px;
+            color: #a6a6a6;
+            margin-top: 6px;
+            margin-bottom: 10px;
+            .txt-ellipsis-p(1);
+          }
+          .courseAppoint {
+            color: #666666;
+            font-size: 13px;
+          }
+        }
+        .courseRight {
+          //flex: 0 0 85px;
+          text-align: right;
+          .realPrice {
+            color: #fa4224;
+            font-size: 15px;
+          }
+          .furtherPrice {
+            color: #a6a6a6;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    &.commentBox {
+      .title {
+        padding-bottom: 7px;
+        .titleTxt {
+          padding-left: 5px;
+          border-left: 3px solid #FFD842;
+          display: inline-block;
+        }
+        .star {
+          color: #ffd842;
+          display: inline-block;
+        }
+      }
+      .comment {
+        border-top: 1px solid #dfe0e6;
+        margin-bottom: 10px;
+        .tips {
+          margin-top: 14px;
+          font-size: 10px;
+          color: #a6a6a6;
+          > span {
+            padding: 2px 3px;
+            border: 1px solid #a6a6a6;
+            border-radius: 4px;
+            margin-right: 5px;
+          }
+        }
+        .txt {
+          margin: 10px 0;
+          line-height: 22px;
+        }
+        .album-pre {
+          overflow-x: auto;
+          .album {
+            white-space: nowrap;
+          }
+          .album-li {
+            overflow-y: hidden;
+            border: 1px solid rgba(145, 145, 145, 0.2);
+            width: 40%;
+            height: 110px;
+            display: inline-block;
+            vertical-align: top;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+    &.joinBox {
+      background-color: #fff2c7;
+      margin: 0 10px 10px 10px;
+      border-radius: 10px;
+      .slogen {
+        margin: 0 auto 10px auto;
+        text-align: center;
+        > img {
+          max-width: 120px;
+          display: inline-block;
+        }
+      }
+      .angle {
+        position: relative;
+        > img {
+          position: absolute;
+          top: -10px;
+          right: -15px;
+          max-width: 50px;
+        }
+      }
+      .joinTxt {
+        line-height: 20px;
+        margin-bottom: 10px;
+        .txtOne {
+          color: #f94f46;
+          font-weight: bold;
+          margin-bottom: 5px;
+        }
+        .txtTwo {
+          color: #5e5e54;
+        }
+      }
+      .txtSlogen {
+        font-weight: bold;
+        text-align: center;
+        font-size: 12px;
+        color: #f94f46;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .input {
+        display: flex;
+        .phone {
+          flex:1;
+          height: 35px;
+          padding-left: 10px;
+          border: none;
+          border-radius: 4px;
+        }
+      }
+      .btn {
+        @h: 30px;
+        margin: 10px auto 0 auto;
+        text-align: center;
+        .size(108px,@h);
+        color: #ffffff;
+        line-height: @h;
+        border-radius: 4px;
+        background-color: #f67d31;
+      }
+    }
+  }
+}

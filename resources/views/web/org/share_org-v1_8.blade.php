@@ -42,15 +42,7 @@
             </div>
         </div>
         <div class="head-tips">
-            {{--<div>{{$org['grade_total']}}</div>--}}
-            <div class="org-stars">
-                <i class="star colored iconfont">&#xe70e;</i>
-                <i class="star colored iconfont">&#xe70e;</i>
-                <i class="star colored iconfont">&#xe70e;</i>
-                <i class="star colored iconfont">&#xe70e;</i>
-                {{--<i class="star colored half iconfont">&#xe62f;</i>--}}
-                {{--<i class="star iconfont">&#xe680;</i>--}}
-            </div>
+            <div class="org-stars" data-grade-total="{{$org['grade_total']}}"></div>
             <div class="tips">
                 <div class="tips-left">
                     @if($org->tags)
@@ -102,6 +94,7 @@
     </div>
 
     <div class="introduction container">
+        {{--@if(!!$album)--}}
         <div class="org-album-pre">
             <ul class="org-album">
                 @if($org->album)
@@ -118,6 +111,7 @@
                 <div class="clear"></div>
             </ul>
         </div>
+        {{--@endif--}}
         @if(!!$org['details'])
         <div class="half" id="full-intro">
             <div class="intro">{!! $org['details'] !!}</div>
