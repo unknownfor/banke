@@ -85,9 +85,15 @@
                       <input type="hidden" name="out_url_type" value="{{$activity['out_url_type']}}">
                       <textarea style="display: none" name="content" id="area_outlink_click">>{{$activity['content']}}</textarea>
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="name">类型</label>
+                          <div class="col-md-8">
+                              <span class="label label-success"> 可点击外链</span>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
                           <div class="col-md-8">
-                              <input type="text" class="form-control"  name="title" placeholder="{{trans('labels.activity.title')}}" value="{{old('title')}}">
+                              <input type="text" class="form-control"  name="title" placeholder="{{trans('labels.activity.title')}}" value="{{$activity['title']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
@@ -109,7 +115,7 @@
                                           </li>
                                       @endif
                                   </ul>
-                                  <input id="cover_outlink_click" name="cover" type="hidden" value="">
+                                  <input id="cover_outlink_click" name="cover" type="hidden" value="{{$activity['cover']}}">
                               </div>
                           </div>
                       </div>
@@ -146,7 +152,6 @@
                                               </li>
                                           @endforeach
                                       @endif
-
                                       {{--<li>--}}
                                           {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
                                           {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
@@ -158,6 +163,7 @@
                                           {{--<span class="remove-img">×</span>--}}
                                       {{--</li>--}}
                                   </ul>
+                                  <input id="click-img-url" name="click_img_url" type="hidden" value="{{$activity['click_img_url']}}">
                               </div>
                           </div>
                       </div>
@@ -185,11 +191,12 @@
                                           @foreach($urls as $url)
                                               <li>
                                                 <input type="text" placeholder="请输入链接地址" value="{{$url}}">
-                                                <span class="color-block danger">删除</span>
+                                                <span class="color-block danger delete-img-url-input-box">删除</span>
                                               </li>
                                           @endforeach
                                       @endif
                                   </ul>
+                                  <input id="click-url" name="click_url" type="hidden" value="{{$activity['click_url']}}">
                               </div>
                           </div>
                       </div>
@@ -209,7 +216,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="course">{{trans('labels.activity.course')}}</label>
                           <div class="col-md-8">
-                              <select class="selectpicker course-select show-tick form-control" data-live-search="true" multiple="multiple">
+                              <select class="selectpicker course-select-outlink-click show-tick form-control" data-live-search="true" multiple="multiple">
                                   @if($allcourse)
                                       @foreach($allcourse as $v)
                                           <option value="{{$v->id}}" @if(in_array($v->id, $activity['course_arr'])) selected @endif>
@@ -218,7 +225,7 @@
                                       @endforeach
                                   @endif
                               </select>
-                              <input type="hidden" name="course" id="course" value="{{$activity['course']}}">
+                              <input type="hidden" name="course" id="course_outlink_click" value="{{$activity['course']}}">
                           </div>
                       </div>
 
@@ -267,7 +274,7 @@
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/activity')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                              <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
+                              <button type="submit" class="btn blue" onclick="return setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
                   </div>
@@ -276,11 +283,11 @@
       </div>
   </div>
 </div>
-<form id="upImgForm" method="post" class="hiddenForm">
-    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif,image/jpeg">
-</form>
 <form id="upImgForm1" method="post" class="hiddenForm">
     <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif,image/jpeg">
+</form>
+<form id="upImgForm2" method="post" class="hiddenForm">
+    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile2" size="28" accept="image/png,image/gif,image/jpeg">
 </form>
 <div class="loding-modal">
     <i id="imgLoadingCircle" class="loadingCircle active"></i>
@@ -304,6 +311,8 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
 
+    <script type="text/javascript" src="{{asset('backend/plugins/jquery-ui/jquery-ui.js')}}"></script>
+
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/activity/index.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/activity/edit-outlinkclick.js')}}"></script>
 @endsection
