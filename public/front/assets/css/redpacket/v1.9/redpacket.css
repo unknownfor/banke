@@ -277,9 +277,6 @@ input::-webkit-input-placeholder {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-#redBag .footer .register .register-box.disabled {
-  pointer-events: none;
-}
 #redBag .footer .register .register-box .code-btn {
   font-size: 12px;
   -webkit-box-flex: 0;
@@ -301,6 +298,12 @@ input::-webkit-input-placeholder {
   align-items: center;
   line-height: 23px;
   color: #ffffff;
+}
+#redBag .footer .register .register-box .code-btn.disabled {
+  pointer-events: none;
+}
+#redBag .footer .register .register-box .code-btn.disabled > span {
+  background-color: #d2ab3d;
 }
 #redBag .footer .register .register-box .code-btn > span {
   width: 65px;
@@ -341,6 +344,9 @@ input::-webkit-input-placeholder {
   border-radius: 50px;
   -webkit-box-shadow: 0px 8px 10px #C72020;
   box-shadow: 0px 8px 10px #C72020;
+}
+#redBag .footer .register .btn.nouse {
+  pointer-events: none;
 }
 #redBag .footer .register .btn #downloadBar {
   color: #ffffff;

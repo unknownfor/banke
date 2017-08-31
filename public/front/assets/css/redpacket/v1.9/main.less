@@ -85,9 +85,6 @@ input::-webkit-input-placeholder{
           border-bottom-left-radius: @br;
           border-bottom-right-radius: @br;
         }
-        &.disabled {
-          pointer-events: none;
-        }
         .code-btn {
           @h: 23px;
           font-size: 12px;
@@ -98,6 +95,12 @@ input::-webkit-input-placeholder{
           align-items: center;
           line-height: @h;
           color: #ffffff;
+          &.disabled {
+            pointer-events: none;
+            > span {
+              background-color: rgba(210,171,61,1);
+            }
+          }
           > span {
             width: 65px;
             height: @h;
@@ -134,6 +137,9 @@ input::-webkit-input-placeholder{
         .size(148px,@h);
         border-radius: 50px;
         box-shadow: 0px 8px 10px #C72020;
+        &.nouse {
+          pointer-events: none;
+        }
         #downloadBar {
           color: #ffffff;
           font-weight: bold;
