@@ -309,6 +309,9 @@ Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
     //机构详情分享
     Route::get('/commentorg/{id}', 'CommentOrgController@share_v1_9');
 
+    //红包详情分享
+    Route::get('/redpacket/{id}', 'RedPacketController@share_v1_9');
+
 });
 
 
