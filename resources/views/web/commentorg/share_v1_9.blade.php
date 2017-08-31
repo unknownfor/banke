@@ -33,18 +33,20 @@
     <div class="footer">
         <img class="footerTop" src="/front/assets/img/redbag/bgTop.png">
         <form class="register">
-                <div class="register-box phone">
-                    <input class="register-code" id="phone-num" placeholder="输入手机号"/>
-                </div>
-                <div class="register-box code-num">
-                    <input class="register-code" id="user-code" placeholder="验证码"/>
-                    <hr color="#9b9b9b" />
-                    <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码"/>
-                </div>
-                <div class="register-box password">
-                    <input class="register-code" id="password-num" type="password"  placeholder="密码"/>
-                </div>
-                <button class="btn gift nouse"><span id="downloadBar">领取奖励</span></button>
+            <div class="register-box phone">
+                <input class="register-code" id="phone-num" placeholder="输入手机号" />
+                <div class="code-btn disabled"><span>获取验证码</span></div>
+            </div>
+            <div class="register-box code-num">
+                <input class="register-code" id="user-code" placeholder="输入验证码"/>
+            </div>
+            <div class="register-box password">
+                <input class="register-code" id="password-num" type="password"  placeholder="输入密码"/>
+            </div>
+            <button class="btn gift nouse">
+                <span id="downloadBar">立即领取</span>
+                <span id="dot"></span>
+            </button>
         </form>
     </div>
 </div>

@@ -14,6 +14,10 @@ img {
 html {
   height: 100%;
 }
+input::-webkit-input-placeholder{
+  color: #CBB07F;
+  opacity:1;
+}
 #redBag {
   height: 100%;
   background-color: #FFF9D9;
@@ -35,7 +39,7 @@ html {
     position: relative;
     .middleBg {
       margin-left: 10px;
-      max-width: 90%;
+      max-width: 290px;
     }
     .middleTxt {
       position: absolute;
@@ -58,10 +62,8 @@ html {
   }
   .footer {
     position: relative;
-    .size(100%,200px);
+    height: 100%;
     background-color: #FFD162;
-    //transition:cubic-bezier(1,.4,.01,.98) ;
-    //transform:rotate(45deg)
     .footerTop {
       position: absolute;
       top: -31px;
@@ -70,13 +72,83 @@ html {
     }
     .register {
       @h: 40px;
+      @br: 10px;
       margin:0 40px;
       .register-box {
-        .size(100%,@h);
+        display: flex;
+        background-color: #FFF1D0;
+        &.phone {
+          border-top-left-radius: @br;
+          border-top-right-radius: @br;
+        }
+        &.password {
+          border-bottom-left-radius: @br;
+          border-bottom-right-radius: @br;
+        }
+        &.disabled {
+          pointer-events: none;
+        }
+        .code-btn {
+          @h: 23px;
+          font-size: 12px;
+          flex: 0 0 74px;
+          display: flex;
+          justify-items: center;
+          justify-content: center;
+          align-items: center;
+          line-height: @h;
+          color: #ffffff;
+          > span {
+            width: 65px;
+            height: @h;
+            background-color: #FEBF10;
+            border-radius: 4px;
+          }
+        }
         .register-code {
+          flex: 1;
+          height: @h;
+          padding: 0px;
+          border: none;
           background-color: #FFF1D0;
-          .size(100%,@h);
-          border: 1px solid #fafafa;
+          margin: 0 5px;
+          &#phone-num {
+            border-top-left-radius: @br;
+            border-top-right-radius: @br;
+          }
+          &#user-code {
+            border-top: 1px solid #C8B393;
+          }
+          &#password-num {
+            border-top: 1px solid #C8B393;
+            border-bottom-left-radius: @br;
+            border-bottom-right-radius: @br;
+          }
+        }
+      }
+      .btn {
+        position: relative;
+        border: none;
+        margin: 10px auto;
+        background-color: #F94F46;
+        .size(148px,@h);
+        border-radius: 50px;
+        box-shadow: 0px 8px 10px #C72020;
+        #downloadBar {
+          color: #ffffff;
+          font-weight: bold;
+          letter-spacing: 1px;
+        }
+        #dot {
+          @w: 39px*0.4;
+          @h: 33px*0.4;
+          .size(@w,@h);
+          display: inline-block;
+          position: absolute;
+          top: 19px;
+          right: 8px;
+          background: url("../../../img/redbag/dot.png") no-repeat;
+          background-size: @w @h;
         }
       }
     }
