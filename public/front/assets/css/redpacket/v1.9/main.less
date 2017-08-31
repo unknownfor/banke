@@ -1,0 +1,189 @@
+body {
+  margin:0 auto;
+  padding:0;
+  height: 100%;
+  max-width: 700px;
+  background-color: #F9F9F9;
+  overflow-x: hidden;
+  word-wrap:break-word;
+  position: relative;
+}
+img {
+  max-width: 100%;
+}
+html {
+  height: 100%;
+}
+input::-webkit-input-placeholder{
+  color: #CBB07F;
+  opacity:1;
+}
+#redBag {
+  height: 100%;
+  background-color: #FFF9D9;
+  position: relative;
+  text-align: center;
+  .head {
+    padding-top: 25px;
+    .slogen {
+      max-width: 65%;
+      margin-bottom: 10px;
+    }
+    .headTitle {
+      font-size: 18px;
+      font-weight: bold;
+      color: #996413;
+    }
+  }
+  .middle {
+    position: relative;
+    .middleBg {
+      margin-left: 10px;
+      max-width: 290px;
+    }
+    .middleTxt {
+      position: absolute;
+      top: 95px;
+      left: 0;
+      right: 0;
+      .txtOne {
+        color: #79625d;
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      .txtTwo {
+        color: #fa5047;
+        margin-top: 5px;
+        > span {
+          font-size: 28px;
+        }
+      }
+    }
+  }
+  .footer {
+    position: relative;
+    height: 100%;
+    background-color: #FFD162;
+    .footerTop {
+      position: absolute;
+      top: -31px;
+      left: 0;
+      right: 0;
+    }
+    .register {
+      @h: 40px;
+      @br: 10px;
+      margin: 0 40px;
+      .register-box {
+        display: flex;
+        background-color: #FFF1D0;
+        &.phone {
+          border-top-left-radius: @br;
+          border-top-right-radius: @br;
+        }
+        &.password {
+          border-bottom-left-radius: @br;
+          border-bottom-right-radius: @br;
+        }
+        .code-btn {
+          @h: 23px;
+          font-size: 12px;
+          flex: 0 0 74px;
+          display: flex;
+          justify-items: center;
+          justify-content: center;
+          align-items: center;
+          line-height: @h;
+          color: #ffffff;
+          &.disabled {
+            pointer-events: none;
+            > span {
+              background-color: rgba(210, 171, 61, 1);
+            }
+          }
+          > span {
+            width: 65px;
+            height: @h;
+            background-color: #FEBF10;
+            border-radius: 4px;
+          }
+        }
+        .register-code {
+          flex: 1;
+          height: @h;
+          padding: 0px;
+          border: none;
+          background-color: #FFF1D0;
+          margin: 0 5px;
+          &#phone-num {
+            border-top-left-radius: @br;
+            border-top-right-radius: @br;
+          }
+          &#user-code {
+            border-top: 1px solid #C8B393;
+          }
+          &#password-num {
+            border-top: 1px solid #C8B393;
+            border-bottom-left-radius: @br;
+            border-bottom-right-radius: @br;
+          }
+        }
+      }
+      .btn {
+        position: relative;
+        border: none;
+        margin: 10px auto;
+        background-color: #F94F46;
+        .size(148px, @h);
+        border-radius: 50px;
+        box-shadow: 0px 8px 10px #C72020;
+        &.nouse {
+          pointer-events: none;
+        }
+        #downloadBar {
+          color: #ffffff;
+          font-weight: bold;
+          letter-spacing: 1px;
+        }
+        #dot {
+          @w: 39px*0.4;
+          @h: 33px*0.4;
+          .size(@w, @h);
+          display: inline-block;
+          position: absolute;
+          top: 19px;
+          right: 8px;
+          background: url("../../../img/redbag/dot.png") no-repeat;
+          background-size: @w @h;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  #redBag {
+    .footer {
+      .footerTop {
+        top: -40px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  #redBag {
+    .footer {
+      .footerTop {
+        top: -36px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 320px) {
+  #redBag {
+    .footer {
+      .footerTop {
+        top: -31px;
+      }
+    }
+  }
+}

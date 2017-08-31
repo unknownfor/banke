@@ -387,12 +387,20 @@ img {
   border-radius: 4px;
 }
 #courseComment .container.joinBox .btn {
-  margin: 10px auto 0 auto;
   text-align: center;
-  width: 108px;
-  height: 30px;
   color: #ffffff;
   line-height: 30px;
+}
+#courseComment .container.joinBox .btn .downBtn {
+  display: inline-block;
+  width: 108px;
+  height: 30px;
+  margin: 10px auto 0 auto;
   border-radius: 4px;
+  background-color: rgba(246, 125, 49, 0.57);
+  pointer-events: none;
+}
+#courseComment .container.joinBox .btn .downBtn.active {
+  pointer-events: initial;
   background-color: #f67d31;
 }

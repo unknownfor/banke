@@ -178,13 +178,21 @@ img {
       }
       .btn {
         @h: 30px;
-        margin: 10px auto 0 auto;
         text-align: center;
-        .size(108px,@h);
         color: #ffffff;
         line-height: @h;
-        border-radius: 4px;
-        background-color: #f67d31;
+        .downBtn {
+          display: inline-block;
+          .size(108px,@h);
+          margin: 10px auto 0 auto;
+          border-radius: 4px;
+          background-color: rgba(246,125,49,0.57);
+          pointer-events: none;
+          &.active {
+            pointer-events: initial;
+            background-color: #f67d31;
+          }
+        }
       }
     }
   }
