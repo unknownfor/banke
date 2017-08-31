@@ -84,12 +84,11 @@
                           </div>
                       </div>
 
-
                       <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="slug">{{trans('labels.activity.content')}}</label>
+                          <label class="col-md-1 control-label" for="url">{{trans('labels.activity.url')}}(内链)</label>
                           <div class="col-md-8">
-                              <textarea style="display: none" name="content" id="area_outlink_noraml">{{$activity['content']}}</textarea>
-                              <textarea id="my-editor"></textarea>
+                              <input type="text" class="form-control" id="url" name="url" placeholder="{{trans('labels.activity.url')}}" value="{{$activity['url']}}">
+                              <div class="form-control-focus"> </div>
                           </div>
                       </div>
 
@@ -100,7 +99,7 @@
                                   <div class="add-img-btn add-cover-img-btn">+
                                       <div class="img-size-tips">16:7的图片</div>
                                   </div>
-                                  <ul class="imgs-list-box cover-list-box-outlink-normal">
+                                  <ul class="imgs-list-box cover-list-box-inlink">
                                       @if($activity['cover'])
                                           <li>
                                               <a href="{{$activity['cover']}}" data-size="435x263"></a>
@@ -109,7 +108,7 @@
                                           </li>
                                       @endif
                                   </ul>
-                                  <input type="hidden" value="{{$activity['cover']}}" name="cover" id="cover_outlink_narmal">
+                                  <input type="hidden" value="{{$activity['cover']}}" name="cover" id="cover_inlink">
                               </div>
                           </div>
                       </div>
@@ -129,7 +128,7 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="course">{{trans('labels.activity.course')}}</label>
                           <div class="col-md-8">
-                              <select class="selectpicker course-select-outlink-normal show-tick form-control" data-live-search="true" multiple="multiple">
+                              <select class="selectpicker course-select-inlink show-tick form-control" data-live-search="true" multiple="multiple">
                                   @if($allcourse)
                                       @foreach($allcourse as $v)
                                           <option value="{{$v->id}}" @if(in_array($v->id, $activity['course_arr'])) selected @endif>
@@ -138,7 +137,7 @@
                                       @endforeach
                                   @endif
                               </select>
-                              <input type="hidden" name="course" id="course_outlink_noraml" value="{{$activity['course']}}">
+                              <input type="hidden" name="course" id="course_inlink" value="{{$activity['course']}}">
                           </div>
                       </div>
 
