@@ -448,6 +448,7 @@ return [
 		'id' => '序号',
 		'name' => '姓名',
 		'mobile' => '手机号',
+		'invitor_mobile' => '邀请人手机号',
 		'org_id' => '机构',
 		'course_id' => '课程',
 		'processing_result' => '处理结果',
