@@ -38,6 +38,11 @@ var TableDatatablesAjax = function() {
               "orderable" : false,
           },
           {
+              "data": "invitor_mobile",
+              "name": "invitor_mobile",
+              "orderable" : false,
+          },
+          {
               "data": "org_name",
               "name": "org_name",
               "orderable" : false,

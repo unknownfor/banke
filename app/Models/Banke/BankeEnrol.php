@@ -61,7 +61,7 @@ class BankeEnrol extends Model
 
     //
     public  function userSimple(){
-        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid')->select('uid','name','avatar');
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','uid')->select('uid','mobile','name','avatar');
     }
 
 
@@ -73,7 +73,7 @@ class BankeEnrol extends Model
 
     //邀请人 实名后
     public  function invitorAuthenUserSimple(){
-        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','invitation_uid')->select('uid','real_name');;
+        return $this->hasOne('App\Models\Banke\BankeUserAuthentication','uid','invitation_uid')->select('uid','mobile','real_name');;
     }
 
     //邀请人 未实名
@@ -83,7 +83,7 @@ class BankeEnrol extends Model
 
     //邀请人
     public  function invitorUserSimple(){
-        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','invitation_uid')->select('uid','name','avatar','user_type');
+        return $this->hasOne('App\Models\Banke\BankeUserProfiles','uid','invitation_uid')->select('uid','name','mobile','avatar','user_type');
     }
 
 }

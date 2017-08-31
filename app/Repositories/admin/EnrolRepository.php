@@ -94,6 +94,7 @@ class EnrolRepository
 			foreach ($enrols as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute(false);
 				$v['org_name']=$v->org['name'];
+				$v['invitor_mobile']=$v->invitorUserSimple['mobile'];
 				$course=$v->course;
 				if($course){
 					$v['course_name']=$course['name'];
