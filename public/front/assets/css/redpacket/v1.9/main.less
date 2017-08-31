@@ -73,7 +73,7 @@ input::-webkit-input-placeholder{
     .register {
       @h: 40px;
       @br: 10px;
-      margin:0 40px;
+      margin: 0 40px;
       .register-box {
         display: flex;
         background-color: #FFF1D0;
@@ -98,7 +98,7 @@ input::-webkit-input-placeholder{
           &.disabled {
             pointer-events: none;
             > span {
-              background-color: rgba(210,171,61,1);
+              background-color: rgba(210, 171, 61, 1);
             }
           }
           > span {
@@ -134,7 +134,7 @@ input::-webkit-input-placeholder{
         border: none;
         margin: 10px auto;
         background-color: #F94F46;
-        .size(148px,@h);
+        .size(148px, @h);
         border-radius: 50px;
         box-shadow: 0px 8px 10px #C72020;
         &.nouse {
@@ -148,7 +148,7 @@ input::-webkit-input-placeholder{
         #dot {
           @w: 39px*0.4;
           @h: 33px*0.4;
-          .size(@w,@h);
+          .size(@w, @h);
           display: inline-block;
           position: absolute;
           top: 19px;
@@ -156,6 +156,33 @@ input::-webkit-input-placeholder{
           background: url("../../../img/redbag/dot.png") no-repeat;
           background-size: @w @h;
         }
+      }
+    }
+  }
+}
+@media screen and (max-width: 420px) {
+  #redBag {
+    .footer {
+      .footerTop {
+        top: -40px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  #redBag {
+    .footer {
+      .footerTop {
+        top: -36px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 320px) {
+  #redBag {
+    .footer {
+      .footerTop {
+        top: -31px;
       }
     }
   }

@@ -43,6 +43,8 @@ $(function () {
         return h;
     }
 
+
+
     /*添加加载动画*/
     window.addLoadingImg = function(){
         if($('#loading-data').length>0){
@@ -150,8 +152,6 @@ $(function () {
     };
 
 
-
-
     /*
      *判断webview的来源
      */
@@ -170,7 +170,6 @@ $(function () {
             webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
         };
     };
-
 });
 
 //请求数据

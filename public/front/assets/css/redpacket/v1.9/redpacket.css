@@ -364,3 +364,18 @@ input::-webkit-input-placeholder {
   -webkit-background-size: 15.6px 13.2px;
   background-size: 15.6px 13.2px;
 }
+@media screen and (max-width: 420px) {
+  #redBag .footer .footerTop {
+    top: -40px;
+  }
+}
+@media screen and (max-width: 380px) {
+  #redBag .footer .footerTop {
+    top: -36px;
+  }
+}
+@media screen and (max-width: 320px) {
+  #redBag .footer .footerTop {
+    top: -31px;
+  }
+}
