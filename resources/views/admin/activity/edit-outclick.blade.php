@@ -127,6 +127,7 @@
                               <p>1.点击<a href="https://tinypng.com/" target="tinypng" name="tinypng">打开网址</a>,上传图片进行压缩</p>
                               <p>2.下载压缩好的图片</p>
                               <p>3.在当前的页面上传详情图</p>
+                              <p>4.可拖动排序</p>
                           </div>
                       </div>
 
@@ -171,11 +172,12 @@
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label">{{trans('labels.activity.content_img_url')}}</label>
                           <div class="col-md-9">
-                              <div class="cover-box">
+                              <div class="cover-box"  style="color:red;">
                                   <p>对应每个详情图的地址，地址格式为：banke://organization/detailinfo?id=12</p>
                                   <p>不明白之处请咨询测试妹子</p>
+                                  <p>可拖动排序</p>
                                   <button type="button" class="btn blue" id="add-img-url">添加</button>
-                                  <ul class="content-img-url-box">
+                                  <ul class="content-img-url-box" style="color:#333;">
                                       {{--<li>--}}
                                       {{--<input type="text" placeholder="请输入链接地址">--}}
                                       {{--<span class="color-block danger">删除</span>--}}

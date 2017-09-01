@@ -80,7 +80,7 @@
                           <label class="col-md-1 control-label" for="img_url">{{trans('labels.activity.cover')}}</label>
                           <div class="col-md-9">
                               <div class="cover-box">
-                                  <div class="add-img-btn add-cover-img-btn">+
+                                  <div class="add-img-btn add-content-img-btn-inlink">+
                                       <div class="img-size-tips">16:7的图片</div>
                                   </div>
                                   <ul class="imgs-list-box cover-list-box-inlink">

@@ -37,12 +37,12 @@ $(function(){
         });
 
         /*上传封面文件  普通外链*/
-        $(document).on('click','.add-content-img-btn-outlink-normal', function(){
+        $(document).on('click','.add-cover-img-btn-outlink-normal', function(){
             $('#uploadImgFile3').trigger('click');
         });
 
         /*上传封面文件  内链*/
-        $(document).on('click','.add-content-img-btn-inlink', function(){
+        $(document).on('click','.add-cover-img-btn-inlink', function(){
             $('#uploadImgFile5').trigger('click');
         });
 
@@ -236,7 +236,7 @@ $(function(){
                 data=JSON.parse(data);
                 if(data) {
                     var str=that.getImgStr(data.filedata);
-                    $('.content-img-list-box').html(str);
+                    $('.content-img-list-box').append(str);
                     that.controlLoadingCircleStatus(false);
                     $form[0].reset();
                 }

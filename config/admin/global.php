@@ -386,7 +386,7 @@ return[
 	'task' => [
 		// 控制是否显示查看按钮
 		'show' => false,
-		'action' => 'freestudy',
+		'action' => 'task',
 	],
 
 ];

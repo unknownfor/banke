@@ -111,11 +111,11 @@
                                                             <div class="img-size-tips">16:7的图片</div>
                                                         </div>
                                                         <ul class="imgs-list-box cover-list-box cover-list-box-outlink-click">
-                                                            <li>
-                                                            <a href="http://pic.hisihi.com/2017-04-22/1492852034793583.jpg" data-size="435x263"></a>
-                                                            <img src="http://pic.hisihi.com/2017-04-22/1492852034793583.jpg@142w_80h_1e">
-                                                            <span class="remove-img">×</span>
-                                                            </li>
+                                                            {{--<li>--}}
+                                                            {{--<a href="http://pic.hisihi.com/2017-04-22/1492852034793583.jpg" data-size="435x263"></a>--}}
+                                                            {{--<img src="http://pic.hisihi.com/2017-04-22/1492852034793583.jpg@142w_80h_1e">--}}
+                                                            {{--<span class="remove-img">×</span>--}}
+                                                            {{--</li>--}}
                                                         </ul>
                                                         <input id="cover_outlink_click" name="cover" type="hidden" value="">
                                                     </div>
@@ -129,6 +129,7 @@
                                                     <p>1.点击<a href="https://tinypng.com/" target="tinypng" name="tinypng">打开网址</a>,上传图片进行压缩</p>
                                                     <p>2.下载压缩好的图片</p>
                                                     <p>3.在当前的页面上传详情图</p>
+                                                    <p>4.可拖动排序</p>
                                                 </div>
                                             </div>
 
@@ -140,16 +141,16 @@
                                                             <div class="img-size-tips">图片可拖动排序</div>
                                                         </div>
                                                         <ul class="imgs-list-box content-img-list-box">
-                                                            <li>
-                                                                <a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>
-                                                                <img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">
-                                                                <span class="remove-img">×</span>
-                                                            </li>
-                                                            <li>
-                                                                <a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>
-                                                                <img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">
-                                                                <span class="remove-img">×</span>
-                                                            </li>
+                                                            {{--<li>--}}
+                                                                {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
+                                                                {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
+                                                                {{--<span class="remove-img">×</span>--}}
+                                                            {{--</li>--}}
+                                                            {{--<li>--}}
+                                                                {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
+                                                                {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
+                                                                {{--<span class="remove-img">×</span>--}}
+                                                            {{--</li>--}}
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -158,11 +159,12 @@
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label">{{trans('labels.activity.content_img_url')}}</label>
                                                 <div class="col-md-9">
-                                                    <div class="cover-box">
+                                                    <div class="cover-box" style="color:red;">
                                                         <p>对应每个详情图的地址，地址格式为：banke://organization/detailinfo?id=12</p>
                                                         <p>不明白之处请咨询测试妹子</p>
+                                                        <p>可拖动排序</p>
                                                         <button type="button" class="btn blue" id="add-img-url">添加</button>
-                                                        <ul class="content-img-url-box">
+                                                        <ul class="content-img-url-box" style="color:#333;">
                                                             {{--<li>--}}
                                                                 {{--<input type="text" placeholder="请输入链接地址">--}}
                                                                 {{--<span class="color-block danger">删除</span>--}}
@@ -274,11 +276,11 @@
                                                             <div class="img-size-tips">16:7的图片</div>
                                                         </div>
                                                         <ul class="imgs-list-box cover-list-box-outlink-normal">
-                                                            <li>
-                                                            <a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>
-                                                            <img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">
-                                                            <span class="remove-img">×</span>
-                                                            </li>
+                                                            {{--<li>--}}
+                                                            {{--<a href="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg" data-size="435x263"></a>--}}
+                                                            {{--<img src="http://pic.hisihi.com/2017-07-25/1500964421228791.jpg@142w_80h_1e">--}}
+                                                            {{--<span class="remove-img">×</span>--}}
+                                                            {{--</li>--}}
                                                         </ul>
                                                         <input id="cover_outlink_narmal" name="cover" type="hidden" value="">
                                                     </div>
@@ -371,7 +373,7 @@
                                 <div class="tab-pane" id="panel-778017">
                                     <form role="form" class="form-horizontal" method="POST" action="{{url('admin/activity')}}">
                                         {!! csrf_field() !!}
-                                        <input type="hidden" name="type" value="1">
+                                        <input type="hidden" name="url_type" value="0">
                                         <div class="form-body">
                                             <div class="form-group form-md-line-input">
                                                 <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
@@ -430,7 +432,7 @@
                                                             @endforeach
                                                         @endif
                                                     </select>
-                                                    <input type="hidden" name="course" id="course_inlink">
+                                                    <input type="hidden" name="course" id="course_cover_inlink">
                                                 </div>
                                             </div>
 

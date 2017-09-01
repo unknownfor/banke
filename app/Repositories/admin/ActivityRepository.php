@@ -41,6 +41,11 @@ class ActivityRepository
 		if ($activitys) {
 			foreach ($activitys as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
+				$url='';
+				if($v['url_type']==1) {
+					$url='http://'.env('ADMIN_DOMAIN').'/v1.8/share/activity/'.$v['id'];
+				}
+				$v['url']=$url;
 			}
 		}
 		return [

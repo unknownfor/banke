@@ -16,12 +16,12 @@ $(function(){
         }
         /*上传文件*/
 
-        $(document).on('change', '#uploadImgFile5', $.proxy(this,'initUploadCoverInLink'));
+        $(document).on('change', '#uploadImgFile1', $.proxy(this,'initUploadCoverInLink'));
 
 
         /*上传封面文件  内链*/
         $(document).on('click','.add-content-img-btn-inlink', function(){
-            $('#uploadImgFile5').trigger('click');
+            $('#uploadImgFile1').trigger('click');
         });
 
         $(document).on('click','.remove-img', $.proxy(this,'deletCoverImg'));

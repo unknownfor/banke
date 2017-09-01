@@ -291,4 +291,10 @@ return[
 
 	],
 
+	'task'=>[
+		'create' 	=> 'admin.task.create',
+		'edit' 	=> 'admin.task.edit',
+		'destroy' 	=> 'admin.task.delete',
+	],
+
 ];
