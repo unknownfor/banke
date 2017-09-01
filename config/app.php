@@ -281,6 +281,7 @@ return [
         'FreeStudyRepository' => App\Facades\FreeStudyFacade::class,
         'FreeStudyUsersRepository' => App\Facades\FreeStudyUsersFacade::class,
         'TaskRepository' => App\Facades\TaskFacade::class,
+        'TaskFormRepository' => App\Facades\TaskFormFacade::class,
     ],
 
 ];

@@ -2,13 +2,13 @@
 namespace App\Repositories\admin;
 use Carbon\Carbon;
 use Flash;
-use App\Models\Banke\BankeTask;
+use App\Models\Banke\BankeTaskForm;
 use Illuminate\Support\Facades\Log;
 
 /**
-* 任务仓库
+* 任务期数仓库
 */
-class TaskRepository
+class TaskFormRepository
 {
 
 
@@ -26,20 +26,20 @@ class TaskRepository
 
 		$status = request('status' ,'');
 
-		$task = new BankeTask;
+		$taskform = new BankeTaskForm;
 
 		/*状态搜索*/
 		if ($status!=null) {
-			$task = $task->where('status', $status);
+			$taskform = $taskform->where('status', $status);
 		}
 
-		$count = $task->count();
+		$count = $taskform->count();
 
-		$task = $task->offset($start)->limit($length);
-		$tasks = $task->orderBy("id", "desc")->get();
+		$taskform = $taskform->offset($start)->limit($length);
+		$taskforms = $taskform->orderBy("id", "desc")->get();
 
-		if ($tasks) {
-			foreach ($tasks as &$v) {
+		if ($taskforms) {
+			foreach ($taskforms as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
 			}
 		}
@@ -47,7 +47,7 @@ class TaskRepository
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $tasks,
+			'data' => $taskforms,
 		];
 	}
 
@@ -62,19 +62,12 @@ class TaskRepository
 	public function store($request)
 	{
 		$input=$request->all();
-		$tempTask=BankeTask::orderBy('id', 'desc');
-		$maxNum=1;
-		if($tempTask->count()>0){
-			$tempTask=$tempTask->first();
-			$maxNum=$tempTask['type']+1;
+		$taskform = new BankeTaskForm;
+		if ($taskform->fill($input)->save()) {
+			Flash::success(trans('alerts.taskform.created_success'));
+			return $taskform->id;
 		}
-		$input['type']=$maxNum;
-		$task = new BankeTask;
-		if ($task->fill($input)->save()) {
-			Flash::success(trans('alerts.task.created_success'));
-			return $task->id;
-		}
-		Flash::error(trans('alerts.task.created_error'));
+		Flash::error(trans('alerts.taskform.created_error'));
 		return false;
 	}
 
@@ -87,7 +80,7 @@ class TaskRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeTask::find($id);
+		$role = BankeTaskForm::find($id);
 		if ($role) {
 			$roleArray = $role->toArray();
 			return $roleArray;
@@ -104,8 +97,8 @@ class TaskRepository
 	 */
 	public function show($id)
 	{
-		$task = BankeTask::find($id)->toArray();
-		return $task;
+		$taskform = BankeTaskForm::find($id)->toArray();
+		return $taskform;
 	}
 
 	/**
@@ -118,13 +111,13 @@ class TaskRepository
 	 */
 	public function update($request,$id)
 	{
-		$role = BankeTask::find($id);
+		$role = BankeTaskForm::find($id);
 		if ($role) {
 			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.task.updated_success'));
+				Flash::success(trans('alerts.taskform.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.task.updated_error'));
+			Flash::error(trans('alerts.taskform.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -140,12 +133,12 @@ class TaskRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeTask::destroy($id);
+		$isDelete = BankeTaskForm::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.task.deleted_success'));
+			Flash::success(trans('alerts.taskform.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.task.deleted_error'));
+		Flash::error(trans('alerts.taskform.deleted_error'));
 		return false;
 	}
 }

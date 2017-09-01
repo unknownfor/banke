@@ -249,5 +249,10 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('TaskRepository', function($app){
             return new \App\Repositories\admin\TaskRepository();
         });
+
+        //半课任务期数
+        $this->app->singleton('TaskFormRepository', function($app){
+            return new \App\Repositories\admin\TaskFormRepository();
+        });
     }
 }

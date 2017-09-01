@@ -322,4 +322,22 @@ return [
         'deleted_error' => '删除免费学失败',
     ],
 
+    'task' => [
+        'created_success'   => '创建任务类型成功.',
+        'created_error'     => '创建任务类型失败.',
+        'updated_success'   => '编辑任务类型成功.',
+        'updated_error'     => '编辑任务类型失败.',
+        'deleted_success' => '删除任务类型成功',
+        'deleted_error' => '删除任务类型失败',
+    ],
+
+    'taskform' => [
+        'created_success'   => '创建任务期数成功.',
+        'created_error'     => '创建任务期数失败.',
+        'updated_success'   => '编辑任务期数成功.',
+        'updated_error'     => '编辑任务期数失败.',
+        'deleted_success' => '删除任务期数成功',
+        'deleted_error' => '删除任务期数失败',
+    ],
+
 ];

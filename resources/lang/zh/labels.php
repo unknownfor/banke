@@ -264,6 +264,14 @@ return [
 
 		'freestudyusersList' => '<i class="fa fa-list"></i> 免费学员列表',
 
+		'taskList' => '<i class="fa fa-list"></i> 任务列表',
+		'taskCreate' => '<i class="fa fa-list"></i> 添加任务',
+		'taskEdit' => '<i class="fa fa-list"></i> 编辑任务',
+
+		'taskformList' => '<i class="fa fa-list"></i> 任务期数列表',
+		'taskformCreate' => '<i class="fa fa-list"></i> 添加期数任务',
+		'taskformEdit' => '<i class="fa fa-list"></i> 编辑期数任务',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -915,6 +923,33 @@ return [
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
 		'list' => '免费学人员列表',
+	],
+
+	'task' => [
+		'id' => '序号',
+		'name' => '名称',
+		'type'=>'任务类型',
+		'award_coin'=>'奖励金额',
+		'award_type'=>'奖励形式',
+		'cycle'=>'任务周期',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'time_end' => '结束时间',
+		'list' => '任务类型列表',
+		'memo' => '任务描述',
+	],
+
+	'taskform' => [
+		'id' => '序号',
+		'name' => '期数名称',
+		'seq_no'=>'期数',
+		'user_type'=>'用户类型',
+		'status' => '状态',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
+		'time_end' => '结束时间',
+		'list' => '任务期数列表',
 	],
 
 ];
