@@ -4,8 +4,9 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}">
     <style type="text/css">
-        .imgs-list-box li{
-            width: 160px;
+        textarea{
+            height: 170px;
+            width: 80%;
         }
     </style>
 @endsection
@@ -84,7 +85,7 @@
                   <div class="form-group form-md-line-input">
                       <label class="col-md-1 control-label" for="award_coin">{{trans('labels.task.award_coin')}}</label>
                       <div class="col-md-8">
-                          <input type="number" class="form-control" id="award_coin" name="award_coin" placeholder="{{trans('labels.task.award_coin')}}" value="{{old('award_coin')}}">
+                          <input type="number" class="form-control" id="award_coin" name="award_coin" placeholder="{{trans('labels.task.award_coin')}}" value="{{$task['award_coin']}}">
                           <div class="form-control-focus"> </div>
                       </div>
                   </div>
@@ -95,21 +96,24 @@
                       <div class="col-md-10">
                           <div class="md-radio-inline">
                               <div class="md-radio">
-                                  <input type="radio" id="award_type1" name="award_type" value="1" class="md-radiobtn" @i checked>
+                                  <input type="radio" id="award_type1" name="award_type" value="1" class="md-radiobtn"
+                                         @if($task['award_type']==1) checked @endif>
                                   <label for="award_type1">
                                       <span></span>
                                       <span class="check"></span>
                                       <span class="box"></span> 人民币 </label>
                               </div>
                               <div class="md-radio">
-                                  <input type="radio" id="award_type2" name="award_type" value="2" class="md-radiobtn" >
+                                  <input type="radio" id="award_type2" name="award_type" value="2" class="md-radiobtn"
+                                         @if($task['award_type']==2) checked @endif>
                                   <label for="award_type2">
                                       <span></span>
                                       <span class="check"></span>
                                       <span class="box"></span> 女盆友</label>
                               </div>
                               <div class="md-radio">
-                                  <input type="radio" id="award_type3" name="award_type" value="3" class="md-radiobtn" >
+                                  <input type="radio" id="award_type3" name="award_type" value="3" class="md-radiobtn"
+                                         @if($task['award_type']==3) checked @endif>
                                   <label for="award_type3">
                                       <span></span>
                                       <span class="check"></span>
@@ -122,7 +126,7 @@
                   <div class="form-group form-md-line-input">
                       <label class="col-md-1 control-label" for="memo">{{trans('labels.task.memo')}}</label>
                       <div class="col-md-8">
-                          <textarea name="memo"></textarea>
+                          <textarea name="memo">{{$task['memo']}}</textarea>
                           <div class="form-control-focus"> </div>
                       </div>
                   </div>
@@ -133,21 +137,24 @@
                       <div class="col-md-10">
                           <div class="md-radio-inline">
                               <div class="md-radio">
-                                  <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn" checked>
+                                  <input type="radio" id="status1" name="status" value="{{config('admin.global.status.active')}}" class="md-radiobtn"
+                                         @if($task['status']==config('admin.global.status.active')) checked @endif>
                                   <label for="status1">
                                       <span></span>
                                       <span class="check"></span>
                                       <span class="box"></span> {{trans('strings.common_status.active.1')}} </label>
                               </div>
                               <div class="md-radio">
-                                  <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn">
+                                  <input type="radio" id="status2" name="status" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"
+                                         @if($task['status']==config('admin.global.status.audit')) checked @endif>
                                   <label for="status2">
                                       <span></span>
                                       <span class="check"></span>
                                       <span class="box"></span> {{trans('strings.common_status.audit.1')}} </label>
                               </div>
                               <div class="md-radio">
-                                  <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn">
+                                  <input type="radio" id="status3" name="status" value="{{config('admin.global.status.trash')}}" class="md-radiobtn"
+                                         @if($task['status']==config('admin.global.status.trash')) checked @endif>
                                   <label for="status3">
                                       <span></span>
                                       <span class="check"></span>

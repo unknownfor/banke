@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/editor/simditor.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
     <style type="text/css">
         textarea{
             height: 170px;
@@ -176,22 +175,7 @@
     </div>
 @endsection
 @section('js')
-    <script type="text/javascript" src="{{asset('backend/js/libs/jquery.form.js')}}"></script>
-    {{--????--}}
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/module.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/uploader.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/hotkeys.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/editor/simditor.js')}}"></script>
-
-
-    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
-
-    {{--图片查看--}}
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/photoswipe-ui-default.min.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
-
+    <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/taskform/index.js')}}"></script>
 @endsection
