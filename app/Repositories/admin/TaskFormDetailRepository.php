@@ -2,13 +2,13 @@
 namespace App\Repositories\admin;
 use Carbon\Carbon;
 use Flash;
-use App\Models\Banke\BankeTaskForm;
+use App\Models\Banke\BankeTaskFormDetail;
 use Illuminate\Support\Facades\Log;
 
 /**
-* 任务期数仓库
+* 15天任务表仓库
 */
-class TaskFormRepository
+class TaskFormDetailRepository
 {
 
 
@@ -26,34 +26,38 @@ class TaskFormRepository
 
 		$status = request('status' ,'');
 
-		$taskform = new BankeTaskForm;
+		$taskFormDetail = new BankeTaskFormDetail;
 
 		/*状态搜索*/
 		if ($status!=null) {
-			$taskform = $taskform->where('status', $status);
+			$taskFormDetail = $taskFormDetail->where('status', $status);
 		}
 
-		$count = $taskform->count();
+		$count = $taskFormDetail->count();
 
-		$taskform = $taskform->offset($start)->limit($length);
-		$taskforms = $taskform->orderBy("id", "desc")->get();
+		$taskFormDetail = $taskFormDetail->offset($start)->limit($length);
+		$taskFormDetails = $taskFormDetail->orderBy("id", "desc")->get();
 
-		if ($taskforms) {
-			foreach ($taskforms as &$v) {
+		if ($taskFormDetails) {
+			foreach ($taskFormDetails as &$v) {
 				$v['actionButton'] = $v->getActionButtonAttribute();
+				$taskform=$v->taskform;
+				$v['task_type_name']=$v->tasktype['name'];
+				$v['seq_no_name']=$taskform['name'];
+				$v['user_type']=$taskform['user_type'];
 			}
 		}
 		return [
 			'draw' => $draw,
 			'recordsTotal' => $count,
 			'recordsFiltered' => $count,
-			'data' => $taskforms,
+			'data' => $taskFormDetails,
 		];
 	}
 
 
 
-	/**添加任务
+	/**添加15任务
 	 * @author shaolei
 	 * @date   2016-04-14T11:32:04+0800
 	 * @param  [type]                   $request [description]
@@ -61,18 +65,35 @@ class TaskFormRepository
 	 */
 	public function store($request)
 	{
-		$input=$request->all();
-		$taskform = new BankeTaskForm;
-		if ($taskform->fill($input)->save()) {
-			Flash::success(trans('alerts.taskform.created_success'));
-			return $taskform->id;
+		$taskFormDetail = new BankeTaskFormDetail;
+		if ($taskFormDetail->fill($request->all())->save()) {
+			Flash::success(trans('alerts.taskformdetail.created_success'));
+			return $taskFormDetail->id;
 		}
-		Flash::error(trans('alerts.taskform.created_error'));
+		Flash::error(trans('alerts.taskformdetail.created_error'));
+		return false;
+	}
+
+	/**添加15任务 可以点击的外链
+	 * @author shaolei
+	 * @date   2016-04-14T11:32:04+0800
+	 * @param  [type]                   $request [description]
+	 * @return [type]                            [description]
+	 */
+	public function storeOutlinkClick($request)
+	{
+		$input=$request->all();
+		$taskFormDetail = new BankeTaskFormDetail;
+		if ($taskFormDetail->fill($request->all())->save()) {
+			Flash::success(trans('alerts.taskformdetail.created_success'));
+			return $taskFormDetail->id;
+		}
+		Flash::error(trans('alerts.taskformdetail.created_error'));
 		return false;
 	}
 
 	/**
-	 * 修改任务
+	 * 修改15任务
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:34+0800
 	 * @param  [type]                   $id [description]
@@ -80,7 +101,7 @@ class TaskFormRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeTaskForm::find($id);
+		$role = BankeTaskFormDetail::find($id);
 		if ($role) {
 			$roleArray = $role->toArray();
 			return $roleArray;
@@ -89,7 +110,7 @@ class TaskFormRepository
 	}
 
 	/**
-	 * 查看任务
+	 * 查看15任务
 	 * @author 晚黎
 	 * @date   2016-04-13T17:09:22+0800
 	 * @param  [type]                   $id [description]
@@ -97,12 +118,12 @@ class TaskFormRepository
 	 */
 	public function show($id)
 	{
-		$taskform = BankeTaskForm::find($id)->toArray();
-		return $taskform;
+		$taskFormDetail = BankeTaskFormDetail::find($id)->toArray();
+		return $taskFormDetail;
 	}
 
 	/**
-	 * 修改任务
+	 * 修改15任务
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]
@@ -111,13 +132,13 @@ class TaskFormRepository
 	 */
 	public function update($request,$id)
 	{
-		$role = BankeTaskForm::find($id);
+		$role = BankeTaskFormDetail::find($id);
 		if ($role) {
 			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.taskform.updated_success'));
+				Flash::success(trans('alerts.taskformdetail.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.taskform.updated_error'));
+			Flash::error(trans('alerts.taskformdetail.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -125,7 +146,7 @@ class TaskFormRepository
 
 
 	/**
-	 * 删除任务
+	 * 删除15任务
 	 * @author shaolei
 	 * @date   2016-04-13T11:51:19+0800
 	 * @param  [type]                   $id [description]
@@ -133,17 +154,12 @@ class TaskFormRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeTaskForm::destroy($id);
+		$isDelete = BankeTaskFormDetail::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.taskform.deleted_success'));
+			Flash::success(trans('alerts.taskformdetail.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.taskform.deleted_error'));
+		Flash::error(trans('alerts.taskformdetail.deleted_error'));
 		return false;
-	}
-
-	public static function getTaskFormByUserType($user_type){
-		$form = BankeTaskForm::where('user_type',$user_type)->get(['id','name','seq_no','user_type']);
-		return $form;
 	}
 }

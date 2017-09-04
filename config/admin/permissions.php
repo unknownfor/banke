@@ -303,4 +303,10 @@ return[
 		'destroy' 	=> 'admin.taskform.delete',
 	],
 
+	'taskformdetail'=>[
+		'create' 	=> 'admin.taskformdetail.create',
+		'edit' 	=> 'admin.taskformdetail.edit',
+		'destroy' 	=> 'admin.taskformdetail.delete',
+	],
+
 ];
