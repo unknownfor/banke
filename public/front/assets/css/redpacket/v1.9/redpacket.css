@@ -364,6 +364,66 @@ input::-webkit-input-placeholder {
   -webkit-background-size: 15.6px 13.2px;
   background-size: 15.6px 13.2px;
 }
+#redBag .container {
+  opacity: 0;
+  -webkit-animation: slideToTop .8s 0.2s ease both;
+  position: relative;
+  background-color: #ffffff;
+  height: 100%;
+  overflow-x: hidden;
+  text-align: center;
+}
+#redBag .container .bg {
+  max-height: 220px;
+  margin-bottom: 10px;
+}
+#redBag .container .bg.second {
+  margin-top: 80px;
+}
+#redBag .container .txt {
+  letter-spacing: 1px;
+}
+#redBag .container .txt.txt-one {
+  margin: 25px 0 10px 0;
+  font-size: 14px;
+}
+#redBag .container .txt.txt-two {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 5px;
+}
+#redBag .container .txt.txt-two > span {
+  color: #FA4535;
+}
+#redBag .container .btn {
+  margin: 0 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 45px;
+  font-size: 14px;
+  width: auto;
+  height: 45px;
+  line-height: 45px;
+  color: #ffffff;
+  border-radius: 10px;
+  background-color: rgba(250, 192, 46, 0.5);
+  border: none;
+}
+#redBag .container .btn > a {
+  color: #fff;
+}
+#redBag .container .btn.active {
+  background-color: #FAC02E;
+}
+#redBag .container.hide {
+  display: none;
+}
+#redBag .hide {
+  display: none;
+  opacity: 0;
+}
 @media screen and (max-width: 420px) {
   #redBag .footer .footerTop {
     top: -40px;

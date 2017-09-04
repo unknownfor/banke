@@ -113,6 +113,7 @@
     <ul class="course container">
         <li class="course-btn selected" id="detail"><span>课程详情</span></li>
         <li class="course-btn" id="special"><span>机构特色</span></li>
+        <li class="course-btn" id="course-eva"><span>课程评价</span></li>
         <li class="course-btn" id="evaluate"><span>机构评价</span></li>
     </ul>
 
@@ -169,6 +170,28 @@
         @endif
     </div>
 
+    <div class="evaluate-info course-info container hide">
+        @foreach($comments as $v)
+            <div class="evaluate-box" data-uid="{{$v['uid']}}">
+                <div class="evaluate-img">
+                    <img src="{{$v['user_info']['avatar']}}" />
+                </div>
+                <div class="evaluate-detail">
+                    <div class="name">{{$v['user_info']['name']}}</div>
+                    <div class="stars" data-grade-total="{{$v->star_counts}}"></div>
+                    <div class="detail">
+                        {{$v['content']}}
+                    </div>
+                    <?php
+                    $time =substr($v['created_at'],0,16);
+                    ?>
+                    <div class="time">
+                        {{$time}}
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
 
     @if($comments->count()>0)
     <div class="evaluate-info container hide">
