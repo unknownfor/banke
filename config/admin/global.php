@@ -395,4 +395,11 @@ return[
 		'action' => 'taskform',
 	],
 
+	//半课一期所有任务
+	'taskformdetail' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'taskformdetail',
+	],
+
 ];

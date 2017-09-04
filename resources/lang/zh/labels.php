@@ -272,6 +272,10 @@ return [
 		'taskformCreate' => '<i class="fa fa-list"></i> 添加期数任务',
 		'taskformEdit' => '<i class="fa fa-list"></i> 编辑期数任务',
 
+		'taskformdetailList' => '<i class="fa fa-list"></i> 一期任务列表',
+		'taskformdetailCreate' => '<i class="fa fa-list"></i> 添加一期任务',
+		'taskformdetailEdit' => '<i class="fa fa-list"></i> 编辑一期任务',
+
 	],
 	'dict' => [
 		'id' => '序号',
@@ -950,6 +954,26 @@ return [
 		'updated_at' => '修改时间',
 		'time_end' => '结束时间',
 		'list' => '任务期数列表',
+	],
+
+	'taskformdetail' => [
+		'id' => '序号',
+		'task_id' => '任务类型',
+		'task_type_name' => '任务类型',
+		'task_form_id'=>'期数',
+		'name'=>'任务名称(第n天)',
+		'memo' => '备注',
+		'seq_no' => '期数',
+		'user_type' => '用户类型',
+		'seq_no_name' => '期数名称',
+		'award_coin' => '奖励金额',
+		'status' => '状态',
+		'flag' => '是否有宝箱',
+		'task_boxes' => '对应宝箱',
+		'times_needed' => '需要完成次数',
+		'list' => '一期任务列表',
+		'created_at' => '创建时间',
+		'updated_at' => '修改时间',
 	],
 
 ];

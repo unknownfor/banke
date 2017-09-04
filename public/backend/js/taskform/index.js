@@ -3,11 +3,9 @@
  */
 
 $(function(){
-
     var $date=$('.input-group.date');
     $date.datepicker({
         autoclose: true,
         todayHighlight:true
     });
-
 });

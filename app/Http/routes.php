@@ -177,6 +177,9 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //新版本任务期数
         require(__DIR__ . '/Routes/TaskFormRoute.php');
 
+        //新版本一期所有任务
+        require(__DIR__ . '/Routes/TaskFormDetailRoute.php');
+
     });
 });
 

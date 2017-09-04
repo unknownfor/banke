@@ -6,13 +6,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use TaskFormRepository;
-use App\Models\Banke\BankeTaskForm;
+use TaskFormDetailRepository;
+use App\Models\Banke\BankeTaskFormDetail;
 use Illuminate\Http\Request;
-use App\Http\Requests\TaskFormRequest;
+use App\Http\Requests\TaskFormDetailRequest;
 use Flash;
 
-class TaskFormController extends Controller {
+class TaskFormDetailController extends Controller {
 
 
     /**
@@ -23,7 +23,7 @@ class TaskFormController extends Controller {
      */
     public function index()
     {
-        return view('admin.taskform.list');
+        return view('admin.taskformdetail.list');
     }
 
     /**
@@ -34,7 +34,7 @@ class TaskFormController extends Controller {
      */
     public function ajaxIndex()
     {
-        $data = TaskFormRepository::ajaxIndex();
+        $data = TaskFormDetailRepository::ajaxIndex();
         return response()->json($data);
     }
 
@@ -46,7 +46,7 @@ class TaskFormController extends Controller {
      */
     public function create()
     {
-        return view('admin.taskform.create');
+        return view('admin.taskformdetail.create');
     }
 
     /**
@@ -56,10 +56,10 @@ class TaskFormController extends Controller {
      * @param  CreateUserRequest        $request [description]
      * @return [type]                            [description]
      */
-    public function store(TaskFormRequest $request)
+    public function store(TaskFormDetailRequest $request)
     {
-        TaskFormRepository::store($request);
-        return redirect('admin/taskform');
+        TaskFormDetailRepository::store($request);
+        return redirect('admin/taskformdetail');
     }
 
 
@@ -72,8 +72,8 @@ class TaskFormController extends Controller {
      */
     public function edit($id)
     {
-        $taskform = TaskFormRepository::edit($id);
-        return view('admin.taskform.edit')->with(compact(['taskform']));
+        $taskformdetail = TaskFormDetailRepository::edit($id);
+        return view('admin.taskformdetail.edit')->with(compact(['taskformdetail']));
     }
 
 
@@ -85,10 +85,10 @@ class TaskFormController extends Controller {
      * @param  [type]                   $id      [description]
      * @return [type]                            [description]
      */
-    public function update(TaskFormRequest $request,$id)
+    public function update(TaskFormDetailRequest $request,$id)
     {
-        TaskFormRepository::update($request,$id);
-        return redirect('admin/taskform');
+        TaskFormDetailRepository::update($request,$id);
+        return redirect('admin/taskformdetail');
     }
 
     /**
@@ -101,8 +101,8 @@ class TaskFormController extends Controller {
      */
     public function mark($id,$status)
     {
-        TaskFormRepository::mark($id,$status);
-        return redirect('admin/taskform');
+        TaskFormDetailRepository::mark($id,$status);
+        return redirect('admin/taskformdetail');
     }
 
     /**
@@ -114,8 +114,8 @@ class TaskFormController extends Controller {
      */
     public function destroy($id)
     {
-        TaskFormRepository::destroy($id);
-        return redirect('admin/taskform');
+        TaskFormDetailRepository::destroy($id);
+        return redirect('admin/taskformdetail');
     }
 
     /**
@@ -127,21 +127,7 @@ class TaskFormController extends Controller {
      */
     public function show($id)
     {
-        $org = TaskFormRepository::show($id);
-        return view('admin.taskform.show')->with(compact('org'));
-    }
-
-    /**
-     * 查看活动信息
-     * @author 晚黎
-     * @date   2016-04-14T13:49:32+0800
-     * @param  [type]                   $id [description]
-     * @return [type]                       [description]
-     */
-    public function getTaskFormByUserType()
-    {
-        $user_type=request('user_type','');
-        $data = TaskFormRepository::getTaskFormByUserType($user_type);
-        return response()->json($data);
+        $org = TaskFormDetailRepository::show($id);
+        return view('admin.taskformdetail.show')->with(compact('org'));
     }
 }

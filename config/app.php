@@ -282,6 +282,7 @@ return [
         'FreeStudyUsersRepository' => App\Facades\FreeStudyUsersFacade::class,
         'TaskRepository' => App\Facades\TaskFacade::class,
         'TaskFormRepository' => App\Facades\TaskFormFacade::class,
+        'TaskFormDetailRepository' => App\Facades\TaskFormDetailFacade::class,
     ],
 
 ];

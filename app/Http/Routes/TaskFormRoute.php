@@ -12,6 +12,8 @@ $router->group(['prefix' => 'taskform'], function($router){
 		   				config('admin.global.status.audit').'|'.
 		   				config('admin.global.status.active')
 		  	]);
+	$router->post('/getTaskFormByUserType', 'TaskFormController@getTaskFormByUserType');
+
 });
 
 $router->resource('taskform', 'TaskFormController');
