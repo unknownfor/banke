@@ -65,7 +65,36 @@ class TaskFormDetailRepository
 	 */
 	public function store($request)
 	{
-		$taskFormDetail = new BankeTaskFormDetail;
+		$input=$request->all();
+
+		$taskFormDetail=BankeTaskFormDetail::where('task_form_id',$input['task_form_id']);
+		if($taskFormDetail->count()>0){
+			Flash::error(trans('alerts.org_summary.already_created_error'));
+			return false;
+		}
+
+
+		//TODO 录入新的任务
+//		selected_task
+		//事务
+		DB::transaction( function () use ($input){
+			try {
+				$arr = Array();
+				for ($i = 1; $i <= 15; $i++) {
+					$tempaArr = Array(
+
+					);
+					Array_push($arr, $tempaArr);
+				}
+				DB::table('banke_org_summary_tags')->insert($arr);
+				return true;
+			} catch (Exception $e) {
+				Flash::error(trans('alerts.org_summary.created_error'));
+				return false;
+			}
+
+		});
+
 		if ($taskFormDetail->fill($request->all())->save()) {
 			Flash::success(trans('alerts.taskformdetail.created_success'));
 			return $taskFormDetail->id;

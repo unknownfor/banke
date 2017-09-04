@@ -334,6 +334,7 @@ return [
     'taskform' => [
         'created_success'   => '创建任务期数成功.',
         'created_error'     => '创建任务期数失败.',
+        'already_created_error'     => '创建失败,目标期数任务已经存在',
         'updated_success'   => '编辑任务期数成功.',
         'updated_error'     => '编辑任务期数失败.',
         'deleted_success' => '删除任务期数成功',

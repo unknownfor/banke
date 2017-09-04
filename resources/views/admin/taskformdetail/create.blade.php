@@ -4,11 +4,40 @@
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/plugins/jquery-ui/jquery-ui.min.css')}}">
 
     <style type="text/css">
         textarea{
             height: 170px;
             width: 80%;
+        }
+        .all-task-box,#selected-task-box{
+            display: flex;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+        .task-type{
+            background-color:#cccccc;
+            color:#fff;
+            margin: 5px;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+
+        }
+        .task-type:hover{
+            background-color: #333;
+        }
+        .task-type.selected{
+            background-color:#3598dc;
+        }
+        #selected-task-box li{
+            margin: 5px;
+            padding: 5px;
+            background-color:#3598dc;
+            color: #fff;
+            border-radius: 3px;
+            cursor: pointer;
         }
     </style>
 @endsection
@@ -57,7 +86,7 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.taskformdetail.user_type')}}</label>
                                 <div class="col-md-5">
-                                    <select class="bs-select form-control form-filter" id="user-type" data-show-subtext="true" name="status">
+                                    <select class="bs-select form-control form-filter" id="user-type" data-show-subtext="true" name="user_type">
                                         <option value="" data-icon="fa-glass icon-success">用户类型....</option>
                                         <?php
                                             $arr= array();
@@ -77,9 +106,29 @@
                             <div class="form-group form-md-line-input">
                                 <label class="col-md-1 control-label" for="seq_no">{{trans('labels.taskformdetail.seq_no')}}</label>
                                 <div class="col-md-5">
-                                    <select class="bs-select form-control form-filter" id="seq-no" data-show-subtext="true" name="status">
+                                    <select class="bs-select form-control form-filter" id="seq-no" data-show-subtext="true" name="seq_no">
                                         <option value="" data-icon="fa-glass icon-success">期数....</option>
                                     </select>
+                                    <input type="hidden" id="task-form-id" name="task_form_id">
+                                </div>
+                            </div>
+
+                            <div class="form-group form-md-line-input">
+                                <label class="col-md-1 control-label" for="seq_no">{{trans('labels.taskformdetail.task')}}</label>
+                                <div class="col-md-5">
+                                    <label class="control-label" for="seq_no">{{trans('labels.taskformdetail.alltask')}} 点击选择，再次点击取消</label>
+                                    <div class="all-task-box">
+                                        @foreach($alltask as $v)
+                                            <span class="task-type" data-type="{{$v->type}}"> {{$v->name}} </span>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <label class=control-label" for="seq_no">{{trans('labels.taskformdetail.selected_task')}}(共<span id="tota-number">0</span>个)可拖动</label>
+                                    <div class="">
+                                        <ul id="selected-task-box"></ul>
+                                        <input type="hidden" id="selected-task" name="selected_task">
+                                    </div>
                                 </div>
                             </div>
 
@@ -117,7 +166,7 @@
                         <div class="row">
                             <div class="col-md-offset-1 col-md-10">
                                 <a href="{{url('admin/taskformdetail')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                                <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
+                                <button type="submit" class="btn blue" onclick="return setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                             </div>
                         </div>
                     </div>
@@ -132,6 +181,7 @@
     <script type="text/javascript" src="{{asset('backend/plugins/datatables/datatables.all.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/plugins/jquery-ui/jquery-ui.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
     <script type="text/javascript" src="{{asset('backend/js/taskformdetail/index.js')}}"></script>
 @endsection
