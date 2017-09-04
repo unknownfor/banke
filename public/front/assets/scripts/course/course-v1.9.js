@@ -53,6 +53,11 @@ $(function() {
         showSpecialInfo();
     });
 
+    /*点击切换课程评价*/
+    $(document).on( window.eventName,'#course-eva', function() {
+        showCourseEvaInfo();
+    });
+
     /*点击切换机构评价*/
     $(document).on( window.eventName,'#evaluate', function() {
         showEvaluateInfo();
@@ -80,19 +85,35 @@ $(function() {
         $('#special').addClass('selected');
         $('#detail').removeClass('selected');
         $('#evaluate').removeClass('selected');
+        $('#course-eva').removeClass('selected');
         $('.special-info').removeClass('hide');
         $('.detail-info').addClass('hide');
         $('.evaluate-info').addClass('hide');
+        $('.course-info').addClass('hide');
     }
 
     /*切换机构评价*/
     function showEvaluateInfo () {
         $('#special').removeClass('selected');
         $('#detail').removeClass('selected');
+        $('#course-eva').removeClass('selected');
         $('#evaluate').addClass('selected');
         $('.special-info').addClass('hide');
         $('.detail-info').addClass('hide');
+        $('.course-info').addClass('hide');
         $('.evaluate-info').removeClass('hide');
+    }
+
+    /*切换课程评价*/
+    function showCourseEvaInfo () {
+        $('#special').removeClass('selected');
+        $('#detail').removeClass('selected');
+        $('#evaluate').removeClass('selected');
+        $('#course-eva').addClass('selected');
+        $('.special-info').addClass('hide');
+        $('.detail-info').addClass('hide');
+        $('.evaluate-info').addClass('hide');
+        $('.course-info').removeClass('hide');
     }
 
     /*切换课程详情*/
@@ -102,6 +123,7 @@ $(function() {
         $('#evaluate').removeClass('selected');
         $('.special-info').addClass('hide');
         $('.detail-info').removeClass('hide');
+        $('.course-info').addClass('hide');
         $('.evaluate-info').addClass('hide');
     }
 

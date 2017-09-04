@@ -1,0 +1,47 @@
+body {
+  margin:0 auto;
+  padding:0;
+  height: 100%;
+  max-width: 700px;
+  background-color: #ffa047;
+  overflow-x: hidden;
+  word-wrap:break-word;
+  position: relative;
+}
+html {
+  height: 100%;
+}
+img {
+  max-width: 100%;
+}
+#newtask {
+  font-size: 14px;
+  color: #ffffff;
+  padding: 15px;
+  height: 100%;
+  .title {
+    @sc:#FFE6A5;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #732D00;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px @sc, 1px 1px @sc, 1px 1px @sc, 1px 1px @sc, 1px 1px @sc, 1px 1px @sc;
+  }
+  .txtBox {
+    margin-top: 20px;
+    text-align: left;
+    line-height: 22px;
+    .txtTitle {
+      color: #ffe16e;
+      font-size: 15px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .txtDetail {
+      > p {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

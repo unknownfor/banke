@@ -49,6 +49,12 @@
             </button>
         </form>
     </div>
+    <div class="container hide">
+        <img class="bg second" src="/front/assets/img/freestudy/v1.8/bg.png">
+        <div class="txt txt-one">下载半课</div>
+        <div class="txt txt-two">获得更多优惠</div>
+        <div class="btn active"><a href="http://www.91banke.com/web/download">下载半课</a></div>
+    </div>
 </div>
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
