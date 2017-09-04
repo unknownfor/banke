@@ -3,6 +3,9 @@
  */
 $(function() {
 
+    var href = window.location.href;
+    var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
+
     window.addLoadingImg();
     window.addTip();
 
@@ -47,24 +50,20 @@ $(function() {
         timer = window.setInterval(function () {
             setGetCodeBtn();
         }, 1000);
-        // if(countdown==60) {
-        //     var url = '/invitation/requestSmsCode';
-        //     getDataAsync(url, {mobile: $('#phone-num').val()},
-        //         function (res) {
-        //             if(res.status_code==50016){
-        //                 $('.register-old').show().parent().show().siblings().hide();
-        //                 return;
-        //             }
-        //             window.showTips(res.message);
-        //             if(res.status_code!=0) {
-        //                 countdown = 0;
-        //                 setGetCodeBtn();
-        //             }
-        //         },function(){
-        //             countdown = 0;
-        //             setGetCodeBtn();
-        //         },'post');
-        // }
+        if(countdown==60) {
+            var url = '/invitation/requestSmsCode';
+            getDataAsync(url, {mobile: $('#phone-num').val()},
+                function (res) {
+                    window.showTips(res.message);
+                    if(res.status_code!=0) {
+                        countdown = 0;
+                        setGetCodeBtn();
+                    }
+                },function(){
+                    countdown = 0;
+                    setGetCodeBtn();
+                },'post');
+        }
     });
 
     //获取验证码倒计时
@@ -86,35 +85,34 @@ $(function() {
     //注册
     $(document).on(window.eventName,'.btn.active', function () {
         window.controlLoadingBox(true);
-        var phone = $('#phone-num').val(),
-            code = $('#user-code').val(),
-            password = $('#password-num').val();
-        var url='/v1.2/share/register',
-            data={
-                welcome:$('input[name="welcome"]').val(),
-                mobile:phone,
-                smsId:code,
-                password:password,
-                userType:0
-            };
-        $(this).removeClass('active');
-        getDataAsync(url,data,function(res) {
-            //成功返回之后调用的函数
-            window.controlLoadingBox(false);
-            if (res.status_code == 0) {
+        // var phone = $('#phone-num').val(),
+        //     code = $('#user-code').val(),
+        //     password = $('#password-num').val();
+        // var url='/v1.2/share/register',
+        //     data={
+        //         welcome:$('input[name="welcome"]').val(),
+        //         mobile:phone,
+        //         smsId:code,
+        //         password:password,
+        //         userType:0
+        //     };
+        // $(this).removeClass('active');
+        // getDataAsync(url,data,function(res) {
+        //     //成功返回之后调用的函数
+        //     window.controlLoadingBox(false);
+        //     if (res.status_code == 0) {
                 window.showTips('<p>恭喜您，注册成功!</p>',2000);
-                var mobile = $('#phone-num').val();
                 window.setTimeout(function() {
                     showSuccessPage();
                 },2000);
-            }
-            else{
-                window.showTips(res.message);
-            }
-        },function(){
-            window.controlLoadingBox(false);
-            $(this).addClass('active');
-        },'post');
+        //     }
+        //     else{
+        //         window.showTips(res.message);
+        //     }
+        // },function(){
+        //     window.controlLoadingBox(false);
+        //     $(this).addClass('active');
+        // },'post');
     });
 
 
@@ -123,7 +121,8 @@ $(function() {
      * 显示成功页面
      */
     function showSuccessPage() {
-        $('.download').show().parent().show().siblings().hide();
+        $('.wrapper').addClass('hide');
+        $('.container').removeClass('hide');
     }
 
 });

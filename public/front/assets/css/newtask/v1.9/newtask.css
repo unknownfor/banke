@@ -185,6 +185,30 @@ input {
     -webkit-transform: rotate(360deg);
   }
 }
+@-webkit-keyframes swipeMoveTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10px, 0);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -10px, 0);
+  }
+}
+@-webkit-keyframes slideToTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
 body {
   margin: 0 auto;
   padding: 0;
@@ -206,6 +230,7 @@ img {
   color: #ffffff;
   padding: 15px;
   height: 100%;
+  margin-bottom: 35px;
 }
 #newtask .title {
   text-align: center;
@@ -216,6 +241,9 @@ img {
   text-shadow: 1px 1px #ffe6a5, 1px 1px #ffe6a5, 1px 1px #ffe6a5, 1px 1px #ffe6a5, 1px 1px #ffe6a5, 1px 1px #ffe6a5;
 }
 #newtask .txtBox {
+  background: url("../../../img/newtask/bg.png") no-repeat;
+  -webkit-background-size: 514.8px 351px;
+  background-size: 514.8px 351px;
   margin-top: 20px;
   text-align: left;
   line-height: 22px;
@@ -223,9 +251,9 @@ img {
 #newtask .txtBox .txtTitle {
   color: #ffe16e;
   font-size: 15px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: bold;
 }
 #newtask .txtBox .txtDetail > p {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }

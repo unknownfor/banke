@@ -56,11 +56,11 @@
                     <span>优势标签</span>
                 </div>
                 <div class="txt">课程评价课程评价课程评价课程评价课程评价课程评价</div>
-                <div class="album-pre">
-                    <ul class="album">
+                <div class="org-album-pre">
+                    <ul class="org-album">
                         <li class="album-li">
                             <a href="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" data-size="400x500"></a>
-                            <img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" />
+                            <img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" >
                         </li>
                         <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
                         <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
@@ -108,6 +108,6 @@
      * photoswipe
      * 图片信息查看  相册、视频信息查看
      * */
-    new MyPhotoSwipe('.album');
+    new MyPhotoSwipe('.org-album');
 </script>
 </html>
