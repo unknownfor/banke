@@ -70,7 +70,6 @@ return[
 		['key'=>'INVITE_FRIEND_BECOME_MARKETING_AMBASSADOR','desc' => '邀请好友成为推广大使奖励'],
 		['key'=>'COMMENT_APP_STORE','desc' => '应用市场好评奖励'],
 		['key'=>'SIGN_SUCCESS','desc' => '新打卡'],
-
 	],
 
 	'moneynews_business_type' => [
@@ -386,7 +385,21 @@ return[
 	'task' => [
 		// 控制是否显示查看按钮
 		'show' => false,
-		'action' => 'freestudy',
+		'action' => 'task',
+	],
+
+	//半课任务期数
+	'taskform' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'taskform',
+	],
+
+	//半课一期所有任务
+	'taskformdetail' => [
+		// 控制是否显示查看按钮
+		'show' => false,
+		'action' => 'taskformdetail',
 	],
 
 ];

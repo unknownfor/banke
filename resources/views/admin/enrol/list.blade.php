@@ -98,6 +98,7 @@
                           <th>#</th>
                           <th width="10%"> {{ trans('labels.enrol.name') }} </th>
                           <th> {{ trans('labels.enrol.mobile') }} </th>
+                          <th> {{ trans('labels.enrol.invitor_mobile') }} </th>
                             <th width="17%"> {{ trans('labels.enrol.org_id') }} </th>
                             <th width="17%"> {{ trans('labels.enrol.course_id') }} </th>
                             <th width="17%"> {{ trans('labels.enrol.comment') }} </th>

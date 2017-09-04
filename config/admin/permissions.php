@@ -291,4 +291,22 @@ return[
 
 	],
 
+	'task'=>[
+		'create' 	=> 'admin.task.create',
+		'edit' 	=> 'admin.task.edit',
+		'destroy' 	=> 'admin.task.delete',
+	],
+
+	'taskform'=>[
+		'create' 	=> 'admin.taskform.create',
+		'edit' 	=> 'admin.taskform.edit',
+		'destroy' 	=> 'admin.taskform.delete',
+	],
+
+	'taskformdetail'=>[
+		'create' 	=> 'admin.taskformdetail.create',
+		'edit' 	=> 'admin.taskformdetail.edit',
+		'destroy' 	=> 'admin.taskformdetail.delete',
+	],
+
 ];

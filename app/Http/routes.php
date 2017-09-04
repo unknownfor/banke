@@ -171,6 +171,15 @@ Route::group(['domain'=>env('ADMIN_DOMAIN'),'middleware' => ['web']],function(){
         //免费学成员
         require(__DIR__ . '/Routes/FreeStudyUsersRoute.php');
 
+        //新版本任务
+        require(__DIR__ . '/Routes/TaskRoute.php');
+
+        //新版本任务期数
+        require(__DIR__ . '/Routes/TaskFormRoute.php');
+
+        //新版本一期所有任务
+        require(__DIR__ . '/Routes/TaskFormDetailRoute.php');
+
     });
 });
 

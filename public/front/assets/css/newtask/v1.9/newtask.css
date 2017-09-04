@@ -185,87 +185,75 @@ input {
     -webkit-transform: rotate(360deg);
   }
 }
+@-webkit-keyframes swipeMoveTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10px, 0);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -10px, 0);
+  }
+}
+@-webkit-keyframes slideToTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
 body {
   margin: 0 auto;
   padding: 0;
   height: 100%;
   max-width: 700px;
-  background-color: #F9F9F9;
+  background-color: #ffa047;
   overflow-x: hidden;
   word-wrap: break-word;
   position: relative;
 }
-img {
-  max-width: 100%;
-}
 html {
   height: 100%;
 }
-#redBag {
+img {
+  max-width: 100%;
+}
+#newtask {
+  font-size: 14px;
+  color: #ffffff;
+  padding: 15px;
   height: 100%;
-  background-color: #FFF9D9;
-  position: relative;
+  margin-bottom: 35px;
+}
+#newtask .title {
   text-align: center;
-}
-#redBag .head {
-  padding-top: 25px;
-}
-#redBag .head .slogen {
-  max-width: 65%;
-  margin-bottom: 10px;
-}
-#redBag .head .headTitle {
-  font-size: 18px;
+  letter-spacing: 1px;
+  color: #732D00;
+  font-size: 20px;
   font-weight: bold;
-  color: #996413;
+  text-shadow: 1px 1px #ffe6a5, 1px 1px #ffe6a5, 1px 1px #ffe6a5, 1px 1px #ffe6a5, 1px 1px #ffe6a5, 1px 1px #ffe6a5;
 }
-#redBag .middle {
-  position: relative;
+#newtask .txtBox {
+  background: url("../../../img/newtask/bg.png") no-repeat;
+  -webkit-background-size: 514.8px 351px;
+  background-size: 514.8px 351px;
+  margin-top: 20px;
+  text-align: left;
+  line-height: 22px;
 }
-#redBag .middle .middleBg {
-  margin-left: 10px;
-  max-width: 90%;
+#newtask .txtBox .txtTitle {
+  color: #ffe16e;
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
-#redBag .middle .middleTxt {
-  position: absolute;
-  top: 95px;
-  left: 0;
-  right: 0;
-}
-#redBag .middle .middleTxt .txtOne {
-  color: #79625d;
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-#redBag .middle .middleTxt .txtTwo {
-  color: #fa5047;
-  margin-top: 5px;
-}
-#redBag .middle .middleTxt .txtTwo > span {
-  font-size: 28px;
-}
-#redBag .footer {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  background-color: #FFD162;
-}
-#redBag .footer .footerTop {
-  position: absolute;
-  top: -31px;
-  left: 0;
-  right: 0;
-}
-#redBag .footer .register {
-  margin: 0 40px;
-}
-#redBag .footer .register .register-box {
-  width: 100%;
-  height: 40px;
-}
-#redBag .footer .register .register-box .register-code {
-  background-color: #FFF1D0;
-  width: 100%;
-  height: 40px;
-  border: 1px solid #fafafa;
+#newtask .txtBox .txtDetail > p {
+  margin-bottom: 8px;
 }

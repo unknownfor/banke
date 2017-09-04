@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 /**
 * 任务仓库
 */
-class ActivityRepository
+class TaskRepository
 {
 
 
@@ -53,7 +53,7 @@ class ActivityRepository
 
 
 
-	/**添加活动
+	/**添加任务
 	 * @author shaolei
 	 * @date   2016-04-14T11:32:04+0800
 	 * @param  [type]                   $request [description]
@@ -61,35 +61,25 @@ class ActivityRepository
 	 */
 	public function store($request)
 	{
-		$task = new BankeActivity;
-		if ($task->fill($request->all())->save()) {
-			Flash::success(trans('alerts.activity.created_success'));
-			return $task->id;
-		}
-		Flash::error(trans('alerts.activity.created_error'));
-		return false;
-	}
-
-	/**添加活动 可以点击的外链
-	 * @author shaolei
-	 * @date   2016-04-14T11:32:04+0800
-	 * @param  [type]                   $request [description]
-	 * @return [type]                            [description]
-	 */
-	public function storeOutlinkClick($request)
-	{
 		$input=$request->all();
-		$task = new BankeActivity;
-		if ($task->fill($request->all())->save()) {
-			Flash::success(trans('alerts.activity.created_success'));
+		$tempTask=BankeTask::orderBy('id', 'desc');
+		$maxNum=1;
+		if($tempTask->count()>0){
+			$tempTask=$tempTask->first();
+			$maxNum=$tempTask['type']+1;
+		}
+		$input['type']=$maxNum;
+		$task = new BankeTask;
+		if ($task->fill($input)->save()) {
+			Flash::success(trans('alerts.task.created_success'));
 			return $task->id;
 		}
-		Flash::error(trans('alerts.activity.created_error'));
+		Flash::error(trans('alerts.task.created_error'));
 		return false;
 	}
 
 	/**
-	 * 修改活动
+	 * 修改任务
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:34+0800
 	 * @param  [type]                   $id [description]
@@ -97,7 +87,7 @@ class ActivityRepository
 	 */
 	public function edit($id)
 	{
-		$role = BankeActivity::find($id);
+		$role = BankeTask::find($id);
 		if ($role) {
 			$roleArray = $role->toArray();
 			return $roleArray;
@@ -106,7 +96,7 @@ class ActivityRepository
 	}
 
 	/**
-	 * 查看活动
+	 * 查看任务
 	 * @author 晚黎
 	 * @date   2016-04-13T17:09:22+0800
 	 * @param  [type]                   $id [description]
@@ -114,12 +104,12 @@ class ActivityRepository
 	 */
 	public function show($id)
 	{
-		$task = BankeActivity::find($id)->toArray();
+		$task = BankeTask::find($id)->toArray();
 		return $task;
 	}
 
 	/**
-	 * 修改活动
+	 * 修改任务
 	 * @author shaolei
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]
@@ -128,13 +118,13 @@ class ActivityRepository
 	 */
 	public function update($request,$id)
 	{
-		$role = BankeActivity::find($id);
+		$role = BankeTask::find($id);
 		if ($role) {
 			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.activity.updated_success'));
+				Flash::success(trans('alerts.task.updated_success'));
 				return true;
 			}
-			Flash::error(trans('alerts.activity.updated_error'));
+			Flash::error(trans('alerts.task.updated_error'));
 			return false;
 		}
 		abort(404);
@@ -142,7 +132,7 @@ class ActivityRepository
 
 
 	/**
-	 * 删除活动
+	 * 删除任务
 	 * @author shaolei
 	 * @date   2016-04-13T11:51:19+0800
 	 * @param  [type]                   $id [description]
@@ -150,12 +140,12 @@ class ActivityRepository
 	 */
 	public function destroy($id)
 	{
-		$isDelete = BankeActivity::destroy($id);
+		$isDelete = BankeTask::destroy($id);
 		if ($isDelete) {
-			Flash::success(trans('alerts.activity.deleted_success'));
+			Flash::success(trans('alerts.task.deleted_success'));
 			return true;
 		}
-		Flash::error(trans('alerts.activity.deleted_error'));
+		Flash::error(trans('alerts.task.deleted_error'));
 		return false;
 	}
 }

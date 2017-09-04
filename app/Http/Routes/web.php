@@ -296,18 +296,25 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
 
 //1.9
 Route::group(['prefix'=>"v1.9/web",'namespace'=>'Web'],function() {
-
-
+    //新版本活动详情说明
+    Route::get('/newtaskrule', 'NewTaskController@rule_v1_9');
 });
+
 
 //v1.9分享
 Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
 
-    //课程详情分享页
+    //课程心得详情分享页
     Route::get('/commentcourse/{id}','CommentCourseController@share_v1_9');
 
-    //机构详情分享
+    //机构心得详情分享
     Route::get('/commentorg/{id}', 'CommentOrgController@share_v1_9');
+
+    //红包详情分享
+    Route::get('/redpacket/{id}', 'RedPacketController@share_v1_9');
+
+    //课程详情分享页
+    Route::get('/course/{id}','CourseController@share_course_v1_9');
 
 });
 

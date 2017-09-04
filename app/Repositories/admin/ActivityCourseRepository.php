@@ -33,11 +33,11 @@ class ActivityCourseRepository
 				}
 
 				if (DB::table('banke_activity_course')->insert($arr)) {
-					Flash::success(trans('alerts.activity.created_success'));
+//					Flash::success(trans('alerts.activity.created_success'));
 					return true;
 				}
 			} catch (Exception $e) {
-				Flash::error(trans('alerts.activity.created_error'));
+//				Flash::error(trans('alerts.activity.created_error'));
 				return false;
 			}
 		});

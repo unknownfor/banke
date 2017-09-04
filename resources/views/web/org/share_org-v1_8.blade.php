@@ -58,7 +58,7 @@
                 {{--</div>--}}
             </div>
 
-        </div>
+        </div>z
         <div class="org-tips">
             <div class="tips-left">热门课程</div>
             <div class="tips-right">

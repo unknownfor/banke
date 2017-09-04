@@ -22,8 +22,8 @@ class BankeActivity extends Model
         'created_at',
         'updated_at',
         'out_url_type',//外链类型
-        'click-img-url', //可点击的图片 对应的图片地址
-        'click-url' //可点击的图片 对应的图片地址
+        'click_img_url', //可点击的图片 对应的图片地址
+        'click_url' //可点击的图片 对应的图片地址
     ];
 
     private $action;

@@ -54,35 +54,19 @@
                   <input type="hidden" name="url_type" id="url-type" value="{{$activity['url_type']}}">
                   <div class="form-body">
                       <div class="form-group form-md-line-input">
+                          <label class="col-md-1 control-label" for="name">类型</label>
+                          <div class="col-md-8">
+                              <span class="label label-success"> 内链</span>
+                          </div>
+                      </div>
+                      <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="name">{{trans('labels.activity.title')}}</label>
                           <div class="col-md-8">
                               <input type="text" class="form-control" id="name" name="title" placeholder="{{trans('labels.activity.title')}}" value="{{$activity['title']}}">
                               <div class="form-control-focus"> </div>
                           </div>
                       </div>
-                      <div class="form-group form-md-line-input">
-                          <label class="col-md-1 control-label" for="form_control_1">{{trans('labels.activity.url_type')}}</label>
-                          <div class="col-md-10">
-                              <div class="md-radio-inline">
-                                  <div class="md-radio">
-                                      <input type="radio" disabled id="url_type1" name="url_type" value="{{config('admin.global.status.audit')}}" class="md-radiobtn"
-                                              @if($activity['url_type']==config('admin.global.status.audit')) checked @endif>
-                                      <label for="url_type1">
-                                          <span></span>
-                                          <span class="check"></span>
-                                          <span class="box"></span> 内链 </label>
-                                  </div>
-                                  <div class="md-radio">
-                                      <input type="radio" disabled id="url_type2" name="url_type" value="{{config('admin.global.status.active')}}" class="md-radiobtn"
-                                             @if($activity['url_type']==config('admin.global.status.active')) checked @endif>
-                                      <label for="url_type2">
-                                          <span></span>
-                                          <span class="check"></span>
-                                          <span class="box"></span> 普通外链 </label>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
+
 
                       <div class="form-group form-md-line-input">
                           <label class="col-md-1 control-label" for="url">{{trans('labels.activity.url')}}(内链)</label>
@@ -96,7 +80,7 @@
                           <label class="col-md-1 control-label" for="img_url">{{trans('labels.activity.cover')}}</label>
                           <div class="col-md-9">
                               <div class="cover-box">
-                                  <div class="add-img-btn add-cover-img-btn">+
+                                  <div class="add-img-btn add-content-img-btn-inlink">+
                                       <div class="img-size-tips">16:7的图片</div>
                                   </div>
                                   <ul class="imgs-list-box cover-list-box-inlink">
@@ -181,7 +165,7 @@
                       <div class="row">
                           <div class="col-md-offset-1 col-md-10">
                               <a href="{{url('admin/activity')}}" class="btn default">{{trans('crud.cancel')}}</a>
-                              <button type="submit" class="btn blue" onclick="setDataBeforeCommit()">{{trans('crud.submit')}}</button>
+                              <button type="submit" class="btn blue" onclick="return setDataBeforeCommit()">{{trans('crud.submit')}}</button>
                           </div>
                       </div>
                   </div>
@@ -190,9 +174,6 @@
       </div>
   </div>
 </div>
-<form id="upImgForm" method="post" class="hiddenForm">
-    <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile" size="28" accept="image/png,image/gif,image/jpeg">
-</form>
 <form id="upImgForm1" method="post" class="hiddenForm">
     <input type="file" name="filedata" class="dataImportFileInput" id="uploadImgFile1" size="28" accept="image/png,image/gif,image/jpeg">
 </form>
@@ -219,5 +200,5 @@
     <script type="text/javascript" src="{{asset('backend/js/libs/photoswipe/myphotoswipe.js')}}"></script>
 
     <script type="text/javascript" src="{{asset('backend/js/common/common.js')}}"></script>
-    <script type="text/javascript" src="{{asset('backend/js/activity/edit.js')}}"></script>
+    <script type="text/javascript" src="{{asset('backend/js/activity/edit-inlink.js')}}"></script>
 @endsection

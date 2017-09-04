@@ -7,6 +7,7 @@ $(function() {
     var notFromApp = href.indexOf('share') >= 0;  //是否来源于app
 
     showStars();
+    showOrgStars();
 
     /*
      * 机构评分星星*/
@@ -15,6 +16,15 @@ $(function() {
             str;
         str = '<span class="rightItem starsCon">' + getStarInfoByScore(star) + '</span>';
         $(".org-stars").html(str);
+    };
+
+    /*
+    *机构评价星星*/
+    function showOrgStars () {
+        var  star = $('.stars').attr('data-grade-total'),
+            str;
+        str = '<span class="rightItem starsCon">' + getStarInfoByScore(star) + '</span>';
+        $(".stars").html(str);
     };
 
 
