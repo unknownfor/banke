@@ -125,7 +125,7 @@ class CourseController extends Controller
     }
 
     /**
-     * 1.8分享机构详情
+     * 1.8分享课程详情详情
      */
     public function share_course_v1_8($id)
     {
@@ -160,7 +160,41 @@ class CourseController extends Controller
         ]));
     }
 
+    /**
+     * 1.8分享课程详情详情
+     */
+    public function share_course_v1_9($id)
+    {
+        $course = BankeCourse::find($id);
+        $subOrg = $course->org;
+        $course['share_award']=$course['share_group_buying_award'] + $course['share_comment_course_award'] + $subOrg['share_comment_org_award'];
+        $course['max_award']=($course['share_award']+$course['checkin_award']+$course['group_buying_award'])/100 * $course['price'];
+        $course['max_award']= floor($course['max_award']);
+        $org_summary=$subOrg->orgsummary;
 
+        $org_teachers =TeachingTeacherRepository::getTeachersByOrgSummaryId($org_summary['id']);
+
+        $fake_user_info=$this->getRandomUserInfo();
+        $fake_number = rand(3, 5);
+
+        $real_enrol_counts_course=EnrolRepository::getEnrolCountsByCourseId($id);   //课程真实预约人数
+        $course['fake_enrol_counts']=$course['fake_enrol_counts'] + $real_enrol_counts_course;
+
+        $real_enrol_counts_org=EnrolRepository::getEnrolCountsByOrgSummaryId($org_summary['id']);   //机构真实预约人数
+        $org_summary['fake_enrol_counts']=$org_summary['fake_enrol_counts'] + $real_enrol_counts_org;
+
+        //评论信息
+        $comments=CommentOrgRepository::getAllCommentsByOrgSummaryId($org_summary['id']);
+        $link_base_url='http://'.env('ADMIN_DOMAIN');
+        return view('web.course.share_course-v1_9')->with(compact([
+            'course',
+            'org_summary',
+            'fake_user_info',
+            'fake_number',
+            'org_teachers',
+            'comments'
+        ]));
+    }
 
 
     public function getRandomUserInfo()

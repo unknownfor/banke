@@ -300,6 +300,7 @@ Route::group(['prefix'=>"v1.9/web",'namespace'=>'Web'],function() {
     Route::get('/newtaskrule', 'NewTaskController@rule_v1_9');
 });
 
+
 //v1.9分享
 Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
 
@@ -311,6 +312,9 @@ Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
 
     //红包详情分享
     Route::get('/redpacket/{id}', 'RedPacketController@share_v1_9');
+
+    //课程详情分享页
+    Route::get('/course/{id}','CourseController@share_course_v1_9');
 
 });
 
