@@ -242,11 +242,11 @@ input::-webkit-input-placeholder {
   padding-top: 25px;
 }
 #redBag .wrapper .head .slogen {
-  max-width: 65%;
+  max-width: 45%;
   margin-bottom: 10px;
 }
 #redBag .wrapper .head .headTitle {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   color: #996413;
 }
@@ -255,17 +255,17 @@ input::-webkit-input-placeholder {
 }
 #redBag .wrapper .middle .middleBg {
   margin-left: 10px;
-  max-width: 290px;
+  max-width: 260px;
 }
 #redBag .wrapper .middle .middleTxt {
   position: absolute;
-  top: 95px;
+  top: 85px;
   left: 0;
   right: 0;
 }
 #redBag .wrapper .middle .middleTxt .txtOne {
   color: #79625d;
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 5px;
 }
 #redBag .wrapper .middle .middleTxt .txtTwo {
@@ -273,7 +273,7 @@ input::-webkit-input-placeholder {
   margin-top: 5px;
 }
 #redBag .wrapper .middle .middleTxt .txtTwo > span {
-  font-size: 28px;
+  font-size: 26px;
 }
 #redBag .wrapper .footer {
   position: relative;
@@ -314,7 +314,7 @@ input::-webkit-input-placeholder {
   text-align: center;
   background-color: #FEBF10;
   border-radius: 4px;
-  margin-top: 8px;
+  margin-top: 6px;
   margin-right: 5px;
   padding: 0 3px;
 }
@@ -327,7 +327,7 @@ input::-webkit-input-placeholder {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  height: 40px;
+  height: 35px;
   padding: 0px;
   border: none;
   background-color: #FFF1D0;
@@ -350,12 +350,12 @@ input::-webkit-input-placeholder {
   border: none;
   margin: 10px auto;
   background-color: #F94F46;
-  width: 148px;
-  height: 40px;
+  width: 132px;
+  height: 35px;
   border-radius: 50px;
   -webkit-box-shadow: 0px 8px 10px #C72020;
   box-shadow: 0px 8px 10px #C72020;
-  line-height: 40px;
+  line-height: 35px;
   display: inline-block;
 }
 #redBag .wrapper .footer .register .btn.nouse {
