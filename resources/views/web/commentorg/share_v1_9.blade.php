@@ -19,9 +19,9 @@
 </head>
 <body>
 <div class="commentPage" id="orgComment"
-     {{--data-uid="{{$user['uid']}}"--}}
-     {{--data-record-id="{{$shareInfo['record_id']}}"--}}
-     {{--data-type-id="{{$shareInfo['type_id']}}"--}}
+     data-uid="{{$user['uid']}}"
+{{--     data-record-id="{{$shareInfo['record_id']}}"--}}
+{{--     data-type-id="{{$shareInfo['type_id']}}"--}}
 >
 机构评论
 </div>
