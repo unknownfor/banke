@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 /**
 * 半课好文章仓库
 */
-class GoodArticleRepository
+class ArticleRepository
 {
 
 
