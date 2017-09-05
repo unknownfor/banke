@@ -12,7 +12,8 @@ class BankeTaskFormDetailUser extends Model
     protected $fillable = [
         'times_finished',
         'times_needed',
-        'award_coin'
+        'award_coin',
+        'status'
     ];
 
     private $action;

@@ -17,6 +17,7 @@ use App\Uuid;
 use Illuminate\Support\Facades\Log;
 use MoneyNewsRepository;
 use TaskFormUserRepository;
+use TaskFormUserDetailRepository;
 
 /**
 * app用户仓库

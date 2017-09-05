@@ -210,6 +210,7 @@ class CommentCourseRepository
 					$commentCourse->view_counts++;
 
 					$uid=$commentCourse->uid;
+
 					//达到浏览量
 					$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(6,$uid);
 					if($info_obj == null){

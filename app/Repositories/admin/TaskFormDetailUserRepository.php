@@ -21,4 +21,15 @@ class TaskFormDetailUserRepository
 		$user->status=2;
 		$user->save();
 	}
+
+	/*
+	*更新任务的金额数目 以及状态
+	 *
+	 * */
+	public static function updataTaskFormDetailUserAwardData($id,$award){
+		$user=BankeTaskFormDetailUser::find($id);
+		$user->award_coin=$award;
+		$user->status=2;
+		$user->save();
+	}
 }

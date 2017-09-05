@@ -23,6 +23,8 @@ use DailyTaskLogRepository;
 use InvitationSignUpRepository;
 use OrderDepositRepository;
 use App\Services\MyXingeService;
+use TaskFormUserRepository;
+use TaskFormUserDetailRepository;
 
 /**
 * 订单（报名）仓库
@@ -395,6 +397,18 @@ class OrderRepository
 							$order_invitor->save();
 						}
 					}
+
+					////////////////////-----------------1.9奖励新标准----------------////////////////////////
+
+
+					$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(3,$invitation_uid);
+					if($info_obj == null){
+						return;
+					}
+
+					//更新task_form_user_detail 的相应字段
+					TaskFormDetailUserRepository::updataTaskFormDetailUserAwardData($info_obj['id'],$invitation_award);
+
 					//更新用户账户金额信息以及添加变动记录
 					AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
 
