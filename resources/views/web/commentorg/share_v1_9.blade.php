@@ -17,11 +17,22 @@
     <title>机构评论</title>
 </head>
 <body>
+<div class="comment" id="orgComment" data-type-id="{{$shareInfo['type_id']}}">
 机构评论
+</div>
 {{--@include('web.layout.downloadbar')--}}
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
+<script src="/backend/js/libs/photoswipe/photoswipe.min.js" type="text/javascript"></script>
+<script src="/backend/js/libs/photoswipe/photoswipe-ui-default.min.js" type="text/javascript"></script>
+<script src="/backend/js/libs/photoswipe/myphotoswipe.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-{{--<script src="/front/assets/scripts/org/commentOrg-v1.5.js" type="text/javascript"></script>--}}
+<script src="/front/assets/scripts/commentcourse/commentcourse-v1.9.js" type="text/javascript"></script>
+<script type="text/javascript">
+    /*
+     * photoswipe
+     * */
+    new MyPhotoSwipe('.org-album');
+</script>
 </html>
