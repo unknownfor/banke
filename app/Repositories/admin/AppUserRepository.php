@@ -16,6 +16,7 @@ use League\Flysystem\Exception;
 use App\Uuid;
 use Illuminate\Support\Facades\Log;
 use MoneyNewsRepository;
+use TaskFormUserRepository;
 
 /**
 * app用户仓库
@@ -292,28 +293,33 @@ class AppUserRepository
 					//处理邀请人奖励金额
 					if($status == config('admin.global.certification_status.audit')){
 						//查询系统配置里注册认证的奖金
-						$register_award = BankeDict::where('id', 1)->first();
-						$user_profile->account_balance += $register_award->value;
-						$user_profile->register_amount += $register_award->value;
-						//将用户注册认证的金额加到用户表做任务已领金额中
-						$user_profile->get_do_task_amount+= $register_award->value;
-						$balance_log = [
-							'uid'=>$id,
-							'change_amount'=>$register_award->value,
-							'change_type'=>'+',
-							'business_type'=>'REGISTER_AND_CERTIFICATE_SUCCESS',
-							'operator_uid'=>$cur_user->id
-						];
-						//记录余额变动日志
-						BankeBalanceLog::create($balance_log);
-						$message1 = [
-							'uid'=>$id,
-							'title'=>'认证成功',
-							'content'=>'您的认证信息审核通过，平台已奖励您'.$register_award->value.'元现金，快去现金钱包里查看吧！',
-							'type'=>'USER_CERTIFICATE_SUCCESS'
-						];
-						//记录消息
-						BankeMessage::create($message1);
+
+						//////////////////////////---------------1.9版本，认证不给奖励--------------////////////////////////
+
+						if(1!=1) {
+							$register_award = BankeDict::where('id', 1)->first();
+							$user_profile->account_balance += $register_award->value;
+							$user_profile->register_amount += $register_award->value;
+							//将用户注册认证的金额加到用户表做任务已领金额中
+							$user_profile->get_do_task_amount += $register_award->value;
+							$balance_log = [
+								'uid' => $id,
+								'change_amount' => $register_award->value,
+								'change_type' => '+',
+								'business_type' => 'REGISTER_AND_CERTIFICATE_SUCCESS',
+								'operator_uid' => $cur_user->id
+							];
+							//记录余额变动日志
+							BankeBalanceLog::create($balance_log);
+							$message1 = [
+								'uid' => $id,
+								'title' => '认证成功',
+								'content' => '您的认证信息审核通过，平台已奖励您' . $register_award->value . '元现金，快去现金钱包里查看吧！',
+								'type' => 'USER_CERTIFICATE_SUCCESS'
+							];
+							//记录消息
+							BankeMessage::create($message1);
+						}
 
 
 						//v1.7招生老师审核时，所以此处不奖励
@@ -326,8 +332,26 @@ class AppUserRepository
 							if ($invitor_id > 0 && $award_flag) {
 
 								$invitation_user = BankeUserProfiles::where('uid', $invitor_id)->lockForUpdate()->first();
+
+
+
+								////////////////////-----------------1.9----------------////////////////////////
+								/**
+								 * 1.9 不再使用 系统配置表 的值。
+								 **/
 								//查询系统配置里邀请人注册认证的奖金
-								$award_amount = BankeDict::where('id', 2)->first()->value;
+
+
+								//查询任务表，看是否可以奖励
+								$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(2,$invitor_id);
+
+								if($info_obj == null){
+									Flash::error(trans('app_user.certificate_error'));
+									return false;
+								}
+
+								$award_amount = $info_obj['award'];
+
 								$invitation_user->invitation_amount += $award_amount;
 
 								$invitation_user->account_balance += $award_amount;
@@ -336,6 +360,9 @@ class AppUserRepository
 								$invitation_user->get_do_task_amount += $award_amount;
 
 								$invitation_user->save();
+
+								//更新task_form_user_detail 的相应字段
+								TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
 
 								//更新邀请表 的奖励金额
 								$this->updateInvitationTableInfo($invitor_id,$user_profile->mobile,$award_amount);
@@ -361,7 +388,8 @@ class AppUserRepository
 								BankeMessage::create($message3);
 							}
 						}
-					}elseif($status == config('admin.global.certification_status.trash')){
+					}
+					elseif($status == config('admin.global.certification_status.trash')){
 						$message2 = [
 							'uid'=>$id,
 							'title'=>'您已认证失败',

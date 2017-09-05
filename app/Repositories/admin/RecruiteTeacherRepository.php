@@ -104,7 +104,11 @@ class RecruiteTeacherRepository
 			$input = $request->all();
 			//奖励邀请人
 			if ($input['status'] == 1 && $teacher['status']!=1) {
-				self::awardInvitor($teacher);
+
+				//////////////////////////---------------1.9版本，认证不给奖励--------------////////////////////////
+				if(1!=1) {
+					self::awardInvitor($teacher);
+				}
 			}
 			if ($teacher->fill($request->all())->save()) {
 				Flash::success(trans('alerts.recruiteteacher.updated_success'));

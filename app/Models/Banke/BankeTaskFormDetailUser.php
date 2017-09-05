@@ -4,19 +4,15 @@ namespace App\Models\Banke;
 use App\Models\ActionAttributeTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class BankeTaskFormUser extends Model
+class BankeTaskFormDetailUser extends Model
 {
     // 每个人对应的当前任务
-    protected $table = 'banke_task_form_user';
+    protected $table = 'banke_task_form_detail_user';
     use ActionAttributeTrait;
     protected $fillable = [
-        'task_form_id',
-        'user_id',
-        'status',
-        'current_seq',
-        'time_begin',
-        'time_end',
-        'updated_at',
+        'times_finished',
+        'times_needed',
+        'award_coin'
     ];
 
     private $action;

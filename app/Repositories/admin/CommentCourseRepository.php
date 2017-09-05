@@ -9,6 +9,8 @@ use App\Repositories\admin\AppUserRepository;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
+use TaskFormUserRepository;
+use TaskFormUserDetailRepository;
 
 /**
 * 课程评论
@@ -196,13 +198,25 @@ class CommentCourseRepository
 		if($commentCourse->award_status==2){
 			return;
 		}
+
+		/**
+		 * 1.9的完成标准判断字段移到 task表中，
+		 * 不再使用 min_view_count作为判断。
+		 **/
+
 		if(!$commentCourse->view_counts_flag){  //未完成 浏览量
 			DB::transaction(function () use ($commentCourse) {
 				try {
 					$commentCourse->view_counts++;
 
+					$uid=$commentCourse->uid;
 					//达到浏览量
-					if ($commentCourse->view_counts == $commentCourse->min_view_counts) {
+					$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(6,$uid);
+					if($info_obj == null){
+						Flash::error(trans('alerts.course.updated_error'));
+						return false;
+					}
+					if ($commentCourse->view_counts == $info_obj['times']) {
 						$commentCourse->view_counts_flag = true;  //标志已经达到浏览量
 
 						//奖励
@@ -211,11 +225,14 @@ class CommentCourseRepository
 
 						$that=new CommentCourseRepository();
 
-						$comment_award=$that->getAward($commentCourse);  //奖励金额
+						$comment_award=$info_obj['award'];  //奖励金额
 						$that->awardUser($oldAwardStatus, $commentCourse, $request,$comment_award);  //奖励相应
 						$commentCourse->award_status=1;
 					}
 					$commentCourse->save();
+
+					//更新task_form_user_detail 的相应字段
+					TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
 				}
 				catch(Exception $e){
 					Flash::error(trans('alerts.course.updated_error'));
@@ -227,7 +244,6 @@ class CommentCourseRepository
 		}
 		return false;
 	}
-
 
 	/*
 	 * 获得奖励金额
