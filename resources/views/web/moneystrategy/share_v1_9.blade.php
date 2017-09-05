@@ -34,5 +34,5 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
-<script src="/front/assets/script/moneystrategy/moneystrategy-v1.9.js" type="text/javascript"></script>
+<script src="/front/assets/scripts/moneystrategy/moneystrategy-v1.9.js" type="text/javascript"></script>
 </html>
