@@ -1,6 +1,6 @@
 <?php
 namespace App\Repositories\admin;
-use App\Models\Banke\BankeCashBackUser;
+use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeCommentCourse;
 use Carbon\Carbon;
 use Flash;
@@ -8,9 +8,9 @@ use DB;
 use App\Repositories\admin\AppUserRepository;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeTaskUser;
-use App\Models\Banke\BankeOrg;
+use App\Models\Banke\BankeTask;
 use TaskFormUserRepository;
-use TaskFormDetailUserRepository;
+use App\Models\Banke\BankeGoodArticle;
 
 /**
 *	半课好文
@@ -35,15 +35,17 @@ class ArticleRepository
 
 			$times_needed=$taskUser['times_needed'];
 
-			if($times_needed==$taskUser['times_real']){
-				$info_obj = TaskFormDetailUserRepository::getMiniViewCountsAndAward(9,$uid);
-				if($info_obj == null){
+			$taskUser['times_real']=$taskUser['times_real'] + 1;
+
+			if($times_needed==$taskUser['times_real']) {
+				$info_obj = TaskFormUserRepository::getMiniViewCountsAndAward(9, $uid);
+				if ($info_obj == null) {
 					Flash::error(trans('alerts.course.updated_error'));
 					return false;
 				}
-				$award=$info_obj['award'];  //奖励金额
+				$award = $info_obj['award'];  //奖励金额
 
-				AppUserRepository::execUpdateUserAccountInfo($uid,$award,1,10);
+				AppUserRepository::execUpdateUserAccountInfo($uid, $award, 1, 10);
 
 				//消息记录
 				$message = [
@@ -58,13 +60,30 @@ class ArticleRepository
 
 				//更新task_form_user_detail 的相应字段
 				TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
-			}else{
-				$taskUser['times_real']=$taskUser['times_real'] + 1;
+
+				$taskUser->status=2;
 			}
 			$taskUser->save();
-		}else{
-
 		}
+		else{
+			self::insertNewData($id,$uid);
+		}
+	}
+
+	public static function insertNewData($id,$uid)
+	{
+		$task = new BankeTaskUser();
+		$task->task_id=9;
+        $task->user_id=$uid;
+        $task->source_Id=$id;
+        $task->status=1;
+
+		$task->award_coin=BankeTask::find(9)['award_coin'];
+		$task->times_needed=10;
+		$task->times_real=1;
+		$type=BankeGoodArticle::find($id)['type'];
+		$task->target_type=$type;
+		$task->save();
 	}
 	
 }

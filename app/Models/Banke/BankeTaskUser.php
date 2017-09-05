@@ -14,8 +14,14 @@ class BankeTaskUser extends Model
         'user_id',
         'source_Id',
         'status',
+        'times_finished',
+        'award_coin',
+        'coin_real',
+        'times_needed',
+        'times_real',
         'created_at',
         'updated_at',
+        'target_type'
     ];
 
     private $action;
