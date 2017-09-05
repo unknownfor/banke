@@ -18,6 +18,7 @@
     <title>机构评论</title>
 </head>
 <body>
+{!! csrf_field() !!}
 <div class="comment" id="orgComment"
             data-uid="{{$comment['uid']}}"
             data-course-id="{{$comment['course_id']}}"
