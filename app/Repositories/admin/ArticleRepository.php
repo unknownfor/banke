@@ -1,143 +1,70 @@
 <?php
 namespace App\Repositories\admin;
+use App\Models\Banke\BankeCashBackUser;
+use App\Models\Banke\BankeCommentCourse;
 use Carbon\Carbon;
 use Flash;
-use App\Models\Banke\BankeGoodArticle;
-use Illuminate\Support\Facades\Log;
+use DB;
+use App\Repositories\admin\AppUserRepository;
+use League\Flysystem\Exception;
+use App\Models\Banke\BankeTaskUser;
+use App\Models\Banke\BankeOrg;
+use TaskFormUserRepository;
+use TaskFormDetailUserRepository;
 
 /**
-* 半课好文章仓库
+*	半课好文
 */
 class ArticleRepository
 {
 
-
 	/**
-	 * datatable获取数据
-	 * @author shaolei
-	 * @date   2016-04-13T21:14:37+0800
-	 * @return [type]                   [description]
-	 */
-	public function ajaxIndex()
-	{
-		$draw = request('draw', 1);/*获取请求次数*/
-		$start = request('start', config('admin.global.list.start')); /*获取开始*/
-		$length = request('length', config('admin.global.list.length')); ///*获取条数*/
-
-		$status = request('status' ,'');
-
-		$goodarticle = new BankeGoodArticle;
-
-		/*状态搜索*/
-		if ($status!=null) {
-			$goodarticle = $goodarticle->where('status', $status);
-		}
-
-		$count = $goodarticle->count();
-
-		$goodarticle = $goodarticle->offset($start)->limit($length);
-		$goodarticles = $goodarticle->orderBy("id", "desc")->get();
-
-		if ($goodarticles) {
-			foreach ($goodarticles as &$v) {
-				$v['actionButton'] = $v->getActionButtonAttribute();
-			}
-		}
-		return [
-			'draw' => $draw,
-			'recordsTotal' => $count,
-			'recordsFiltered' => $count,
-			'data' => $goodarticles,
-		];
-	}
-
-
-
-	/**添加活动
-	 * @author shaolei
-	 * @date   2016-04-14T11:32:04+0800
-	 * @param  [type]                   $request [description]
-	 * @return [type]                            [description]
-	 */
-	public function store($request)
-	{
-		$goodarticle = new BankeGoodArticle;
-		if ($goodarticle->fill($request)->save()) {
-			Flash::success(trans('alerts.goodarticle.created_success'));
-			return $goodarticle->id;
-		}
-		Flash::error(trans('alerts.goodarticle.created_error'));
-		return false;
-	}
-
-	/**
-	 * 修改活动
-	 * @author shaolei
-	 * @date   2016-04-13T11:50:34+0800
-	 * @param  [type]                   $id [description]
-	 * @return [type]                       [description]
-	 */
-	public function edit($id)
-	{
-		$role = BankeGoodArticle::find($id);
-		if ($role) {
-			$roleArray = $role->toArray();
-			return $roleArray;
-		}
-		abort(404);
-	}
-
-	/**
-	 * 查看活动
-	 * @author 晚黎
-	 * @date   2016-04-13T17:09:22+0800
-	 * @param  [type]                   $id [description]
-	 * @return [type]                       [description]
-	 */
-	public function show($id)
-	{
-		$goodarticle = BankeGoodArticle::find($id)->toArray();
-		return $goodarticle;
-	}
-
-	/**
-	 * 修改活动
-	 * @author shaolei
+	 * 修改浏览量
+	 * 如果浏览量  等于要求量，则息自动 进行奖励
+	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
 	 * @param  [type]                   $request [description]
 	 * @param  [type]                   $id      [description]
 	 * @return [type]                            [description]
 	 */
-	public function update($request,$id)
+	public static function updateViewCounts($id,$uid)
 	{
-		$role = BankeGoodArticle::find($id);
-		if ($role) {
-			if ($role->fill($request->all())->save()) {
-				Flash::success(trans('alerts.goodarticle.updated_success'));
-				return true;
+		$taskUser = BankeTaskUser::where(['user_id'=>$uid,'task_id'=>9,'source_Id'=>$id])->where('status','<',2);
+		if($taskUser->count()>0){
+			$taskUser=$taskUser->first();
+
+			$times_needed=$taskUser['times_needed'];
+
+			if($times_needed==$taskUser['times_real']){
+				$info_obj = TaskFormDetailUserRepository::getMiniViewCountsAndAward(9,$uid);
+				if($info_obj == null){
+					Flash::error(trans('alerts.course.updated_error'));
+					return false;
+				}
+				$award=$info_obj['award'];  //奖励金额
+
+				AppUserRepository::execUpdateUserAccountInfo($uid,$award,1,10);
+
+				//消息记录
+				$message = [
+					'status' => 0,
+					'uid' => $uid,
+					'title' => '评论奖励',
+					'content' => '感谢您分享的好文章,平台已奖励您' . $award . '元现金，快去现金钱包里查看吧！',
+					'type' => config('admin.global.balance_log')[13]['key']
+				];
+				//记录消息
+				BankeMessage::create($message);
+
+				//更新task_form_user_detail 的相应字段
+				TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
+			}else{
+				$taskUser['times_real']=$taskUser['times_real'] + 1;
 			}
-			Flash::error(trans('alerts.goodarticle.updated_error'));
-			return false;
-		}
-		abort(404);
-	}
+			$taskUser->save();
+		}else{
 
-
-	/**
-	 * 删除活动
-	 * @author shaolei
-	 * @date   2016-04-13T11:51:19+0800
-	 * @param  [type]                   $id [description]
-	 * @return [type]                       [description]
-	 */
-	public function destroy($id)
-	{
-		$isDelete = BankeGoodArticle::destroy($id);
-		if ($isDelete) {
-			Flash::success(trans('alerts.goodarticle.deleted_success'));
-			return true;
 		}
-		Flash::error(trans('alerts.goodarticle.deleted_error'));
-		return false;
 	}
+	
 }

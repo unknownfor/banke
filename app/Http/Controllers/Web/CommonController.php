@@ -61,6 +61,7 @@ class CommonController extends Controller
                     GroupbuyingRepository::updateViewCounts($id);
                     break;
                 case 4://文章分享
+                    $uid=$request['typeid'];
                     ArticleRepository::updateViewCounts($id);
                     break;
                 default:
