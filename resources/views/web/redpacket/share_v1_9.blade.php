@@ -20,7 +20,9 @@
 <div id="redBag">
     <div class="wrapper">
         <div class="head">
-            <img class="slogen" src="/front/assets/img/redbag/title.png" />
+            <div class="slogenBox">
+                <img class="slogen" src="/front/assets/img/redbag/title.png" />
+            </div>
             <p class="headTitle">一大波红包等你领</p>
         </div>
         <div class="middle">

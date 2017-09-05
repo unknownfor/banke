@@ -25,13 +25,26 @@ input::-webkit-input-placeholder{
   text-align: center;
   .wrapper {
     height: 100%;
+    position: relative;
     .head {
+      position: relative;
       padding-top: 25px;
-      .slogen {
-        max-width: 45%;
-        margin-bottom: 10px;
+      .slogenBox {
+        position: absolute;
+        top: 33px;
+        text-align: center;
+        .slogen {
+          display: inline-block;
+          max-width: 45%;
+          margin-bottom: 10px;
+        }
       }
+
       .headTitle {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 70px;
         font-size: 16px;
         font-weight: bold;
         color: #996413;
@@ -39,6 +52,7 @@ input::-webkit-input-placeholder{
     }
     .middle {
       position: relative;
+      margin-top: 28px;
       .middleBg {
         margin-left: 10px;
         max-width: 260px;
@@ -73,7 +87,7 @@ input::-webkit-input-placeholder{
         right: 0;
       }
       .register {
-        @h: 35px;
+        @h: 40px;
         @br: 10px;
         margin: 0 40px;
         .register-box {
