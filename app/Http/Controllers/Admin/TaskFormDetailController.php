@@ -6,6 +6,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banke\BankeTask;
 use TaskFormDetailRepository;
 use App\Models\Banke\BankeTaskFormDetail;
 use Illuminate\Http\Request;
@@ -46,7 +47,8 @@ class TaskFormDetailController extends Controller {
      */
     public function create()
     {
-        return view('admin.taskformdetail.create');
+        $alltask=BankeTask::get(['name','type']);
+        return view('admin.taskformdetail.create')->with(compact(['alltask']));
     }
 
     /**

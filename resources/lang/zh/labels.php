@@ -974,6 +974,9 @@ return [
 		'list' => '一期任务列表',
 		'created_at' => '创建时间',
 		'updated_at' => '修改时间',
+		'task' => '选择任务类型',
+		'alltask' => '全部任务类型',
+		'selected_task' => '已选类型',
 	],
 
 ];

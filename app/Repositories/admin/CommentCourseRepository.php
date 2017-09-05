@@ -191,6 +191,11 @@ class CommentCourseRepository
 	public static function updateViewCounts($id)
 	{
 		$commentCourse = BankeCommentCourse::lockForUpdate()->find($id);
+
+		//数据已经作废，不能奖励
+		if($commentCourse->award_status==2){
+			return;
+		}
 		if(!$commentCourse->view_counts_flag){  //未完成 浏览量
 			DB::transaction(function () use ($commentCourse) {
 				try {

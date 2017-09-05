@@ -339,5 +339,14 @@ return [
         'deleted_success' => '删除任务期数成功',
         'deleted_error' => '删除任务期数失败',
     ],
+    'taskformdetail' => [
+        'created_success'   => '创建任务成功.',
+        'created_error'     => '创建任务失败.',
+        'already_created_error'     => '创建失败,目标期数任务已经存在',
+        'updated_success'   => '编辑任务成功.',
+        'updated_error'     => '编辑任务失败.',
+        'deleted_success' => '删除任务成功',
+        'deleted_error' => '删除任务失败',
+    ],
 
 ];
