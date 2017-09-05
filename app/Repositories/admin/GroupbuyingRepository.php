@@ -10,7 +10,7 @@ use DB;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
 use TaskFormUserRepository;
-use TaskFormUserDetailRepository;
+use TaskFormDetailUserRepository;
 
 /**
 * 团购列表
@@ -210,7 +210,7 @@ class GroupbuyingRepository
 					$groupbuying->view_counts++;
 
 					//达到浏览量
-					if (($groupbuying->view_counts)%$groupbuying->$info_obj['times']==0) {
+					if (($groupbuying->view_counts)%$info_obj['times']==0) {
 						$groupbuying->finished_share_counts ++ ;  //完成次数 + 1
 						$groupbuying->lastly_finished_at= date("Y-m-d H:i:s",$time);
 						$that=new GroupbuyingRepository();

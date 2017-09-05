@@ -12,7 +12,7 @@ use Mockery\CountValidator\Exception;
 use DB;
 use Auth;
 use RecruiteTeacherRepository;
-use AppUserRepository;
+use App\Repositories\admin\AppUserRepository;
 
 /**
 * 用户仓库
