@@ -18,13 +18,14 @@
     <title>机构评论</title>
 </head>
 <body>
-<div class="comment" id="orgComment">
-    <div data-uid="{{$comment['uid']}}"
-            data-course-id="{{$comment['course_id']}}"
-            data-org-id="{{$comment['org_id']}}"
-            data-record-id="{{$comment['id']}}"
-            data-type-id="2">机构评论</div>
-
+{!! csrf_field() !!}
+<div class="commentPage" id="orgComment"
+            {{--data-uid="{{$comment['uid']}}"--}}
+            {{--data-course-id="{{$comment['course_id']}}"--}}
+            {{--data-org-id="{{$comment['org_id']}}"--}}
+            {{--data-record-id="{{$comment['id']}}"--}}
+            data-type-id="2">
+    机构评论
 </div>
 {{--@include('web.layout.downloadbar')--}}
 </body>

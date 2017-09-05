@@ -18,11 +18,13 @@
     <title>课程评价分享</title>
 </head>
 <body>
-<div data-uid="{{$comment['uid']}}"
-data-course-id="{{$comment['course_id']}}"
-data-record-id="{{$comment['id']}}"
-data-type-id="1">信息</div>
-    <div class="commentPage" id="courseComment">
+{!! csrf_field() !!}
+    <div class="commentPage" id="courseComment"
+         {{--data-uid="{{$comment['uid']}}"--}}
+         {{--data-course-id="{{$comment['course_id']}}"--}}
+         {{--data-record-id="{{$comment['id']}}"--}}
+         data-type-id="1"
+    >
         <div class="headBox container">
             <img class="headImg" src="http://pic.hisihi.com/2016-05-19/1463654400267875.png"/>
             <div class="headName">分享者的名字哈哈哈哈哈哈哈哈哈哈</div>
