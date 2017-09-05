@@ -9,6 +9,8 @@ use App\Repositories\admin\AppUserRepository;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
 use App\Models\Banke\BankeOrg;
+use TaskFormUserRepository;
+use TaskFormUserDetailRepository;
 
 /**
 * 机构评论
@@ -270,38 +272,59 @@ class CommentOrgRepository
 	public static function updateViewCounts($id)
 	{
 		$commentOrg = BankeCommentOrg::where('id',$id);
-			DB::transaction(function () use ($commentOrg) {
-				try {
-					$commentOrg=$commentOrg->lockForUpdate()->first();
-					if(!$commentOrg->view_counts_flag) {  //未完成 浏览量
-						$commentOrg->view_counts++;
-						//达到浏览量
-						if ($commentOrg->view_counts == $commentOrg->min_view_counts) {
-							$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
 
-							//奖励
-							$oldAwardStatus = $commentOrg['award_status'];
-							$request = array('award_status' => 1);
 
-							$that = new CommentOrgRepository();
 
-							$comment_award = $that->getAward($commentOrg);  //奖励金额
+		DB::transaction(function () use ($commentOrg) {
+			try {
+				$commentOrg=$commentOrg->lockForUpdate()->first();
+				//数据已经作废，不能奖励
+				if($commentOrg->award_status==2){
+					return;
+				}
+				if(!$commentOrg->view_counts_flag) {  //未完成 浏览量
+					$commentOrg->view_counts++;
 
-							$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
-							$commentOrg->award_status = 1;
-						}
-						$commentOrg->save();
-					}else{
+					$uid=$commentOrg->uid;
+					//达到浏览量
+					$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(7,$uid);
+					if($info_obj == null){
+						Flash::error(trans('alerts.course.updated_error'));
 						return false;
 					}
-				}
-				catch(Exception $e){
-					Flash::error(trans('alerts.course.updated_error'));
-					var_dump($e);
+
+					if ($commentOrg->view_counts == $info_obj['times']) {
+						$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
+
+						//奖励
+						$oldAwardStatus = $commentOrg['award_status'];
+						$request = array('award_status' => 1);
+
+						$that = new CommentOrgRepository();
+
+//						$comment_award = $that->getAward($commentOrg);  //奖励金额
+
+						$comment_award=$info_obj['award'];  //奖励金额
+
+						$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
+						$commentOrg->award_status = 1;
+					}
+					$commentOrg->save();
+
+					//更新task_form_user_detail 的相应字段
+					TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
+
+				}else{
 					return false;
 				}
-			});
-			return true;
+			}
+			catch(Exception $e){
+				Flash::error(trans('alerts.course.updated_error'));
+				var_dump($e);
+				return false;
+			}
+		});
+		return true;
 	}
 
 	/*

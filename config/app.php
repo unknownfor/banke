@@ -283,6 +283,8 @@ return [
         'TaskRepository' => App\Facades\TaskFacade::class,
         'TaskFormRepository' => App\Facades\TaskFormFacade::class,
         'TaskFormDetailRepository' => App\Facades\TaskFormDetailFacade::class,
+        'TaskFormUserRepository' => App\Facades\TaskFormUserFacade::class,
+        'TaskFormDetailUserRepository' => App\Facades\TaskFormDetailUserFacade::class,
     ],
 
 ];

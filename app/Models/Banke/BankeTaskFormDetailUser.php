@@ -10,7 +10,9 @@ class BankeTaskFormDetailUser extends Model
     protected $table = 'banke_task_form_detail_user';
     use ActionAttributeTrait;
     protected $fillable = [
-
+        'times_finished',
+        'times_needed',
+        'award_coin'
     ];
 
     private $action;

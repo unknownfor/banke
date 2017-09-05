@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use App\Repositories\admin\CommentCourseRepository;
 use App\Repositories\admin\CommentOrgRepository;
 use App\Repositories\admin\GroupbuyingRepository;
+use TaskFormUserRepository;
 
 class CommonController extends Controller
 {
@@ -50,6 +51,7 @@ class CommonController extends Controller
             switch ($type) {
                 case 1://课程评论
                     CommentCourseRepository::updateViewCounts($id);
+
                     break;
                 case 2://机构评论
                     CommentOrgRepository::updateViewCounts($id);
