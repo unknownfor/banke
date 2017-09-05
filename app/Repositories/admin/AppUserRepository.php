@@ -16,7 +16,7 @@ use League\Flysystem\Exception;
 use App\Uuid;
 use Illuminate\Support\Facades\Log;
 use MoneyNewsRepository;
-use TaskFormUserRepository;
+use App\Repositories\admin\TaskFormUserRepository;
 use TaskFormUserDetailRepository;
 
 /**
