@@ -185,6 +185,30 @@ input {
     -webkit-transform: rotate(360deg);
   }
 }
+@-webkit-keyframes swipeMoveTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10px, 0);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -10px, 0);
+  }
+}
+@-webkit-keyframes slideToTop {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100px, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+}
 body {
   margin: 0 auto;
   padding: 0;
@@ -211,73 +235,76 @@ input::-webkit-input-placeholder {
   position: relative;
   text-align: center;
 }
-#redBag .head {
+#redBag .wrapper {
+  height: 100%;
+}
+#redBag .wrapper .head {
   padding-top: 25px;
 }
-#redBag .head .slogen {
+#redBag .wrapper .head .slogen {
   max-width: 65%;
   margin-bottom: 10px;
 }
-#redBag .head .headTitle {
+#redBag .wrapper .head .headTitle {
   font-size: 18px;
   font-weight: bold;
   color: #996413;
 }
-#redBag .middle {
+#redBag .wrapper .middle {
   position: relative;
 }
-#redBag .middle .middleBg {
+#redBag .wrapper .middle .middleBg {
   margin-left: 10px;
   max-width: 290px;
 }
-#redBag .middle .middleTxt {
+#redBag .wrapper .middle .middleTxt {
   position: absolute;
   top: 95px;
   left: 0;
   right: 0;
 }
-#redBag .middle .middleTxt .txtOne {
+#redBag .wrapper .middle .middleTxt .txtOne {
   color: #79625d;
   font-size: 16px;
   margin-bottom: 5px;
 }
-#redBag .middle .middleTxt .txtTwo {
+#redBag .wrapper .middle .middleTxt .txtTwo {
   color: #fa5047;
   margin-top: 5px;
 }
-#redBag .middle .middleTxt .txtTwo > span {
+#redBag .wrapper .middle .middleTxt .txtTwo > span {
   font-size: 28px;
 }
-#redBag .footer {
+#redBag .wrapper .footer {
   position: relative;
   height: 100%;
   background-color: #FFD162;
 }
-#redBag .footer .footerTop {
+#redBag .wrapper .footer .footerTop {
   position: absolute;
   top: -31px;
   left: 0;
   right: 0;
 }
-#redBag .footer .register {
+#redBag .wrapper .footer .register {
   margin: 0 40px;
 }
-#redBag .footer .register .register-box {
+#redBag .wrapper .footer .register .register-box {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   background-color: #FFF1D0;
 }
-#redBag .footer .register .register-box.phone {
+#redBag .wrapper .footer .register .register-box.phone {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-#redBag .footer .register .register-box.password {
+#redBag .wrapper .footer .register .register-box.password {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-#redBag .footer .register .register-box .code-btn {
+#redBag .wrapper .footer .register .register-box .code-btn {
   font-size: 12px;
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 74px;
@@ -299,19 +326,19 @@ input::-webkit-input-placeholder {
   line-height: 23px;
   color: #ffffff;
 }
-#redBag .footer .register .register-box .code-btn.disabled {
+#redBag .wrapper .footer .register .register-box .code-btn.disabled {
   pointer-events: none;
 }
-#redBag .footer .register .register-box .code-btn.disabled > span {
+#redBag .wrapper .footer .register .register-box .code-btn.disabled > span {
   background-color: #d2ab3d;
 }
-#redBag .footer .register .register-box .code-btn > span {
+#redBag .wrapper .footer .register .register-box .code-btn > span {
   width: 65px;
   height: 23px;
   background-color: #FEBF10;
   border-radius: 4px;
 }
-#redBag .footer .register .register-box .register-code {
+#redBag .wrapper .footer .register .register-box .register-code {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -322,19 +349,19 @@ input::-webkit-input-placeholder {
   background-color: #FFF1D0;
   margin: 0 5px;
 }
-#redBag .footer .register .register-box .register-code#phone-num {
+#redBag .wrapper .footer .register .register-box .register-code#phone-num {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-#redBag .footer .register .register-box .register-code#user-code {
+#redBag .wrapper .footer .register .register-box .register-code#user-code {
   border-top: 1px solid #C8B393;
 }
-#redBag .footer .register .register-box .register-code#password-num {
+#redBag .wrapper .footer .register .register-box .register-code#password-num {
   border-top: 1px solid #C8B393;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-#redBag .footer .register .btn {
+#redBag .wrapper .footer .register .btn {
   position: relative;
   border: none;
   margin: 10px auto;
@@ -345,15 +372,15 @@ input::-webkit-input-placeholder {
   -webkit-box-shadow: 0px 8px 10px #C72020;
   box-shadow: 0px 8px 10px #C72020;
 }
-#redBag .footer .register .btn.nouse {
+#redBag .wrapper .footer .register .btn.nouse {
   pointer-events: none;
 }
-#redBag .footer .register .btn #downloadBar {
+#redBag .wrapper .footer .register .btn #downloadBar {
   color: #ffffff;
   font-weight: bold;
   letter-spacing: 1px;
 }
-#redBag .footer .register .btn #dot {
+#redBag .wrapper .footer .register .btn #dot {
   width: 15.6px;
   height: 13.2px;
   display: inline-block;
@@ -417,25 +444,22 @@ input::-webkit-input-placeholder {
 #redBag .container .btn.active {
   background-color: #FAC02E;
 }
-#redBag .container.hide {
-  display: none;
-}
-#redBag .hide {
+#redBag.hide {
   display: none;
   opacity: 0;
 }
 @media screen and (max-width: 420px) {
-  #redBag .footer .footerTop {
+  #redBag .wrapper .footer .footerTop {
     top: -40px;
   }
 }
 @media screen and (max-width: 380px) {
-  #redBag .footer .footerTop {
+  #redBag .wrapper .footer .footerTop {
     top: -36px;
   }
 }
 @media screen and (max-width: 320px) {
-  #redBag .footer .footerTop {
+  #redBag .wrapper .footer .footerTop {
     top: -31px;
   }
 }

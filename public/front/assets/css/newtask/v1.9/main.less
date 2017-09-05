@@ -19,6 +19,7 @@ img {
   color: #ffffff;
   padding: 15px;
   height: 100%;
+  margin-bottom: 35px;
   .title {
     @sc:#FFE6A5;
     text-align: center;
@@ -29,19 +30,44 @@ img {
     text-shadow: 1px 1px @sc, 1px 1px @sc, 1px 1px @sc, 1px 1px @sc, 1px 1px @sc, 1px 1px @sc;
   }
   .txtBox {
+    background: url("../../../img/newtask/bg.png") no-repeat;
+    @present: 0.6 ;
+    @w: 858px * @present;
+    @h: 585px * @present;
+    background-size: @w @h;
     margin-top: 20px;
     text-align: left;
     line-height: 22px;
     .txtTitle {
       color: #ffe16e;
       font-size: 15px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       font-weight: bold;
     }
     .txtDetail {
       > p {
-        margin-bottom: 5px;
+        margin-bottom: 8px;
       }
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  #newtask {
+    .txtBox {
+      @present: 0.5;
+      @w: 858px * @present;
+      @h: 585px * @present;
+      background-size: @w @h;
+    }
+  }
+}
+@media screen and (max-width: 320px) {
+  #newtask {
+    .txtBox {
+      @present: 0.4;
+      @w: 858px * @present;
+      @h: 585px * @present;
+      background-size: @w @h;
     }
   }
 }

@@ -18,36 +18,38 @@
 </head>
 <body>
 <div id="redBag">
-    <div class="head">
-        <img class="slogen" src="/front/assets/img/redbag/title.png" />
-        <p class="headTitle">一大波红包等你领</p>
-    </div>
-    <div class="middle">
-        <img class="middleBg" src="/front/assets/img/redbag/bg.png" />
-        <div class="middleTxt">
-            <p class="txtOne">我已经连续完成<span>2</span>天任务</p>
-            <p class="txtOne">累计领取了</p>
-            <p class="txtTwo">￥<span>19.9</span></p>
+    <div class="wrapper">
+        <div class="head">
+            <img class="slogen" src="/front/assets/img/redbag/title.png" />
+            <p class="headTitle">一大波红包等你领</p>
         </div>
-    </div>
-    <div class="footer">
-        <img class="footerTop" src="/front/assets/img/redbag/bgTop.png">
-        <form class="register">
-            <div class="register-box phone">
-                <input class="register-code" id="phone-num" placeholder="输入手机号" />
-                <div class="code-btn disabled" id="phone-code-btn"><span>获取验证码</span></div>
+        <div class="middle">
+            <img class="middleBg" src="/front/assets/img/redbag/bg.png" />
+            <div class="middleTxt">
+                <p class="txtOne">我已经连续完成<span>2</span>天任务</p>
+                <p class="txtOne">累计领取了</p>
+                <p class="txtTwo">￥<span>19.9</span></p>
             </div>
-            <div class="register-box code-num">
-                <input class="register-code" id="user-code" placeholder="输入验证码"/>
-            </div>
-            <div class="register-box password">
-                <input class="register-code" id="password-num" type="password"  placeholder="输入密码"/>
-            </div>
-            <button class="btn nouse">
-                <span id="downloadBar">立即领取</span>
-                <span id="dot"></span>
-            </button>
-        </form>
+        </div>
+        <div class="footer">
+            <img class="footerTop" src="/front/assets/img/redbag/bgTop.png">
+            <form class="register">
+                <div class="register-box phone">
+                    <input class="register-code" id="phone-num" placeholder="输入手机号" value="13554154325" />
+                    <div class="code-btn disabled" id="phone-code-btn"><span>获取验证码</span></div>
+                </div>
+                <div class="register-box code-num">
+                    <input class="register-code" id="user-code" placeholder="输入验证码"/>
+                </div>
+                <div class="register-box password">
+                    <input class="register-code" id="password-num" type="password"  placeholder="输入密码"/>
+                </div>
+                <button class="btn nouse">
+                    <span id="downloadBar">立即领取</span>
+                    <span id="dot"></span>
+                </button>
+            </form>
+        </div>
     </div>
     <div class="container hide">
         <img class="bg second" src="/front/assets/img/freestudy/v1.8/bg.png">
