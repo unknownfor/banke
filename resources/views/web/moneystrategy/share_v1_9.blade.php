@@ -16,7 +16,11 @@
     <title>{{$strategy['title']}}</title>
 </head>
 <body>
-<div id="article" data-uid="{{}}">
+{!! csrf_field() !!}
+<div id="article" class="paper"
+     data-id="{{$strategy['id']}}"
+     data-type-id="4"
+>
     <div class="head">
         <div class="title">{{$strategy['title']}}</div>
         <div class="author">by: {{$strategy['author']}}</div>
@@ -30,4 +34,5 @@
 <script src="/front/assets/plugins/zepto.min.js"></script>
 <script src="/front/assets/plugins/fastclick.js" type="text/javascript"></script>
 <script src="/front/assets/plugins/common.js" type="text/javascript"></script>
+<script src="/front/assets/script/moneystrategy/moneystrategy-v1.9.js" type="text/javascript"></script>
 </html>

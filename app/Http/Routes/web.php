@@ -323,7 +323,6 @@ Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
     Route::get('/freestudy/{id}/{uid}', 'FreeStudyController@share_v1_9');
 
 
-
 });
 
 
