@@ -90,24 +90,20 @@ input::-webkit-input-placeholder{
           .code-btn {
             @h: 23px;
             font-size: 12px;
-            flex: 0 0 74px;
-            display: flex;
-            justify-items: center;
-            justify-content: center;
-            align-items: center;
-            line-height: @h;
+            border: none;
             color: #ffffff;
+            width: 65px;
+            height: @h;
+            line-height: @h;
+            text-align: center;
+            background-color: #FEBF10;
+            border-radius: 4px;
+            margin-top: 8px;
+            margin-right: 5px;
+            padding: 0 3px;
             &.disabled {
               pointer-events: none;
-              > span {
-                background-color: rgba(210, 171, 61, 1);
-              }
-            }
-            > span {
-              width: 65px;
-              height: @h;
-              background-color: #FEBF10;
-              border-radius: 4px;
+              background-color: rgba(210, 171, 61, 1);
             }
           }
           .register-code {
@@ -139,6 +135,8 @@ input::-webkit-input-placeholder{
           .size(148px, @h);
           border-radius: 50px;
           box-shadow: 0px 8px 10px #C72020;
+          line-height: @h;
+          display: inline-block;
           &.nouse {
             pointer-events: none;
           }
@@ -163,7 +161,6 @@ input::-webkit-input-placeholder{
     }
   }
   .container {
-    opacity: 0;
     -webkit-animation: slideToTop .8s 0.2s ease both;
     position: relative;
     background-color: #ffffff;
@@ -216,7 +213,7 @@ input::-webkit-input-placeholder{
       }
     }
   }
-  &.hide {
+  .hide {
     display: none;
     opacity: 0;
   }

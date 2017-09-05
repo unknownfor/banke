@@ -12,9 +12,9 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
+    <link href="/backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css" rel="stylesheet" type="text/css">
     <link type="text/css" href="/front/assets/css/commentcourse/v1.9/commentcourse.css" rel="stylesheet">
     <link type="text/css" href="/front/assets/css/commentcourse/v1.9/iconfont/iconfont.css" rel="stylesheet">
-    <link href="/backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css" rel="stylesheet" type="text/css">
     <title>课程评价分享</title>
 </head>
 <body>
@@ -62,10 +62,6 @@
                             <a href="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" data-size="400x500"></a>
                             <img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" >
                         </li>
-                        <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
-                        <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
-                        <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
-                        <li class="album-li"><img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" /></li>
                         <div class="clear"></div>
                     </ul>
                 </div>
@@ -106,7 +102,6 @@
 <script type="text/javascript">
     /*
      * photoswipe
-     * 图片信息查看  相册、视频信息查看
      * */
     new MyPhotoSwipe('.org-album');
 </script>

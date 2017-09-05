@@ -225,6 +225,7 @@ img {
 #courseComment {
   font-size: 14px;
   background-color: #fff;
+  padding-bottom: 35px;
 }
 #courseComment .container {
   position: relative;

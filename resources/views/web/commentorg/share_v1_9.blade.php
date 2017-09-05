@@ -17,6 +17,7 @@
     <title>机构评论</title>
 </head>
 <body>
+机构评论
 {{--@include('web.layout.downloadbar')--}}
 </body>
 <script src="/front/assets/plugins/zepto.min.js"></script>

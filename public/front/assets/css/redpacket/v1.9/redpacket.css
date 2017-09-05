@@ -306,37 +306,21 @@ input::-webkit-input-placeholder {
 }
 #redBag .wrapper .footer .register .register-box .code-btn {
   font-size: 12px;
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 74px;
-  -ms-flex: 0 0 74px;
-  flex: 0 0 74px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  justify-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  line-height: 23px;
+  border: none;
   color: #ffffff;
+  width: 65px;
+  height: 23px;
+  line-height: 23px;
+  text-align: center;
+  background-color: #FEBF10;
+  border-radius: 4px;
+  margin-top: 8px;
+  margin-right: 5px;
+  padding: 0 3px;
 }
 #redBag .wrapper .footer .register .register-box .code-btn.disabled {
   pointer-events: none;
-}
-#redBag .wrapper .footer .register .register-box .code-btn.disabled > span {
   background-color: #d2ab3d;
-}
-#redBag .wrapper .footer .register .register-box .code-btn > span {
-  width: 65px;
-  height: 23px;
-  background-color: #FEBF10;
-  border-radius: 4px;
 }
 #redBag .wrapper .footer .register .register-box .register-code {
   -webkit-box-flex: 1;
@@ -371,6 +355,8 @@ input::-webkit-input-placeholder {
   border-radius: 50px;
   -webkit-box-shadow: 0px 8px 10px #C72020;
   box-shadow: 0px 8px 10px #C72020;
+  line-height: 40px;
+  display: inline-block;
 }
 #redBag .wrapper .footer .register .btn.nouse {
   pointer-events: none;
@@ -392,7 +378,6 @@ input::-webkit-input-placeholder {
   background-size: 15.6px 13.2px;
 }
 #redBag .container {
-  opacity: 0;
   -webkit-animation: slideToTop .8s 0.2s ease both;
   position: relative;
   background-color: #ffffff;
@@ -444,7 +429,7 @@ input::-webkit-input-placeholder {
 #redBag .container .btn.active {
   background-color: #FAC02E;
 }
-#redBag.hide {
+#redBag .hide {
   display: none;
   opacity: 0;
 }
