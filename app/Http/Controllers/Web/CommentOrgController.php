@@ -22,6 +22,13 @@ class CommentOrgController extends Controller
      */
     public function share_v1_9($id)
     {
-        return view('web.commentorg.share_v1_9');
+        $comment=BankeCommentOrg::find($id);
+//        $uid=
+//        data-uid="{{$user['uid']}}"
+//         data-course-id="{{$course['id']}}"
+//         data-org-id="{{$org['id']}}"
+//         data-record-id="{{$shareInfo['record_id']}}"
+//         data-type-id="{{$shareInfo['type_id']}}"
+        return view('web.commentorg.share_v1_9')->with(compact(['comment']));
     }
 }

@@ -9,6 +9,8 @@ use Flash;
 use DB;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
+use TaskFormUserRepository;
+use TaskFormUserDetailRepository;
 
 /**
 * 团购列表
@@ -196,37 +198,39 @@ class GroupbuyingRepository
 		$time = time();
 		DB::transaction(function () use ($groupbuying,$time) {
 			$groupbuying=$groupbuying->lockForUpdate()->first();
-			$max_finished_share_counts=$groupbuying->max_finished_share_counts;
-			$today = date("Y-m-d",$time); //2010-08-29
-			$flag = strtotime($groupbuying->lastly_finished_at)>=strtotime($today); //今天已经完成，不能再更新信息
-			if($flag){
-				return false;
-			}
-			if($groupbuying['finished_share_counts']<$max_finished_share_counts){  //未完成 浏览量
 				try {
-					$groupbuying->view_counts++;
+
+					$uid=$groupbuying->organizer_id;
 					//达到浏览量
-					if (($groupbuying->view_counts)%$groupbuying->min_view_counts==0) {
+					$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(5,$uid);
+					if($info_obj == null){
+						return false;
+					}
+
+					$groupbuying->view_counts++;
+
+					//达到浏览量
+					if (($groupbuying->view_counts)%$groupbuying->$info_obj['times']==0) {
 						$groupbuying->finished_share_counts ++ ;  //完成次数 + 1
 						$groupbuying->lastly_finished_at= date("Y-m-d H:i:s",$time);
 						$that=new GroupbuyingRepository();
-						$award=$that->getAward($groupbuying);  //获得奖励的钱
+
+//						$award=$that->getAward($groupbuying);  //获得奖励的钱
+						$award=$info_obj['award'];  //获得奖励的钱
 						$that->awardUser($groupbuying,$award);  //奖励相应
 					}
 					$groupbuying->save();
+
+					//更新task_form_user_detail 的相应字段
+					TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
+
 				}
 				catch(Exception $e){
 					Flash::error(trans('alerts.course.updated_error'));
 					var_dump($e);
 					return false;
 				}
-			}else{
-				$groupbuying->view_counts++;
-				$groupbuying->save();
-			}
-			return true;
 		});
-		return false;
 	}
 
 	/*

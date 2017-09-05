@@ -17,8 +17,13 @@
     <title>机构评论</title>
 </head>
 <body>
-<div class="comment" id="orgComment" data-type-id="{{$shareInfo['type_id']}}">
-机构评论
+<div class="comment" id="orgComment">
+    <div data-uid="{{$comment['uid']}}"
+            data-course-id="{{$comment['course_id']}}"
+            data-org-id="{{$comment['org_id']}}"
+            data-record-id="{{$comment['id']}}"
+            data-type-id="2">机构评论</div>
+
 </div>
 {{--@include('web.layout.downloadbar')--}}
 </body>
