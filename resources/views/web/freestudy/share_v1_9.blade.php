@@ -19,6 +19,7 @@
 <body>
 {!! csrf_field() !!}
 <div id="freestudy" class="paper"
+     data-uid="{{$uid}}"
      data-id="{{$freestudy['id']}}"
      data-type-id="4"
 >

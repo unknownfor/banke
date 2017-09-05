@@ -18,6 +18,7 @@
 <body>
 {!! csrf_field() !!}
 <div id="article" class="paper"
+     data-uid="{{$uid}}"
      data-id="{{$strategy['id']}}"
      data-type-id="4"
 >
