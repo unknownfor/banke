@@ -289,27 +289,28 @@ class CommentOrgRepository
 					//达到浏览量
 					$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(7,$uid);
 					if($info_obj == null){
-						Flash::error(trans('alerts.course.updated_error'));
-						return false;
-					}
+//						Flash::error(trans('alerts.course.updated_error'));
+//						return false;
+					}else {
 
-					if ($commentOrg->view_counts == $info_obj['times']) {
-						$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
+						if ($commentOrg->view_counts == $info_obj['times']) {
+							$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
 
-						//奖励
-						$oldAwardStatus = $commentOrg['award_status'];
-						$request = array('award_status' => 1);
+							//奖励
+							$oldAwardStatus = $commentOrg['award_status'];
+							$request = array('award_status' => 1);
 
-						$that = new CommentOrgRepository();
+							$that = new CommentOrgRepository();
 
 //						$comment_award = $that->getAward($commentOrg);  //奖励金额
 
-						$comment_award=$info_obj['award'];  //奖励金额
+							$comment_award = $info_obj['award'];  //奖励金额
 
-						$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
-						$commentOrg->award_status = 1;
-						//更新task_form_user_detail 的相应字段
-						TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
+							$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
+							$commentOrg->award_status = 1;
+							//更新task_form_user_detail 的相应字段
+							TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
+						}
 					}
 					$commentOrg->save();
 
