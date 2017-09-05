@@ -16,7 +16,7 @@ use League\Flysystem\Exception;
 use App\Uuid;
 use Illuminate\Support\Facades\Log;
 use MoneyNewsRepository;
-use TaskFormUserRepository;
+use App\Repositories\admin\TaskFormUserRepository;
 use TaskFormUserDetailRepository;
 
 /**
@@ -747,6 +747,10 @@ class AppUserRepository
 				case 8:  //app store好评
 					$user_profile->get_do_task_amount += $award;
 					$businessTypeIndex=15;
+					break;
+				case 9:  //注册奖励
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=5;
 					break;
 				default:
 					break;

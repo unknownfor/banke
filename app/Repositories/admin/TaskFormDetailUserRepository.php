@@ -32,4 +32,9 @@ class TaskFormDetailUserRepository
 		$user->status=2;
 		$user->save();
 	}
+
+	public static function addPatchCard($uid)
+	{
+
+	}
 }
