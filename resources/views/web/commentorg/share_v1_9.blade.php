@@ -12,12 +12,17 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
-    {{--<link type="text/css" href="/front/assets/css/redbag/v1.9/redbag.css" rel="stylesheet">--}}
-    {{--<link type="text/css" href="/front/assets/css/org/v1.5/iconfont/iconfont.css">--}}
+    <link href="/backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css" rel="stylesheet" type="text/css">
+    <link type="text/css" href="/front/assets/css/commentcourse/v1.9/orgcourse.css" rel="stylesheet">
+    <link type="text/css" href="/front/assets/css/commentcourse/v1.9/iconfont/iconfont.css" rel="stylesheet">
     <title>机构评论</title>
 </head>
 <body>
-<div class="comment" id="orgComment" data-type-id="{{$shareInfo['type_id']}}">
+<div class="commentPage" id="orgComment"
+     {{--data-uid="{{$user['uid']}}"--}}
+     {{--data-record-id="{{$shareInfo['record_id']}}"--}}
+     {{--data-type-id="{{$shareInfo['type_id']}}"--}}
+>
 机构评论
 </div>
 {{--@include('web.layout.downloadbar')--}}

@@ -3,11 +3,17 @@
  */
 $(function() {
 
-    window.addLoadingImg();
-    window.addTip();
+    // window.addLoadingImg();
+    // window.addTip();
 
     showStars();
-    viewCounts();
+
+
+    //浏览量,判断是否是老学员
+    var oldUser=$('.commentPage').attr('data-record-id');
+    if( oldUser != 0){
+        viewCounts();
+    }
 
     /*
      * 机构评分星星*/
@@ -74,7 +80,7 @@ $(function() {
      id   表示记录id
      * */
     function viewCounts() {
-        var box = $('.comment'),
+        var box = $('.commentPage'),
             typeId = box.attr('data-type-id'),
             id = box.attr('data-record-id'),
             url = '/v1.5/share/updateviewcounts',
