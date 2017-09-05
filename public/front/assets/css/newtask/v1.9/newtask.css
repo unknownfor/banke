@@ -257,3 +257,15 @@ img {
 #newtask .txtBox .txtDetail > p {
   margin-bottom: 8px;
 }
+@media screen and (max-width: 380px) {
+  #newtask .txtBox {
+    -webkit-background-size: 429px 292.5px;
+    background-size: 429px 292.5px;
+  }
+}
+@media screen and (max-width: 320px) {
+  #newtask .txtBox {
+    -webkit-background-size: 343.2px 234px;
+    background-size: 343.2px 234px;
+  }
+}

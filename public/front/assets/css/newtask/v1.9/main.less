@@ -15,8 +15,6 @@ img {
   max-width: 100%;
 }
 #newtask {
-  @w: 858px * 0.6;
-  @h: 585px * 0.6;
   font-size: 14px;
   color: #ffffff;
   padding: 15px;
@@ -33,6 +31,9 @@ img {
   }
   .txtBox {
     background: url("../../../img/newtask/bg.png") no-repeat;
+    @present: 0.6 ;
+    @w: 858px * @present;
+    @h: 585px * @present;
     background-size: @w @h;
     margin-top: 20px;
     text-align: left;
@@ -47,6 +48,26 @@ img {
       > p {
         margin-bottom: 8px;
       }
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  #newtask {
+    .txtBox {
+      @present: 0.5;
+      @w: 858px * @present;
+      @h: 585px * @present;
+      background-size: @w @h;
+    }
+  }
+}
+@media screen and (max-width: 320px) {
+  #newtask {
+    .txtBox {
+      @present: 0.4;
+      @w: 858px * @present;
+      @h: 585px * @present;
+      background-size: @w @h;
     }
   }
 }
