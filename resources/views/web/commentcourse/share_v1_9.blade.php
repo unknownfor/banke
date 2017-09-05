@@ -18,7 +18,7 @@
     <title>课程评价分享</title>
 </head>
 <body>
-    <div id="courseComment" data-type-id="{{$shareInfo['type_id']}}">
+    <div class="commentPage" id="courseComment">
         <div class="headBox container">
             <img class="headImg" src="http://pic.hisihi.com/2016-05-19/1463654400267875.png"/>
             <div class="headName">分享者的名字哈哈哈哈哈哈哈哈哈哈</div>

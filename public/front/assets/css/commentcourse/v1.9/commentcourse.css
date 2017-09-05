@@ -222,67 +222,67 @@ body {
 img {
   max-width: 100%;
 }
-#courseComment {
+.commentPage {
   font-size: 14px;
   background-color: #fff;
   padding-bottom: 35px;
 }
-#courseComment .container {
+.commentPage .container {
   position: relative;
   padding: 10px 15px ;
 }
-#courseComment .container.headBox {
+.commentPage .container.headBox {
   color: #572C1B;
   text-align: center;
 }
-#courseComment .container.headBox .headImg {
+.commentPage .container.headBox .headImg {
   width: 60px;
   height: 60px;
   border-radius: 60px;
   margin-bottom: 10px;
 }
-#courseComment .container.headBox .headName {
+.commentPage .container.headBox .headName {
   font-size: 13px;
   margin-bottom: 5px;
 }
-#courseComment .container.headBox .headName > p {
+.commentPage .container.headBox .headName > p {
   padding-top: 5px;
 }
-#courseComment .container.courseBox {
+.commentPage .container.courseBox {
   background-color: #fafafa;
 }
-#courseComment .container.courseBox .courseInfo {
+.commentPage .container.courseBox .courseInfo {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-#courseComment .container.courseBox .courseInfo .courseLeft {
+.commentPage .container.courseBox .courseInfo .courseLeft {
   -webkit-box-flex: 0;
   -webkit-flex: 0 0 65px;
   -ms-flex: 0 0 65px;
   flex: 0 0 65px;
   margin-right: 10px;
 }
-#courseComment .container.courseBox .courseInfo .courseLeft .courseImg {
+.commentPage .container.courseBox .courseInfo .courseLeft .courseImg {
   width: 65px;
   height: 65px;
 }
-#courseComment .container.courseBox .courseInfo .courseMiddle {
+.commentPage .container.courseBox .courseInfo .courseMiddle {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   text-align: left;
 }
-#courseComment .container.courseBox .courseInfo .courseMiddle .courseName {
+.commentPage .container.courseBox .courseInfo .courseMiddle .courseName {
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-#courseComment .container.courseBox .courseInfo .courseMiddle .courseSchool {
+.commentPage .container.courseBox .courseInfo .courseMiddle .courseSchool {
   font-size: 12px;
   color: #a6a6a6;
   margin-top: 6px;
@@ -293,59 +293,59 @@ img {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
-#courseComment .container.courseBox .courseInfo .courseMiddle .courseAppoint {
+.commentPage .container.courseBox .courseInfo .courseMiddle .courseAppoint {
   color: #666666;
   font-size: 13px;
 }
-#courseComment .container.courseBox .courseInfo .courseRight {
+.commentPage .container.courseBox .courseInfo .courseRight {
   text-align: right;
 }
-#courseComment .container.courseBox .courseInfo .courseRight .realPrice {
+.commentPage .container.courseBox .courseInfo .courseRight .realPrice {
   color: #fa4224;
   font-size: 15px;
 }
-#courseComment .container.courseBox .courseInfo .courseRight .furtherPrice {
+.commentPage .container.courseBox .courseInfo .courseRight .furtherPrice {
   color: #a6a6a6;
   font-size: 12px;
 }
-#courseComment .container.commentBox .title {
+.commentPage .container.commentBox .title {
   padding-bottom: 7px;
 }
-#courseComment .container.commentBox .title .titleTxt {
+.commentPage .container.commentBox .title .titleTxt {
   padding-left: 5px;
   border-left: 3px solid #FFD842;
   display: inline-block;
 }
-#courseComment .container.commentBox .title .star {
+.commentPage .container.commentBox .title .star {
   color: #ffd842;
   display: inline-block;
 }
-#courseComment .container.commentBox .comment {
+.commentPage .container.commentBox .comment {
   border-top: 1px solid #dfe0e6;
   margin-bottom: 10px;
 }
-#courseComment .container.commentBox .comment .tips {
+.commentPage .container.commentBox .comment .tips {
   margin-top: 14px;
   font-size: 10px;
   color: #a6a6a6;
 }
-#courseComment .container.commentBox .comment .tips > span {
+.commentPage .container.commentBox .comment .tips > span {
   padding: 2px 3px;
   border: 1px solid #a6a6a6;
   border-radius: 4px;
   margin-right: 5px;
 }
-#courseComment .container.commentBox .comment .txt {
+.commentPage .container.commentBox .comment .txt {
   margin: 10px 0;
   line-height: 22px;
 }
-#courseComment .container.commentBox .comment .org-album-pre {
+.commentPage .container.commentBox .comment .org-album-pre {
   overflow-x: auto;
 }
-#courseComment .container.commentBox .comment .org-album-pre .org-album {
+.commentPage .container.commentBox .comment .org-album-pre .org-album {
   white-space: nowrap;
 }
-#courseComment .container.commentBox .comment .org-album-pre .album-li {
+.commentPage .container.commentBox .comment .org-album-pre .album-li {
   overflow-y: hidden;
   border: 1px solid rgba(145, 145, 145, 0.2);
   width: 40%;
@@ -354,54 +354,54 @@ img {
   vertical-align: top;
   margin-right: 5px;
 }
-#courseComment .container.joinBox {
+.commentPage .container.joinBox {
   background-color: #fff2c7;
   margin: 0 10px 10px 10px;
   border-radius: 10px;
 }
-#courseComment .container.joinBox .slogen {
+.commentPage .container.joinBox .slogen {
   margin: 0 auto 10px auto;
   text-align: center;
 }
-#courseComment .container.joinBox .slogen > img {
+.commentPage .container.joinBox .slogen > img {
   max-width: 120px;
   display: inline-block;
 }
-#courseComment .container.joinBox .angle {
+.commentPage .container.joinBox .angle {
   position: relative;
 }
-#courseComment .container.joinBox .angle > img {
+.commentPage .container.joinBox .angle > img {
   position: absolute;
   top: -10px;
   right: -15px;
   max-width: 50px;
 }
-#courseComment .container.joinBox .joinTxt {
+.commentPage .container.joinBox .joinTxt {
   line-height: 20px;
   margin-bottom: 10px;
 }
-#courseComment .container.joinBox .joinTxt .txtOne {
+.commentPage .container.joinBox .joinTxt .txtOne {
   color: #f94f46;
   font-weight: bold;
   margin-bottom: 5px;
 }
-#courseComment .container.joinBox .joinTxt .txtTwo {
+.commentPage .container.joinBox .joinTxt .txtTwo {
   color: #5e5e54;
 }
-#courseComment .container.joinBox .txtSlogen {
+.commentPage .container.joinBox .txtSlogen {
   text-align: center;
   font-size: 12px;
   color: #f94f46;
   font-weight: bold;
   margin-bottom: 10px;
 }
-#courseComment .container.joinBox .input {
+.commentPage .container.joinBox .input {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-#courseComment .container.joinBox .input .phone {
+.commentPage .container.joinBox .input .phone {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -411,12 +411,12 @@ img {
   border: none;
   border-radius: 4px;
 }
-#courseComment .container.joinBox .btn {
+.commentPage .container.joinBox .btn {
   text-align: center;
   color: #ffffff;
   line-height: 30px;
 }
-#courseComment .container.joinBox .btn .downBtn {
+.commentPage .container.joinBox .btn .downBtn {
   display: inline-block;
   width: 108px;
   height: 30px;
@@ -425,7 +425,7 @@ img {
   background-color: rgba(246, 125, 49, 0.57);
   pointer-events: none;
 }
-#courseComment .container.joinBox .btn .downBtn.active {
+.commentPage .container.joinBox .btn .downBtn.active {
   pointer-events: initial;
   background-color: #f67d31;
 }
