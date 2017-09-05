@@ -6,11 +6,11 @@ $(function() {
     // window.addLoadingImg();
     // window.addTip();
 
-    showStars();
-
-
     //浏览量
     viewCounts();
+
+    // showStars();
+
 
     /*
      * 机构评分星星*/

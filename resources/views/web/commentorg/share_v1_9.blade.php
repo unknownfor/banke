@@ -19,11 +19,11 @@
 </head>
 <body>
 {!! csrf_field() !!}
-<div class="comment" id="orgComment"
-            data-uid="{{$comment['uid']}}"
-            data-course-id="{{$comment['course_id']}}"
-            data-org-id="{{$comment['org_id']}}"
-            data-record-id="{{$comment['id']}}"
+<div class="commentPage" id="orgComment"
+            {{--data-uid="{{$comment['uid']}}"--}}
+            {{--data-course-id="{{$comment['course_id']}}"--}}
+            {{--data-org-id="{{$comment['org_id']}}"--}}
+            {{--data-record-id="{{$comment['id']}}"--}}
             data-type-id="2">
     机构评论
 </div>
