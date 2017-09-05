@@ -30,4 +30,13 @@ class MoneyStrategyController extends Controller
         $strategy = BankeMoneyStrategy::find($id);
         return view('web.moneystrategy.share_moneystrategy_v1_7')->with(compact(['strategy']));
     }
+
+    /**
+     * 分享详情
+     */
+    public function share_v1_9($id,$uid)
+    {
+        $strategy = BankeMoneyStrategy::find($id);
+        return view('web.moneystrategy.share_v1_9')->with(compact(['strategy','uid']));
+    }
 }

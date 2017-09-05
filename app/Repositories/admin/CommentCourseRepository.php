@@ -229,11 +229,10 @@ class CommentCourseRepository
 						$comment_award=$info_obj['award'];  //奖励金额
 						$that->awardUser($oldAwardStatus, $commentCourse, $request,$comment_award);  //奖励相应
 						$commentCourse->award_status=1;
+						//更新task_form_user_detail 的相应字段
+						TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
 					}
 					$commentCourse->save();
-
-					//更新task_form_user_detail 的相应字段
-					TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
 				}
 				catch(Exception $e){
 					Flash::error(trans('alerts.course.updated_error'));

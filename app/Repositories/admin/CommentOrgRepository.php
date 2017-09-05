@@ -308,11 +308,10 @@ class CommentOrgRepository
 
 						$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
 						$commentOrg->award_status = 1;
+						//更新task_form_user_detail 的相应字段
+						TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
 					}
 					$commentOrg->save();
-
-					//更新task_form_user_detail 的相应字段
-					TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
 
 				}else{
 					return false;

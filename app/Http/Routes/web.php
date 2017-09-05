@@ -316,6 +316,14 @@ Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
     //课程详情分享页
     Route::get('/course/{id}','CourseController@share_course_v1_9');
 
+    //赚钱攻略文章
+    Route::get('/moneystrategy/{id}/{uid}', 'MoneyStrategyController@share_v1_9');
+
+    //免费学文章
+    Route::get('/freestudy/{id}/{uid}', 'FreeStudyController@share_v1_9');
+
+
+
 });
 
 

@@ -218,11 +218,12 @@ class GroupbuyingRepository
 //						$award=$that->getAward($groupbuying);  //获得奖励的钱
 						$award=$info_obj['award'];  //获得奖励的钱
 						$that->awardUser($groupbuying,$award);  //奖励相应
+
+						//更新task_form_user_detail 的相应字段
+						TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
 					}
 					$groupbuying->save();
 
-					//更新task_form_user_detail 的相应字段
-					TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
 
 				}
 				catch(Exception $e){
