@@ -23,6 +23,7 @@ class CommentCourseController extends Controller
      */
     public function share_v1_9($id)
     {
-        return view('web.commentcourse.share_v1_9');
+        $comment = BankeCommentCourse::find($id);
+        return view('web.commentcourse.share_v1_9')->with(compact(['comment']));
     }
 }
