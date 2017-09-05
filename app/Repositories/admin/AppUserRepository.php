@@ -748,6 +748,10 @@ class AppUserRepository
 					$user_profile->get_do_task_amount += $award;
 					$businessTypeIndex=15;
 					break;
+				case 9:  //注册奖励
+					$user_profile->get_do_task_amount += $award;
+					$businessTypeIndex=5;
+					break;
 				default:
 					break;
 			}

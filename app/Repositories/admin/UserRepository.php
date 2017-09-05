@@ -4,6 +4,7 @@ use App\Models\Banke\BankeDict;
 use App\Models\Banke\BankeInvitation;
 use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeUserProfiles;
+use App\Models\Banke\BankeTask;
 use App\User;
 use Carbon\Carbon;
 use Flash;
@@ -421,6 +422,9 @@ class UserRepository
 				];
 				$user->authentication()->create($authentication);
 
+				//奖励用户8.8
+				$this->awardToUser($user->id);
+
 				//v1.8  禁止重复邀请
 				$invitationInfo=BankeInvitation::where('target_mobile',$userData['mobile']);
 				if($invitationInfo->count()==0) {
@@ -455,6 +459,36 @@ class UserRepository
 
 		});
 		return true;
+	}
+
+	/*用户领取注册红包*/
+	private function awardToUser($uid){
+		$bankeTask=new BankeTask;
+		//获取注册奖励金
+		$TaskRegister=$bankeTask->where('type',11)->first();
+		if(!empty($TaskRegister['award_coin'])){
+			$award=$TaskRegister['award_coin'];
+			// 将领取金额累加到用户账户余额中去
+			DB::beginTransaction ();
+			try {
+				AppUserRepository::execUpdateUserAccountInfo($uid,$award,1,9);
+				// 记录massge表系统消息
+				$message = [
+					'status' => 0,
+					'uid' => $uid,
+					'title' => '签到奖励',
+					'content' => '恭喜您注册半课账号，获得半课学习奖励'.$award.'元，还有更多奖励戳我',
+					'type' => 'REGISTER_SUCCESS'
+				];
+				// 记录消息
+				BankeMessage::create($message);
+				DB::commit ();
+				return true;
+			} catch ( Exception $e ) {
+				DB::rollback ();
+				return false;
+			}
+		}
 	}
 
 	private function create_uuid($prefix = ""){    //可以指定前缀
