@@ -16,7 +16,7 @@ $(function(){
     }).on('changed.bs.select', function (e) {
         var id = getSeqIdByName(e.currentTarget.value);
         $('#task-form-id').val(id);
-    });;
+    });
 
 
     //刷新分类列表
@@ -27,6 +27,7 @@ $(function(){
         window.getDataAsync(url,paraData,function(res){
             var str='',
                 len=res.length;
+            res.splice(0,0,{id:0,seq_no:'',name:'期数....'});
             for(var i=0;i<len;i++){
                 str+='<option data-id="'+res['id']+'" value="'+res[i].seq_no+'">'+res[i].name+'</option>';
             }
