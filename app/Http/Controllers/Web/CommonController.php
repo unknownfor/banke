@@ -59,6 +59,9 @@ class CommonController extends Controller
                 case 3://开团分享
                     GroupbuyingRepository::updateViewCounts($id);
                     break;
+                case 4://文章分享
+                    GroupbuyingRepository::updateViewCounts($id);
+                    break;
                 default:
                     break;
             }

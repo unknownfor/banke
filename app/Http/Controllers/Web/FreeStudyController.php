@@ -37,6 +37,15 @@ class FreeStudyController extends Controller
         return view('web.freestudy.share_v1_8')->with(compact(['freestudy']));
     }
 
+    /**
+     * 免费学详情
+     */
+    public function share_v1_9($id,$uid)
+    {
+        $freestudy=BankeFreeStudy::find($id);
+        return view('web.freestudy.share_v1_8')->with(compact(['freestudy','uid']));
+    }
+
     /*
      * 申请
      * @param int $type

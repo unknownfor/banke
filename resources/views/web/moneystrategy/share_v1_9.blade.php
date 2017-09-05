@@ -16,7 +16,7 @@
     <title>{{$strategy['title']}}</title>
 </head>
 <body>
-<div id="article" data-uid="{{}}">
+<div id="article" data-uid="{{$uid}}" data-id="{{$id}}">
     <div class="head">
         <div class="title">{{$strategy['title']}}</div>
         <div class="author">by: {{$strategy['author']}}</div>

@@ -5,6 +5,7 @@ use App\Models\Banke\BankeInvitation;
 use App\Models\Banke\BankeUserAuthentication;
 use App\Models\Banke\BankeUserProfiles;
 use App\Models\Banke\BankeTask;
+use App\Models\Banke\BankeMessage;
 use App\User;
 use Carbon\Carbon;
 use Flash;
