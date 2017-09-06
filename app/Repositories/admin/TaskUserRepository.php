@@ -5,7 +5,7 @@ use App\Models\Banke\BankeTaskFormDetailUser;
 use Carbon\Carbon;
 use Flash;
 use DB;
-use App\Repositories\admin\AppUserRepository;
+use AppUserRepository;
 use League\Flysystem\Exception;
 use App\Models\Banke\BankeTaskUser;
 use App\Models\Banke\BankeTask;
@@ -30,67 +30,64 @@ class TaskUserRepository
 	 */
 	public function updateViewCounts($input)
 	{
-		$taskUser = BankeTaskUser::where([
-			'user_id'=>$input['uid'],
+		$taskUser = BankeTaskUser::lockForUpdate()->where([
+			'user_id'=>$input['user_id'],
 			'task_id'=>$input['task_id'],
-			'source_Id'=>$input['source_id'],
-			'form_user_detail_id'=>$input['form_user_detail_id']
+			'source_Id'=>$input['source_Id'],
+			'form_detail_user_id'=>$input['form_detail_user_id']
 		]);
-		$taskUser=$taskUser->where('status','<',2);
 
-		if($taskUser->count()>0){
-			$taskUser=$taskUser->first();
+		if ($taskUser->count() > 0) {
+			$taskUser=$taskUser->where('status','<',2);
+			if ($taskUser->count() > 0) {
+				DB::transaction(function () use ($taskUser, $input) {
+					try {
+						$taskUser = $taskUser->first();
 
-			$times_needed=$taskUser['times_needed'];
+						$times_needed = $taskUser['times_needed'];
 
-			$taskUser['times_real']=$taskUser['times_real'] + 1;
+						$taskUser['times_real'] = $taskUser['times_real'] + 1;
 
-			if($times_needed==$taskUser['times_real']) {
-				$info_obj = TaskFormUserRepository::getMiniViewCountsAndAward(9, $input['uid']);
-				if ($info_obj == null) {
-					Flash::error(trans('alerts.course.updated_error'));
-					return false;
-				}
-				$award = $info_obj['award'];  //奖励金额
+						if ($times_needed == $taskUser['times_real']) {
 
-				AppUserRepository::execUpdateUserAccountInfo($input['uid'], $award, 1, 10);
+							$this->execAward($input); //执行奖励
 
-				$input['award']=$award;
-				MessageRepository::addNewMessage($input);
-
-				//更新task_form_user_detail 的相应字段
-				TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
-
-				$taskUser->status=2;
+							$taskUser->status = 2;
+							$taskUser->times_finished = date('Y-m-d H:i:s');
+						}
+						$taskUser->save();
+					} catch (Exception $e) {
+						Flash::error(trans('alerts.course.updated_error'));
+						var_dump($e);
+						return false;
+					}
+				});
 			}
-			$taskUser->save();
 		}
 		else{
-
-			self::insertNewData($input);
+			/*创建一条新的任务记录*/
+			$this->insertNewData($input);
 		}
 	}
 
 	/*创建一条新的任务记录*/
-	private static function insertNewData($input)
+	private function insertNewData($input)
 	{
 		$taskUser = new BankeTaskUser();
 		$taskUser->fill($input);
 		$taskUser->status=1;
 		$taskUser->times_real=1;
 
-		$task=BankeTask::find($input['task_id']);
-		$taskUser->award_coin=$task['award_coin'];
-
-		$taskFormDetailUser=BankeTaskFormDetailUser::find($input['form_user_detail_id']);
+		$taskFormDetailUser=BankeTaskFormDetailUser::find($input['form_detail_user_id']);
+		$taskUser->award_coin=$taskFormDetailUser['award_coin'];
 		$taskUser->times_needed=$taskFormDetailUser['times_needed'];
 
-		$task->target_type=self::getTargetType($input['task_id'],$input['source_id']);
-		$task->save();
+		$taskUser->target_type=$this->getTargetType($input['task_id'],$input['source_Id']);
+		$taskUser->save();
 	}
 
 	/*得到任务的来源*/
-	private static function getTargetType($taskid,$id){
+	private function getTargetType($taskid,$id){
 		$from = 2;  //1、任务中心 2、任务日历',
 		switch($taskid){
 			case 9:
@@ -100,6 +97,31 @@ class TaskUserRepository
 				break;
 		}
 		return $from;
+	}
+
+	/*执行奖励*/
+	private function execAward($input){
+
+		//判断是否为今天任务
+		$info_obj = TaskFormUserRepository::getMiniViewCountsAndAward($input['task_id'], $input['user_id']);
+		if ($info_obj == null) {
+			Flash::error(trans('不是今天的任务'));
+			return true;
+		}
+
+		//更新task_form_user_detail 的相应字段
+		TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
+
+		$award = $info_obj['award'];  //奖励金额
+
+		AppUserRepository::execUpdateUserAccountInfo($input['user_id'], $award, 1, 10);
+
+		//系统消息
+		$input['award'] = $award;
+		MessageRepository::addNewMessage($input);
+
+
+		return true;
 	}
 	
 }

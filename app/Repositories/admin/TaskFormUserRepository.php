@@ -17,7 +17,7 @@ class TaskFormUserRepository
 	 * 获得任务的最低浏览次数以及奖励次数
 	 * $type:6:心得分享，7：机构评论分享
 	 */
-	public static function getMiniViewCountsAndAward($type,$uid){
+	public static function getMiniViewCountsAndAward($task_id,$uid){
 		$user=BankeTaskFormUser::where('user_id',$uid);
 		if($user->count()>0) {
 			$user=$user->orderBy('id', 'desc')->first();
@@ -25,6 +25,7 @@ class TaskFormUserRepository
 			$current_seq=$user['current_seq'];
 			$detailuser=BankeTaskFormDetailUser::where([
 				'task_form_id'=>$task_form_id,
+				'task_id'=>$task_id,
 				'seq_no'=>$current_seq,
 				'user_id'=>$uid,
 				'status'=>1

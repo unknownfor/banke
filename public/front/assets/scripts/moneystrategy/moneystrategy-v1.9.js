@@ -28,7 +28,7 @@ $(function() {
                 id: id,
                 uid : uid,
                 record_id : rid,
-                form_user_detail_id: fid
+                form_detail_user_id: fid
             }
         getDataAsync(url, data, function () {
 

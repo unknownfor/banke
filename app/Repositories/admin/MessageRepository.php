@@ -18,9 +18,9 @@ class MessageRepository
 		$message=null;
 
 		//消息记录
-		switch($input['task_type']){
+		switch($input['task_id']){
 			case 9:
-				self::shareMessage($input);
+				$message=self::shareMessage($input);
 				break;
 			default:
 				break;
@@ -34,8 +34,8 @@ class MessageRepository
 		//消息记录
 		$message = [
 			'status' => 0,
-			'uid' => $input['uid'],
-			'title' => '评论奖励',
+			'uid' => $input['user_id'],
+			'title' => '分享奖励',
 			'content' => '感谢您分享的好文章,平台已奖励您' . $input['award'] . '元现金，快去现金钱包里查看吧！',
 			'type' => config('admin.global.balance_log')[13]['key']
 		];

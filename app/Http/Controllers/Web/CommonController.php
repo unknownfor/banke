@@ -39,14 +39,14 @@ class CommonController extends Controller
             'status' => true
         ];
         $code=Code::SUCCESS;
-        if($id==0 || !$id){
-            $param = [
-                'data' => null,
-                'template' => '更新页面浏览量信息失败,旧订单不提供开团功能',
-                'status' => false
-            ];
-            $code=Code::UPDATE_VIEW_COUNTS_ERROR;
-        }
+//        if($id==0 || !$id){
+//            $param = [
+//                'data' => null,
+//                'template' => '更新页面浏览量信息失败,旧订单不提供开团功能',
+//                'status' => false
+//            ];
+//            $code=Code::UPDATE_VIEW_COUNTS_ERROR;
+//        }
 
         try {
             switch ($type) {
@@ -65,7 +65,7 @@ class CommonController extends Controller
                         'user_id'=>$request['uid'],
                         'task_id'=>9,  //分享文章
                         'source_Id'=>$request['record_id'],
-                        'form_user_detail_id'=>$request['form_user_detail_id']
+                        'form_detail_user_id'=>$request['form_detail_user_id']
                     );
                     TaskUserRepository::updateViewCounts($input);
                     break;

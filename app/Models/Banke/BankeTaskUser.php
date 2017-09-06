@@ -21,7 +21,8 @@ class BankeTaskUser extends Model
         'times_real',
         'created_at',
         'updated_at',
-        'target_type'
+        'target_type',
+        'form_detail_user_id'
     ];
 
     private $action;
