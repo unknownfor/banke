@@ -32,9 +32,13 @@ class MoneyStrategyController extends Controller
     }
 
     /**
-     * 分享详情
+     * 分享赚钱攻略
+     * @param $id 赚钱攻略表记录id
+     * @param $record_id 优秀文章
+     * @param $uid
+     * @return $this
      */
-    public function share_v1_9($id,$uid)
+    public function share_v1_9($id,$record_id,$uid)
     {
         $strategy = BankeMoneyStrategy::find($id);
         return view('web.moneystrategy.share_v1_9')->with(compact(['strategy','uid']));

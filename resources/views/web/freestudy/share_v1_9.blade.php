@@ -21,6 +21,7 @@
 <div id="freestudy" class="paper"
      data-uid="{{$uid}}"
      data-id="{{$freestudy['id']}}"
+     data-record-id="{{$record_id}}"
      data-type-id="4"
 >
     <div class="head">

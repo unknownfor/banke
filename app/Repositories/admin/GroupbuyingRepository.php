@@ -203,27 +203,26 @@ class GroupbuyingRepository
 					$uid=$groupbuying->organizer_id;
 					//达到浏览量
 					$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(5,$uid);
-					if($info_obj == null){
-						return false;
-					}
-
 					$groupbuying->view_counts++;
+					if($info_obj == null){
 
-					//达到浏览量
-					if (($groupbuying->view_counts)%$info_obj['times']==0) {
-						$groupbuying->finished_share_counts ++ ;  //完成次数 + 1
-						$groupbuying->lastly_finished_at= date("Y-m-d H:i:s",$time);
-						$that=new GroupbuyingRepository();
+					}
+					else {
+						//达到浏览量
+						if (($groupbuying->view_counts) % $info_obj['times'] == 0) {
+							$groupbuying->finished_share_counts++;  //完成次数 + 1
+							$groupbuying->lastly_finished_at = date("Y-m-d H:i:s", $time);
+							$that = new GroupbuyingRepository();
 
 //						$award=$that->getAward($groupbuying);  //获得奖励的钱
-						$award=$info_obj['award'];  //获得奖励的钱
-						$that->awardUser($groupbuying,$award);  //奖励相应
+							$award = $info_obj['award'];  //获得奖励的钱
+							$that->awardUser($groupbuying, $award);  //奖励相应
 
-						//更新task_form_user_detail 的相应字段
-						TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
+							//更新task_form_user_detail 的相应字段
+							TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
+						}
 					}
 					$groupbuying->save();
-
 
 				}
 				catch(Exception $e){

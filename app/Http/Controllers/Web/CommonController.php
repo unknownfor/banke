@@ -17,6 +17,7 @@ use App\Repositories\admin\CommentCourseRepository;
 use App\Repositories\admin\CommentOrgRepository;
 use App\Repositories\admin\GroupbuyingRepository;
 use TaskFormUserRepository;
+use ArticleRepository;
 
 class CommonController extends Controller
 {
@@ -58,6 +59,10 @@ class CommonController extends Controller
                     break;
                 case 3://开团分享
                     GroupbuyingRepository::updateViewCounts($id);
+                    break;
+                case 4://文章分享
+                    $uid=$request['uid'];
+                    ArticleRepository::updateViewCounts($id,$uid);
                     break;
                 default:
                     break;
