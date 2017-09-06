@@ -27,7 +27,7 @@ class ArticleRepository
 	 * @param  [type]                   $id      [description]
 	 * @return [type]                            [description]
 	 */
-	public static function updateViewCounts($id,$uid)
+	public static function updateViewCounts($id,$record_id,$uid)
 	{
 		$taskUser = BankeTaskUser::where(['user_id'=>$uid,'task_id'=>9,'source_Id'=>$id])->where('status','<',2);
 		if($taskUser->count()>0){
@@ -66,7 +66,7 @@ class ArticleRepository
 			$taskUser->save();
 		}
 		else{
-			self::insertNewData($id,$uid);
+			self::insertNewData($record_id,$uid);
 		}
 	}
 
@@ -81,7 +81,7 @@ class ArticleRepository
 		$task->award_coin=BankeTask::find(9)['award_coin'];
 		$task->times_needed=10;
 		$task->times_real=1;
-		$type=BankeGoodArticle::find($id)['type'];
+		$type = BankeGoodArticle::find($id)['type'];
 		$task->target_type=$type;
 		$task->save();
 	}

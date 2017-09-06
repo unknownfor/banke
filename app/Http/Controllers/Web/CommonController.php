@@ -62,7 +62,8 @@ class CommonController extends Controller
                     break;
                 case 4://文章分享
                     $uid=$request['uid'];
-                    ArticleRepository::updateViewCounts($id,$uid);
+                    $record_id=$request['record_id'];
+                    ArticleRepository::updateViewCounts($id,$record_id,$uid);
                     break;
                 default:
                     break;
