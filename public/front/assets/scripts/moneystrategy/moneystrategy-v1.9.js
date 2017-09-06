@@ -20,11 +20,13 @@ $(function() {
             typeId = box.attr('data-type-id'),
             id = box.attr('data-id'),
             uid = box.attr('data-uid'),
+            rid = box.attr('data-record-id'),
             url = '/v1.5/share/updateviewcounts',
             data = {
                 typeid: typeId,
                 id: id,
-                uid : uid
+                uid : uid,
+                record_id : rid
             }
         getDataAsync(url, data, function () {
 
