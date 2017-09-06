@@ -6,7 +6,7 @@ $(function() {
     window.addTip();
 
     //页面禁止滚动
-    window.scrollControl(false);
+    // window.scrollControl(false);
 
     //填充手机号信息，按钮变色
     $(document).on('input', '#phone-num', function(){

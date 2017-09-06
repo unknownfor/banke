@@ -266,6 +266,7 @@ input::-webkit-input-placeholder {
   position: absolute;
   left: 0;
   right: 0;
+  font-weight: bold;
 }
 #redBag .wrapper .middle .middleTxt .txtOne {
   color: #79625d;
@@ -320,7 +321,10 @@ input::-webkit-input-placeholder {
   font-size: 12px;
   border: none;
   color: #ffffff;
-  width: 70px;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 70px;
+  -ms-flex: 0 0 70px;
+  flex: 0 0 70px;
   height: 23px;
   line-height: 23px;
   text-align: center;
@@ -341,7 +345,6 @@ input::-webkit-input-placeholder {
   padding: 0px;
   border: none;
   background-color: #FFF1D0;
-  margin: 0 5px;
 }
 #redBag .wrapper .footer .register .register-box .register-code#phone-num {
   border-top-left-radius: 10px;
