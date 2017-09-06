@@ -38,7 +38,7 @@
             <div class="register">
                     <div class="register-box phone">
                         <div class="inputBox">
-                        <input class="register-code" id="phone-num" placeholder="输入手机号" value="13554154325" />
+                        <input class="register-code" id="phone-num" placeholder="输入手机号" />
                         <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码">
                         </div>
                     </div>
