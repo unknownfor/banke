@@ -17,8 +17,9 @@ class RedPacketController extends Controller
     /**
      * 分享红包详情
      */
-    public function share_v1_9($id)
+    public function share_v1_9($welcome)
     {
-        return view('web.redpacket.share_v1_9');
+
+        return view('web.redpacket.share_v1_9')->with(compact(['welcome']));
     }
 }

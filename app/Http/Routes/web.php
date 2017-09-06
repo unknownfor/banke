@@ -311,7 +311,7 @@ Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
     Route::get('/commentorg/{id}', 'CommentOrgController@share_v1_9');
 
     //红包详情分享
-    Route::get('/redpacket/{id}', 'RedPacketController@share_v1_9');
+    Route::get('/redpacket/{welcome}', 'RedPacketController@share_v1_9');
 
     //课程详情分享页
     Route::get('/course/{id}','CourseController@share_course_v1_9');
@@ -321,7 +321,6 @@ Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
 
     //免费学文章
     Route::get('/freestudy/{id}/{record_id}/{uid}/{form_user_detail_id}', 'ArticleController@freestudy_share_v1_9');
-
 
 });
 
