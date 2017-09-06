@@ -20,6 +20,7 @@
 <div id="article" class="paper"
      data-uid="{{$uid}}"
      data-id="{{$strategy['id']}}"
+     data-record-id="{{$record_id}}"
      data-type-id="4"
 >
     <div class="head">
