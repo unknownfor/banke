@@ -274,5 +274,15 @@ class BackendServiceProvider extends ServiceProvider
         $this->app->singleton('ArticleRepository', function($app){
             return new \App\Repositories\admin\ArticleRepository();
         });
+
+        //用户全部任务状态
+        $this->app->singleton('TaskUserRepository', function($app){
+            return new \App\Repositories\admin\TaskUserRepository();
+        });
+
+        //系统消息记录
+        $this->app->singleton('MessageRepository', function($app){
+            return new \App\Repositories\admin\MessageRepository();
+        });
     }
 }

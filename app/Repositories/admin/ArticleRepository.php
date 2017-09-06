@@ -27,9 +27,14 @@ class ArticleRepository
 	 * @param  [type]                   $id      [description]
 	 * @return [type]                            [description]
 	 */
-	public static function updateViewCounts($id,$record_id,$uid)
+	public static function updateViewCounts($id,$record_id,$uid,$form_user_detail_id)
 	{
-		$taskUser = BankeTaskUser::where(['user_id'=>$uid,'task_id'=>9,'source_Id'=>$id])->where('status','<',2);
+		$taskUser = BankeTaskUser::where([
+			'user_id'=>$uid,
+			'task_id'=>9,
+			'source_Id'=>$id,
+			'form_user_detail_id'=>$form_user_detail_id
+		])->where('status','<',2);
 		if($taskUser->count()>0){
 			$taskUser=$taskUser->first();
 
@@ -66,24 +71,67 @@ class ArticleRepository
 			$taskUser->save();
 		}
 		else{
-			self::insertNewData($record_id,$uid);
+			$newInfo=array(
+				'task_id'=>1,
+				'source_Id'=>$record_id,
+				'uid'=>$uid,
+				'form_user_detail_id'=>$form_user_detail_id,
+				'status'=>1,
+				'times_real'=>1
+
+			);
+			self::insertNewData($newInfo);
 		}
 	}
 
-	public static function insertNewData($id,$uid)
+
+//	/*创建一条新的任务记录*/
+//	private static function insertNewData($taskid,$source_id,$uid,$form_user_detail_id)
+//	{
+//		$task = new BankeTaskUser();
+//		$task->task_id=9;
+//        $task->user_id=$uid;
+//        $task->source_Id=$source_id;
+//        $task->status=1;
+//        $task->form_user_detail_id=$form_user_detail_id;
+//
+//		$task->award_coin=BankeTask::find(9)['award_coin'];
+//		$task->times_needed=10;
+//		$task->times_real=1;
+//		$type = BankeGoodArticle::find($id)['type'];
+//		$task->target_type=self::getTargetType($taskid,$id);
+//		$task->save();
+//	}
+
+	/*创建一条新的任务记录*/
+	private static function insertNewData($input)
 	{
 		$task = new BankeTaskUser();
 		$task->task_id=9;
-        $task->user_id=$uid;
-        $task->source_Id=$id;
-        $task->status=1;
+		$task->user_id=$uid;
+		$task->source_Id=$source_id;
+		$task->status=1;
+		$task->form_user_detail_id=$form_user_detail_id;
 
 		$task->award_coin=BankeTask::find(9)['award_coin'];
 		$task->times_needed=10;
 		$task->times_real=1;
 		$type = BankeGoodArticle::find($id)['type'];
-		$task->target_type=$type;
+		$task->target_type=self::getTargetType($taskid,$id);
 		$task->save();
+	}
+
+	/*得到任务的来源*/
+	private static function getTargetType($taskid,$id){
+		$from = 2;  //1、任务中心 2、任务日历',
+		switch($taskid){
+			case 9:
+				$from = BankeGoodArticle::find($id)['type'];
+				break;
+			default:
+				break;
+		}
+		return $from;
 	}
 	
 }

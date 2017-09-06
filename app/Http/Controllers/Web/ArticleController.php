@@ -21,10 +21,10 @@ class ArticleController extends Controller
      * @param $uid 用户id
      * @return $this
      */
-    public function moneystrategy_share_v1_9($id,$record_id,$uid)
+    public function moneystrategy_share_v1_9($id,$record_id,$uid,$form_user_detail_id)
     {
         $strategy = BankeMoneyStrategy::find($id);
-        return view('web.moneystrategy.share_v1_9')->with(compact(['strategy','record_id','uid']));
+        return view('web.moneystrategy.share_v1_9')->with(compact(['strategy','record_id','uid','form_user_detail_id']));
     }
 
     /**
@@ -34,10 +34,10 @@ class ArticleController extends Controller
      * @param $uid 用户id
      * @return $this
      */
-    public function freestudy_share_v1_9($id,$record_id,$uid)
+    public function freestudy_share_v1_9($id,$record_id,$uid,$form_user_detail_id)
     {
         $freestudy = BankeFreeStudy::find($id);
-        return view('web.freestudy.share_v1_9')->with(compact(['freestudy','record_id','uid']));
+        return view('web.freestudy.share_v1_9')->with(compact(['freestudy','record_id','uid','form_user_detail_id']));
     }
 
 }

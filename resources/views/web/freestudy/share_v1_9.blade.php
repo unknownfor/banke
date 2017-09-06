@@ -22,6 +22,7 @@
      data-uid="{{$uid}}"
      data-id="{{$freestudy['id']}}"
      data-record-id="{{$record_id}}"
+     data-form-user-detail-id="{{$form_user_detail_id}}"
      data-type-id="4"
 >
     <div class="head">
