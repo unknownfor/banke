@@ -48,11 +48,9 @@ input::-webkit-input-placeholder{
       position: relative;
       .middleBg {
         margin-left: 10px;
-        //max-width: 300px;
       }
       .middleTxt {
         position: absolute;
-        //top: 85px;
         left: 0;
         right: 0;
         .txtOne {
@@ -75,7 +73,7 @@ input::-webkit-input-placeholder{
       left: 0;
       right: 0;
       bottom:0;
-      //padding-bottom: 40px;
+
       .footerTop {
         position: absolute;
         left: 0;
@@ -86,8 +84,15 @@ input::-webkit-input-placeholder{
         @br: 10px;
         margin: 0 40px;
         .register-box {
-          display: flex;
           background-color: #FFF1D0;
+          .inputBox {
+            display: flex;
+            margin: 0 5px;
+            border-bottom: 1px solid #C8B393;
+            &.lastChild{
+              border-bottom: none;
+            }
+          }
           &.phone {
             border-top-left-radius: @br;
             border-top-right-radius: @br;
@@ -101,15 +106,13 @@ input::-webkit-input-placeholder{
             font-size: 12px;
             border: none;
             color: #ffffff;
-            width: 65px;
+            width: 70px;
             height: @h;
             line-height: @h;
             text-align: center;
             background-color: #FEBF10;
             border-radius: 4px;
-            margin-top: 6px;
-            margin-right: 5px;
-            padding: 0 3px;
+            margin-top: 9px;
             &.disabled {
               pointer-events: none;
               background-color: rgba(210, 171, 61, 1);
@@ -126,11 +129,7 @@ input::-webkit-input-placeholder{
               border-top-left-radius: @br;
               border-top-right-radius: @br;
             }
-            &#user-code {
-              border-top: 1px solid #C8B393;
-            }
             &#password-num {
-              border-top: 1px solid #C8B393;
               border-bottom-left-radius: @br;
               border-bottom-right-radius: @br;
             }

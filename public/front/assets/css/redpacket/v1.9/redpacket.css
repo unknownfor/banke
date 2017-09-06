@@ -295,11 +295,18 @@ input::-webkit-input-placeholder {
   margin: 0 40px;
 }
 #redBag .wrapper .footer .register .register-box {
+  background-color: #FFF1D0;
+}
+#redBag .wrapper .footer .register .register-box .inputBox {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  background-color: #FFF1D0;
+  margin: 0 5px;
+  border-bottom: 1px solid #C8B393;
+}
+#redBag .wrapper .footer .register .register-box .inputBox.lastChild {
+  border-bottom: none;
 }
 #redBag .wrapper .footer .register .register-box.phone {
   border-top-left-radius: 10px;
@@ -313,15 +320,13 @@ input::-webkit-input-placeholder {
   font-size: 12px;
   border: none;
   color: #ffffff;
-  width: 65px;
+  width: 70px;
   height: 23px;
   line-height: 23px;
   text-align: center;
   background-color: #FEBF10;
   border-radius: 4px;
-  margin-top: 6px;
-  margin-right: 5px;
-  padding: 0 3px;
+  margin-top: 9px;
 }
 #redBag .wrapper .footer .register .register-box .code-btn.disabled {
   pointer-events: none;
@@ -342,11 +347,7 @@ input::-webkit-input-placeholder {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-#redBag .wrapper .footer .register .register-box .register-code#user-code {
-  border-top: 1px solid #C8B393;
-}
 #redBag .wrapper .footer .register .register-box .register-code#password-num {
-  border-top: 1px solid #C8B393;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
