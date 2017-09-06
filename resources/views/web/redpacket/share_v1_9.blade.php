@@ -36,15 +36,21 @@
         <div class="footer">
             <img class="footerTop" src="/front/assets/img/redbag/bgTop.png">
             <div class="register">
-                <div class="register-box phone">
-                    <input class="register-code" id="phone-num" placeholder="输入手机号" value="13554154325" />
-                    <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码">
-                </div>
+                    <div class="register-box phone">
+                        <div class="inputBox">
+                        <input class="register-code" id="phone-num" placeholder="输入手机号" />
+                        <input class="code-btn disabled" type="button" id="phone-code-btn" value="获取验证码">
+                        </div>
+                    </div>
                 <div class="register-box code-num">
+                    <div class="inputBox">
                     <input class="register-code" id="user-code" placeholder="输入验证码"/>
+                    </div>
                 </div>
                 <div class="register-box password">
+                    <div class="inputBox lastChild">
                     <input class="register-code" id="password-num" type="password"  placeholder="输入密码"/>
+                    </div>
                 </div>
                 <div class="btn nouse">
                     <span id="downloadBar">立即领取</span>

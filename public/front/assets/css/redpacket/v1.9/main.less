@@ -20,69 +20,62 @@ input::-webkit-input-placeholder{
 }
 #redBag {
   height: 100%;
-  background-color: #FFF9D9;
   position: relative;
   text-align: center;
   .wrapper {
     height: 100%;
     position: relative;
+    background-color: #FFF9D9;
     .head {
-      position: relative;
       padding-top: 25px;
       .slogenBox {
-        position: absolute;
-        top: 33px;
         text-align: center;
         .slogen {
           display: inline-block;
-          max-width: 45%;
+          max-width: 65%;
           margin-bottom: 10px;
         }
       }
 
       .headTitle {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 70px;
-        font-size: 16px;
+        font-size: 20px;
         font-weight: bold;
         color: #996413;
       }
     }
     .middle {
+      margin-top: -30px;
       position: relative;
-      margin-top: 28px;
       .middleBg {
         margin-left: 10px;
-        max-width: 260px;
       }
       .middleTxt {
         position: absolute;
-        top: 85px;
         left: 0;
         right: 0;
+        font-weight: bold;
         .txtOne {
           color: #79625d;
-          font-size: 14px;
+          font-size: 18px;
           margin-bottom: 5px;
         }
         .txtTwo {
           color: #fa5047;
           margin-top: 5px;
           > span {
-            font-size: 26px;
+            font-size: 28px;
           }
         }
       }
     }
     .footer {
-      position: relative;
-      height: 100%;
       background-color: #FFD162;
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom:0;
       .footerTop {
         position: absolute;
-        top: -31px;
         left: 0;
         right: 0;
       }
@@ -91,8 +84,15 @@ input::-webkit-input-placeholder{
         @br: 10px;
         margin: 0 40px;
         .register-box {
-          display: flex;
           background-color: #FFF1D0;
+          .inputBox {
+            display: flex;
+            margin: 0 5px;
+            border-bottom: 1px solid #C8B393;
+            &.lastChild{
+              border-bottom: none;
+            }
+          }
           &.phone {
             border-top-left-radius: @br;
             border-top-right-radius: @br;
@@ -106,15 +106,13 @@ input::-webkit-input-placeholder{
             font-size: 12px;
             border: none;
             color: #ffffff;
-            width: 65px;
+            flex: 0 0 70px;
             height: @h;
             line-height: @h;
             text-align: center;
             background-color: #FEBF10;
             border-radius: 4px;
-            margin-top: 6px;
-            margin-right: 5px;
-            padding: 0 3px;
+            margin-top: 8px;
             &.disabled {
               pointer-events: none;
               background-color: rgba(210, 171, 61, 1);
@@ -126,16 +124,11 @@ input::-webkit-input-placeholder{
             padding: 0px;
             border: none;
             background-color: #FFF1D0;
-            margin: 0 5px;
             &#phone-num {
               border-top-left-radius: @br;
               border-top-right-radius: @br;
             }
-            &#user-code {
-              border-top: 1px solid #C8B393;
-            }
             &#password-num {
-              border-top: 1px solid #C8B393;
               border-bottom-left-radius: @br;
               border-bottom-right-radius: @br;
             }
@@ -144,7 +137,7 @@ input::-webkit-input-placeholder{
         .btn {
           position: relative;
           border: none;
-          margin: 10px auto;
+          margin: 15px auto;
           background-color: #F94F46;
           .size(132px, @h);
           border-radius: 50px;
@@ -235,7 +228,24 @@ input::-webkit-input-placeholder{
 @media screen and (max-width: 420px) {
   #redBag {
     .wrapper {
+      .middle {
+        .middleBg {
+          max-width: 400px;
+        }
+        .middleTxt {
+          top: 140px;
+          .txtOne {
+            font-size: 18px;
+          }
+          .txtTwo {
+            > span {
+              font-size: 28px ;
+            }
+          }
+        }
+      }
       .footer {
+        padding-bottom: 100px;
         .footerTop {
           top: -40px;
         }
@@ -246,19 +256,36 @@ input::-webkit-input-placeholder{
 @media screen and (max-width: 380px) {
   #redBag {
     .wrapper {
+      .middle {
+        .middleBg {
+          max-width: 350px;
+        }
+        .middleTxt {
+          top: 130px;
+        }
+      }
       .footer {
+        padding-bottom: 80px;
         .footerTop {
           top: -36px;
         }
       }
     }
-
   }
 }
 @media screen and (max-width: 320px) {
   #redBag {
     .wrapper {
+      .middle {
+        .middleBg {
+          max-width: 305px;
+        }
+        .middleTxt {
+          top: 110px;
+        }
+      }
       .footer {
+        padding-bottom: 40px;
         .footerTop {
           top: -31px;
         }

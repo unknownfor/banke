@@ -25,7 +25,7 @@
         <div class="container">
             <div class="register">
                 <div class="register-main">
-                    <div class="txt slogen">注册即刻领取20元现金奖励</div>
+                    <div class="txt slogen">注册即刻领取8.8元现金奖励</div>
                     <div class="txt detail">接受好友邀请,上半课报名学习可省5000元学费</div>
                     <img class="bg" src="http://pic.hisihi.com/2017-04-14/1492162966172991.png" />
                     <div class="register-box phone">
