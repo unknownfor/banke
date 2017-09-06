@@ -17,6 +17,8 @@
     <title>领红包</title>
 </head>
 <body>
+{!! csrf_field() !!}
+<input type="hidden" name="welcome" value="{{$welcome}}"/>
 <div id="redBag">
     <div class="wrapper">
         <div class="head">
