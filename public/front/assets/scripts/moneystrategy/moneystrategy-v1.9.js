@@ -2,7 +2,7 @@
  * Created by hisihi on 2017/7/3.
  */
 $(function() {
-
+    
     //浏览量
     viewCounts();
 
