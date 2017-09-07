@@ -413,7 +413,7 @@ class GroupbuyingRepository
 	public static function execCreateGroupbyingUsersInfo($uid,$course_id,$org_id){
 		$BankeGroupbuying=new BankeGroupbuying();
 		$BankeGroupbuyingInfo=$BankeGroupbuying::where(['organizer_id'=>$uid,'course_id'=>$course_id,'org_id'=>$org_id]);
-		if($BankeGroupbuyingInfo-count()>0){
+		if($BankeGroupbuyingInfo->count()>0){
 			return ;
 		}else{
 			$BankeUserProfiles=new BankeUserProfiles();
