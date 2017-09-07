@@ -15,7 +15,7 @@
     <link href="/backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css" rel="stylesheet" type="text/css">
     <link type="text/css" href="/front/assets/css/commentcourse/v1.9/commentcourse.css" rel="stylesheet">
     <link type="text/css" href="/front/assets/css/commentcourse/v1.9/iconfont/iconfont.css" rel="stylesheet">
-    <title>课程评价分享</title>
+    <title>{{$course['name']}}</title>
 </head>
 <body>
 {!! csrf_field() !!}
@@ -58,7 +58,7 @@
                 <div class="tips">
                     @if($org->tags)
                         @foreach($org->tags as $v)
-                            <div class="tips-box">{{$v->name}}</div>
+                            <div class="tips-box"><span>{{$v->name}}</span></div>
                         @endforeach
                     @endif
                 </div>
@@ -76,11 +76,6 @@
                                 </li>
                             @endforeach
                         @endif
-
-                        {{--<li class="album-li">--}}
-                            {{--<a href="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" data-size="400x500"></a>--}}
-                            {{--<img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" >--}}
-                        {{--</li>--}}
                         <div class="clear"></div>
                     </ul>
                 </div>

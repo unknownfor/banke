@@ -3,13 +3,13 @@
  */
 $(function() {
 
-    // window.addLoadingImg();
-    // window.addTip();
+    window.addLoadingImg();
+    window.addTip();
 
     //浏览量
     viewCounts();
 
-    // showStars();
+    showStars();
 
 
     /*

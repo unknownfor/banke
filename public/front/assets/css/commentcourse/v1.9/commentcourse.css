@@ -307,6 +307,7 @@ img {
 .commentPage .container.courseBox .courseInfo .courseRight .furtherPrice {
   color: #a6a6a6;
   font-size: 12px;
+  text-decoration: line-through;
 }
 .commentPage .container.commentBox .title {
   padding-bottom: 7px;
@@ -329,7 +330,10 @@ img {
   font-size: 10px;
   color: #a6a6a6;
 }
-.commentPage .container.commentBox .comment .tips > span {
+.commentPage .container.commentBox .comment .tips .tips-box {
+  display: inline-block;
+}
+.commentPage .container.commentBox .comment .tips .tips-box > span {
   padding: 2px 3px;
   border: 1px solid #a6a6a6;
   border-radius: 4px;
