@@ -11,6 +11,7 @@ use League\Flysystem\Exception;
 use App\Models\Banke\BankeMessage;
 use TaskFormUserRepository;
 use TaskFormDetailUserRepository;
+use App\Models\Banke\BankeUserProfiles;
 
 /**
 * 团购列表
@@ -403,5 +404,26 @@ class GroupbuyingRepository
 			}
 		}
 		return true;
+	}
+	
+	/*
+	 * 检查报名成功的用户，是否有开报名课程的团，如果没开，即给他开团，
+	 * 
+	**/
+	public static function execCreateGroupbyingUsersInfo($uid,$course_id,$org_id){
+		$BankeGroupbuying=new BankeGroupbuying();
+		$BankeGroupbuyingInfo=$BankeGroupbuying::where(['organizer_id'=>$uid,'course_id'=>$course_id,'org_id'=>$org_id]);
+		if($BankeGroupbuyingInfo->count()>0){
+			return ;
+		}else{
+			$BankeUserProfiles=new BankeUserProfiles();
+			$BankeUserProfilesInfo=$BankeUserProfiles::where('uid',$uid)->first();
+			$BankeGroupbuying->course_id=$course_id;
+			$BankeGroupbuying->org_id=$org_id;
+			$BankeGroupbuying->organizer_id=$uid;
+			$BankeGroupbuying->organizer_mobile=$BankeUserProfilesInfo['mobile'];
+			$BankeGroupbuying->from=0;
+			$BankeGroupbuying->save();
+		}
 	}
 }
