@@ -44,10 +44,10 @@
                 <div class="courseSchool">{{$org['branch_school']}}</div>
                 <div class="courseAppoint">预约数:<span>{{$org['fake_enrol_counts']}}</span></div>
             </div>
-            <div class="courseRight">
-                <div class="realPrice">￥{{$course['price']}}</div>
-                <div class="furtherPrice">￥{{$course['original_price']}}</div>
-            </div>
+            {{--<div class="courseRight">--}}
+                {{--<div class="realPrice">￥{{$course['price']}}</div>--}}
+                {{--<div class="furtherPrice">￥{{$course['original_price']}}</div>--}}
+            {{--</div>--}}
         </div>
     </div>
     <div class="commentBox container">
