@@ -3,11 +3,13 @@ namespace App\Repositories\admin;
 use Carbon\Carbon;
 use Flash;
 use App\Models\Banke\BankeTaskFormUser;
+use App\Models\Banke\BankeTaskUser;
 use App\Models\Banke\BankeTaskFormDetailUser;
 use App\Models\Banke\BankeTask;
 use App\Models\Banke\BankeTaskCard;
 use Illuminate\Support\Facades\Log;
 use DB;
+use App\Models\Banke\BankeTaskCenter;
 
 /**
 * 用户当前天的任务情况
@@ -41,7 +43,6 @@ class TaskFormDetailUserRepository
 	/*领取补领卡*/
 	private static function addPatchCard($uid)
 	{
-		$uid=1;
 		$card=BankeTaskCard::where('user_id',$uid);
 		if($card->count()==0){
 			$card = new BankeTaskCard;
@@ -56,9 +57,34 @@ class TaskFormDetailUserRepository
 	}
 
 	/*统一更新用户的任务完成情况*/
-	private static  function updataUserFinishStatus($uid,$type)
+	private static  function updataUserFinishStatus($uid,$type,$invitation_award,$form_detail_user_id)
 	{
-
+		if($type==3){
+			$BankeTaskUser = new BankeTaskUser ();
+			$BankeTaskCenter=new BankeTaskCenter();
+			$BankeTaskUserInfo = $BankeTaskUser::
+			where ( 'user_id', $invitation_uid )->
+			where ( 'task_id', $type)->
+			where ( 'created_at', '>=', getTime ( date ( "Y/m/d" ) + ' 00:00:00' ) )->
+			where ( 'created_at', '<=', getTime ( date ( 'Y/m/d 23:59:59', strtotime ( '+1 day' ) ) ) )->
+			where ( 'status', 2 );
+			$count=$BankeTaskUserInfo->count ();
+			
+			$BankeTaskCenterInfo=$BankeTaskCenter::where(['task_id'=>$type,'status'=>1])->first();
+			$task_times_max=$BankeTaskCenterInfo['times_max'];
+			if ($count < $task_times_max) {
+				$BankeTaskUser->user_id=$uid;
+				$BankeTaskUser->task_id=$type;
+				$BankeTaskUser->status=2;
+				$BankeTaskUser->award_coin=$invitation_award;
+				$BankeTaskUserInfo->coin_real=$invitation_award;
+				$BankeTaskUser->times_finished=date('Y-m-d H:i:s');
+				$BankeTaskUser->times_needed=1;
+				$BankeTaskUser->target_type=1;//1、任务中心  2、任务日历
+				$BankeTaskUser->form_detail_user_id=$form_detail_user_id;
+				$BankeTaskUser->save ();
+			}
+		}
 	}
 
 }
