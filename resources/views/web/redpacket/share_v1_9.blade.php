@@ -28,7 +28,7 @@
             <p class="headTitle">一大波红包等你领</p>
         </div>
         <div class="middle">
-            <img class="middleBg" src="/front/assets/img/redbag/bg.png" />
+            <img class="middleBg" src="/front/assets/img/redpacket/bg.png" />
             <div class="middleTxt">
                 <p class="txtOne">我已经连续完成<span>2</span>天任务</p>
                 <p class="txtOne">累计领取了</p>
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="footer">
-            <img class="footerTop" src="/front/assets/img/redbag/bgTop.png">
+            <img class="footerTop" src="/front/assets/img/redpacket/bgTop.png">
             <div class="register">
                     <div class="register-box phone">
                         <div class="inputBox">
