@@ -51,7 +51,7 @@ class TaskUserRepository
 
 						if ($times_needed == $taskUser['times_real']) {
 
-							$this->execAward($input); //执行奖励
+							$this->awardUser($input); //执行奖励
 
 							$taskUser->status = 2;
 							$taskUser->times_finished = date('Y-m-d H:i:s');
@@ -161,23 +161,29 @@ class TaskUserRepository
 	 * *执行奖励,
 	 * 区分每日任务和日历任务
 	 * */
-	private function execAward($input){
+	private function awardUser($input){
 		if($input['form_detail_user_id']!=0) {
 			$info_obj = $this->getTodayTaskFormUser($input);
 			if ($info_obj) {
-
 				$award = $info_obj['award'];  //奖励金额
-
-				AppUserRepository::execUpdateUserAccountInfo($input['user_id'], $award, 1, 10);
-
-				//系统消息
-				$input['award'] = $award;
-				MessageRepository::addNewMessage($input);
+				$this->execAward($award,$input);
 			}
 		}else{
-
+			$award = $this->getAwardCoinAndTimes($input)['award_coin'];  //奖励金额
+			$this->execAward($award,$input);
 		}
-		return true;
+	}
+
+	/*
+	 * *执行奖励,
+	 * 区分每日任务和日历任务
+	 * */
+	private function execAward($award,$input){
+		AppUserRepository::execUpdateUserAccountInfo($input['user_id'], $award, 1, 10);
+
+		//系统消息
+		$input['award'] = $award;
+		MessageRepository::addNewMessage($input);
 	}
 
 	/*
