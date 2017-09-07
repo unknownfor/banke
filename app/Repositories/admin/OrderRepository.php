@@ -274,6 +274,8 @@ class OrderRepository
 						$this->execUpadateUserInfo($order,$userProfile); //更新用户信息
 
 						GroupbuyingRepository::execUpadateGroupbuyingUsersInfo($order);//更新参团信息
+						
+						GroupbuyingRepository::execCreateGroupbyingUsersInfo($uid, $order->course_id,$order->org_id);//给该报名用户开团
 
 						$this->execUpadateInvitorInfo($order,$org);//更新推荐用户信息，并发送app内消息
 
