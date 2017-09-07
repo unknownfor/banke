@@ -57,34 +57,44 @@ class TaskFormDetailUserRepository
 	}
 
 	/*统一更新用户的任务完成情况*/
-	private static  function updataUserFinishStatus($uid,$type,$invitation_award,$form_detail_user_id)
+	public static  function updataUserFinishStatus($uid,$type,$invitation_award,$form_detail_user_id)
 	{
-		if($type==3){
 			$BankeTaskUser = new BankeTaskUser ();
 			$BankeTaskCenter=new BankeTaskCenter();
-			$BankeTaskUserInfo = $BankeTaskUser::
-			where ( 'user_id', $invitation_uid )->
-			where ( 'task_id', $type)->
-			where ( 'created_at', '>=', getTime ( date ( "Y/m/d" ) + ' 00:00:00' ) )->
-			where ( 'created_at', '<=', getTime ( date ( 'Y/m/d 23:59:59', strtotime ( '+1 day' ) ) ) )->
-			where ( 'status', 2 );
-			$count=$BankeTaskUserInfo->count ();
+			$today=getTime ( date ( "Y/m/d" ) + ' 00:00:00' );
+			$todayLast=getTime ( date ( 'Y/m/d 23:59:59', strtotime ( '+1 day' ) ) );
+			$BankeTaskUserInfoCount= $BankeTaskUser::where ('user_id', $uid)
+			->where ( 'task_id', 3)
+			->where ( 'created_at', '>=', $today)
+			->where ( 'created_at', '<=', $todayLast)
+			->where ( 'status', 2 )
+			->count ();
 			
-			$BankeTaskCenterInfo=$BankeTaskCenter::where(['task_id'=>$type,'status'=>1])->first();
+		$target_type=0;//1、任务中心  2、任务日历
+		
+		if($type==5){
+			$target_type=1;
+			$BankeTaskCenterInfo=$BankeTaskCenter::where(['task_id'=>5,'status'=>1])->first();
 			$task_times_max=$BankeTaskCenterInfo['times_max'];
-			if ($count < $task_times_max) {
+		}else{
+			$target_type=2;
+			$BankeTaskFormDetailUser=new BankeTaskFormDetailUser();
+			$$BankeTaskFormDetailUserInfo=$BankeTaskFormDetailUser::where('id',$form_detail_user_id)->first();
+			$task_times_max=$BankeTaskFormDetailUserInfo['times_needed'];
+		}
+			
+			if ($BankeTaskUserInfoCount < $task_times_max) { 
 				$BankeTaskUser->user_id=$uid;
-				$BankeTaskUser->task_id=$type;
+				$BankeTaskUser->task_id=3;
 				$BankeTaskUser->status=2;
 				$BankeTaskUser->award_coin=$invitation_award;
 				$BankeTaskUserInfo->coin_real=$invitation_award;
 				$BankeTaskUser->times_finished=date('Y-m-d H:i:s');
 				$BankeTaskUser->times_needed=1;
-				$BankeTaskUser->target_type=1;//1、任务中心  2、任务日历
+				$BankeTaskUser->target_type=$target_type;
 				$BankeTaskUser->form_detail_user_id=$form_detail_user_id;
 				$BankeTaskUser->save ();
 			}
-		}
 	}
 
 }
