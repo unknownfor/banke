@@ -38,7 +38,6 @@ class CommentCourseController extends Controller
         $course=$comment->course;
         $category=$course->category;
         $org=$course->org;
-//        $org->org_name=$org;
 
         return view('web.commentcourse.share_v1_9')->with(compact(['comment','user','org','course']));
     }
