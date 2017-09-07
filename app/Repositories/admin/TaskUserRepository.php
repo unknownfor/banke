@@ -52,15 +52,16 @@ class TaskUserRepository
 
 						if ($times_needed == $taskUser['times_real']) {
 
-							$this->execAward($input); //执行奖励
+							$this->awardUser($input); //执行奖励
 
 							$taskUser->status = 2;
 							$taskUser->times_finished = date('Y-m-d H:i:s');
 
-							$temp_arr=array(5,9);
-							if(in_array($input['task_id'],$temp_arr)){
-								$this->updateOtherViewCounts($input);
-							}
+							//任务中心和日历任务不做同步，太难啦，求放过
+//							$temp_arr=array(2,3);
+//							if(in_array($input['task_id'],$temp_arr)){
+//								$this->updateOtherViewCounts($input);
+//							}
 						}
 						$taskUser->save();
 					} catch (Exception $e) {
@@ -157,20 +158,33 @@ class TaskUserRepository
 		}
 	}
 
-	/*执行奖励*/
-	private function execAward($input){
-		$info_obj = $this->getTodayTaskFormUser($input);
-		if($info_obj) {
-
-			$award = $info_obj['award'];  //奖励金额
-
-			AppUserRepository::execUpdateUserAccountInfo($input['user_id'], $award, 1, 10);
-
-			//系统消息
-			$input['award'] = $award;
-			MessageRepository::addNewMessage($input);
+	/*
+	 * *执行奖励,
+	 * 区分每日任务和日历任务
+	 * */
+	private function awardUser($input){
+		if($input['form_detail_user_id']!=0) {
+			$info_obj = $this->getTodayTaskFormUser($input);
+			if ($info_obj) {
+				$award = $info_obj['award'];  //奖励金额
+				$this->execAward($award,$input);
+			}
+		}else{
+			$award = $this->getAwardCoinAndTimes($input)['award_coin'];  //奖励金额
+			$this->execAward($award,$input);
 		}
-		return true;
+	}
+
+	/*
+	 * *执行奖励,
+	 * 区分每日任务和日历任务
+	 * */
+	private function execAward($award,$input){
+		AppUserRepository::execUpdateUserAccountInfo($input['user_id'], $award, 1, 10);
+
+		//系统消息
+		$input['award'] = $award;
+		MessageRepository::addNewMessage($input);
 	}
 
 	/*
