@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Log;
 use MoneyNewsRepository;
 use App\Repositories\admin\TaskFormUserRepository;
 use TaskFormUserDetailRepository;
+use App\Models\Banke\BankeTaskCenter;
+use App\Models\Banke\BankeTaskUser;
 
 /**
  * app用户仓库
@@ -27,7 +29,7 @@ use TaskFormUserDetailRepository;
 class AppUserRepository {
 	/**
 	 * datatable获取数据
-	 * 
+	 *
 	 * @author shaolei
 	 *         @date 2016-04-13T21:14:37+0800
 	 * @return [type] [description]
@@ -153,7 +155,7 @@ class AppUserRepository {
 	
 	/**
 	 * datatable获取数据
-	 * 
+	 *
 	 * @author shaolei
 	 *         @date 2016-04-13T21:14:37+0800
 	 * @return [type] [description]
@@ -265,7 +267,7 @@ class AppUserRepository {
 	
 	/**
 	 * 修改用户身份认证状态
-	 * 
+	 *
 	 * @author shaolei
 	 *         @date 2016-04-14T11:50:45+0800
 	 * @param [type] $id
@@ -312,17 +314,33 @@ class AppUserRepository {
 								 */
 								// 查询系统配置里邀请人注册认证的奖金
 								
-								// 查询任务表，看是否可以奖励
-								$info_obj = TaskFormUserRepository::getMiniViewCountsAndAward ( 2, $invitor_id );
-								
-								if ($info_obj != null) {
-									/*
-									 * Flash::error(trans('app_user.certificate_error'));
-									 * return false;
-									 * }
-									 */
+								$bankeTaskUser = new BankeTaskUser ();
+								$bankeTaskUser = $bankeTaskUser->where ( 'user_id', '=', $invitor_id )->where ( 'task_id', '=', 2 )->where ( 'created_at', '>=', getTime ( date ( "Y/m/d" ) + ' 00:00:00' ) );
+								if ($bankeTaskUser->count()==0||$bankeTaskUser->times_needed > $bankeTaskUser->times_real) {
 									
-									$award_amount = $info_obj ['award'];
+									// 查询任务表，看是否可以奖励
+									$info_obj = TaskFormUserRepository::getMiniViewCountsAndAward ( 2, $invitor_id );
+									$award_amount = 0;
+									$taskFormDetailUserId = 0;
+									$target_type=1;
+									if ($info_obj != null) {
+										$award_amount = $info_obj ['award'];
+										$taskFormDetailUserId = $info_obj ['id'];
+										if ($bankeTaskUser->times_needed == $bankeTaskUser->times_real + 1) {
+											TaskFormDetailUserRepository::updataTaskFormDetailUser ( $info_obj ['id'] );
+										}
+										$target_type=2;
+									} else {
+										$taskCenter = new BankeTaskCenter ();
+										$taskCenter = $taskCenter
+										->where ( 'status', '=', '1' )
+										->where ( 'user_type', '=', '0' )
+										->where ( 'task_id', '=', 2 ) 
+										->first ();
+										
+										$award_amount = $taskCenter ['award_coin'];
+										$taskFormDetailUserId = 0;
+									}
 									
 									$invitation_user->invitation_amount += $award_amount;
 									
@@ -332,9 +350,6 @@ class AppUserRepository {
 									$invitation_user->get_do_task_amount += $award_amount;
 									
 									$invitation_user->save ();
-									
-									// 更新task_form_user_detail 的相应字段
-									TaskFormDetailUserRepository::updataTaskFormDetailUser ( $info_obj ['id'] );
 									
 									// 更新邀请表 的奖励金额
 									$this->updateInvitationTableInfo ( $invitor_id, $user_profile->mobile, $award_amount );
@@ -358,12 +373,12 @@ class AppUserRepository {
 									// 记录消息
 									BankeMessage::create ( $message3 );
 									
-									$bankeTaskUser = new BankeTaskUser ();
-									$bankeTaskUser = $bankeTaskUser->where ( 'user_id', '=', $invitor_id )->where ( 'task_id', '=', 2 )->where ( 'created_at', '>=', getTime ( date ( "Y/m/d" ) + ' 00:00:00' ) );
-									if ($bankeTaskUser != null && $bankeTaskUser->count () > 0) {
+								 
+									//$bankeTaskUser = $bankeTaskUser->where ( 'user_id', '=', $invitor_id )->where ( 'task_id', '=', 2 )->where ( 'created_at', '>=', getTime ( date ( "Y/m/d" ) + ' 00:00:00' ) );
+									if (  $bankeTaskUser->count () > 0) {
 										$bankeTaskUser->times_real = $bankeTaskUser - times_real + 1;
 										$bankeTaskUser->coin_real = $bankeTaskUser->coin_real + $award_amount;
-										$bankeTaskUser . save ();
+										$bankeTaskUser->save ();
 									} else {
 										$bankeTaskUser = new BankeTaskUser ();
 										$bankeTaskUser->task_id = 2;
@@ -374,9 +389,9 @@ class AppUserRepository {
 										$bankeTaskUser->coin_real = $award_amount;
 										$bankeTaskUser->times_needed = 0;
 										$bankeTaskUser->times_real = 1;
-										$bankeTaskUser->target_type = 0;
-										$bankeTaskUser->from_detail_user_id = 0;
-										$bankeTaskUser . save ();
+										$bankeTaskUser->target_type = $target_type;
+										$bankeTaskUser->form_detail_user_id= $taskFormDetailUserId;
+										$bankeTaskUser-> save ();
 									}
 								}
 							}
@@ -420,7 +435,7 @@ class AppUserRepository {
 	
 	/**
 	 * 修改用户状态
-	 * 
+	 *
 	 * @author 晚黎
 	 *         @date 2016-04-14T11:50:45+0800
 	 * @param [type] $id
@@ -445,7 +460,7 @@ class AppUserRepository {
 	
 	/**
 	 * 修改用户类型
-	 * 
+	 *
 	 * @author 晚黎
 	 *         @date 2016-04-14T11:50:45+0800
 	 * @param [type] $id
@@ -471,7 +486,7 @@ class AppUserRepository {
 	
 	/**
 	 * 删除角色
-	 * 
+	 *
 	 * @author 晚黎
 	 *         @date 2016-04-13T11:51:19+0800
 	 * @param [type] $id
@@ -490,7 +505,7 @@ class AppUserRepository {
 	
 	/**
 	 * datatable获取数据
-	 * 
+	 *
 	 * @author shaolei
 	 *         @date 2016-04-13T21:14:37+0800
 	 * @return [type] [description]
@@ -499,7 +514,7 @@ class AppUserRepository {
 		$draw = request ( 'draw', 1 ); /* 获取请求次数 */
 		$start = request ( 'start', config ( 'admin.global.list.start' ) ); /* 获取开始 */
 		$length = request ( 'length', config ( 'admin.global.list.length' ) ); // /*获取条数*/
-		                                                                 
+		                                                                       
 		// $search_pattern = request('search.regex', true); /*是否启用模糊搜索*/
 		$search_pattern = true;
 		
@@ -647,7 +662,7 @@ class AppUserRepository {
 	
 	/**
 	 * 根据创建时间，得到 注册用户
-	 * 
+	 *
 	 * @author shaolei
 	 *         @date 2016-04-14T11:32:04+0800
 	 * @param [type] $request
@@ -706,7 +721,7 @@ class AppUserRepository {
 			return;
 		}
 		$user_profile = BankeUserProfiles::lockForUpdate ()->find ( $uid ); // 更新用户表
-		                                                                // $user_profile = BankeUserProfiles::find($uid);//更新用户表
+		                                                                    // $user_profile = BankeUserProfiles::find($uid);//更新用户表
 		$changeType = '+'; // 余额添加还是减
 		$businessTypeIndex = '-1'; // 事务类型，下标对应 config->admin->balance_log 数组
 		
@@ -758,16 +773,15 @@ class AppUserRepository {
 				default :
 					break;
 			}
-		}		// 提现
-		else if ($type == 3) {
+		} // 提现
+else if ($type == 3) {
 			$user_profile->account_balance -= $award; // 总余额 +
 			$user_profile->total_withdraw_amount += $award; // 总提现余额 +
 			$user_profile->withdraw_amount = $award; // 当前提现余额 +
 			$changeType = '-';
 			$businessTypeIndex = 0;
-		}		
-		// 惩罚
-		else if ($type == 4) {
+		} // 惩罚
+else if ($type == 4) {
 			// TODO 还在规划
 		}
 		
@@ -794,7 +808,7 @@ class AppUserRepository {
 	
 	/**
 	 * 根据创建时间，得到 注册半课APP用户 分组，每天多少人
-	 * 
+	 *
 	 * @author shaolei
 	 *         @date 2016-04-14T11:32:04+0800
 	 * @param [type] $request

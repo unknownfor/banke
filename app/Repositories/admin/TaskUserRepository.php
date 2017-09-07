@@ -31,6 +31,7 @@ class TaskUserRepository
 	 */
 	public function updateViewCounts($input)
 	{
+		 
 		$taskUser = BankeTaskUser::where([
 			'user_id'=>$input['user_id'],
 			'task_id'=>$input['task_id'],
