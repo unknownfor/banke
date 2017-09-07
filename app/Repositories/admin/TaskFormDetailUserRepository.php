@@ -75,7 +75,7 @@ class TaskFormDetailUserRepository
 		if($type==5){
 			$target_type=1;
 			$BankeTaskCenterInfo=$BankeTaskCenter::where(['task_id'=>5,'status'=>1])->first();
-			$task_times_max=$BankeTaskCenterInfo['times_max'];
+			$task_times_max=$BankeTaskCenterInfo['times_needed'];
 		}else{
 			$target_type=2;
 			$BankeTaskFormDetailUser=new BankeTaskFormDetailUser();
@@ -88,9 +88,10 @@ class TaskFormDetailUserRepository
 				$BankeTaskUser->task_id=3;
 				$BankeTaskUser->status=2;
 				$BankeTaskUser->award_coin=$invitation_award;
-				$BankeTaskUserInfo->coin_real=$invitation_award;
+				$BankeTaskUser->coin_real=$invitation_award;
 				$BankeTaskUser->times_finished=date('Y-m-d H:i:s');
-				$BankeTaskUser->times_needed=1;
+				$BankeTaskUser->times_needed=$task_times_max;
+				$BankeTaskUser->times_real=1;
 				$BankeTaskUser->target_type=$target_type;
 				$BankeTaskUser->form_detail_user_id=$form_detail_user_id;
 				$BankeTaskUser->save ();
