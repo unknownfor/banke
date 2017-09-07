@@ -465,6 +465,7 @@ input::-webkit-input-placeholder {
   }
   #redBag .wrapper .middle .middleTxt {
     top: 100px;
+    font-size: 20px;
   }
   #redBag .wrapper .footer .footerTop {
     top: -35px;
