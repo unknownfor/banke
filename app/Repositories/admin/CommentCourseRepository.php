@@ -182,7 +182,7 @@ class CommentCourseRepository
 	}
 
 	/**
-	 * 修改浏览量
+	 * 修改浏览量 v1_9
 	 * 如果浏览量  等于要求量，则息自动 进行奖励
 	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
@@ -190,7 +190,7 @@ class CommentCourseRepository
 	 * @param  [type]                   $id      [description]
 	 * @return [type]                            [description]
 	 */
-	public static function updateViewCounts($id)
+	public static function updateViewCountsv1_9($id)
 	{
 		$commentCourse = BankeCommentCourse::lockForUpdate()->find($id);
 
@@ -231,6 +231,50 @@ class CommentCourseRepository
 							//更新task_form_user_detail 的相应字段
 							TaskFormDetailUserRepository::updataTaskFormDetailUser($info_obj['id']);
 						}
+					}
+					$commentCourse->save();
+				}
+				catch(Exception $e){
+					Flash::error(trans('alerts.course.updated_error'));
+					var_dump($e);
+					return false;
+				}
+			});
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * 修改浏览量
+	 * 如果浏览量  等于要求量，则息自动 进行奖励
+	 * @author jimmy
+	 * @date   2016-04-13T11:50:46+0800
+	 * @param  [type]                   $request [description]
+	 * @param  [type]                   $id      [description]
+	 * @return [type]                            [description]
+	 */
+	public static function updateViewCounts($id)
+	{
+		$commentCourse = BankeCommentCourse::lockForUpdate()->find($id);
+		if(!$commentCourse->view_counts_flag){  //未完成 浏览量
+			DB::transaction(function () use ($commentCourse) {
+				try {
+					$commentCourse->view_counts++;
+
+					//达到浏览量
+					if ($commentCourse->view_counts == $commentCourse->min_view_counts) {
+						$commentCourse->view_counts_flag = true;  //标志已经达到浏览量
+
+						//奖励
+						$oldAwardStatus = $commentCourse['award_status'];
+						$request = array('award_status' => 1);
+
+						$that=new CommentCourseRepository();
+
+						$comment_award=$that->getAward($commentCourse);  //奖励金额
+						$that->awardUser($oldAwardStatus, $commentCourse, $request,$comment_award);  //奖励相应
+						$commentCourse->award_status=1;
 					}
 					$commentCourse->save();
 				}

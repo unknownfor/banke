@@ -262,37 +262,39 @@ class CommentOrgRepository
 
 	public static function updateViewCounts($id)
 	{
-		$commentCourse = BankeCommentCourse::lockForUpdate()->find($id);
-		if(!$commentCourse->view_counts_flag){  //未完成 浏览量
-			DB::transaction(function () use ($commentCourse) {
-				try {
-					$commentCourse->view_counts++;
-
+		$commentOrg = BankeCommentOrg::where('id',$id);
+		DB::transaction(function () use ($commentOrg) {
+			try {
+				$commentOrg=$commentOrg->lockForUpdate()->first();
+				if(!$commentOrg->view_counts_flag) {  //未完成 浏览量
+					$commentOrg->view_counts++;
 					//达到浏览量
-					if ($commentCourse->view_counts == $commentCourse->min_view_counts) {
-						$commentCourse->view_counts_flag = true;  //标志已经达到浏览量
+					if ($commentOrg->view_counts == $commentOrg->min_view_counts) {
+						$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
 
 						//奖励
-						$oldAwardStatus = $commentCourse['award_status'];
+						$oldAwardStatus = $commentOrg['award_status'];
 						$request = array('award_status' => 1);
 
-						$that=new CommentCourseRepository();
+						$that = new CommentOrgRepository();
 
-						$comment_award=$that->getAward($commentCourse);  //奖励金额
-						$that->awardUser($oldAwardStatus, $commentCourse, $request,$comment_award);  //奖励相应
-						$commentCourse->award_status=1;
+						$comment_award = $that->getAward($commentOrg);  //奖励金额
+
+						$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
+						$commentOrg->award_status = 1;
 					}
-					$commentCourse->save();
-				}
-				catch(Exception $e){
-					Flash::error(trans('alerts.course.updated_error'));
-					var_dump($e);
+					$commentOrg->save();
+				}else{
 					return false;
 				}
-			});
-			return true;
-		}
-		return false;
+			}
+			catch(Exception $e){
+				Flash::error(trans('alerts.course.updated_error'));
+				var_dump($e);
+				return false;
+			}
+		});
+		return true;
 	}
 
 	/**
@@ -338,7 +340,7 @@ class CommentOrgRepository
 							$that = new CommentOrgRepository();
 
 //						$comment_award = $that->getAward($commentOrg);  //奖励金额
-
+//
 							$comment_award = $info_obj['award'];  //奖励金额
 
 							$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
