@@ -82,12 +82,15 @@ img {
     &.commentBox {
       .title {
         padding-bottom: 7px;
+        display: flex;
         .titleTxt {
           padding-left: 5px;
           border-left: 3px solid #FFD842;
           display: inline-block;
+          .txt-ellipsis-p(1);
         }
         .star {
+          flex: 0 0 80px;
           color: #ffd842;
           display: inline-block;
         }

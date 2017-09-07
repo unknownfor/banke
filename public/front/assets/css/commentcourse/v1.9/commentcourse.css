@@ -311,13 +311,26 @@ img {
 }
 .commentPage .container.commentBox .title {
   padding-bottom: 7px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 .commentPage .container.commentBox .title .titleTxt {
   padding-left: 5px;
   border-left: 3px solid #FFD842;
   display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 .commentPage .container.commentBox .title .star {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 80px;
+  -ms-flex: 0 0 80px;
+  flex: 0 0 80px;
   color: #ffd842;
   display: inline-block;
 }

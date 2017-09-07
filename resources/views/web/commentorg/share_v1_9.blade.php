@@ -15,7 +15,7 @@
     <link href="/backend/js/libs/photoswipe/default-skin/photoswipeunion.min.css" rel="stylesheet" type="text/css">
     <link type="text/css" href="/front/assets/css/commentcourse/v1.9/commentcourse.css" rel="stylesheet">
     <link type="text/css" href="/front/assets/css/commentcourse/v1.9/iconfont/iconfont.css" rel="stylesheet">
-    <title>机构评论</title>
+    <title>{{$org['name']}}</title>
 </head>
 <body>
 {!! csrf_field() !!}

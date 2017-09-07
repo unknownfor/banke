@@ -79,11 +79,17 @@ $(function() {
     function viewCounts() {
         var box = $('.commentPage'),
             typeId = box.attr('data-type-id'),
-            id = box.attr('data-record-id'),
+            id = box.attr('data-course-id'),
+            uid = box.attr('data-uid'),
+            rid = box.attr('data-record-id'),
+            fid = box.attr('data-form-user-detail-id'),
             url = '/v1.9/share/updateviewcounts',
             data = {
                 typeid: typeId,
-                id: id
+                id: id,
+                uid : uid,
+                record_id : rid,
+                form_detail_user_id: fid
             }
         getDataAsync(url, data, function () {
 
