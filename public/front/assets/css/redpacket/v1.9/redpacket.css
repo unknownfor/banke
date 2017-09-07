@@ -456,7 +456,7 @@ input::-webkit-input-placeholder {
     font-size: 28px ;
   }
   #redBag .wrapper .footer {
-    padding-bottom: 100px;
+    padding-bottom: 80px;
   }
   #redBag .wrapper .footer .footerTop {
     top: -40px;
@@ -470,7 +470,7 @@ input::-webkit-input-placeholder {
     top: 130px;
   }
   #redBag .wrapper .footer {
-    padding-bottom: 80px;
+    padding-bottom: 40px;
   }
   #redBag .wrapper .footer .footerTop {
     top: -36px;
@@ -484,7 +484,7 @@ input::-webkit-input-placeholder {
     top: 110px;
   }
   #redBag .wrapper .footer {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
   #redBag .wrapper .footer .footerTop {
     top: -31px;
