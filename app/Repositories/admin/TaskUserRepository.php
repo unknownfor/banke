@@ -56,10 +56,11 @@ class TaskUserRepository
 							$taskUser->status = 2;
 							$taskUser->times_finished = date('Y-m-d H:i:s');
 
-							$temp_arr=array(5,9);
-							if(in_array($input['task_id'],$temp_arr)){
-								$this->updateOtherViewCounts($input);
-							}
+							//任务中心和日历任务不做同步，太难啦，求放过
+//							$temp_arr=array(2,3);
+//							if(in_array($input['task_id'],$temp_arr)){
+//								$this->updateOtherViewCounts($input);
+//							}
 						}
 						$taskUser->save();
 					} catch (Exception $e) {
