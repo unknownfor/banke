@@ -378,7 +378,7 @@ class AppUserRepository {
 								 
 									//$bankeTaskUser = $bankeTaskUser->where ( 'user_id', '=', $invitor_id )->where ( 'task_id', '=', 2 )->where ( 'created_at', '>=', getTime ( date ( "Y/m/d" ) + ' 00:00:00' ) );
 									if ($bankeTaskUser!=null&&$bankeTaskUser->count () > 0) {
-										$bankeTaskUser->times_real = $bankeTaskUser - times_real + 1;
+										$bankeTaskUser->times_real = $bankeTaskUser -> times_real + 1;
 										$bankeTaskUser->coin_real = $bankeTaskUser->coin_real + $award_amount;
 										$bankeTaskUser->save ();
 									} else {
