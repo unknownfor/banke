@@ -260,17 +260,17 @@ input::-webkit-input-placeholder {
   position: relative;
 }
 #redBag .wrapper .middle .middleBg {
-  margin-left: 10px;
+  margin-left: 15px;
 }
 #redBag .wrapper .middle .middleTxt {
   position: absolute;
   left: 0;
   right: 0;
   font-weight: bold;
+  font-size: 18px;
 }
 #redBag .wrapper .middle .middleTxt .txtOne {
   color: #79625d;
-  font-size: 18px;
   margin-bottom: 5px;
 }
 #redBag .wrapper .middle .middleTxt .txtTwo {
@@ -285,17 +285,20 @@ input::-webkit-input-placeholder {
   left: 0;
   right: 0;
   bottom: 0;
+  max-height: 250px;
 }
 #redBag .wrapper .footer .footerTop {
   border: 0;
-  position: relative;
-  top: 5px;
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 #redBag .wrapper .footer .register {
+  z-index: 5;
   background-color: #FFD162;
   padding-left: 40px;
   padding-right: 40px;
-  padding-bottom: 13%;
+  padding-bottom: 10px;
 }
 #redBag .wrapper .footer .register .register-box {
   background-color: #FFF1D0;
@@ -450,21 +453,38 @@ input::-webkit-input-placeholder {
   }
   #redBag .wrapper .middle .middleTxt {
     top: 140px;
+    font-size: 23px;
+  }
+  #redBag .wrapper .footer .footerTop {
+    top: -39px;
   }
 }
 @media screen and (max-width: 380px) {
   #redBag .wrapper .middle .middleBg {
-    max-width: 360px;
+    max-width: 320px;
   }
   #redBag .wrapper .middle .middleTxt {
-    top: 130px;
+    top: 100px;
+  }
+  #redBag .wrapper .footer .footerTop {
+    top: -35px;
   }
 }
 @media screen and (max-width: 320px) {
   #redBag .wrapper .middle .middleBg {
-    max-width: 305px;
+    max-width: 240px;
   }
   #redBag .wrapper .middle .middleTxt {
-    top: 110px;
+    top: 75px;
+    font-size: 16px;
+  }
+  #redBag .wrapper .footer .footerTop {
+    top: -30px;
+  }
+  #redBag .wrapper .footer .register {
+    padding-bottom: 2px;
+  }
+  #redBag .wrapper .footer .register .register-box .register-code {
+    height: 35px;
   }
 }
