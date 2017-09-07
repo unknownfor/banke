@@ -157,18 +157,25 @@ class TaskUserRepository
 		}
 	}
 
-	/*执行奖励*/
+	/*
+	 * *执行奖励,
+	 * 区分每日任务和日历任务
+	 * */
 	private function execAward($input){
-		$info_obj = $this->getTodayTaskFormUser($input);
-		if($info_obj) {
+		if($input['form_detail_user_id']!=0) {
+			$info_obj = $this->getTodayTaskFormUser($input);
+			if ($info_obj) {
 
-			$award = $info_obj['award'];  //奖励金额
+				$award = $info_obj['award'];  //奖励金额
 
-			AppUserRepository::execUpdateUserAccountInfo($input['user_id'], $award, 1, 10);
+				AppUserRepository::execUpdateUserAccountInfo($input['user_id'], $award, 1, 10);
 
-			//系统消息
-			$input['award'] = $award;
-			MessageRepository::addNewMessage($input);
+				//系统消息
+				$input['award'] = $award;
+				MessageRepository::addNewMessage($input);
+			}
+		}else{
+
 		}
 		return true;
 	}
