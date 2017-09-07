@@ -75,7 +75,7 @@ class TaskFormDetailUserRepository
 		if($type==5){
 			$target_type=1;
 			$BankeTaskCenterInfo=$BankeTaskCenter::where(['task_id'=>5,'status'=>1])->first();
-			$task_times_max=$BankeTaskCenterInfo['times_max'];
+			$task_times_max=$BankeTaskCenterInfo['times_needed'];
 		}else{
 			$target_type=2;
 			$BankeTaskFormDetailUser=new BankeTaskFormDetailUser();
