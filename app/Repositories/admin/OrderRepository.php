@@ -24,7 +24,7 @@ use InvitationSignUpRepository;
 use OrderDepositRepository;
 use App\Services\MyXingeService;
 use TaskFormUserRepository;
-use TaskFormUserDetailRepository;
+use TaskFormDetailUserRepository;
 
 /**
 * 订单（报名）仓库
@@ -400,47 +400,51 @@ class OrderRepository
 						}
 					}
 
+					//更新用户账户金额信息以及添加变动记录
+					AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
+					
+					if($invitation_award==0){
+						return;
+					}
+					$message1 = [
+							'uid' => $invitation_uid,
+							'title' => '您的好友报名成功',
+							'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程 “ ' . $order['course_name'] . ' ” 。平台已帮您领取了' . $invitation_award
+							. '元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
+							'type' => 'FRIEND_ENROL_SUCCESS'
+					];
+					//记录消息
+					BankeMessage::create($message1);
+					
+					
+					//将报名赚钱信息添加到赚钱动态表中
+					$info = [
+							'uid' => $invitation_uid,
+							'invited_uid' => $order->uid,
+							'cut_amount' => $order->do_task_amount + $order->check_in_amount,
+							'amount' => $invitation_award,
+							'business_type' => 'INVITE_FRIEND_ENROL_SUCCESS',
+							'org_id' => $org->id
+					];
+					MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
+					
 					////////////////////-----------------1.9奖励新标准----------------////////////////////////
-
-
+					
 					$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(3,$invitation_uid);
 					if($info_obj == null){
+						$from=1;//1为任务中心
+						TaskFormDetailUserRepository::updataUserFinishStatus($invitation_uid,5,$invitation_award,0);
 						return;
 					}
 
 					//更新task_form_user_detail_user 的相应字段
 					TaskFormDetailUserRepository::updataTaskFormDetailUserAwardData($info_obj['id'],$invitation_award);
-
-					//更新用户账户金额信息以及添加变动记录
-					AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
 					
 					//更新用户的任务完成情况++
+					$from=1;//2为任务日历
 					TaskFormDetailUserRepository::updataUserFinishStatus($invitation_uid,3,$invitation_award,$info_obj['id']);
 
-					if($invitation_award==0){
-						return;
-					}
-					$message1 = [
-						'uid' => $invitation_uid,
-						'title' => '您的好友报名成功',
-						'content' => '您邀请的好友 ' . $order->mobile . ' 报名了课程 “ ' . $order['course_name'] . ' ” 。平台已帮您领取了' . $invitation_award
-							. '元奖励，距离领完所有奖励又近了一大步！快去现金钱包里查看吧！',
-						'type' => 'FRIEND_ENROL_SUCCESS'
-					];
-					//记录消息
-					BankeMessage::create($message1);
 
-
-					//将报名赚钱信息添加到赚钱动态表中
-					$info = [
-						'uid' => $invitation_uid,
-						'invited_uid' => $order->uid,
-						'cut_amount' => $order->do_task_amount + $order->check_in_amount,
-						'amount' => $invitation_award,
-						'business_type' => 'INVITE_FRIEND_ENROL_SUCCESS',
-						'org_id' => $org->id
-					];
-					MoneyNewsRepository::addRecordToMeoneyNewsFromSystem($info);
 				}
 			}
 		}

@@ -205,7 +205,7 @@ class TaskUserRepository
 
 	/**
 	 * 一次性可完成的任务
-	 * 邀请注册，邀请报名。
+	 * 邀请注册，邀请报名,app评价奖励，推广成功
 	 * 不用区分来自于任务中心还是日历任务
 	 */
 	public function oneTimesTask($input)

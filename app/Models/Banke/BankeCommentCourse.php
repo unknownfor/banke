@@ -44,10 +44,4 @@ class BankeCommentCourse extends Model
     public  function course(){
         return $this->hasOne('App\Models\Banke\BankeCourse','id','course_id');
     }
-
-//    //¿Î³Ì
-//    public  function course(){
-//        return $this->belongsTo('App\Models\Banke\BankeCourse','id','course_id');
-//    }
-
 }
