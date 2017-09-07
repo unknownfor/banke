@@ -260,8 +260,45 @@ class CommentOrgRepository
 		$commentOrg->save();
 	}
 
+	public static function updateViewCounts($id)
+	{
+		$commentOrg = BankeCommentOrg::where('id',$id);
+		DB::transaction(function () use ($commentOrg) {
+			try {
+				$commentOrg=$commentOrg->lockForUpdate()->first();
+				if(!$commentOrg->view_counts_flag) {  //未完成 浏览量
+					$commentOrg->view_counts++;
+					//达到浏览量
+					if ($commentOrg->view_counts == $commentOrg->min_view_counts) {
+						$commentOrg->view_counts_flag = true;  //标志已经达到浏览量
+
+						//奖励
+						$oldAwardStatus = $commentOrg['award_status'];
+						$request = array('award_status' => 1);
+
+						$that = new CommentOrgRepository();
+
+						$comment_award = $that->getAward($commentOrg);  //奖励金额
+
+						$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
+						$commentOrg->award_status = 1;
+					}
+					$commentOrg->save();
+				}else{
+					return false;
+				}
+			}
+			catch(Exception $e){
+				Flash::error(trans('alerts.course.updated_error'));
+				var_dump($e);
+				return false;
+			}
+		});
+		return true;
+	}
+
 	/**
-	 * 修改浏览量
+	 * 修改浏览量 v1.9
 	 * 如果浏览量  等于要求量，则息自动 进行奖励
 	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
@@ -269,7 +306,7 @@ class CommentOrgRepository
 	 * @param  [type]                   $id      [description]
 	 * @return [type]                            [description]
 	 */
-	public static function updateViewCounts($id)
+	public static function updateViewCounts1_9($id)
 	{
 		$commentOrg = BankeCommentOrg::where('id',$id);
 
@@ -303,7 +340,7 @@ class CommentOrgRepository
 							$that = new CommentOrgRepository();
 
 //						$comment_award = $that->getAward($commentOrg);  //奖励金额
-
+//
 							$comment_award = $info_obj['award'];  //奖励金额
 
 							$that->awardUser($oldAwardStatus, $commentOrg, $request, $comment_award);  //奖励相应
