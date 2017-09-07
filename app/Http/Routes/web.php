@@ -317,10 +317,10 @@ Route::group(['prefix'=>"v1.9/web",'namespace'=>'Web'],function() {
 Route::group(['prefix'=>"v1.9/share",'namespace'=>'Web'],function(){
 
     //课程心得详情分享页
-    Route::get('/commentcourse/{id}','CommentCourseController@share_v1_9');
+    Route::get('/commentcourse/{id}/{form_user_detail_id}','CommentCourseController@share_v1_9');
 
     //机构心得详情分享
-    Route::get('/commentorg/{id}', 'CommentOrgController@share_v1_9');
+    Route::get('/commentorg/{id}/{form_user_detail_id}', 'CommentOrgController@share_v1_9');
 
     //红包详情分享
     Route::get('/redpacket/{welcome}', 'RedPacketController@share_v1_9');

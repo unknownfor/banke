@@ -20,7 +20,7 @@ class CommentOrgController extends Controller
     /**
      * 机构评论
      */
-    public function share_v1_9($id)
+    public function share_v1_9($id,$form_user_detail_id)
     {
         $comment = BankeCommentOrg::find($id);
         $user_name = $comment->authenUser['real_name'];
@@ -36,6 +36,6 @@ class CommentOrgController extends Controller
         $org=$comment->org;
         $course=null;
 
-        return view('web.commentorg.share_v1_9')->with(compact(['comment','user','org','course']));
+        return view('web.commentorg.share_v1_9')->with(compact(['comment','user','org','course','form_user_detail_id']));
     }
 }

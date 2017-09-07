@@ -21,7 +21,7 @@ class CommentCourseController extends Controller
     /**
      * 心得
      */
-    public function share_v1_9($id)
+    public function share_v1_9($id,$form_user_detail_id)
     {
         $comment = BankeCommentCourse::find($id);
         $user_name = $comment->authenUser['real_name'];
@@ -39,6 +39,6 @@ class CommentCourseController extends Controller
         $category=$course->category;
         $org=$course->org;
 
-        return view('web.commentcourse.share_v1_9')->with(compact(['comment','user','org','course']));
+        return view('web.commentcourse.share_v1_9')->with(compact(['comment','user','org','course','form_user_detail_id']));
     }
 }

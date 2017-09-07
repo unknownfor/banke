@@ -23,6 +23,7 @@
          data-uid="{{$user['user_id']}}"
          data-course-id="{{$comment['course_id']}}"
          data-record-id="{{$comment['id']}}"
+         data-form-user-detail-id="{{$form_user_detail_id}}"
          data-type-id="1"
     >
         <div class="headBox container">

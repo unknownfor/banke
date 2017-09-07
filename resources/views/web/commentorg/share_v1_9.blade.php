@@ -24,6 +24,7 @@
             data-course-id="{{$comment['course_id']}}"
             data-org-id="{{$comment['org_id']}}"
             data-record-id="{{$comment['id']}}"
+            data-form-user-detail-id="{{$form_user_detail_id}}"
             data-type-id="2">
     <div class="headBox container">
         <img class="headImg" src="{{$user['avatar']}}"/>
