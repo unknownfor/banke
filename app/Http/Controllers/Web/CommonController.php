@@ -84,4 +84,61 @@ class CommonController extends Controller
         }
         return ApiResponseService::success('', $code, $param);
     }
+
+    /*更新相关记录的浏览量 1.9*/
+    public function updateViewCounts_v1_9(Request $request){
+        $request=$request->all();
+        $type=$request['typeid'];
+        $id=$request['id'];
+        $param = [
+            'data' => null,
+            'template' => '更新页面浏览量信息成功',
+            'status' => true
+        ];
+        $code=Code::SUCCESS;
+//        if($id==0 || !$id){
+//            $param = [
+//                'data' => null,
+//                'template' => '更新页面浏览量信息失败,旧订单不提供开团功能',
+//                'status' => false
+//            ];
+//            $code=Code::UPDATE_VIEW_COUNTS_ERROR;
+//        }
+
+        try {
+            switch ($type) {
+                case 1://课程评论
+                    CommentCourseRepository::updateViewCountsv1_9($id);
+
+                    break;
+                case 2://机构评论
+                    CommentOrgRepository::updateViewCountsv1_9($id);
+                    break;
+                case 3://开团分享
+                    GroupbuyingRepository::updateViewCounts($id);
+                    break;
+                case 4://文章分享
+                    $input=array(
+                        'user_id'=>$request['uid'],
+                        'task_id'=>9,  //分享文章
+                        'source_Id'=>$request['record_id'],
+                        'form_detail_user_id'=>$request['form_detail_user_id']
+                    );
+                    TaskUserRepository::updateViewCounts($input);
+                    break;
+                default:
+                    break;
+            }
+
+        }catch (Exception $e){
+            Flash::error('更新页面浏览量信息失败');
+            $param = [
+                'data' => null,
+                'template' => '更新页面浏览量信息失败',
+                'status' => false
+            ];
+            $code=Code::UPDATE_VIEW_COUNTS_ERROR;
+        }
+        return ApiResponseService::success('', $code, $param);
+    }
 }

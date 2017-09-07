@@ -69,20 +69,22 @@ input::-webkit-input-placeholder{
       }
     }
     .footer {
-      background-color: #FFD162;
-      position: fixed;
+      position: absolute;
       left: 0;
       right: 0;
       bottom:0;
       .footerTop {
-        position: absolute;
-        left: 0;
-        right: 0;
+        border: 0;
+        position: relative;
+        top: 5px;
       }
       .register {
         @h: 40px;
         @br: 10px;
-        margin: 0 40px;
+        background-color: #FFD162;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 13%;
         .register-box {
           background-color: #FFF1D0;
           .inputBox {
@@ -234,20 +236,6 @@ input::-webkit-input-placeholder{
         }
         .middleTxt {
           top: 140px;
-          .txtOne {
-            font-size: 18px;
-          }
-          .txtTwo {
-            > span {
-              font-size: 28px ;
-            }
-          }
-        }
-      }
-      .footer {
-        padding-bottom: 100px;
-        .footerTop {
-          top: -40px;
         }
       }
     }
@@ -258,16 +246,10 @@ input::-webkit-input-placeholder{
     .wrapper {
       .middle {
         .middleBg {
-          max-width: 350px;
+          max-width: 360px;
         }
         .middleTxt {
           top: 130px;
-        }
-      }
-      .footer {
-        padding-bottom: 80px;
-        .footerTop {
-          top: -36px;
         }
       }
     }
@@ -282,12 +264,6 @@ input::-webkit-input-placeholder{
         }
         .middleTxt {
           top: 110px;
-        }
-      }
-      .footer {
-        padding-bottom: 40px;
-        .footerTop {
-          top: -31px;
         }
       }
     }

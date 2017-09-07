@@ -80,7 +80,7 @@ $(function() {
         var box = $('.commentPage'),
             typeId = box.attr('data-type-id'),
             id = box.attr('data-record-id'),
-            url = '/v1.5/share/updateviewcounts',
+            url = '/v1.9/share/updateviewcounts',
             data = {
                 typeid: typeId,
                 id: id

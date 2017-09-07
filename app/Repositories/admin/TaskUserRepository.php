@@ -21,7 +21,7 @@ class TaskUserRepository
 {
 
 	/**
-	 * 修改浏览量
+	 * 修改浏览量  任务类型为（6,7,9）心得，评论，文章
 	 * 如果浏览量  等于要求量，则息自动 进行奖励
 	 * @author jimmy
 	 * @date   2016-04-13T11:50:46+0800
@@ -31,7 +31,7 @@ class TaskUserRepository
 	 */
 	public function updateViewCounts($input)
 	{
-		$taskUser = BankeTaskUser::lockForUpdate()->where([
+		$taskUser = BankeTaskUser::where([
 			'user_id'=>$input['user_id'],
 			'task_id'=>$input['task_id'],
 			'source_Id'=>$input['source_Id'],
@@ -43,7 +43,7 @@ class TaskUserRepository
 			if ($taskUser->count() > 0) {
 				DB::transaction(function () use ($taskUser, $input) {
 					try {
-						$taskUser = $taskUser->first();
+						$taskUser = $taskUser->lockForUpdate()->first();
 
 						$times_needed = $taskUser['times_needed'];
 
@@ -79,22 +79,24 @@ class TaskUserRepository
 
 	/*同步，每日任务或者日历任务*/
 	public function updateOtherViewCounts($input){
-		$taskUser = BankeTaskUser::lockForUpdate();
+		$taskUser = new BankeTaskUser();
 		if($input['form_detail_user_id']!=0){
 			$taskUser =$taskUser->where([
 				'user_id'=>$input['user_id'],
 				'task_id'=>$input['task_id'],
-				'source_Id'=>$input['source_Id'],
+//				'source_Id'=>$input['source_Id'],
 				'form_detail_user_id'=>0
 			]);
 		}else {
-			$taskUser = BankeTaskUser::lockForUpdate()->where([
+			$taskUser = BankeTaskUser::where([
 				'user_id' => $input['user_id'],
 				'task_id' => $input['task_id'],
-				'source_Id' => $input['source_Id'],
+//				'source_Id' => $input['source_Id'],
 			]);
 			$taskUser=$taskUser->where('created_at', '>=', getTime(date('Y-m-d')));
+
 			$taskUser=$taskUser->where('form_detail_user_id', '>', 0);
+//			$taskUser=$taskUser->where('form_detail_user_id', '>', 0);
 		}
 		$taskUser = $taskUser->where('status', '<', 2);
 		if ($taskUser->count() > 0) {
@@ -186,6 +188,21 @@ class TaskUserRepository
 		return $info_obj;
 	}
 
-//	public function
+	/**
+	 * 一次性可完成的任务
+	 * 邀请注册，邀请报名。
+	 * 不用区分来自于任务中心还是日历任务
+	 */
+	public function oneTimesTask($input)
+	{
+		$taskUser = BankeTaskUser::lockForUpdate()->where([
+			'user_id'=>$input['user_id'],
+			'task_id'=>$input['task_id']
+		]);
+
+		if ($taskUser->count() == 0) {
+			$this->insertNewData($input);
+		}
+	}
 	
 }
