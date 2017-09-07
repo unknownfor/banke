@@ -22,7 +22,7 @@ $(function() {
             uid = box.attr('data-uid'),
             rid = box.attr('data-record-id'),
             fid = box.attr('data-form-user-detail-id'),
-            url = '/v1.5/share/updateviewcounts',
+            url = '/v1.9/share/updateviewcounts',
             data = {
                 typeid: typeId,
                 id: id,

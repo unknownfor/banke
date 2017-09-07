@@ -406,11 +406,14 @@ class OrderRepository
 						return;
 					}
 
-					//更新task_form_user_detail 的相应字段
+					//更新task_form_user_detail_user 的相应字段
 					TaskFormDetailUserRepository::updataTaskFormDetailUserAwardData($info_obj['id'],$invitation_award);
 
 					//更新用户账户金额信息以及添加变动记录
 					AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
+					
+					//更新用户的任务完成情况++
+					TaskFormDetailUserRepository::updataUserFinishStatus($invitation_uid,3,$invitation_award,$info_obj['id']);
 
 					if($invitation_award==0){
 						return;
