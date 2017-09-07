@@ -20,7 +20,7 @@
 <body>
 {!! csrf_field() !!}
     <div class="commentPage" id="courseComment"
-         data-uid="{{$comment['uid']}}"
+         data-uid="{{$user['user_id']}}"
          data-course-id="{{$comment['course_id']}}"
          data-record-id="{{$comment['id']}}"
          data-type-id="1"

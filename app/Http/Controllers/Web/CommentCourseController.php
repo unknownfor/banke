@@ -31,7 +31,8 @@ class CommentCourseController extends Controller
         $user=array(
             'avatar'=>$comment->user['avatar'],
             'name'=>$user_name,
-            'get_do_task_amount'=>$comment->user['get_do_task_amount']
+            'get_do_task_amount'=>$comment->user['get_do_task_amount'],
+            'user_id'=>$comment->user['uid']
         );
 
         $course=$comment->course;
