@@ -269,6 +269,12 @@ Route::group(['prefix'=>"v1.8/web",'namespace'=>'Web'],function() {
 
     Route::get('/marketingambassadorintro', 'MarketingAmbassadorController@introduce_v1_8');
 
+//    //赚钱攻略文章
+//    Route::get('/moneystrategy/{id}/{record_id}/{uid}/{form_user_detail_id}', 'ArticleController@moneystrategy_share_v1_9');
+//
+//    //免费学文章
+//    Route::get('/freestudy/{id}/{record_id}/{uid}/{form_user_detail_id}', 'ArticleController@freestudy_share_v1_9');
+
 });
 
 //v1.8分享
@@ -298,6 +304,12 @@ Route::group(['prefix'=>"v1.8/share",'namespace'=>'Web'],function(){
 Route::group(['prefix'=>"v1.9/web",'namespace'=>'Web'],function() {
     //新版本活动详情说明
     Route::get('/newtaskrule', 'NewTaskController@rule_v1_9');
+
+    //赚钱攻略文章
+    Route::get('/moneystrategy/{id}/{record_id}/{uid}/{form_user_detail_id}', 'ArticleController@moneystrategy_share_v1_9');
+
+    //免费学文章
+    Route::get('/freestudy/{id}/{record_id}/{uid}/{form_user_detail_id}', 'ArticleController@freestudy_share_v1_9');
 });
 
 
