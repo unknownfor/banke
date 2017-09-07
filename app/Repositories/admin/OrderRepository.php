@@ -400,8 +400,6 @@ class OrderRepository
 						}
 					}
 
-					//更新用户账户金额信息以及添加变动记录
-					AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
 					
 					if($invitation_award==0){
 						return;
@@ -431,9 +429,14 @@ class OrderRepository
 					////////////////////-----------------1.9奖励新标准----------------////////////////////////
 					
 					$info_obj=TaskFormUserRepository::getMiniViewCountsAndAward(3,$invitation_uid);
+					$taskStatus=true;
 					if($info_obj == null){
 						$from=1;//1为任务中心
-						TaskFormDetailUserRepository::updataUserFinishStatus($invitation_uid,5,$invitation_award,0);
+						$taskStatus=TaskFormDetailUserRepository::updataUserFinishStatus($invitation_uid,5,$invitation_award,0);
+						if($taskStatus){
+							//更新用户账户金额信息以及添加变动记录
+							AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
+						}
 						return;
 					}
 
@@ -442,9 +445,11 @@ class OrderRepository
 					
 					//更新用户的任务完成情况++
 					$from=1;//2为任务日历
-					TaskFormDetailUserRepository::updataUserFinishStatus($invitation_uid,3,$invitation_award,$info_obj['id']);
-
-
+					$taskStatus=TaskFormDetailUserRepository::updataUserFinishStatus($invitation_uid,3,$invitation_award,$info_obj['id']);
+					if($taskStatus){
+						//更新用户账户金额信息以及添加变动记录
+						AppUserRepository::execUpdateUserAccountInfo($invitation_uid, $invitation_award, 1, 3);
+					}
 				}
 			}
 		}

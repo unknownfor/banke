@@ -95,6 +95,9 @@ class TaskFormDetailUserRepository
 				$BankeTaskUser->target_type=$target_type;
 				$BankeTaskUser->form_detail_user_id=$form_detail_user_id;
 				$BankeTaskUser->save ();
+				return true ;
+			}else{
+				return false ;
 			}
 	}
 
