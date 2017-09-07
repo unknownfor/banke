@@ -26,11 +26,11 @@
          data-type-id="1"
     >
         <div class="headBox container">
-            <img class="headImg" src="http://pic.hisihi.com/2016-05-19/1463654400267875.png"/>
-            <div class="headName">分享者的名字哈哈哈哈哈哈哈哈哈哈</div>
+            <img class="headImg" src="{{$user['avatar']}}"/>
+            <div class="headName">{{$user['name']}}</div>
             <div class="headName">
-                <p>我在“<span>武汉仁和会计中南校区</span>”学习</p>
-                <p>通过半课累计领取<span>300</span>元现金</p>
+                <p>我在“<span>{{$org['name']}}</span>”学习</p>
+                <p>通过半课累计领取<span>{{$user['get_do_task_amount']}}</span>元现金</p>
             </div>
         </div>
         <div class="courseBox container">
@@ -39,35 +39,48 @@
                     <img class="courseImg" src="http://pic.hisihi.com/2016-05-19/1463654396285620.png" />
                 </div>
                 <div class="courseMiddle">
-                    <div class="courseName">课程名称课程名称课程名称课程名称</div>
-                    <div class="courseSchool">课程所属培训机构的校区名称</div>
-                    <div class="courseAppoint">预约数:<span>36000</span></div>
+                    <div class="courseName">{{$course['name']}}</div>
+                    <div class="courseSchool">{{$org['branch_school']}}</div>
+                    <div class="courseAppoint">预约数:<span>{{$org['fake_enrol_counts']}}</span></div>
                 </div>
                 <div class="courseRight">
-                    <div class="realPrice">￥折扣后的的价格</div>
-                    <div class="furtherPrice">￥折扣前的的价格</div>
+                    <div class="realPrice">￥{{$course['price']}}</div>
+                    <div class="furtherPrice">￥{{$course['original_price']}}</div>
                 </div>
             </div>
         </div>
         <div class="commentBox container">
             <div class="title">
                 <div class="titleTxt">课程打分</div>
-                <div class="star" data-grade-total="5"></div>
+                <div class="star" data-grade-total="{{$comment['star_counts']}}"></div>
             </div>
             <div class="comment">
                 <div class="tips">
-                    <span>优势标签</span>
-                    <span>优势标签</span>
-                    <span>优势标签</span>
-                    <span>优势标签</span>
+                    @if($org->tags)
+                        @foreach($org->tags as $v)
+                            <div class="tips-box">{{$v->name}}</div>
+                        @endforeach
+                    @endif
                 </div>
-                <div class="txt">课程评价课程评价课程评价课程评价课程评价课程评价</div>
+                <div class="txt">{{$comment['content']}}</div>
                 <div class="org-album-pre">
                     <ul class="org-album">
-                        <li class="album-li">
-                            <a href="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" data-size="400x500"></a>
-                            <img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" >
-                        </li>
+                        @if($comment->imgs)
+                            <?php
+                            $albums=explode(',',$comment->imgs);
+                            ?>
+                            @foreach($albums as $v)
+                                <li class="album-li">
+                                    <a href="{{$v}}" data-size="400x500"></a>
+                                    <img src="{{$v}}"/>
+                                </li>
+                            @endforeach
+                        @endif
+
+                        {{--<li class="album-li">--}}
+                            {{--<a href="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" data-size="400x500"></a>--}}
+                            {{--<img src="http://pic.hisihi.com/2016-11-23/1479894836035810.jpg" >--}}
+                        {{--</li>--}}
                         <div class="clear"></div>
                     </ul>
                 </div>

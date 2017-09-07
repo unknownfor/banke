@@ -104,6 +104,7 @@ class CommentAppStoreRepository
 						//奖励
 						if ($status == config('admin.global.status.active')) {
 							$this->award_user($commentApp->uid);//奖励用户
+
 						}
 						$commentApp->save();
 						DB::commit();
