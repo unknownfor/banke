@@ -315,14 +315,15 @@ class AppUserRepository {
 								// 查询系统配置里邀请人注册认证的奖金
 								
 								$bankeTaskUser = new BankeTaskUser ();
-								$bankeTaskUser = $bankeTaskUser->where ( 'user_id', '=', $invitor_id )->where ( 'task_id', '=', 2 )->where ( 'created_at', '>=', getTime ( date ( "Y/m/d" ) + ' 00:00:00' ) );
-								if ($bankeTaskUser->count()==0||$bankeTaskUser->times_needed > $bankeTaskUser->times_real) {
+								$bankeTaskUser = $bankeTaskUser->where ( 'user_id', '=', $invitor_id )->where ( 'task_id', '=', 2 )->where ( 'created_at', '>=', getTime ( date ( "Y/m/d" ) + ' 00:00:00' ) )->first();
+								if ($bankeTaskUser==null||$bankeTaskUser->count()==0||$bankeTaskUser->times_needed > $bankeTaskUser->times_real) {
 									
 									// 查询任务表，看是否可以奖励
 									$info_obj = TaskFormUserRepository::getMiniViewCountsAndAward ( 2, $invitor_id );
 									$award_amount = 0;
 									$taskFormDetailUserId = 0;
 									$target_type=1;
+									$timesNeeds=0;
 									if ($info_obj != null) {
 										$award_amount = $info_obj ['award'];
 										$taskFormDetailUserId = $info_obj ['id'];
@@ -339,6 +340,7 @@ class AppUserRepository {
 										->first ();
 										
 										$award_amount = $taskCenter ['award_coin'];
+										$timesNeeds=$taskCenter['times_needed'];
 										$taskFormDetailUserId = 0;
 									}
 									
@@ -375,7 +377,7 @@ class AppUserRepository {
 									
 								 
 									//$bankeTaskUser = $bankeTaskUser->where ( 'user_id', '=', $invitor_id )->where ( 'task_id', '=', 2 )->where ( 'created_at', '>=', getTime ( date ( "Y/m/d" ) + ' 00:00:00' ) );
-									if (  $bankeTaskUser->count () > 0) {
+									if ($bankeTaskUser!=null&&$bankeTaskUser->count () > 0) {
 										$bankeTaskUser->times_real = $bankeTaskUser - times_real + 1;
 										$bankeTaskUser->coin_real = $bankeTaskUser->coin_real + $award_amount;
 										$bankeTaskUser->save ();
@@ -387,7 +389,7 @@ class AppUserRepository {
 										$bankeTaskUser->status = 1;
 										$bankeTaskUser->award_coin = $award_amount;
 										$bankeTaskUser->coin_real = $award_amount;
-										$bankeTaskUser->times_needed = 0;
+										$bankeTaskUser->times_needed =$timesNeeds;
 										$bankeTaskUser->times_real = 1;
 										$bankeTaskUser->target_type = $target_type;
 										$bankeTaskUser->form_detail_user_id= $taskFormDetailUserId;
