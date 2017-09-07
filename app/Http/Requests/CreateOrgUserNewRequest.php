@@ -26,7 +26,7 @@ class CreateOrgUserNewRequest extends Request
         return [
 //            'id' => 'numeric',
             'name' => 'required',
-            'mobile_new' => 'required|mobile|unique:users,mobile',
+            'mobile_new' => 'required|unique:users',
             'password' => 'required|min:6|max:32',
             'org_id_new' => 'required'
         ];
